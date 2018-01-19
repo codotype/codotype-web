@@ -155,7 +155,6 @@
 
 <script>
 import _ from 'lodash'
-import store from '@/store'
 import RecordTable from '@/components/RecordTable'
 import RecordForm from '@/containers/record_new/components/record_form'
 
@@ -174,19 +173,19 @@ export default {
     deleteRelated (attr) {
       // Removes the association from the current record
       this.record.attributes[attr.identifier] = null
-      store.commit('schema/persist', { schema: this.schema })
+      this.$store.commit('schema/persist', { schema: this.schema })
 
       // Deletes the associated record
       let relatedRecord = this.getRelatedRecords(attr)
-      store.commit('record/destroy', { record: relatedRecord })
+      this.$store.commit('record/destroy', { record: relatedRecord })
     },
     persistRecord (schema, record, relatedAttr) {
       if (record._id) {
-        store.commit('record/persist', { schema: schema, record: record, redirect: false })
+        this.$store.commit('record/persist', { schema: schema, record: record, redirect: false })
       } else {
-        store.commit('record/persist', { schema: schema, record: record, redirect: false })
+        this.$store.commit('record/persist', { schema: schema, record: record, redirect: false })
         this.record.attributes[relatedAttr.identifier] = record._id
-        store.commit('schema/persist', { schema: this.schema })
+        this.$store.commit('schema/persist', { schema: this.schema })
       }
       this.editingHasOne = false
     },
@@ -194,15 +193,15 @@ export default {
       this.editingHasOne = false
     },
     getLinkedSchemaHref (attr, record_id) { // TODO - abstract to component
-      let allRecords = store.getters['record/collection']
-      let allSchemas = store.getters['schema/collection']
+      let allRecords = this.$store.getters['record/collection']
+      let allSchemas = this.$store.getters['schema/collection']
       let record = _.find(allRecords, { _id: record_id })
       if (!record) return
       let schema = _.find(allSchemas, { _id: record.schema_id })
       return '#/schemas/' + schema._id + '/records/' + record._id
     },
     getLinkedSchemaLabel (attr, record_id) { // TODO - abstract to component
-      let allRecords = store.getters['record/collection']
+      let allRecords = this.$store.getters['record/collection']
       let record = _.find(allRecords, { _id: record_id })
       if (!record) return
 
@@ -210,12 +209,12 @@ export default {
       return record.attributes[identifier]
     },
     relatedSchema (attr) { // TODO - this should be moved into a getter
-      let allSchemas = store.getters['schema/collection']
+      let allSchemas = this.$store.getters['schema/collection']
       let relatedSchema = _.find(allSchemas, { _id: attr.datatypeOptions.schema_id })
       return relatedSchema
     },
     relatedSchemaName (attr) { // TODO - this should be moved into a getter
-      let allSchemas = store.getters['schema/collection']
+      let allSchemas = this.$store.getters['schema/collection']
       let relatedSchema = _.find(allSchemas, { _id: attr.datatypeOptions.schema_id })
       if (attr.datatype === 'HAS_MANY') {
         return relatedSchema.label_plural
@@ -224,8 +223,8 @@ export default {
       }
     },
     getRelatedRecords (attr) { // TODO - this should be moved into a getter
-      let allSchemas = store.getters['schema/collection']
-      let allRecords = store.getters['record/collection']
+      let allSchemas = this.$store.getters['schema/collection']
+      let allRecords = this.$store.getters['record/collection']
       let relatedSchema = _.find(allSchemas, { _id: attr.datatypeOptions.schema_id })
 
       // TODO - handle other attr types
@@ -240,7 +239,7 @@ export default {
       }
     },
     getNewRelatedRecord (attr) { // TODO - this should be moved into a getter
-      let allSchemas = store.getters['schema/collection']
+      let allSchemas = this.$store.getters['schema/collection']
       let relatedSchema = _.find(allSchemas, { _id: attr.datatypeOptions.schema_id })
       return { schema_id: relatedSchema._id, _id: null, attributes: {} }
     }

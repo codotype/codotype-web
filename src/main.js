@@ -14,7 +14,7 @@ window.store = store // TODO - remove - debug only
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  // store, // Vuex Store - QUESTION - why is this not available to all child components as `this.$store`?
+  store,
   router: router,
   template: '<App/>',
   components: { App }

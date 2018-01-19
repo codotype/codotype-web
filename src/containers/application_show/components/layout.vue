@@ -24,13 +24,11 @@
 <!-- // // // //  -->
 
 <script>
-import store from '@/store'
-
 export default {
   props: ['model'],
   methods: {
     onConfirm () {
-      return store.commit('application/destroy', { app: this.model })
+      return this.$store.commit('application/destroy', { app: this.model })
     }
   }
 }

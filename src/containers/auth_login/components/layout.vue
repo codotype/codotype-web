@@ -19,7 +19,6 @@
 // import auth from '../../../services/auth.js'
 import FormInput from '@/components/FormInput'
 import FormSubmit from '@/components/FormSubmit'
-import store from '@/store'
 
 export default {
   data () {
@@ -39,7 +38,7 @@ export default {
 
   methods: {
     authenticate () {
-      store.dispatch('auth/googleAuthenticate')
+      this.$store.dispatch('auth/googleAuthenticate')
     }
   }
 }

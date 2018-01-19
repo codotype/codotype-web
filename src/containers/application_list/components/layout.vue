@@ -36,13 +36,12 @@
 
 <script>
 import ListView from './list.vue'
-import store from '@/store'
 
 export default {
   props: ['collection'],
   computed: {
     fetching () {
-      return store.getters['application/fetching']
+      return this.$store.getters['application/fetching']
     }
   },
   components: {

@@ -55,14 +55,13 @@
 
 <script>
 import _ from 'lodash'
-import store from '@/store'
 
 // TODO - this should be split into a series of smaller components
 export default {
   name: 'Navbar',
   computed: {
     navSchemas () {
-      return _.filter(store.getters['schema/collection'], (s) => { return s.display.navbar_link })
+      return _.filter(this.$store.getters['schema/collection'], (s) => { return s.display.navbar_link })
     }
     // currentUser () {
       // return store.getters['auth/currentUser']

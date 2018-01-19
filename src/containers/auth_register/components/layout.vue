@@ -37,8 +37,6 @@
 <script>
 import FormInput from '@/components/FormInput'
 import FormSubmit from '@/components/FormSubmit'
-import store from '@/store'
-window.store = store
 export default {
   data () {
     return {
@@ -61,7 +59,7 @@ export default {
     },
     register () {
       if (!this.isValid()) { return }
-      return store.dispatch('auth/register', { username: this.email, password: this.password })
+      return this.$store.dispatch('auth/register', { username: this.email, password: this.password })
     }
   }
 }

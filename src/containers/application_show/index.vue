@@ -7,7 +7,6 @@
 
 <script>
 import LayoutView from './components/layout.vue'
-import store from '@/store'
 
 export default {
   name: 'application_show',
@@ -19,11 +18,11 @@ export default {
   },
   props: ['id'],
   created () {
-    return store.commit('application/current', { app_id: this.id })
+    return this.$store.commit('application/current', { app_id: this.id })
   },
   computed: {
     model () {
-      return store.getters['application/current']
+      return this.$store.getters['application/current']
     }
   }
 }

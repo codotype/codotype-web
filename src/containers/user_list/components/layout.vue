@@ -31,19 +31,18 @@
 
 <script>
 import ListView from './list.vue'
-import store from '@/store'
 
 export default {
   computed: {
     collection: () => {
-      return store.getters['user/collection']
+      return this.$store.getters['user/collection']
     },
     fetching: () => {
-      return store.getters['user/fetching']
+      return this.$store.getters['user/fetching']
     }
   },
   mounted: () => {
-    return store.dispatch('user/fetchCollection')
+    return this.$store.dispatch('user/fetchCollection')
   },
   components: {
     ListView

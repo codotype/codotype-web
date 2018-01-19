@@ -7,7 +7,6 @@
 
 <script>
 import LayoutView from './components/layout.vue'
-import store from '@/store'
 
 export default {
   components: {
@@ -18,7 +17,7 @@ export default {
   },
   computed: {
     collection () {
-      return store.getters['schema/collection']
+      return this.$store.getters['schema/collection']
     }
   }
 }

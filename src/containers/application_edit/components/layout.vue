@@ -43,19 +43,17 @@
 <!-- // // // //  -->
 
 <script>
-import store from '@/store'
-
 export default {
   props: ['id'],
   methods: {
     formSubmit () {
       // TODO - validations
-      return store.commit('application/persist', { app: this.model })
+      return this.$store.commit('application/persist', { app: this.model })
     }
   },
   computed: {
     model () {
-      return store.getters['application/current']
+      return this.$store.getters['application/current']
     }
   }
 

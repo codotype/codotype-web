@@ -7,7 +7,6 @@
 
 <script>
 import LayoutView from './components/layout.vue'
-import store from '@/store'
 
 export default {
   components: {
@@ -22,12 +21,12 @@ export default {
   },
   methods: {
     fetch () {
-      return store.dispatch('user/fetchModel', this.id)
+      return this.$store.dispatch('user/fetchModel', this.id)
     }
   },
   computed: {
     model () {
-      return store.getters['user/current']
+      return this.$store.getters['user/current']
     }
   }
 }

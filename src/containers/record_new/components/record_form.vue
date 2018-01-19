@@ -76,7 +76,6 @@
 
 <script>
 import _ from 'lodash'
-import store from '@/store'
 import MaskedInput from 'vue-masked-input'
 import vSelect from 'vue-select'
 
@@ -121,13 +120,13 @@ export default {
       }
     },
     schemaDropdown (schema_id) {
-      let allRecords = store.getters['record/collection']
+      let allRecords = this.$store.getters['record/collection']
       let dropdownRecords = _.filter(allRecords, (r) => { return r.schema_id === schema_id })
       return dropdownRecords
     },
     // NOTE - this function is currently unused
     schemaDropdownVselect (schema_id, label_identifier) {
-      let allRecords = store.getters['record/collection']
+      let allRecords = this.$store.getters['record/collection']
       let dropdownRecords = _.filter(allRecords, (r) => { return r.schema_id === schema_id })
 
       // Builds { value: 'user_123b3asd...', label: 'Username' } for Select2 dropdown

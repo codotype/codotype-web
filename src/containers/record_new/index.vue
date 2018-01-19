@@ -7,7 +7,6 @@
 
 <script>
 import _ from 'lodash'
-import store from '@/store'
 import LayoutView from './components/layout.vue'
 
 export default {
@@ -20,7 +19,7 @@ export default {
   props: ['id'],
   computed: {
     data () {
-      let schemas = store.getters['schema/collection']
+      let schemas = this.$store.getters['schema/collection']
       let schema = _.find(schemas, { _id: this.id })
 
       // TODO - abstract into Vuex store

@@ -18,7 +18,6 @@
 <!-- // // // //  -->
 
 <script>
-import store from '@/store'
 import router from '@/routers'
 import RecordForm from './record_form.vue'
 
@@ -29,7 +28,7 @@ export default {
   },
   methods: {
     persistRecord (schema, record) {
-      store.commit('record/persist', { schema: schema, record: record, redirect: true })
+      this.$store.commit('record/persist', { schema: schema, record: record, redirect: true })
     },
     cancelForm () {
       router.go(-1)

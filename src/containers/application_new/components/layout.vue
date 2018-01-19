@@ -43,8 +43,6 @@
 <!-- // // // //  -->
 
 <script>
-import store from '@/store'
-
 export default {
   name: 'application_new',
   data () {
@@ -54,7 +52,7 @@ export default {
   },
   methods: {
     formSubmit () {
-      return store.commit('application/persist', { app: this.model })
+      return this.$store.commit('application/persist', { app: this.model })
     }
   }
 }

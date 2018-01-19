@@ -9,13 +9,12 @@
 <!-- // // // //  -->
 
 <script>
-import store from '@/store'
 import NotificationChild from './notificationChild'
 
 export default {
   computed: {
-    collection: () => {
-      return store.getters['notification/collection']
+    collection () {
+      return this.$store.getters['notification/collection']
     }
   },
   components: {

@@ -92,24 +92,23 @@
 
 <script>
 import _ from 'lodash'
-import store from '@/store'
 
 export default {
   props: ['schema', 'records', 'ignoreAttribute', 'disableControls'],
   methods: {
     onConfirmDestroy (record) {
-      return store.commit('record/destroy', { record })
+      return this.$store.commit('record/destroy', { record })
     },
     getLinkedSchemaHref (attr, record_id) {
-      let allRecords = store.getters['record/collection']
-      let allSchemas = store.getters['schema/collection']
+      let allRecords = this.$store.getters['record/collection']
+      let allSchemas = this.$store.getters['schema/collection']
       let record = _.find(allRecords, { _id: record_id })
       if (!record) return
       let schema = _.find(allSchemas, { _id: record.schema_id })
       return '#/schemas/' + schema._id + '/records/' + record._id
     },
     getLinkedSchemaLabel (attr, record_id) {
-      let allRecords = store.getters['record/collection']
+      let allRecords = this.$store.getters['record/collection']
       let record = _.find(allRecords, { _id: record_id })
       if (!record) return
 

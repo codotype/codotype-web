@@ -7,7 +7,6 @@
 
 <script>
 import _ from 'lodash'
-import store from '@/store'
 import LayoutView from './components/layout.vue'
 
 export default {
@@ -20,10 +19,10 @@ export default {
   props: ['id', 'record_id'],
   computed: {
     data () {
-      let allSchemas = store.getters['schema/collection']
+      let allSchemas = this.$store.getters['schema/collection']
       let schema = _.find(allSchemas, { _id: this.id })
 
-      let allRecords = store.getters['record/collection']
+      let allRecords = this.$store.getters['record/collection']
       let record = _.find(allRecords, { _id: this.record_id })
 
       return { schema, record }

@@ -6,8 +6,6 @@
 <!-- // // // //  -->
 
 <script>
-// import _ from 'lodash'
-import store from '@/store'
 import LayoutView from './components/layout.vue'
 
 export default {
@@ -18,7 +16,7 @@ export default {
     title: 'Schemas - New' // title is now "blazeplate.io - Schemas - New"
   },
   data () {
-    let schema = store.getters['schema/new']
+    let schema = this.$store.getters['schema/new']
     return { schema }
   }
 }

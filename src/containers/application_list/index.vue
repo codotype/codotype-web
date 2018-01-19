@@ -6,9 +6,7 @@
 <!-- // // // //  -->
 
 <script>
-
 import LayoutView from './components/layout.vue'
-import store from '@/store'
 
 export default {
   name: 'application_list',
@@ -20,7 +18,7 @@ export default {
   },
   computed: {
     collection () {
-      return store.getters['application/collection']
+      return this.$store.getters['application/collection']
     }
   }
 }

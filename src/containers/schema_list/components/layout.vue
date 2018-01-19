@@ -72,13 +72,11 @@
 <!-- // // // //  -->
 
 <script>
-import store from '@/store'
-
 export default {
   props: ['collection'],
   methods: {
     destroySchema (schema) {
-      store.commit('schema/destroy', { schema })
+      this.$store.commit('schema/destroy', { schema })
     }
   }
 }

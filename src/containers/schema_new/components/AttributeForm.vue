@@ -247,7 +247,6 @@
 
 <script>
 import _ from 'lodash'
-import store from '@/store'
 import draggable from 'vuedraggable'
 import AttributeItem from './AttributeItem'
 import ArrayInput from '@/components/ArrayInput'
@@ -261,23 +260,23 @@ export default {
   },
   methods: {
     addAttribute () {
-      store.commit('schema/addAttribute', { schema: this.schema })
+      this.$store.commit('schema/addAttribute', { schema: this.schema })
     },
     removeAttribute (attr) {
-      store.commit('schema/removeAttribute', { schema: this.schema, attr: attr })
+      this.$store.commit('schema/removeAttribute', { schema: this.schema, attr: attr })
     },
     editAttribute (attr) {
-      store.commit('schema/selectAttribute', { attr })
+      this.$store.commit('schema/selectAttribute', { attr })
     },
     clearSelected () {
-      store.commit('schema/clearSelectedAttribute')
+      this.$store.commit('schema/clearSelectedAttribute')
     },
     updateSelected (attr) {
-      store.commit('schema/persistSelectedAttribute', { schema: this.schema, attr: attr })
+      this.$store.commit('schema/persistSelectedAttribute', { schema: this.schema, attr: attr })
     },
     schemaAttributes (schema_id) {
       if (!schema_id) return [{ label: 'Please Select A Schema' }]
-      let allSchemas = store.getters['schema/collection']
+      let allSchemas = this.$store.getters['schema/collection']
       let schema = _.find(allSchemas, { _id: schema_id })
       if (!schema) return [{ label: 'Please Select A Schema' }]
       return schema.attributes
@@ -285,10 +284,10 @@ export default {
   },
   computed: {
     allSchemas () {
-      return store.getters['schema/collection']
+      return this.$store.getters['schema/collection']
     },
     selectedAttr () {
-      return store.getters['schema/selectedAttribute']
+      return this.$store.getters['schema/selectedAttribute']
     },
     sortableOptions () {
       return {
