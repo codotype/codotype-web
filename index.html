@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>blazeplate.io</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+    <script src="https://unpkg.com/vue-meta@1.2.0/lib/vue-meta.min.js"></script>
+
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <script type="text/javascript">
+      function initGoogleApi() {
+        console.info('Init Google API');
+        setTimeout(() => {
+          if (window.store) {
+            // window.store.dispatch('auth/googleAuthenticate');
+          }
+        }, 1000)
+      }
+    </script>
+    <script src="https://apis.google.com/js/client.js?onload=initGoogleApi"></script>
+  </body>
+</html>
