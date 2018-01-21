@@ -43,9 +43,6 @@ export default {
   body
     height: 100%
 
-  .container-fluid
-    height: 100%
-
   #app
     height: 100%
 
