@@ -53,7 +53,6 @@ const mutations = {
     // Redirects 'back' if necessary
     // TODO - phase out window.location replacement here
     setTimeout(() => {
-      console.log('#/projects/' + recordId)
       window.location = `#/projects/${recordId}`
     }, 10)
     // if (redirect) { router.replace({ path: '#/projects/' + record._id }) }
