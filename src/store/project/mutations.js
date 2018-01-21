@@ -49,6 +49,7 @@ const mutations = {
     }
 
     // Redirects 'back' if necessary
+    // TODO - phase out window.location replacement here
     window.location = '#/projects/' + record._id
     // if (redirect) { router.replace({ path: '#/projects/' + record._id }) }
   },

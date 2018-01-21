@@ -32,14 +32,43 @@
           </div>
 
           <b-tabs>
+
+            <!-- Project Detail -->
             <b-tab class="mt-4" title="Project" active>
               <p class="lead">Project Details</p>
               <hr>
               <ProjectDetail :model="model" />
             </b-tab>
+
+            <!-- Project Schemas -->
             <b-tab class="mt-4" title="Schemas" >
               <br>Schemas
             </b-tab>
+
+            <b-tab class='mt-4' title="Client Frameworks">
+              <br>Client Frameworks
+            </b-tab>
+
+            <b-tab class='mt-4' title="CSS Frameworks">
+              <br>CSS Frameworks
+            </b-tab>
+
+            <b-tab class='mt-4' title="Build Tool">
+              <br>Build Tool
+            </b-tab>
+
+            <b-tab class='mt-4' title="Server Frameworks">
+              <br>Server Frameworks
+            </b-tab>
+
+            <b-tab class='mt-4' title="Authentication">
+              <br>Authentication
+            </b-tab>
+
+            <b-tab class='mt-4' title="Databases">
+              <br>Databases
+            </b-tab>
+
           </b-tabs>
 
         </div>
