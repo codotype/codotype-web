@@ -8,6 +8,9 @@
 
     <div class="col-lg-12">
       <p class="lead">TODO - integrate Client editor</p>
+      <p class="lead">Framework</p>
+      <p class="lead">Language</p>
+      <p class="lead">Build Tools</p>
     </div>
   </div>
 </template>
@@ -24,5 +27,3 @@ export default {
   }
 }
 </script>
-
-

@@ -14,10 +14,29 @@
             <div class="col-lg-2 text-right">
 
               <!-- Opens Destroy Confirmation Modal -->
-              <button class="btn btn-outline-success btn-sm" @click="generateApplication()">
+              <button class="btn btn-sm btn-outline-success" v-b-modal="'generate-modal'">
                 <i class="fa fa-fw fa-play mr-2"></i>
                 Generate Application
               </button>
+
+              <!-- Bootstrap Modal Component -->
+              <!-- TODO - move this outside the scope of the loop, and instead pass only the options into a single instance -->
+              <b-modal id="generate-modal"
+                :title="'Generate Application'"
+                @ok="generateApplication()"
+                header-bg-variant="dark"
+                header-text-variant="light"
+                body-bg-variant="dark"
+                body-text-variant="light"
+                footer-bg-variant="success"
+                footer-text-variant="light"
+                ok-variant='success'
+                ok-title='GENERATE'
+                cancel-title='Cancel'
+                cancel-variant='dark'
+              >
+                <p class="text-left">Are you sure you want to generate the {{ model.label }} project?</p>
+              </b-modal>
 
             </div>
           </div>
