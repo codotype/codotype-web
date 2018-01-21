@@ -7,26 +7,17 @@
       <div class="col-lg-12">
         <div class="card card-body bg-dark text-light border-light">
 
-          <div class="row">
-            <div class="col-lg-8">
+          <div class="row mb-2">
+            <div class="col-lg-10">
               <h2>{{ model.label }}</h2>
             </div>
-            <div class="col-lg-4 text-right">
-
-              <!-- Edit Link -->
-              <a class="btn btn-outline-warning btn-sm" :href="'#/projects/' + model._id + '/edit'">
-                <i class="fa fa-fw fa-pencil"></i>
-              </a>
+            <div class="col-lg-2 text-right">
 
               <!-- Opens Destroy Confirmation Modal -->
-              <button class="btn btn-outline-danger btn-sm" v-b-modal.confirm-modal>
-                <i class="fa fa-fw fa-trash"></i>
+              <button class="btn btn-outline-success btn-sm" @click="generateApplication()">
+                <i class="fa fa-fw fa-play mr-2"></i>
+                Generate Application
               </button>
-
-              <!-- Bootstrap Modal Component -->
-              <b-modal id="confirm-modal" title="Destroy Project?" @ok="onConfirm">
-                <p class="my-4">Are you sure you want to destroy this Project?</p>
-              </b-modal>
 
             </div>
           </div>
@@ -34,46 +25,35 @@
           <b-tabs>
 
             <!-- Project Detail -->
-            <b-tab class="mt-4" title="Project" active>
-              <p class="lead">Project Details</p>
-              <hr>
+            <b-tab title="Project" active>
               <ProjectDetail :model="model" />
             </b-tab>
 
             <!-- Schemas -->
-            <b-tab class="mt-4" title="Models" >
-              <br>Schemas / Models
+            <b-tab title="Schemas" >
+              <SchemaTab :model="model" />
             </b-tab>
 
             <!-- Authentication -->
-            <b-tab class='mt-4' title="Authentication">
-              <br>Authentication
+            <b-tab title="Authentication">
+              <AuthTab :model="model" />
             </b-tab>
 
             <!-- Server Frameworks -->
             <!-- Databases -->
-            <b-tab class='mt-4' title="Server">
-              <br>
-              Server Frameworks
-              <br>
-              Databases
+            <b-tab title="Server">
+              <ServerTab :model="model" />
             </b-tab>
 
             <!-- Client Frameworks -->
             <!-- Build Tools -->
-            <b-tab class='mt-4' title="Client">
-              <br>
-              Client Frameworks
-              <br>
-              Build Tool
-              <!-- <br> -->
-              <!-- CSS Frameworks -->
+            <!-- CSS Frameworks -->
+            <b-tab title="Client">
+              <ClientTab :model="model" />
             </b-tab>
 
-            <!-- CSS Frameworks -->
-            <b-tab class='mt-4' title="CSS Frameworks"></b-tab>
-
-            <b-tab class='mt-4' title="Build">
+            <!-- Build -->
+            <b-tab title="Build">
               <br>
               Build / Generate Codebase
               <br>
@@ -95,13 +75,24 @@
 <script>
 import store from '@/store'
 import ProjectDetail from './ProjectDetail'
+import SchemaTab from './SchemaTab'
+import AuthTab from './AuthTab'
+import ServerTab from './ServerTab'
+import ClientTab from './ClientTab'
 
 export default {
   props: ['model'],
   components: {
-    ProjectDetail
+    ProjectDetail,
+    SchemaTab,
+    AuthTab,
+    ServerTab,
+    ClientTab
   },
   methods: {
+    generateApplication () {
+      console.log('generateApplication')
+    },
     onConfirm () {
       return store.dispatch('project/destroy', this.model)
     }
