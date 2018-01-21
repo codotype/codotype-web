@@ -93,6 +93,7 @@ export default {
   },
   methods: {
     onLabelInput () {
+      // TODO - move these transformations into Vuex store
       console.log('ON LABEL INPUT')
       console.log(this.model.label)
       console.log(pluralize(this.model.label))

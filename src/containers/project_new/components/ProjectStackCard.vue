@@ -1,6 +1,6 @@
 
 <template>
-  <div class="card bg-light text-dark mt-3">
+  <div class="card bg-light text-dark mb-3">
     <div class="card-header">
       <p class='lead mb-0'>{{ title }}</p>
     </div>

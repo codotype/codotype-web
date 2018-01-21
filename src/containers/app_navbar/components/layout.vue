@@ -95,25 +95,10 @@ export default {
 
 <style lang="sass">
 
-  img.profile
-    height: 1.5rem
-    width: 1.5rem
-    border-radius: 1rem
-    border: 1px solid #999999
-
   .navbar-brand
-    letter-spacing: .25rem !important
-    font-family: sans-serif
-    // text-transform: uppercase
-    font-weight: 100
-    letter-spacing: 0.1rem
-
-    strong
-      font-weight: 400
-
+    margin-right: 0
     img.logo
       float: left
-      margin-right: 0.4rem
       height: 2rem
       display: flex
 

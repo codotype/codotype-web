@@ -19,7 +19,7 @@
 // export default mutations
 
 import _ from 'lodash'
-import router from '@/routers'
+// import router from '@/routers'
 
 // // // //
 
@@ -49,7 +49,8 @@ const mutations = {
     }
 
     // Redirects 'back' if necessary
-    if (redirect) { router.go(-1) }
+    window.location = '#/projects/' + record._id
+    // if (redirect) { router.replace({ path: '#/projects/' + record._id }) }
   },
   remove (state, { record }) {
     state.collection = _.filter(state.collection, (s) => { return s._id !== record._id })
