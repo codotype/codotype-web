@@ -21,6 +21,11 @@
                 Records
               </a>
 
+              <button class='btn btn-sm btn-outline-info' @click="exportSchema(schema)">
+                <i class="fa fa-download mr-1"></i>
+                Export
+              </button>
+
               <a class='btn btn-sm btn-outline-warning' v-bind:href="'#/schemas/' + schema._id + '/edit'">
                 <i class="fa fa-pencil mr-1"></i>
                 Edit
@@ -75,6 +80,10 @@
 export default {
   props: ['collection'],
   methods: {
+    exportSchema (schema) {
+      console.log('EXPORT SCHEMA')
+      console.log(JSON.stringify(schema, null, 2))
+    },
     destroySchema (schema) {
       this.$store.commit('schema/destroy', { schema })
     }
