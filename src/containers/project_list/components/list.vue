@@ -14,11 +14,11 @@
 
             <a class='btn btn-sm btn-outline-light' v-bind:href="'#/projects/' + project._id">
               <i class="fa fa-list-alt mr-1"></i>
-              Records
+              Preview
             </a>
 
             <button class='btn btn-sm btn-outline-info' @click="exportProject(project)">
-              <i class="fa fa-download mr-1"></i>
+              <i class="fa fa-code mr-1"></i>
               Export
             </button>
 
@@ -68,7 +68,7 @@ export default {
   props: ['collection'],
   methods: {
     exportProject (project) {
-      console.log('EXPORT APP')
+      console.log('EXPORT APP:')
       console.log(JSON.stringify(project, null, 2))
     },
     confirmDestroy (model) {

@@ -15,14 +15,28 @@
         <!-- </div> -->
       <!-- </div> -->
 
-      <!-- <div class="row py-2"> -->
+      <div class="row py-4">
+        <div class="col-lg-12 text-center">
+          <h2>Next-generation web application boilerplate.</h2>
+        </div>
+      </div>
+
+      <!-- <div class="row py-4"> -->
         <!-- <div class="col-lg-12 text-center"> -->
           <!-- <p class="lead">Define your schema and its attributes - blazeplate.io does the rest.</p> -->
         <!-- </div> -->
       <!-- </div> -->
 
       <div class="row mt-4 pt-4 justify-content-center">
-        <div class="col-lg-4"><a href="#/projects/new" class="btn btn-light btn-block btn-lg"><i class="fa fa-fw fa-list-alt mr-2"></i>Let's get started.</a></div>
+        <div class="col-lg-2">
+          <a href="#/projects/new" class="btn btn-light btn-block btn-lg p-4">
+            <i class="fa fa-lg fa-list-alt mr-2"></i>
+            <br>
+            <p class="lead mb-0">
+              Let's get started.
+            </p>
+          </a>
+        </div>
       </div>
 
     </div>
