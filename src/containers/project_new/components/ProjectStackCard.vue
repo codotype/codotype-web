@@ -8,6 +8,7 @@
       <div class="row">
         <div class='col-lg-12' v-for="opt in options" :key="opt.id">
           <input :type="type" ref="input" :id="opt.id" :value="opt.id" @change="onInputChange()" :disabled="!!opt.disabled">
+          <i :class="'devicon devicon-' + opt.icon"></i>
           <label :for="opt.id" v-if="opt.disabled">{{ opt.label }} (Coming soon!)</label>
           <label :for="opt.id" v-else>{{ opt.label }}</label>
         </div>
@@ -33,5 +34,11 @@ export default {
   }
 }
 </script>
+
+<style type="text/css" scoped="true">
+  i.devicon {
+    font-size: 2rem;
+  }
+</style>
 
 

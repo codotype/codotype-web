@@ -29,9 +29,9 @@
       <!-- </div> -->
     <!-- </div> -->
 
-    <!-- <div class="col-lg-12"> -->
-      <!-- <ProjectStackForm :model="model"/> -->
-    <!-- </div> -->
+    <div class="col-lg-12">
+      <ProjectStackForm :model="model"/>
+    </div>
 
 
     <!-- TODO - abstract into FORM CONTROLS -->
