@@ -40,33 +40,44 @@
               <ProjectDetail :model="model" />
             </b-tab>
 
-            <!-- Project Schemas -->
-            <b-tab class="mt-4" title="Schemas" >
-              <br>Schemas
+            <!-- Schemas -->
+            <b-tab class="mt-4" title="Models" >
+              <br>Schemas / Models
             </b-tab>
 
-            <b-tab class='mt-4' title="Client Frameworks">
-              <br>Client Frameworks
-            </b-tab>
-
-            <b-tab class='mt-4' title="CSS Frameworks">
-              <br>CSS Frameworks
-            </b-tab>
-
-            <b-tab class='mt-4' title="Build Tool">
-              <br>Build Tool
-            </b-tab>
-
-            <b-tab class='mt-4' title="Server Frameworks">
-              <br>Server Frameworks
-            </b-tab>
-
+            <!-- Authentication -->
             <b-tab class='mt-4' title="Authentication">
               <br>Authentication
             </b-tab>
 
-            <b-tab class='mt-4' title="Databases">
-              <br>Databases
+            <!-- Server Frameworks -->
+            <!-- Databases -->
+            <b-tab class='mt-4' title="Server">
+              <br>
+              Server Frameworks
+              <br>
+              Databases
+            </b-tab>
+
+            <!-- Client Frameworks -->
+            <!-- Build Tools -->
+            <b-tab class='mt-4' title="Client">
+              <br>
+              Client Frameworks
+              <br>
+              Build Tool
+              <!-- <br> -->
+              <!-- CSS Frameworks -->
+            </b-tab>
+
+            <!-- CSS Frameworks -->
+            <b-tab class='mt-4' title="CSS Frameworks"></b-tab>
+
+            <b-tab class='mt-4' title="Build">
+              <br>
+              Build / Generate Codebase
+              <br>
+              Build Configuration / Options
             </b-tab>
 
           </b-tabs>

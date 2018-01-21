@@ -3,7 +3,7 @@
   <div class="row d-flex flex-column align-items-center">
 
     <div class="col-lg-12">
-      <h2>Project - New</h2>
+      <h2>New Project</h2>
       <hr>
     </div>
 

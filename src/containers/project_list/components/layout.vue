@@ -15,6 +15,10 @@
           New Project
         </a>
       </div>
+
+      <div class="col-lg-12">
+        <hr>
+      </div>
     </div>
 
   	<div class="row">

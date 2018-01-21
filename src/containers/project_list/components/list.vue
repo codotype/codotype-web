@@ -1,7 +1,7 @@
 
 <template>
   <div class='row'>
-    <div v-for="project in collection" v-bind:key="project._id" class='col-lg-12 mt-2'>
+    <div v-for="project in collection" v-bind:key="project._id" class='col-lg-12 mb-3'>
       <div class="card card-body bg-dark border-light">
         <div class="row">
 
@@ -36,7 +36,7 @@
             <!-- Bootstrap Modal Component -->
             <b-modal :id="'modal_' + project._id"
               :title="'Destroy ' + project.label + '?'"
-              @ok="destroyproject(project)"
+              @ok="confirmDestroy(project)"
               header-bg-variant='dark'
               header-text-variant='light'
               body-bg-variant='dark'

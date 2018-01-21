@@ -35,6 +35,7 @@ const mutations = {
     state.current = id
   },
   persist (state, { record, redirect }) {
+    let recordId = record._id
     if (record._id) {
       state.collection = _.map(state.collection, (s) => {
         if (s._id === record._id) {
@@ -44,13 +45,17 @@ const mutations = {
         }
       })
     } else {
-      record._id = 'PR_' + Math.floor((Math.random() * 100000000000000) + 1)
+      recordId = 'PR_' + Math.floor((Math.random() * 100000000000000) + 1)
+      record._id = recordId
       state.collection.push(record)
     }
 
     // Redirects 'back' if necessary
     // TODO - phase out window.location replacement here
-    window.location = '#/projects/' + record._id
+    setTimeout(() => {
+      console.log('#/projects/' + recordId)
+      window.location = `#/projects/${recordId}`
+    }, 10)
     // if (redirect) { router.replace({ path: '#/projects/' + record._id }) }
   },
   remove (state, { record }) {
