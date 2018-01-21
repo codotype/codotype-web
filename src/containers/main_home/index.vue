@@ -1,6 +1,6 @@
 
 <template>
-    <div class="container-fluid">
+    <div class="container">
       <LayoutView/>
     </div>
 
@@ -21,3 +21,9 @@ export default {
   }
 }
 </script>
+
+<style type='text/css' scoped='true'>
+  .container {
+    height: 100%;
+  }
+</style>
