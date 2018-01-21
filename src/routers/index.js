@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 // Module routes
-import { MainHomeRoute } from './main'
+import { MainHomeRoute, MainAboutRoute } from './main'
 import { AuthLoginRoute, AuthRegisterRoute } from './auth'
 import { UserListRoute, UserShowRoute } from './user'
 import { SchemaListRoute, SchemaNewRoute, SchemaShowRoute, SchemaEditRoute, RecordNewRoute, RecordEditRoute, RecordShowRoute } from './schema'
@@ -15,6 +15,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     MainHomeRoute,
+    MainAboutRoute,
     AuthLoginRoute,
     AuthRegisterRoute,
     UserListRoute,
