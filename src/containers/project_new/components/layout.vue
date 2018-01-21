@@ -13,7 +13,7 @@
             <span class='text-danger'>*</span>
           </label>
           <small class="form-text text-muted mb-2">The name of your project</small>
-          <input type="text" class="form-control" placeholder="Label" v-model="model.label">
+          <input type="text" class="form-control" placeholder="Label" v-model="model.label" @input="onLabelInput()">
         </div>
       </div>
 
@@ -25,7 +25,7 @@
             <span class='text-danger'>*</span>
           </label>
           <small class="form-text text-muted mb-2">The lowercase-only version of the Label </small>
-          <input type="text" class="form-control" placeholder="Identifier" v-model="model.identifier">
+          <input type="text" class="form-control" placeholder="Identifier" v-model="model.identifier" disabled="true">
         </div>
       </div>
 
@@ -62,6 +62,9 @@
 <script>
 import store from '@/store'
 import ProjectStackForm from './ProjectStackForm'
+const classify = require('underscore.string/classify')
+const underscored = require('underscore.string/underscored')
+const pluralize = require('pluralize')
 
 export default {
   components: {
@@ -89,6 +92,13 @@ export default {
     }
   },
   methods: {
+    onLabelInput () {
+      console.log('ON LABEL INPUT')
+      console.log(this.model.label)
+      console.log(pluralize(this.model.label))
+      this.model.identifier = classify(this.model.label)
+      this.model.identifier = underscored(this.model.label)
+    },
     formSubmit () {
       return store.dispatch('project/create', this.model)
     }

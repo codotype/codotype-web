@@ -76,14 +76,14 @@
 
 <script>
 import _ from 'lodash'
-import MaskedInput from 'vue-masked-input'
-import vSelect from 'vue-select'
+// import MaskedInput from 'vue-masked-input'
+// import vSelect from 'vue-select'
 
 export default {
   props: ['schema', 'record', 'relatedAttr', 'persistRecord', 'cancelForm'],
   components: {
-    MaskedInput,
-    vSelect
+    // MaskedInput,
+    // vSelect
   },
   data () {
     let errors = {}
