@@ -1,6 +1,8 @@
 
 <template>
-  <LayoutView :model="model"/>
+  <div class="container h-100">
+    <LayoutView :model="model"/>
+  </div>
 </template>
 
 <!-- // // // //  -->

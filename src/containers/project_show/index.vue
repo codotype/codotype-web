@@ -1,6 +1,8 @@
 
 <template>
-  <LayoutView :model="model"/>
+  <div class="container-fluid">
+    <LayoutView :model="model"/>
+  </div>
 </template>
 
 <!-- // // // //  -->
