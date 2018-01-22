@@ -7,15 +7,15 @@
       <StackSelector type="radio" :options="client_frameworks" v-model="model.stack.client.id" />
     </div>
 
-    <div class="col-lg-12 mt-3">
-      <TabHeader title="Build Tool" />
-      <StackSelector type="radio" :options="build_tools" v-model="model.stack.client.id" />
-    </div>
+    <!-- <div class="col-lg-12 mt-3"> -->
+      <!-- <TabHeader title="Build Tool" /> -->
+      <!-- <StackSelector type="radio" :options="build_tools" v-model="model.stack.client.id" /> -->
+    <!-- </div> -->
 
-    <div class="col-lg-12 mt-3">
-      <TabHeader title="CSS Framework" />
-      <StackSelector type="radio" :options="css_frameworks" v-model="model.stack.client.id" />
-    </div>
+    <!-- <div class="col-lg-12 mt-3"> -->
+      <!-- <TabHeader title="CSS Framework" /> -->
+      <!-- <StackSelector type="radio" :options="css_frameworks" v-model="model.stack.client.id" /> -->
+    <!-- </div> -->
 
   </div>
 </template>

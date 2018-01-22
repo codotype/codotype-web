@@ -67,9 +67,13 @@
 
           <!-- Client Frameworks -->
           <!-- Build Tools -->
-          <!-- CSS Frameworks -->
           <b-tab title="Client">
             <ClientTab :model="model" />
+          </b-tab>
+
+          <!-- CSS Frameworks -->
+          <b-tab title="CSS Framework">
+            <CssTab :model="model" />
           </b-tab>
 
           <b-tab title="Deployment">
@@ -100,6 +104,7 @@ import SchemaTab from './SchemaTab'
 import AuthTab from './AuthTab'
 import ServerTab from './ServerTab'
 import ClientTab from './ClientTab'
+import CssTab from './CssTab'
 import DatabaseTab from './DatabaseTab'
 import DeploymentTab from './DeploymentTab'
 
@@ -111,6 +116,7 @@ export default {
     AuthTab,
     ServerTab,
     ClientTab,
+    CssTab,
     DatabaseTab,
     DeploymentTab
   },
