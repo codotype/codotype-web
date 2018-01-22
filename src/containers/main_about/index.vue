@@ -1,3 +1,4 @@
+
 <template>
   <div class="container h-100">
     <LayoutView/>
@@ -10,12 +11,12 @@
 import LayoutView from './components/layout.vue'
 
 export default {
-  name: 'main_home',
+  name: 'main_about',
   components: {
     LayoutView
   },
   metaInfo: {
-    title: 'Main - Home'
+    title: 'About'
   }
 }
 </script>

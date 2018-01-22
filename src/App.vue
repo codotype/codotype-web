@@ -4,13 +4,14 @@
     <AppNavbar/>
     <router-view/>
     <Notification/>
+    <AppFooter/>
   </div>
 </template>
 
 <script>
-import AppNavbar from './containers/app_navbar'
-import AppFooter from './containers/app_footer'
-import Notification from './containers/app_notification'
+import AppNavbar from '@/containers/app_navbar'
+import AppFooter from '@/containers/app_footer'
+import Notification from '@/containers/app_notification'
 
 export default {
   name: 'app',
@@ -43,8 +44,8 @@ export default {
   body
     height: 100%
 
-  .container-fluid
-    height: 100%
+  .container, .container-fluid
+    padding-top: 4.5rem
 
   #app
     height: 100%

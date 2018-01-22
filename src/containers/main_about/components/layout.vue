@@ -5,7 +5,13 @@
 
       <div class="row mt-2 mb-4 pb-4">
         <div class="col-lg-12 text-center">
-          <img src="@/assets/logo_dark.png">
+          <img class='logo' src="@/assets/logo_dark.png">
+        </div>
+      </div>
+
+      <div class="row py-4">
+        <div class="col-lg-12 text-center">
+          <h2>A B O U T</h2>
         </div>
       </div>
 
@@ -27,18 +33,6 @@
         <!-- </div> -->
       <!-- </div> -->
 
-      <div class="row mt-4 pt-4 justify-content-center">
-        <div class="col-lg-6">
-          <a href="#/projects/new" class="btn btn-outline-light btn-block btn-lg p-4">
-            <i class="fa fa-lg fa-fire mr-2"></i>
-            <br>
-            <p class="lead mb-0 mt-2">
-              Let's get started.
-            </p>
-          </a>
-        </div>
-      </div>
-
     </div>
   </div>
 
@@ -52,13 +46,9 @@
   }
 </script>
 
-<style lang="sass">
-  img.welcome-logo
-    height: 4rem
-    width: 4rem
+<style lang="sass" scoped="true">
 
-  .welcome-text
-    letter-spacing: .6rem
-    font-weight: 300
-    font-size: 2rem
+  img.logo
+    height: 4rem
+
 </style>
