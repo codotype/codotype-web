@@ -5,16 +5,21 @@
       <div class="card card-body bg-dark border-light">
         <div class="row">
 
-          <div class="col-lg-8">
+          <div class="col-lg-6">
             <!-- project URL -->
             <a v-bind:href="'#/projects/' + project._id">{{project.label}}</a>
           </div>
 
-          <div class="col-lg-4 text-right">
+          <div class="col-lg-6 text-right">
 
             <a class='btn btn-sm btn-outline-light' v-bind:href="'#/projects/' + project._id + '/preview'">
               <i class="fa fa-list-alt mr-1"></i>
               Preview
+            </a>
+
+            <a class='btn btn-sm btn-outline-warning' v-bind:href="'#/projects/' + project._id + '/edit'">
+              <i class="fa fa-pencil mr-1"></i>
+              Edit
             </a>
 
             <a class='btn btn-sm btn-outline-success' v-bind:href="'#/projects/' + project._id + '/generate'">
@@ -26,11 +31,6 @@
               <!-- <i class="fa fa-code mr-1"></i> -->
               <!-- Export -->
             <!-- </button> -->
-
-            <!-- <a class='btn btn-sm btn-outline-warning' v-bind:href="'#/projects/' + project._id + '/edit'"> -->
-              <!-- <i class="fa fa-pencil mr-1"></i> -->
-              <!-- Edit -->
-            <!-- </a> -->
 
             <!-- Destroy project Confirmation -->
             <button class="btn btn-sm btn-outline-danger" v-b-modal="'modal_' + project._id">

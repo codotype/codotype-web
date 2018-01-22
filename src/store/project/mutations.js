@@ -18,8 +18,10 @@ const DEFAULT_PROJECT = {
     client: {
       id: 'vuejs'
     },
+    database: {
+      id: 'mongodb'
+    },
     features: [],
-    databases: [],
     deployments: []
   }
 }

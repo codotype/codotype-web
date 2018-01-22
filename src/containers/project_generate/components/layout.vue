@@ -45,16 +45,6 @@
             <ProjectDetail :model="model" />
           </b-tab>
 
-          <!-- Schemas -->
-          <b-tab title="Schemas" >
-            <SchemaTab :model="model" />
-          </b-tab>
-
-          <!-- Authentication -->
-          <b-tab title="Authentication">
-            <AuthTab :model="model" />
-          </b-tab>
-
           <!-- Server Frameworks -->
           <b-tab title="Server">
             <ServerTab :model="model" />
@@ -101,7 +91,7 @@
 import store from '@/store'
 import ProjectDetail from './ProjectDetail'
 import SchemaTab from './SchemaTab'
-import AuthTab from './AuthTab'
+import AuthTab from './AuthTab' // TODO - AuthTab
 import ServerTab from './ServerTab'
 import ClientTab from './ClientTab'
 import CssTab from './CssTab'

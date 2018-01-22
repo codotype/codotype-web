@@ -11,20 +11,15 @@
 import ProjectForm from '@/components/project/ProjectForm.vue'
 
 export default {
-  name: 'project_new',
+  name: 'project_edit',
   components: {
     ProjectForm
   },
   metaInfo: {
-    title: 'Project - New'
+    title: 'Project - Edit'
   },
   mounted () {
     return this.$store.commit('project/new')
-  },
-  computed: {
-    model () {
-      return this.$store.getters['project/current']
-    }
   },
   methods: {
     formCancel () {
@@ -32,6 +27,11 @@ export default {
     },
     formSubmit () {
       return this.$store.dispatch('project/create', this.model)
+    }
+  },
+  computed: {
+    model () {
+      return this.$store.getters['project/current']
     }
   }
 }
