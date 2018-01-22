@@ -12,20 +12,25 @@
 
           <div class="col-lg-4 text-right">
 
-            <a class='btn btn-sm btn-outline-light' v-bind:href="'#/projects/' + project._id">
+            <a class='btn btn-sm btn-outline-light' v-bind:href="'#/projects/' + project._id + '/preview'">
               <i class="fa fa-list-alt mr-1"></i>
               Preview
             </a>
 
-            <button class='btn btn-sm btn-outline-info' @click="exportProject(project)">
-              <i class="fa fa-code mr-1"></i>
-              Export
-            </button>
-
-            <a class='btn btn-sm btn-outline-warning' v-bind:href="'#/projects/' + project._id + '/edit'">
-              <i class="fa fa-pencil mr-1"></i>
-              Edit
+            <a class='btn btn-sm btn-outline-success' v-bind:href="'#/projects/' + project._id + '/generate'">
+              <i class="fa fa-cog mr-1"></i>
+              Generate
             </a>
+
+            <!-- <button class='btn btn-sm btn-outline-info' @click="exportProject(project)"> -->
+              <!-- <i class="fa fa-code mr-1"></i> -->
+              <!-- Export -->
+            <!-- </button> -->
+
+            <!-- <a class='btn btn-sm btn-outline-warning' v-bind:href="'#/projects/' + project._id + '/edit'"> -->
+              <!-- <i class="fa fa-pencil mr-1"></i> -->
+              <!-- Edit -->
+            <!-- </a> -->
 
             <!-- Destroy project Confirmation -->
             <button class="btn btn-sm btn-outline-danger" v-b-modal="'modal_' + project._id">

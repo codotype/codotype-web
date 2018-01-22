@@ -6,6 +6,7 @@ export const DEFAULT_USER_SCHEMA = {
   identifier: 'user',
   identifier_plural: 'users',
   unqiue_id_prefix: 'CT_',
+  authentications: [],
   display: {
     navbar_link: true,
     icon: 'fa-user-circle-o'

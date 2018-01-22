@@ -16,10 +16,11 @@ export default {
     LayoutView
   },
   metaInfo: {
-    title: 'Projects - Show'
+    title: 'Projects - Generate'
   },
   props: ['id'],
   mounted () {
+    // store.dispatch('project/fetchCollection')
     return this.$store.commit('project/select', { _id: this.id })
   },
   computed: {

@@ -3,8 +3,6 @@ import router from '@/routers'
 import { DEFAULT_USER_SCHEMA } from '@/store/schema/constants'
 
 const underscored = require('underscore.string/underscored')
-// const classify = require('underscore.string/classify')
-// const pluralize = require('pluralize')
 
 // TODO - abstract into ./constants
 const DEFAULT_PROJECT = {
@@ -20,7 +18,6 @@ const DEFAULT_PROJECT = {
     client: {
       id: 'vuejs'
     },
-    authentications: [],
     features: [],
     databases: [],
     deployments: []
