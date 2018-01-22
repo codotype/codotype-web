@@ -15,7 +15,7 @@
         <!-- </b-tab> -->
 
         <!-- Schema Frameworks -->
-        <b-tab title="Schema">
+        <b-tab title="Properties" :disabled="ifSelectedAttribute">
           <div class="mt-4 bg-dark text-light">
 
             <!-- Schema Form -->
@@ -28,32 +28,32 @@
                 <hr>
 
                 <div class="row">
-                  <div class="col-lg-12">
+                  <div class="col-lg-6">
 
                     <FormInput label="Label" placeholder="Label" example="Example: 'Odd Job'" v-model="schema.label" required="true" help="The human-readable name for a single entity of this schema." />
 
                   </div>
-                  <!-- <div class="col-lg-12"> -->
-                    <!-- <FormInput label="Plural Label" placeholder="Plural Label" example="Example: 'Odd Jobs'" v-model="schema.label_plural" required="true" help="The plural version of the Label attribute." /> -->
-                  <!-- </div> -->
+                  <div class="col-lg-6">
+                    <FormInput label="Plural Label" placeholder="Plural Label" example="Example: 'Odd Jobs'" v-model="schema.label_plural" required="true" help="The plural version of the Label attribute." />
+                  </div>
                 </div>
 
-                <!-- <div class="row"> -->
-                  <!-- <div class="col-lg-12"> -->
+                <div class="row">
+                  <div class="col-lg-6">
 
-                    <!-- <FormInput label="Identifier" placeholder="Identifier" example="Example: 'odd_job'" v-model="schema.identifier" required="true" help="The lowercase-only version of the identifier with spaces instead of underscores." /> -->
+                    <FormInput label="Identifier" placeholder="Identifier" example="Example: 'odd_job'" v-model="schema.identifier" required="true" help="The lowercase-only version of the identifier with spaces instead of underscores." />
 
-                  <!-- </div> -->
+                  </div>
 
-                  <!-- <div class="col-lg-12"> -->
-                    <!-- <FormInput label="Plural Identifier" placeholder="Plural Identifier" example="Example: 'odd_jobs'" v-model="schema.identifier_plural" required="true" help="The plural version Identifier attribute." /> -->
-                  <!-- </div> -->
+                  <div class="col-lg-6">
+                    <FormInput label="Plural Identifier" placeholder="Plural Identifier" example="Example: 'odd_jobs'" v-model="schema.identifier_plural" required="true" help="The plural version Identifier attribute." />
+                  </div>
 
                   <!-- <div class="col-lg-12"> -->
                     <!-- <FormInput label="Unique ID Prefix" placeholder="Unique ID Prefix" example="Example: 'OJ_'" v-model="schema.unqiue_id_prefix" required="true" help="A prefix used when generating unique IDs for this schema." /> -->
                   <!-- </div> -->
 
-                <!-- </div> -->
+                </div>
 
                 <!-- unqiue_id_prefix -->
 
@@ -88,9 +88,16 @@
           </div>
         </b-tab>
 
-        <b-tab title="Attributes">
+        <b-tab title="Attributes" :disabled="ifSelectedAttribute">
           <AttributeForm :schema="schema"/>
         </b-tab>
+
+        <!-- <b-tab title="Relations"></b-tab> -->
+        <!-- <b-tab title="Validations"></b-tab> -->
+        <!-- <b-tab title="Permissions"></b-tab> -->
+        <!-- <b-tab title="Seed Data"></b-tab> -->
+        <!-- <b-tab title="Test Data"></b-tab> -->
+
       </b-tabs>
     </div>
   </div>
@@ -126,6 +133,9 @@ export default {
   computed: {
     selectedAttr () {
       return this.$store.getters['schema/selectedAttribute']
+    },
+    ifSelectedAttribute () {
+      return !!this.$store.getters['schema/selectedAttribute']
     }
   }
 }
