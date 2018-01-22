@@ -10,9 +10,11 @@
 
     <SchemaList :collection="model.schemas" v-if="!selectedSchema" />
 
-    <div class="col-lg-12" v-if="selectedSchema">
-      <p class="lead">EDIT THIS SCHEMA</p>
-      <!-- <SchemaForm :schema="selectedSchema" /> -->
+    <div class="row">
+      <div class="col-lg-12" v-if="selectedSchema">
+        <p class="lead">Edit {{selectedSchema.label}} Schema</p>
+        <SchemaForm :schema="selectedSchema" />
+      </div>
     </div>
 
   </div>

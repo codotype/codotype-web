@@ -1,91 +1,97 @@
 
 <template>
-  <div class="container-fluid">
-    <h2 v-if="!schema._id">New Schema</h2>
-    <h2 v-if="schema._id">Edit Schema</h2>
-    <hr>
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="card card-body bg-dark text-light border-light">
+  <!-- <div class="container-fluid"> -->
+    <!-- <h2 v-if="!schema._id">New Schema</h2> -->
+    <!-- <h2 v-if="schema._id">Edit Schema</h2> -->
+    <!-- <hr> -->
+  <!-- </div> -->
+  <div class="row">
+    <div class="col-lg-12">
+      <b-tabs pills vertical>
 
-          <!-- Schema Form -->
-          <!-- <div class="row" v-if="!selectedAttr"> -->
-          <div class="row">
-            <div class="col-lg-12">
+        <!-- Project Detail -->
+        <!-- <b-tab title="Project" active> -->
+          <!-- <ProjectDetail :model="model" /> -->
+        <!-- </b-tab> -->
 
-              <p class="lead mb-0">Schema Properties</p>
-              <small class="mb-2 form-text text-muted">Defines the core properties that are used to create a valid schema.</small>
+        <!-- Schema Frameworks -->
+        <b-tab title="Schema">
+          <div class="mt-4 bg-dark text-light">
 
-              <hr>
+            <!-- Schema Form -->
+            <div class="row">
+              <div class="col-lg-12">
 
-              <div class="row">
-                <div class="col-lg-12">
+                <p class="lead mb-0">Schema Properties</p>
+                <small class="mb-2 form-text text-muted">Defines the core properties that are used to create a valid schema.</small>
 
-                  <FormInput label="Label" placeholder="Label" example="Example: 'Odd Job'" v-model="schema.label" required="true" help="The human-readable name for a single entity of this schema." />
+                <hr>
 
+                <div class="row">
+                  <div class="col-lg-12">
+
+                    <FormInput label="Label" placeholder="Label" example="Example: 'Odd Job'" v-model="schema.label" required="true" help="The human-readable name for a single entity of this schema." />
+
+                  </div>
+                  <!-- <div class="col-lg-12"> -->
+                    <!-- <FormInput label="Plural Label" placeholder="Plural Label" example="Example: 'Odd Jobs'" v-model="schema.label_plural" required="true" help="The plural version of the Label attribute." /> -->
+                  <!-- </div> -->
                 </div>
-                <div class="col-lg-12">
 
-                  <FormInput label="Plural Label" placeholder="Plural Label" example="Example: 'Odd Jobs'" v-model="schema.label_plural" required="true" help="The plural version of the Label attribute." />
+                <!-- <div class="row"> -->
+                  <!-- <div class="col-lg-12"> -->
 
-                </div>
+                    <!-- <FormInput label="Identifier" placeholder="Identifier" example="Example: 'odd_job'" v-model="schema.identifier" required="true" help="The lowercase-only version of the identifier with spaces instead of underscores." /> -->
+
+                  <!-- </div> -->
+
+                  <!-- <div class="col-lg-12"> -->
+                    <!-- <FormInput label="Plural Identifier" placeholder="Plural Identifier" example="Example: 'odd_jobs'" v-model="schema.identifier_plural" required="true" help="The plural version Identifier attribute." /> -->
+                  <!-- </div> -->
+
+                  <!-- <div class="col-lg-12"> -->
+                    <!-- <FormInput label="Unique ID Prefix" placeholder="Unique ID Prefix" example="Example: 'OJ_'" v-model="schema.unqiue_id_prefix" required="true" help="A prefix used when generating unique IDs for this schema." /> -->
+                  <!-- </div> -->
+
+                <!-- </div> -->
+
+                <!-- unqiue_id_prefix -->
+
+                <!-- <div class="row"> -->
+                  <!-- <div class="col-lg-6"> -->
+
+                    <!-- <FormInput label="Icon" placeholder="Icon" example="Example: 'fa-globe'" v-model="schema.display.icon" help="The name of a FontAwesome icon element." /> -->
+
+                  <!-- </div> -->
+                  <!-- <div class="col-lg-6"> -->
+
+                    <!-- <FormInput label="Navbar Link" type="BOOL" v-model="schema.display.navbar_link" help="Whether or not the schema has a header link." /> -->
+
+                  <!-- </div> -->
+                <!-- </div> -->
+
+
+
               </div>
-
-              <div class="row">
-                <div class="col-lg-12">
-
-                  <FormInput label="Identifier" placeholder="Identifier" example="Example: 'odd_job'" v-model="schema.identifier" required="true" help="The lowercase-only version of the identifier with spaces instead of underscores." />
-
-                </div>
-
-                <div class="col-lg-12">
-                  <FormInput label="Plural Identifier" placeholder="Plural Identifier" example="Example: 'odd_jobs'" v-model="schema.identifier_plural" required="true" help="The plural version Identifier attribute." />
-                </div>
-
-                <div class="col-lg-12">
-                  <FormInput label="Unique ID Prefix" placeholder="Unique ID Prefix" example="Example: 'OJ_'" v-model="schema.unqiue_id_prefix" required="true" help="A prefix used when generating unique IDs for this schema." />
-                </div>
-
-              </div>
-
-              <!-- unqiue_id_prefix -->
-
-              <div class="row">
-                <div class="col-lg-6">
-
-                  <FormInput label="Icon" placeholder="Icon" example="Example: 'fa-globe'" v-model="schema.display.icon" help="The name of a FontAwesome icon element." />
-
-                </div>
-                <div class="col-lg-6">
-
-                  <FormInput label="Navbar Link" type="BOOL" v-model="schema.display.navbar_link" help="Whether or not the schema has a header link." />
-
-                </div>
-              </div>
-
-
-
             </div>
+
+            <!-- <hr> -->
+            <!-- <div class="row mt-2"> -->
+              <!-- <div class="col-lg-12"> -->
+                <!-- <button class="btn btn-outline-success btn-block" @click="onSubmit()"> -->
+                  <!-- <i class="fa fa-fw mr-1 fa-check"></i> -->
+                  <!-- Submit -->
+                <!-- </button> -->
+              <!-- </div> -->
+            <!-- </div> -->
+
           </div>
+        </b-tab>
 
-          <hr>
-
-          <div class="row mt-2">
-            <div class="col-lg-12">
-              <button class="btn btn-outline-success btn-block" @click="onSubmit()">
-                <i class="fa fa-fw mr-1 fa-check"></i>
-                Submit
-              </button>
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="col-lg-6">
-        <AttributeForm :schema="schema"/>
-      </div>
+        <b-tab title="Attributes">
+          <AttributeForm :schema="schema"/>
+        </b-tab>
+      </b-tabs>
     </div>
   </div>
 </template>

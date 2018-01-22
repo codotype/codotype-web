@@ -4,9 +4,9 @@
     <div class="col-lg-12">
       <div class="card card-body bg-dark text-light border-light">
 
-        <div class="row mb-2">
+        <div class="row d-flex align-items-center">
           <div class="col-lg-6">
-            <h2>{{ model.label }}</h2>
+            <h2 class="mb-0">{{ model.label }}</h2>
           </div>
           <div class="col-lg-6 text-right">
 
@@ -32,13 +32,16 @@
               cancel-title='Cancel'
               cancel-variant='dark'
             >
-              <p class="text-left">Are you sure you want to generate the {{ model.label }} project?</p>
+              <p class="text-left">Please confirm application details:</p>
+              <pre class='text-left bg-light'>{{model}}</pre>
             </b-modal>
 
           </div>
         </div>
 
-        <b-tabs>
+        <hr>
+
+        <b-tabs pills vertical>
 
           <!-- Project Detail -->
           <!-- <b-tab title="Project" active> -->

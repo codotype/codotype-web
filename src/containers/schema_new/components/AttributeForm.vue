@@ -1,6 +1,6 @@
 
 <template>
-  <div class="card card-body bg-dark text-light border-light">
+  <div class="mt-4 bg-dark text-light">
 
     <!-- Attribute Form -->
     <div class="row" v-if="selectedAttr">
