@@ -1,9 +1,8 @@
 
 <template>
-    <div class="container">
-      <LayoutView/>
-    </div>
-
+  <div class="container h-100">
+    <LayoutView/>
+  </div>
 </template>
 
 <!-- // // // //  -->
@@ -21,9 +20,3 @@ export default {
   }
 }
 </script>
-
-<style type='text/css' scoped='true'>
-  .container {
-    height: 100%;
-  }
-</style>

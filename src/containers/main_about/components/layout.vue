@@ -9,17 +9,17 @@
         </div>
       </div>
 
-      <!-- <div class="row my-2"> -->
-        <!-- <div class="col-lg-12 text-center"> -->
-          <!-- <p class="lead"><a href="https://github.com/aeksco" target="_blank"> blazeplate.io</a> is an open-source tool for building user interfaces to collect and view tabular data.</p> -->
-        <!-- </div> -->
-      <!-- </div> -->
-
       <div class="row py-4">
         <div class="col-lg-12 text-center">
           <h2>A B O U T</h2>
         </div>
       </div>
+
+      <!-- <div class="row my-2"> -->
+        <!-- <div class="col-lg-12 text-center"> -->
+          <!-- <p class="lead"><a href="https://github.com/aeksco" target="_blank"> blazeplate.io</a> is an open-source tool for building user interfaces to collect and view tabular data.</p> -->
+        <!-- </div> -->
+      <!-- </div> -->
 
       <div class="row py-4">
         <div class="col-lg-12 text-center">

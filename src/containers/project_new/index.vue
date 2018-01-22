@@ -1,6 +1,6 @@
 
 <template>
-  <div class="container">
+  <div class="container h-100">
     <LayoutView :model="model"/>
   </div>
 </template>
@@ -25,9 +25,3 @@ export default {
   }
 }
 </script>
-
-<style type="text/css">
-  .container {
-    height: 100%;
-  }
-</style>
