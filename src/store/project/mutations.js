@@ -37,12 +37,13 @@ const mutations = {
   fetching (state, isFetching) {
     state.fetching = false
   },
-  current (state, { id }) { // TODO - DEPRECATE CURRENT
-    state.current = id
+  select (state, { _id }) { // TODO - DEPRECATE CURRENT
+    state.current = _.find(state.collection, { _id })
   },
   new (state) {
     state.new = true
     state.current = _.cloneDeep(DEFAULT_PROJECT)
+    this.commit('project/set_identifier')
   },
   select_clear (state) {
     if (state.new) {

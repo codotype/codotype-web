@@ -9,7 +9,6 @@
 
 <script>
 import LayoutView from './components/layout.vue'
-import store from '@/store'
 
 export default {
   name: 'project_show',
@@ -20,13 +19,13 @@ export default {
     title: 'Projects - Show'
   },
   props: ['id'],
-  created () {
+  mounted () {
     // store.dispatch('project/fetchCollection')
-    store.commit('project/current', { id: this.id })
+    return this.$store.commit('project/select', { _id: this.id })
   },
   computed: {
     model () {
-      return store.getters['project/current']
+      return this.$store.getters['project/current']
     }
   }
 }
