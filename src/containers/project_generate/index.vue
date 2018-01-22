@@ -1,6 +1,6 @@
 
 <template>
-  <div class="container-fluid">
+  <div class="container h-100 align-items-center justify-content-center d-flex">
     <LayoutView :model="model"/>
   </div>
 </template>
@@ -11,14 +11,14 @@
 import LayoutView from './components/layout.vue'
 
 export default {
-  name: 'project_show',
+  name: 'project_generate',
+  props: ['id'],
   components: {
     LayoutView
   },
   metaInfo: {
-    title: 'Projects - Show'
+    title: 'Projects - Generate'
   },
-  props: ['id'],
   mounted () {
     return this.$store.commit('project/select', { _id: this.id })
   },

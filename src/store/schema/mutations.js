@@ -1,6 +1,10 @@
 import _ from 'lodash'
 // import { TEXT_WORKFLOW_STEP, MACRO_WORKFLOW_STEP, DELAY_WORKFLOW_STEP, KEY_WORKFLOW_STEP, KEY_DN_POSITION, KEY_UP_POSITION, KEY_PR_POSITION } from './constants'
 
+// const underscored = require('underscore.string/underscored')
+// const classify = require('underscore.string/classify')
+// const pluralize = require('pluralize')
+
 // // // //
 
 // Project Module mutations
@@ -32,7 +36,10 @@ const mutations = {
     state.selectedAttribute = _.cloneDeep(attr)
   },
   selectSchema (state, { _id }) {
-    state.selectedSchema = _id
+    state.selectedSchema = _.find(state.collection, { _id })
+  },
+  editSchema (state, { schema }) {
+    state.selectedSchema = schema
   },
   clearSelectedSchema (state) {
     state.selectedSchema = null
@@ -42,6 +49,23 @@ const mutations = {
   },
   removeAttribute (state, { schema, attr }) {
     schema.attributes = _.filter(schema.attributes, (s) => { return s._id !== attr._id })
+  },
+  persistSelected (state, { project }) {
+    if (state.selectedSchema._id) {
+      project.schemas = _.map(project.schemas, (s) => {
+        if (s._id === state.selectedSchema._id) {
+          return state.selectedSchema
+        } else {
+          return s
+        }
+      })
+    } else {
+      state.selectedSchema._id = 'schema_' + Math.floor((Math.random() * 100000000000000) + 1)
+      project.schemas.push(_.cloneDeep(state.selectedSchema))
+    }
+    // Updates attributes order
+    state.selectedSchema.attributes = _.orderBy(state.selectedSchema.attributes, ['order'], ['asc'])
+    state.selectedSchema = null
   },
   persistSelectedAttribute (state, { schema, attr }) {
     if (attr._id) {

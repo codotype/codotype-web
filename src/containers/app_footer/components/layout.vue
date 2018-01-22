@@ -16,7 +16,7 @@ export default {}
 <style lang="sass">
 
   footer.footer
-    position: absolute
+    position: relative
     bottom: 0
     width: 100%
     line-height: 60px

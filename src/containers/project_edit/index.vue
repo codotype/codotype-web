@@ -1,28 +1,38 @@
+
 <template>
-  <LayoutView :model="model"/>
+  <div class="container h-100">
+    <ProjectForm :model="model" :cancel="formCancel" :submit="formSubmit" />
+  </div>
 </template>
 
 <!-- // // // //  -->
 
 <script>
-import LayoutView from './components/layout.vue'
-import store from '@/store'
+import ProjectForm from '@/components/project/ProjectForm.vue'
 
 export default {
   name: 'project_edit',
+  props: ['id'],
   components: {
-    LayoutView
+    ProjectForm
   },
   metaInfo: {
-    title: 'Projects - Edit' // title is now "TITLE - Project - Edit"
+    title: 'Project - Edit'
   },
-  props: ['id'],
-  created () {
-    store.commit('project/current', { id: this.id })
+  mounted () {
+    return this.$store.commit('project/edit', { _id: this.id })
+  },
+  methods: {
+    formCancel () {
+      return this.$store.commit('project/select_clear')
+    },
+    formSubmit () {
+      return this.$store.dispatch('project/update', this.model)
+    }
   },
   computed: {
     model () {
-      return store.getters['project/current']
+      return this.$store.getters['project/current']
     }
   }
 }

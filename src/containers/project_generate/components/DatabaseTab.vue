@@ -1,18 +1,14 @@
 
 <template>
-  <div class="row mt-4">
-
+  <div class="row">
     <div class="col-lg-12">
       <TabHeader title="Database" />
     </div>
-
     <div class="col-lg-12">
-      <StackSelector type="radio" :options="databases" v-model="model.stack.client.id" />
+      <StackSelector type="radio" :options="databases" v-model="model.stack.database.id" />
     </div>
   </div>
 </template>
-
-<!-- // // // //  -->
 
 <script>
 import TabHeader from '@/components/TabHeader'

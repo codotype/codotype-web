@@ -1,6 +1,6 @@
 
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid h-100">
     <LayoutView :model="model"/>
   </div>
 </template>
@@ -11,12 +11,12 @@
 import LayoutView from './components/layout.vue'
 
 export default {
-  name: 'project_show',
+  name: 'project_preview',
   components: {
     LayoutView
   },
   metaInfo: {
-    title: 'Projects - Show'
+    title: 'Projects - Preview'
   },
   props: ['id'],
   mounted () {
