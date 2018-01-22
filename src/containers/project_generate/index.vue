@@ -1,6 +1,6 @@
 
 <template>
-  <div class="container h-100 align-items-center justify-content-center d-flex">
+  <div class="container align-items-center justify-content-center d-flex">
     <LayoutView :model="model"/>
   </div>
 </template>

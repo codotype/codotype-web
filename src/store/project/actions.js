@@ -38,6 +38,10 @@ const actions = {
 
   destroy: ({ commit }, model) => {
     commit('remove', { record: model })
+  },
+
+  generate: ({ commit }, model) => {
+    console.log('GENERATE PROJECT')
   }
 }
 

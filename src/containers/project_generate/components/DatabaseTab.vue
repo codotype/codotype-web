@@ -24,8 +24,8 @@ export default {
     return {
       databases: [
         { id: 'mongo', icon: 'devicon-mongodb-plain', label: 'MongoDB', selected: true },
-        { id: 'postgres', icon: 'devicon-postgresql-plain', label: 'PostgreSQL', disabled: true }
-        // { id: 'sqlite', icon: 'devicon-mysql-plain', label: 'SQLite', disabled: true }
+        { id: 'postgres', icon: 'devicon-postgresql-plain', label: 'PostgreSQL', disabled: true },
+        { id: 'sqlite', icon: 'devicon-mysql-plain', label: 'SQLite', disabled: true }
       ]
     }
   }

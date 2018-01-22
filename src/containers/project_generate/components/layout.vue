@@ -115,7 +115,7 @@ export default {
   },
   methods: {
     generateApplication () {
-      console.log('generateApplication')
+      store.dispatch('project/generate', this.model)
     },
     onConfirm () {
       return store.dispatch('project/destroy', this.model)
