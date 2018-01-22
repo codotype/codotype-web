@@ -3,6 +3,7 @@
 const state = {
   collection: [],
   current: {},
+  new: false,
   fetching: false
 }
 

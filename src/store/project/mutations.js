@@ -1,25 +1,31 @@
-// import _ from 'lodash'
-
-// // Project Module mutations
-// const mutations = {
-//   fetching (state, isFetching) {
-//     state.fetching = isFetching
-//   },
-//   sync (state, collection) {
-//     state.collection = collection
-//   },
-//   current (state, { id }) {
-//     state.current = id
-//   },
-//   remove (state, id) {
-//     state.collection = _.filter(state.collection, (each) => { return each._id !== id })
-//   }
-// }
-
-// export default mutations
-
 import _ from 'lodash'
-// import router from '@/routers'
+import router from '@/routers'
+import { DEFAULT_USER_SCHEMA } from '@/store/schema/constants'
+
+const underscored = require('underscore.string/underscored')
+// const classify = require('underscore.string/classify')
+// const pluralize = require('pluralize')
+
+// TODO - abstract into ./constants
+const DEFAULT_PROJECT = {
+  label: 'DEFAULT_LABEL',
+  identifier: '',
+  schemas: [
+    DEFAULT_USER_SCHEMA
+  ],
+  stack: {
+    server: {
+      id: 'expressjs'
+    },
+    client: {
+      id: 'vuejs'
+    },
+    authentications: [],
+    features: [],
+    databases: [],
+    deployments: []
+  }
+}
 
 // // // //
 
@@ -31,8 +37,24 @@ const mutations = {
   fetching (state, isFetching) {
     state.fetching = false
   },
-  current (state, { id }) {
+  current (state, { id }) { // TODO - DEPRECATE CURRENT
     state.current = id
+  },
+  new (state) {
+    state.new = true
+    state.current = _.cloneDeep(DEFAULT_PROJECT)
+  },
+  select_clear (state) {
+    if (state.new) {
+      state.new = false
+      window.location = '#/' // TODO - navigate with vue-router
+    } else {
+      router.go(-1)
+    }
+    state.current = {}
+  },
+  set_identifier (state) {
+    state.current.identifier = underscored(state.current.label)
   },
   persist (state, { record, redirect }) {
     let recordId = record._id
