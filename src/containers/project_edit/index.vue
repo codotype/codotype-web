@@ -20,7 +20,7 @@ export default {
     title: 'Project - Edit'
   },
   mounted () {
-    return this.$store.commit('project/select', { _id: this.id })
+    return this.$store.commit('project/edit', { _id: this.id })
   },
   methods: {
     formCancel () {

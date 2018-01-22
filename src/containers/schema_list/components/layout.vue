@@ -19,15 +19,15 @@
             <!-- Records -->
           <!-- </a> -->
 
-          <a class='btn btn-sm btn-outline-warning' :href="'#/schemas/' + schema._id + '/edit'">
-            <i class="fa fa-pencil mr-1"></i>
-            Edit
-          </a>
-
-          <!-- <button class='btn btn-sm btn-outline-warning' @click="editSchema(schema)"> -->
+          <!-- <a class='btn btn-sm btn-outline-warning' :href="'#/schemas/' + schema._id + '/edit'"> -->
             <!-- <i class="fa fa-pencil mr-1"></i> -->
             <!-- Edit -->
-          <!-- </button> -->
+          <!-- </a> -->
+
+          <button class='btn btn-sm btn-outline-warning' @click="editSchema(schema)">
+            <i class="fa fa-pencil mr-1"></i>
+            Edit
+          </button>
 
           <!-- Destroy Schema Confirmation -->
           <button class="btn btn-sm btn-outline-danger" v-b-modal="'modal_' + schema._id">
@@ -78,9 +78,7 @@ export default {
   props: ['collection'],
   methods: {
     editSchema (schema) {
-      console.log('EDIT SCHEMA')
-      console.log(schema._id)
-      this.$store.commit('schema/selectSchema', { _id: schema._id })
+      this.$store.commit('schema/editSchema', { schema })
     },
     destroySchema (schema) {
       this.$store.commit('schema/destroy', { schema })

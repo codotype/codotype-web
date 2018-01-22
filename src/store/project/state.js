@@ -4,6 +4,7 @@ const state = {
   collection: [],
   current: {},
   new: false,
+  edit: false,
   fetching: false
 }
 

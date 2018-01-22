@@ -36,7 +36,10 @@ const mutations = {
     state.selectedAttribute = _.cloneDeep(attr)
   },
   selectSchema (state, { _id }) {
-    state.selectedSchema = _id
+    state.selectedSchema = _.find(state.collection, { _id })
+  },
+  editSchema (state, { schema }) {
+    state.selectedSchema = schema
   },
   clearSelectedSchema (state) {
     state.selectedSchema = null

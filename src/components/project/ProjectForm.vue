@@ -3,7 +3,8 @@
   <div class="row d-flex flex-column align-items-center">
 
     <div class="col-lg-12">
-      <h2>New Project</h2>
+      <h2 v-if="model._id">Edit Project</h2>
+      <h2 v-else>New Project</h2>
       <hr>
     </div>
 
@@ -25,12 +26,12 @@
           Cancel
         </button>
 
-        <!-- <button class="btn btn-outline-success" @click="validateAttributes()" v-if="record._id"> -->
-          <!-- <i class="fa fa-fw fa-plus mr-1"></i> -->
-          <!-- Update {{ schema.label }} -->
-        <!-- </button> -->
+        <button class="btn btn-outline-success w-50" @click="validateAttributes()" v-if="model._id">
+          <i class="fa fa-fw fa-check-circle-o mr-1"></i>
+          Update Project
+        </button>
 
-        <button class="btn w-50 btn-outline-success" @click="submit()">
+        <button class="btn btn-outline-success w-50" @click="submit()" v-else>
           <i class="fa fa-fw fa-plus mr-1"></i>
           Create Project
         </button>

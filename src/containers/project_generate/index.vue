@@ -11,16 +11,15 @@
 import LayoutView from './components/layout.vue'
 
 export default {
-  name: 'project_show',
+  name: 'project_generate',
+  props: ['id'],
   components: {
     LayoutView
   },
   metaInfo: {
     title: 'Projects - Generate'
   },
-  props: ['id'],
   mounted () {
-    // store.dispatch('project/fetchCollection')
     return this.$store.commit('project/select', { _id: this.id })
   },
   computed: {

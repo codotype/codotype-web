@@ -36,18 +36,26 @@ const mutations = {
   fetching (state, isFetching) {
     state.fetching = false
   },
-  select (state, { _id }) { // TODO - DEPRECATE CURRENT
-    state.current = _.find(state.collection, { _id })
-  },
   new (state) {
     state.new = true
     state.current = _.cloneDeep(DEFAULT_PROJECT)
+    state.current.schemas[0]._id = 'schema_' + Math.floor((Math.random() * 100000000000000) + 1)
     this.commit('project/set_identifier')
+  },
+  select (state, { _id }) { // TODO - DEPRECATE CURRENT
+    state.current = _.find(state.collection, { _id })
+  },
+  edit (state, { _id }) { // TODO - DEPRECATE CURRENT
+    state.edit = true
+    state.current = _.cloneDeep(_.find(state.collection, { _id }))
   },
   select_clear (state) {
     if (state.new) {
       state.new = false
       window.location = '#/' // TODO - navigate with vue-router
+    } else if (state.edit) {
+      state.edit = false
+      router.go(-1)
     } else {
       router.go(-1)
     }
