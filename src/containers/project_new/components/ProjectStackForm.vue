@@ -6,7 +6,6 @@
     </div>
     <div class="col-lg-12">
 
-      <ProjectStackCard title="Client Frameworks" type="radio" :options="client_frameworks" v-model="model.stack.client.id" />
       <ProjectStackCard title="CSS Frameworks" type="radio" :options="css_frameworks" v-model="model.stack.client.css" />
       <ProjectStackCard title="Build Tool" type="radio" :options="build_tools" v-model="model.stack.client.build_tool" />
 
@@ -36,10 +35,6 @@ export default {
       server_frameworks: [
         { id: 'expressjs', icon: 'express-original', label: 'Express.JS' },
         { id: 'flask', icon: 'python-plain', label: 'Python Flask', disabled: true }
-      ],
-      client_frameworks: [
-        { id: 'vuejs', icon: 'vuejs-plain', label: 'Vue.js' },
-        { id: 'react', icon: 'react-plain', label: 'React', disabled: true }
       ],
       build_tools: [
         { id: 'webpack', icon: 'webpack-plain', label: 'Webpack' },

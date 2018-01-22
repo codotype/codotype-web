@@ -6,7 +6,7 @@
 <!-- // // // //  -->
 
 <script>
-import LayoutView from './components/layout.vue'
+import LayoutView from './components/layout'
 
 export default {
   components: {

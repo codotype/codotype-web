@@ -7,7 +7,7 @@
     </div>
 
     <div class="col-lg-12">
-      <p class="lead">TODO - integrate Server editor</p>
+      <StackSelector type="radio" :options="server_frameworks" v-model="model.stack.server.id" />
     </div>
   </div>
 </template>
@@ -16,13 +16,22 @@
 
 <script>
 import TabHeader from '@/components/TabHeader'
+import StackSelector from '@/components/StackSelector'
 
 export default {
   props: ['model'],
   components: {
-    TabHeader
+    TabHeader,
+    StackSelector
+  },
+  data () {
+    return {
+      server_frameworks: [
+        // { id: 'none', icon: 'fa fa-times', label: 'None' },
+        { id: 'expressjs', icon: 'devicon-express-original', label: 'Express.JS', selected: true },
+        { id: 'flask', icon: 'devicon-python-plain', label: 'Python Flask', disabled: true }
+      ]
+    }
   }
 }
 </script>
-
-

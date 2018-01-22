@@ -59,9 +59,13 @@
             </b-tab>
 
             <!-- Server Frameworks -->
-            <!-- Databases -->
             <b-tab title="Server">
               <ServerTab :model="model" />
+            </b-tab>
+
+            <!-- Databases -->
+            <b-tab title="Database">
+              <DatabaseTab :model="model" />
             </b-tab>
 
             <!-- Client Frameworks -->
@@ -72,12 +76,12 @@
             </b-tab>
 
             <!-- Build -->
-            <b-tab title="Build">
-              <br>
-              Build / Generate Codebase
-              <br>
-              Build Configuration / Options
-            </b-tab>
+            <!-- <b-tab title="Build"> -->
+              <!-- <br> -->
+              <!-- Build / Generate Codebase -->
+              <!-- <br> -->
+              <!-- Build Configuration / Options -->
+            <!-- </b-tab> -->
 
           </b-tabs>
 
@@ -98,6 +102,7 @@ import SchemaTab from './SchemaTab'
 import AuthTab from './AuthTab'
 import ServerTab from './ServerTab'
 import ClientTab from './ClientTab'
+import DatabaseTab from './DatabaseTab'
 
 export default {
   props: ['model'],
@@ -106,7 +111,8 @@ export default {
     SchemaTab,
     AuthTab,
     ServerTab,
-    ClientTab
+    ClientTab,
+    DatabaseTab
   },
   methods: {
     generateApplication () {
