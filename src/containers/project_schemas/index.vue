@@ -12,7 +12,7 @@
 
     <div class="col-lg-12" v-if="selectedSchema">
       <p class="lead">EDIT THIS SCHEMA</p>
-      <SchemaForm :schema="selectedSchema" />
+      <!-- <SchemaForm :schema="selectedSchema" /> -->
     </div>
 
   </div>

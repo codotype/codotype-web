@@ -2,7 +2,7 @@
 <template>
 
   <ul class='list-group'>
-    <li v-for="schema in collection" :key="schema._id" class='list-group-item bg-dark text-light'>
+    <li v-for="schema in collection" :key="schema._id" class='list-group-item border-light bg-dark text-light'>
 
       <div class="row">
 

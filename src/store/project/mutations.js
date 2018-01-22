@@ -55,7 +55,8 @@ const mutations = {
       window.location = '#/' // TODO - navigate with vue-router
     } else if (state.edit) {
       state.edit = false
-      router.go(-1)
+      window.location = '#/projects'
+      // router.go()
     } else {
       router.go(-1)
     }

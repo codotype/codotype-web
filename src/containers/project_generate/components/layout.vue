@@ -1,17 +1,17 @@
 
 <template>
-  <div class="row">
+  <div class="row d-flex w-100">
     <div class="col-lg-12">
       <div class="card card-body bg-dark text-light border-light">
 
         <div class="row mb-2">
-          <div class="col-lg-10">
+          <div class="col-lg-6">
             <h2>{{ model.label }}</h2>
           </div>
-          <div class="col-lg-2 text-right">
+          <div class="col-lg-6 text-right">
 
             <!-- Opens Destroy Confirmation Modal -->
-            <button class="btn btn-sm btn-outline-success" v-b-modal="'generate-modal'">
+            <button class="btn btn-lg btn-success" v-b-modal="'generate-modal'">
               <i class="fa fa-fw fa-play mr-2"></i>
               Generate Application
             </button>
@@ -41,9 +41,9 @@
         <b-tabs>
 
           <!-- Project Detail -->
-          <b-tab title="Project" active>
-            <ProjectDetail :model="model" />
-          </b-tab>
+          <!-- <b-tab title="Project" active> -->
+            <!-- <ProjectDetail :model="model" /> -->
+          <!-- </b-tab> -->
 
           <!-- Server Frameworks -->
           <b-tab title="Server">

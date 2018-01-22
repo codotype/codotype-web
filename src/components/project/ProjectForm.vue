@@ -26,7 +26,7 @@
           Cancel
         </button>
 
-        <button class="btn btn-outline-success w-50" @click="validateAttributes()" v-if="model._id">
+        <button class="btn btn-outline-success w-50" @click="submit()" v-if="model._id">
           <i class="fa fa-fw fa-check-circle-o mr-1"></i>
           Update Project
         </button>
