@@ -29,7 +29,10 @@ export default {
       server_frameworks: [
         // { id: 'none', icon: 'fa fa-times', label: 'None' },
         { id: 'expressjs', icon: 'devicon-express-original', label: 'Express.JS', selected: true },
-        { id: 'flask', icon: 'devicon-python-plain', label: 'Python Flask', disabled: true }
+        { id: 'flask', icon: 'devicon-python-plain', label: 'Flask', disabled: true },
+        { id: 'rails', icon: 'devicon-rails-plain', label: 'Ruby on Rails', disabled: true },
+        { id: 'revel', icon: 'devicon-go-plain', label: 'Revel', disabled: true },
+        { id: 'phoenix', icon: 'devicon-erlang-plain', label: 'Phoenix', disabled: true }
       ]
     }
   }

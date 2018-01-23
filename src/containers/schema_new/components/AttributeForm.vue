@@ -214,12 +214,26 @@
     </div>
 
     <div class="row" v-if="!selectedAttr">
-      <div class="col-lg-12">
-
+      <div class="col-lg-6">
         <p class="lead mb-0">Attributes</p>
+      </div>
+
+      <!-- Attribute Editor Controls -->
+      <div class="col-lg-6 text-right">
+        <div class="btn-group mt-3" v-if="!selectedAttr && attributes.length">
+          <button class="btn btn-primary w-100" @click="addAttribute()">
+            <i class="fa fa-fw fa-plus mr-2"></i>
+            Add Attribute
+          </button>
+        </div>
+      </div>
+
+      <div class="col-lg-12">
         <small class="mb-2 form-text text-muted">Defines the attributes that can be assigned to an entity of this schema.</small>
         <hr>
+      </div>
 
+       <div class="col-lg-12">
         <draggable class='list-group' v-model='attributes' :options="sortableOptions">
           <AttributeItem v-for="each in attributes" :item="each" :key="each._id" :remove="removeAttribute" :edit="editAttribute" />
           <li class="px-2 py-4 text-center list-group-item list-group-item-info" @click="addAttribute()" v-if="!attributes.length">
@@ -228,16 +242,8 @@
             Click to add your first Attribute.
           </li>
         </draggable>
-
-        <!-- Attribute Editor Controls -->
-        <div class="btn-group w-100 mt-3" v-if="!selectedAttr && attributes.length">
-          <button class="btn btn-light w-100" @click="addAttribute()">
-            <i class="fa fa-fw fa-plus mr-2"></i>
-            Add Attribute
-          </button>
-        </div>
-
       </div>
+
     </div>
 
   </div>
