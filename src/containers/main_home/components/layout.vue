@@ -22,7 +22,7 @@
 
         <div class="col-lg-12 mt-4 text-center">
           <!-- Place this tag where you want the button to render. -->
-          <a class="github-button" href="https://github.com/blazeplate/blazeplate_web_client" data-size="large" data-show-count="true" aria-label="Star blazeplate/blazeplate_web_client on GitHub">Star</a>
+          <!-- <a class="github-button" href="https://github.com/blazeplate/blazeplate_web_client" data-size="large" data-show-count="true" aria-label="Star blazeplate/blazeplate_web_client on GitHub">Star</a> -->
         </div>
       </div>
 

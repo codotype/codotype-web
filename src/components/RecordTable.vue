@@ -22,7 +22,7 @@
           <!-- <a v-if="attr.datatype === 'HAS_ONE'" :href="getLinkedSchemaHref(attr, record.attributes[attr.identifier])"> -->
             <!-- {{ getLinkedSchemaLabel(attr, record.attributes[attr.identifier]) }} -->
           <!-- </a> -->
-          <a v-else-if="attr.unique" :href=" '#/schemas/' + schema._id + '/records/' + record._id">
+          <a v-else-if="attr.unique" :href=" '#/projects/' + project._id + '/preview/' + schema._id + '/records/' + record._id">
             {{ record.attributes[attr.identifier] }}
           </a>
           <span v-else-if="attr.datatype === 'BOOL'">
@@ -40,8 +40,13 @@
         <!-- Record Controls -->
         <td class='text-right controls' v-if="!disableControls">
 
+          <!-- Show Record -->
+          <a class="btn btn-sm btn-outline-primary" :href=" '#/projects/' + project._id + '/preview/' + schema._id + '/records/' + record._id">
+            <i class="fa fa-fw fa-eye"></i>
+          </a>
+
           <!-- Edit Record -->
-          <a class="btn btn-sm btn-outline-warning" :href=" '#/schemas/' + schema._id + '/records/' + record._id + '/edit' ">
+          <a class="btn btn-sm btn-outline-warning" :href=" '#/projects/' + project._id + '/preview/' + schema._id + '/records/' + record._id + '/edit' ">
             <i class="fa fa-fw fa-pencil"></i>
           </a>
 
@@ -78,7 +83,7 @@
           <span v-if="i === 0">
             <span class="text-warning mr-2">No records found.</span>
             <span class="">Click</span>
-            <a :href=" '#/schemas/' + schema._id + '/records/new' "> here </a>
+            <a :href=" '#/projects/' + project._id + '/preview/' + schema._id + '/records/new' "> here </a>
             to create {{ schema.label_plural.toLowerCase() }}.
           </span>
         </td>
@@ -94,18 +99,19 @@
 import _ from 'lodash'
 
 export default {
-  props: ['schema', 'records', 'ignoreAttribute', 'disableControls'],
+  props: ['project', 'schema', 'records', 'ignoreAttribute', 'disableControls'],
   methods: {
     onConfirmDestroy (record) {
       return this.$store.commit('record/destroy', { record })
     },
     getLinkedSchemaHref (attr, record_id) {
+      let allProjects = this.$store.getters['project/collection']
+      let project = _.find(allProjects, { _id: this.id })
       let allRecords = this.$store.getters['record/collection']
-      let allSchemas = this.$store.getters['schema/collection']
       let record = _.find(allRecords, { _id: record_id })
       if (!record) return
-      let schema = _.find(allSchemas, { _id: record.schema_id })
-      return '#/schemas/' + schema._id + '/records/' + record._id
+      let schema = _.find(project.schemas, { _id: record.schema_id })
+      return '#/projects/' + project._id + '/preview/' + schema._id + '/records/' + record._id
     },
     getLinkedSchemaLabel (attr, record_id) {
       let allRecords = this.$store.getters['record/collection']

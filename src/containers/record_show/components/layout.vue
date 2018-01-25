@@ -14,7 +14,7 @@
               </h2>
             </div>
             <div class="col-lg-4 text-right">
-              <a class="btn btn-outline-warning btn-sm" :href="'#/schemas/' + schema._id + '/records/' + record._id + '/edit'">
+              <a class="btn btn-outline-warning btn-sm" :href="'#/projects/' + project._id + '/preview/' + schema._id + '/records/' + record._id + '/edit'">
                 <i class="fa fa-fw fa-pencil mr-1"></i>
                 Edit
               </a>
@@ -159,7 +159,7 @@ import RecordTable from '@/components/RecordTable'
 import RecordForm from '@/containers/record_new/components/record_form'
 
 export default {
-  props: ['schema', 'record'],
+  props: ['project', 'schema', 'record'],
   components: {
     RecordTable,
     RecordForm
@@ -194,7 +194,7 @@ export default {
     },
     getLinkedSchemaHref (attr, record_id) { // TODO - abstract to component
       let allRecords = this.$store.getters['record/collection']
-      let allSchemas = this.$store.getters['schema/collection']
+      let allSchemas = this.project.schemas
       let record = _.find(allRecords, { _id: record_id })
       if (!record) return
       let schema = _.find(allSchemas, { _id: record.schema_id })
@@ -209,12 +209,12 @@ export default {
       return record.attributes[identifier]
     },
     relatedSchema (attr) { // TODO - this should be moved into a getter
-      let allSchemas = this.$store.getters['schema/collection']
+      let allSchemas = this.project.schemas
       let relatedSchema = _.find(allSchemas, { _id: attr.datatypeOptions.schema_id })
       return relatedSchema
     },
     relatedSchemaName (attr) { // TODO - this should be moved into a getter
-      let allSchemas = this.$store.getters['schema/collection']
+      let allSchemas = this.project.schemas
       let relatedSchema = _.find(allSchemas, { _id: attr.datatypeOptions.schema_id })
       if (attr.datatype === 'HAS_MANY') {
         return relatedSchema.label_plural
@@ -223,7 +223,7 @@ export default {
       }
     },
     getRelatedRecords (attr) { // TODO - this should be moved into a getter
-      let allSchemas = this.$store.getters['schema/collection']
+      let allSchemas = this.project.schemas
       let allRecords = this.$store.getters['record/collection']
       let relatedSchema = _.find(allSchemas, { _id: attr.datatypeOptions.schema_id })
 
@@ -239,7 +239,7 @@ export default {
       }
     },
     getNewRelatedRecord (attr) { // TODO - this should be moved into a getter
-      let allSchemas = this.$store.getters['schema/collection']
+      let allSchemas = this.project.schemas
       let relatedSchema = _.find(allSchemas, { _id: attr.datatypeOptions.schema_id })
       return { schema_id: relatedSchema._id, _id: null, attributes: {} }
     }
