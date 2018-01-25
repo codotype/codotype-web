@@ -10,7 +10,7 @@
 
     <hr>
 
-    <RecordForm :schema="schema" :record="record" :persistRecord="persistRecord" :cancelForm="cancelForm"/>
+    <RecordForm :project="project" :schema="schema" :record="record" :persistRecord="persistRecord" :cancelForm="cancelForm"/>
 
   </div>
 </template>
@@ -22,7 +22,7 @@ import router from '@/routers'
 import RecordForm from '../../record_new/components/record_form.vue'
 
 export default {
-  props: ['schema', 'record'],
+  props: ['project', 'schema', 'record'],
   components: {
     RecordForm
   },
