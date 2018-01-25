@@ -81,7 +81,8 @@ export default {
       this.$store.commit('schema/editSchema', { schema })
     },
     destroySchema (schema) {
-      this.$store.commit('schema/destroy', { schema })
+      // this.$store.commit('schema/destroy', { schema })
+      this.$store.commit('project/removeSchema', { schema })
     }
   }
 }

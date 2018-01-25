@@ -33,7 +33,7 @@
               cancel-variant='dark'
             >
               <p class="text-left">Please confirm application details:</p>
-              <pre class='text-left bg-light'>{{model}}</pre>
+              <!-- <pre class='text-left bg-light'>{{model}}</pre> -->
             </b-modal>
 
           </div>
@@ -61,7 +61,7 @@
           <!-- Client Frameworks -->
           <!-- Build Tools -->
           <b-tab title="Client">
-            <ClientTab :model="model" />
+            <AbstractTab :model="model" stackId="client" :stackOpts="clientOpts.client_frameworks" title="Client Frameworks"/>
           </b-tab>
 
           <!-- CSS Frameworks -->
@@ -70,7 +70,7 @@
           </b-tab>
 
           <b-tab title="Deployment">
-            <DeploymentTab :model="model" />
+            <AbstractTab :model="model" stackId="deployments" :stackOpts="deploymentOpts" title="Deployments"/>
           </b-tab>
 
           <!-- Build -->
@@ -100,6 +100,7 @@ import ClientTab from './ClientTab'
 import CssTab from './CssTab'
 import DatabaseTab from './DatabaseTab'
 import DeploymentTab from './DeploymentTab'
+import AbstractTab from './AbstractTab'
 
 export default {
   props: ['model'],
@@ -111,7 +112,37 @@ export default {
     ClientTab,
     CssTab,
     DatabaseTab,
-    DeploymentTab
+    DeploymentTab,
+    AbstractTab
+  },
+  computed: {
+    deploymentOpts () {
+      return [
+        { id: 'docker_compose', icon: 'devicon-docker-plain', label: 'Docker', selected: true },
+        // { id: 'ansible', icon: 'devicon-amazonwebservices-plain', label: 'Ansible', disabled: true },
+        // { id: 'digital_ocean', icon: 'devicon-amazonwebservices-plain', label: 'DigitalOcean', disabled: true },
+        { id: 'heroku', icon: 'devicon-heroku-plain', label: 'Heroku', disabled: true },
+        { id: 'azure', icon: 'devicon-windows8-plain', label: 'Microsoft Azure', disabled: true },
+        { id: 'aws', icon: 'devicon-amazonwebservices-plain', label: 'AWS', disabled: true }
+      ]
+    },
+    clientOpts () {
+      return {
+        client_frameworks: [
+          // { id: 'none', icon: 'fa fa-times', label: 'None' },
+          { id: 'vuejs', icon: 'devicon-vuejs-plain', label: 'Vue.js', selected: true, text: 'VueJS is a client-side javascript framework for building reactive user interfaces.', href: 'https://github.com/vuejs' },
+          { id: 'react', icon: 'devicon-react-plain', label: 'React', disabled: true }
+        ],
+        build_tools: [
+          { id: 'webpack', icon: 'devicon-webpack-plain', label: 'Webpack', selected: true },
+          { id: 'gulp', icon: 'devicon-gulp-plain', label: 'Gulp + Browserify', disabled: true }
+        ],
+        css_frameworks: [
+          { id: 'bootstrap', icon: 'devicon-bootstrap-plain', label: 'Bootstrap', selected: true },
+          { id: 'foundation', icon: 'devicon-foundation-plain', label: 'Foundation', disabled: true }
+        ]
+      }
+    }
   },
   methods: {
     generateApplication () {

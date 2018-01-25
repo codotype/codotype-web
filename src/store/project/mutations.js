@@ -36,6 +36,15 @@ const mutations = {
   fetching (state, isFetching) {
     state.fetching = false
   },
+  removeSchema (state, { schema }) {
+    let schemas = []
+    _.each(state.current.schemas, (s) => {
+      if (s._id !== schema._id) {
+        schemas.push(s)
+      }
+    })
+    state.current.schemas = schemas
+  },
   new (state) {
     state.new = true
     state.current = _.cloneDeep(DEFAULT_PROJECT)
