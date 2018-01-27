@@ -1,6 +1,6 @@
 
 <template>
-  <div class="container-fluid">
+  <div class="container">
     <LayoutView :model="model"/>
   </div>
 </template>

@@ -5,7 +5,7 @@
     <AppBreadcrumbs/>
     <router-view/>
     <Notification/>
-    <AppFooter/>
+    <!-- <AppFooter/> -->
   </div>
 </template>
 
