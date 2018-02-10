@@ -1,6 +1,6 @@
 
 <template>
-  <div class="row mt-4">
+  <div class="row">
 
     <div class="col-lg-12">
       <TabHeader title="CSS Framework" />
@@ -26,7 +26,8 @@ export default {
     return {
       css_frameworks: [
         { id: 'bootstrap', icon: 'devicon-bootstrap-plain', label: 'Bootstrap', selected: true },
-        { id: 'foundation', icon: 'devicon-foundation-plain', label: 'Foundation', disabled: true }
+        { id: 'foundation', icon: 'devicon-foundation-plain', label: 'Foundation', disabled: true },
+        { id: 'onsen', icon: 'devicon-html5-plain', label: 'Onsen', disabled: true }
       ]
     }
   }

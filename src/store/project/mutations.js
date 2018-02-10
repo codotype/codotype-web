@@ -1,25 +1,30 @@
-// import _ from 'lodash'
-
-// // Project Module mutations
-// const mutations = {
-//   fetching (state, isFetching) {
-//     state.fetching = isFetching
-//   },
-//   sync (state, collection) {
-//     state.collection = collection
-//   },
-//   current (state, { id }) {
-//     state.current = id
-//   },
-//   remove (state, id) {
-//     state.collection = _.filter(state.collection, (each) => { return each._id !== id })
-//   }
-// }
-
-// export default mutations
-
 import _ from 'lodash'
-// import router from '@/routers'
+import router from '@/routers'
+import { DEFAULT_USER_SCHEMA } from '@/store/schema/constants'
+
+const underscored = require('underscore.string/underscored')
+
+// TODO - abstract into ./constants
+const DEFAULT_PROJECT = {
+  label: 'DEFAULT_LABEL',
+  identifier: '',
+  schemas: [
+    DEFAULT_USER_SCHEMA
+  ],
+  stack: {
+    server: {
+      id: 'expressjs'
+    },
+    client: {
+      id: 'vuejs'
+    },
+    database: {
+      id: 'mongodb'
+    },
+    features: [],
+    deployments: []
+  }
+}
 
 // // // //
 
@@ -31,8 +36,43 @@ const mutations = {
   fetching (state, isFetching) {
     state.fetching = false
   },
-  current (state, { id }) {
-    state.current = id
+  removeSchema (state, { schema }) {
+    let schemas = []
+    _.each(state.current.schemas, (s) => {
+      if (s._id !== schema._id) {
+        schemas.push(s)
+      }
+    })
+    state.current.schemas = schemas
+  },
+  new (state) {
+    state.new = true
+    state.current = _.cloneDeep(DEFAULT_PROJECT)
+    state.current.schemas[0]._id = 'schema_' + Math.floor((Math.random() * 100000000000000) + 1)
+    this.commit('project/set_identifier')
+  },
+  select (state, { _id }) { // TODO - DEPRECATE CURRENT
+    state.current = _.find(state.collection, { _id })
+  },
+  edit (state, { _id }) { // TODO - DEPRECATE CURRENT
+    state.edit = true
+    state.current = _.cloneDeep(_.find(state.collection, { _id }))
+  },
+  select_clear (state) {
+    if (state.new) {
+      state.new = false
+      window.location = '#/' // TODO - navigate with vue-router
+    } else if (state.edit) {
+      state.edit = false
+      window.location = '#/projects'
+      // router.go()
+    } else {
+      router.go(-1)
+    }
+    state.current = {}
+  },
+  set_identifier (state) {
+    state.current.identifier = underscored(state.current.label)
   },
   persist (state, { record, redirect }) {
     let recordId = record._id

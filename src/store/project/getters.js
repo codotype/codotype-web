@@ -1,4 +1,3 @@
-import _ from 'lodash'
 
 // Project Module Getters
 const getters = {
@@ -6,7 +5,7 @@ const getters = {
     return state.collection
   },
   current: state => {
-    return _.find(state.collection, { _id: state.current })
+    return state.current
   },
   fetching: state => {
     return state.fetching

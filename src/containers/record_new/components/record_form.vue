@@ -81,7 +81,7 @@ import _ from 'lodash'
 // import vSelect from 'vue-select'
 
 export default {
-  props: ['schema', 'record', 'relatedAttr', 'persistRecord', 'cancelForm'],
+  props: ['project', 'schema', 'record', 'relatedAttr', 'persistRecord', 'cancelForm'],
   components: {
     // MaskedInput,
     // vSelect

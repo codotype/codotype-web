@@ -6,7 +6,7 @@
         <!-- <input class='d-flex flex-row' :type="type" ref="input" :id="opt.id" :value="opt.id" @change="onInputChange()" :disabled="!!opt.disabled"> -->
         <i :class="'d-flex flex-row ' + opt.icon"></i>
         <label class='d-flex flex-row my-2' :for="opt.id">{{ opt.label }}</label>
-        <small class='d-flex flex-row' v-if="opt.disabled">Coming soon!</small>
+        <small class='d-flex flex-row' v-if="opt.disabled">Coming soon</small>
         <!-- <small class='d-flex flex-row spacer' v-else>sp</small> -->
       </button>
     </div>

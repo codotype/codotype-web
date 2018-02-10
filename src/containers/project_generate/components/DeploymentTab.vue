@@ -1,9 +1,9 @@
 
 <template>
-  <div class="row mt-4">
+  <div class="row">
 
     <div class="col-lg-12">
-      <TabHeader title="Deployment" />
+      <TabHeader :title="title" />
     </div>
 
     <div class="col-lg-12">
@@ -26,6 +26,7 @@ export default {
   },
   data () {
     return {
+      title: 'Deployment',
       deployments: [
         { id: 'docker_compose', icon: 'devicon-docker-plain', label: 'Docker', selected: true },
         // { id: 'ansible', icon: 'devicon-amazonwebservices-plain', label: 'Ansible', disabled: true },

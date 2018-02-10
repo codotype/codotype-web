@@ -1,6 +1,6 @@
 
 <template>
-  <LayoutView :schema="data.schema" :record="data.record" />
+  <LayoutView :project="data.project" :schema="data.schema" :record="data.record" />
 </template>
 
 <!-- // // // //  -->
@@ -16,16 +16,18 @@ export default {
   metaInfo: {
     title: 'Schema - New Record' // title is now "blazeplate.io - Schema - New Record"
   },
-  props: ['id', 'record_id'],
+  props: ['id', 'schema_id', 'record_id'],
   computed: {
     data () {
-      let allSchemas = this.$store.getters['schema/collection']
-      let schema = _.find(allSchemas, { _id: this.id })
+      let allProjects = this.$store.getters['project/collection']
+      let project = _.find(allProjects, { _id: this.id })
+
+      let schema = _.find(project.schemas, { _id: this.schema_id })
 
       let allRecords = this.$store.getters['record/collection']
       let record = _.find(allRecords, { _id: this.record_id })
 
-      return { schema, record }
+      return { project, schema, record }
     }
   }
 }

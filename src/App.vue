@@ -2,14 +2,16 @@
 <template>
   <div id="app">
     <AppNavbar/>
+    <AppBreadcrumbs/>
     <router-view/>
     <Notification/>
-    <AppFooter/>
+    <!-- <AppFooter/> -->
   </div>
 </template>
 
 <script>
 import AppNavbar from '@/containers/app_navbar'
+import AppBreadcrumbs from '@/containers/app_breadcrumbs'
 import AppFooter from '@/containers/app_footer'
 import Notification from '@/containers/app_notification'
 
@@ -19,8 +21,9 @@ export default {
   // Top-Level Application Components
   components: {
     AppNavbar,
-    Notification,
-    AppFooter
+    AppBreadcrumbs,
+    AppFooter,
+    Notification
   },
 
   // Top-Level page Meta
@@ -44,10 +47,11 @@ export default {
   body
     height: 100%
 
-  .container, .container-fluid
-    padding-top: 4.5rem
+  // .container, .container-fluid
+  //   padding-top: 4.5rem
 
   #app
     height: 100%
+    width: 100%
 
 </style>

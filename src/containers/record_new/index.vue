@@ -1,6 +1,6 @@
 
 <template>
-  <LayoutView :schema="data.schema" :record="data.record" />
+  <LayoutView :project="data.project" :schema="data.schema" :record="data.record" />
 </template>
 
 <!-- // // // //  -->
@@ -16,11 +16,12 @@ export default {
   metaInfo: {
     title: 'Schema - New Record' // title is now "blazeplate.io - Schema - New Record"
   },
-  props: ['id'],
+  props: ['id', 'schema_id'],
   computed: {
     data () {
-      let schemas = this.$store.getters['schema/collection']
-      let schema = _.find(schemas, { _id: this.id })
+      let allProjects = this.$store.getters['project/collection']
+      let project = _.find(allProjects, { _id: this.id })
+      let schema = _.find(project.schemas, { _id: this.schema_id })
 
       // TODO - abstract into Vuex store
       let record = {
@@ -36,7 +37,7 @@ export default {
         }
       })
 
-      return { schema, record }
+      return { project, schema, record }
     }
   }
 }

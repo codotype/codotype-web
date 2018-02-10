@@ -10,10 +10,10 @@
       </div>
 
       <div class="col-lg-4 text-right">
-        <a class='btn btn-outline-warning' :href=" '#/schemas/' + schema._id + '/edit' ">
+        <a class='btn btn-outline-warning' :href=" '#/projects/' + project._id + '/preview/' + schema._id + '/edit' ">
           <i class="fa fa-fw fa-pencil"></i>
         </a>
-        <a class='btn btn-outline-success' :href=" '#/schemas/' + schema._id + '/records/new' ">
+        <a class='btn btn-outline-success' :href=" '#/projects/' + project._id + '/preview/' + schema._id + '/records/new' ">
           <i class="fa fa-fw fa-plus mr-2"></i>
           New {{ schema.label }}
         </a>
@@ -22,7 +22,7 @@
 
     <div class="row">
       <div class="col-lg-12">
-        <RecordTable :schema="schema" :records="records"/>
+        <RecordTable :project="project" :schema="schema" :records="records"/>
       </div>
     </div>
 
@@ -35,7 +35,7 @@
 import RecordTable from '@/components/RecordTable'
 
 export default {
-  props: ['schema', 'records'],
+  props: ['project', 'schema', 'records'],
   components: {
     RecordTable
   }

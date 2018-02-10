@@ -18,6 +18,23 @@
 // import _ from 'lodash'
 // import store from '@/store'
 
+// TODO - export to ./constants
+const GENERATE_ROUTE = '/api/generate'
+const DownloadFile = require('downloadjs')
+
+function generateProject (project) {
+  return new Promise((resolve, reject) => {
+    return fetch(GENERATE_ROUTE, {
+      method: 'post',
+      body: JSON.stringify(project),
+      headers: new Headers({ 'Content-Type': 'application/json' })
+    })
+    .then((response) => { return response.blob() })
+    .then((blob) => { return resolve(blob) })
+    .catch((err) => { return reject(err) })
+  })
+}
+
 // actions
 // functions that causes side effects and can involve asynchronous operations.
 const actions = {
@@ -38,6 +55,16 @@ const actions = {
 
   destroy: ({ commit }, model) => {
     commit('remove', { record: model })
+  },
+
+  generate: ({ commit }, model) => {
+    // TODO - commit('generating', true)
+    // TODO - commit('generating', true)
+    generateProject(model).then((blob) => {
+      console.log('GENERATED')
+      console.log(blob)
+      DownloadFile(blob, 'app.zip', 'application/zip')
+    })
   }
 }
 
