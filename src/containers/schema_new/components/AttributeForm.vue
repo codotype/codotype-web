@@ -290,7 +290,11 @@ export default {
   },
   computed: {
     allSchemas () {
-      return this.$store.getters['schema/collection']
+      let currentProject = this.$store.getters['project/current']
+      // console.log('currentProject??')
+      // console.log(currentProject)
+      return currentProject.schemas
+      // return this.$store.getters['schema/collection']
     },
     selectedAttr () {
       return this.$store.getters['schema/selectedAttribute']
