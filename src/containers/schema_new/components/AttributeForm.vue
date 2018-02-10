@@ -1,6 +1,6 @@
 
 <template>
-  <div class="mt-4 bg-dark text-light">
+  <div class="mt-4 bg-blaze">
 
     <!-- Attribute Form -->
     <div class="row" v-if="selectedAttr">
@@ -321,6 +321,15 @@ export default {
 </script>
 
 <style lang="sass">
+  @import '../../../sass/vendor.sass'
+
+  .bg-blaze
+    // @extend .bg-dark
+    // @extend .text-light
+    @extend .bg-light
+    @extend .text-dark
+    @extend .border-dark
+
   .form-group
     label
       margin-bottom: 0
