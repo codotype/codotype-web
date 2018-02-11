@@ -323,13 +323,6 @@ export default {
 <style lang="sass">
   @import '../../../sass/vendor.sass'
 
-  .bg-blaze
-    // @extend .bg-dark
-    // @extend .text-light
-    @extend .bg-light
-    @extend .text-dark
-    @extend .border-dark
-
   .form-group
     label
       margin-bottom: 0
