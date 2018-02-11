@@ -1,6 +1,6 @@
 
 <template>
-  <div class="mt-4 bg-dark text-light">
+  <div class="mt-4 bg-blaze">
 
     <!-- Attribute Form -->
     <div class="row" v-if="selectedAttr">
@@ -290,7 +290,11 @@ export default {
   },
   computed: {
     allSchemas () {
-      return this.$store.getters['schema/collection']
+      let currentProject = this.$store.getters['project/current']
+      // console.log('currentProject??')
+      // console.log(currentProject)
+      return currentProject.schemas
+      // return this.$store.getters['schema/collection']
     },
     selectedAttr () {
       return this.$store.getters['schema/selectedAttribute']
@@ -317,6 +321,8 @@ export default {
 </script>
 
 <style lang="sass">
+  @import '../../../sass/vendor.sass'
+
   .form-group
     label
       margin-bottom: 0

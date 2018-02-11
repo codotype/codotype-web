@@ -1,9 +1,8 @@
 import _ from 'lodash'
 // import { TEXT_WORKFLOW_STEP, MACRO_WORKFLOW_STEP, DELAY_WORKFLOW_STEP, KEY_WORKFLOW_STEP, KEY_DN_POSITION, KEY_UP_POSITION, KEY_PR_POSITION } from './constants'
 
-// const underscored = require('underscore.string/underscored')
-// const classify = require('underscore.string/classify')
-// const pluralize = require('pluralize')
+const underscored = require('underscore.string/underscored')
+const pluralize = require('pluralize')
 
 // // // //
 
@@ -107,6 +106,12 @@ const mutations = {
     }
 
     state.selectedAttribute = new_attribute
+  },
+  onLabelChange (state, label) {
+    state.selectedSchema.label = label
+    state.selectedSchema.label_plural = pluralize(label)
+    state.selectedSchema.identifier = underscored(label)
+    state.selectedSchema.identifier_plural = underscored(pluralize(label))
   }
 }
 
