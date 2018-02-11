@@ -30,7 +30,7 @@
                 <div class="row">
                   <div class="col-lg-6">
 
-                    <FormInput label="Label" placeholder="Label" example="Example: 'Odd Job'" v-model="schema.label" required="true" help="The human-readable name for a single entity of this schema." />
+                    <FormInput label="Label" placeholder="Label" example="Example: 'Odd Job'" v-model="schemaLabel" required="true" help="The human-readable name for a single entity of this schema." />
 
                   </div>
                   <div class="col-lg-6">
@@ -131,6 +131,14 @@ export default {
     }
   },
   computed: {
+    schemaLabel: {
+      get () {
+        return this.schema.label
+      },
+      set (value) {
+        this.$store.commit('schema/onLabelChange', value)
+      }
+    },
     selectedAttr () {
       return this.$store.getters['schema/selectedAttribute']
     },
