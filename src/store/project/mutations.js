@@ -1,30 +1,8 @@
 import _ from 'lodash'
 import router from '@/routers'
-import { DEFAULT_USER_SCHEMA } from '@/store/schema/constants'
+import { DEFAULT_PROJECT } from './constants'
 
 const underscored = require('underscore.string/underscored')
-
-// TODO - abstract into ./constants
-const DEFAULT_PROJECT = {
-  label: 'DEFAULT_LABEL',
-  identifier: '',
-  schemas: [
-    DEFAULT_USER_SCHEMA
-  ],
-  stack: {
-    server: {
-      id: 'expressjs'
-    },
-    client: {
-      id: 'vuejs'
-    },
-    database: {
-      id: 'mongodb'
-    },
-    features: [],
-    deployments: []
-  }
-}
 
 // // // //
 
