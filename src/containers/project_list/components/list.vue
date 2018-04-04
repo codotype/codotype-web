@@ -14,11 +14,6 @@
 
           <div class="col-lg-6 text-right">
 
-            <button class='btn btn-sm btn-outline-light'>
-              <i class="fa fa-code mr-1"></i>
-              Export JSON
-            </button>
-
             <a class='btn btn-sm btn-outline-warning' v-bind:href="'#/projects/' + project._id + '/edit'">
               <i class="fa fa-pencil mr-1"></i>
               Edit
@@ -34,10 +29,12 @@
               Generate
             </a>
 
-            <!-- <button class='btn btn-sm btn-outline-info' @click="exportProject(project)"> -->
-              <!-- <i class="fa fa-code mr-1"></i> -->
-              <!-- Export -->
-            <!-- </button> -->
+            <!-- Export Project JSON -->
+            <!-- TODO - display a modal explaining how exports work -->
+            <button class='btn btn-sm btn-outline-light' @click="exportProject(project)">
+              <i class="fa fa-code mr-1"></i>
+              Export
+            </button>
 
             <!-- Destroy project Confirmation -->
             <button class="btn btn-sm btn-outline-danger" v-b-modal="'modal_' + project._id">
@@ -74,17 +71,13 @@
 <!-- // // // //  -->
 
 <script>
+import { mapActions } from 'vuex'
 
 export default {
   props: ['collection'],
-  methods: {
-    exportProject (project) {
-      console.log('EXPORT APP:')
-      console.log(JSON.stringify(project, null, 2))
-    },
-    destroyProject (model) {
-      return this.$store.dispatch('project/destroy', model)
-    }
-  }
+  methods: mapActions({
+    exportProject: 'project/exportJson',
+    destroyProject: 'project/destroy'
+  })
 }
 </script>

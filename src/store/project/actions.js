@@ -62,6 +62,11 @@ const actions = {
       console.log(blob)
       DownloadFile(blob, 'app.zip', 'application/zip')
     })
+  },
+
+  exportJson: ({ commit }, model) => {
+    console.log('EXPORT APP:')
+    console.log(JSON.stringify(model, null, 2))
   }
 }
 

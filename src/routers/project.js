@@ -6,6 +6,7 @@ import ProjectGenerate from '@/containers/project_generate'
 import ProjectSchemas from '@/containers/project_schemas'
 import ProjectEdit from '@/containers/project_edit'
 
+// TODO - move these into main.js
 import MainHome from '@/containers/main_home'
 import MainAbout from '@/containers/main_about'
 
