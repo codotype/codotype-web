@@ -14,10 +14,10 @@
 
           <div class="col-lg-6 text-right">
 
-            <a class='btn btn-sm btn-outline-light' v-bind:href="'#/projects/' + project._id + '/preview'">
-              <i class="fa fa-list-alt mr-1"></i>
-              Preview
-            </a>
+            <button class='btn btn-sm btn-outline-light'>
+              <i class="fa fa-code mr-1"></i>
+              Export JSON
+            </button>
 
             <a class='btn btn-sm btn-outline-warning' v-bind:href="'#/projects/' + project._id + '/edit'">
               <i class="fa fa-pencil mr-1"></i>
