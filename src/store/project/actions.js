@@ -1,6 +1,3 @@
-// import Factory from './factory'
-
-// // // //
 
 // actions
 // functions that causes side effects and can involve asynchronous operations.
