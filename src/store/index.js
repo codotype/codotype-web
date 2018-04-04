@@ -2,7 +2,6 @@ import createPersistedState from 'vuex-persistedstate'
 import Vue from 'vue'
 import Vuex from 'vuex'
 import schema from './schema'
-import record from './record'
 import notification from './notification'
 import project from './project'
 
@@ -15,7 +14,6 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   modules: {
     schema,
-    record,
     notification,
     project
   },
