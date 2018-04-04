@@ -1,9 +1,10 @@
 import createPersistedState from 'vuex-persistedstate'
 import Vue from 'vue'
 import Vuex from 'vuex'
+
+import project from './project'
 import schema from './schema'
 import notification from './notification'
-import project from './project'
 
 // Vuex Initialization
 // TODO - should this be done elsewhere?
