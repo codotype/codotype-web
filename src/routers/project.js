@@ -2,8 +2,12 @@
 import ProjectList from '@/containers/project_list'
 import ProjectShow from '@/containers/project_show'
 import ProjectShowLayout from '@/containers/project_show/components/layout'
-import ProjectSchemas from '@/containers/project_show/components/SchemaEditor'
 import ProjectGenerate from '@/containers/project_generate'
+// import ProjectSchemas from '@/containers/project_schemas'
+
+// Schema Containers
+import SchemaList from '@/containers/schema_list'
+import SchemaNew from '@/containers/schema_new'
 
 // TODO - move these into main.js (???)
 import MainHome from '@/containers/main_home'
@@ -58,7 +62,17 @@ export const ProjectListRoute = {
             },
             {
               path: '/projects/:project_id/schemas',
-              component: ProjectSchemas
+              component: RouterView,
+              children: [
+                {
+                  path: '',
+                  component: SchemaList
+                },
+                {
+                  path: '/projects/:project_id/schemas/new',
+                  component: SchemaNew
+                }
+              ]
               // props: true
               // meta: { bcLinkText: 'Schemas' }
             }

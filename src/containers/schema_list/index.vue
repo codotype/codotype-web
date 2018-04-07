@@ -7,6 +7,7 @@
 
 <script>
 import LayoutView from './components/layout'
+// import { mapGetters } from 'vuex'
 
 export default {
   components: {

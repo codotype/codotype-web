@@ -1,6 +1,7 @@
 
 <template>
-  <LayoutView :schema="schema"/>
+  <!-- <LayoutView :schema="schema"/> -->
+  <p class="lead">NEW SCHEMA</p>
 </template>
 
 <!-- // // // //  -->

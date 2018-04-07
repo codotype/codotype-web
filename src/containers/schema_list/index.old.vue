@@ -1,4 +1,4 @@
-
+<!-- NOTE - this was taken from 'project_schemas' -->
 <template>
   <div class="container h-100">
 
@@ -52,7 +52,7 @@
 <script>
 import SchemaList from '@/containers/schema_list/components/layout'
 import SchemaForm from '@/containers/schema_new/components/layout'
-
+import { mapGetters } from 'vuex'
 export default {
   name: 'project_edit',
   props: ['id'],
@@ -69,14 +69,10 @@ export default {
   mounted () {
     return this.$store.commit('project/select', { _id: this.id })
   },
-  computed: {
-    model () {
-      return this.$store.getters['project/current']
-    },
-    selectedSchema () {
-      return this.$store.getters['schema/selectedSchema']
-    }
-  },
+  computed: mapGetters({
+    model: 'project/selectedModel',
+    selectedSchema: 'schema/selectedSchema' // TODO - use selectedModel mixins in schema
+  }),
   methods: {
     onCancel () {
       return this.$store.commit('schema/clearSelectedSchema', { _id: this.id })
