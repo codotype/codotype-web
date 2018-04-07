@@ -2,8 +2,6 @@
 <template>
   <b-navbar toggleable="md" type="dark" variant="dark" fixed="top">
     <b-navbar-brand href="#/">
-      <!-- <img class='logo mr-3' src="/static/icon_white.svg"> -->
-      <!-- <strong>Astro</strong>Key -->
       <img class='logo mr-3' src="@/assets/logo_dark.png">
       <!-- <strong>blaze</strong>plate -->
     </b-navbar-brand>

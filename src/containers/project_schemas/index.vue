@@ -2,21 +2,25 @@
 <template>
   <div class="container h-100">
     <div class="row">
-      <div class="col-lg-6">
-        <h2>Project Schemas</h2>
+      <div class="col-xs-12 col-md-6 col-lg-8">
+        <h2>Models</h2>
       </div>
-      <div class="col-lg-6 text-right">
-        <button class="btn btn-outline-success" v-if="!selectedSchema" @click="addNewSchema()">
+      <div class="col-xs-12 col-md-6 col-lg-4 text-sm-right">
+        <button class="btn btn-outline-success btn-block" v-if="!selectedSchema" @click="addNewSchema()">
           <i class="fa fa-fw fa-plus mr-2"></i>
-          New Schema
+          Add Model
         </button>
       </div>
+    </div>
+
+    <div class="row">
       <div class="col-lg-12">
         <hr>
       </div>
     </div>
 
-    <p class="lead">TODO - integrate USER schema here</p>
+    <!-- TODO - abstract into USER ContentType / Schema -->
+    <!-- <pre class="text-light bg-dark">{{model.user}}</pre> -->
     <div class="card card-body bg-dark border-light text-light">
       <div class="row">
         <div class="col-lg-6">
@@ -31,13 +35,14 @@
           </button>
         </div>
       </div>
-      <!-- <pre class="text-light bg-dark">{{model.user}}</pre> -->
     </div>
 
     <hr>
 
+    <!-- TODO - integrate User Card (above) into this component -->
     <SchemaList :collection="model.schemas" v-if="!selectedSchema" />
 
+    <!-- TODO - what is this here for? -->
     <div class="row mt-4" v-if="!selectedSchema">
       <div class="col-lg-12">
 
