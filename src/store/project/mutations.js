@@ -5,10 +5,6 @@ import router from '@/routers'
 
 // Project Module mutations
 const mutations = {
-  // TODO - phase out sync
-  sync (state, collection) {
-    state.collection = collection
-  },
   collection (state, collection) {
     state.collection = collection
   },

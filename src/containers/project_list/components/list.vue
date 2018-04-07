@@ -13,14 +13,9 @@
 
           <div class="col-lg-6 text-right">
 
-            <a class='btn btn-sm btn-outline-warning' v-bind:href="'#/projects/' + project._id + '/edit'">
-              <i class="fa fa-pencil mr-1"></i>
-              Edit
-            </a>
-
-            <a class='btn btn-sm btn-outline-info' v-bind:href="'#/projects/' + project._id + '/schemas'">
+            <a class='btn btn-sm btn-outline-info' v-bind:href="'#/projects/' + project._id">
               <i class="fa fa-database mr-1"></i>
-              Schemas
+              {{ project.schemas.length + ' Schema(s)'}}
             </a>
 
             <a class='btn btn-sm btn-outline-success' v-bind:href="'#/projects/' + project._id + '/generate'">

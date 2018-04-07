@@ -88,11 +88,6 @@ const actions = {
 
   resetNewModel: ({ commit }) => {
     commit('newModel', _.cloneDeep(DEFAULT_PROJECT))
-
-    // state.new = true
-    // state.current = _.cloneDeep(DEFAULT_PROJECT)
-    // state.current.schemas[0]._id = 'schema_' + Math.floor((Math.random() * 100000000000000) + 1)
-    // this.commit('project/set_identifier')
   }
 }
 
