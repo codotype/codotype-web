@@ -1,7 +1,10 @@
 
-// actions
-// functions that causes side effects and can involve asynchronous operations.
+// Schema module actions
 const actions = {
+  edit: ({ state, commit }, schema) => {
+  },
+  destroy: ({ state, commit }) => {
+  }
 }
 
 // // // //

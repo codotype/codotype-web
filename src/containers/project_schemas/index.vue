@@ -15,33 +15,6 @@
       </div>
     </div>
 
-    <!-- TODO - needs whole row? -->
-    <div class="row">
-      <div class="col-lg-12">
-        <hr>
-      </div>
-    </div>
-
-    <!-- TODO - abstract into USER ContentType / Schema -->
-    <!-- <pre class="text-light bg-dark">{{model.user}}</pre> -->
-    <div class="card card-body bg-dark border-light text-light">
-      <div class="row">
-        <div class="col-lg-6">
-          {{ model.user.label }}
-        </div>
-        <div class="col-lg-6 text-right">
-          <button class="btn btn-sm btn-outline-light">
-            Enabled
-          </button>
-          <button class="btn btn-sm btn-outline-warning">
-            Edit
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <hr>
-
     <!-- TODO - integrate User Card (above) into this component -->
     <SchemaList :collection="model.schemas" v-if="!selectedSchema" />
 
