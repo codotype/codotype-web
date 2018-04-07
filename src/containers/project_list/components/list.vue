@@ -2,6 +2,7 @@
 <template>
   <div class='row'>
 
+    <!-- Child -->
     <div v-for="project in collection" v-bind:key="project._id" class='col-lg-12 mb-3'>
       <div class="card card-body bg-dark border-light">
         <div class="row">
@@ -59,6 +60,18 @@
         </div>
       </div>
     </div>
+
+    <!-- Empty -->
+    <div class="col-lg-12 mb-3" v-if="!collection[0]">
+      <div class="card bg-dark border-warning text-warning card-body text-center">
+        <p class="lead card-text">
+          <i class="fa fa-fw fa-info-circle mr-2"></i>
+          <br>
+          No Apps found
+        </p>
+      </div>
+    </div>
+
   </div>
 </template>
 

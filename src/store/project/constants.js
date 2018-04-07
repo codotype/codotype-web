@@ -4,8 +4,8 @@ import { DEFAULT_USER_SCHEMA } from '@/store/schema/constants'
 export const DEFAULT_PROJECT = {
   label: 'DEFAULT_LABEL',
   identifier: '',
-  user: DEFAULT_USER_SCHEMA,
   schemas: [
+    DEFAULT_USER_SCHEMA
   ],
   stack: {
     server: {

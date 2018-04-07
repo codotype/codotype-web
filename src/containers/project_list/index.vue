@@ -42,10 +42,9 @@
     <div class="row">
       <div class="col-lg-8">
         <h2>
-          Projects
+          Apps
         </h2>
       </div>
-
 
       <div class="col-lg-4 text-right">
         <button class='btn btn-primary' v-b-modal="'new-project-modal'">
