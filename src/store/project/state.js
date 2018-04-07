@@ -1,3 +1,4 @@
+import { DEFAULT_PROJECT } from './constants'
 
 // Project Module State
 const state = {
@@ -5,7 +6,8 @@ const state = {
   current: {},
   new: false,
   edit: false,
-  fetching: false
+  fetching: false,
+  newModel: DEFAULT_PROJECT
 }
 
 export default state

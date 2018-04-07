@@ -9,6 +9,9 @@ const getters = {
   },
   fetching: state => {
     return state.fetching
+  },
+  newModel: state => {
+    return state.newModel
   }
 }
 

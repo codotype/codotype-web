@@ -28,13 +28,6 @@
   			<ListView :collection="collection"></ListView>
   		</div>
 
-        <!-- Fetching -->
-      <div class="col-lg-12 text-center" v-if="fetching">
-        <p class='lead'>
-          <i class="fa fa-2x fa-spin fa-spinner"></i>
-        </p>
-      </div>
-
   	</div>
   </div>
 </template>
@@ -42,16 +35,9 @@
 <!-- // // // //  -->
 
 <script>
-import ListView from './list.vue'
-import store from '@/store'
 
 export default {
   props: ['collection'],
-  computed: {
-    fetching () {
-      return store.getters['project/fetching']
-    }
-  },
   components: {
     ListView
   }

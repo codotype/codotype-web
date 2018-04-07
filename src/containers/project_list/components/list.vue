@@ -1,7 +1,6 @@
 
 <template>
   <div class='row'>
-    <router-view/>
 
     <div v-for="project in collection" v-bind:key="project._id" class='col-lg-12 mb-3'>
       <div class="card card-body bg-dark border-light">

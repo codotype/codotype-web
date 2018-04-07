@@ -22,3 +22,5 @@ export const DEFAULT_PROJECT = {
     deployments: []
   }
 }
+
+export const GENERATE_ROUTE = '/api/generate'

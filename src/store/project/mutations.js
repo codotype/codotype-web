@@ -1,14 +1,15 @@
 import _ from 'lodash'
 import router from '@/routers'
-import { DEFAULT_PROJECT } from './constants'
-
-const underscored = require('underscore.string/underscored')
 
 // // // //
 
-// Record Module mutations
+// Project Module mutations
 const mutations = {
+  // TODO - phase out sync
   sync (state, collection) {
+    state.collection = collection
+  },
+  collection (state, collection) {
     state.collection = collection
   },
   fetching (state, isFetching) {
@@ -22,12 +23,6 @@ const mutations = {
       }
     })
     state.current.schemas = schemas
-  },
-  new (state) {
-    state.new = true
-    state.current = _.cloneDeep(DEFAULT_PROJECT)
-    state.current.schemas[0]._id = 'schema_' + Math.floor((Math.random() * 100000000000000) + 1)
-    this.commit('project/set_identifier')
   },
   select (state, { _id }) { // TODO - DEPRECATE CURRENT
     state.current = _.find(state.collection, { _id })
@@ -49,34 +44,11 @@ const mutations = {
     }
     state.current = {}
   },
-  set_identifier (state) {
-    state.current.identifier = underscored(state.current.label)
-  },
-  persist (state, { record, redirect }) {
-    let recordId = record._id
-    if (record._id) {
-      state.collection = _.map(state.collection, (s) => {
-        if (s._id === record._id) {
-          return record
-        } else {
-          return s
-        }
-      })
-    } else {
-      recordId = 'PR_' + Math.floor((Math.random() * 100000000000000) + 1)
-      record._id = recordId
-      state.collection.push(record)
-    }
-
-    // Redirects 'back' if necessary
-    // TODO - phase out window.location replacement here
-    setTimeout(() => {
-      window.location = `#/projects/${recordId}`
-    }, 10)
-    // if (redirect) { router.replace({ path: '#/projects/' + record._id }) }
-  },
   remove (state, { record }) {
     state.collection = _.filter(state.collection, (s) => { return s._id !== record._id })
+  },
+  newModel (state, newModel) {
+    state.newModel = newModel
   }
 }
 

@@ -198,8 +198,8 @@
     <!-- TODO - move out of this AttributeForm component -->
     <!-- List of attributes -->
     <!-- NOTE - includes ADD ATTRIBUTE button -->
+    <!-- TODO - pull `schema` prop into Vuex state -->
     <AttributeList :schema='schema' />
-
 
   </div>
 </template>
