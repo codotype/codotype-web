@@ -7,6 +7,9 @@
     <a :href="'#/projects/' + project_id">META</a>
     <a :href="'#/projects/' + project_id + '/schemas'">SCHEMAS</a>
     <a :href="'#/projects/' + project_id + '/generate'">GENERATE</a>
+
+    <hr>
+
     <router-view/>
 
     <!-- <b-tabs pills vertical> -->

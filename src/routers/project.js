@@ -3,11 +3,12 @@ import ProjectList from '@/containers/project_list'
 import ProjectShow from '@/containers/project_show'
 import ProjectShowLayout from '@/containers/project_show/components/layout'
 import ProjectGenerate from '@/containers/project_generate'
-// import ProjectSchemas from '@/containers/project_schemas'
 
 // Schema Containers
 import SchemaList from '@/containers/schema_list'
 import SchemaNew from '@/containers/schema_new'
+import SchemaShow from '@/containers/schema_show'
+import SchemaEdit from '@/containers/schema_edit'
 
 // TODO - move these into main.js (???)
 import MainHome from '@/containers/main_home'
@@ -71,6 +72,14 @@ export const ProjectListRoute = {
                 {
                   path: '/projects/:project_id/schemas/new',
                   component: SchemaNew
+                },
+                {
+                  path: '/projects/:project_id/schemas/:schema_id',
+                  component: SchemaShow
+                },
+                {
+                  path: '/projects/:project_id/schemas/:schema_id/edit',
+                  component: SchemaEdit
                 }
               ]
               // props: true

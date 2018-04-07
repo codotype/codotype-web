@@ -20,11 +20,11 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-lg-12">
-        <RecordTable :project="project" :schema="schema" :records="records"/>
-      </div>
-    </div>
+    <!-- <div class="row"> -->
+      <!-- <div class="col-lg-12"> -->
+        <!-- <RecordTable :project="project" :schema="schema" :records="records"/> -->
+      <!-- </div> -->
+    <!-- </div> -->
 
   </div>
 </template>
@@ -32,13 +32,10 @@
 <!-- // // // //  -->
 
 <script>
-import RecordTable from '@/components/RecordTable'
+// import RecordTable from '@/components/RecordTable'
 
 export default {
-  props: ['project', 'schema', 'records'],
-  components: {
-    RecordTable
-  }
+  props: ['project', 'schema', 'records']
 }
 </script>
 
