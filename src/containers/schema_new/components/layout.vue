@@ -92,12 +92,6 @@
           <AttributeForm :schema="schema"/>
         </b-tab>
 
-        <!-- <b-tab title="Relations"></b-tab> -->
-        <!-- <b-tab title="Validations"></b-tab> -->
-        <!-- <b-tab title="Permissions"></b-tab> -->
-        <!-- <b-tab title="Seed Data"></b-tab> -->
-        <!-- <b-tab title="Test Data"></b-tab> -->
-
       </b-tabs>
     </div>
   </div>

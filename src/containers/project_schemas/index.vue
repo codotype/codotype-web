@@ -1,6 +1,8 @@
 
 <template>
   <div class="container h-100">
+
+    <!-- TODO - abstract into PageHeader component? -->
     <div class="row">
       <div class="col-xs-12 col-md-6 col-lg-8">
         <h2>Models</h2>
@@ -13,6 +15,7 @@
       </div>
     </div>
 
+    <!-- TODO - needs whole row? -->
     <div class="row">
       <div class="col-lg-12">
         <hr>
@@ -44,10 +47,9 @@
 
     <!-- TODO - what is this here for? -->
     <div class="row mt-4" v-if="!selectedSchema">
-      <div class="col-lg-12">
-
-      </div>
+      <div class="col-lg-12"></div>
     </div>
+
 
     <div class="row">
       <div class="col-lg-6" v-if="selectedSchema">

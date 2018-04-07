@@ -12,25 +12,72 @@
             <small class="form-text text-muted">Define the core parameters that are used to create a valid Attribute.</small>
           </div>
           <div class="col-lg-4 text-right">
-            <div class="btn-group w-100" v-if="selectedAttr">
-
-              <button class="btn btn-sm btn-outline-secondary w-50" @click="clearSelected()">
-                <i class="fa fa-fw mr-1 fa-angle-left"></i>
-                Back
-              </button>
-
-              <button class="btn btn-sm btn-outline-success w-50" @click="updateSelected(selectedAttr)">
-                <i class="fa fa-fw mr-1 fa-check"></i>
-                Submit
-              </button>
-
-            </div>
+            <button class="btn btn-sm btn-outline-secondary btn-block" @click="clearSelected()" v-if="selectedAttr">
+              <i class="fa fa-fw mr-1 fa-angle-left"></i>
+              Back
+            </button>
           </div>
         </div>
 
+        <!-- <button class="btn btn-sm btn-outline-success w-50" @click="updateSelected(selectedAttr)"> -->
+          <!-- <i class="fa fa-fw mr-1 fa-check"></i> -->
+          <!-- Submit -->
+        <!-- </button> -->
+
         <hr>
 
-        <div class="row">
+        <!-- ABSTRACT ABSTRACT into DataTypeForm -->
+        <div class="form-group">
+          <label>DataType</label>
+          <small class="form-text text-muted">The type of data represented by this attribute.</small>
+          <select class="form-control" placeholder="Datatype" v-model="selectedAttr.datatype" >
+            <option value=''></option>
+            <option value='TEXT'>Text</option>
+            <option value='NUMBER'>Number</option>
+            <option value='BOOL'>Checkbox</option>
+            <option value='DATE'>Date</option>
+            <option value='TIME'>Time</option>
+            <option value='COLOR'>Color</option>
+            <option value='GEO'>Geolocation</option>
+            <option value='RELATION'>Relation</option>
+            <!-- <optgroup label="Basics"> -->
+              <!-- <option value='RANGE'>Range</option> -->
+              <!-- <option value='PASSWORD'>Password</option> -->
+              <!-- <option value='URL'>URL</option> -->
+            <!-- </optgroup> -->
+            <!-- <optgroup label="Masked"> -->
+              <!-- <option value='PHONE_NUMBER'>Phone Number</option> -->
+              <!-- <option value='EMAIL'>Phone Number</option> -->
+              <!-- <option value='CURRENCY_USD'>Currency (USD)</option> -->
+            <!-- </optgroup> -->
+            <!-- <optgroup label="Dropdowns"> -->
+              <!-- <option value='TEXT_SELECT'>Text Dropdown</option> -->
+              <!-- <option value='NUMBER_SELECT'>Number Dropdown</option> -->
+              <!-- <option value='TEXT_SELECT_MULTI'>Text Multi Dropdown</option> -->
+              <!-- <option value='NUMBER_SELECT_MULTI'>Number Multi Dropdown</option> -->
+            <!-- </optgroup> -->
+            <!-- <optgroup label="Relations"> -->
+              <!-- <option value='HAS_ONE'>Has One</option> -->
+              <!-- <option value='BELONGS_TO'>Belongs To</option> -->
+              <!-- <option value='HAS_MANY'>Has Many</option> -->
+              <!-- <option value='HAS_AND_BELONGS_TO_MANY'>Has And Belongs To Many</option> -->
+            <!-- </optgroup> -->
+          </select>
+        </div>
+        <!-- /// ABSTRACT ABSTRACT -->
+
+        <hr>
+
+        <div class="row" v-if="selectedAttr.datatype === 'RELATION'">
+
+          <div class="col-lg-12">
+            <p class="lead mb-0">Relation Options</p>
+          </div>
+
+        </div>
+
+        <!-- ABSTRACT ABSTRACT into PropertiesForm -->
+        <div class="row" v-if="selectedAttr.datatype !== 'RELATION'">
 
           <div class="col-lg-12">
             <p class="lead mb-0">Properties</p>
@@ -50,7 +97,7 @@
           <div class="col-lg-6 col-sm-12">
             <div class="form-group">
               <label>
-                Identifier
+                Field Name
                 <span class='text-danger'>*</span>
               </label>
               <small class="form-text text-muted">Example: 'last_name'<br>Lowercase, no spaces.</small>
@@ -60,17 +107,13 @@
 
         </div>
 
-        <div class="form-group">
-          <label>
-            Help Text
-            <span class='text-danger'>*</span>
-          </label>
-          <small class="form-text text-muted">The text provided to an end-user to aid in their understanding of this attribute (this text here).</small>
-          <input type="text" class="form-control" placeholder="Help" v-model="selectedAttr.help" >
-        </div>
-
+        <!-- /// ABSTRACT ABSTRACT into AdvancedPropertiesForm -->
         <!-- TODO - scope under 'validations' -->
-        <div class="row">
+        <div class="row" v-if="selectedAttr.datatype !== 'RELATION'">
+
+          <div class="col-lg-12">
+            <p class="lead mb-0">Advanced Properties</p>
+          </div>
 
           <div class="col-lg-6 col-sm-12">
             <div class="form-group">
@@ -100,44 +143,9 @@
         <!-- </div> -->
 
         <hr>
-        <p class="lead mb-0">DataType</p>
-
-        <div class="form-group">
-          <label>Type</label>
-          <small class="form-text text-muted">The type of data represented by this attribute.</small>
-          <select class="form-control" placeholder="Datatype" v-model="selectedAttr.datatype" >
-            <optgroup label="Basics">
-              <option value='TEXT'>Text</option>
-              <option value='NUMBER'>Number</option>
-              <option value='BOOL'>Checkbox</option>
-              <option value='DATE'>Date</option>
-              <option value='TIME'>Time</option>
-              <option value='COLOR'>Color</option>
-              <!-- <option value='RANGE'>Range</option> -->
-              <!-- <option value='PASSWORD'>Password</option> -->
-              <!-- <option value='URL'>URL</option> -->
-            </optgroup>
-            <optgroup label="Masked">
-              <option value='PHONE_NUMBER'>Phone Number</option>
-              <!-- <option value='EMAIL'>Phone Number</option> -->
-              <!-- <option value='CURRENCY_USD'>Currency (USD)</option> -->
-            </optgroup>
-            <optgroup label="Dropdowns">
-              <option value='TEXT_SELECT'>Text Dropdown</option>
-              <option value='NUMBER_SELECT'>Number Dropdown</option>
-              <!-- <option value='TEXT_SELECT_MULTI'>Text Multi Dropdown</option> -->
-              <!-- <option value='NUMBER_SELECT_MULTI'>Number Multi Dropdown</option> -->
-            </optgroup>
-            <optgroup label="Relations">
-              <option value='HAS_ONE'>Has One</option>
-              <option value='BELONGS_TO'>Belongs To</option>
-              <option value='HAS_MANY'>Has Many</option>
-              <!-- <option value='HAS_AND_BELONGS_TO_MANY'>Has And Belongs To Many</option> -->
-            </optgroup>
-          </select>
-        </div>
 
         <!-- DROPDOWN BUILDER -->
+        <!-- TODO - remove -->
         <div class="form-group" v-if="selectedAttr.datatype === 'TEXT_SELECT' || selectedAttr.datatype === 'NUMBER_SELECT'">
           <label>Dropdown Options</label>
           <small class="form-text text-muted">Available options for this dropdown menu.</small>
@@ -145,7 +153,7 @@
         </div>
 
         <!-- SCHEMA Options -->
-        <div class="form-group" v-if="selectedAttr.datatype === 'BELONGS_TO' || selectedAttr.datatype === 'HAS_ONE' || selectedAttr.datatype === 'HAS_MANY'">
+        <div class="form-group" v-if="selectedAttr.datatype === 'RELATION'">
           <label>Related Schema</label>
           <small class="form-text text-muted">The Schema with which this attribute maintains a relation.</small>
           <select class="form-control" v-model="selectedAttr.datatypeOptions.schema_id" >
@@ -155,7 +163,7 @@
           </select>
         </div>
 
-        <div class="form-group" v-if="selectedAttr.datatype === 'BELONGS_TO'">
+        <div class="form-group" v-if="selectedAttr.datatype === 'RELATION'">
           <label>Related Schema Key</label>
           <small class="form-text text-muted">The name of the attribute on the related schema that is stored in this schema as a means of linking the two.</small>
           <select class="form-control" v-model="selectedAttr.datatypeOptions.schema_attribute_identifier" >
@@ -163,7 +171,7 @@
           </select>
         </div>
 
-        <div class="form-group" v-if="selectedAttr.datatype === 'HAS_ONE'">
+        <div class="form-group" v-if="selectedAttr.datatype === 'RELATION'">
           <label>Related Schema Key</label>
           <small class="form-text text-muted">The name of the attribute on the related schema that is stored in this schema as a means of linking the two.</small>
           <select class="form-control" v-model="selectedAttr.datatypeOptions.schema_attribute_identifier" >
@@ -171,54 +179,27 @@
           </select>
         </div>
 
-        <div class="form-group" v-if="selectedAttr.datatype === 'NUMBER'">
-          <label>Default Value</label>
-          <small class="form-text text-muted">The default value for this attribute when none is available.</small>
-          <input type="number" class="form-control" placeholder="Default Value" v-model="selectedAttr.datatypeOptions.default" >
-        </div>
+        <!-- <div class="form-group" v-if="selectedAttr.datatype === 'NUMBER'"> -->
+          <!-- <label>Default Value</label> -->
+          <!-- <small class="form-text text-muted">The default value for this attribute when none is available.</small> -->
+          <!-- <input type="number" class="form-control" placeholder="Default Value" v-model="selectedAttr.datatypeOptions.default" > -->
+        <!-- </div> -->
 
-        <div class="form-group" v-if="selectedAttr.datatype === 'TEXT'">
-          <label>Default Value</label>
-          <small class="form-text text-muted">The default value for this attribute when none is available.</small>
-          <input type="text" class="form-control" placeholder="Default Value" v-model="selectedAttr.datatypeOptions.default" >
-        </div>
+        <!-- <div class="form-group" v-if="selectedAttr.datatype === 'TEXT'"> -->
+          <!-- <label>Default Value</label> -->
+          <!-- <small class="form-text text-muted">The default value for this attribute when none is available.</small> -->
+          <!-- <input type="text" class="form-control" placeholder="Default Value" v-model="selectedAttr.datatypeOptions.default" > -->
+        <!-- </div> -->
 
       </div>
 
     </div>
 
-    <div class="row" v-if="!selectedAttr">
-      <div class="col-lg-6">
-        <p class="lead mb-0">Attributes</p>
-      </div>
+    <!-- TODO - move out of this AttributeForm component -->
+    <!-- List of attributes -->
+    <!-- NOTE - includes ADD ATTRIBUTE button -->
+    <AttributeList :schema='schema' />
 
-      <!-- Attribute Editor Controls -->
-      <div class="col-lg-6 text-right">
-        <div class="btn-group mt-3" v-if="!selectedAttr && attributes.length">
-          <button class="btn btn-primary w-100" @click="addAttribute()">
-            <i class="fa fa-fw fa-plus mr-2"></i>
-            Add Attribute
-          </button>
-        </div>
-      </div>
-
-      <div class="col-lg-12">
-        <small class="mb-2 form-text text-muted">Defines the attributes that can be assigned to an entity of this schema.</small>
-        <hr>
-      </div>
-
-       <div class="col-lg-12">
-        <draggable class='list-group' v-model='attributes' :options="sortableOptions">
-          <AttributeItem v-for="each in attributes" :item="each" :key="each._id" :remove="removeAttribute" :edit="editAttribute" />
-          <li class="px-2 py-4 text-center list-group-item list-group-item-info" @click="addAttribute()" v-if="!attributes.length">
-            <i class="fa fa-fw fa-plus mr-2"></i>
-            <br>
-            Click to add your first Attribute.
-          </li>
-        </draggable>
-      </div>
-
-    </div>
 
   </div>
 </template>
@@ -227,16 +208,15 @@
 
 <script>
 import _ from 'lodash'
-import draggable from 'vuedraggable'
-import AttributeItem from './AttributeItem'
+import { mapGetters } from 'vuex'
 import ArrayInput from '@/components/ArrayInput'
+import AttributeList from './AttributeList'
 
 export default {
   props: ['schema'],
   components: {
-    draggable,
-    AttributeItem,
-    ArrayInput
+    ArrayInput,
+    AttributeList
   },
   methods: {
     addAttribute () {
@@ -263,32 +243,15 @@ export default {
     }
   },
   computed: {
+    ...mapGetters({
+      selectedAttr: 'schema/selectedAttribute'
+    }),
     allSchemas () {
       let currentProject = this.$store.getters['project/current']
       // console.log('currentProject??')
       // console.log(currentProject)
       return currentProject.schemas
       // return this.$store.getters['schema/collection']
-    },
-    selectedAttr () {
-      return this.$store.getters['schema/selectedAttribute']
-    },
-    sortableOptions () {
-      return {
-        draggable: '.draggable',
-        animation: 150,
-        fallbackTolerance: 100
-      }
-    },
-    attributes: {
-      get () {
-        // TODO - this should be moved into Vuex store
-        this.schema.attributes = _.orderBy(this.schema.attributes, ['order'], ['asc'])
-        return this.schema.attributes
-      },
-      set (value) {
-        _.each(value, (s, i) => { s.order = i })
-      }
     }
   }
 }

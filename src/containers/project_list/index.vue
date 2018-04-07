@@ -8,7 +8,7 @@
 <script>
 
 import LayoutView from './components/layout.vue'
-import store from '@/store'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'project_list',
@@ -18,14 +18,15 @@ export default {
   metaInfo: {
     title: 'Projects' // title is now "NAME - Projects"
   },
-  computed: {
-    collection () {
-      return store.getters['project/collection']
-    }
-  },
   mounted () {
-    return store.dispatch('project/fetchCollection')
-  }
+    this.fetch()
+  },
+  computed: mapGetters({
+    collection: 'project/collection'
+  }),
+  methods: mapActions({
+    fetch: 'project/fetchCollection'
+  })
 }
 </script>
 

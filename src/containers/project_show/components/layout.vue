@@ -6,24 +6,14 @@
 
         <div class="row d-flex align-items-center">
           <div class="col-lg-6">
-            <h2>{{ model.label }}</h2>
+            <h2>
+              {{ model.label }}
+              <small class='text-muted'>
+                <i class="fa fa-pencil"></i>
+              </small>
+            </h2>
           </div>
           <div class="col-lg-6 text-right">
-
-            <a class='btn btn-sm btn-outline-light' v-bind:href="'#/projects/' + model._id + '/preview'">
-              <i class="fa fa-list-alt mr-1"></i>
-              Preview
-            </a>
-
-            <a class='btn btn-sm btn-outline-warning' v-bind:href="'#/projects/' + model._id + '/edit'">
-              <i class="fa fa-pencil mr-1"></i>
-              Edit
-            </a>
-
-            <a class='btn btn-sm btn-outline-info' v-bind:href="'#/projects/' + model._id + '/schemas'">
-              <i class="fa fa-database mr-1"></i>
-              Schemas
-            </a>
 
             <a class='btn btn-sm btn-outline-success' v-bind:href="'#/projects/' + model._id + '/generate'">
               <i class="fa fa-cog mr-1"></i>
