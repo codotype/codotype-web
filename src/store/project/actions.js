@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { GENERATE_ROUTE, DEFAULT_PROJECT } from './constants'
+import { GENERATE_ROUTE, DEFAULT_PROJECT, DEFAULT_USER_SCHEMA } from './constants'
 import { SELECT_MODEL_ACTIONS } from '@/store/lib/mixins'
 
 const DownloadFile = require('downloadjs')
@@ -95,7 +95,12 @@ const actions = {
   },
 
   resetNewModel: ({ commit }) => {
-    commit('newModel', _.cloneDeep(DEFAULT_PROJECT))
+    let newModel = _.cloneDeep(DEFAULT_PROJECT)
+    let userSchema = _.cloneDeep(DEFAULT_USER_SCHEMA)
+    userSchema._id = _.uniqueId('SCHEMA_')
+    console.log('SET USER SCHEMA ID')
+    newModel.schemas.push(userSchema)
+    commit('newModel', newModel)
   }
 }
 

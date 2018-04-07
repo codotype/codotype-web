@@ -11,10 +11,10 @@
 
       <div class="col-md-6 text-right">
 
-        <button class='btn btn-sm btn-outline-warning' @click="editSchema(schema)">
+        <a class='btn btn-sm btn-outline-warning' :href="'#/projects/' + model._id + '/schemas/' + schema._id + '/edit/'">
           <i class="fa fa-pencil mr-1"></i>
           Edit
-        </button>
+        </a>
 
         <!-- Destroy Schema Confirmation -->
         <button class="btn btn-sm btn-outline-danger" v-if="enableDestroy" v-b-modal="'modal_' + schema._id">
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   props: ['schema'],
@@ -57,6 +57,9 @@ export default {
     destroySchema: 'schema/remove'
   }),
   computed: {
+    ...mapGetters({
+      model: 'project/selectedModel'
+    }),
     enableDestroy () {
       return this.schema.identifier !== 'user'
     }
