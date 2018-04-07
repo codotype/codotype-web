@@ -1,16 +1,13 @@
 
 export const DEFAULT_USER_SCHEMA = {
   _id: null,
+  enabled: true,
   label: 'User',
   label_plural: 'Users',
   identifier: 'user',
   identifier_plural: 'users',
-  unqiue_id_prefix: 'CT_',
+  unqiue_id_prefix: 'US_',
   authentications: [],
-  display: {
-    navbar_link: true,
-    icon: 'fa-user-circle-o'
-  },
   attributes: [
     {
       order: 0,

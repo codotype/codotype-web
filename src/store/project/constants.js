@@ -7,7 +7,6 @@ export const DEFAULT_PROJECT = {
   identifier: '',
   user: DEFAULT_USER_SCHEMA,
   schemas: [
-    DEFAULT_USER_SCHEMA // TODO - remove this
   ],
   stack: {
     server: {
