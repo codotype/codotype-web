@@ -1,12 +1,10 @@
 import createPersistedState from 'vuex-persistedstate'
 import Vue from 'vue'
 import Vuex from 'vuex'
-import auth from './auth'
-import user from './user'
-import schema from './schema'
-import record from './record'
-import notification from './notification'
+
 import project from './project'
+import schema from './schema'
+import notification from './notification'
 
 // Vuex Initialization
 // TODO - should this be done elsewhere?
@@ -16,10 +14,7 @@ Vue.use(Vuex)
 // and getters.
 export default new Vuex.Store({
   modules: {
-    auth,
-    user,
     schema,
-    record,
     notification,
     project
   },

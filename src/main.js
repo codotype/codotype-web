@@ -9,8 +9,6 @@ import store from '@/store'
 // QUESTION - ??
 Vue.config.productionTip = false
 
-window.store = store // TODO - remove - debug only
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -8,6 +8,8 @@
       <hr>
     </div>
 
+    <p class="lead">TODO - Import Project JSON here</p>
+
     <div class="col-lg-6 d-flex flex-column">
       <div class="form-group">
         <label class='mb-0'>

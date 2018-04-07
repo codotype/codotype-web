@@ -3,14 +3,10 @@ import ProjectList from '@/containers/project_list'
 import ProjectNew from '@/containers/project_new'
 import ProjectShow from '@/containers/project_show'
 import ProjectGenerate from '@/containers/project_generate'
-import ProjectPreview from '@/containers/project_preview'
 import ProjectSchemas from '@/containers/project_schemas'
 import ProjectEdit from '@/containers/project_edit'
-import RecordNew from '@/containers/record_new'
-import RecordEdit from '@/containers/record_edit'
-import RecordShow from '@/containers/record_show'
-import SchemaShow from '@/containers/schema_show'
 
+// TODO - move these into main.js
 import MainHome from '@/containers/main_home'
 import MainAbout from '@/containers/main_about'
 
@@ -81,38 +77,6 @@ export const ProjectListRoute = {
               component: ProjectGenerate,
               props: true,
               meta: { bcLinkText: 'Generate' }
-            },
-            {
-              path: '/projects/:id/preview',
-              component: ProjectPreview,
-              props: true,
-              meta: { bcLinkText: 'Preview' },
-              children: [
-                {
-                  path: '/projects/:id/preview/:schema_id/records',
-                  name: 'schemashow',
-                  component: SchemaShow,
-                  props: true
-                },
-                {
-                  path: '/projects/:id/preview/:schema_id/records/new',
-                  name: 'recordnew',
-                  component: RecordNew,
-                  props: true
-                },
-                {
-                  path: '/projects/:id/preview/:schema_id/records/:record_id',
-                  name: 'recordshow',
-                  component: RecordShow,
-                  props: true
-                },
-                {
-                  path: '/projects/:id/preview/:schema_id/records/:record_id/edit',
-                  name: 'recordedit',
-                  component: RecordEdit,
-                  props: true
-                }
-              ]
             }
           ]
         }

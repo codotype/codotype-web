@@ -16,6 +16,11 @@
       </div>
     </div>
 
+    <p class="lead">TODO - integrate USER schema here</p>
+    <pre class="text-light bg-dark">{{model.user}}</pre>
+
+    <hr>
+
     <SchemaList :collection="model.schemas" v-if="!selectedSchema" />
 
     <div class="row mt-4" v-if="!selectedSchema">
