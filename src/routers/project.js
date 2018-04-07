@@ -1,10 +1,7 @@
 // Project Containers
 import ProjectList from '@/containers/project_list'
-import ProjectNew from '@/containers/project_new'
 import ProjectShow from '@/containers/project_show'
 import ProjectGenerate from '@/containers/project_generate'
-import ProjectSchemas from '@/containers/project_schemas'
-import ProjectEdit from '@/containers/project_edit'
 
 // TODO - move these into main.js
 import MainHome from '@/containers/main_home'
@@ -41,12 +38,6 @@ export const ProjectListRoute = {
           component: ProjectList
         },
         {
-          path: '/projects/new',
-          name: 'new',
-          component: ProjectNew,
-          meta: { bcLinkText: 'New' }
-        },
-        {
           path: '/projects/:id',
           component: RouterView,
           meta: { bcLinkText: 'Show' },
@@ -56,20 +47,6 @@ export const ProjectListRoute = {
               name: 'root',
               component: ProjectShow,
               props: true
-            },
-            {
-              path: '/projects/:id/schemas',
-              name: 'schemas',
-              component: ProjectSchemas,
-              props: true,
-              meta: { bcLinkText: 'Schemas' }
-            },
-            {
-              path: '/projects/:id/edit',
-              name: 'edit',
-              component: ProjectEdit,
-              props: true,
-              meta: { bcLinkText: 'Edit' }
             },
             {
               path: '/projects/:id/generate',

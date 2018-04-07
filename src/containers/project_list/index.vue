@@ -4,8 +4,8 @@
 
     <!-- Bootstrap Modal Component -->
     <b-modal id="new-project-modal"
+      ref="newModal"
       :title="'New App'"
-      @ok="persist()"
       header-bg-variant="dark"
       header-text-variant="light"
       body-bg-variant="dark"
@@ -13,6 +13,7 @@
       hide-footer
     >
 
+      <!-- TODO - abstract into dedicated ProjectForm component -->
       <div class="row">
         <div class="col-sm-12">
 
@@ -28,7 +29,7 @@
         </div>
 
         <div class="col-sm-12">
-          <button class="btn btn-primary btn-block" @click="persist()">
+          <button class="btn btn-primary btn-block" @click="submitProjectForm()">
             <i class="fa fa-fw fa-check"></i>
             Create App
           </button>
@@ -86,11 +87,17 @@ export default {
     collection: 'project/collection',
     newModel: 'project/newModel'
   }),
-  methods: mapActions({
-    fetch: 'project/fetchCollection',
-    persist: 'project/create',
-    setIdentifier: 'project/setIdentifier'
-  })
+  methods: {
+    ...mapActions({
+      fetch: 'project/fetchCollection',
+      persist: 'project/create',
+      setIdentifier: 'project/setIdentifier'
+    }),
+    submitProjectForm () {
+      this.$refs.newModal.hide()
+      this.persist()
+    }
+  }
 }
 </script>
 

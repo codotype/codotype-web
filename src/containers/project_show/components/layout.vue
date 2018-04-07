@@ -20,34 +20,6 @@
               Generate
             </a>
 
-            <!-- <button class='btn btn-sm btn-outline-info' @click="exportProject(project)"> -->
-              <!-- <i class="fa fa-code mr-1"></i> -->
-              <!-- Export -->
-            <!-- </button> -->
-
-            <!-- Destroy project Confirmation -->
-            <button class="btn btn-sm btn-outline-danger" v-b-modal="'modal_' + model._id">
-              <i class="fa mr-1 fa-trash"></i>
-              Destroy
-            </button>
-
-            <!-- Bootstrap Modal Component -->
-            <b-modal :id="'modal_' + model._id"
-              :title="'Destroy ' + model.label + '?'"
-              @ok="destroyProject(project)"
-              header-bg-variant='dark'
-              header-text-variant='light'
-              body-bg-variant='dark'
-              body-text-variant='light'
-              footer-bg-variant='danger'
-              footer-text-variant='light'
-              ok-variant='danger'
-              ok-title='DESTROY'
-              cancel-title='Cancel'
-              cancel-variant='dark'
-            >
-              <p class="text-left">Are you sure you want to destroy the {{ model.label }} project?</p>
-            </b-modal>
           </div>
         </div>
 
