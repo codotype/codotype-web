@@ -1,7 +1,10 @@
 import _ from 'lodash'
+import { COLLECTION_GETTERS, SELECT_MODEL_GETTERS } from '@/store/lib/mixins'
 
 // Schema Module Getters
 const getters = {
+  ...COLLECTION_GETTERS,
+  ...SELECT_MODEL_GETTERS,
   new: state => {
     let schema = {
       _id: null,
@@ -16,9 +19,6 @@ const getters = {
       }
     }
     return _.cloneDeep(schema)
-  },
-  collection: state => {
-    return state.collection
   },
   selectedSchema: state => {
     return state.selectedSchema

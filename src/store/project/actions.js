@@ -24,6 +24,11 @@ function generateProject (project) {
 // functions that causes side effects and can involve asynchronous operations.
 const actions = {
   ...SELECT_MODEL_ACTIONS,
+  selectModel: ({ commit, state }, model_id) => {
+    let model = _.find(state.collection, { _id: model_id })
+    commit('selectedModel', model)
+    commit('schema/collection', model.schemas, { root: true })
+  },
   fetchCollection: ({ commit }) => {
     commit('fetching', true)
     setTimeout(() => {

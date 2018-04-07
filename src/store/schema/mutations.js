@@ -1,4 +1,6 @@
 import _ from 'lodash'
+import { COLLECTION_MUTATIONS, SELECT_MODEL_MUTATIONS } from '@/store/lib/mixins'
+
 // import { TEXT_WORKFLOW_STEP, MACRO_WORKFLOW_STEP, DELAY_WORKFLOW_STEP, KEY_WORKFLOW_STEP, KEY_DN_POSITION, KEY_UP_POSITION, KEY_PR_POSITION } from './constants'
 
 const underscored = require('underscore.string/underscored')
@@ -8,9 +10,8 @@ const pluralize = require('pluralize')
 
 // Schema Module mutations
 const mutations = {
-  sync (state, collection) {
-    state.collection = _.sortBy(collection, (s) => { return s.order })
-  },
+  ...COLLECTION_MUTATIONS,
+  ...SELECT_MODEL_MUTATIONS,
   editModel (state, model) {
     state.editModel = model
   },

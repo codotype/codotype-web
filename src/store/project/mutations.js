@@ -1,5 +1,4 @@
 import _ from 'lodash'
-import router from '@/routers'
 import { COLLECTION_MUTATIONS, SELECT_MODEL_MUTATIONS } from '@/store/lib/mixins'
 
 // // // //
@@ -8,6 +7,7 @@ import { COLLECTION_MUTATIONS, SELECT_MODEL_MUTATIONS } from '@/store/lib/mixins
 const mutations = {
   ...COLLECTION_MUTATIONS,
   ...SELECT_MODEL_MUTATIONS,
+  // TODO - move into schema module
   removeSchema (state, { schema }) {
     let schemas = []
     _.each(state.current.schemas, (s) => {
@@ -17,25 +17,10 @@ const mutations = {
     })
     state.current.schemas = schemas
   },
-  select (state, { _id }) { // TODO - DEPRECATE CURRENT
-    state.current = _.find(state.collection, { _id })
-  },
+  // TODO - abstract into editModel mixin
   edit (state, { _id }) { // TODO - DEPRECATE CURRENT
     state.edit = true
     state.current = _.cloneDeep(_.find(state.collection, { _id }))
-  },
-  select_clear (state) {
-    if (state.new) {
-      state.new = false
-      window.location = '#/' // TODO - navigate with vue-router
-    } else if (state.edit) {
-      state.edit = false
-      window.location = '#/projects'
-      // router.go()
-    } else {
-      router.go(-1)
-    }
-    state.current = {}
   },
   remove (state, { record }) {
     state.collection = _.filter(state.collection, (s) => { return s._id !== record._id })
