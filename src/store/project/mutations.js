@@ -1,16 +1,13 @@
 import _ from 'lodash'
 import router from '@/routers'
+import { COLLECTION_MUTATIONS, SELECT_MODEL_MUTATIONS } from '@/store/lib/mixins'
 
 // // // //
 
 // Project Module mutations
 const mutations = {
-  collection (state, collection) {
-    state.collection = collection
-  },
-  fetching (state, isFetching) {
-    state.fetching = false
-  },
+  ...COLLECTION_MUTATIONS,
+  ...SELECT_MODEL_MUTATIONS,
   removeSchema (state, { schema }) {
     let schemas = []
     _.each(state.current.schemas, (s) => {

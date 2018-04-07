@@ -1,5 +1,7 @@
 import _ from 'lodash'
 import { GENERATE_ROUTE, DEFAULT_PROJECT } from './constants'
+import { SELECT_MODEL_ACTIONS } from '@/store/lib/mixins'
+
 const DownloadFile = require('downloadjs')
 const underscored = require('underscore.string/underscored')
 // TODO - use this instead?
@@ -21,6 +23,7 @@ function generateProject (project) {
 // actions
 // functions that causes side effects and can involve asynchronous operations.
 const actions = {
+  ...SELECT_MODEL_ACTIONS,
   fetchCollection: ({ commit }) => {
     commit('fetching', true)
     setTimeout(() => {
@@ -66,8 +69,8 @@ const actions = {
     commit('collection', collection)
   },
 
-  generate: ({ commit }, model) => {
-    generateProject(model).then((blob) => {
+  generate: ({ state, commit }) => {
+    generateProject(state.selectedModel).then((blob) => {
       console.log('GENERATED')
       console.log(blob)
       DownloadFile(blob, 'app.zip', 'application/zip')

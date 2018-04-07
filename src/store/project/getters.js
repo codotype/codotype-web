@@ -1,14 +1,12 @@
+import { COLLECTION_GETTERS, SELECT_MODEL_GETTERS } from '@/store/lib/mixins'
 
 // Project Module Getters
 const getters = {
-  collection: state => {
-    return state.collection
-  },
+  ...COLLECTION_GETTERS,
+  ...SELECT_MODEL_GETTERS,
+  // TODO - phase out current
   current: state => {
     return state.current
-  },
-  fetching: state => {
-    return state.fetching
   },
   newModel: state => {
     return state.newModel
