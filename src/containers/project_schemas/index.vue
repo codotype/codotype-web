@@ -17,7 +17,22 @@
     </div>
 
     <p class="lead">TODO - integrate USER schema here</p>
-    <pre class="text-light bg-dark">{{model.user}}</pre>
+    <div class="card card-body bg-dark border-light text-light">
+      <div class="row">
+        <div class="col-lg-6">
+          {{ model.user.label }}
+        </div>
+        <div class="col-lg-6 text-right">
+          <button class="btn btn-sm btn-outline-light">
+            Enabled
+          </button>
+          <button class="btn btn-sm btn-outline-warning">
+            Edit
+          </button>
+        </div>
+      </div>
+      <!-- <pre class="text-light bg-dark">{{model.user}}</pre> -->
+    </div>
 
     <hr>
 

@@ -22,8 +22,7 @@ const state = {
           identifier: 'name',
           unique: true,
           _id: 'attr_1',
-          preferred: true,
-          col_span: '4'
+          preferred: true
         },
         {
           order: 2,
@@ -33,8 +32,7 @@ const state = {
           datatype: 'PHONE_NUMBER',
           datatypeOptions: {},
           identifier: 'phone',
-          _id: 'attr_3',
-          col_span: '4'
+          _id: 'attr_3'
         },
         {
           order: 3,
@@ -43,7 +41,6 @@ const state = {
           required: true,
           unique: false,
           preferred: false,
-          col_span: '4',
           datatype: 'TEXT',
           datatypeOptions: {},
           identifier: 'email',
@@ -56,7 +53,6 @@ const state = {
           required: false,
           unique: false,
           preferred: false,
-          col_span: 12,
           datatype: 'HAS_ONE',
           datatypeOptions: {
             schema_id: 'schema_14808974981067'
@@ -71,7 +67,6 @@ const state = {
           required: false,
           unique: false,
           preferred: false,
-          col_span: 12,
           datatype: 'HAS_MANY',
           datatypeOptions: {
             schema_id: 'schema_22881179555990'
@@ -86,7 +81,6 @@ const state = {
           required: false,
           unique: false,
           preferred: false,
-          col_span: 12,
           datatype: 'HAS_MANY',
           datatypeOptions: {
             schema_id: 'schema_85414304137721'
@@ -117,7 +111,6 @@ const state = {
           datatypeOptions: {},
           identifier: 'invoice_id',
           unique: true,
-          col_span: '6',
           _id: 'attr_5'
         },
         {
@@ -131,7 +124,6 @@ const state = {
             schema_attribute_identifier: 'name'
           },
           identifier: 'contact_id',
-          col_span: '6',
           _id: 'attr_1'
         },
         {
@@ -142,7 +134,6 @@ const state = {
           datatype: 'NUMBER',
           datatypeOptions: {},
           identifier: 'amount',
-          col_span: '4',
           _id: 'attr_2'
         },
         {
@@ -153,7 +144,6 @@ const state = {
           datatype: 'DATE',
           datatypeOptions: {},
           identifier: 'date',
-          col_span: '4',
           _id: 'attr_4'
         },
         {
@@ -164,7 +154,6 @@ const state = {
           datatype: 'BOOL',
           datatypeOptions: {},
           identifier: 'payment_received',
-          col_span: '4',
           _id: 'attr_3'
         }
       ],
@@ -190,7 +179,6 @@ const state = {
           datatypeOptions: {},
           identifier: 'job_id',
           unique: true,
-          col_span: 6,
           _id: 'attr_1'
         },
         {
@@ -204,7 +192,6 @@ const state = {
             schema_attribute_identifier: 'name'
           },
           identifier: 'contact_id',
-          col_span: 6,
           _id: 'attr_2'
         },
         {
@@ -218,7 +205,6 @@ const state = {
             schema_attribute_identifier: 'invoice_id'
           },
           identifier: 'invoice_id',
-          col_span: 6,
           _id: 'attr_3'
         },
         {
@@ -229,7 +215,6 @@ const state = {
           datatype: 'TEXT',
           datatypeOptions: {},
           identifier: 'status',
-          col_span: 6,
           _id: 'attr_4'
         }
       ],
@@ -249,7 +234,6 @@ const state = {
           help: 'Street Address (i.e. 123 Main St.)',
           required: true,
           unique: false,
-          col_span: 6,
           datatype: 'TEXT',
           datatypeOptions: {},
           identifier: 'street_address',
@@ -261,7 +245,6 @@ const state = {
           help: 'Apartment or Suite # (i.e. Apt. 1)',
           required: false,
           unique: false,
-          col_span: 6,
           datatype: 'TEXT',
           datatypeOptions: {},
           identifier: 'street_address_two',
@@ -273,7 +256,6 @@ const state = {
           help: 'City the address resides in',
           required: true,
           unique: false,
-          col_span: '4',
           datatype: 'TEXT',
           datatypeOptions: {},
           identifier: 'city',
@@ -285,7 +267,6 @@ const state = {
           help: 'State the city resides in',
           required: true,
           unique: false,
-          col_span: '4',
           datatype: 'TEXT_SELECT',
           datatypeOptions: {
             dropdownOptions: [
@@ -351,7 +332,6 @@ const state = {
           help: 'Zip Code of the address',
           required: true,
           unique: false,
-          col_span: '4',
           datatype: 'NUMBER',
           datatypeOptions: {},
           identifier: 'zip_code',

@@ -19,8 +19,7 @@ export const DEFAULT_USER_SCHEMA = {
       identifier: 'name',
       unique: true,
       _id: 'attr_1',
-      preferred: true,
-      col_span: '4'
+      preferred: true
     },
     {
       order: 1,
@@ -29,7 +28,6 @@ export const DEFAULT_USER_SCHEMA = {
       required: true,
       unique: false,
       preferred: false,
-      col_span: '4',
       datatype: 'TEXT',
       datatypeOptions: {},
       identifier: 'email',

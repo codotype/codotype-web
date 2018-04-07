@@ -100,7 +100,6 @@ const mutations = {
       help: '',
       required: false,
       unique: false,
-      col_span: 6,
       datatype: 'TEXT',
       datatypeOptions: {}
     }

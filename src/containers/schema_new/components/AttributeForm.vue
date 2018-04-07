@@ -185,32 +185,6 @@
 
       </div>
 
-      <div class="col-lg-12">
-        <hr>
-        <p class="lead mb-0">Display Options</p>
-
-        <div class="form-group">
-          <label>
-            Input Column Span
-          </label>
-          <small class="form-text text-muted">The column span of the input field when it appears in a form (2-12).</small>
-          <select type="number" class="form-control" v-model="selectedAttr.col_span" >
-            <option value="6">Column Span (6 Default)</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-            <option>11</option>
-            <option>12</option>
-          </select>
-        </div>
-
-      </div>
     </div>
 
     <div class="row" v-if="!selectedAttr">
