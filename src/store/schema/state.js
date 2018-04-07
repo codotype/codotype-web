@@ -345,7 +345,8 @@ const state = {
       unqiue_id_prefix: 'AD_'
     }
   ],
-  selectedAttribute: null
+  selectedAttribute: null,
+  editModel: {}
 }
 
 export default state

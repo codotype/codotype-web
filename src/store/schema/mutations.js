@@ -6,10 +6,13 @@ const pluralize = require('pluralize')
 
 // // // //
 
-// Project Module mutations
+// Schema Module mutations
 const mutations = {
   sync (state, collection) {
     state.collection = _.sortBy(collection, (s) => { return s.order })
+  },
+  editModel (state, model) {
+    state.editModel = model
   },
   persist (state, { schema }) {
     if (schema._id) {

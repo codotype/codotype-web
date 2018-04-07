@@ -25,6 +25,9 @@ const getters = {
   },
   selectedAttribute: state => {
     return state.selectedAttribute
+  },
+  editModel: state => {
+    return state.editModel
   }
 }
 
