@@ -74,6 +74,7 @@ export const ProjectListRoute = {
                   component: SchemaNew
                 },
                 {
+                  // TODO - not sure we need SchemaShow??
                   path: '/projects/:project_id/schemas/:schema_id',
                   component: SchemaShow
                 },

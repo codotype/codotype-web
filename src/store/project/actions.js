@@ -98,7 +98,6 @@ const actions = {
     let newModel = _.cloneDeep(DEFAULT_PROJECT)
     let userSchema = _.cloneDeep(DEFAULT_USER_SCHEMA)
     userSchema._id = _.uniqueId('SCHEMA_')
-    console.log('SET USER SCHEMA ID')
     newModel.schemas.push(userSchema)
     commit('newModel', newModel)
   }

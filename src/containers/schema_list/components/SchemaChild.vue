@@ -4,8 +4,6 @@
 
     <div class="row">
       <div class="col-md-6">
-        <!-- schema URL -->
-        <!-- <a :href="'#/schemas/' + schema._id">{{schema.label_plural}}</a> -->
         {{ schema.label_plural }}
       </div>
 
