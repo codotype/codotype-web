@@ -31,8 +31,12 @@
 <!-- // // // //  -->
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  props: ['model']
+  computed: mapGetters({
+    model: 'project/selectedModel'
+  })
 }
 </script>
 

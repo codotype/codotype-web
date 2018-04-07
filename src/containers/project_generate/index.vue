@@ -1,31 +1,130 @@
 
+
 <template>
-  <div class="container align-items-center justify-content-center d-flex">
-    <LayoutView :model="model"/>
+  <div class="row d-flex w-100">
+    <div class="col-lg-12">
+      <div class="card card-body bg-dark text-light border-light">
+
+        <div class="row d-flex align-items-center">
+          <div class="col-lg-6">
+            <h2 class="mb-0">{{ model.label }}</h2>
+          </div>
+          <div class="col-lg-6 text-right">
+
+            <!-- Opens Destroy Confirmation Modal -->
+            <button class="btn btn-lg btn-success" v-b-modal="'generate-modal'">
+              <i class="fa fa-fw fa-play mr-2"></i>
+              Generate Application
+            </button>
+
+            <!-- Bootstrap Modal Component -->
+            <!-- TODO - move this outside the scope of the loop, and instead pass only the options into a single instance -->
+            <b-modal id="generate-modal"
+              :title="'Generate Application'"
+              @ok="generateApplication()"
+              header-bg-variant="dark"
+              header-text-variant="light"
+              body-bg-variant="dark"
+              body-text-variant="light"
+              footer-bg-variant="success"
+              footer-text-variant="light"
+              ok-variant='success'
+              ok-title='GENERATE'
+              cancel-title='Cancel'
+              cancel-variant='dark'
+            >
+              <p class="text-left">Please confirm application details:</p>
+              <!-- <pre class='text-left bg-light'>{{model}}</pre> -->
+            </b-modal>
+
+          </div>
+        </div>
+
+        <hr>
+
+        <b-tabs pills vertical>
+
+          <!-- Project Detail -->
+          <!-- <b-tab title="Project" active> -->
+            <!-- <ProjectDetail :model="model" /> -->
+          <!-- </b-tab> -->
+
+          <!-- Server Frameworks -->
+          <b-tab title="Server">
+            <ServerTab :model="model" />
+          </b-tab>
+
+          <!-- Databases -->
+          <b-tab title="Database">
+            <DatabaseTab :model="model" />
+          </b-tab>
+
+          <!-- Client Frameworks -->
+          <!-- Build Tools -->
+          <b-tab title="Client">
+            <AbstractTab :model="model" stackId="client" :stackOpts="clientOpts.client_frameworks" title="Client Frameworks"/>
+          </b-tab>
+
+          <!-- CSS Frameworks -->
+          <b-tab title="CSS Framework">
+            <CssTab :model="model" />
+          </b-tab>
+
+          <b-tab title="Deployment">
+            <AbstractTab :model="model" stackId="deployments" :stackOpts="deploymentOpts" title="Deployments"/>
+          </b-tab>
+
+          <!-- Build -->
+          <!-- <b-tab title="Build"> -->
+            <!-- <br> -->
+            <!-- Build / Generate Codebase -->
+            <!-- <br> -->
+            <!-- Build Configuration / Options -->
+          <!-- </b-tab> -->
+
+        </b-tabs>
+
+      </div>
+    </div>
   </div>
 </template>
 
 <!-- // // // //  -->
 
 <script>
-import LayoutView from './components/layout.vue'
+import ProjectDetail from './components/ProjectDetail'
+import SchemaTab from './components/SchemaTab'
+import AuthTab from './components/AuthTab' // TODO - AuthTab
+import ServerTab from './components/ServerTab'
+import ClientTab from './components/ClientTab'
+import CssTab from './components/CssTab'
+import DatabaseTab from './components/DatabaseTab'
+import DeploymentTab from './components/DeploymentTab'
+import AbstractTab from './components/AbstractTab'
+
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  name: 'project_generate',
-  props: ['id'],
+  props: ['model'],
   components: {
-    LayoutView
+    ProjectDetail,
+    SchemaTab,
+    AuthTab,
+    ServerTab,
+    ClientTab,
+    CssTab,
+    DatabaseTab,
+    DeploymentTab,
+    AbstractTab
   },
-  metaInfo: {
-    title: 'Projects - Generate'
-  },
-  mounted () {
-    return this.$store.commit('project/select', { _id: this.id })
-  },
-  computed: {
-    model () {
-      return this.$store.getters['project/current']
-    }
-  }
+  computed: mapGetters({
+    model: 'project/selectedModel',
+    deploymentOpts: 'generator/deploymentOpts',
+    clientOpts: 'generator/clientOpts'
+  }),
+  methods: mapActions({
+    generateApplication: 'project/generate'
+  })
 }
 </script>
+
