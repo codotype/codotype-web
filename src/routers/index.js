@@ -1,15 +1,101 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-// Module routes
-import { ProjectListRoute } from './project'
+// Project Containers
+import ProjectList from '@/containers/project_list'
+import ProjectShow from '@/containers/project_show'
+import ProjectMeta from '@/containers/project_show/components/ProjectMeta'
+import ProjectGenerate from '@/containers/project_generate'
+
+// Schema Containers
+import SchemaList from '@/containers/schema_list'
+import SchemaShow from '@/containers/schema_show'
+import SchemaEdit from '@/containers/schema_edit'
+
+// TODO - move these into main.js (???)
+import MainHome from '@/containers/main_home'
+import MainAbout from '@/containers/main_about'
 
 // Vue Router setup
 Vue.use(Router)
 
+const RouterView = {
+  template: '<router-view/>'
+}
+
 // Exports new Router instance
 export default new Router({
   routes: [
-    ProjectListRoute
+    {
+      path: '/',
+      component: RouterView,
+      meta: { bcLinkText: 'Home' },
+      children: [
+        {
+          path: '',
+          name: 'main_home',
+          component: MainHome
+        },
+        {
+          path: '/about',
+          name: 'main_about',
+          component: MainAbout,
+          meta: { bcLinkText: 'About' }
+        },
+        {
+          path: 'projects',
+          component: RouterView,
+          meta: { bcLinkText: 'Apps' },
+          children: [
+            {
+              path: '',
+              name: 'list',
+              component: ProjectList
+            },
+            {
+              path: '/projects/:project_id',
+              name: 'show',
+              component: ProjectShow,
+              props: true,
+              meta: {
+                bcGetter: 'project/selectedLabel'
+              },
+              children: [
+                {
+                  path: '',
+                  component: ProjectMeta
+                },
+                {
+                  path: '/projects/:project_id/generate',
+                  component: ProjectGenerate
+                  // props: true
+                  // meta: { bcLinkText: 'Generate' }
+                },
+                {
+                  path: '/projects/:project_id/schemas',
+                  component: RouterView,
+                  children: [
+                    {
+                      path: '',
+                      component: SchemaList
+                    },
+                    {
+                      path: '/projects/:project_id/schemas/:schema_id',
+                      props: true,
+                      component: SchemaShow
+                    },
+                    {
+                      // TODO - not sure we need SchemaEdit?
+                      path: '/projects/:project_id/schemas/:schema_id/edit',
+                      component: SchemaEdit
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
   ]
 })

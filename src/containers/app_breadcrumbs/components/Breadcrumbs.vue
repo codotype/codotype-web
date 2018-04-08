@@ -1,9 +1,20 @@
 <template>
   <ol class="breadcrumb bg-dark text-light border-light">
     <!-- <li class="breadcrumb-item" v-for="(route, index) in $route.matched"> -->
-    <li class="breadcrumb-item" v-for="route in crumbs">
+    <li :class="route.path ? 'breadcrumb-item' : 'breadcrumb-item active'" v-for="route in crumbs">
       <!-- <span>{{route}}</span> -->
-      <a :href="'#' + route.path">{{ route.text }}</a>
+
+      <template v-if="route.path">
+        <a :href="'#' + route.path" v-if="route.path">
+          {{ route.text }}
+        </a>
+      </template>
+
+      <template v-else>
+        {{ route.text }}
+      </template>
+      <!-- <a :href="'#' + route.path" v-if=""> -->
+
       <!-- <span v-else>{{ route.path }}</span> -->
       <!-- <span>{{route}}</span> -->
       <!-- <router-link v-if="!route.meta.bcDynamic" :to="{path: route.path}"> -->
@@ -30,6 +41,8 @@ export default {
   beforeCreate () {
     this.$options.computed.value = function () {
       if (this.route.meta.bcGetter) {
+        console.log('bcGetter!!!')
+        console.log(this.route.meta.bcGetter)
         return this.$store.getters[this.route.meta.bcGetter]
       } else {
         return null
@@ -38,7 +51,7 @@ export default {
   },
   methods: {
     log (arg) {
-      console.log(arg)
+      // console.log(arg)
     },
     className (crumb) {
       let css = 'breadcrumb-item'
@@ -52,7 +65,8 @@ export default {
       _.each(this.$route.matched, (r) => {
         if (r.meta.bcLinkText) {
           crumbs.push({ path: r.path || '/', text: r.meta.bcLinkText })
-          console.log(r)
+        } else if (r.meta.bcGetter) {
+          crumbs.push({ path: null, text: this.$store.getters[r.meta.bcGetter] })
         }
       })
       return crumbs

@@ -1,6 +1,6 @@
 
 <template>
-    <Breadcrumbs :collection="collection"/>
+    <Breadcrumbs/>
 </template>
 
 <!-- // // // //  -->
@@ -12,15 +12,6 @@ import Breadcrumbs from './components/Breadcrumbs'
 export default {
   components: {
     Breadcrumbs
-  },
-  computed: {
-    collection () {
-      return [
-        { text: 'Home', href: '#/' },
-        { text: 'Projects', href: '#/projects' },
-        { text: 'Project Name' }
-      ]
-    }
   }
 }
 </script>
