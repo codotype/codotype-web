@@ -122,6 +122,7 @@
       </div>
       <!-- end 'validations' -->
 
+      <!-- TODO - keep this? -->
       <!-- <div class="form-group"> -->
         <!-- <label>Preferred Display Attribute</label> -->
         <!-- <small class="form-text text-muted">This attribute will be the user-facing label when entities belonging to this schema are referenced in a relation.</small> -->
@@ -131,11 +132,20 @@
       <hr>
 
       <!-- DROPDOWN BUILDER -->
-      <!-- TODO - remove -->
-      <div class="form-group" v-if="model.datatype === 'TEXT_SELECT' || model.datatype === 'NUMBER_SELECT'">
-        <label>Dropdown Options</label>
-        <small class="form-text text-muted">Available options for this dropdown menu.</small>
-        <ArrayInput v-model="model.datatypeOptions.dropdownOptions" :type="model.datatype" />
+      <!-- TODO - keep, remove this? -->
+      <!-- <div class="form-group" v-if="model.datatype === 'TEXT_SELECT' || model.datatype === 'NUMBER_SELECT'"> -->
+        <!-- <label>Dropdown Options</label> -->
+        <!-- <small class="form-text text-muted">Available options for this dropdown menu.</small> -->
+        <!-- <ArrayInput v-model="model.datatypeOptions.dropdownOptions" :type="model.datatype" /> -->
+      <!-- </div> -->
+
+      <!-- RELATION TYPE -->
+      <div class="form-group" v-if="model.datatype === 'RELATION'">
+        <label>Relation Type</label>
+        <small class="form-text text-muted">The type of relation to define</small>
+        <select class="form-control" v-model="model.datatypeOptions.relationType" >
+          <option v-for="relation in relationTypes" :value="relation.id">{{relation.text}}</option>
+        </select>
       </div>
 
       <!-- SCHEMA Options -->
@@ -143,20 +153,13 @@
         <label>Related Schema</label>
         <small class="form-text text-muted">The Schema with which this attribute maintains a relation.</small>
         <select class="form-control" v-model="model.datatypeOptions.schema_id" >
-          <option v-if="model.datatype === 'BELONGS_TO'" v-for="s in allSchemas" :key="s._id" :value="s._id">{{s.label}}</option>
-          <option v-if="model.datatype === 'HAS_ONE'" v-for="s in allSchemas" :key="s._id" :value="s._id">{{s.label}}</option>
-          <option v-if="model.datatype === 'HAS_MANY'" v-for="s in allSchemas" :key="s._id" :value="s._id">{{s.label_plural}}</option>
+          <option v-if="model.datatypeOptions.relationType === 'BELONGS_TO'" v-for="s in allSchemas" :key="s._id" :value="s._id">{{s.label}}</option>
+          <option v-if="model.datatypeOptions.relationType === 'HAS_ONE'" v-for="s in allSchemas" :key="s._id" :value="s._id">{{s.label}}</option>
+          <option v-if="model.datatypeOptions.relationType === 'HAS_MANY'" v-for="s in allSchemas" :key="s._id" :value="s._id">{{s.label_plural}}</option>
         </select>
       </div>
 
-      <div class="form-group" v-if="model.datatype === 'RELATION'">
-        <label>Related Schema Key</label>
-        <small class="form-text text-muted">The name of the attribute on the related schema that is stored in this schema as a means of linking the two.</small>
-        <select class="form-control" v-model="model.datatypeOptions.schema_attribute_identifier" >
-          <option v-for="a in schemaAttributes(model.datatypeOptions.schema_id)" :key="a._id" :value="a.identifier">{{a.label}}</option>
-        </select>
-      </div>
-
+      <!-- TODO - refactor this into a separate Relation form element -->
       <div class="form-group" v-if="model.datatype === 'RELATION'">
         <label>Related Schema Key</label>
         <small class="form-text text-muted">The name of the attribute on the related schema that is stored in this schema as a means of linking the two.</small>
@@ -205,7 +208,8 @@ export default {
     }
   },
   computed: mapGetters({
-    allSchemas: 'schema/collection'
+    allSchemas: 'schema/collection',
+    relationTypes: 'schema/relationTypes'
   })
 }
 </script>
