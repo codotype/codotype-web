@@ -5,6 +5,7 @@ import Vuex from 'vuex'
 import project from './project'
 import schema from './schema'
 import attribute from './attribute'
+import record from './record'
 import notification from './notification'
 import generator from './generator'
 
@@ -20,6 +21,7 @@ export default new Vuex.Store({
     project,
     schema,
     attribute,
+    record,
     generator
   },
   plugins: [createPersistedState()]
