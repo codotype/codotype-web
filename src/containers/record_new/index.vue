@@ -15,7 +15,7 @@
 
     <!-- Record Form -->
     <div class="col-lg-12">
-      <small>RECORD FORM GOES HERE</small>
+      <RecordForm :record="record" :onSubmit="createRecord" />
     </div>
 
   </div>
@@ -24,31 +24,28 @@
 <!-- // // // //  -->
 
 <script>
-// import AttributeList from './components/AttributeList'
-// import AttributeForm from './components/AttributeForm'
-// import { mapGetters, mapActions } from 'vuex'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
+import RecordForm from '@/components/record/RecordForm'
 
 export default {
   props: ['project_id', 'schema_id'],
   metaInfo: {
     title: 'Seed - New'
   },
-  // components: {
-  //   AttributeList,
-  //   AttributeForm
-  // },
+  components: {
+    RecordForm
+  },
   // created () {
   //   this.selectModel(this.schema_id)
   //   this.resetNewAttribute()
   // },
   computed: mapGetters({
+    record: 'schema/newModel',
     schema: 'schema/selectedModel'
+  }),
+  methods: mapActions({
+    createRecord: 'record/create',
+    resetNewRecord: 'record/resetNewModel'
   })
-  // methods: mapActions({
-  //   selectModel: 'schema/selectModel',
-  //   createAttribute: 'attribute/create',
-  //   resetNewAttribute: 'attribute/resetNewModel'
-  // })
 }
 </script>
