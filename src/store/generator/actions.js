@@ -20,6 +20,10 @@ export default {
     })
   },
 
+  setActivated: ({ commit }, activated) => {
+    commit('activated', activated)
+  },
+
   // NOTE - used to export a specific build configuration
   exportJson: ({ commit }, model) => {
     console.log('EXPORT APP:')

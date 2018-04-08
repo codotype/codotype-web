@@ -16,7 +16,7 @@
 
             <a class='btn btn-sm btn-outline-info' v-bind:href="'#/projects/' + project._id">
               <i class="fa fa-database mr-1"></i>
-              {{ project.schemas.length + ' Schema(s)'}}
+              <!-- {{ project.schemas.length + ' Schema(s)'}} -->
             </a>
 
             <a class='btn btn-sm btn-outline-success' v-bind:href="'#/projects/' + project._id + '/generate'">
@@ -68,6 +68,9 @@
           <i class="fa fa-fw fa-info-circle mr-2"></i>
           <br>
           No Apps found
+        </p>
+        <p class="card-text">
+          See some <a href="#/projects/examples">examples</a>
         </p>
       </div>
     </div>
