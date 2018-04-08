@@ -2,10 +2,10 @@
 <template>
   <div class="row">
     <div class="col-lg-8">
-      <h2>
+      <h4>
         {{model.label}}
         <small class="text-muted">Attributes</small>
-      </h2>
+      </h4>
     </div>
 
     <div class="col-lg-4">

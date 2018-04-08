@@ -24,6 +24,7 @@
       <div class="row py-4">
         <div class="col-lg-12 text-center">
           <h2>Next-generation web application boilerplate.</h2>
+          <p class="lead text-warning">TODO - add links to github, social media</p>
         </div>
       </div>
 

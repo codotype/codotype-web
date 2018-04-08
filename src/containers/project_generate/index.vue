@@ -11,8 +11,9 @@
 
         <!-- Bootstrap Modal Component -->
         <!-- TODO - move this outside the scope of the loop, and instead pass only the options into a single instance -->
+        <!-- TODO -->
         <b-modal id="generate-modal"
-          :title="'Generate Application'"
+          :title="'Generating...'"
           @ok="generateApplication()"
           header-bg-variant="dark"
           header-text-variant="light"
@@ -25,7 +26,12 @@
           cancel-title='Cancel'
           cancel-variant='dark'
         >
-          <p class="text-left">Please confirm application details:</p>
+          <p class="lead">
+            Thank you for using blazeplate :)
+          </p>
+          <p class="text-left text-warning">TODO - add social media</p>
+          <p class="text-left text-warning">TODO - add github</p>
+          <p class="text-left text-warning">TODO - add contribute + donate</p>
           <!-- <pre class='text-left bg-light'>{{model}}</pre> -->
         </b-modal>
 

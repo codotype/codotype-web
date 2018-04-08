@@ -5,9 +5,9 @@
       <!-- Header -->
       <div class="row">
         <div class="col-lg-12">
-          <h2>
+          <h4>
             Seed Data
-          </h2>
+          </h4>
         </div>
         <div class="col-lg-12">
           <small class="mb-2 form-text text-muted">Define seed data for the {{ project.label }} app.</small>
@@ -18,7 +18,17 @@
       <!-- Schema List -->
       <ul class='list-group'>
         <a class='list-group-item bg-dark text-light border-light' v-for="schema in collection" :key="schema._id" :href="'#/projects/' + project._id + '/seeds/' + schema._id">
-          {{ schema.label }}
+          <div class="row">
+            <div class="col-lg-3">
+              {{ schema.label }}
+            </div>
+            <div class="col-lg-3 text-primary">
+              <i class="fa fa-check mr-2"></i>
+              5 records
+            </div>
+            <div class="col-lg-6">
+            </div>
+          </div>
         </a>
       </ul>
 

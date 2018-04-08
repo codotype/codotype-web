@@ -1,6 +1,6 @@
 
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid h-100">
 
     <!-- Abstract into Header component -->
     <div class="row d-flex align-items-center">
@@ -24,12 +24,10 @@
       </div>
     </div>
 
-    <hr>
-
-    <div class="row">
+    <div class="row h-100 mt-4" style='border-top: 1px solid #666'>
 
       <!-- TODO - abstract this into an independent Nav component -->
-      <div class="col-md-3" style='border-right: 1px solid #666;' v-if="!generatorAcivated">
+      <div class="col-md-2 h-100 pt-3" style='border-right: 1px solid #666; background: #222' v-if="!generatorAcivated">
 
         <!-- <p class="lead">Content Types</p> -->
         <!-- <b-nav vertical pills> -->
@@ -39,13 +37,14 @@
           <!-- </b-nav-item> -->
         <!-- </b-nav> -->
 
-        <p class="lead">Application</p>
+        <!-- <p class="lead mb-0">Configuration</p> -->
+        <!-- <p class="lead mb-0">{{model.label}}</p> -->
         <b-nav vertical pills>
           <b-nav-item :href="'#/projects/' + project_id + '/meta'" s>
             Meta
           </b-nav-item>
           <b-nav-item active :href="'#/projects/' + project_id + '/schemas'" >
-            Content Types
+            Models
           </b-nav-item>
           <b-nav-item :href="'#/projects/' + project_id + '/seeds'" >
             Seed Data
@@ -56,7 +55,7 @@
 
         </ul>
       </div>
-      <div :class=" generatorAcivated ? 'col-lg-12' : 'col-lg-9' ">
+      <div :class=" generatorAcivated ? 'col-lg-12 pt-3' : 'col-lg-10 pt-3' ">
         <router-view/>
       </div>
     </div>

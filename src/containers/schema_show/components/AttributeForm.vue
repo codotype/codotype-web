@@ -3,14 +3,7 @@
   <div class="row">
     <div class="col-lg-12">
 
-      <div class="row">
-        <div class="col-lg-12">
-          <p class="lead mb-0">Attribute</p>
-          <small class="form-text text-muted">Define the core parameters that are used to create a valid Attribute.</small>
-        </div>
-      </div>
-
-      <hr>
+      <!-- <small class="form-text text-muted">Define the core parameters that are used to create a valid Attribute.</small> -->
 
       <!-- Step 1 - Select Datatype -->
       <DatatypeSelector v-model="model.datatype" />

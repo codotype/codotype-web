@@ -47,10 +47,16 @@
       </div>
 
       <div class="col-lg-4 text-right">
-        <button class='btn btn-primary' v-b-modal="'new-project-modal'">
+        <button class='btn btn-lg btn-primary' v-b-modal="'new-project-modal'">
           <i class="fa fa-fw fa-plus mr-2"></i>
           New App
         </button>
+      </div>
+
+      <div class="col-lg-12">
+
+        <p class="text-warning">TODO - abstract header into separate component</p>
+        <p class="text-warning">TODO - refine the UI on this page a bit..</p>
       </div>
 
       <div class="col-lg-12">

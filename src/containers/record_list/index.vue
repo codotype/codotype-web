@@ -2,10 +2,10 @@
 <template>
   <div class="row">
     <div class="col-lg-8">
-      <h2>
+      <h4>
         {{schema.label}}
         <small class="text-muted">Seed Data</small>
-      </h2>
+      </h4>
     </div>
 
     <div class="col-lg-4">

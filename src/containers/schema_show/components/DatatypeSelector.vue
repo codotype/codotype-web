@@ -4,6 +4,7 @@
     <label>DataType</label>
     <small class="form-text text-muted">The type of data represented by this attribute.</small>
 
+    <!-- Working <select> element - keep for testing? -->
     <!-- <select class="form-control" ref="select" placeholder="Datatype" @change="updateModel()" > -->
       <!-- <option value=''></option> -->
       <!-- <option v-for="opt in datatypes" :value='opt.value'>{{opt.text}}</option> -->
@@ -15,16 +16,15 @@
     <!-- Basic Datatypes -->
     <div class="row">
       <div class="col-sm-6 pb-2" v-for="opt in datatypes" v-if="opt.value !== 'RELATION'">
-        <DatatypeOption :opt="opt" :val="value" :click="setDatatype" />
+        <DatatypeOption :opt="opt" :val="value" :click="setDatatype" class='btn-outline-light' />
       </div>
 
-      <div class="col-sm-12">
-        <hr>
-      </div>
+      <br>
+      <br>
 
       <!-- Relation Datatype -->
       <div class="col-sm-12" v-for="opt in datatypes" v-if="opt.value === 'RELATION'">
-        <DatatypeOption :opt="opt" :val="value" :click="setDatatype" />
+        <DatatypeOption :opt="opt" :val="value" :click="setDatatype" class='text-center btn-outline-light'/>
       </div>
     </div>
 

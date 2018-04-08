@@ -2,9 +2,9 @@
 <template>
   <div class="row">
     <div class="col-lg-6">
-      <h2>
-        Content Types
-      </h2>
+      <h4>
+        Models
+      </h4>
     </div>
     <div class="col-lg-6">
       <!-- <a class="btn btn-outline-primary" :href="'#/projects/' + model._id + '/schemas/new' "> -->
