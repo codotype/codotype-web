@@ -12,55 +12,10 @@
 
       <hr>
 
-      <!-- ABSTRACT ABSTRACT into DataTypeForm -->
-      <div class="form-group">
-        <label>DataType</label>
-        <small class="form-text text-muted">The type of data represented by this attribute.</small>
-        <select class="form-control" placeholder="Datatype" v-model="model.datatype" >
-          <option value=''></option>
-          <option value='TEXT'>Text</option>
-          <option value='NUMBER'>Number</option>
-          <option value='BOOL'>Checkbox</option>
-          <option value='DATE'>Date</option>
-          <option value='TIME'>Time</option>
-          <option value='COLOR'>Color</option>
-          <option value='GEO'>Geolocation</option>
-          <option value='RELATION'>Relation</option>
-          <!-- <optgroup label="Basics"> -->
-            <!-- <option value='RANGE'>Range</option> -->
-            <!-- <option value='PASSWORD'>Password</option> -->
-            <!-- <option value='URL'>URL</option> -->
-          <!-- </optgroup> -->
-          <!-- <optgroup label="Masked"> -->
-            <!-- <option value='PHONE_NUMBER'>Phone Number</option> -->
-            <!-- <option value='EMAIL'>Phone Number</option> -->
-            <!-- <option value='CURRENCY_USD'>Currency (USD)</option> -->
-          <!-- </optgroup> -->
-          <!-- <optgroup label="Dropdowns"> -->
-            <!-- <option value='TEXT_SELECT'>Text Dropdown</option> -->
-            <!-- <option value='NUMBER_SELECT'>Number Dropdown</option> -->
-            <!-- <option value='TEXT_SELECT_MULTI'>Text Multi Dropdown</option> -->
-            <!-- <option value='NUMBER_SELECT_MULTI'>Number Multi Dropdown</option> -->
-          <!-- </optgroup> -->
-          <!-- <optgroup label="Relations"> -->
-            <!-- <option value='HAS_ONE'>Has One</option> -->
-            <!-- <option value='BELONGS_TO'>Belongs To</option> -->
-            <!-- <option value='HAS_MANY'>Has Many</option> -->
-            <!-- <option value='HAS_AND_BELONGS_TO_MANY'>Has And Belongs To Many</option> -->
-          <!-- </optgroup> -->
-        </select>
-      </div>
-      <!-- /// ABSTRACT ABSTRACT -->
+      <!-- Step 1 - Select Datatype -->
+      <DatatypeSelector v-model="model.datatype" />
 
       <hr>
-
-      <div class="row" v-if="model.datatype === 'RELATION'">
-
-        <div class="col-lg-12">
-          <p class="lead mb-0">Relation Options</p>
-        </div>
-
-      </div>
 
       <!-- ABSTRACT ABSTRACT into PropertiesForm -->
       <div class="row" v-if="model.datatype !== 'RELATION'">
@@ -92,6 +47,7 @@
         </div>
 
       </div>
+
 
       <!-- /// ABSTRACT ABSTRACT into AdvancedPropertiesForm -->
       <!-- TODO - scope under 'validations' -->
@@ -128,6 +84,13 @@
         <!-- <small class="form-text text-muted">This attribute will be the user-facing label when entities belonging to this schema are referenced in a relation.</small> -->
         <!-- <input type="checkbox" class="form-control" v-model="model.preferred" > -->
       <!-- </div> -->
+
+      <!-- TODO - MOVE INTO RELATION FORM -->
+      <div class="row" v-if="model.datatype === 'RELATION'">
+        <div class="col-lg-12">
+          <p class="lead mb-0">Relation Options</p>
+        </div>
+      </div>
 
       <hr>
 
@@ -190,13 +153,13 @@
 import _ from 'lodash'
 import { mapGetters } from 'vuex'
 import ArrayInput from '@/components/ArrayInput'
-import AttributeList from './AttributeList'
+import DatatypeSelector from './DatatypeSelector'
 
 export default {
   props: ['schema', 'model'],
   components: {
     ArrayInput,
-    AttributeList
+    DatatypeSelector
   },
   methods: {
     schemaAttributes (schema_id) {
