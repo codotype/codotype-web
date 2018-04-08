@@ -5,12 +5,17 @@ import Router from 'vue-router'
 import ProjectList from '@/containers/project_list'
 import ProjectShow from '@/containers/project_show'
 import ProjectMeta from '@/containers/project_show/components/ProjectMeta'
+import ProjectSeeds from '@/containers/project_show/components/ProjectSeeds'
 import ProjectGenerate from '@/containers/project_generate'
 
 // Schema Containers
 import SchemaList from '@/containers/schema_list'
 import SchemaShow from '@/containers/schema_show'
 import SchemaEdit from '@/containers/schema_edit'
+
+// Record Containers
+import RecordList from '@/containers/record_list'
+import RecordNew from '@/containers/record_new'
 
 // TODO - move these into main.js (???)
 import MainHome from '@/containers/main_home'
@@ -91,6 +96,26 @@ export default new Router({
                       // TODO - not sure we need SchemaEdit?
                       path: '/projects/:project_id/schemas/:schema_id/edit',
                       component: SchemaEdit
+                    }
+                  ]
+                },
+                {
+                  path: '/projects/:project_id/seeds',
+                  component: RouterView,
+                  children: [
+                    {
+                      path: '',
+                      component: ProjectSeeds
+                    },
+                    {
+                      path: '/projects/:project_id/seeds/:schema_id',
+                      component: RecordList,
+                      props: true
+                    },
+                    {
+                      path: '/projects/:project_id/seeds/:schema_id/new',
+                      component: RecordNew,
+                      props: true
                     }
                   ]
                 }

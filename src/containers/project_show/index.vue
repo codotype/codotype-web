@@ -47,8 +47,10 @@
           <b-nav-item active :href="'#/projects/' + project_id + '/schemas'" >
             Content Types
           </b-nav-item>
+          <b-nav-item :href="'#/projects/' + project_id + '/seeds'" >
+            Seed Data
+          </b-nav-item>
           <b-nav-item disabled>Authorization</b-nav-item>
-          <b-nav-item disabled>Seed Data</b-nav-item>
           <b-nav-item disabled>Environment</b-nav-item>
         </b-nav>
 
