@@ -1,6 +1,6 @@
 
 <template>
-  <a class='list-group-item border-light bg-dark text-light' :href="'#/projects/' + model._id + '/schemas/' + schema._id + '/edit/'">
+  <a class='list-group-item border-light bg-dark text-light' :href="'#/projects/' + model._id + '/schemas/' + schema._id">
 
     <div class="row">
       <div class="col-md-3">

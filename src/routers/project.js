@@ -6,7 +6,6 @@ import ProjectGenerate from '@/containers/project_generate'
 
 // Schema Containers
 import SchemaList from '@/containers/schema_list'
-import SchemaNew from '@/containers/schema_new'
 import SchemaShow from '@/containers/schema_show'
 import SchemaEdit from '@/containers/schema_edit'
 
@@ -68,10 +67,6 @@ export const ProjectListRoute = {
                 {
                   path: '',
                   component: SchemaList
-                },
-                {
-                  path: '/projects/:project_id/schemas/new',
-                  component: SchemaNew
                 },
                 {
                   // TODO - not sure we need SchemaShow??
