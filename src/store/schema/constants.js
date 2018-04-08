@@ -20,14 +20,14 @@ export const RELATION_TYPES = [
 ]
 
 export const DATATYPES = [
-  { id: 'TEXT', text: 'Text' },
-  { id: 'NUMBER', text: 'Number' },
-  { id: 'BOOL', text: 'Checkbox' },
-  { id: 'DATE', text: 'Date' },
-  { id: 'TIME', text: 'Time' },
-  { id: 'COLOR', text: 'Color' },
-  { id: 'GEO', text: 'Geolocation' },
-  { id: 'RELATION', text: 'Relation' }
+  { value: 'TEXT', text: 'Text', icon: 'fa-quote-left' },
+  { value: 'NUMBER', text: 'Number', icon: 'fa-hashtag' },
+  { value: 'BOOL', text: 'Boolean', icon: 'fa-check-square-o' },
+  { value: 'DATE', text: 'Date', icon: 'fa-calendar-o' },
+  { value: 'TIME', text: 'Time', icon: 'fa-clock-o' },
+  { value: 'COLOR', text: 'Color', icon: 'fa-eyedropper' },
+  { value: 'GEO', text: 'Geolocation', icon: 'fa-map' },
+  { value: 'RELATION', text: 'Relation', icon: 'fa-link' }
 ]
 
 // <!-- <optgroup label="Basics"> -->

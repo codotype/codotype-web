@@ -7,6 +7,7 @@
         <i class="fa fa-lg fa-fw fa-bars mr-3"></i>
       </div>
 
+      <!-- TODO - get rid of hardcoded icons -->
       <div class="col-lg-5">
 
         <!-- TEXT -->
