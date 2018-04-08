@@ -6,8 +6,10 @@ import { SELECT_MODEL_ACTIONS, EDIT_MODEL_ACTIONS } from '@/store/lib/mixins'
 export default {
   ...SELECT_MODEL_ACTIONS,
   ...EDIT_MODEL_ACTIONS,
-  resetNewModel ({ state, commit }) {
-    return commit('newModel', _.cloneDeep(DEFAULT_RECORD))
+  resetNewModel ({ state, commit }, schema_id) {
+    let newModel = _.cloneDeep(DEFAULT_RECORD)
+    newModel.schema_id = schema_id
+    return commit('newModel', newModel)
   },
   create ({ state, commit, dispatch }) {
     let collection = state.collection

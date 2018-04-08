@@ -22,8 +22,7 @@
 
     <!-- Record List -->
     <div class="col-lg-12">
-      <small>RECORD LIST GOES HERE</small>
-      <!-- <AttributeList :schema='model' /> -->
+      <RecordList :schema="schema" :projectId="project_id" />
     </div>
 
   </div>
@@ -33,8 +32,8 @@
 
 <script>
 // import AttributeList from './components/AttributeList'
-// import AttributeForm from './components/AttributeForm'
 // import { mapGetters, mapActions } from 'vuex'
+import RecordList from '@/components/record/RecordList'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -42,10 +41,9 @@ export default {
   metaInfo: {
     title: 'Seed - List'
   },
-  // components: {
-  //   AttributeList,
-  //   AttributeForm
-  // },
+  components: {
+    RecordList
+  },
   // created () {
   //   this.selectModel(this.schema_id)
   //   this.resetNewAttribute()

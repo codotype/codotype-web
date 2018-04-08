@@ -35,12 +35,11 @@ export default {
   components: {
     RecordForm
   },
-  // created () {
-  //   this.selectModel(this.schema_id)
-  //   this.resetNewAttribute()
-  // },
+  created () {
+    this.resetNewRecord(this.schema_id)
+  },
   computed: mapGetters({
-    record: 'schema/newModel',
+    record: 'record/newModel',
     schema: 'schema/selectedModel'
   }),
   methods: mapActions({
