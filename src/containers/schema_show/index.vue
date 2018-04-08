@@ -1,22 +1,55 @@
 
 <template>
-  <!-- <LayoutView :project="data.project" :schema="data.schema" :records="data.records" /> -->
-  <p class="lead">SCHEMA SHOW</p>
+  <div class="row">
+    <div class="col-lg-8">
+      <h2>
+        {{model.label}}
+        <small class="text-muted">Attributes</small>
+      </h2>
+    </div>
+
+    <div class="col-lg-4 text-right">
+      <a class='btn btn-outline-primary' :href=" '#/projects/' + project_id + '/preview/' + schema_id + '/attributes' ">
+        <i class="fa fa-fw fa-plus mr-2"></i>
+        New Attribute
+      </a>
+    </div>
+
+    <div class="col-lg-12">
+      <hr>
+    </div>
+
+    <div class="col-lg-12">
+      <AttributeList :schema='model' />
+    </div>
+
+  </div>
 </template>
 
 <!-- // // // //  -->
 
 <script>
-import LayoutView from './components/layout.vue'
+import AttributeList from './components/AttributeList'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  components: {
-    LayoutView
-  },
+  props: ['project_id', 'schema_id'],
   metaInfo: {
     title: 'Schema - Show'
   },
-  computed: {
-  }
+  components: {
+    AttributeList
+  },
+  created () {
+    console.log('CREATED')
+    console.log(this.schema_id)
+    this.selectModel(this.schema_id)
+  },
+  computed: mapGetters({
+    model: 'schema/selectedModel'
+  }),
+  methods: mapActions({
+    selectModel: 'schema/selectModel'
+  })
 }
 </script>

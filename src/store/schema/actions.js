@@ -1,11 +1,18 @@
 import _ from 'lodash'
 import { DEFAULT_SCHEMA } from './constants'
+import { SELECT_MODEL_ACTIONS } from '@/store/lib/mixins'
 const titleize = require('underscore.string/titleize')
 const underscored = require('underscore.string/underscored')
 const pluralize = require('pluralize')
 
 // Schema module actions
 export default {
+  ...SELECT_MODEL_ACTIONS,
+  selectModel: ({ commit, state }, model_id) => {
+    let model = _.find(state.collection, { _id: model_id })
+    commit('selectedModel', model)
+    commit('attribute/collection', model.attributes, { root: true })
+  },
   create ({ state, commit }) {
     commit('persist', { schema: state.newModel })
   },
