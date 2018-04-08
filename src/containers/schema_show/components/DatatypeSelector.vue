@@ -12,17 +12,19 @@
     <!-- Hidden input (instead of select element above) -->
     <input class="form-control" type='hidden' ref="select" @change="updateModel()" />
 
+    <!-- Basic Datatypes -->
     <div class="row">
-      <div class="col-sm-6 pb-2" v-for="opt in datatypes">
-        <button class='btn btn-sm btn-block text-left btn-outline-light active' v-if="opt.value === value" @click="setDatatype(opt.value)">
-          <i :class="'fa mr-2 ' + opt.icon"></i>
-          {{opt.text}}
-        </button>
+      <div class="col-sm-6 pb-2" v-for="opt in datatypes" v-if="opt.value !== 'RELATION'">
+        <DatatypeOption :opt="opt" :val="value" :click="setDatatype" />
+      </div>
 
-        <button class='btn btn-sm btn-block text-left btn-outline-light' v-else @click="setDatatype(opt.value)">
-          <i :class="'fa mr-2 ' + opt.icon"></i>
-          {{opt.text}}
-        </button>
+      <div class="col-sm-12">
+        <hr>
+      </div>
+
+      <!-- Relation Datatype -->
+      <div class="col-sm-12" v-for="opt in datatypes" v-if="opt.value === 'RELATION'">
+        <DatatypeOption :opt="opt" :val="value" :click="setDatatype" />
       </div>
     </div>
 
@@ -33,9 +35,13 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import DatatypeOption from './DatatypeOption'
 
 export default {
   props: ['value'],
+  components: {
+    DatatypeOption
+  },
   computed: mapGetters({
     datatypes: 'schema/datatypes'
   }),
