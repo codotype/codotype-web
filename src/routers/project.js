@@ -69,18 +69,16 @@ export const ProjectListRoute = {
                   component: SchemaList
                 },
                 {
-                  // TODO - not sure we need SchemaShow??
                   path: '/projects/:project_id/schemas/:schema_id',
                   props: true,
                   component: SchemaShow
                 },
                 {
+                  // TODO - not sure we need SchemaEdit?
                   path: '/projects/:project_id/schemas/:schema_id/edit',
                   component: SchemaEdit
                 }
               ]
-              // props: true
-              // meta: { bcLinkText: 'Schemas' }
             }
           ]
         }

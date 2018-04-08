@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 
 import project from './project'
 import schema from './schema'
+import attribute from './attribute'
 import notification from './notification'
 import generator from './generator'
 
@@ -15,9 +16,10 @@ Vue.use(Vuex)
 // and getters.
 export default new Vuex.Store({
   modules: {
-    schema,
     notification,
     project,
+    schema,
+    attribute,
     generator
   },
   plugins: [createPersistedState()]
