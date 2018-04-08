@@ -96,11 +96,11 @@
 
       <div class="col-lg-3 text-right controls"
       >
-        <button class="btn btn-sm btn-outline-secondary" v-b-tooltip.hover.top title="Edit" @click="edit(item)">
+        <button class="btn btn-sm btn-outline-secondary" :disabled="item.locked" v-b-tooltip.hover.top title="Edit" @click="edit(item)">
           <i class="fa fa-fw fa-pencil"></i>
         </button>
 
-        <button class="btn btn-sm btn-outline-danger" v-b-tooltip.hover.top v-b-modal="'modal_' + item._id" title="Remove">
+        <button class="btn btn-sm btn-outline-danger" :disabled="item.locked" v-b-tooltip.hover.top v-b-modal="'modal_' + item._id" title="Remove">
           <i class="fa fa-fw fa-trash"></i>
         </button>
 

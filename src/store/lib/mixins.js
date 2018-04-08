@@ -85,7 +85,7 @@ export const NEW_MODEL_STATE = {
 
 export const EDIT_MODEL_ACTIONS = {
   selectEditModel: ({ commit }, model) => {
-    return commit('editModel', model)
+    return commit('editModel', _.cloneDeep(model))
   },
   clearEditModel: ({ commit }) => {
     return commit('editModel', {})

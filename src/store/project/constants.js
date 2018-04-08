@@ -51,7 +51,8 @@ export const DEFAULT_USER_SCHEMA = {
       datatype: 'TEXT',
       datatypeOptions: {},
       identifier: 'email',
-      _id: 'attr_26577092992831'
+      _id: 'attr_26577092992831',
+      locked: true
     }
   ]
 }
