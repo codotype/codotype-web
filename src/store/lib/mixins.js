@@ -56,4 +56,26 @@ export const SELECT_MODEL_STATE = {
 }
 
 // // // //
-// Adds Collection filtering to a Vuex module
+// NEW_MODEL mixins
+
+export const NEW_MODEL_ACTIONS = {
+  resetNewModel: ({ commit }) => {
+    return commit('newModel', {})
+  }
+}
+
+export const NEW_MODEL_GETTERS = {
+  newModel: state => {
+    return state.newModel
+  }
+}
+
+export const NEW_MODEL_MUTATIONS = {
+  newModel (state, newModel) {
+    state.newModel = newModel
+  }
+}
+
+export const NEW_MODEL_STATE = {
+  newModel: {}
+}
