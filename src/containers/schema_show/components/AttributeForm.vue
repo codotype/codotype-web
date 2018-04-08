@@ -17,73 +17,11 @@
 
       <hr>
 
-      <!-- ABSTRACT ABSTRACT into PropertiesForm -->
-      <div class="row" v-if="model.datatype !== 'RELATION'">
+      <!-- Step 2 - Datatype Properties -->
+      <AttributePropertiesForm :model="model" v-if="model.datatype !== 'RELATION'"/>
 
-        <div class="col-lg-12">
-          <p class="lead mb-0">Properties</p>
-        </div>
-
-        <div class="col-lg-6 col-sm-12">
-          <div class="form-group">
-            <label>
-              Label
-              <span class='text-danger'>*</span>
-            </label>
-            <small class="form-text text-muted">Example: 'Last Name'<br>The human-readable name for this attribute.</small>
-            <input type="text" class="form-control" placeholder="Label" v-model="model.label" >
-          </div>
-        </div>
-
-        <div class="col-lg-6 col-sm-12">
-          <div class="form-group">
-            <label>
-              Field Name
-              <span class='text-danger'>*</span>
-            </label>
-            <small class="form-text text-muted">Example: 'last_name'<br>Lowercase, no spaces.</small>
-            <input type="text" class="form-control" placeholder="Identifier" v-model="model.identifier" >
-          </div>
-        </div>
-
-      </div>
-
-
-      <!-- /// ABSTRACT ABSTRACT into AdvancedPropertiesForm -->
-      <!-- TODO - scope under 'validations' -->
-      <div class="row" v-if="model.datatype !== 'RELATION'">
-
-        <div class="col-lg-12">
-          <p class="lead mb-0">Advanced Properties</p>
-        </div>
-
-        <div class="col-lg-6 col-sm-12">
-          <div class="form-group">
-            <label>
-              Required
-              <span class='text-danger'>*</span>
-            </label>
-            <small class="form-text text-muted">Whether or not this attribute is required.</small>
-            <input type="checkbox" class="form-control" v-model="model.required" >
-          </div>
-        </div>
-
-        <div class="col-lg-6 col-sm-12">
-          <div class="form-group">
-            <label>Unique</label>
-            <small class="form-text text-muted">Whether or not to enforce unique values for this attribute.</small>
-            <input type="checkbox" class="form-control" v-model="model.unique" >
-          </div>
-        </div>
-      </div>
-      <!-- end 'validations' -->
-
-      <!-- TODO - keep this? -->
-      <!-- <div class="form-group"> -->
-        <!-- <label>Preferred Display Attribute</label> -->
-        <!-- <small class="form-text text-muted">This attribute will be the user-facing label when entities belonging to this schema are referenced in a relation.</small> -->
-        <!-- <input type="checkbox" class="form-control" v-model="model.preferred" > -->
-      <!-- </div> -->
+      <!-- Step 3 - Datatype Validations -->
+      <AttributeValidationsForm :model="model" v-if="model.datatype !== 'RELATION'"/>
 
       <!-- TODO - MOVE INTO RELATION FORM -->
       <div class="row" v-if="model.datatype === 'RELATION'">
@@ -154,12 +92,16 @@ import _ from 'lodash'
 import { mapGetters } from 'vuex'
 import ArrayInput from '@/components/ArrayInput'
 import DatatypeSelector from './DatatypeSelector'
+import AttributePropertiesForm from './AttributePropertiesForm'
+import AttributeValidationsForm from './AttributeValidationsForm'
 
 export default {
   props: ['schema', 'model'],
   components: {
     ArrayInput,
-    DatatypeSelector
+    DatatypeSelector,
+    AttributePropertiesForm,
+    AttributeValidationsForm
   },
   methods: {
     schemaAttributes (schema_id) {

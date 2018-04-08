@@ -26,7 +26,7 @@ export const DATATYPES = [
   { value: 'DATE', text: 'Date', icon: 'fa-calendar-o' },
   { value: 'TIME', text: 'Time', icon: 'fa-clock-o' },
   { value: 'COLOR', text: 'Color', icon: 'fa-eyedropper' },
-  { value: 'GEO', text: 'Geolocation', icon: 'fa-map' },
+  // { value: 'GEO', text: 'Geolocation', icon: 'fa-map' },
   { value: 'RELATION', text: 'Relation', icon: 'fa-link' }
 ]
 
