@@ -18,12 +18,12 @@
       cancel-title='Cancel'
       cancel-variant='dark'
     >
-      <p class="text-left">{{ editModel }}</p>
+      <AttributeForm :schema="schema" :model="editAttribute" />
     </b-modal>
 
      <div class="col-lg-12">
       <draggable class='list-group' v-model='attributes' :options="sortableOptions" v-if="attributes.length">
-        <AttributeItem v-for="each in attributes" :item="each" :key="each._id" :edit="editAttribute" />
+        <AttributeItem v-for="each in attributes" :item="each" :key="each._id" :edit="selectEditAttribute" />
       </draggable>
 
       <!-- Empty Attribute view -->
@@ -43,20 +43,20 @@ import _ from 'lodash'
 import { mapGetters, mapActions } from 'vuex'
 import draggable from 'vuedraggable'
 import AttributeItem from './AttributeItem'
+import AttributeForm from './AttributeForm'
 
 export default {
   components: {
     draggable,
-    AttributeItem
+    AttributeItem,
+    AttributeForm
   },
   methods: {
     ...mapActions({
       updateAttr: 'attribute/update',
       selectEditAttr: 'attribute/selectEditModel'
     }),
-    editAttribute (attr) {
-      // selectEditModel
-      console.log('EDIT ATTRIBUTE')
+    selectEditAttribute (attr) {
       this.selectEditAttr(attr)
       this.$refs.editModal.show()
     }
@@ -64,7 +64,7 @@ export default {
   computed: {
     ...mapGetters({
       schema: 'schema/selectedModel',
-      editModel: 'attribute/editModel'
+      editAttribute: 'attribute/editModel'
     }),
     sortableOptions () {
       return {

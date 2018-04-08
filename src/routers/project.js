@@ -1,7 +1,7 @@
 // Project Containers
 import ProjectList from '@/containers/project_list'
 import ProjectShow from '@/containers/project_show'
-import ProjectShowLayout from '@/containers/project_show/components/layout'
+import ProjectMeta from '@/containers/project_show/components/ProjectMeta'
 import ProjectGenerate from '@/containers/project_generate'
 
 // Schema Containers
@@ -52,7 +52,7 @@ export const ProjectListRoute = {
           children: [
             {
               path: '',
-              component: ProjectShowLayout
+              component: ProjectMeta
             },
             {
               path: '/projects/:project_id/generate',

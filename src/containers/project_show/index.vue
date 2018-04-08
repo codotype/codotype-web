@@ -12,9 +12,9 @@
         </h2>
       </div>
       <div class="col-md-6 text-right">
-        <a class="btn btn-outline-light" :href="'#/projects/' + model._id" v-if="generatorAcivated">
+        <a class="btn btn-warning" :href="'#/projects/' + model._id" v-if="generatorAcivated">
           <i class="fa fa-fw fa-reply mr-2"></i>
-          Edit
+          Back to Editor
         </a>
         <a class="btn btn-success" :href="'#/projects/' + model._id + '/generate'" v-else>
           <i class="fa fa-fw fa-play mr-2"></i>

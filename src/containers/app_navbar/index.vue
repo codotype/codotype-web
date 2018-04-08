@@ -21,7 +21,12 @@
       </b-navbar-nav>
 
       <b-navbar-nav class="mr-0">
-        <b-nav-item href="#/projects">
+        <b-nav-item target="_blank" href="https://github.com/blazeplate">
+          <i class="fa fa-fw fa-github"></i>
+          GitHub
+        </b-nav-item>
+
+        <b-nav-item href="#/about">
           <i class="fa fa-fw fa-question-circle-o"></i>
           About
         </b-nav-item>
