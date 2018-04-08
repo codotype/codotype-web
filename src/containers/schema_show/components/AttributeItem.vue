@@ -75,12 +75,6 @@
           {{item.label}}
         </span>
 
-        <!-- CURRENCY_USD -->
-        <!-- <span class="badge" v-if="item.datatype === 'CURRENCY_USD'"> -->
-          <!-- <i class="fa fa-usd mr-2"></i> -->
-          <!-- {{item.label}} -->
-        <!-- </span> -->
-
         <!-- BOOL -->
         <span class="badge" v-if="item.datatype === 'BOOL'">
           <i class="fa fa-check-square-o mr-2"></i>

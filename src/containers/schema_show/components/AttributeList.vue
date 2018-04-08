@@ -10,7 +10,6 @@
       <!-- Empty Attribute view -->
       <li class="card card-body text-center bg-dark border-warning text-warning" v-else>
         <!-- <i class="fa fa-fw fa-plus"></i> -->
-        <!-- <br> -->
         TODO - Click to add your first Attribute
       </li>
 
@@ -27,14 +26,13 @@ import draggable from 'vuedraggable'
 import AttributeItem from './AttributeItem'
 
 export default {
-  props: ['schema'],
   components: {
     draggable,
     AttributeItem
   },
   computed: {
     ...mapGetters({
-      selectedAttr: 'schema/selectedAttribute'
+      schema: 'schema/selectedModel'
     }),
     sortableOptions () {
       return {
@@ -42,9 +40,9 @@ export default {
         fallbackTolerance: 100
       }
     },
+    // TODO - this should be moved into Vuex store, but how?
     attributes: {
       get () {
-        // TODO - this should be moved into Vuex store
         this.schema.attributes = _.orderBy(this.schema.attributes, ['order'], ['asc'])
         return this.schema.attributes
       },

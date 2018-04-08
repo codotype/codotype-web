@@ -61,6 +61,7 @@ export default {
     state.selectedSchema.attributes = _.orderBy(state.selectedSchema.attributes, ['order'], ['asc'])
     state.selectedSchema = null
   },
+  // TODO - pending destruction
   persistSelectedAttribute (state, { schema, attr }) {
     if (attr._id) {
       schema.attributes = _.map(schema.attributes, (a) => { // QUESTION - just .map()
@@ -87,18 +88,5 @@ export default {
 
     // Clears the selectedAttribute
     state.selectedAttribute = null
-  },
-  addAttribute (state, { schema }) {
-    let new_attribute = {
-      order: schema.attributes.length + 1,
-      label: '',
-      help: '',
-      required: false,
-      unique: false,
-      datatype: 'TEXT',
-      datatypeOptions: {}
-    }
-
-    state.selectedAttribute = new_attribute
   }
 }
