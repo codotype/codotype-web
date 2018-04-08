@@ -63,12 +63,15 @@ export default new Router({
               children: [
                 {
                   path: '',
+                  component: SchemaList
+                },
+                {
+                  path: '/projects/:project_id/meta',
                   component: ProjectMeta
                 },
                 {
                   path: '/projects/:project_id/generate',
                   component: ProjectGenerate
-                  // props: true
                   // meta: { bcLinkText: 'Generate' }
                 },
                 {

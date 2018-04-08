@@ -29,17 +29,18 @@
       <div class="col-md-3" v-if="!generatorAcivated">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class='nav-link' :href="'#/projects/' + project_id">Metadata</a>
+            <a class='nav-link' :href="'#/projects/' + project_id + '/meta'">Meta</a>
           </li>
           <li class="nav-item">
-            <!-- <a class='nav-link' :href="'#/projects/' + project_id + '/schemas'">Content Types</a> -->
-            Content Types
+            <a class='nav-link' :href="'#/projects/' + project_id + '/schemas'">Content Types</a>
           </li>
-          <li class="nav-item" v-for="schema in model.schemas" :key="schema._id">
-            <a class='nav-link' :href="'#/projects/' + project_id + '/schemas/' + schema._id">
-              {{ schema.label_plural }}
-            </a>
-          </li>
+
+          <!-- <li class="nav-item" v-for="schema in model.schemas" :key="schema._id"> -->
+            <!-- <a class='nav-link' :href="'#/projects/' + project_id + '/schemas/' + schema._id"> -->
+              <!-- {{ schema.label_plural }} -->
+            <!-- </a> -->
+          <!-- </li> -->
+
           <!-- <li class="nav-item"> -->
             <!-- <a class='nav-link' :href="'#/projects/' + project_id + '/settings'">Authorization</a> -->
           <!-- </li> -->
