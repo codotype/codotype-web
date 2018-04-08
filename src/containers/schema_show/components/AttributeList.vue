@@ -1,40 +1,20 @@
 
 <template>
   <div class="row">
-    <div class="col-lg-6">
-      <p class="lead mb-0">Attributes</p>
-    </div>
-
-    <!-- Attribute Editor Controls -->
-    <div class="col-lg-6 text-right">
-      <div class="btn-group mt-3" v-if="!selectedAttr && attributes.length">
-        <button class="btn btn-primary w-100" @click="addAttribute()">
-          <i class="fa fa-fw fa-plus mr-2"></i>
-          Add Attribute
-        </button>
-      </div>
-    </div>
-
-    <div class="col-lg-12">
-      <small class="mb-2 form-text text-muted">Defines the attributes that can be assigned to an entity of this schema.</small>
-      <hr>
-    </div>
 
      <div class="col-lg-12">
-      <draggable class='list-group' v-model='attributes' :options="sortableOptions">
+      <draggable class='list-group' v-model='attributes' :options="sortableOptions" v-if="attributes.length">
         <AttributeItem v-for="each in attributes" :item="each" :key="each._id" :remove="removeAttribute" :edit="editAttribute" />
-
-        <!-- TODO - abstract into EmptyView -->
-        <li class="px-2 py-4 text-center list-group-item list-group-item-info" @click="addAttribute()" v-if="!attributes.length">
-          <i class="fa fa-fw fa-plus mr-2"></i>
-          <br>
-          Click to add your first Attribute.
-        </li>
-        <!-- END TODO -->
-
       </draggable>
-    </div>
 
+      <!-- Empty Attribute view -->
+      <li class="card card-body text-center bg-dark border-warning text-warning" v-else>
+        <!-- <i class="fa fa-fw fa-plus"></i> -->
+        <!-- <br> -->
+        TODO - Click to add your first Attribute
+      </li>
+
+    </div>
   </div>
 </template>
 

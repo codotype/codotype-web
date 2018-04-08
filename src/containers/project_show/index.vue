@@ -28,17 +28,26 @@
       <div class="col-md-3" v-if="!generatorAcivated">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class='nav-link' :href="'#/projects/' + project_id">META</a>
+            <a class='nav-link' :href="'#/projects/' + project_id">Metadata</a>
           </li>
           <li class="nav-item">
-            <a class='nav-link' :href="'#/projects/' + project_id + '/schemas'">SCHEMAS</a>
+            <a class='nav-link' :href="'#/projects/' + project_id + '/schemas'">Content Types</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
+            <a class='nav-link' :href="'#/projects/' + project_id + '/settings'">Authorization</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+            <a class='nav-link' :href="'#/projects/' + project_id + '/schemas'">Seed Data</a>
           </li>
+          <li class="nav-item">
+            <a class='nav-link' :href="'#/projects/' + project_id + '/settings'">Settings</a>
+          </li>
+          <!-- <li class="nav-item"> -->
+            <!-- <a class="nav-link active" href="#">Active</a> -->
+          <!-- </li> -->
+          <!-- <li class="nav-item"> -->
+            <!-- <a class="nav-link disabled" href="#">Disabled</a> -->
+          <!-- </li> -->
         </ul>
       </div>
       <div :class=" generatorAcivated ? 'col-lg-12' : 'col-lg-9' ">

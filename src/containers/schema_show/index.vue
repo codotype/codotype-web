@@ -9,13 +9,14 @@
     </div>
 
     <div class="col-lg-4 text-right">
-      <a class='btn btn-outline-primary' :href=" '#/projects/' + project_id + '/preview/' + schema_id + '/attributes' ">
+      <a class='btn btn-primary' :href=" '#/projects/' + project_id + '/preview/' + schema_id + '/attributes' ">
         <i class="fa fa-fw fa-plus mr-2"></i>
         New Attribute
       </a>
     </div>
 
     <div class="col-lg-12">
+      <small class="mb-2 form-text text-muted">Defines the attributes that can be assigned to a single {{ model.label }}</small>
       <hr>
     </div>
 
