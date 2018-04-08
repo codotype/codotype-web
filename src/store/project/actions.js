@@ -1,35 +1,19 @@
 import _ from 'lodash'
-import { GENERATE_ROUTE, DEFAULT_PROJECT, DEFAULT_USER_SCHEMA } from './constants'
+import { DEFAULT_PROJECT, DEFAULT_USER_SCHEMA } from './constants'
 import { SELECT_MODEL_ACTIONS } from '@/store/lib/mixins'
 
-const DownloadFile = require('downloadjs')
 const underscored = require('underscore.string/underscored')
 // TODO - use this instead?
 // import { underscored } from 'underscore.string'
 
-function generateProject (project) {
-  return new Promise((resolve, reject) => {
-    return fetch(GENERATE_ROUTE, {
-      method: 'post',
-      body: JSON.stringify(project),
-      headers: new Headers({ 'Content-Type': 'application/json' })
-    })
-    .then((response) => { return response.blob() })
-    .then((blob) => { return resolve(blob) })
-    .catch((err) => { return reject(err) })
-  })
-}
-
-// actions
-// functions that causes side effects and can involve asynchronous operations.
-const actions = {
+export default {
   ...SELECT_MODEL_ACTIONS,
   selectModel: ({ commit, state }, model_id) => {
     let model = _.find(state.collection, { _id: model_id })
     commit('selectedModel', model)
     commit('schema/collection', model.schemas, { root: true })
   },
-  fetchCollection: ({ commit }) => {
+  fetchCollection: ({ rootGetters, commit }) => {
     commit('fetching', true)
     setTimeout(() => {
       commit('fetching', false)
@@ -74,14 +58,6 @@ const actions = {
     commit('collection', collection)
   },
 
-  generate: ({ state, commit }) => {
-    generateProject(state.selectedModel).then((blob) => {
-      console.log('GENERATED')
-      console.log(blob)
-      DownloadFile(blob, 'app.zip', 'application/zip')
-    })
-  },
-
   exportJson: ({ commit }, model) => {
     console.log('EXPORT APP:')
     console.log(JSON.stringify(model, null, 2))
@@ -102,7 +78,3 @@ const actions = {
     commit('newModel', newModel)
   }
 }
-
-// // // //
-
-export default actions

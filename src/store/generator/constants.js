@@ -1,5 +1,7 @@
 // Generator module constants
 
+export const GENERATE_ROUTE = '/api/generate'
+
 export const DEPLOYMENT_OPTS = [
   { id: 'docker_compose', icon: 'devicon-docker-plain', label: 'Docker', selected: true },
   // { id: 'ansible', icon: 'devicon-amazonwebservices-plain', label: 'Ansible', disabled: true },

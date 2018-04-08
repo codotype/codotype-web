@@ -1,7 +1,5 @@
 // Project module constants
 
-export const GENERATE_ROUTE = '/api/generate'
-
 export const DEFAULT_PROJECT = {
   label: 'DEFAULT_LABEL',
   identifier: '',

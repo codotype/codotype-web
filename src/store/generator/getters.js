@@ -7,5 +7,8 @@ export default {
   },
   clientOpts: state => {
     return CLIENT_OPTS
+  },
+  activated: state => {
+    return state.activated
   }
 }
