@@ -1,23 +1,39 @@
 
 <template>
-  <li class='list-group-item border-light bg-dark text-light'>
+  <a class='list-group-item border-light bg-dark text-light' :href="'#/projects/' + model._id + '/schemas/' + schema._id + '/edit/'">
 
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-3">
         {{ schema.label_plural }}
+      </div>
+
+      <div class="col-md-3">
+        Attributes
       </div>
 
       <div class="col-md-6 text-right">
 
-        <a class='btn btn-sm btn-outline-warning' :href="'#/projects/' + model._id + '/schemas/' + schema._id + '/edit/'">
-          <i class="fa fa-pencil mr-1"></i>
-          Edit
-        </a>
+        <!-- <a class='btn btn-sm btn-outline-warning' :href="'#/projects/' + model._id + '/schemas/' + schema._id + '/edit/'"> -->
+          <!-- <i class="fa fa-pencil mr-1"></i> -->
+          <!-- Edit -->
+        <!-- </a> -->
 
         <!-- Destroy Schema Confirmation -->
         <button class="btn btn-sm btn-outline-danger" v-if="enableDestroy" v-b-modal="'modal_' + schema._id">
-          <i class="fa mr-1 fa-trash"></i>
+          <i class="fa fa-trash mr-1"></i>
           Destroy
+        </button>
+
+        <!-- Disable User Schema -->
+        <button class="btn btn-sm btn-outline-light" v-else-if="schema.enabled" @click="schema.enabled = false">
+          <i class="fa fa-square-o mr-1"></i>
+          Disable
+        </button>
+
+        <!-- Disable User Schema -->
+        <button class="btn btn-sm btn-outline-light" v-else @click="schema.enabled = true">
+          <i class="fa fa-square mr-1"></i>
+          Enable
         </button>
 
         <!-- Bootstrap Modal Component -->
@@ -42,7 +58,7 @@
 
     </div>
 
-  </li>
+  </a>
 </template>
 
 <script>

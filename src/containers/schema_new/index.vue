@@ -1,25 +1,30 @@
 
 <template>
-  <!-- <LayoutView :schema="schema"/> -->
-  <p class="lead">NEW SCHEMA</p>
+  <SchemaForm :schema="model"/>
 </template>
 
 <!-- // // // //  -->
 
 <script>
-import LayoutView from './components/layout.vue'
+import { mapGetters, mapActions } from 'vuex'
+import SchemaForm from '@/components/schema/SchemaForm'
 
 export default {
   components: {
-    LayoutView
+    SchemaForm
   },
   metaInfo: {
     title: 'Schemas - New' // title is now "blazeplate.io - Schemas - New"
   },
-  data () {
-    let schema = this.$store.getters['schema/new']
-    return { schema }
-  }
+  created () {
+    this.resetNewModel()
+  },
+  computed: mapGetters({
+    model: 'schema/newModel'
+  }),
+  methods: mapActions({
+    resetNewModel: 'schema/resetNewModel'
+  })
 }
 </script>
 

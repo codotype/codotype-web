@@ -1,6 +1,7 @@
 
 <template>
-  <LayoutView :project="data.project" :schema="data.schema" :records="data.records" />
+  <!-- <LayoutView :project="data.project" :schema="data.schema" :records="data.records" /> -->
+  <p class="lead">SCHEMA SHOW</p>
 </template>
 
 <!-- // // // //  -->
