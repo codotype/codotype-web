@@ -28,8 +28,11 @@
 
       <!-- Empty Attribute view -->
       <li class="card card-body text-center bg-dark border-warning text-warning" v-else>
-        <!-- <i class="fa fa-fw fa-plus"></i> -->
-        TODO - Click to add your first Attribute
+        <i class="fa fa-lg fa-exclamation"></i>
+        <!-- TODO - Click to add your first Attribute -->
+        <p class="lead mb-0 mt-2">
+        Please create at least one attribute
+        </p>
       </li>
 
     </div>

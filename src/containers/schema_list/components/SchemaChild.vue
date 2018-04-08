@@ -2,13 +2,21 @@
 <template>
   <a class='list-group-item border-light bg-dark text-light' :href="'#/projects/' + model._id + '/schemas/' + schema._id">
 
-    <div class="row">
+    <div class="row align-items-center">
       <div class="col-md-3">
         {{ schema.label_plural }}
       </div>
 
       <div class="col-md-3">
-        {{ schema.attributes.length }} Attributes
+        <div class="text-warning" v-if="!schema.attributes.length">
+          <i class="fa fa-exclamation mr-2"></i>
+          No Attributes
+        </div>
+
+        <div class="text-success" v-else>
+          <i class="fa fa-check mr-2"></i>
+          {{ schema.attributes.length }} {{ schema.attributes.length === 1 ? 'Attribute' : 'Attributes' }}
+        </div>
       </div>
 
       <div class="col-md-6 text-right">

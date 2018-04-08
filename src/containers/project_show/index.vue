@@ -8,15 +8,16 @@
         <h2 class="mb-0 font-weight-normal">
           {{ model.label }}
           <!-- <small class="text-muted ml-2">{{ model.identifier }}</small> -->
-          <small class="text-muted ml-2">App</small>
+          <small class="text-muted ml-2" v-if="generatorAcivated">Generator</small>
+          <small class="text-muted ml-2" v-else>Editor</small>
         </h2>
       </div>
       <div class="col-md-6 text-right">
-        <a class="btn btn-warning" :href="'#/projects/' + model._id" v-if="generatorAcivated">
+        <a class="btn btn-lg btn-warning" :href="'#/projects/' + model._id" v-if="generatorAcivated">
           <i class="fa fa-fw fa-reply mr-2"></i>
           Back to Editor
         </a>
-        <a class="btn btn-success" :href="'#/projects/' + model._id + '/generate'" v-else>
+        <a class="btn btn-lg btn-success" :href="'#/projects/' + model._id + '/generate'" v-else>
           <i class="fa fa-fw fa-play mr-2"></i>
           Generate
         </a>
@@ -25,37 +26,30 @@
 
     <hr>
 
-    <div class="row d-flex align-items-center">
+    <div class="row">
       <div class="col-md-3" v-if="!generatorAcivated">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class='nav-link' :href="'#/projects/' + project_id + '/meta'">Meta</a>
-          </li>
-          <li class="nav-item">
-            <a class='nav-link' :href="'#/projects/' + project_id + '/schemas'">Content Types</a>
-          </li>
+        <p class="lead">Application</p>
+        <b-nav vertical pills>
+          <b-nav-item :href="'#/projects/' + project_id + '/meta'" s>
+            Meta
+          </b-nav-item>
+          <b-nav-item active :href="'#/projects/' + project_id + '/schemas'" >
+            Content Types
+          </b-nav-item>
+          <b-nav-item disabled>Settings</b-nav-item>
+          <b-nav-item disabled>Authorization</b-nav-item>
+          <b-nav-item disabled>Seed Data</b-nav-item>
+          <b-nav-item disabled>Environment</b-nav-item>
+        </b-nav>
 
-          <!-- <li class="nav-item" v-for="schema in model.schemas" :key="schema._id"> -->
-            <!-- <a class='nav-link' :href="'#/projects/' + project_id + '/schemas/' + schema._id"> -->
-              <!-- {{ schema.label_plural }} -->
-            <!-- </a> -->
-          <!-- </li> -->
+        <p class="lead">Content Types</p>
+        <b-nav vertical pills>
+          <b-nav-item v-for="schema in model.schemas" :key="schema._id" :href="'#/projects/' + project_id + '/schemas/' + schema._id">
+            {{ schema.label_plural }}
+          </b-nav-item>
+        </b-nav>
 
-          <!-- <li class="nav-item"> -->
-            <!-- <a class='nav-link' :href="'#/projects/' + project_id + '/settings'">Authorization</a> -->
-          <!-- </li> -->
-          <!-- <li class="nav-item"> -->
-            <!-- <a class='nav-link' :href="'#/projects/' + project_id + '/schemas'">Seed Data</a> -->
-          <!-- </li> -->
-          <!-- <li class="nav-item"> -->
-            <!-- <a class='nav-link' :href="'#/projects/' + project_id + '/settings'">Settings</a> -->
-          <!-- </li> -->
-          <!-- <li class="nav-item"> -->
-            <!-- <a class="nav-link active" href="#">Active</a> -->
-          <!-- </li> -->
-          <!-- <li class="nav-item"> -->
-            <!-- <a class="nav-link disabled" href="#">Disabled</a> -->
-          <!-- </li> -->
+
         </ul>
       </div>
       <div :class=" generatorAcivated ? 'col-lg-12' : 'col-lg-9' ">

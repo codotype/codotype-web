@@ -55,3 +55,9 @@ export const DEFAULT_USER_SCHEMA = {
     }
   ]
 }
+
+export const CREATE_SUCCESS_NOTIFICATION = {
+  message: ':slow clap:',
+  context: 'success',
+  dismissible: true
+}
