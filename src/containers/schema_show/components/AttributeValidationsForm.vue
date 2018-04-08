@@ -6,29 +6,23 @@
     </div>
 
     <div class="col-lg-6 col-sm-12">
-      <div class="form-group">
-        <label>
-          Required
-          <span class='text-danger'>*</span>
-        </label>
-        <small class="form-text text-muted">Whether or not this attribute is required.</small>
-        <input type="checkbox" class="form-control" v-model="model.required" >
-      </div>
+      <FormInput label="Required" :required="true" v-model="model.required" help="Whether or not this attribute is required." type='BOOL' />
     </div>
 
     <div class="col-lg-6 col-sm-12">
-      <div class="form-group">
-        <label>Unique</label>
-        <small class="form-text text-muted">Whether or not to enforce unique values for this attribute.</small>
-        <input type="checkbox" class="form-control" v-model="model.unique" >
-      </div>
+      <FormInput label="Unique" :required="true" v-model="model.unique" help="Whether or not to enforce unique values for this attribute." type='BOOL' />
     </div>
 
   </div>
 </template>
 
 <script>
+import FormInput from '@/components/FormInput'
+
 export default {
-  props: ['model']
+  props: ['model'],
+  components: {
+    FormInput
+  }
 }
 </script>

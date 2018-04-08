@@ -6,25 +6,11 @@
     </div>
 
     <div class="col-lg-6 col-sm-12">
-      <div class="form-group">
-        <label>
-          Label
-          <span class='text-danger'>*</span>
-        </label>
-        <small class="form-text text-muted">Example: 'Last Name'<br>The human-readable name for this attribute.</small>
-        <input type="text" class="form-control" placeholder="Label" v-model="model.label" >
-      </div>
+      <FormInput label="Label" :required="true" placeholder="Label" v-model="model.label" required="true" example=">Example: 'Last Name'" help="The human-readable name for this attribute." />
     </div>
 
     <div class="col-lg-6 col-sm-12">
-      <div class="form-group">
-        <label>
-          Field Name
-          <span class='text-danger'>*</span>
-        </label>
-        <small class="form-text text-muted">Example: 'last_name'<br>Lowercase, no spaces.</small>
-        <input type="text" class="form-control" placeholder="Identifier" v-model="model.identifier" >
-      </div>
+      <FormInput label="Field Name" :required="true" placeholder="Field Name" v-model="model.identifier" required="true" example="Example: 'last_name'" help="Lowercase, no spaces." />
     </div>
 
     <!-- TODO - keep this? -->
@@ -38,7 +24,12 @@
 </template>
 
 <script>
+import FormInput from '@/components/FormInput'
+
 export default {
-  props: ['model']
+  props: ['model'],
+  components: {
+    FormInput
+  }
 }
 </script>
