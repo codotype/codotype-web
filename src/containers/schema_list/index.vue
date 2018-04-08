@@ -6,10 +6,6 @@
     </div>
 
     <div class="col-lg-12">
-      <hr>
-    </div>
-
-    <div class="col-lg-12">
       <ul class='list-group'>
         <SchemaChild v-for="schema in collection" :schema="schema" :key="schema._id" />
       </ul>

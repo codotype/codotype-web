@@ -92,10 +92,6 @@
         <span class="badge" v-if="item.unique" v-b-tooltip.hover.top title="Unique">
           <i class="fa fa-snowflake-o text-info"></i>
         </span>
-        <!-- PREFERRED -->
-        <!-- <span class="badge" v-if="item.preferred" v-b-tooltip.hover.top title="Preferred"> -->
-          <!-- <i class="fa fa-star-o text-warning"></i> -->
-        <!-- </span> -->
       </div>
 
       <div class="col-lg-3 text-right controls"
@@ -104,9 +100,27 @@
           <i class="fa fa-fw fa-pencil"></i>
         </button>
 
-        <button class="btn btn-sm btn-outline-danger" v-b-tooltip.hover.top title="Remove" @click="remove(item)">
+        <button class="btn btn-sm btn-outline-danger" v-b-tooltip.hover.top v-b-modal="'modal_' + item._id" title="Remove">
           <i class="fa fa-fw fa-trash"></i>
         </button>
+
+        <!-- Bootstrap Modal Component -->
+        <b-modal :id="'modal_' + item._id"
+          :title="'Remove Attribute'"
+          @ok="remove(item)"
+          header-bg-variant='dark'
+          header-text-variant='light'
+          body-bg-variant='dark'
+          body-text-variant='light'
+          footer-bg-variant='danger'
+          footer-text-variant='light'
+          ok-variant='danger'
+          ok-title='DESTROY'
+          cancel-title='Cancel'
+          cancel-variant='dark'
+        >
+          <p class="text-left">Are you sure you want to destroy the {{ item.label }} attribute?</p>
+        </b-modal>
       </div>
 
     </div>
@@ -118,7 +132,7 @@
 import { mapActions } from 'vuex'
 
 export default {
-  props: ['item'],
+  props: ['item', 'edit'],
   methods: mapActions({
     remove: 'attribute/destroy'
   })

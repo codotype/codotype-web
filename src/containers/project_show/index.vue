@@ -7,7 +7,8 @@
       <div class="col-md-6">
         <h2 class="mb-0 font-weight-normal">
           {{ model.label }}
-          <small class="text-muted ml-2">{{ model.identifier }}</small>
+          <!-- <small class="text-muted ml-2">{{ model.identifier }}</small> -->
+          <small class="text-muted ml-2">App</small>
         </h2>
       </div>
       <div class="col-md-6 text-right">
@@ -33,15 +34,15 @@
           <li class="nav-item">
             <a class='nav-link' :href="'#/projects/' + project_id + '/schemas'">Content Types</a>
           </li>
-          <li class="nav-item">
-            <a class='nav-link' :href="'#/projects/' + project_id + '/settings'">Authorization</a>
-          </li>
-          <li class="nav-item">
-            <a class='nav-link' :href="'#/projects/' + project_id + '/schemas'">Seed Data</a>
-          </li>
-          <li class="nav-item">
-            <a class='nav-link' :href="'#/projects/' + project_id + '/settings'">Settings</a>
-          </li>
+          <!-- <li class="nav-item"> -->
+            <!-- <a class='nav-link' :href="'#/projects/' + project_id + '/settings'">Authorization</a> -->
+          <!-- </li> -->
+          <!-- <li class="nav-item"> -->
+            <!-- <a class='nav-link' :href="'#/projects/' + project_id + '/schemas'">Seed Data</a> -->
+          <!-- </li> -->
+          <!-- <li class="nav-item"> -->
+            <!-- <a class='nav-link' :href="'#/projects/' + project_id + '/settings'">Settings</a> -->
+          <!-- </li> -->
           <!-- <li class="nav-item"> -->
             <!-- <a class="nav-link active" href="#">Active</a> -->
           <!-- </li> -->

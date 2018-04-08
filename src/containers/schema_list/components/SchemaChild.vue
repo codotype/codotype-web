@@ -13,11 +13,6 @@
 
       <div class="col-md-6 text-right">
 
-        <!-- <a class='btn btn-sm btn-outline-warning' :href="'#/projects/' + model._id + '/schemas/' + schema._id + '/edit/'"> -->
-          <!-- <i class="fa fa-pencil mr-1"></i> -->
-          <!-- Edit -->
-        <!-- </a> -->
-
         <!-- Destroy Schema Confirmation -->
         <button class="btn btn-sm btn-outline-danger" v-if="enableDestroy" v-b-modal="'modal_' + schema._id">
           <i class="fa fa-trash mr-1"></i>

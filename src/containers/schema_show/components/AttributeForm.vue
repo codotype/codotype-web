@@ -195,9 +195,6 @@ export default {
     ArrayInput,
     AttributeList
   },
-  created () {
-    console.log(this.model)
-  },
   methods: {
     schemaAttributes (schema_id) {
       if (!schema_id) return [{ label: 'Please Select A Schema' }]

@@ -79,3 +79,31 @@ export const NEW_MODEL_MUTATIONS = {
 export const NEW_MODEL_STATE = {
   newModel: {}
 }
+
+// // // //
+// NEW_MODEL mixins
+
+export const EDIT_MODEL_ACTIONS = {
+  selectEditModel: ({ commit }, model) => {
+    return commit('editModel', model)
+  },
+  clearEditModel: ({ commit }) => {
+    return commit('editModel', {})
+  }
+}
+
+export const EDIT_MODEL_GETTERS = {
+  editModel: state => {
+    return state.editModel
+  }
+}
+
+export const EDIT_MODEL_MUTATIONS = {
+  editModel (state, editModel) {
+    state.editModel = editModel
+  }
+}
+
+export const EDIT_MODEL_STATE = {
+  editModel: {}
+}
