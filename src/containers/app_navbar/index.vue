@@ -2,7 +2,7 @@
   <!-- <b-navbar toggleable="md" type="dark" variant="dark" fixed="top"> -->
   <b-navbar toggleable="md" type="dark" variant="dark">
     <b-navbar-brand href="#/">
-      <img class='logo mr-3' src="@/assets/logo_dark.png">
+      <img class='logo' src="@/assets/logo_dark.png">
       <!-- <strong>blaze</strong>plate -->
     </b-navbar-brand>
 

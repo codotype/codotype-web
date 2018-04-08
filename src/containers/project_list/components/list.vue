@@ -7,20 +7,22 @@
       <div class="card card-body bg-dark border-light">
         <div class="row">
 
-          <div class="col-lg-6">
+          <div class="col-lg-3">
             <!-- project URL -->
             <a v-bind:href="'#/projects/' + project._id">{{project.label}}</a>
           </div>
 
+          <div class="col-lg-3">
+            <div class='text-info'>
+              <i class="fa fa-database mr-1"></i>
+              {{ project.schemas.length + ' Schema(s)'}}
+            </div>
+          </div>
+
           <div class="col-lg-6 text-right">
 
-            <a class='btn btn-sm btn-outline-info' v-bind:href="'#/projects/' + project._id">
-              <i class="fa fa-database mr-1"></i>
-              <!-- {{ project.schemas.length + ' Schema(s)'}} -->
-            </a>
-
             <a class='btn btn-sm btn-outline-success' v-bind:href="'#/projects/' + project._id + '/generate'">
-              <i class="fa fa-cog mr-1"></i>
+              <i class="fa fa-play mr-1"></i>
               Generate
             </a>
 

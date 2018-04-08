@@ -34,7 +34,7 @@
 
       <div class="row mt-4 pt-4 justify-content-center">
         <div class="col-lg-6">
-          <a href="#/projects/new" class="btn btn-outline-light btn-block btn-lg p-4">
+          <a href="#/projects" class="btn btn-outline-light btn-block btn-lg p-4">
             <i class="fa fa-lg fa-fire mr-2"></i>
             <br>
             <p class="lead mb-0 mt-2">

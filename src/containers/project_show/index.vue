@@ -19,7 +19,7 @@
         </a>
         <a class="btn btn-lg btn-success" :href="'#/projects/' + model._id + '/generate'" v-else>
           <i class="fa fa-fw fa-play mr-2"></i>
-          Generate
+          Generate Application
         </a>
       </div>
     </div>
@@ -27,7 +27,16 @@
     <hr>
 
     <div class="row">
-      <div class="col-md-3" v-if="!generatorAcivated">
+      <div class="col-md-3" style='border-right: 1px solid #666;' v-if="!generatorAcivated">
+
+        <p class="lead">Content Types</p>
+        <b-nav vertical pills>
+          <b-nav-item v-for="schema in model.schemas" :key="schema._id" :href="'#/projects/' + project_id + '/schemas/' + schema._id" :active="selectedTab === schema._id" @click="selectedTab = schema._id">
+            {{ schema.label_plural }}
+            <i class="fa fa-exclamation text-warning" v-if="!schema.attributes.length"></i>
+          </b-nav-item>
+        </b-nav>
+
         <p class="lead">Application</p>
         <b-nav vertical pills>
           <b-nav-item :href="'#/projects/' + project_id + '/meta'" s>
@@ -42,18 +51,12 @@
           <b-nav-item disabled>Environment</b-nav-item>
         </b-nav>
 
-        <p class="lead">Content Types</p>
-        <b-nav vertical pills>
-          <b-nav-item v-for="schema in model.schemas" :key="schema._id" :href="'#/projects/' + project_id + '/schemas/' + schema._id">
-            {{ schema.label_plural }}
-          </b-nav-item>
-        </b-nav>
-
-
         </ul>
       </div>
       <div :class=" generatorAcivated ? 'col-lg-12' : 'col-lg-9' ">
-        <router-view/>
+        <transition name="fade">
+          <router-view/>
+        </transition>
       </div>
     </div>
 
@@ -71,6 +74,11 @@ export default {
   metaInfo: {
     title: 'Projects - Show'
   },
+  data () {
+    return {
+      selectedTab: ''
+    }
+  },
   created () {
     return this.selectModel(this.project_id)
   },
@@ -83,3 +91,12 @@ export default {
   })
 }
 </script>
+
+<style type="text/css">
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+</style>
