@@ -42,8 +42,6 @@ export default {
     AttributeList
   },
   created () {
-    console.log('CREATED')
-    console.log(this.schema_id)
     this.selectModel(this.schema_id)
   },
   computed: mapGetters({

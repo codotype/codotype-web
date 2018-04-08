@@ -1,6 +1,6 @@
 
 <template>
-  <li :class="className">
+  <li class="list-group-item bg-dark text-light">
     <div class="row d-flex align-items-center">
 
       <div class="col-lg-1 text-left d-flex align-items-center">
@@ -120,35 +120,14 @@
 </template>
 
 <!-- // // // //  -->
-
 <script>
+import { mapActions } from 'vuex'
+
 export default {
-  props: ['item', 'remove', 'edit'],
-  computed: {
-    className () {
-      let css = ['list-group-item']
-
-      if (this.item.type === 'KEY_DOWN') {
-        // css.push('list-group-item-primary')
-        css.push('list-group-item-success')
-        // css.push('list-group-item-dark')
-      } else if (this.item.type === 'KEY_UP') {
-        // css.push('list-group-item-success')
-        css.push('list-group-item-warning')
-        css.push('draggable')
-      } else if (this.item.type === 'FINISH') {
-        css.push('list-group-item-dark')
-      } else {
-        css.push('bg-dark text-light')
-        css.push('draggable')
-      }
-
-      return css.join(' ')
-    },
-    removable () {
-      return true
-    }
-  }
+  props: ['item'],
+  methods: mapActions({
+    remove: 'attribute/destroy'
+  })
 }
 </script>
 

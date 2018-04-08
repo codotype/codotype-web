@@ -8,6 +8,11 @@ export default {
   create ({ state, commit }) {
     commit('persist', { schema: state.newModel })
   },
+  destroy ({ state, commit }, model) {
+    let collection = _.filter(state.collection, (m) => { return m._id !== model._id })
+    commit('collection', collection)
+    commit('schema/attributes', collection, { root: true })
+  },
   resetNewModel ({ state, commit }) {
     let newModel = _.cloneDeep(DEFAULT_ATTRIBUTE)
     newModel.order = state.collection.length

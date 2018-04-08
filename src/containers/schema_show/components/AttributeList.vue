@@ -4,7 +4,7 @@
 
      <div class="col-lg-12">
       <draggable class='list-group' v-model='attributes' :options="sortableOptions" v-if="attributes.length">
-        <AttributeItem v-for="each in attributes" :item="each" :key="each._id" :remove="removeAttribute" :edit="editAttribute" />
+        <AttributeItem v-for="each in attributes" :item="each" :key="each._id" />
       </draggable>
 
       <!-- Empty Attribute view -->
@@ -32,27 +32,12 @@ export default {
     draggable,
     AttributeItem
   },
-  methods: {
-    addAttribute () {
-      this.$store.commit('schema/addAttribute', { schema: this.schema })
-    },
-    removeAttribute (attr) {
-      this.$store.commit('schema/removeAttribute', { schema: this.schema, attr: attr })
-    },
-    editAttribute (attr) {
-      this.$store.commit('schema/selectAttribute', { attr })
-    },
-    clearSelected () {
-      this.$store.commit('schema/clearSelectedAttribute')
-    }
-  },
   computed: {
     ...mapGetters({
       selectedAttr: 'schema/selectedAttribute'
     }),
     sortableOptions () {
       return {
-        draggable: '.draggable',
         animation: 150,
         fallbackTolerance: 100
       }

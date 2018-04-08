@@ -1,18 +1,15 @@
 import _ from 'lodash'
 import { COLLECTION_MUTATIONS, SELECT_MODEL_MUTATIONS, NEW_MODEL_MUTATIONS } from '@/store/lib/mixins'
 
-// import { TEXT_WORKFLOW_STEP, MACRO_WORKFLOW_STEP, DELAY_WORKFLOW_STEP, KEY_WORKFLOW_STEP, KEY_DN_POSITION, KEY_UP_POSITION, KEY_PR_POSITION } from './constants'
-
-// // // //
-
 // Schema Module mutations
-const mutations = {
+export default {
   ...COLLECTION_MUTATIONS,
   ...SELECT_MODEL_MUTATIONS,
   ...NEW_MODEL_MUTATIONS,
-  editModel (state, model) {
-    state.editModel = model
+  attributes (state, collection) {
+    state.selectedModel.attributes = collection
   },
+  // REMOVE BELOW THIS LINE
   persist (state, { schema }) {
     if (schema._id) {
       state.collection = _.map(state.collection, (s) => {
@@ -28,9 +25,6 @@ const mutations = {
     }
     // Updates attributes order
     schema.attributes = _.orderBy(schema.attributes, ['order'], ['asc'])
-  },
-  destroy (state, { schema }) {
-    state.collection = _.filter(state.collection, (s) => { return s._id !== schema._id })
   },
   selectAttribute (state, { attr }) {
     state.selectedAttribute = _.cloneDeep(attr)
@@ -108,7 +102,3 @@ const mutations = {
     state.selectedAttribute = new_attribute
   }
 }
-
-// // // //
-
-export default mutations
