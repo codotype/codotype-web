@@ -69,18 +69,6 @@
         </select>
       </div>
 
-      <!-- <div class="form-group" v-if="model.datatype === 'NUMBER'"> -->
-        <!-- <label>Default Value</label> -->
-        <!-- <small class="form-text text-muted">The default value for this attribute when none is available.</small> -->
-        <!-- <input type="number" class="form-control" placeholder="Default Value" v-model="model.datatypeOptions.default" > -->
-      <!-- </div> -->
-
-      <!-- <div class="form-group" v-if="model.datatype === 'TEXT'"> -->
-        <!-- <label>Default Value</label> -->
-        <!-- <small class="form-text text-muted">The default value for this attribute when none is available.</small> -->
-        <!-- <input type="text" class="form-control" placeholder="Default Value" v-model="model.datatypeOptions.default" > -->
-      <!-- </div> -->
-
     </div>
   </div>
 </template>
