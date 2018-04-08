@@ -37,7 +37,7 @@ export const ProjectListRoute = {
     {
       path: 'projects',
       component: RouterView,
-      meta: { bcLinkText: 'Projects' },
+      meta: { bcLinkText: 'Apps' },
       children: [
         {
           path: '',

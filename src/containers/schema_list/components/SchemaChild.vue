@@ -8,7 +8,7 @@
       </div>
 
       <div class="col-md-3">
-        Attributes
+        {{ schema.attributes.length }} Attributes
       </div>
 
       <div class="col-md-6 text-right">

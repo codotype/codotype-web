@@ -28,7 +28,6 @@ const mutations = {
     }
     // Updates attributes order
     schema.attributes = _.orderBy(schema.attributes, ['order'], ['asc'])
-    state.selectedSchema = null
   },
   destroy (state, { schema }) {
     state.collection = _.filter(state.collection, (s) => { return s._id !== schema._id })

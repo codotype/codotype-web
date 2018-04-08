@@ -2,20 +2,24 @@
   <div class="row">
     <div class="col-lg-12">
 
-      <p class="lead mb-0">Schema Properties</p>
-      <small class="mb-2 form-text text-muted">Defines the core properties that are used to create a valid schema.</small>
-
-      <hr>
+      <!-- <p class="lead mb-0">Schema Properties</p> -->
+      <p class="mb-2 form-text text-muted">Define the core metadata that's used to create a valid schema.</p>
 
       <div class="row">
         <div class="col-lg-12">
 
-          <FormInput label="Label" placeholder="Label" example="Example: 'Odd Job'" v-model="schemaLabel" required="true" help="The human-readable name for a single entity of this schema." />
+          <!-- <FormInput label="Label" placeholder="Label" example="Example: 'Odd Job'" v-model="schemaLabel" required="true" help="The human-readable name for a single entity of this schema." /> -->
+          <FormInput label="Label" placeholder="Label" v-model="schemaLabel" required="true" help="Example: 'Odd Job'" />
 
         </div>
 
-        <small>TODO - improve the UI below</small>
         <div class="col-lg-12">
+          <hr>
+        </div>
+
+        <div class="col-lg-12">
+          <p class="mb-2 form-text text-muted">Validate the results below before submission</p>
+
           Label: {{ schema.label }}
           <br>
           Plural Label: {{ schema.label_plural }}

@@ -6,6 +6,9 @@ const pluralize = require('pluralize')
 
 // Schema module actions
 export default {
+  create ({ state, commit }) {
+    commit('persist', { schema: state.newModel })
+  },
   edit ({ state, commit }, schema) {
     commit('editModel', schema)
   },
