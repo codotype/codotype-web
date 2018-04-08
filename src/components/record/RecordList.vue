@@ -38,10 +38,13 @@
         <!-- Record Controls -->
         <td class='text-right controls'>
 
-          <!-- TODO - add show button here -->
+          <!-- Show Record -->
+          <a class="btn btn-sm btn-outline-light" :href=" '#/projects/' + projectId + '/seeds/' + schema._id + '/records/' + record._id ">
+            <i class="fa fa-fw fa-eye"></i>
+          </a>
 
           <!-- Edit Record -->
-          <a class="btn btn-sm btn-outline-warning" :href=" '#/schemas/' + schema._id + '/records/' + record._id + '/edit' ">
+          <a class="btn btn-sm btn-outline-warning" :href=" '#/projects/' + projectId + '/seeds/' + schema._id + '/records/' + record._id + '/edit' ">
             <i class="fa fa-fw fa-pencil"></i>
           </a>
 
