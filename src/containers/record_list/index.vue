@@ -31,10 +31,8 @@
 <!-- // // // //  -->
 
 <script>
-// import AttributeList from './components/AttributeList'
 import { mapGetters, mapActions } from 'vuex'
 import RecordList from '@/components/record/RecordList'
-// import { mapGetters } from 'vuex'
 
 export default {
   props: ['project_id', 'schema_id'],
@@ -46,15 +44,12 @@ export default {
   },
   created () {
     this.selectModel(this.schema_id)
-    // this.resetNewAttribute()
   },
   computed: mapGetters({
     schema: 'schema/selectedModel'
   }),
   methods: mapActions({
     selectModel: 'schema/selectModel'
-  //   createAttribute: 'attribute/create',
-  //   resetNewAttribute: 'attribute/resetNewModel'
   })
 }
 </script>
