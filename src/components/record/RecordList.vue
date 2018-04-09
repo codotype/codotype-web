@@ -68,6 +68,7 @@
             to create {{ schema.label_plural.toLowerCase() }}.
           </span>
         </td>
+        <td></td>
       </tr>
 
     </tbody>
@@ -78,30 +79,28 @@
 
 <script>
 import _ from 'lodash'
-import store from '@/store'
-import { mapGetters } from 'vuex'
-window.store = store
+
 export default {
   props: ['projectId', 'schema'],
   methods: {
     onConfirmDestroy (record) {
-      return store.commit('record/destroy', { record })
+      return this.$store.commit('record/destroy', { record })
     },
     getLinkedSchemaHref (attr, record_id) {
-      let allRecords = store.getters['record/collection']
-      let allSchemas = store.getters['schema/collection']
+      let allRecords = this.$store.getters['record/collection']
+      let allSchemas = this.$store.getters['schema/collection']
       let record = _.find(allRecords, { _id: record_id })
       if (!record) return
       let schema = _.find(allSchemas, { _id: record.schema_id })
       return '#/schemas/' + schema._id + '/records/' + record._id
     },
     getRelatedSchema (attr) {
-      let allSchemas = store.getters['schema/collection']
+      let allSchemas = this.$store.getters['schema/collection']
       let schema = _.find(allSchemas, { _id: attr.datatypeOptions.schema_id })
       return schema
     },
     getLinkedSchemaLabel (attr, record_id) {
-      let allRecords = store.getters['record/collection']
+      let allRecords = this.$store.getters['record/collection']
       let record = _.find(allRecords, { _id: record_id })
       if (!record) return
 
@@ -109,9 +108,15 @@ export default {
       return record.attributes[identifier]
     }
   },
-  computed: mapGetters({
-    records: 'record/collection'
-  })
+  computed: {
+    // TODO - move this into a getter, if possible
+    records () {
+      console.log(this.schema._id)
+      console.log(this.schema.label)
+      let records = this.$store.getters['record/collection']
+      return records.filter((r) => { return r.schema_id === this.schema._id })
+    }
+  }
 }
 </script>
 

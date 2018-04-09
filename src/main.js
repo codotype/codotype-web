@@ -5,7 +5,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './routers'
 import store from '@/store'
-
+window.store = store
 // QUESTION - ??
 Vue.config.productionTip = false
 
