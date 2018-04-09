@@ -7,10 +7,7 @@
       </h4>
     </div>
     <div class="col-lg-6">
-      <!-- <a class="btn btn-outline-primary" :href="'#/projects/' + model._id + '/schemas/new' "> -->
-        <!-- <i class="fa fa-fw fa-plus mr-2"></i> -->
-        <!-- New Schema -->
-      <!-- </a> -->
+
       <button class="btn btn-primary pull-right" v-b-modal="'new-schema'">
         <i class="fa fa-fw fa-plus mr-2"></i>
         New Schema
@@ -49,9 +46,6 @@ import { mapGetters, mapActions } from 'vuex'
 import SchemaForm from '@/components/schema/SchemaForm'
 
 export default {
-  // computed: mapGetters({
-    // model: 'project/selectedModel'
-  // })
   components: {
     SchemaForm
   },

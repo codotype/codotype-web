@@ -111,8 +111,6 @@ export default {
   computed: {
     // TODO - move this into a getter, if possible
     records () {
-      console.log(this.schema._id)
-      console.log(this.schema.label)
       let records = this.$store.getters['record/collection']
       return records.filter((r) => { return r.schema_id === this.schema._id })
     }
