@@ -13,8 +13,10 @@ export default {
     commit('selectedModel', model)
     commit('attribute/collection', model.attributes, { root: true })
   },
-  create ({ state, commit }) {
-    commit('persist', { schema: state.newModel })
+  create ({ state, dispatch, commit }) {
+    let model = _.cloneDeep(state.newModel)
+    dispatch('resetNewModel')
+    commit('persist', { schema: model })
   },
   edit ({ state, commit }, schema) {
     commit('editModel', schema)
