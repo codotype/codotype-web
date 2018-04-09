@@ -1,16 +1,15 @@
 import _ from 'lodash'
-// import { TEXT_WORKFLOW_STEP, MACRO_WORKFLOW_STEP, DELAY_WORKFLOW_STEP, KEY_WORKFLOW_STEP, KEY_DN_POSITION, KEY_UP_POSITION, KEY_PR_POSITION } from './constants'
+import { COLLECTION_MUTATIONS, SELECT_MODEL_MUTATIONS, NEW_MODEL_MUTATIONS } from '@/store/lib/mixins'
 
-const underscored = require('underscore.string/underscored')
-const pluralize = require('pluralize')
-
-// // // //
-
-// Project Module mutations
-const mutations = {
-  sync (state, collection) {
-    state.collection = _.sortBy(collection, (s) => { return s.order })
+// Schema Module mutations
+export default {
+  ...COLLECTION_MUTATIONS,
+  ...SELECT_MODEL_MUTATIONS,
+  ...NEW_MODEL_MUTATIONS,
+  attributes (state, collection) {
+    state.selectedModel.attributes = collection
   },
+  // REMOVE BELOW THIS LINE
   persist (state, { schema }) {
     if (schema._id) {
       state.collection = _.map(state.collection, (s) => {
@@ -26,10 +25,6 @@ const mutations = {
     }
     // Updates attributes order
     schema.attributes = _.orderBy(schema.attributes, ['order'], ['asc'])
-    state.selectedSchema = null
-  },
-  destroy (state, { schema }) {
-    state.collection = _.filter(state.collection, (s) => { return s._id !== schema._id })
   },
   selectAttribute (state, { attr }) {
     state.selectedAttribute = _.cloneDeep(attr)
@@ -66,6 +61,7 @@ const mutations = {
     state.selectedSchema.attributes = _.orderBy(state.selectedSchema.attributes, ['order'], ['asc'])
     state.selectedSchema = null
   },
+  // TODO - pending destruction
   persistSelectedAttribute (state, { schema, attr }) {
     if (attr._id) {
       schema.attributes = _.map(schema.attributes, (a) => { // QUESTION - just .map()
@@ -92,29 +88,5 @@ const mutations = {
 
     // Clears the selectedAttribute
     state.selectedAttribute = null
-  },
-  addAttribute (state, { schema }) {
-    let new_attribute = {
-      order: schema.attributes.length + 1,
-      label: '',
-      help: '',
-      required: false,
-      unique: false,
-      col_span: 6,
-      datatype: 'TEXT',
-      datatypeOptions: {}
-    }
-
-    state.selectedAttribute = new_attribute
-  },
-  onLabelChange (state, label) {
-    state.selectedSchema.label = label
-    state.selectedSchema.label_plural = pluralize(label)
-    state.selectedSchema.identifier = underscored(label)
-    state.selectedSchema.identifier_plural = underscored(pluralize(label))
   }
 }
-
-// // // //
-
-export default mutations

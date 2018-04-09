@@ -1,11 +1,12 @@
+import { COLLECTION_STATE, SELECT_MODEL_STATE } from '@/store/lib/mixins'
 
 // Project Module State
 const state = {
-  collection: [],
-  current: {},
+  ...COLLECTION_STATE,
+  ...SELECT_MODEL_STATE,
   new: false,
   edit: false,
-  fetching: false
+  newModel: {}
 }
 
 export default state

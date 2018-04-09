@@ -2,9 +2,10 @@
 <template>
   <div id="app">
     <AppNavbar/>
-    <AppBreadcrumbs/>
+    <Notification/>
+    <!-- <AppBreadcrumbs/> -->
+    <br>
     <router-view/>
-    <!-- <Notification/> -->
     <!-- <AppFooter/> -->
   </div>
 </template>

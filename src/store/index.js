@@ -4,7 +4,10 @@ import Vuex from 'vuex'
 
 import project from './project'
 import schema from './schema'
+import attribute from './attribute'
+import record from './record'
 import notification from './notification'
+import generator from './generator'
 
 // Vuex Initialization
 // TODO - should this be done elsewhere?
@@ -14,9 +17,12 @@ Vue.use(Vuex)
 // and getters.
 export default new Vuex.Store({
   modules: {
-    schema,
     notification,
-    project
+    project,
+    schema,
+    attribute,
+    record,
+    generator
   },
   plugins: [createPersistedState()]
 })

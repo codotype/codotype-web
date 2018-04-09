@@ -23,7 +23,7 @@
 <script>
 import _ from 'lodash'
 import TabHeader from '@/components/TabHeader'
-import SchemaList from '@/containers/schema_list/components/layout'
+import SchemaList from '@/containers/schema_list'
 import SchemaForm from '@/containers/schema_new/components/layout'
 
 export default {

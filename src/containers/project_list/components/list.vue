@@ -1,31 +1,28 @@
 
 <template>
   <div class='row'>
-    <router-view/>
 
+    <!-- Child -->
     <div v-for="project in collection" v-bind:key="project._id" class='col-lg-12 mb-3'>
       <div class="card card-body bg-dark border-light">
         <div class="row">
 
-          <div class="col-lg-6">
+          <div class="col-lg-3">
             <!-- project URL -->
             <a v-bind:href="'#/projects/' + project._id">{{project.label}}</a>
           </div>
 
+          <div class="col-lg-3">
+            <div class='text-info'>
+              <i class="fa fa-database mr-1"></i>
+              {{ project.schemas.length + ' Schema(s)'}}
+            </div>
+          </div>
+
           <div class="col-lg-6 text-right">
 
-            <a class='btn btn-sm btn-outline-warning' v-bind:href="'#/projects/' + project._id + '/edit'">
-              <i class="fa fa-pencil mr-1"></i>
-              Edit
-            </a>
-
-            <a class='btn btn-sm btn-outline-info' v-bind:href="'#/projects/' + project._id + '/schemas'">
-              <i class="fa fa-database mr-1"></i>
-              Schemas
-            </a>
-
             <a class='btn btn-sm btn-outline-success' v-bind:href="'#/projects/' + project._id + '/generate'">
-              <i class="fa fa-cog mr-1"></i>
+              <i class="fa fa-play mr-1"></i>
               Generate
             </a>
 
@@ -65,6 +62,21 @@
         </div>
       </div>
     </div>
+
+    <!-- Empty -->
+    <div class="col-lg-12 mb-3" v-if="!collection[0]">
+      <div class="card bg-dark border-warning text-warning card-body text-center">
+        <p class="lead card-text">
+          <i class="fa fa-fw fa-info-circle mr-2"></i>
+          <br>
+          No Apps found
+        </p>
+        <p class="card-text">
+          See some <a href="#/projects/examples">examples</a>
+        </p>
+      </div>
+    </div>
+
   </div>
 </template>
 
