@@ -6,8 +6,13 @@ export default {
   ...COLLECTION_MUTATIONS,
   ...SELECT_MODEL_MUTATIONS,
   ...NEW_MODEL_MUTATIONS,
-  attributes (state, collection) {
-    state.selectedModel.attributes = collection
+  attributes (state, { schema_id, collection }) {
+    if (schema_id) {
+      let schema = _.find(state.collection, { _id: schema_id })
+      schema.attributes = collection
+    } else {
+      state.selectedModel.attributes = collection
+    }
   },
   // REMOVE BELOW THIS LINE
   persist (state, { schema }) {
