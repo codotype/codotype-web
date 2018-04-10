@@ -18,31 +18,39 @@
       <!-- TODO - model.label should be RELATED_SCHEMA.identifier + '_id' or '_ids' -->
       <!-- <input type="text" v-model="model.identifier"> -->
 
+      <div class="row">
+        <div class="col-lg-4">
+          This schema
+          <i class="fa fa-lg fa-cubes"></i>
+        </div>
 
-      <!-- RELATION TYPE -->
-      <div class="form-group">
-        <label>Relation Type</label>
-        <small class="form-text text-muted">The type of relation to define</small>
-        <select class="form-control" v-model="model.datatypeOptions.relationType" >
-          <option v-for="relation in relationTypes" :value="relation.id">{{relation.text}}</option>
-        </select>
+        <!-- RELATION TYPE -->
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label>Relation Type</label>
+            <small class="form-text text-muted">The type of relation to define</small>
+            <small>{{ relationDescription }}</small>
+            <select class="form-control" v-model="model.datatypeOptions.relationType" >
+              <option v-for="relation in relationTypes" :value="relation.id">{{relation.text}}</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- RELATED SCHEMA -->
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label>Related Schema</label>
+            <small class="form-text text-muted">The Schema with which this attribute maintains a relation.</small>
+            <select class="form-control" v-model="model.datatypeOptions.schema_id" >
+              <option v-if="model.datatypeOptions.relationType === 'BELONGS_TO'" v-for="s in allSchemas" :key="s._id" :value="s._id">{{s.label}}</option>
+
+              <option v-if="model.datatypeOptions.relationType === 'HAS_ONE'" v-for="s in allSchemas" :key="s._id" :value="s._id">{{s.label}}</option>
+
+              <option v-if="model.datatypeOptions.relationType === 'HAS_MANY'" v-for="s in allSchemas" :key="s._id" :value="s._id">{{s.label_plural}}</option>
+            </select>
+          </div>
+        </div>
       </div>
-
-      <!-- SCHEMA Options -->
-      <div class="form-group">
-        <label>Related Schema</label>
-        <small class="form-text text-muted">The Schema with which this attribute maintains a relation.</small>
-        <select class="form-control" v-model="model.datatypeOptions.schema_id" >
-          <option v-if="model.datatypeOptions.relationType === 'BELONGS_TO'" v-for="s in allSchemas" :key="s._id" :value="s._id">{{s.label}}</option>
-
-          <option v-if="model.datatypeOptions.relationType === 'HAS_ONE'" v-for="s in allSchemas" :key="s._id" :value="s._id">{{s.label}}</option>
-
-          <option v-if="model.datatypeOptions.relationType === 'HAS_MANY'" v-for="s in allSchemas" :key="s._id" :value="s._id">{{s.label_plural}}</option>
-        </select>
-      </div>
-
-      <!-- TODO - this should be RELATED_SCHEMA.attributes[0].identifier -->
-      <!-- <input type="text" v-model="model.datatypeOptions.schema_attribute_identifier"> -->
 
     </div>
   </div>
@@ -69,6 +77,11 @@ export default {
       let schema = _.find(allSchemas, { _id: schemaId })
       if (!schema) return [{ label: 'Please Select A Schema' }]
       return schema.attributes
+    },
+    relationDescription () {
+      let relationType = this.model.datatypeOptions.relationType
+      if (!relationType) return ''
+      return _.find(this.relationTypes, { id: relationType }).desc
     }
   }
 }
