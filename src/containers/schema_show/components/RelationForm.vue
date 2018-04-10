@@ -12,6 +12,13 @@
 
       <hr>
 
+      <!-- <small class="text-warning">TODO - compute model.label, model.identifier in Vuex store</small> -->
+      <!-- TODO - model.label should be RELATED_SCHEMA.label or RELATED_SCHEMA.label_plural -->
+      <!-- <input type="text" v-model="model.label"> -->
+      <!-- TODO - model.label should be RELATED_SCHEMA.identifier + '_id' or '_ids' -->
+      <!-- <input type="text" v-model="model.identifier"> -->
+
+
       <!-- RELATION TYPE -->
       <div class="form-group">
         <label>Relation Type</label>
@@ -34,14 +41,8 @@
         </select>
       </div>
 
-      <!-- TODO - refactor this into a separate Relation form element -->
-      <div class="form-group">
-        <label>Related Schema Key</label>
-        <small class="form-text text-muted">The name of the attribute on the related schema that is stored in this schema as a means of linking the two.</small>
-        <select class="form-control" v-model="model.datatypeOptions.schema_attribute_identifier" >
-          <option v-for="a in schemaAttributes" :key="a._id" :value="a.identifier">{{a.label}}</option>
-        </select>
-      </div>
+      <!-- TODO - this should be RELATED_SCHEMA.attributes[0].identifier -->
+      <!-- <input type="text" v-model="model.datatypeOptions.schema_attribute_identifier"> -->
 
     </div>
   </div>
