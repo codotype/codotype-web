@@ -69,15 +69,6 @@ export default {
       allSchemas: 'schema/collection',
       relationTypes: 'schema/relationTypes'
     }),
-    // TODO - is this needed?
-    schemaAttributes () {
-      let schemaId = this.model.datatypeOptions.schema_id
-      if (!schemaId) return [{ label: 'Please Select A Schema' }]
-      let allSchemas = this.$store.getters['schema/collection']
-      let schema = _.find(allSchemas, { _id: schemaId })
-      if (!schema) return [{ label: 'Please Select A Schema' }]
-      return schema.attributes
-    },
     relationDescription () {
       let relationType = this.model.datatypeOptions.relationType
       if (!relationType) return ''
