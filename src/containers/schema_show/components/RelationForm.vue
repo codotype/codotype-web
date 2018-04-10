@@ -64,6 +64,11 @@ import { mapGetters } from 'vuex'
 
 export default {
   props: ['schema', 'model'],
+  created () {
+    // TODO - this should be handled in Vuex store
+    this.model.datatypeOptions.relationType = 'HAS_MANY'
+    this.model.datatypeOptions.schema_id = this.allSchemas[0]._id
+  },
   computed: {
     ...mapGetters({
       allSchemas: 'schema/collection',

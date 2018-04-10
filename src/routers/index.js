@@ -11,7 +11,6 @@ import ProjectGenerate from '@/containers/project_generate'
 // Schema Containers
 import SchemaList from '@/containers/schema_list'
 import SchemaShow from '@/containers/schema_show'
-import SchemaEdit from '@/containers/schema_edit'
 
 // Record Containers
 import RecordList from '@/containers/record_list'
@@ -91,11 +90,6 @@ export default new Router({
                       path: '/projects/:project_id/schemas/:schema_id',
                       props: true,
                       component: SchemaShow
-                    },
-                    {
-                      // TODO - not sure we need SchemaEdit?
-                      path: '/projects/:project_id/schemas/:schema_id/edit',
-                      component: SchemaEdit
                     }
                   ]
                 },
