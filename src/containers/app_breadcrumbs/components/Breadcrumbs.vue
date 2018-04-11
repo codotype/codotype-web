@@ -1,5 +1,5 @@
 <template>
-  <ol class="breadcrumb bg-dark text-light border-light">
+  <ol class="breadcrumb bg-dark text-light border-light mb-0 pl-0">
     <!-- <li class="breadcrumb-item" v-for="(route, index) in $route.matched"> -->
     <li :class="route.path ? 'breadcrumb-item' : 'breadcrumb-item active'" v-for="route in crumbs">
       <!-- <span>{{route}}</span> -->
@@ -63,10 +63,14 @@ export default {
     crumbs () {
       let crumbs = []
       _.each(this.$route.matched, (r) => {
+        // console.log(r)
+        // console.log(this.$route)
         if (r.meta.bcLinkText) {
           crumbs.push({ path: r.path || '/', text: r.meta.bcLinkText })
+        } else if (r.meta.bcText) {
+          crumbs.push({ path: r.path, text: r.meta.bcText })
         } else if (r.meta.bcGetter) {
-          crumbs.push({ path: null, text: this.$store.getters[r.meta.bcGetter] })
+          crumbs.push({ path: r.path, text: this.$store.getters[r.meta.bcGetter] })
         }
       })
       return crumbs
@@ -86,7 +90,8 @@ export default {
 <style lang="sass">
   ol.breadcrumb
     border-radius: 0
-    border-top: 1px solid
-    border-bottom: 1px solid
+    font-size: 125%
+    // border-top: 1px solid
+    // border-bottom: 1px solid
 </style>
 
