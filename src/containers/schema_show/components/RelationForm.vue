@@ -75,9 +75,10 @@ export default {
       relationTypes: 'schema/relationTypes'
     }),
     relationDescription () {
-      let relationType = this.model.datatypeOptions.relationType
-      if (!relationType) return ''
-      return _.find(this.relationTypes, { id: relationType }).desc
+      // TODO - this isn't working.
+      // let relationType = this.model.datatypeOptions.relationType
+      // if (!relationType) return ''
+      return _.find(this.relationTypes, { id: this.model.datatypeOptions.relationType }).desc
     }
   }
 }
