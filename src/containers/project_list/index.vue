@@ -57,6 +57,8 @@
 
         <p class="text-warning">TODO - abstract header into separate component</p>
         <p class="text-warning">TODO - refine the UI on this page a bit..</p>
+        <p class="text-warning">TODO - add Example apps</p>
+
       </div>
 
       <div class="col-lg-12">

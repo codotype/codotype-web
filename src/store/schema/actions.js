@@ -3,6 +3,7 @@ import { DEFAULT_SCHEMA } from './constants'
 import { SELECT_MODEL_ACTIONS } from '@/store/lib/mixins'
 const titleize = require('underscore.string/titleize')
 const underscored = require('underscore.string/underscored')
+const classify = require('underscore.string/classify')
 const pluralize = require('pluralize')
 
 // Schema module actions
@@ -32,5 +33,6 @@ export default {
     schema.label_plural = pluralize(titleize(label))
     schema.identifier = underscored(label)
     schema.identifier_plural = underscored(pluralize(label))
+    schema.class_name = classify(titleize(label))
   }
 }

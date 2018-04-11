@@ -14,10 +14,13 @@ export const DEFAULT_SCHEMA = {
 }
 
 export const RELATION_TYPES = [
-  { id: 'HAS_ONE', text: 'Has One', desc: 'one to one' },
-  { id: 'BELONGS_TO', text: 'Belongs To', desc: 'many to one' },
-  { id: 'HAS_MANY', text: 'Has Many', desc: 'one to many' },
-  { id: 'HAS_AND_BELONGS_TO_MANY', text: 'Many to Many', desc: 'many to many' }
+  // { id: 'HAS_ONE', text: 'Has One', desc: 'one to one' },
+  // { id: 'BELONGS_TO', text: 'Belongs To', desc: 'many to one' },
+  // { id: 'HAS_MANY', text: 'Has Many', desc: 'one to many' },
+  // { id: 'HAS_AND_BELONGS_TO_MANY', text: 'Many to Many', desc: 'many to many' }
+
+  { id: 'HAS_MANY', text: 'One To Many', desc: 'one to many' },
+  { id: 'BELONGS_TO', text: 'Many To One', desc: 'many to one' }
 ]
 
 export const DATATYPES = [
