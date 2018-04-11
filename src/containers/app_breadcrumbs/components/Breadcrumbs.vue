@@ -5,9 +5,10 @@
       <!-- <span>{{route}}</span> -->
 
       <template v-if="route.path">
-        <a :href="'#' + route.path" v-if="route.path">
-          {{ route.text }}
-        </a>
+        <!-- <a :href="'#' + route.path" v-if="route.path"> -->
+          <!-- {{ route.text }} -->
+        <!-- </a> -->
+        {{ route.text }}
       </template>
 
       <template v-else>
