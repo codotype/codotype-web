@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import { DEFAULT_PROJECT, DEFAULT_USER_SCHEMA, CREATE_SUCCESS_NOTIFICATION } from './constants'
 import { SELECT_MODEL_ACTIONS } from '@/store/lib/mixins'
+import router from '@/routers'
 
 const underscored = require('underscore.string/underscored')
 // TODO - use this instead?
@@ -78,8 +79,34 @@ export default {
   resetNewModel: ({ commit }) => {
     let newModel = _.cloneDeep(DEFAULT_PROJECT)
     let userSchema = _.cloneDeep(DEFAULT_USER_SCHEMA)
-    userSchema._id = _.uniqueId('SCHEMA_')
+    userSchema._id = _.uniqueId('SCH_')
     newModel.schemas.push(userSchema)
     commit('newModel', newModel)
+  },
+
+  cloneExample: ({ state, commit }, example) => {
+    console.log('CLONE')
+    console.log(router)
+
+    // Resets project, schema, and attribute IDs
+    // TODO - handle seed data as well
+    let projectModel = JSON.parse(JSON.stringify(example))
+    projectModel._id = 'PR_' + Math.floor((Math.random() * 100000000000000) + 1)
+    projectModel.schemas = _.map(projectModel.schemas, (s) => {
+      s._id = 'SCH_' + Math.floor((Math.random() * 100000000000000) + 1)
+      s.attributes = _.map(s.attributes, (a) => {
+        a._id = 'ATTR_' + Math.floor((Math.random() * 100000000000000) + 1)
+        return a
+      })
+      return s
+    })
+
+    // Adds to the project collection
+    let collection = state.collection
+    collection.push(projectModel)
+    commit('collection', collection)
+
+    // Navigates to /projects/id
+    router.push('/projects/' + projectModel._id)
   }
 }

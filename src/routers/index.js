@@ -8,6 +8,7 @@ import ProjectMeta from '@/containers/project_show/components/ProjectMeta'
 import ProjectAuth from '@/containers/project_show/components/ProjectAuth'
 import ProjectSeeds from '@/containers/project_show/components/ProjectSeeds'
 import ProjectGenerate from '@/containers/project_generate'
+import ProjectExamples from '@/containers/project_examples'
 
 // Schema Containers
 import SchemaList from '@/containers/schema_list'
@@ -47,6 +48,11 @@ export default new Router({
           name: 'main_about',
           component: MainAbout
           // meta: { bcLinkText: 'About' }
+        },
+        {
+          path: '/examples',
+          name: 'project_examples',
+          component: ProjectExamples
         },
         {
           path: 'projects',

@@ -1,0 +1,56 @@
+z
+<template>
+  <div class="container">
+
+    <!-- TODO - abstract into PageHeader component -->
+    <div class="row">
+      <div class="col-lg-8">
+        <h2>
+          App Examples
+        </h2>
+      </div>
+
+      <div class="col-lg-4 text-right">
+        <a class='btn btn-lg btn-warning' href="#/projects">
+          <i class="fa fa-fw fa-reply mr-2"></i>
+          My Apps
+        </a>
+      </div>
+
+      <div class="col-lg-12">
+
+        <p class="text-warning">TODO - add Example apps</p>
+
+      </div>
+
+      <div class="col-lg-12">
+        <hr>
+      </div>
+    </div>
+
+    <!-- Example Project List -->
+    <ListView :collection="collection"></ListView>
+
+  </div>
+</template>
+
+<!-- // // // //  -->
+
+<script>
+
+import ListView from './components/ExampleList.vue'
+import { mapGetters } from 'vuex'
+
+export default {
+  name: 'example_list',
+  metaInfo: {
+    title: 'Examples'
+  },
+  components: {
+    ListView
+  },
+  computed: mapGetters({
+    collection: 'project/exampleCollection'
+  })
+}
+</script>
