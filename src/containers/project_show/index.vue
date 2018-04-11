@@ -24,6 +24,11 @@
       </div>
     </div>
 
+    <!-- <div class="row"> -->
+      <!-- <div class="col-lg-12"> -->
+      <!-- </div> -->
+    <!-- </div> -->
+
     <div class="row h-100 mt-4" style='border-top: 1px solid #666'>
 
       <!-- TODO - abstract this into an independent Nav component -->
@@ -55,7 +60,8 @@
 
         </ul>
       </div>
-      <div :class=" generatorAcivated ? 'col-lg-12 pt-3' : 'col-lg-10 pt-3' ">
+
+      <div :class=" generatorAcivated ? 'col-lg-12' : 'col-lg-10 pt-1' ">
         <router-view/>
       </div>
     </div>
