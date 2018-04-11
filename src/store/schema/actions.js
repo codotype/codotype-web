@@ -34,5 +34,6 @@ export default {
     schema.identifier = underscored(label)
     schema.identifier_plural = underscored(pluralize(label))
     schema.class_name = classify(titleize(label))
+    schema.class_name_plural = pluralize(classify(titleize(label)))
   }
 }

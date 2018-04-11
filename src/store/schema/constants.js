@@ -12,8 +12,8 @@ export const DEFAULT_SCHEMA = {
       label: 'Label',
       identifier: 'label',
       help: '',
-      required: false,
-      unique: false,
+      required: true,
+      unique: true,
       datatype: 'TEXT',
       datatypeOptions: {}
     }
