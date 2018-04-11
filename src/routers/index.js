@@ -5,6 +5,7 @@ import Router from 'vue-router'
 import ProjectList from '@/containers/project_list'
 import ProjectShow from '@/containers/project_show'
 import ProjectMeta from '@/containers/project_show/components/ProjectMeta'
+import ProjectAuth from '@/containers/project_show/components/ProjectAuth'
 import ProjectSeeds from '@/containers/project_show/components/ProjectSeeds'
 import ProjectGenerate from '@/containers/project_generate'
 
@@ -74,6 +75,11 @@ export default new Router({
                   path: '/projects/:project_id/meta',
                   component: ProjectMeta,
                   meta: { bcLinkText: 'Meta' }
+                },
+                {
+                  path: '/projects/:project_id/auth',
+                  component: ProjectAuth,
+                  meta: { bcLinkText: 'Authorization' }
                 },
                 {
                   path: '/projects/:project_id/generate',

@@ -54,7 +54,9 @@
           <b-nav-item :href="'#/projects/' + project_id + '/seeds'" >
             Seed Data
           </b-nav-item>
-          <b-nav-item disabled>Authorization</b-nav-item>
+          <b-nav-item :href="'#/projects/' + project_id + '/auth'" >
+            Authorization
+          </b-nav-item>
           <b-nav-item disabled>Environment</b-nav-item>
         </b-nav>
 
