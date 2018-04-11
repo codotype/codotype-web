@@ -1,6 +1,6 @@
 <template>
   <b-nav vertical pills>
-    <b-nav-item :href="t.href" v-for='t in tabs' :active="isSelected(t)">
+    <b-nav-item :href="t.href" v-for='t in tabs' :key="t.path" :active="isSelected(t)">
       {{ t.label }}
     </b-nav-item>
     <b-nav-item disabled>Environment</b-nav-item>
@@ -22,7 +22,6 @@ export default {
     }
   },
   data () {
-    console.log(this.$route)
     const projectId = this.$store.getters['project/selectedModel']._id
     return {
       selectedTab: 'Models',

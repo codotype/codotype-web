@@ -3,6 +3,7 @@ const DownloadFile = require('downloadjs')
 
 export default {
   generate: ({ rootGetters, commit }) => {
+    console.log(JSON.stringify(rootGetters['project/selectedModel'], null, 2))
     return new Promise((resolve, reject) => {
       return fetch(GENERATE_ROUTE, {
         method: 'post',
