@@ -15,6 +15,7 @@ import SchemaShow from '@/containers/schema_show'
 // Record Containers
 import RecordList from '@/containers/record_list'
 import RecordNew from '@/containers/record_new'
+import RecordEdit from '@/containers/record_edit'
 
 // TODO - move these into main.js (???)
 import MainHome from '@/containers/main_home'
@@ -33,7 +34,7 @@ export default new Router({
     {
       path: '/',
       component: RouterView,
-      meta: { bcLinkText: 'Home' },
+      // meta: { bcLinkText: 'Home' },
       children: [
         {
           path: '',
@@ -43,13 +44,13 @@ export default new Router({
         {
           path: '/about',
           name: 'main_about',
-          component: MainAbout,
-          meta: { bcLinkText: 'About' }
+          component: MainAbout
+          // meta: { bcLinkText: 'About' }
         },
         {
           path: 'projects',
           component: RouterView,
-          meta: { bcLinkText: 'Apps' },
+          // meta: { bcLinkText: 'Apps' },
           children: [
             {
               path: '',
@@ -71,16 +72,18 @@ export default new Router({
                 },
                 {
                   path: '/projects/:project_id/meta',
-                  component: ProjectMeta
+                  component: ProjectMeta,
+                  meta: { bcLinkText: 'Meta' }
                 },
                 {
                   path: '/projects/:project_id/generate',
-                  component: ProjectGenerate
-                  // meta: { bcLinkText: 'Generate' }
+                  component: ProjectGenerate,
+                  meta: { bcLinkText: 'Generate' }
                 },
                 {
                   path: '/projects/:project_id/schemas',
                   component: RouterView,
+                  meta: { bcLinkText: 'Models' },
                   children: [
                     {
                       path: '',
@@ -89,13 +92,15 @@ export default new Router({
                     {
                       path: '/projects/:project_id/schemas/:schema_id',
                       props: true,
-                      component: SchemaShow
+                      component: SchemaShow,
+                      meta: { bcGetter: 'schema/selectedLabel' }
                     }
                   ]
                 },
                 {
                   path: '/projects/:project_id/seeds',
                   component: RouterView,
+                  meta: { bcLinkText: 'Seed Data' },
                   children: [
                     {
                       path: '',
@@ -103,13 +108,33 @@ export default new Router({
                     },
                     {
                       path: '/projects/:project_id/seeds/:schema_id',
-                      component: RecordList,
-                      props: true
-                    },
-                    {
-                      path: '/projects/:project_id/seeds/:schema_id/new',
-                      component: RecordNew,
-                      props: true
+                      component: RouterView,
+                      meta: { bcGetter: 'schema/selectedLabel' },
+                      children: [
+                        {
+                          path: '',
+                          props: true,
+                          component: RecordList
+                        },
+                        {
+                          path: '/projects/:project_id/seeds/:schema_id/new',
+                          component: RecordNew,
+                          props: true,
+                          meta: { bcText: 'New' }
+                        },
+                        {
+                          path: '/projects/:project_id/seeds/:schema_id/records/:record_id',
+                          component: RecordNew, // TODO - Record SHOW
+                          props: true,
+                          meta: { bcText: 'Show' }
+                        },
+                        {
+                          path: '/projects/:project_id/seeds/:schema_id/records/:record_id/edit',
+                          component: RecordEdit,
+                          props: true,
+                          meta: { bcText: 'Edit' }
+                        }
+                      ]
                     }
                   ]
                 }

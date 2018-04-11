@@ -5,7 +5,7 @@ const getters = {
   ...COLLECTION_GETTERS,
   ...SELECT_MODEL_GETTERS,
   selectedLabel: state => {
-    return state.selectedModel.label || 'SHIT SHIT SHIT'
+    return state.selectedModel.label || 'I AM ERROR'
   },
   // TODO - phase out current
   current: state => {

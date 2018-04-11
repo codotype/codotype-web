@@ -75,11 +75,11 @@ export default {
     }
 
     // Updates the collection belonging to the currently selected schema
-    // let collection = state.collection
-    // collection.push(model)
-    // commit('collection', collection)
-    // commit('schema/attributes', { collection }, { root: true })
-    // dispatch('resetNewModel')
+    let collection = state.collection
+    collection.push(model)
+    commit('collection', collection)
+    commit('schema/attributes', { collection }, { root: true })
+    dispatch('resetNewModel')
   },
   update ({ state, commit, dispatch }) {
     let model = _.cloneDeep(state.editModel)
