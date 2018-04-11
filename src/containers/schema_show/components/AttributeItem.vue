@@ -38,6 +38,7 @@
         <span class="badge" v-if="item.datatypeOptions.relationType === 'BELONGS_TO'">
           <i class="fa fa-link mr-2"></i>
           {{item.label}}
+          <span class="badge badge-light ml-2">Belongs To</span>
         </span>
 
         <!-- HAS_ONE -->
@@ -50,6 +51,7 @@
         <span class="badge" v-if="item.datatypeOptions.relationType === 'HAS_MANY'">
           <i class="fa fa-link mr-2"></i>
           {{item.label}}
+          <span class="badge badge-light ml-2">Has Many</span>
         </span>
 
         <!-- DATE -->

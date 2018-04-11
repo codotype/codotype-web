@@ -18,7 +18,7 @@
 
       <!-- Step 2 - Relation Form -->
       <!-- TODO - put it here -->
-      <RelationForm :model="model" v-if="model.datatype === 'RELATION'" />
+      <RelationForm :schema="schema" :model="model" v-if="model.datatype === 'RELATION'" />
 
     </div>
   </div>

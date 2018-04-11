@@ -27,6 +27,8 @@
           Identifier: {{ schema.identifier }}
           <br>
           Identifier Plural: {{ schema.identifier_plural }}
+          <br>
+          Class Name: {{ schema.class_name }}
         </div>
 
       </div>
