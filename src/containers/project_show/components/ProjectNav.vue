@@ -1,0 +1,40 @@
+<template>
+  <b-nav vertical pills>
+    <b-nav-item :href="t.href" v-for='t in tabs' :active="isSelected(t)">
+      {{ t.label }}
+    </b-nav-item>
+    <b-nav-item disabled>Environment</b-nav-item>
+  </b-nav>
+</template>
+
+<!-- // // // //  -->
+
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  computed: mapGetters({
+    project: 'project/selectedModel'
+  }),
+  methods: {
+    isSelected (tab) {
+      return this.$route.path.indexOf(tab.path) > -1
+    }
+  },
+  data () {
+    console.log(this.$route)
+    const projectId = this.$store.getters['project/selectedModel']._id
+    return {
+      selectedTab: 'Models',
+      tabs: [
+        { path: 'meta', label: 'Meta', href: `#/projects/${projectId}/meta` },
+        { path: 'schema', label: 'Models', href: `#/projects/${projectId}/schemas` },
+        { path: 'seeds', label: 'Seed Data', href: `#/projects/${projectId}/seeds` },
+        { path: 'auth', label: 'Authorization', href: `#/projects/${projectId}/auth` }
+      ]
+    }
+  }
+}
+</script>
+
+
