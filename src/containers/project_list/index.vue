@@ -29,7 +29,7 @@
         </div>
 
         <div class="col-sm-12">
-          <button class="btn btn-primary btn-block" @click="submitProjectForm()">
+          <button class="btn btn-lg btn-primary btn-block" @click="submitProjectForm()">
             <i class="fa fa-fw fa-check"></i>
             Create App
           </button>

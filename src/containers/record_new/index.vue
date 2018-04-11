@@ -1,16 +1,9 @@
 
 <template>
   <div class="row">
-    <div class="col-lg-12">
-      <h4>
-        New {{schema.label}}
-        <!-- <small class="text-muted">Seed Data</small> -->
-      </h4>
-    </div>
 
     <div class="col-lg-12">
-      <small class="mb-2 form-text text-muted">Defines the attributes that can be assigned to a single {{ schema.label }}</small>
-      <hr>
+      <EditorHeader :help="'Defines the attributes that can be assigned to a single ' + schema.label" />
     </div>
 
     <!-- Record Form -->

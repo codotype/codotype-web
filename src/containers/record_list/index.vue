@@ -1,23 +1,15 @@
 
 <template>
   <div class="row">
-    <div class="col-lg-8">
-      <h4>
-        {{schema.label}}
-        <small class="text-muted">Seed Data</small>
-      </h4>
-    </div>
 
-    <div class="col-lg-4">
-      <a class='btn btn-primary float-right' :href="'#/projects/' + project_id + '/seeds/' + schema_id + '/new'" >
-        <i class="fa fa-fw fa-plus mr-2"></i>
-        New {{ schema.label }}
-      </a>
-    </div>
-
+    <!-- Header -->
     <div class="col-lg-12">
-      <small class="mb-2 form-text text-muted">Defines the attributes that can be assigned to a single {{ schema.label }}</small>
-      <hr>
+      <EditorHeader :help="'Define the attributes that can be assigned to a single ' + schema.label">
+        <a class='btn btn-primary float-right' :href="'#/projects/' + project_id + '/seeds/' + schema_id + '/new'" >
+          <i class="fa fa-fw fa-plus mr-2"></i>
+          New {{ schema.label }}
+        </a>
+      </EditorHeader>
     </div>
 
     <!-- Record List -->
