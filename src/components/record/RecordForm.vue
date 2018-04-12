@@ -1,6 +1,5 @@
-
 <template>
-  <form class="row">
+  <div class="row">
 
     <div class='col-lg-6' v-for="attr in schema.attributes" :key="attr._id"  v-if="attr.datatype !== 'RELATION'">
       <div class="form-group">
@@ -27,7 +26,7 @@
         <input type="number" class="form-control" :placeholder="attr.label" :required="attr.required" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'NUMBER'">
 
         <!-- COLOR -->
-        <!-- <input type="color" class="form-control" :placeholder="attr.label" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'COLOR'"> -->
+        <input type="color" class="form-control" :placeholder="attr.label" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'COLOR'">
 
         <!-- PHONE_NUMBER -->
         <!-- <masked-input type="tel" class="form-control" :placeholder="attr.label" v-model="record.attributes[attr.identifier]" mask="\+\1 (111) 111-1111" v-if="attr.datatype === 'PHONE_NUMBER'"/> -->
@@ -69,7 +68,7 @@
       </button>
     </div>
 
-  </form>
+  </div>
 </template>
 
 <!-- // // // //  -->

@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import ObjectID from 'bson-objectid'
 import { COLLECTION_MUTATIONS, SELECT_MODEL_MUTATIONS, NEW_MODEL_MUTATIONS } from '@/store/lib/mixins'
 
 // Schema Module mutations
@@ -25,7 +26,7 @@ export default {
         }
       })
     } else {
-      schema._id = 'schema_' + Math.floor((Math.random() * 100000000000000) + 1)
+      schema._id = ObjectID().toString()
       state.collection.push(schema)
     }
     // Updates attributes order
@@ -77,7 +78,7 @@ export default {
         }
       })
     } else {
-      attr._id = 'attr_' + Math.floor((Math.random() * 100000000000000) + 1)
+      attr._id = ObjectID().toString()
       if (attr.datatype !== 'TEXT_SELECT' && attr.datatype !== 'NUMBER_SELECT') {
         delete attr.datatypeOptions.dropdownOptions
       }

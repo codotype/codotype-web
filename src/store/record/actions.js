@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import ObjectID from 'bson-objectid'
 import router from '@/routers'
 import { DEFAULT_RECORD } from './constants'
 import { SELECT_MODEL_ACTIONS, EDIT_MODEL_ACTIONS } from '@/store/lib/mixins'
@@ -15,7 +16,7 @@ export default {
   create ({ state, commit, dispatch }) {
     let collection = state.collection
     let model = _.cloneDeep(state.newModel)
-    model._id = 'RECORD_' + Math.floor((Math.random() * 100000000000000) + 1)
+    model._id = ObjectID().toString()
     collection.push(model)
 
     commit('collection', collection)

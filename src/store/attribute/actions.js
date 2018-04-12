@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import ObjectID from 'bson-objectid'
 import { DEFAULT_ATTRIBUTE } from './constants'
 import { SELECT_MODEL_ACTIONS, EDIT_MODEL_ACTIONS } from '@/store/lib/mixins'
 
@@ -19,7 +20,7 @@ export default {
     // console.log(modelSchema._id)
 
     // Assigns ID to attribute
-    model._id = 'ATTR_' + Math.floor((Math.random() * 100000000000000) + 1)
+    model._id = ObjectID().toString()
 
     // Pulls relational metadata (if needed)
     if (model.datatype === 'RELATION') {
@@ -44,7 +45,7 @@ export default {
         // Defines inverse relation on relatedSchema
         // INVERSE OF HAS_MANY === BELONGS_TO
         let reverseRelation = _.cloneDeep(DEFAULT_ATTRIBUTE)
-        reverseRelation._id = 'ATTR_' + Math.floor((Math.random() * 100000000000000) + 1)
+        reverseRelation._id = ObjectID().toString()
         reverseRelation.datatype = 'RELATION'
         reverseRelation.order = relatedSchema.attributes.length + 1
         reverseRelation.label = modelSchema.label

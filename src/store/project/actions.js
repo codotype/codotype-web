@@ -1,7 +1,8 @@
 import _ from 'lodash'
+import ObjectID from 'bson-objectid'
+import router from '@/routers'
 import { DEFAULT_PROJECT, DEFAULT_USER_SCHEMA, CREATE_SUCCESS_NOTIFICATION } from './constants'
 import { SELECT_MODEL_ACTIONS } from '@/store/lib/mixins'
-import router from '@/routers'
 
 const underscored = require('underscore.string/underscored')
 // TODO - use this instead?
@@ -46,7 +47,7 @@ export default {
         }
       })
     } else {
-      recordId = 'PR_' + Math.floor((Math.random() * 100000000000000) + 1)
+      recordId = ObjectID().toString()
       record._id = recordId
       collection.push(record)
     }
@@ -90,9 +91,9 @@ export default {
     let projectModel = _.cloneDeep(example)
     projectModel._id = null
     projectModel.schemas = _.map(projectModel.schemas, (s) => {
-      s._id = 'SCH_' + Math.floor((Math.random() * 100000000000000) + 1)
+      s._id = ObjectID().toString()
       s.attributes = _.map(s.attributes, (a) => {
-        a._id = 'ATTR_' + Math.floor((Math.random() * 100000000000000) + 1)
+        a._id = ObjectID().toString()
         return a
       })
       return s
