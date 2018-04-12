@@ -179,6 +179,9 @@ export const CLASSROOM_PROJECT = {
     database: {
       id: 'mongodb'
     },
+    auth: {
+      id: 'email'
+    },
     features: [],
     deployments: []
   },

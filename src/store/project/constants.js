@@ -14,6 +14,9 @@ export const DEFAULT_PROJECT = {
     database: {
       id: 'mongodb'
     },
+    auth: {
+      id: 'email'
+    },
     features: [],
     deployments: []
   }

@@ -1,6 +1,6 @@
 
 <template>
-  <div class="row">
+  <div class="row mt-2">
     <div class="col-lg-12">
       <div class="card card-body bg-dark text-light border-light">
 
@@ -41,42 +41,38 @@
 
           <!-- TODO - decouple `model` (project model) from the generate module as much as possible -->
           <!-- Project Detail -->
-          <!-- <b-tab title="Project" active> -->
-            <!-- <ProjectDetail :model="model" /> -->
-          <!-- </b-tab> -->
+          <b-tab title="Project" active>
+            <ProjectDetail :model="model" />
+          </b-tab>
 
           <!-- Server Frameworks -->
           <b-tab title="Server">
-            <ServerTab :model="model" />
+            <AbstractTab :model="model" stackId="server" :stackOpts="opts.server" title="Server"/>
           </b-tab>
 
           <!-- Databases -->
           <b-tab title="Database">
-            <DatabaseTab :model="model" />
+            <AbstractTab :model="model" stackId="database" :stackOpts="opts.database" title="Database"/>
           </b-tab>
 
           <!-- Client Frameworks -->
           <!-- Build Tools -->
           <b-tab title="Client">
-            <AbstractTab :model="model" stackId="client" :stackOpts="clientOpts.client_frameworks" title="Client Frameworks"/>
+            <AbstractTab :model="model" stackId="client" :stackOpts="opts.client.client_frameworks" title="Client Frameworks"/>
           </b-tab>
 
           <!-- CSS Frameworks -->
           <b-tab title="CSS Framework">
-            <CssTab :model="model" />
+            <AbstractTab :model="model" stackId="client" :stackOpts="opts.client.css_frameworks" title="CSS Frameworks"/>
           </b-tab>
 
           <b-tab title="Deployment">
-            <AbstractTab :model="model" stackId="deployments" :stackOpts="deploymentOpts" title="Deployments"/>
+            <AbstractTab :model="model" stackId="deployments" :stackOpts="opts.deployment" title="Deployments"/>
           </b-tab>
 
-          <!-- Build -->
-          <!-- <b-tab title="Build"> -->
-            <!-- <br> -->
-            <!-- Build / Generate Codebase -->
-            <!-- <br> -->
-            <!-- Build Configuration / Options -->
-          <!-- </b-tab> -->
+          <b-tab title="Authorization">
+            <AbstractTab :model="model" stackId="auth" :stackOpts="opts.auth" title="Authrozation" />
+          </b-tab>
 
         </b-tabs>
 
@@ -88,26 +84,11 @@
 <!-- // // // //  -->
 
 <script>
-import ProjectDetail from './components/ProjectDetail'
-import AuthTab from './components/AuthTab' // TODO - AuthTab
-import ServerTab from './components/ServerTab'
-import ClientTab from './components/ClientTab'
-import CssTab from './components/CssTab'
-import DatabaseTab from './components/DatabaseTab'
-import DeploymentTab from './components/DeploymentTab'
 import AbstractTab from './components/AbstractTab'
-
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
   components: {
-    ProjectDetail,
-    AuthTab,
-    ServerTab,
-    ClientTab,
-    CssTab,
-    DatabaseTab,
-    DeploymentTab,
     AbstractTab
   },
   created () {
@@ -118,8 +99,7 @@ export default {
   },
   computed: mapGetters({
     model: 'project/selectedModel',
-    deploymentOpts: 'generator/deploymentOpts',
-    clientOpts: 'generator/clientOpts'
+    opts: 'generator/generatorFormOpts'
   }),
   methods: mapActions({
     setActivated: 'generator/setActivated',
