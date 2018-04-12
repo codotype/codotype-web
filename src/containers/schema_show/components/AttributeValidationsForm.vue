@@ -1,8 +1,8 @@
 <template>
-  <div class="row">
+  <div class="row mt-2">
 
     <div class="col-lg-12">
-      <p class="lead mb-0">Advanced Properties</p>
+      <p class="lead mb-0">Validations</p>
     </div>
 
     <div class="col-lg-6 col-sm-12">

@@ -22,7 +22,9 @@ export default {
   edit ({ state, commit }, schema) {
     commit('editModel', schema)
   },
-  destroy ({ state, commit }) {
+  remove ({ state, commit }, schema) {
+    let collection = state.collection.filter((s) => { return s._id !== schema._id })
+    return commit('collection', collection)
   },
   resetNewModel ({ commit }) {
     let newModel = _.cloneDeep(DEFAULT_SCHEMA)

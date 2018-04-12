@@ -112,8 +112,9 @@ export default {
     // TODO - REMOVE REVERSE RELATION HERE
     console.log('DESTROY ATTRIBUTE')
     console.log(model)
-    // let collection = _.filter(state.collection, (m) => { return m._id !== model._id })
-    // commit('collection', collection)
-    // commit('schema/attributes', { collection }, { root: true })
+
+    let collection = _.filter(state.collection, (m) => { return m._id !== model._id })
+    commit('collection', collection)
+    commit('schema/attributes', { collection }, { root: true })
   }
 }

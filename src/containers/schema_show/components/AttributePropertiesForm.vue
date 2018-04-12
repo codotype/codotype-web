@@ -1,8 +1,8 @@
 <template>
-  <div class="row">
+  <div class="row mt-2">
 
     <div class="col-lg-12">
-      <p class="lead mb-0">Properties</p>
+      <p class="lead mb-0">Attribute Properties</p>
     </div>
 
     <div class="col-lg-6 col-sm-12">
@@ -24,12 +24,20 @@
 </template>
 
 <script>
+import _ from 'lodash'
 import FormInput from '@/components/FormInput'
 
 export default {
   props: ['model'],
   components: {
     FormInput
+  },
+  computed: {
+    datatypeLabel () {
+      let datatypes = this.$store.getters['schema/datatypes']
+      let datatype = _.find(datatypes, { value: this.model.datatype })
+      return datatype.text
+    }
   }
 }
 </script>

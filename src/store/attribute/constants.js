@@ -8,6 +8,6 @@ export const DEFAULT_ATTRIBUTE = {
   help: '',
   required: false,
   unique: false,
-  datatype: 'TEXT',
+  datatype: '',
   datatypeOptions: {}
 }

@@ -1,10 +1,12 @@
 
 <template>
-  <a class='list-group-item border-light bg-dark text-light' :href="'#/projects/' + model._id + '/schemas/' + schema._id">
+  <a class='list-group-item border-light bg-dark text-light'>
 
     <div class="row align-items-center">
       <div class="col-md-3">
-        {{ schema.label }}
+        <a :href="'#/projects/' + model._id + '/schemas/' + schema._id">
+          {{ schema.label }}
+        </a>
       </div>
 
       <div class="col-md-3">

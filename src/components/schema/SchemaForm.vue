@@ -3,7 +3,7 @@
     <div class="col-lg-12">
 
       <!-- <p class="lead mb-0">Schema Properties</p> -->
-      <p class="mb-2 form-text text-muted">Define the core metadata that's used to create a valid schema.</p>
+      <p class="mb-2 form-text text-muted">Define the core metadata that's used to create a valid model.</p>
 
       <div class="row">
         <div class="col-lg-12">
@@ -20,17 +20,34 @@
         <div class="col-lg-12">
           <p class="mb-2 form-text text-muted">Validate the results below before submission</p>
 
-          Label: {{ schema.label }}
-          <br>
-          Plural Label: {{ schema.label_plural }}
-          <br>
-          Identifier: {{ schema.identifier }}
-          <br>
-          Identifier Plural: {{ schema.identifier_plural }}
-          <br>
-          Class Name: {{ schema.class_name }}
-          <br>
-          Class Name Plural : {{ schema.class_name_plural }}
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>Label</td>
+                <td>{{ schema.label }}</td>
+              </tr>
+              <tr>
+                <td>Label Plural</td>
+                <td>{{ schema.label_plural }}</td>
+              </tr>
+              <tr>
+                <td>Identifier</td>
+                <td>{{ schema.identifier }}</td>
+              </tr>
+              <tr>
+                <td>Identifier Plural</td>
+                <td>{{ schema.identifier_plural }}</td>
+              </tr>
+              <tr>
+                <td>Class Name</td>
+                <td>{{ schema.class_name }}</td>
+              </tr>
+              <!-- <tr> -->
+                <!-- <td>Class Name Plural</td> -->
+                <!-- <td>{{ schema.class_name_plural }}</td> -->
+              <!-- </tr> -->
+            </tbody>
+          </table>
         </div>
 
       </div>
