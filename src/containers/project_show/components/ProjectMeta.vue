@@ -1,19 +1,10 @@
 <!-- TODO - rename this to META (?) -->
+<!-- TODO - add overview container -->
 <template>
   <div class="row">
     <div class="col-lg-12">
 
-      <div class="row d-flex align-items-center">
-        <div class="col-lg-12">
-          <h4>
-            Meta
-            <!-- {{ model.label }} -->
-            <!-- <small class='text-muted'> -->
-              <!-- <i class="fa fa-pencil"></i> -->
-            <!-- </small> -->
-          </h4>
-        </div>
-      </div>
+      <EditorHeader :help="'Define metadata pertaining to the ' + model.label + ' app.'" />
 
       <div class="row d-flex align-items-center">
         <div class="col-lg-12">

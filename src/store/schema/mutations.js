@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import ObjectID from 'bson-objectid'
 import { COLLECTION_MUTATIONS, SELECT_MODEL_MUTATIONS, NEW_MODEL_MUTATIONS } from '@/store/lib/mixins'
 
 // Schema Module mutations
@@ -6,8 +7,13 @@ export default {
   ...COLLECTION_MUTATIONS,
   ...SELECT_MODEL_MUTATIONS,
   ...NEW_MODEL_MUTATIONS,
-  attributes (state, collection) {
-    state.selectedModel.attributes = collection
+  attributes (state, { schema_id, collection }) {
+    if (schema_id) {
+      let schema = _.find(state.collection, { _id: schema_id })
+      schema.attributes = collection
+    } else {
+      state.selectedModel.attributes = collection
+    }
   },
   // REMOVE BELOW THIS LINE
   persist (state, { schema }) {
@@ -20,7 +26,7 @@ export default {
         }
       })
     } else {
-      schema._id = 'schema_' + Math.floor((Math.random() * 100000000000000) + 1)
+      schema._id = ObjectID().toString()
       state.collection.push(schema)
     }
     // Updates attributes order
@@ -72,7 +78,7 @@ export default {
         }
       })
     } else {
-      attr._id = 'attr_' + Math.floor((Math.random() * 100000000000000) + 1)
+      attr._id = ObjectID().toString()
       if (attr.datatype !== 'TEXT_SELECT' && attr.datatype !== 'NUMBER_SELECT') {
         delete attr.datatypeOptions.dropdownOptions
       }

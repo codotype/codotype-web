@@ -9,7 +9,7 @@ Sun
 - Get seed data working across the stack
 
 Mon
-- Set up Google Analytics / HotJar - both?
+- (DONE) Set up Google Analytics / HotJar - both?
 - Presentation slides
 - Finish client application
   - Form validations
@@ -37,8 +37,11 @@ Friday
 CORE FEATURES FIRST
 
 TODO - gradient for SOLID buttons, navs
-
+TODO - Add SEED admin user
 
 SERVER TECH NOTES
 https://github.com/simov/purest
 https://github.com/simov/grant
+
+
+---------

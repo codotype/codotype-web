@@ -1,4 +1,6 @@
 import _ from 'lodash'
+import ObjectID from 'bson-objectid'
+import router from '@/routers'
 import { DEFAULT_PROJECT, DEFAULT_USER_SCHEMA, CREATE_SUCCESS_NOTIFICATION } from './constants'
 import { SELECT_MODEL_ACTIONS } from '@/store/lib/mixins'
 
@@ -12,6 +14,8 @@ export default {
     let model = _.find(state.collection, { _id: model_id })
     commit('selectedModel', model)
     commit('schema/collection', model.schemas, { root: true })
+    // TODO - integrate with record Vuex store
+    // commit('record/collection', model.seeds, { root: true })
   },
   fetchCollection: ({ rootGetters, commit }) => {
     commit('fetching', true)
@@ -43,7 +47,7 @@ export default {
         }
       })
     } else {
-      recordId = 'PR_' + Math.floor((Math.random() * 100000000000000) + 1)
+      recordId = ObjectID().toString()
       record._id = recordId
       collection.push(record)
     }
@@ -76,8 +80,29 @@ export default {
   resetNewModel: ({ commit }) => {
     let newModel = _.cloneDeep(DEFAULT_PROJECT)
     let userSchema = _.cloneDeep(DEFAULT_USER_SCHEMA)
-    userSchema._id = _.uniqueId('SCHEMA_')
+    userSchema._id = _.uniqueId('SCH_')
     newModel.schemas.push(userSchema)
     commit('newModel', newModel)
+  },
+
+  cloneExample: ({ dispatch, commit }, example) => {
+    // Resets project, schema, and attribute IDs
+    // TODO - handle seed data as well
+    let projectModel = _.cloneDeep(example)
+    projectModel._id = null
+    projectModel.schemas = _.map(projectModel.schemas, (s) => {
+      s._id = ObjectID().toString()
+      s.attributes = _.map(s.attributes, (a) => {
+        a._id = ObjectID().toString()
+        return a
+      })
+      return s
+    })
+
+    // Adds to the project collection
+    dispatch('persist', { record: projectModel })
+
+    // Navigates to /projects/id
+    router.push('/projects/' + projectModel._id)
   }
 }

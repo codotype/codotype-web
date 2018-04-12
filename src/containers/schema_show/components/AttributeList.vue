@@ -6,7 +6,7 @@
     <b-modal :id="'edit_attribute'"
       :title="'Edit Attribute'"
       ref='editModal'
-      @ok="update()"
+      @ok="updateAttr()"
       header-bg-variant='dark'
       header-text-variant='light'
       body-bg-variant='dark'

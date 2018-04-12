@@ -6,7 +6,18 @@ export const DEFAULT_SCHEMA = {
   label_plural: '',
   identifier: '',
   identifier_plural: '',
-  attributes: [],
+  attributes: [
+    {
+      order: 0,
+      label: 'Label',
+      identifier: 'label',
+      help: '',
+      required: true,
+      unique: true,
+      datatype: 'TEXT',
+      datatypeOptions: {}
+    }
+  ],
   display: {
     icon: 'fa-square-o',
     navbar_link: true
@@ -14,9 +25,12 @@ export const DEFAULT_SCHEMA = {
 }
 
 export const RELATION_TYPES = [
-  { id: 'HAS_ONE', text: 'Has One', desc: 'one X has one Y' },
-  { id: 'BELONGS_TO', text: 'Belongs To', desc: 'many X belong to one Y' },
-  { id: 'HAS_MANY', text: 'Has Many', desc: 'one X has many Y' }
+  // { id: 'HAS_ONE', text: 'Has One', desc: 'one to one' },
+  // { id: 'BELONGS_TO', text: 'Belongs To', desc: 'many to one' },
+  // { id: 'HAS_MANY', text: 'Has Many', desc: 'one to many' },
+  // { id: 'HAS_AND_BELONGS_TO_MANY', text: 'Many to Many', desc: 'many to many' }
+  { id: 'HAS_MANY', text: 'Has Many', desc: 'one to many description here...' },
+  { id: 'BELONGS_TO', text: 'Belongs To', desc: 'one to many description here...' }
 ]
 
 export const DATATYPES = [

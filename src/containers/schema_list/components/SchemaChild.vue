@@ -4,7 +4,7 @@
 
     <div class="row align-items-center">
       <div class="col-md-3">
-        {{ schema.label_plural }}
+        {{ schema.label }}
       </div>
 
       <div class="col-md-3">

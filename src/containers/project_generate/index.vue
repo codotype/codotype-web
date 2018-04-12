@@ -89,7 +89,6 @@
 
 <script>
 import ProjectDetail from './components/ProjectDetail'
-import SchemaTab from './components/SchemaTab'
 import AuthTab from './components/AuthTab' // TODO - AuthTab
 import ServerTab from './components/ServerTab'
 import ClientTab from './components/ClientTab'
@@ -103,7 +102,6 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   components: {
     ProjectDetail,
-    SchemaTab,
     AuthTab,
     ServerTab,
     ClientTab,
@@ -129,4 +127,3 @@ export default {
   })
 }
 </script>
-

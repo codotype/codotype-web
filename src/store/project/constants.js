@@ -1,5 +1,4 @@
 // Project module constants
-
 export const DEFAULT_PROJECT = {
   label: 'Blazeplate Project',
   identifier: '',
@@ -26,7 +25,8 @@ export const DEFAULT_USER_SCHEMA = {
   label_plural: 'Users',
   identifier: 'user',
   identifier_plural: 'users',
-  unqiue_id_prefix: 'US_',
+  class_name: 'User',
+  class_name_plural: 'Users',
   authentications: [],
   attributes: [
     {

@@ -1,20 +1,21 @@
+
 <template>
   <div class='row'>
 
     <!-- Child -->
     <div v-for="project in collection" v-bind:key="project._id" class='col-lg-12 mb-3'>
-      <div class="card card-body bg-dark border-light">
-        <div class="row">
+      <div class="card card-body bg-dark border-info">
+        <div class="row align-items-center">
 
-          <div class="col-lg-3">
+          <div class="col-lg-3 text-info">
             <!-- project URL -->
             <p class="lead mb-0">
-              <a class='text-light' v-bind:href="'#/projects/' + project._id + '/schemas' ">{{project.label}}</a>
+              <a class='text-info' v-b-modal="'modal_' + project._id" href='#/examples'>{{project.label}}</a>
             </p>
           </div>
 
-          <div class="col-lg-5">
-            <div class='text-light'>
+          <div class="col-lg-6">
+            <div class='text-info'>
               <i class="fa fa-database mr-1"></i>
               <template v-if="project.schemas.length">
                 <!-- {{ project.schemas.length + ' Schema' }} -->
@@ -26,42 +27,30 @@
             </div>
           </div>
 
-          <div class="col-lg-4 text-right">
+          <div class="col-lg-3 text-right">
 
-            <!-- Export Project JSON -->
-            <!-- TODO - display a modal explaining how exports work -->
-            <button class='btn btn-sm btn-outline-light' @click="exportProject(project)">
-              <i class="fa fa-code mr-1"></i>
-              Export
-            </button>
-
-            <a class='btn btn-sm btn-outline-light' v-bind:href="'#/projects/' + project._id + '/generate'">
-              <i class="fa fa-play mr-1"></i>
-              Generate
-            </a>
-
-            <!-- Destroy project Confirmation -->
-            <button class="btn btn-sm btn-outline-danger" v-b-modal="'modal_' + project._id">
-              <i class="fa mr-1 fa-trash"></i>
-              Destroy
+            <!-- Clone example Confirmation -->
+            <button class="btn btn-outline-info w-100" v-b-modal="'modal_' + project._id">
+              <i class="fa mr-1 fa-copy"></i>
+              Clone Example
             </button>
 
             <!-- Bootstrap Modal Component -->
             <b-modal :id="'modal_' + project._id"
-              :title="'Destroy ' + project.label + '?'"
-              @ok="destroyProject(project)"
+              :title="'Clone ' + project.label + '?'"
+              @ok="cloneExample(project)"
               header-bg-variant='dark'
               header-text-variant='light'
               body-bg-variant='dark'
               body-text-variant='light'
-              footer-bg-variant='danger'
+              footer-bg-variant='info'
               footer-text-variant='light'
-              ok-variant='danger'
-              ok-title='DESTROY'
+              ok-variant='info'
+              ok-title='Clone'
               cancel-title='Cancel'
               cancel-variant='dark'
             >
-              <p class="text-left">Are you sure you want to destroy the {{ project.label }} project?</p>
+              <p class="text-left">Are you sure you want to clone the {{ project.label }} project?</p>
             </b-modal>
 
           </div>
@@ -76,10 +65,11 @@
         <p class="lead card-text">
           <i class="fa fa-fw fa-info-circle mr-2"></i>
           <br>
-          No Apps found
+          No Example Apps found
         </p>
         <p class="card-text">
-          See some <a href="#/examples">examples</a>
+          Uh oh. Something must actually be wrong here.
+          <a href="#/projects">My Projects</a>
         </p>
       </div>
     </div>
@@ -97,8 +87,7 @@ export default {
   props: ['collection'],
   methods: {
     ...mapActions({
-      exportProject: 'project/exportJson',
-      destroyProject: 'project/destroy'
+      cloneExample: 'project/cloneExample'
     }),
     schemaString (project) {
       let schemas = []
