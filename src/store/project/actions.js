@@ -103,6 +103,6 @@ export default {
     dispatch('persist', { record: projectModel })
 
     // Navigates to /projects/id
-    router.push('/projects/' + projectModel._id)
+    router.push(`/projects/${projectModel._id}/schemas`)
   }
 }

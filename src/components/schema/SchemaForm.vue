@@ -20,27 +20,27 @@
         <div class="col-lg-12">
           <p class="mb-2 form-text text-muted">Validate the results below before submission</p>
 
-          <table class="table">
+          <table class="table table-sm">
             <tbody>
               <tr>
                 <td>Label</td>
-                <td>{{ schema.label }}</td>
+                <td>{{ schema.label || '...' }}</td>
               </tr>
               <tr>
                 <td>Label Plural</td>
-                <td>{{ schema.label_plural }}</td>
+                <td>{{ schema.label_plural || '...' }}</td>
               </tr>
               <tr>
                 <td>Identifier</td>
-                <td>{{ schema.identifier }}</td>
+                <td>{{ schema.identifier || '...' }}</td>
               </tr>
               <tr>
                 <td>Identifier Plural</td>
-                <td>{{ schema.identifier_plural }}</td>
+                <td>{{ schema.identifier_plural || '...' }}</td>
               </tr>
               <tr>
                 <td>Class Name</td>
-                <td>{{ schema.class_name }}</td>
+                <td>{{ schema.class_name || '...' }}</td>
               </tr>
               <!-- <tr> -->
                 <!-- <td>Class Name Plural</td> -->
