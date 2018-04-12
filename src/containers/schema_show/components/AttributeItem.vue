@@ -105,7 +105,7 @@
       </div>
 
       <div class="col-lg-3 text-right controls" v-else>
-      >
+
         <button class="btn btn-sm btn-outline-secondary" :disabled="item.locked" v-b-tooltip.hover.top title="Edit" @click="edit(item)">
           <i class="fa fa-fw fa-pencil"></i>
         </button>
