@@ -90,14 +90,14 @@ export default {
     // TODO - handle seed data as well
     let projectModel = _.cloneDeep(example)
     projectModel._id = null
-    projectModel.schemas = _.map(projectModel.schemas, (s) => {
-      s._id = ObjectID().toString()
-      s.attributes = _.map(s.attributes, (a) => {
-        a._id = ObjectID().toString()
-        return a
-      })
-      return s
-    })
+    // projectModel.schemas = _.map(projectModel.schemas, (s) => {
+    //   s._id = ObjectID().toString()
+    //   s.attributes = _.map(s.attributes, (a) => {
+    //     a._id = ObjectID().toString()
+    //     return a
+    //   })
+    //   return s
+    // })
 
     // Adds to the project collection
     dispatch('persist', { record: projectModel })
