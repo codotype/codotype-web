@@ -27,7 +27,7 @@ export default {
       selectedTab: 'Models',
       tabs: [
         { path: 'meta', label: 'Meta', href: `#/projects/${projectId}/meta` },
-        { path: 'schema', label: 'Models', href: `#/projects/${projectId}/schemas` },
+        { path: 'schemas', label: 'Models', href: `#/projects/${projectId}/schemas` },
         { path: 'seeds', label: 'Seed Data', href: `#/projects/${projectId}/seeds` },
         { path: 'auth', label: 'Authorization', href: `#/projects/${projectId}/auth` }
       ]

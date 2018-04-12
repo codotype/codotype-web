@@ -168,6 +168,7 @@ export const CLASSROOM_PROJECT = {
       class_name: 'Assignment'
     }
   ],
+  seeds: [],
   stack: {
     server: {
       id: 'expressjs'
