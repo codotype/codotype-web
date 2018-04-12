@@ -8,7 +8,6 @@
 
       <div class="row d-flex align-items-center">
         <div class="col-lg-12">
-          <p class="text-warning">TODO - abstract SubHeader into standalone component</p>
           <p class="text-warning">TODO - add form to edit basic app metadata</p>
         </div>
       </div>
