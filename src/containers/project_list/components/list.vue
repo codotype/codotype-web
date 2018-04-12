@@ -4,34 +4,41 @@
 
     <!-- Child -->
     <div v-for="project in collection" v-bind:key="project._id" class='col-lg-12 mb-3'>
-      <div class="card card-body bg-dark border-light">
+      <div class="card card-body bg-dark border-primary">
         <div class="row">
 
           <div class="col-lg-3">
             <!-- project URL -->
-            <a v-bind:href="'#/projects/' + project._id + '/schemas' ">{{project.label}}</a>
+            <p class="lead mb-0">
+              <a class='text-primary' v-bind:href="'#/projects/' + project._id + '/schemas' ">{{project.label}}</a>
+            </p>
           </div>
 
           <div class="col-lg-3">
-            <div class='text-info'>
+            <div class='text-primary'>
               <i class="fa fa-database mr-1"></i>
-              {{ project.schemas.length + ' Schema(s)'}}
+              <template v-if="project.schemas.length === 1">
+                {{ project.schemas.length + ' Schema'}}
+              </template>
+              <template v-else>
+                {{ project.schemas.length + ' Schemas'}}
+              </template>
             </div>
           </div>
 
           <div class="col-lg-6 text-right">
 
+            <!-- Export Project JSON -->
+            <!-- TODO - display a modal explaining how exports work -->
+            <button class='btn btn-sm btn-outline-primary' @click="exportProject(project)">
+              <i class="fa fa-code mr-1"></i>
+              Export
+            </button>
+
             <a class='btn btn-sm btn-outline-success' v-bind:href="'#/projects/' + project._id + '/generate'">
               <i class="fa fa-play mr-1"></i>
               Generate
             </a>
-
-            <!-- Export Project JSON -->
-            <!-- TODO - display a modal explaining how exports work -->
-            <button class='btn btn-sm btn-outline-light' @click="exportProject(project)">
-              <i class="fa fa-code mr-1"></i>
-              Export
-            </button>
 
             <!-- Destroy project Confirmation -->
             <button class="btn btn-sm btn-outline-danger" v-b-modal="'modal_' + project._id">

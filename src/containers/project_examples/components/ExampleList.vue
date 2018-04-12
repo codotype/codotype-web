@@ -4,25 +4,33 @@
 
     <!-- Child -->
     <div v-for="project in collection" v-bind:key="project._id" class='col-lg-12 mb-3'>
-      <div class="card card-body bg-dark border-primary">
+      <div class="card card-body bg-dark border-info">
         <div class="row align-items-center">
 
-          <div class="col-lg-3 text-primary">
+          <div class="col-lg-3 text-info">
             <!-- project URL -->
-            <a class='text-primary' v-bind:href="'#/projects/' + project._id + '/schemas' ">{{project.label}}</a>
+            <p class="lead mb-0">
+              <a class='text-info' v-b-modal="'modal_' + project._id" href='#/examples'>{{project.label}}</a>
+            </p>
           </div>
 
-          <div class="col-lg-3">
-            <div class='text-primary'>
+          <div class="col-lg-6">
+            <div class='text-info'>
               <i class="fa fa-database mr-1"></i>
-              {{ project.schemas.length + ' Schema(s)'}}
+              <template v-if="project.schemas.length">
+                <!-- {{ project.schemas.length + ' Schema' }} -->
+                {{ schemaString(project) }}
+              </template>
+              <template v-else>
+                No Schemas
+              </template>
             </div>
           </div>
 
-          <div class="col-lg-6 text-right">
+          <div class="col-lg-3 text-right">
 
             <!-- Clone example Confirmation -->
-            <button class="btn btn-outline-primary" v-b-modal="'modal_' + project._id">
+            <button class="btn btn-outline-info w-100" v-b-modal="'modal_' + project._id">
               <i class="fa mr-1 fa-copy"></i>
               Clone Example
             </button>
@@ -35,9 +43,9 @@
               header-text-variant='light'
               body-bg-variant='dark'
               body-text-variant='light'
-              footer-bg-variant='primary'
+              footer-bg-variant='info'
               footer-text-variant='light'
-              ok-variant='primary'
+              ok-variant='info'
               ok-title='Clone'
               cancel-title='Cancel'
               cancel-variant='dark'
@@ -72,12 +80,20 @@
 <!-- // // // //  -->
 
 <script>
+import _ from 'lodash'
 import { mapActions } from 'vuex'
 
 export default {
   props: ['collection'],
-  methods: mapActions({
-    cloneExample: 'project/cloneExample'
-  })
+  methods: {
+    ...mapActions({
+      cloneExample: 'project/cloneExample'
+    }),
+    schemaString (project) {
+      let schemas = []
+      _.each(project.schemas, (s) => { schemas.push(s.label) })
+      return schemas.join(', ') + ' Models'
+    }
+  }
 }
 </script>

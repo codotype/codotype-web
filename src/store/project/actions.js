@@ -84,14 +84,11 @@ export default {
     commit('newModel', newModel)
   },
 
-  cloneExample: ({ state, commit }, example) => {
-    console.log('CLONE')
-    console.log(router)
-
+  cloneExample: ({ dispatch, commit }, example) => {
     // Resets project, schema, and attribute IDs
     // TODO - handle seed data as well
-    let projectModel = JSON.parse(JSON.stringify(example))
-    projectModel._id = 'PR_' + Math.floor((Math.random() * 100000000000000) + 1)
+    let projectModel = _.cloneDeep(example)
+    projectModel._id = null
     projectModel.schemas = _.map(projectModel.schemas, (s) => {
       s._id = 'SCH_' + Math.floor((Math.random() * 100000000000000) + 1)
       s.attributes = _.map(s.attributes, (a) => {
@@ -102,9 +99,7 @@ export default {
     })
 
     // Adds to the project collection
-    let collection = state.collection
-    collection.push(projectModel)
-    commit('collection', collection)
+    dispatch('persist', { record: projectModel })
 
     // Navigates to /projects/id
     router.push('/projects/' + projectModel._id)
