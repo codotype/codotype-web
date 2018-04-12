@@ -6,7 +6,12 @@
 
         <div class="row">
           <div class="col-lg-12">
-            <button class='btn btn-primary float-right' v-b-modal="'new-attribute'">
+            <a :href="`#/projects/${project_id}/seeds/${model._id}`" class='btn btn-outline-warning'>
+              <i class="fa fa-fw fa-plus mr-2"></i>
+              Seed Data
+            </a>
+
+            <button class='btn btn-primary' v-b-modal="'new-attribute'">
               <i class="fa fa-fw fa-plus mr-2"></i>
               New Attribute
             </button>

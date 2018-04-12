@@ -4,38 +4,39 @@
 
     <!-- Child -->
     <div v-for="project in collection" v-bind:key="project._id" class='col-lg-12 mb-3'>
-      <div class="card card-body bg-dark border-primary">
+      <div class="card card-body bg-dark border-light">
         <div class="row">
 
           <div class="col-lg-3">
             <!-- project URL -->
             <p class="lead mb-0">
-              <a class='text-primary' v-bind:href="'#/projects/' + project._id + '/schemas' ">{{project.label}}</a>
+              <a class='text-light' v-bind:href="'#/projects/' + project._id + '/schemas' ">{{project.label}}</a>
             </p>
           </div>
 
-          <div class="col-lg-3">
-            <div class='text-primary'>
+          <div class="col-lg-5">
+            <div class='text-light'>
               <i class="fa fa-database mr-1"></i>
-              <template v-if="project.schemas.length === 1">
-                {{ project.schemas.length + ' Schema'}}
+              <template v-if="project.schemas.length">
+                <!-- {{ project.schemas.length + ' Schema' }} -->
+                {{ schemaString(project) }}
               </template>
               <template v-else>
-                {{ project.schemas.length + ' Schemas'}}
+                No Schemas
               </template>
             </div>
           </div>
 
-          <div class="col-lg-6 text-right">
+          <div class="col-lg-4 text-right">
 
             <!-- Export Project JSON -->
             <!-- TODO - display a modal explaining how exports work -->
-            <button class='btn btn-sm btn-outline-primary' @click="exportProject(project)">
+            <button class='btn btn-sm btn-outline-light' @click="exportProject(project)">
               <i class="fa fa-code mr-1"></i>
               Export
             </button>
 
-            <a class='btn btn-sm btn-outline-success' v-bind:href="'#/projects/' + project._id + '/generate'">
+            <a class='btn btn-sm btn-outline-light' v-bind:href="'#/projects/' + project._id + '/generate'">
               <i class="fa fa-play mr-1"></i>
               Generate
             </a>
@@ -90,13 +91,21 @@
 <!-- // // // //  -->
 
 <script>
+import _ from 'lodash'
 import { mapActions } from 'vuex'
 
 export default {
   props: ['collection'],
-  methods: mapActions({
-    exportProject: 'project/exportJson',
-    destroyProject: 'project/destroy'
-  })
+  methods: {
+    ...mapActions({
+      exportProject: 'project/exportJson',
+      destroyProject: 'project/destroy'
+    }),
+    schemaString (project) {
+      let schemas = []
+      _.each(project.schemas, (s) => { schemas.push(s.label) })
+      return schemas.join(', ') + ' Models'
+    }
+  }
 }
 </script>

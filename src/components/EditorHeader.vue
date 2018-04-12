@@ -1,11 +1,11 @@
 <template>
   <div class="row">
 
-    <div class="col-lg-8">
+    <div class="col-lg-7">
       <AppBreadcrumbs />
     </div>
 
-    <div class="col-lg-4 d-flex align-items-center justify-content-end">
+    <div class="col-lg-5 d-flex align-items-center justify-content-end">
       <slot></slot>
     </div>
 

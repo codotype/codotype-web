@@ -1,6 +1,6 @@
 
 <template>
-  <div class="row">
+  <form class="row">
 
     <div class='col-lg-6' v-for="attr in schema.attributes" :key="attr._id"  v-if="attr.datatype !== 'RELATION'">
       <div class="form-group">
@@ -12,7 +12,7 @@
         <small class="form-text text-muted" v-else>{{attr.help}}</small>
 
         <!-- TEXT -->
-        <input type="text" class="form-control" :placeholder="attr.label" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'TEXT'">
+        <input type="text" class="form-control" :placeholder="attr.label" :required="attr.required" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'TEXT'">
 
         <!-- DATE -->
         <!-- <input type="date" class="form-control" :placeholder="attr.label" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'DATE'"> -->
@@ -24,7 +24,7 @@
         <input type="checkbox" class="form-control" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'BOOL'">
 
         <!-- NUMBER -->
-        <input type="number" class="form-control" :placeholder="attr.label" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'NUMBER'">
+        <input type="number" class="form-control" :placeholder="attr.label" :required="attr.required" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'NUMBER'">
 
         <!-- COLOR -->
         <!-- <input type="color" class="form-control" :placeholder="attr.label" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'COLOR'"> -->
@@ -58,7 +58,7 @@
     </div>
 
     <div class="col-lg-12 text-right">
-      <button class="btn btn-light">
+      <button class="btn btn-light" @click="onCancel()">
         <i class="fa fa-times mr-2"></i>
         Cancel
       </button>
@@ -69,12 +69,13 @@
       </button>
     </div>
 
-  </div>
+  </form>
 </template>
 
 <!-- // // // //  -->
 
 <script>
+import router from '@/routers'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -82,6 +83,11 @@ export default {
   computed: mapGetters({
     schema: 'schema/selectedModel'
   }),
+  methods: {
+    onCancel () {
+      router.go(-1)
+    }
+  },
   data () {
     return {
       errors: {}
