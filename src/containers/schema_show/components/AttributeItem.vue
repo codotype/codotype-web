@@ -97,7 +97,14 @@
         </span>
       </div>
 
-      <div class="col-lg-3 text-right controls"
+      <div class="col-lg-3 text-right controls" v-if="item.locked">
+        <button class="btn btn-sm btn-outline-secondary" disabled="true">
+          <i class="fa fa-fw fa-lock mr-2"></i>
+          Locked
+        </button>
+      </div>
+
+      <div class="col-lg-3 text-right controls" v-else>
       >
         <button class="btn btn-sm btn-outline-secondary" :disabled="item.locked" v-b-tooltip.hover.top title="Edit" @click="edit(item)">
           <i class="fa fa-fw fa-pencil"></i>
