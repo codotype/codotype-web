@@ -4,7 +4,7 @@
     <!-- Child -->
     <div v-for="project in collection" v-bind:key="project._id" class='col-lg-12 mb-3'>
       <div class="card card-body bg-dark border-light">
-        <div class="row">
+        <div class="row align-items-center">
 
           <div class="col-lg-3">
             <!-- project URL -->

@@ -93,7 +93,7 @@ export const DEFAULT_USER_SCHEMA = {
       order: 5,
       label: 'Password Reset Token',
       help: 'Encrypted password_reset_token for a user.',
-      required: true,
+      required: false,
       unique: false,
       datatype: 'TEXT',
       datatypeOptions: {},
