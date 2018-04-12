@@ -4,9 +4,33 @@
 
       <EditorHeader :help="'Export the ' + model.label + ' project definition.'" />
 
+      <!-- Bootstrap Modal Component -->
+      <b-modal :title="'Thanks!'"
+        ref='modal'
+        header-bg-variant='dark'
+        header-text-variant='light'
+        body-bg-variant='dark'
+        body-text-variant='light'
+        footer-bg-variant='success'
+        footer-text-variant='light'
+        ok-variant='success'
+        ok-title='EXPORT'
+        cancel-title='Cancel'
+        cancel-variant='dark'
+      >
+        <p>Exported Application.</p>
+      </b-modal>
+
+
       <div class="row d-flex align-items-center">
         <div class="col-lg-12">
+          <button class="btn btn-lg btn-outline-success" @click="exportProject(model)">
+            <i class="fa fa-code mr-1"></i>
+            Export
+          </button>
           <p class="lead text-warning">
+            TODO - CLEAN UP THIS UI
+            <br>
             TODO - wire up export download
             <br>
             TODO - display 'Thanks' message
@@ -25,12 +49,21 @@
 <!-- // // // //  -->
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   computed: mapGetters({
     model: 'project/selectedModel'
-  })
+  }),
+  methods: {
+    ...mapActions({
+      downloadFile: 'project/exportJson'
+    }),
+    exportProject (model) {
+      this.downloadFile(model)
+      this.$refs.modal.show()
+    }
+  }
 }
 </script>
 
