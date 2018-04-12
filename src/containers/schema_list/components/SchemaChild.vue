@@ -30,15 +30,9 @@
         </button>
 
         <!-- Disable User Schema -->
-        <button class="btn btn-sm btn-outline-light" v-else-if="schema.enabled" @click="schema.enabled = false">
-          <i class="fa fa-square-o mr-1"></i>
-          Disable
-        </button>
-
-        <!-- Disable User Schema -->
-        <button class="btn btn-sm btn-outline-light" v-else @click="schema.enabled = true">
-          <i class="fa fa-square mr-1"></i>
-          Enable
+        <button class="btn btn-sm btn-outline-light" v-else disabled>
+          <i class="fa fa-lock mr-1"></i>
+          Locked
         </button>
 
         <!-- Bootstrap Modal Component -->
