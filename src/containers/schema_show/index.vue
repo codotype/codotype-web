@@ -11,13 +11,14 @@
               Seed Data
             </a>
 
-            <button class='btn btn-primary' v-b-modal="'new-attribute'">
+            <button class='btn btn-primary' @click="showNewAttributeForm()">
               <i class="fa fa-fw fa-plus mr-2"></i>
               New Attribute
             </button>
 
             <!-- Bootstrap Modal Component -->
             <b-modal id="new-attribute"
+              ref="newAttributeModal"
               :title="'New Attribute'"
               @ok="createAttribute()"
               header-bg-variant="dark"
@@ -66,16 +67,21 @@ export default {
   },
   created () {
     this.selectModel(this.schema_id)
-    this.resetNewAttribute()
   },
   computed: mapGetters({
     model: 'schema/selectedModel',
     newAttribute: 'attribute/newModel'
   }),
-  methods: mapActions({
-    selectModel: 'schema/selectModel',
-    createAttribute: 'attribute/create',
-    resetNewAttribute: 'attribute/resetNewModel'
-  })
+  methods: {
+    ...mapActions({
+      selectModel: 'schema/selectModel',
+      createAttribute: 'attribute/create',
+      resetNewAttribute: 'attribute/resetNewModel'
+    }),
+    showNewAttributeForm () {
+      this.resetNewAttribute()
+      this.$refs.newAttributeModal.show()
+    }
+  }
 }
 </script>
