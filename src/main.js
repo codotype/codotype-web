@@ -5,11 +5,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './routers'
 import store from '@/store'
-
+import EditorHeader from '@/components/EditorHeader'
+window.store = store
 // QUESTION - ??
 Vue.config.productionTip = false
 
-window.store = store // TODO - remove - debug only
+Vue.component('EditorHeader', EditorHeader)
 
 /* eslint-disable no-new */
 new Vue({

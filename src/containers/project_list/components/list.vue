@@ -1,43 +1,44 @@
-
 <template>
   <div class='row'>
-    <router-view/>
 
+    <!-- Child -->
     <div v-for="project in collection" v-bind:key="project._id" class='col-lg-12 mb-3'>
       <div class="card card-body bg-dark border-light">
-        <div class="row">
+        <div class="row align-items-center">
 
-          <div class="col-lg-6">
+          <div class="col-lg-3">
             <!-- project URL -->
-            <a v-bind:href="'#/projects/' + project._id">{{project.label}}</a>
+            <p class="lead mb-0">
+              <a class='text-light' v-bind:href="'#/projects/' + project._id + '/schemas' ">{{project.label}}</a>
+            </p>
           </div>
 
-          <div class="col-lg-6 text-right">
-
-            <a class='btn btn-sm btn-outline-light' v-bind:href="'#/projects/' + project._id + '/preview'">
-              <i class="fa fa-list-alt mr-1"></i>
-              Preview
-            </a>
-
-            <a class='btn btn-sm btn-outline-warning' v-bind:href="'#/projects/' + project._id + '/edit'">
-              <i class="fa fa-pencil mr-1"></i>
-              Edit
-            </a>
-
-            <a class='btn btn-sm btn-outline-info' v-bind:href="'#/projects/' + project._id + '/schemas'">
+          <div class="col-lg-5">
+            <div class='text-light'>
               <i class="fa fa-database mr-1"></i>
-              Schemas
-            </a>
+              <template v-if="project.schemas.length">
+                <!-- {{ project.schemas.length + ' Schema' }} -->
+                {{ schemaString(project) }}
+              </template>
+              <template v-else>
+                No Schemas
+              </template>
+            </div>
+          </div>
 
-            <a class='btn btn-sm btn-outline-success' v-bind:href="'#/projects/' + project._id + '/generate'">
-              <i class="fa fa-cog mr-1"></i>
+          <div class="col-lg-4 text-right">
+
+            <!-- Export Project JSON -->
+            <!-- TODO - display a modal explaining how exports work -->
+            <button class='btn btn-sm btn-outline-light' @click="exportProject(project)">
+              <i class="fa fa-code mr-1"></i>
+              Export
+            </button>
+
+            <a class='btn btn-sm btn-outline-light' v-bind:href="'#/projects/' + project._id + '/generate'">
+              <i class="fa fa-play mr-1"></i>
               Generate
             </a>
-
-            <!-- <button class='btn btn-sm btn-outline-info' @click="exportProject(project)"> -->
-              <!-- <i class="fa fa-code mr-1"></i> -->
-              <!-- Export -->
-            <!-- </button> -->
 
             <!-- Destroy project Confirmation -->
             <button class="btn btn-sm btn-outline-danger" v-b-modal="'modal_' + project._id">
@@ -68,22 +69,41 @@
         </div>
       </div>
     </div>
+
+    <!-- Empty -->
+    <div class="col-lg-12 mb-3" v-if="!collection[0]">
+      <div class="card bg-dark border-warning text-warning card-body text-center">
+        <p class="lead card-text">
+          <i class="fa fa-fw fa-info-circle mr-2"></i>
+          <br>
+          No Apps found
+        </p>
+        <p class="card-text">
+          See some <a href="#/examples">examples</a>
+        </p>
+      </div>
+    </div>
+
   </div>
 </template>
 
 <!-- // // // //  -->
 
 <script>
+import _ from 'lodash'
+import { mapActions } from 'vuex'
 
 export default {
   props: ['collection'],
   methods: {
-    exportProject (project) {
-      console.log('EXPORT APP:')
-      console.log(JSON.stringify(project, null, 2))
-    },
-    destroyProject (model) {
-      return this.$store.dispatch('project/destroy', model)
+    ...mapActions({
+      exportProject: 'project/exportJson',
+      destroyProject: 'project/destroy'
+    }),
+    schemaString (project) {
+      let schemas = []
+      _.each(project.schemas, (s) => { schemas.push(s.label) })
+      return schemas.join(', ') + ' Models'
     }
   }
 }

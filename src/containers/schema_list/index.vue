@@ -1,25 +1,36 @@
 
 <template>
-  <LayoutView :collection="collection"/>
+  <div class="row">
+    <div class="col-lg-12">
+      <Header/>
+    </div>
+
+    <div class="col-lg-12">
+      <ul class='list-group'>
+        <SchemaChild v-for="schema in collection" :schema="schema" :key="schema._id" />
+      </ul>
+    </div>
+  </div>
 </template>
 
 <!-- // // // //  -->
 
 <script>
-import LayoutView from './components/layout'
+import { mapGetters } from 'vuex'
+import Header from './components/Header'
+import SchemaChild from './components/SchemaChild'
 
 export default {
-  components: {
-    LayoutView
-  },
   metaInfo: {
-    title: 'Schemas' // title is now "blazeplate.io - Schemas"
+    title: 'Schemas'
   },
-  computed: {
-    collection () {
-      return this.$store.getters['schema/collection']
-    }
-  }
+  components: {
+    Header,
+    SchemaChild
+  },
+  computed: mapGetters({
+    collection: 'schema/collection'
+  })
 }
 </script>
 

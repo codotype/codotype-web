@@ -29,3 +29,11 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+  .form-group
+    label
+      margin-bottom: 0
+    small
+      margin-bottom: .6rem
+</style>

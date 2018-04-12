@@ -1,9 +1,44 @@
+import _ from 'lodash'
+import ObjectID from 'bson-objectid'
+import router from '@/routers'
+import { DEFAULT_RECORD } from './constants'
+import { SELECT_MODEL_ACTIONS, EDIT_MODEL_ACTIONS } from '@/store/lib/mixins'
 
-// actions
-// functions that causes side effects and can involve asynchronous operations.
-const actions = {
+// Record module actions
+export default {
+  ...SELECT_MODEL_ACTIONS,
+  ...EDIT_MODEL_ACTIONS,
+  resetNewModel ({ state, commit }, schema_id) {
+    let newModel = _.cloneDeep(DEFAULT_RECORD)
+    newModel.schema_id = schema_id
+    return commit('newModel', newModel)
+  },
+  create ({ state, commit, dispatch }) {
+    let collection = state.collection
+    let model = _.cloneDeep(state.newModel)
+    model._id = ObjectID().toString()
+    collection.push(model)
+
+    commit('collection', collection)
+    dispatch('resetNewModel')
+    router.go(-1)
+  },
+  update ({ state, commit, dispatch }) {
+    let model = _.cloneDeep(state.editModel)
+
+    let collection = state.collection.map((m) => {
+      if (m._id === model._id) {
+        return model
+      } else {
+        return m
+      }
+    })
+
+    commit('collection', collection)
+    dispatch('clearEditModel')
+  },
+  destroy ({ state, commit }, model) {
+    let collection = _.filter(state.collection, (m) => { return m._id !== model._id })
+    commit('collection', collection)
+  }
 }
-
-// // // //
-
-export default actions

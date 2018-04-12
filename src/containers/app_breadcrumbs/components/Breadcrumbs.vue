@@ -1,9 +1,21 @@
 <template>
-  <ol class="breadcrumb bg-dark text-light border-light">
+  <ol class="breadcrumb bg-dark text-light border-light mb-0 pl-0">
     <!-- <li class="breadcrumb-item" v-for="(route, index) in $route.matched"> -->
-    <li class="breadcrumb-item" v-for="route in crumbs">
+    <li :class="route.path ? 'breadcrumb-item' : 'breadcrumb-item active'" v-for="route in crumbs">
       <!-- <span>{{route}}</span> -->
-      <a :href="'#' + route.path">{{ route.text }}</a>
+
+      <template v-if="route.path">
+        <!-- <a :href="'#' + route.path" v-if="route.path"> -->
+          <!-- {{ route.text }} -->
+        <!-- </a> -->
+        {{ route.text }}
+      </template>
+
+      <template v-else>
+        {{ route.text }}
+      </template>
+      <!-- <a :href="'#' + route.path" v-if=""> -->
+
       <!-- <span v-else>{{ route.path }}</span> -->
       <!-- <span>{{route}}</span> -->
       <!-- <router-link v-if="!route.meta.bcDynamic" :to="{path: route.path}"> -->
@@ -30,6 +42,8 @@ export default {
   beforeCreate () {
     this.$options.computed.value = function () {
       if (this.route.meta.bcGetter) {
+        console.log('bcGetter!!!')
+        console.log(this.route.meta.bcGetter)
         return this.$store.getters[this.route.meta.bcGetter]
       } else {
         return null
@@ -38,7 +52,7 @@ export default {
   },
   methods: {
     log (arg) {
-      console.log(arg)
+      // console.log(arg)
     },
     className (crumb) {
       let css = 'breadcrumb-item'
@@ -50,9 +64,14 @@ export default {
     crumbs () {
       let crumbs = []
       _.each(this.$route.matched, (r) => {
+        // console.log(r)
+        // console.log(this.$route)
         if (r.meta.bcLinkText) {
           crumbs.push({ path: r.path || '/', text: r.meta.bcLinkText })
-          console.log(r)
+        } else if (r.meta.bcText) {
+          crumbs.push({ path: r.path, text: r.meta.bcText })
+        } else if (r.meta.bcGetter) {
+          crumbs.push({ path: r.path, text: this.$store.getters[r.meta.bcGetter] })
         }
       })
       return crumbs
@@ -72,7 +91,8 @@ export default {
 <style lang="sass">
   ol.breadcrumb
     border-radius: 0
-    border-top: 1px solid
-    border-bottom: 1px solid
+    font-size: 125%
+    // border-top: 1px solid
+    // border-bottom: 1px solid
 </style>
 

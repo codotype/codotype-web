@@ -1,33 +1,43 @@
 
 <template>
-  <LayoutView :project="data.project" :schema="data.schema" :record="data.record" />
+  <div class="row">
+
+    <div class="col-lg-12">
+      <EditorHeader :help="'Defines the attributes that can be assigned to a single ' + schema.label" />
+    </div>
+
+    <!-- Record Form -->
+    <div class="col-lg-12">
+      <RecordForm :record="record" :onSubmit="createRecord" />
+    </div>
+
+  </div>
 </template>
 
 <!-- // // // //  -->
 
 <script>
-import _ from 'lodash'
-import LayoutView from './components/layout.vue'
+import { mapGetters, mapActions } from 'vuex'
+import RecordForm from '@/components/record/RecordForm'
 
 export default {
-  components: {
-    LayoutView
-  },
+  props: ['project_id', 'schema_id'],
   metaInfo: {
-    title: 'Schema - New Record' // title is now "blazeplate.io - Schema - New Record"
+    title: 'Seed - New'
   },
-  props: ['id', 'schema_id', 'record_id'],
-  computed: {
-    data () {
-      let allProjects = this.$store.getters['project/collection']
-      let project = _.find(allProjects, { _id: this.id })
-      let schema = _.find(project.schemas, { _id: this.schema_id })
-
-      let allRecords = this.$store.getters['record/collection']
-      let record = _.find(allRecords, { _id: this.record_id })
-
-      return { project: project, schema: schema, record: _.cloneDeep(record) }
-    }
-  }
+  components: {
+    RecordForm
+  },
+  created () {
+    this.resetNewRecord(this.schema_id)
+  },
+  computed: mapGetters({
+    record: 'record/newModel',
+    schema: 'schema/selectedModel'
+  }),
+  methods: mapActions({
+    createRecord: 'record/create',
+    resetNewRecord: 'record/resetNewModel'
+  })
 }
 </script>

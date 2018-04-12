@@ -1,30 +1,86 @@
 
 <template>
-  <LayoutView :project="data.project" :schema="data.schema" :records="data.records" />
+  <div class="row">
+    <div class="col-lg-12">
+      <EditorHeader :help="'Defines the attributes that can be assigned to a single ' + model.label" >
+
+        <div class="row">
+          <div class="col-lg-12">
+            <a :href="`#/projects/${project_id}/seeds/${model._id}`" class='btn btn-outline-warning'>
+              <i class="fa fa-fw fa-plus mr-2"></i>
+              Seed Data
+            </a>
+
+            <button class='btn btn-primary' @click="showNewAttributeForm()">
+              <i class="fa fa-fw fa-plus mr-2"></i>
+              New Attribute
+            </button>
+
+            <!-- Bootstrap Modal Component -->
+            <b-modal id="new-attribute"
+              ref="newAttributeModal"
+              :title="'New Attribute'"
+              @ok="createAttribute()"
+              header-bg-variant="dark"
+              header-text-variant="light"
+              body-bg-variant="dark"
+              body-text-variant="light"
+              footer-bg-variant="primary"
+              footer-text-variant="light"
+              ok-variant='primary'
+              ok-title='Create'
+              cancel-title='Cancel'
+              cancel-variant='dark'
+            >
+              <AttributeForm :schema="model" :model="newAttribute" />
+            </b-modal>
+
+          </div>
+        </div>
+
+      </EditorHeader>
+    </div>
+
+    <!-- Attribute List -->
+    <div class="col-lg-12">
+      <AttributeList :schema='model' />
+    </div>
+
+  </div>
 </template>
 
 <!-- // // // //  -->
 
 <script>
-import _ from 'lodash'
-import LayoutView from './components/layout.vue'
+import AttributeList from './components/AttributeList'
+import AttributeForm from './components/AttributeForm'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  components: {
-    LayoutView
-  },
+  props: ['project_id', 'schema_id'],
   metaInfo: {
-    title: 'Schema - Records' // title is now "blazeplate.io - Schema - Records"
+    title: 'Schema - Show'
   },
-  props: ['id', 'schema_id'],
-  computed: {
-    data () {
-      let allProjects = this.$store.getters['project/collection']
-      let project = _.find(allProjects, { _id: this.id })
-      let schema = _.find(project.schemas, { _id: this.schema_id })
-      let allRecords = this.$store.getters['record/collection']
-      let records = _.filter(allRecords, (r) => { return r.schema_id === schema._id })
-      return { project, schema, records }
+  components: {
+    AttributeList,
+    AttributeForm
+  },
+  created () {
+    this.selectModel(this.schema_id)
+  },
+  computed: mapGetters({
+    model: 'schema/selectedModel',
+    newAttribute: 'attribute/newModel'
+  }),
+  methods: {
+    ...mapActions({
+      selectModel: 'schema/selectModel',
+      createAttribute: 'attribute/create',
+      resetNewAttribute: 'attribute/resetNewModel'
+    }),
+    showNewAttributeForm () {
+      this.resetNewAttribute()
+      this.$refs.newAttributeModal.show()
     }
   }
 }

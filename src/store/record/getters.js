@@ -1,9 +1,9 @@
+import { COLLECTION_GETTERS, SELECT_MODEL_GETTERS, NEW_MODEL_GETTERS, EDIT_MODEL_GETTERS } from '@/store/lib/mixins'
 
-// Schema Module Getters
-const getters = {
-  collection: state => {
-    return state.collection
-  }
+// Record Module Getters
+export default {
+  ...COLLECTION_GETTERS,
+  ...SELECT_MODEL_GETTERS,
+  ...NEW_MODEL_GETTERS,
+  ...EDIT_MODEL_GETTERS
 }
-
-export default getters
