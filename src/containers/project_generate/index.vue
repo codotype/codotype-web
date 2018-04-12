@@ -39,12 +39,6 @@
 
         <b-tabs pills vertical>
 
-          <!-- TODO - decouple `model` (project model) from the generate module as much as possible -->
-          <!-- Project Detail -->
-          <b-tab title="Project" active>
-            <ProjectDetail :model="model" />
-          </b-tab>
-
           <!-- Server Frameworks -->
           <b-tab title="Server">
             <AbstractTab :model="model" stackId="server" :stackOpts="opts.server" title="Server"/>
