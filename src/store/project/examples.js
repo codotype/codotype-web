@@ -99,7 +99,7 @@ export const CLASSROOM_PROJECT = {
           order: 0,
           label: 'Label',
           identifier: 'label',
-          help: '',
+          help: 'The label of the Course',
           required: true,
           unique: true,
           datatype: 'TEXT',
@@ -109,7 +109,7 @@ export const CLASSROOM_PROJECT = {
           order: 1,
           label: 'Assignments',
           identifier: 'assignment_ids',
-          help: '',
+          help: 'Assignments belonging to this course',
           required: false,
           unique: false,
           datatype: 'RELATION',
@@ -138,7 +138,7 @@ export const CLASSROOM_PROJECT = {
           order: 0,
           label: 'Label',
           identifier: 'label',
-          help: '',
+          help: 'Label of the Assignment',
           required: false,
           unique: false,
           datatype: 'TEXT',
@@ -148,7 +148,7 @@ export const CLASSROOM_PROJECT = {
           order: 2,
           label: 'Course',
           identifier: 'course_id',
-          help: '',
+          help: 'Course to which this assignment belongs',
           required: false,
           unique: false,
           datatype: 'RELATION',
@@ -196,7 +196,7 @@ export const CLASSROOM_PROJECT = {
       _id: '5ad0c7204f24e78b3558a0f0',
       schema_id: 'schema_4625927934382',
       attributes: {
-        label: 'HW #1',
+        label: 'Opsys HW #1',
         course_id: '5ad0c70b4f24e78b3558a0ee'
       }
     },
@@ -204,7 +204,7 @@ export const CLASSROOM_PROJECT = {
       _id: '5ad0c7264f24e78b3558a0f1',
       schema_id: 'schema_4625927934382',
       attributes: {
-        label: 'HW #2',
+        label: 'Opsys HW #2',
         course_id: '5ad0c70b4f24e78b3558a0ee'
       }
     },
@@ -212,7 +212,7 @@ export const CLASSROOM_PROJECT = {
       _id: '5ad0c72b4f24e78b3558a0f2',
       schema_id: 'schema_4625927934382',
       attributes: {
-        label: 'HW #1',
+        label: 'Data Structures HW #1',
         course_id: '5ad0c7124f24e78b3558a0ef'
       }
     },
@@ -220,7 +220,7 @@ export const CLASSROOM_PROJECT = {
       _id: '5ad0c7304f24e78b3558a0f3',
       schema_id: 'schema_4625927934382',
       attributes: {
-        label: 'HW #2',
+        label: 'Data Structures HW #2',
         course_id: '5ad0c7124f24e78b3558a0ef'
       }
     }
