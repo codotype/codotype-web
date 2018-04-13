@@ -66,11 +66,29 @@
 
           <!-- Destroy Record Confirmation -->
           <!-- TODO - implement Record Destroy confirmation! -->
-          <button class="btn btn-sm btn-outline-danger">
+          <button class="btn btn-sm btn-outline-danger" v-b-modal="'modal_' + record._id">
             <i class="fa fa-fw fa-trash"></i>
           </button>
 
         </td>
+
+        <!-- Bootstrap Modal Component -->
+        <b-modal :id="'modal_' + record._id"
+          :title="'Destroy Seed Data?'"
+          @ok="onConfirmDestroy(record)"
+          header-bg-variant='dark'
+          header-text-variant='light'
+          body-bg-variant='dark'
+          body-text-variant='light'
+          footer-bg-variant='danger'
+          footer-text-variant='light'
+          ok-variant='danger'
+          ok-title='DESTROY'
+          cancel-title='Cancel'
+          cancel-variant='dark'
+        >
+          <p class="text-left">Are you sure you want to destroy this seed data?</p>
+        </b-modal>
 
       </tr>
 
@@ -101,7 +119,7 @@ export default {
   props: ['projectId', 'schema'],
   methods: {
     onConfirmDestroy (record) {
-      return this.$store.commit('record/destroy', { record })
+      return this.$store.dispatch('record/destroy', record)
     },
     getLinkedSchemaHref (attr, record_id) {
       // TODO - the href attribute is working, but the route doesn't trigger a re-render of the page
