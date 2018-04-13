@@ -24,11 +24,6 @@
       </div>
     </div>
 
-    <!-- <div class="row"> -->
-      <!-- <div class="col-lg-12"> -->
-      <!-- </div> -->
-    <!-- </div> -->
-
     <div class="row h-100 mt-4" style='border-top: 1px solid #666'>
 
       <!-- TODO - abstract this into an independent Nav component -->

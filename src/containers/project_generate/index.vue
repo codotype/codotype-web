@@ -65,6 +65,8 @@
 
         </b-tabs>
 
+        <hr>
+
         <!-- Opens Destroy Confirmation Modal -->
         <button class="btn btn-lg btn-success" v-b-modal="'generate-modal'">
           <i class="fa fa-fw fa-play mr-2"></i>

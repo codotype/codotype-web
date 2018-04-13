@@ -3,9 +3,6 @@
   <div class="row">
     <div class="col-lg-12">
       <br>
-      <br>
-      <br>
-      <br>
       <div class="row mt-2">
         <div class="col-lg-12 text-center">
           <img src="@/assets/logo_dark.png">
@@ -24,7 +21,11 @@
         </div>
 
         <div class="col-lg-12 text-center">
-          <p>Build projects <span class='text-warning'>blazingly</span> fast.</p>
+          <p>Prototype new projects <span class='text-warning'>blazingly</span> fast.</p>
+
+          <p>
+            Define your models, attributes, and relations - <span class='text-warning'>blazeplate does the rest</span>.
+          </p>
         </div>
 
         <div class="col-lg-12 text-center">
@@ -32,33 +33,53 @@
           <!-- <gh-btns-fork slug="aeksco/blazeplate" show-count></gh-btns-fork> -->
 
           <br>
-          <br>
 
-          <a class='px-2' href="http://github.com/aeksco/blazeplate" target='_blank'>
-            <i class="fa fa-2x fa-github"></i>
-          </a>
-
-          <a class='px-2' href="mailto:aeksco@gmail.com" target='_blank'>
-            <i class="fa fa-2x fa-envelope-o"></i>
-          </a>
+          <social-sharing class='mt-3' url="https://vuejs.org/" inline-template>
+            <div>
+              <network network="facebook">
+                <i class="fa fa-lg fa-facebook mx-1"></i>
+              </network>
+              <network network="googleplus">
+                <i class="fa fa-lg fa-google-plus mx-1"></i>
+              </network>
+              <network network="linkedin">
+                <i class="fa fa-lg fa-linkedin mx-1"></i>
+              </network>
+              <network network="pinterest">
+                <i class="fa fa-lg fa-pinterest mx-1"></i>
+              </network>
+              <network network="reddit">
+                <i class="fa fa-lg fa-reddit mx-1"></i>
+              </network>
+              <network network="twitter">
+                <i class="fa fa-lg fa-twitter mx-1"></i>
+              </network>
+              <!-- <network network="vk"> -->
+                <!-- <i class="fa fa-lg fa-vk"></i> -->
+              <!-- </network> -->
+              <!-- <network network="weibo"> -->
+                <!-- <i class="fa fa-lg fa-weibo"></i> -->
+              <!-- </network> -->
+              <!-- <network network="whatsapp"> -->
+                <!-- <i class="fa fa-lg fa-whatsapp"></i> -->
+              <!-- </network> -->
+            </div>
+          </social-sharing>
 
         </div>
       </div>
 
-      <!-- <div class="row py-4"> -->
-        <!-- <div class="col-lg-12 text-center"> -->
-          <!-- <p class="lead">Define your schema and its attributes - blazeplate.io does the rest.</p> -->
-        <!-- </div> -->
-      <!-- </div> -->
+      <div class="row justify-content-center">
+        <div class="col-lg-6 text-center">
+          <hr>
+        </div>
+      </div>
 
-      <div class="row mt-4 pt-4 justify-content-center">
-        <div class="col-lg-6">
-          <a href="#/projects" class="btn btn-outline-light btn-block btn-lg p-4">
-            <i class="fa fa-lg fa-fire mr-2"></i>
-            <br>
-            <p class="lead mb-0 mt-2">
-              Let's get started.
-            </p>
+      <div class="row mt-2 justify-content-center">
+        <div class="col-lg-4">
+          <a href="#/projects" class="btn btn-outline-warning btn-block btn-lg">
+            <i class="fa fa-fire mr-2"></i>
+            Let's get started.
           </a>
         </div>
       </div>
