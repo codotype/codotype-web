@@ -140,12 +140,7 @@ export default {
     dispatch('clearEditModel')
   },
   destroy ({ state, commit, rootGetters }, model) {
-    // TODO - REMOVE REVERSE RELATION HERE
-    // console.log('DESTROY ATTRIBUTE')
     if (model.datatype === 'RELATION') {
-      console.log(model.datatypeOptions)
-      console.log(model.datatypeOptions.reverse_relation)
-
       // Stores attribute, relatedAttribute IDs
       let attrId = model._id
       let relatedSchemaId = model.datatypeOptions.schema_id

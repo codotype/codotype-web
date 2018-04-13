@@ -31,8 +31,15 @@
         <!-- PHONE_NUMBER -->
         <!-- <masked-input type="tel" class="form-control" :placeholder="attr.label" v-model="record.attributes[attr.identifier]" mask="\+\1 (111) 111-1111" v-if="attr.datatype === 'PHONE_NUMBER'"/> -->
 
-        <!-- BELONGS_TO (OLD) -->
+        <!-- BELONGS_TO -->
         <select class="form-control" v-model="record.attributes[attr.identifier]" v-if="attr.datatypeOptions.relationType === 'BELONGS_TO'">
+          <option v-for="rec in relatedDropdown(attr.datatypeOptions.schema_id)" :key="rec.value" :value="rec.value">
+            {{ rec.label }}
+          </option>
+        </select>
+
+        <!--  -->
+        <select class="form-control" multiple v-model="record.attributes[attr.identifier]" v-if="attr.datatypeOptions.relationType === 'HAS_MANY'">
           <option v-for="rec in relatedDropdown(attr.datatypeOptions.schema_id)" :key="rec.value" :value="rec.value">
             {{ rec.label }}
           </option>
