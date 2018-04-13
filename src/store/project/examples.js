@@ -4,7 +4,7 @@ export const CLASSROOM_PROJECT = {
   identifier: 'classroom_app',
   schemas: [
     {
-      _id: 'SCHEMA_2',
+      _id: '5acfeea81535afdb753d55f7',
       enabled: true,
       label: 'User',
       label_plural: 'Users',
@@ -12,7 +12,6 @@ export const CLASSROOM_PROJECT = {
       identifier_plural: 'users',
       class_name: 'User',
       class_name_plural: 'Users',
-      unqiue_id_prefix: 'US_',
       authentications: [],
       attributes: [
         {
@@ -79,7 +78,7 @@ export const CLASSROOM_PROJECT = {
           order: 5,
           label: 'Password Reset Token',
           help: 'Encrypted password_reset_token for a user.',
-          required: true,
+          required: false,
           unique: false,
           datatype: 'TEXT',
           datatypeOptions: {},

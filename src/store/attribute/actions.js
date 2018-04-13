@@ -82,6 +82,33 @@ export default {
         // model.datatypeOptions.schema_attribute_identifier = relatedSchema.attributes[0].identifier
 
         // Defines inverse relation on relatedSchema
+        // INVERSE OF HAS_MANY === BELONGS_TO
+        let reverseRelation = _.cloneDeep(DEFAULT_ATTRIBUTE)
+        reverseRelation._id = ObjectID().toString()
+        reverseRelation.datatype = 'RELATION'
+        reverseRelation.order = relatedSchema.attributes.length + 1
+        reverseRelation.label = modelSchema.label_plural
+        reverseRelation.identifier = modelSchema.identifier + '_ids'
+        // reverseRelation.datatypeOptions.schema_attribute_identifier = '_id' // TODO
+        reverseRelation.datatypeOptions.relationType = 'HAS_MANY'
+        reverseRelation.datatypeOptions.schema_id = modelSchema._id
+
+        // Assigns reverse-relational IDs
+        model.datatypeOptions.reverse_relation = reverseRelation._id
+        reverseRelation.datatypeOptions.reverse_relation = model._id
+
+        // TODO - remove these log statements
+        console.log('RELATION:')
+        console.log(JSON.stringify(model, null, 2))
+        console.log('REVERSE RELATION:')
+        console.log(JSON.stringify(reverseRelation, null, 2))
+
+        // Adds the reverse relation to the relatedSchema
+        let relatedSchemaAttrs = relatedSchema.attributes
+        relatedSchemaAttrs.push(reverseRelation)
+        commit('schema/attributes', { schema_id: relatedSchemaId, collection: relatedSchemaAttrs }, { root: true })
+
+        // Defines inverse relation on relatedSchema
         // INVERSE OF MANY_TO_ONE === HAS_MANY
       }
     }
@@ -108,13 +135,34 @@ export default {
     commit('schema/attributes', { collection }, { root: true })
     dispatch('clearEditModel')
   },
-  destroy ({ state, commit }, model) {
+  destroy ({ state, commit, rootGetters }, model) {
     // TODO - REMOVE REVERSE RELATION HERE
-    console.log('DESTROY ATTRIBUTE')
-    console.log(model)
+    // console.log('DESTROY ATTRIBUTE')
+    if (model.datatype === 'RELATION') {
+      console.log(model.datatypeOptions)
+      console.log(model.datatypeOptions.reverse_relation)
 
-    let collection = _.filter(state.collection, (m) => { return m._id !== model._id })
-    commit('collection', collection)
-    commit('schema/attributes', { collection }, { root: true })
+      // Stores attribute, relatedAttribute IDs
+      let attrId = model._id
+      let relatedSchemaId = model.datatypeOptions.schema_id
+      let relatedAttrId = model.datatypeOptions.reverse_relation
+
+      // Removes the relation from the current model
+      let collection = state.collection.filter((a) => { return a._id !== attrId })
+      commit('collection', collection)
+      commit('schema/attributes', { collection: collection }, { root: true })
+
+      // Finds relatedSchema
+      let relatedSchema = _.find(rootGetters['schema/collection'], { _id: relatedSchemaId })
+
+      // Removes the reverse relation from the related model
+      let relatedSchemaAttrs = relatedSchema.attributes.filter((a) => { return a._id !== relatedAttrId })
+      commit('schema/attributes', { schema_id: relatedSchemaId, collection: relatedSchemaAttrs }, { root: true })
+      console.log('UPDATED SCHEMA')
+    } else {
+      let collection = _.filter(state.collection, (m) => { return m._id !== model._id })
+      commit('collection', collection)
+      commit('schema/attributes', { collection }, { root: true })
+    }
   }
 }
