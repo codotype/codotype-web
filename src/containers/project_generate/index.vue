@@ -1,13 +1,8 @@
 
 <template>
-  <div class="row">
+  <div class="row mt-2">
     <div class="col-lg-12">
       <div class="card card-body bg-dark text-light border-light">
-
-        <!-- Opens Destroy Confirmation Modal -->
-        <button class="btn btn-lg btn-success" v-b-modal="'generate-modal'">
-          <i class="fa fa-fw fa-play"></i>
-        </button>
 
         <!-- Bootstrap Modal Component -->
         <!-- TODO - move this outside the scope of the loop, and instead pass only the options into a single instance -->
@@ -39,46 +34,44 @@
 
         <b-tabs pills vertical>
 
-          <!-- TODO - decouple `model` (project model) from the generate module as much as possible -->
-          <!-- Project Detail -->
-          <!-- <b-tab title="Project" active> -->
-            <!-- <ProjectDetail :model="model" /> -->
-          <!-- </b-tab> -->
-
           <!-- Server Frameworks -->
           <b-tab title="Server">
-            <ServerTab :model="model" />
+            <AbstractTab :model="model" stackId="server" :stackOpts="opts.server" title="Server"/>
           </b-tab>
 
           <!-- Databases -->
           <b-tab title="Database">
-            <DatabaseTab :model="model" />
+            <AbstractTab :model="model" stackId="database" :stackOpts="opts.database" title="Database"/>
           </b-tab>
 
           <!-- Client Frameworks -->
           <!-- Build Tools -->
           <b-tab title="Client">
-            <AbstractTab :model="model" stackId="client" :stackOpts="clientOpts.client_frameworks" title="Client Frameworks"/>
+            <AbstractTab :model="model" stackId="client" :stackOpts="opts.client.client_frameworks" title="Client Frameworks"/>
           </b-tab>
 
           <!-- CSS Frameworks -->
           <b-tab title="CSS Framework">
-            <CssTab :model="model" />
+            <AbstractTab :model="model" stackId="client" :stackOpts="opts.client.css_frameworks" title="CSS Frameworks"/>
           </b-tab>
 
           <b-tab title="Deployment">
-            <AbstractTab :model="model" stackId="deployments" :stackOpts="deploymentOpts" title="Deployments"/>
+            <AbstractTab :model="model" stackId="deployments" :stackOpts="opts.deployment" title="Deployments"/>
           </b-tab>
 
-          <!-- Build -->
-          <!-- <b-tab title="Build"> -->
-            <!-- <br> -->
-            <!-- Build / Generate Codebase -->
-            <!-- <br> -->
-            <!-- Build Configuration / Options -->
-          <!-- </b-tab> -->
+          <b-tab title="Authorization">
+            <AbstractTab :model="model" stackId="auth" :stackOpts="opts.auth" title="Authrozation" />
+          </b-tab>
 
         </b-tabs>
+
+        <hr>
+
+        <!-- Opens Destroy Confirmation Modal -->
+        <button class="btn btn-lg btn-success" v-b-modal="'generate-modal'">
+          <i class="fa fa-fw fa-play mr-2"></i>
+          Generate App
+        </button>
 
       </div>
     </div>
@@ -88,26 +81,11 @@
 <!-- // // // //  -->
 
 <script>
-import ProjectDetail from './components/ProjectDetail'
-import AuthTab from './components/AuthTab' // TODO - AuthTab
-import ServerTab from './components/ServerTab'
-import ClientTab from './components/ClientTab'
-import CssTab from './components/CssTab'
-import DatabaseTab from './components/DatabaseTab'
-import DeploymentTab from './components/DeploymentTab'
 import AbstractTab from './components/AbstractTab'
-
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
   components: {
-    ProjectDetail,
-    AuthTab,
-    ServerTab,
-    ClientTab,
-    CssTab,
-    DatabaseTab,
-    DeploymentTab,
     AbstractTab
   },
   created () {
@@ -118,8 +96,7 @@ export default {
   },
   computed: mapGetters({
     model: 'project/selectedModel',
-    deploymentOpts: 'generator/deploymentOpts',
-    clientOpts: 'generator/clientOpts'
+    opts: 'generator/generatorFormOpts'
   }),
   methods: mapActions({
     setActivated: 'generator/setActivated',

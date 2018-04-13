@@ -13,7 +13,7 @@
         </h2>
       </div>
       <div class="col-md-6 text-right">
-        <a class="btn btn-lg btn-warning" :href="'#/projects/' + model._id" v-if="generatorAcivated">
+        <a class="btn btn-lg btn-warning" :href="'#/projects/' + model._id + '/schemas'" v-if="generatorAcivated">
           <i class="fa fa-fw fa-reply mr-2"></i>
           Back to Editor
         </a>
@@ -23,11 +23,6 @@
         </a>
       </div>
     </div>
-
-    <!-- <div class="row"> -->
-      <!-- <div class="col-lg-12"> -->
-      <!-- </div> -->
-    <!-- </div> -->
 
     <div class="row h-100 mt-4" style='border-top: 1px solid #666'>
 

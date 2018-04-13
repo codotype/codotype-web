@@ -13,9 +13,13 @@
             <div class="col-lg-3">
               {{ schema.label }}
             </div>
-            <div class="col-lg-3 text-primary">
+            <div class="col-lg-3 text-primary" v-if="recordCount(schema._id)">
               <i class="fa fa-check mr-2"></i>
-              5 records
+              {{ recordCount(schema._id) }} records
+            </div>
+            <div class="col-lg-3 text-warning" v-else>
+              <i class="fa fa-exclamation mr-2"></i>
+              No records
             </div>
             <div class="col-lg-6">
             </div>
@@ -28,14 +32,20 @@
 </template>
 
 <script>
+import _ from 'lodash'
 import { mapGetters } from 'vuex'
-// import { mapGetters, mapActions } from 'vuex'
-// import SchemaForm from '@/components/schema/SchemaForm'
 
 export default {
   computed: mapGetters({
     collection: 'schema/collection',
     project: 'project/selectedModel'
-  })
+  }),
+  methods: {
+    recordCount (schemaId) {
+      let recordCollection = this.$store.getters['record/collection']
+      let records = _.filter(recordCollection, (s) => { return s.schema_id === schemaId })
+      return records.length
+    }
+  }
 }
 </script>

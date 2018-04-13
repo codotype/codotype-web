@@ -4,7 +4,7 @@
     <thead>
 
       <!-- TODO - reintegrate relations & ignore attributes -->
-      <th v-for="attr in schema.attributes" :key="attr._id" v-if="attr.datatype !=='RELATION'">
+      <th v-for="attr in schema.attributes" :key="attr._id" v-if="attr.datatype">
         {{attr.label}}
         <i class="fa fa-fw fa-question-circle-o" v-b-tooltip.hover.bottom :title="attr.help" ></i>
       </th>
@@ -19,7 +19,7 @@
       <tr v-for="record in records" :key="record._id">
 
         <!-- Record Data -->
-        <td v-for="attr in schema.attributes" :key="attr._id" v-if="attr.datatype !== 'RELATION'">
+        <td v-for="attr in schema.attributes" :key="attr._id">
 
           <span v-if="attr.datatype === 'BOOL'">
             <i class="fa fa-fw fa-check-square-o" v-if="record.attributes[attr.identifier]"></i>
@@ -28,6 +28,22 @@
 
           <span v-else-if="attr.datatype === 'COLOR'">
             <i class="fa fa-fw fa-lg fa-square" :style="'color:' + record.attributes[attr.identifier]"></i>
+          </span>
+
+          <span v-else-if="attr.datatype === 'RELATION' && attr.datatypeOptions.relationType === 'BELONGS_TO'">
+            <!-- {{ record._id }} -->
+            <!-- {{ record.attributes }} -->
+            {{ getLinkedSchemaLabel(attr, record.attributes[attr.identifier]) }}
+            <!-- <a :href="getLinkedSchemaHref(attr, record.attributes[attr.identifier])"> -->
+              <!-- {{ getLinkedSchemaLabel(attr, record.attributes[attr.identifier]) }} -->
+            <!-- </a> -->
+          </span>
+
+          <span v-else-if="attr.datatype === 'RELATION' && attr.datatypeOptions.relationType === 'HAS_MANY'">
+            <!-- {{ record._id }} -->
+            <!-- {{ record.attributes[attr.identifier] }} -->
+            {{ getListLength(record.attributes[attr.identifier]) }}
+            <!-- {{ getLinkedSchemaLabel(attr, record.attributes[attr.identifier]) }} -->
           </span>
 
           <span v-else>
@@ -39,9 +55,9 @@
         <td class='text-right controls'>
 
           <!-- Show Record -->
-          <a class="btn btn-sm btn-outline-light" :href=" '#/projects/' + projectId + '/seeds/' + schema._id + '/records/' + record._id ">
-            <i class="fa fa-fw fa-eye"></i>
-          </a>
+          <!-- <a class="btn btn-sm btn-outline-light" :href=" '#/projects/' + projectId + '/seeds/' + schema._id + '/records/' + record._id "> -->
+            <!-- <i class="fa fa-fw fa-eye"></i> -->
+          <!-- </a> -->
 
           <!-- Edit Record -->
           <a class="btn btn-sm btn-outline-warning" :href=" '#/projects/' + projectId + '/seeds/' + schema._id + '/records/' + record._id + '/edit' ">
@@ -49,11 +65,30 @@
           </a>
 
           <!-- Destroy Record Confirmation -->
-          <button class="btn btn-sm btn-outline-danger">
+          <!-- TODO - implement Record Destroy confirmation! -->
+          <button class="btn btn-sm btn-outline-danger" v-b-modal="'modal_' + record._id">
             <i class="fa fa-fw fa-trash"></i>
           </button>
 
         </td>
+
+        <!-- Bootstrap Modal Component -->
+        <b-modal :id="'modal_' + record._id"
+          :title="'Destroy Seed Data?'"
+          @ok="onConfirmDestroy(record)"
+          header-bg-variant='dark'
+          header-text-variant='light'
+          body-bg-variant='dark'
+          body-text-variant='light'
+          footer-bg-variant='danger'
+          footer-text-variant='light'
+          ok-variant='danger'
+          ok-title='DESTROY'
+          cancel-title='Cancel'
+          cancel-variant='dark'
+        >
+          <p class="text-left">Are you sure you want to destroy this seed data?</p>
+        </b-modal>
 
       </tr>
 
@@ -84,15 +119,18 @@ export default {
   props: ['projectId', 'schema'],
   methods: {
     onConfirmDestroy (record) {
-      return this.$store.commit('record/destroy', { record })
+      return this.$store.dispatch('record/destroy', record)
     },
     getLinkedSchemaHref (attr, record_id) {
+      // TODO - the href attribute is working, but the route doesn't trigger a re-render of the page
+      // because the route doens't actually "change" - only the route parameter does
       let allRecords = this.$store.getters['record/collection']
       let allSchemas = this.$store.getters['schema/collection']
       let record = _.find(allRecords, { _id: record_id })
       if (!record) return
       let schema = _.find(allSchemas, { _id: record.schema_id })
-      return '#/schemas/' + schema._id + '/records/' + record._id
+      // return `#/projects/${this.projectId}/seeds/${schema._id}/${record._id}`
+      return `#/projects/${this.projectId}/seeds/${schema._id}`
     },
     getRelatedSchema (attr) {
       let allSchemas = this.$store.getters['schema/collection']
@@ -101,11 +139,17 @@ export default {
     },
     getLinkedSchemaLabel (attr, record_id) {
       let allRecords = this.$store.getters['record/collection']
+      let allSchemas = this.$store.getters['schema/collection']
       let record = _.find(allRecords, { _id: record_id })
       if (!record) return
+      let schema = _.find(allSchemas, { _id: record.schema_id })
 
-      let identifier = attr.datatypeOptions.schema_attribute_identifier
+      let identifier = schema.attributes[0].identifier
       return record.attributes[identifier]
+    },
+    getListLength (value) {
+      value = value || []
+      return `${value.length} Records`
     }
   },
   computed: {

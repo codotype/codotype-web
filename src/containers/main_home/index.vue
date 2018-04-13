@@ -1,5 +1,5 @@
 <template>
-  <div class="container h-100">
+  <div class="container">
     <LayoutView/>
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
     LayoutView
   },
   metaInfo: {
-    title: 'Main - Home'
+    title: 'Home'
   }
 }
 </script>

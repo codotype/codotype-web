@@ -14,9 +14,10 @@
 
         <!-- Public links -->
         <b-nav-item href="#/projects">Apps</b-nav-item>
-        <b-nav-item class="d-none d-sm-none d-md-block" href="#/projects">
-          <i class="fa fa-fw fa-plus"></i>
-        </b-nav-item>
+        <b-nav-item href="#/examples">Example Apps</b-nav-item>
+        <!-- <b-nav-item class="d-none d-sm-none d-md-block" href="#/projects"> -->
+          <!-- <i class="fa fa-fw fa-plus"></i> -->
+        <!-- </b-nav-item> -->
 
       </b-navbar-nav>
 

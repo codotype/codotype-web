@@ -4,6 +4,7 @@
 
     <!-- Bootstrap Modal Component -->
     <b-modal :id="'edit_attribute'"
+      size="lg"
       :title="'Edit Attribute'"
       ref='editModal'
       @ok="updateAttr()"

@@ -45,7 +45,8 @@ export default {
   },
   computed: {
     formStep () {
-      return (this.model._id || !this.model.datatype)
+      // return (this.model._id || !this.model.datatype)
+      return (!this.model.datatype)
     }
   }
 }

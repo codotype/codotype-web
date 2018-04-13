@@ -6,11 +6,15 @@
     </div>
 
     <div class="col-lg-6 col-sm-12">
-      <FormInput label="Label" :required="true" placeholder="Label" v-model="model.label" required="true" example=">Example: 'Last Name'" help="The human-readable name for this attribute." />
+      <FormInput label="Label" :required="true" placeholder="Label" v-model="model.label" example="Example: 'Last Name'" help="The human-readable name for this attribute." />
     </div>
 
     <div class="col-lg-6 col-sm-12">
-      <FormInput label="Field Name" :required="true" placeholder="Field Name" v-model="model.identifier" required="true" example="Example: 'last_name'" help="Lowercase, no spaces." />
+      <FormInput label="Field Name" :required="true" placeholder="Field Name" v-model="model.identifier" example="Example: 'last_name'" help="Lowercase, no spaces." />
+    </div>
+
+    <div class="col-sm-12">
+      <FormInput label="Description" placeholder="Description" v-model="model.help" example="Example: 'The Last Name of the individual'" help="A description of this attribute." />
     </div>
 
     <!-- TODO - keep this? -->

@@ -18,9 +18,9 @@
           header-text-variant="light"
           body-bg-variant="dark"
           body-text-variant="light"
-          footer-bg-variant="success"
+          footer-bg-variant="primary"
           footer-text-variant="light"
-          ok-variant='success'
+          ok-variant='primary'
           ok-title='Create'
           cancel-title='Cancel'
           cancel-variant='dark'

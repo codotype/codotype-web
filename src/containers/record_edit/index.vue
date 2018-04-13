@@ -8,7 +8,7 @@
 
     <!-- Record Form -->
     <div class="col-lg-12">
-      <RecordForm :record="record" :onSubmit="createRecord" />
+      <RecordForm :record="record" :onSubmit="updateRecord" />
     </div>
 
   </div>
@@ -17,11 +17,12 @@
 <!-- // // // //  -->
 
 <script>
+import _ from 'lodash'
 import { mapGetters, mapActions } from 'vuex'
 import RecordForm from '@/components/record/RecordForm'
 
 export default {
-  props: ['project_id', 'schema_id'],
+  props: ['project_id', 'schema_id', 'record_id'],
   metaInfo: {
     title: 'Seed - New'
   },
@@ -29,15 +30,19 @@ export default {
     RecordForm
   },
   created () {
-    this.resetNewRecord(this.schema_id)
+    // this.selectRecord(this.record_id)
+    let recordModel = _.find(this.$store.getters['record/collection'], { _id: this.record_id })
+    console.log(this.record_id)
+    console.log(recordModel)
+    this.selectRecord(recordModel)
   },
   computed: mapGetters({
-    record: 'record/newModel',
+    record: 'record/editModel',
     schema: 'schema/selectedModel'
   }),
   methods: mapActions({
-    createRecord: 'record/create',
-    resetNewRecord: 'record/resetNewModel'
+    updateRecord: 'record/update',
+    selectRecord: 'record/selectEditModel'
   })
 }
 </script>

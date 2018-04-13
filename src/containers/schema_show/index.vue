@@ -17,7 +17,7 @@
             </button>
 
             <!-- Bootstrap Modal Component -->
-            <b-modal id="new-attribute"
+            <b-modal size="lg" id="new-attribute"
               ref="newAttributeModal"
               :title="'New Attribute'"
               @ok="createAttribute()"

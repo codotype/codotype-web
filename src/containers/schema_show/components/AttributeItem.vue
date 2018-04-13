@@ -97,7 +97,7 @@
         </span>
       </div>
 
-      <div class="col-lg-3 text-right controls" v-if="item.locked">
+      <div class="col-lg-3 text-right controls" v-if="item.locked && item.datatype !== 'RELATION'">
         <button class="btn btn-sm btn-outline-secondary" disabled="true">
           <i class="fa fa-fw fa-lock mr-2"></i>
           Locked
@@ -105,12 +105,17 @@
       </div>
 
       <div class="col-lg-3 text-right controls" v-else>
-      >
-        <button class="btn btn-sm btn-outline-secondary" :disabled="item.locked" v-b-tooltip.hover.top title="Edit" @click="edit(item)">
+
+        <button class="btn btn-sm btn-outline-secondary" v-if="item.locked" :disabled="item.locked">
+          <i class="fa fa-fw fa-lock"></i>
+          Locked
+        </button>
+
+        <button class="btn btn-sm btn-outline-secondary" v-else v-b-tooltip.hover.top title="Edit" @click="edit(item)">
           <i class="fa fa-fw fa-pencil"></i>
         </button>
 
-        <button class="btn btn-sm btn-outline-danger" :disabled="item.locked" v-b-tooltip.hover.top v-b-modal="'modal_' + item._id" title="Remove">
+        <button class="btn btn-sm btn-outline-danger" v-b-tooltip.hover.top v-b-modal="'modal_' + item._id" title="Remove">
           <i class="fa fa-fw fa-trash"></i>
         </button>
 

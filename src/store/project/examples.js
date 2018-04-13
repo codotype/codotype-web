@@ -4,7 +4,7 @@ export const CLASSROOM_PROJECT = {
   identifier: 'classroom_app',
   schemas: [
     {
-      _id: 'SCHEMA_2',
+      _id: '5acfeea81535afdb753d55f7',
       enabled: true,
       label: 'User',
       label_plural: 'Users',
@@ -12,7 +12,6 @@ export const CLASSROOM_PROJECT = {
       identifier_plural: 'users',
       class_name: 'User',
       class_name_plural: 'Users',
-      unqiue_id_prefix: 'US_',
       authentications: [],
       attributes: [
         {
@@ -79,7 +78,7 @@ export const CLASSROOM_PROJECT = {
           order: 5,
           label: 'Password Reset Token',
           help: 'Encrypted password_reset_token for a user.',
-          required: true,
+          required: false,
           unique: false,
           datatype: 'TEXT',
           datatypeOptions: {},
@@ -100,7 +99,7 @@ export const CLASSROOM_PROJECT = {
           order: 0,
           label: 'Label',
           identifier: 'label',
-          help: '',
+          help: 'The label of the Course',
           required: true,
           unique: true,
           datatype: 'TEXT',
@@ -110,7 +109,7 @@ export const CLASSROOM_PROJECT = {
           order: 1,
           label: 'Assignments',
           identifier: 'assignment_ids',
-          help: '',
+          help: 'Assignments belonging to this course',
           required: false,
           unique: false,
           datatype: 'RELATION',
@@ -139,7 +138,7 @@ export const CLASSROOM_PROJECT = {
           order: 0,
           label: 'Label',
           identifier: 'label',
-          help: '',
+          help: 'Label of the Assignment',
           required: false,
           unique: false,
           datatype: 'TEXT',
@@ -149,7 +148,7 @@ export const CLASSROOM_PROJECT = {
           order: 2,
           label: 'Course',
           identifier: 'course_id',
-          help: '',
+          help: 'Course to which this assignment belongs',
           required: false,
           unique: false,
           datatype: 'RELATION',
@@ -168,6 +167,64 @@ export const CLASSROOM_PROJECT = {
       class_name: 'Assignment'
     }
   ],
+  seeds: [
+    {
+      _id: '5ad0c6f94f24e78b3558a0ed',
+      schema_id: '5acfeea81535afdb753d55f7',
+      attributes: {
+        email: 'user@example.com',
+        username: 'user01',
+        name: 'User 01',
+        password: 'userpass'
+      }
+    },
+    {
+      _id: '5ad0c70b4f24e78b3558a0ee',
+      schema_id: 'schema_15652994829682',
+      attributes: {
+        label: 'Operating Systems'
+      }
+    },
+    {
+      _id: '5ad0c7124f24e78b3558a0ef',
+      schema_id: 'schema_15652994829682',
+      attributes: {
+        label: 'Data Structures'
+      }
+    },
+    {
+      _id: '5ad0c7204f24e78b3558a0f0',
+      schema_id: 'schema_4625927934382',
+      attributes: {
+        label: 'Opsys HW #1',
+        course_id: '5ad0c70b4f24e78b3558a0ee'
+      }
+    },
+    {
+      _id: '5ad0c7264f24e78b3558a0f1',
+      schema_id: 'schema_4625927934382',
+      attributes: {
+        label: 'Opsys HW #2',
+        course_id: '5ad0c70b4f24e78b3558a0ee'
+      }
+    },
+    {
+      _id: '5ad0c72b4f24e78b3558a0f2',
+      schema_id: 'schema_4625927934382',
+      attributes: {
+        label: 'Data Structures HW #1',
+        course_id: '5ad0c7124f24e78b3558a0ef'
+      }
+    },
+    {
+      _id: '5ad0c7304f24e78b3558a0f3',
+      schema_id: 'schema_4625927934382',
+      attributes: {
+        label: 'Data Structures HW #2',
+        course_id: '5ad0c7124f24e78b3558a0ef'
+      }
+    }
+  ],
   stack: {
     server: {
       id: 'expressjs'
@@ -177,6 +234,9 @@ export const CLASSROOM_PROJECT = {
     },
     database: {
       id: 'mongodb'
+    },
+    auth: {
+      id: 'email'
     },
     features: [],
     deployments: []
