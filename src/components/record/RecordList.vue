@@ -41,7 +41,7 @@
 
           <span v-else-if="attr.datatype === 'RELATION' && attr.datatypeOptions.relationType === 'HAS_MANY'">
             <!-- {{ record._id }} -->
-            {{ record.attributes[attr.identifier] }}
+            <!-- {{ record.attributes[attr.identifier] }} -->
             {{ getListLength(record.attributes[attr.identifier]) }}
             <!-- {{ getLinkedSchemaLabel(attr, record.attributes[attr.identifier]) }} -->
           </span>

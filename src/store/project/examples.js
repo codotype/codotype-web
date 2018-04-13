@@ -167,7 +167,64 @@ export const CLASSROOM_PROJECT = {
       class_name: 'Assignment'
     }
   ],
-  seeds: [],
+  seeds: [
+    {
+      _id: '5ad0c6f94f24e78b3558a0ed',
+      schema_id: '5acfeea81535afdb753d55f7',
+      attributes: {
+        email: 'user@example.com',
+        username: 'user01',
+        name: 'User 01',
+        password: 'userpass'
+      }
+    },
+    {
+      _id: '5ad0c70b4f24e78b3558a0ee',
+      schema_id: 'schema_15652994829682',
+      attributes: {
+        label: 'Operating Systems'
+      }
+    },
+    {
+      _id: '5ad0c7124f24e78b3558a0ef',
+      schema_id: 'schema_15652994829682',
+      attributes: {
+        label: 'Data Structures'
+      }
+    },
+    {
+      _id: '5ad0c7204f24e78b3558a0f0',
+      schema_id: 'schema_4625927934382',
+      attributes: {
+        label: 'HW #1',
+        course_id: '5ad0c70b4f24e78b3558a0ee'
+      }
+    },
+    {
+      _id: '5ad0c7264f24e78b3558a0f1',
+      schema_id: 'schema_4625927934382',
+      attributes: {
+        label: 'HW #2',
+        course_id: '5ad0c70b4f24e78b3558a0ee'
+      }
+    },
+    {
+      _id: '5ad0c72b4f24e78b3558a0f2',
+      schema_id: 'schema_4625927934382',
+      attributes: {
+        label: 'HW #1',
+        course_id: '5ad0c7124f24e78b3558a0ef'
+      }
+    },
+    {
+      _id: '5ad0c7304f24e78b3558a0f3',
+      schema_id: 'schema_4625927934382',
+      attributes: {
+        label: 'HW #2',
+        course_id: '5ad0c7124f24e78b3558a0ef'
+      }
+    }
+  ],
   stack: {
     server: {
       id: 'expressjs'
