@@ -39,9 +39,6 @@ export default {
     dispatch('clearEditModel')
   },
   destroy ({ state, commit }, model) {
-    console.log('DESTROY')
-    console.log('DESTROY')
-    console.log(model._id)
     let collection = _.filter(state.collection, (m) => { return m._id !== model._id })
     commit('collection', collection)
   }

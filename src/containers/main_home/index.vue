@@ -15,7 +15,7 @@ export default {
     LayoutView
   },
   metaInfo: {
-    title: 'Main - Home'
+    title: 'Home'
   }
 }
 </script>

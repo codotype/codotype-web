@@ -1,9 +1,12 @@
 <template>
 
-  <div class="row h-100 align-items-center">
+  <div class="row">
     <div class="col-lg-12">
-
-      <div class="row mt-2 mb-4 pb-4">
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="row mt-2">
         <div class="col-lg-12 text-center">
           <img src="@/assets/logo_dark.png">
         </div>
@@ -15,19 +18,30 @@
         <!-- </div> -->
       <!-- </div> -->
 
-      <div class="row py-4">
+      <div class="row py-2">
         <div class="col-lg-12 text-center">
-          <h2>Next-generation web application boilerplate.</h2>
+          <p class="lead">visual web application boilerplate</p>
         </div>
 
-        <div class="col-lg-12 mt-4 text-center">
-          <p class="lead text-warning"></p>
-          <p class="lead text-warning">TODO - clean up this homepage</p>
-          <p class="lead text-warning">TODO - add links to github, social media</p>
-          <p class="lead text-warning">TODO - improve copy</p>
-          <p class="lead text-warning">TODO - add link to aeksco@github</p>
-          <!-- Place this tag where you want the button to render. -->
-          <!-- <a class="github-button" href="https://github.com/blazeplate/blazeplate_web_client" data-size="large" data-show-count="true" aria-label="Star blazeplate/blazeplate_web_client on GitHub">Star</a> -->
+        <div class="col-lg-12 text-center">
+          <p>Build projects <span class='text-warning'>blazingly</span> fast.</p>
+        </div>
+
+        <div class="col-lg-12 text-center">
+          <gh-btns-star slug="aeksco/blazeplate" show-count></gh-btns-star>
+          <!-- <gh-btns-fork slug="aeksco/blazeplate" show-count></gh-btns-fork> -->
+
+          <br>
+          <br>
+
+          <a class='px-2' href="http://github.com/aeksco/blazeplate" target='_blank'>
+            <i class="fa fa-2x fa-github"></i>
+          </a>
+
+          <a class='px-2' href="mailto:aeksco@gmail.com" target='_blank'>
+            <i class="fa fa-2x fa-envelope-o"></i>
+          </a>
+
         </div>
       </div>
 
@@ -55,11 +69,9 @@
 </template>
 
 <script>
-  export default {
-    name: 'main_home',
-    computed: {
-    }
-  }
+export default {
+  name: 'main_home'
+}
 </script>
 
 <style lang="sass">
@@ -71,4 +83,7 @@
     letter-spacing: .6rem
     font-weight: 300
     font-size: 2rem
+
+  .gh-button-container
+    float: none !important
 </style>
