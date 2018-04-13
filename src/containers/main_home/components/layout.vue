@@ -34,7 +34,7 @@
 
           <br>
 
-          <social-sharing class='mt-3' url="https://vuejs.org/" inline-template>
+          <social-sharing class='mt-3' url="https://alpha.blazeplate.io" inline-template>
             <div>
               <network network="facebook">
                 <i class="fa fa-lg fa-facebook mx-1"></i>
