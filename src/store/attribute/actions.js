@@ -39,6 +39,7 @@ export default {
         // Defines related label and identifier on attribute
         model.label = relatedSchema.label_plural
         model.identifier = relatedSchema.identifier + '_ids' // TODO - this should only be used for MANY_TO_MANY?
+        model.locked = true
         // model.datatypeOptions.schema_attribute_identifier = '_id' // TODO
         // model.datatypeOptions.schema_attribute_identifier = relatedSchema.attributes[0].identifier
 
@@ -47,6 +48,7 @@ export default {
         let reverseRelation = _.cloneDeep(DEFAULT_ATTRIBUTE)
         reverseRelation._id = ObjectID().toString()
         reverseRelation.datatype = 'RELATION'
+        reverseRelation.locked = true
         reverseRelation.order = relatedSchema.attributes.length + 1
         reverseRelation.label = modelSchema.label
         reverseRelation.identifier = modelSchema.identifier + '_id'
@@ -79,6 +81,7 @@ export default {
         model.label = relatedSchema.label
         model.identifier = relatedSchema.identifier + '_id'
         model.datatypeOptions.schema_attribute_identifier = '_id' // TODO
+        model.locked = true
         // model.datatypeOptions.schema_attribute_identifier = relatedSchema.attributes[0].identifier
 
         // Defines inverse relation on relatedSchema
@@ -86,6 +89,7 @@ export default {
         let reverseRelation = _.cloneDeep(DEFAULT_ATTRIBUTE)
         reverseRelation._id = ObjectID().toString()
         reverseRelation.datatype = 'RELATION'
+        reverseRelation.locked = true
         reverseRelation.order = relatedSchema.attributes.length + 1
         reverseRelation.label = modelSchema.label_plural
         reverseRelation.identifier = modelSchema.identifier + '_ids'

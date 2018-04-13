@@ -4,11 +4,6 @@
     <div class="col-lg-12">
       <div class="card card-body bg-dark text-light border-light">
 
-        <!-- Opens Destroy Confirmation Modal -->
-        <button class="btn btn-lg btn-success" v-b-modal="'generate-modal'">
-          <i class="fa fa-fw fa-play"></i>
-        </button>
-
         <!-- Bootstrap Modal Component -->
         <!-- TODO - move this outside the scope of the loop, and instead pass only the options into a single instance -->
         <!-- TODO -->
@@ -69,6 +64,12 @@
           </b-tab>
 
         </b-tabs>
+
+        <!-- Opens Destroy Confirmation Modal -->
+        <button class="btn btn-lg btn-success" v-b-modal="'generate-modal'">
+          <i class="fa fa-fw fa-play mr-2"></i>
+          Generate App
+        </button>
 
       </div>
     </div>
