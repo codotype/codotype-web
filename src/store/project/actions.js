@@ -14,8 +14,7 @@ export default {
     let model = _.find(state.collection, { _id: model_id })
     commit('selectedModel', model)
     commit('schema/collection', model.schemas, { root: true })
-    // TODO - integrate with record Vuex store
-    // commit('record/collection', model.seeds, { root: true })
+    commit('record/collection', model.seeds, { root: true })
   },
   fetchCollection: ({ rootGetters, commit }) => {
     commit('fetching', true)

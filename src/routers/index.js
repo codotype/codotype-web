@@ -7,6 +7,7 @@ import ProjectShow from '@/containers/project_show'
 import ProjectMeta from '@/containers/project_show/components/ProjectMeta'
 import ProjectAuth from '@/containers/project_show/components/ProjectAuth'
 import ProjectSeeds from '@/containers/project_show/components/ProjectSeeds'
+import ProjectExport from '@/containers/project_show/components/ProjectExport'
 import ProjectGenerate from '@/containers/project_generate'
 import ProjectExamples from '@/containers/project_examples'
 
@@ -91,6 +92,11 @@ export default new Router({
                   path: '/projects/:project_id/generate',
                   component: ProjectGenerate,
                   meta: { bcLinkText: 'Generate' }
+                },
+                {
+                  path: '/projects/:project_id/export',
+                  component: ProjectExport,
+                  meta: { bcLinkText: 'Export' }
                 },
                 {
                   path: '/projects/:project_id/schemas',

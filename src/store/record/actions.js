@@ -20,8 +20,8 @@ export default {
     collection.push(model)
 
     commit('collection', collection)
-    dispatch('resetNewModel')
     router.go(-1)
+    dispatch('resetNewModel')
   },
   update ({ state, commit, dispatch }) {
     let model = _.cloneDeep(state.editModel)
@@ -35,6 +35,7 @@ export default {
     })
 
     commit('collection', collection)
+    router.go(-1)
     dispatch('clearEditModel')
   },
   destroy ({ state, commit }, model) {

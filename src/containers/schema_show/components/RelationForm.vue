@@ -20,8 +20,11 @@
 
       <div class="row">
         <div class="col-lg-4">
-          This schema
-          <i class="fa fa-lg fa-cubes"></i>
+          <div class="form-group">
+            <label>This Model</label>
+            <small class="form-text text-muted">This Model</small>
+            <input type="text" class='form-control' disabled :value="schema.label">
+          </div>
         </div>
 
         <!-- RELATION TYPE -->
@@ -38,25 +41,35 @@
         <!-- RELATED SCHEMA -->
         <div class="col-lg-4">
           <div class="form-group">
-            <label>Related Schema</label>
-            <small class="form-text text-muted">The Schema with which this attribute maintains a relation.</small>
+            <label>Related Model</label>
+            <small class="form-text text-muted">The related Model definition.</small>
             <select class="form-control" v-model="model.datatypeOptions.schema_id" >
-              <option v-if="model.datatypeOptions.relationType === 'BELONGS_TO'" v-for="s in allSchemas" :key="s._id" :value="s._id">{{s.label}}</option>
 
               <!-- <option v-if="model.datatypeOptions.relationType === 'HAS_ONE'" v-for="s in allSchemas" :key="s._id" :value="s._id">{{s.label}}</option> -->
+              <template v-if="model.datatypeOptions.relationType === 'HAS_MANY'">
+                <option v-for="s in allSchemas" :key="s._id" :value="s._id">
+                  {{s.label_plural}}
+                </option>
+              </template>
 
-              <option v-if="model.datatypeOptions.relationType === 'HAS_MANY'" v-for="s in allSchemas" :key="s._id" :value="s._id">{{s.label_plural}}</option>
+              <!-- <option v-if="model.datatypeOptions.relationType === 'BELONGS_TO'" v-for="s in allSchemas" :key="s._id" :value="s._id">{{s.label}}</option> -->
+              <template v-else>
+                <option v-for="s in allSchemas" :key="s._id" :value="s._id">
+                  {{s.label}}
+                </option>
+              </template>
+
             </select>
           </div>
         </div>
 
         <!-- Description -->
-        <div class="col-lg-12">
+        <!-- <div class="col-lg-12"> -->
           <!-- <small> -->
             <!-- One <span class='text-info'>{{ schema.label }}</span> HAS MANY <span class='text-warning'>TODO</span> -->
           <!-- </small> -->
-          <small class="text-warning">TODO - render description of relationship.</small>
-        </div>
+          <!-- <small class="text-warning">TODO - render description of relationship.</small> -->
+        <!-- </div> -->
 
       </div>
 

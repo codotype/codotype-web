@@ -1,5 +1,3 @@
-<!-- TODO - rename this to META (?) -->
-<!-- TODO - add overview container -->
 <template>
   <div class="row">
     <div class="col-lg-12">
@@ -8,8 +6,29 @@
 
       <div class="row d-flex align-items-center">
         <div class="col-lg-12">
-          <p class="text-warning">TODO - abstract SubHeader into standalone component</p>
-          <p class="text-warning">TODO - add form to edit basic app metadata</p>
+          <table class="table table-striped">
+            <tbody>
+
+              <tr>
+                <td>
+                  Label
+                </td>
+                <td>
+                  {{model.label}}
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  Identifier
+                </td>
+                <td>
+                  {{model.identifier}}
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
         </div>
       </div>
 

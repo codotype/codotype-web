@@ -1,38 +1,57 @@
 <template>
 
-  <div class="row h-100 align-items-center">
+  <div class="row align-items-center">
     <div class="col-lg-12">
+      <br>
 
-      <div class="row mt-2 mb-4 pb-4">
-        <div class="col-lg-12 text-center">
-          <img class='logo' src="@/assets/logo_dark.png">
-        </div>
-      </div>
-
-      <div class="row py-4">
+      <div class="row mt-2">
         <div class="col-lg-12 text-center">
           <h2>A B O U T</h2>
         </div>
       </div>
 
-      <!-- <div class="row my-2"> -->
-        <!-- <div class="col-lg-12 text-center"> -->
-          <!-- <p class="lead"><a href="https://github.com/aeksco" target="_blank"> blazeplate.io</a> is an open-source tool for building user interfaces to collect and view tabular data.</p> -->
-        <!-- </div> -->
-      <!-- </div> -->
-
-      <div class="row py-4">
+      <div class="row mt-2">
         <div class="col-lg-12 text-center">
-          <h2>Next-generation web application boilerplate.</h2>
-          <p class="lead text-warning">TODO - add links to github, social media</p>
+          <img class='logo' src="@/assets/logo_dark.png">
         </div>
       </div>
 
-      <!-- <div class="row py-4"> -->
-        <!-- <div class="col-lg-12 text-center"> -->
-          <!-- <p class="lead">Define your schema and its attributes - blazeplate.io does the rest.</p> -->
-        <!-- </div> -->
-      <!-- </div> -->
+      <div class="row">
+
+        <div class="col-lg-12 text-center">
+          <p>Build projects <span class='text-warning'>blazingly</span> fast.</p>
+        </div>
+
+        <div class="col-lg-12 text-center">
+          <gh-btns-star slug="aeksco/blazeplate" show-count></gh-btns-star>
+
+          <br>
+          <br>
+
+          <span>Built with</span>
+          <i class="fa fa-heart ml-1 text-danger"></i>
+          <span class='px-1'>by</span>
+          <a href="https://github.com/aeksco" target='_blank'>@aeksco</a>
+
+          <br>
+          <gh-btns-follow class='mt-3' user="aeksco" show-count></gh-btns-follow>
+
+          <br>
+          <br>
+
+          Get in touch.
+          <br>
+          <br>
+          <a class='px-2' href="http://github.com/aeksco/blazeplate" target='_blank'>
+            <i class="fa fa-2x fa-github"></i>
+          </a>
+
+          <a class='px-2' href="mailto:aeksco@gmail.com" target='_blank'>
+            <i class="fa fa-2x fa-envelope-o"></i>
+          </a>
+
+        </div>
+      </div>
 
     </div>
   </div>

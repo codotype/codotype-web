@@ -3,6 +3,7 @@ export const DEFAULT_PROJECT = {
   label: 'Blazeplate Project',
   identifier: '',
   schemas: [],
+  seeds: [],
   stack: {
     server: {
       id: 'expressjs'
@@ -12,6 +13,9 @@ export const DEFAULT_PROJECT = {
     },
     database: {
       id: 'mongodb'
+    },
+    auth: {
+      id: 'email'
     },
     features: [],
     deployments: []
