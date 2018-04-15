@@ -8,16 +8,16 @@
           <span class='text-danger' v-if="attr.required">*</span>
         </label>
         <small class="form-text text-danger" v-if="errors[attr.identifier]">{{errors[attr.identifier]}}</small>
-        <small class="form-text text-muted" v-else>{{attr.help}}</small>
+        <small class="form-text text-muted" v-else>{{attr.help || 'No description for this attribute' }}</small>
 
         <!-- TEXT -->
         <input type="text" class="form-control" :placeholder="attr.label" :required="attr.required" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'TEXT'">
 
         <!-- DATE -->
-        <!-- <input type="date" class="form-control" :placeholder="attr.label" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'DATE'"> -->
+        <input type="date" class="form-control" :placeholder="attr.label" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'DATE'">
 
         <!-- TIME -->
-        <!-- <input type="time" class="form-control" :placeholder="attr.label" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'TIME'"> -->
+        <input type="time" class="form-control" :placeholder="attr.label" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'TIME'">
 
         <!-- BOOL -->
         <input type="checkbox" class="form-control" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'BOOL'">

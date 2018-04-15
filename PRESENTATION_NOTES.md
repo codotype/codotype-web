@@ -15,10 +15,6 @@ Think about it - even the most basic applications share a lot of common :
 - User authentication, roles, and management
 - WHAT ELSE?
 
-Another quote from the late and great Carl Sagan:
-
-"If you wish to make an apple pie from scratch, you must first invent the universe"
-
 And I feel like that applies to software (and web dev) a lot. You just want to bake an apple pie, but you spend most of your time inventing the universe. This is where boilerplate applications come into the mix.
 
 # # # # #
