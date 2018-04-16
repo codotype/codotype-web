@@ -4,9 +4,11 @@ import router from '@/routers'
 import { DEFAULT_PROJECT, DEFAULT_USER_SCHEMA, CREATE_SUCCESS_NOTIFICATION } from './constants'
 import { SELECT_MODEL_ACTIONS } from '@/store/lib/mixins'
 
-const underscored = require('underscore.string/underscored')
 // TODO - use this instead?
 // import { underscored } from 'underscore.string'
+
+const underscored = require('underscore.string/underscored')
+const DownloadFile = require('downloadjs')
 
 export default {
   ...SELECT_MODEL_ACTIONS,
@@ -65,9 +67,7 @@ export default {
   },
 
   exportJson: ({ commit }, model) => {
-    console.log('EXPORT APP:')
-    console.log(JSON.stringify(model, null, 2))
-    // TODO - use DownloadFile to download the .json export
+    DownloadFile(JSON.stringify(model, null, 2), 'blazeplate-export.json', 'application/json')
   },
 
   setIdentifier: ({ state, commit }) => {

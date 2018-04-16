@@ -21,24 +21,17 @@
         <p>Exported Application.</p>
       </b-modal>
 
+      <!-- TODO - CLEAN UP THIS UI -->
+      <!-- TODO - display 'Thanks' message -->
+      <!-- TODO - display follow us! message -->
+      <!-- TODO - display REASON for export -->
 
       <div class="row d-flex align-items-center">
         <div class="col-lg-12">
-          <button class="btn btn-lg btn-outline-success" @click="exportProject(model)">
+          <button class="btn btn-outline-success" @click="exportProject(model)">
             <i class="fa fa-code mr-1"></i>
-            Export
+            Export JSON
           </button>
-          <p class="lead text-warning">
-            TODO - CLEAN UP THIS UI
-            <br>
-            TODO - wire up export download
-            <br>
-            TODO - display 'Thanks' message
-            <br>
-            TODO - display follow us! message
-            <br>
-            TODO - display REASON for export
-          </p>
         </div>
       </div>
 
