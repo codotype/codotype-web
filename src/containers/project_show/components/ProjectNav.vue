@@ -3,8 +3,8 @@
     <b-nav-item :href="t.href" v-for='t in tabs' :key="t.path" :active="isSelected(t)">
       {{ t.label }}
     </b-nav-item>
-    <b-nav-item disabled>Environment</b-nav-item>
-    <b-nav-item disabled>Features</b-nav-item>
+    <!-- <b-nav-item disabled>Environment</b-nav-item> -->
+    <!-- <b-nav-item disabled>Features</b-nav-item> -->
   </b-nav>
 </template>
 
