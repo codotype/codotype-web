@@ -2,12 +2,11 @@
 <template>
   <div class="row mt-2">
     <div class="col-lg-12">
-      <div class="card card-body bg-dark text-light border-light">
+      <div class="card-body bg-dark text-light">
 
-        <!-- Bootstrap Modal Component -->
-        <!-- TODO - move this outside the scope of the loop, and instead pass only the options into a single instance -->
-        <!-- TODO -->
-        <b-modal id="generate-modal"
+        <!-- Generate Modal Component -->
+        <!-- TODO - prevent dismissal -->
+        <b-modal ref="modal"
           :title="'Generating...'"
           @ok="generateApplication()"
           header-bg-variant="dark"
@@ -21,17 +20,27 @@
           cancel-title='Cancel'
           cancel-variant='dark'
         >
-          <p class="lead">
-            Thank you for using blazeplate :)
-          </p>
-          <p class="text-left text-warning">TODO - add social media</p>
-          <p class="text-left text-warning">TODO - add github</p>
-          <p class="text-left text-warning">TODO - add contribute + donate</p>
-          <!-- <pre class='text-left bg-light'>{{model}}</pre> -->
+          <div class="row">
+            <div class="col-sm-12 text-center">
+
+              <p class="lead">
+                Thank you for using blazeplate :)
+              </p>
+
+              <!-- <pre class='text-left bg-light'>{{model}}</pre> -->
+              <!-- <p class="text-left text-warning">TODO - add social media</p> -->
+              <!-- <p class="text-left text-warning">TODO - add github</p> -->
+              <!-- <p class="text-left text-warning">TODO - add contribute + donate</p> -->
+
+              <i class="fa fa-2x fa-spinner fa-spin" v-if="fetching"></i>
+              <p class="lead mb-0">Generating...</p>
+            </div>
+          </div>
+
         </b-modal>
 
-        <hr>
 
+        <!-- Pills nav -->
         <b-tabs pills vertical>
 
           <!-- Server Frameworks -->
@@ -68,7 +77,7 @@
         <hr>
 
         <!-- Opens Destroy Confirmation Modal -->
-        <button class="btn btn-lg btn-success" v-b-modal="'generate-modal'">
+        <button class="btn btn-lg btn-success" @click="showGenerateModal()">
           <i class="fa fa-fw fa-play mr-2"></i>
           Generate App
         </button>
@@ -96,11 +105,19 @@ export default {
   },
   computed: mapGetters({
     model: 'project/selectedModel',
+    fetching: 'generator/fetching',
     opts: 'generator/generatorFormOpts'
   }),
-  methods: mapActions({
-    setActivated: 'generator/setActivated',
-    generateApplication: 'generator/generate'
-  })
+  methods: {
+    showGenerateModal () {
+      this.$refs.modal.show()
+      console.log('generating?')
+      console.log(this.generateApplication())
+    },
+    ...mapActions({
+      setActivated: 'generator/setActivated',
+      generateApplication: 'generator/generate'
+    })
+  }
 }
 </script>
