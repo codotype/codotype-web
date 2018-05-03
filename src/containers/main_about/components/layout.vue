@@ -19,7 +19,7 @@
       <div class="row">
 
         <div class="col-lg-12 text-center">
-          <p>Build projects <span class='text-warning'>blazingly</span> fast.</p>
+          <p>Build projects blazingly fast.</p>
         </div>
 
         <div class="col-lg-12 text-center">

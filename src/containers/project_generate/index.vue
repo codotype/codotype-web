@@ -32,6 +32,41 @@
               <!-- <p class="text-left text-warning">TODO - add github</p> -->
               <!-- <p class="text-left text-warning">TODO - add contribute + donate</p> -->
 
+              Share
+              <social-sharing class='mt-3' url="I just generated a full-stack app at https://blazeplate.io" inline-template>
+                <div>
+                  <network network="facebook">
+                    <i class="fa fa-lg fa-facebook mx-1"></i>
+                  </network>
+                  <network network="googleplus">
+                    <i class="fa fa-lg fa-google-plus mx-1"></i>
+                  </network>
+                  <network network="linkedin">
+                    <i class="fa fa-lg fa-linkedin mx-1"></i>
+                  </network>
+                  <network network="pinterest">
+                    <i class="fa fa-lg fa-pinterest mx-1"></i>
+                  </network>
+                  <network network="reddit">
+                    <i class="fa fa-lg fa-reddit mx-1"></i>
+                  </network>
+                  <network network="twitter">
+                    <i class="fa fa-lg fa-twitter mx-1"></i>
+                  </network>
+                  <!-- <network network="vk"> -->
+                    <!-- <i class="fa fa-lg fa-vk"></i> -->
+                  <!-- </network> -->
+                  <!-- <network network="weibo"> -->
+                    <!-- <i class="fa fa-lg fa-weibo"></i> -->
+                  <!-- </network> -->
+                  <!-- <network network="whatsapp"> -->
+                    <!-- <i class="fa fa-lg fa-whatsapp"></i> -->
+                  <!-- </network> -->
+                </div>
+              </social-sharing>
+
+              <br>
+
               <i class="fa fa-2x fa-spinner fa-spin" v-if="fetching"></i>
               <p class="lead mb-0">Generating...</p>
             </div>

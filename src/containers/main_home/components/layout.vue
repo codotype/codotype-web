@@ -21,10 +21,10 @@
         </div>
 
         <div class="col-lg-12 text-center">
-          <p>Prototype new projects <span class='text-warning'>blazingly</span> fast.</p>
+          <p>Prototype new projects blazingly fast.</p>
 
           <p>
-            Define your models, attributes, and relations - <span class='text-warning'>blazeplate does the rest</span>.
+            Define your models, attributes, and relations - blazeplate does the rest.
           </p>
         </div>
 
