@@ -1,5 +1,6 @@
 
 // Generator Module state
 export default {
-  activated: false
+  activated: false,
+  fetching: false
 }

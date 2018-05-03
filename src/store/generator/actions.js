@@ -2,19 +2,24 @@ import { GENERATE_ROUTE } from './constants'
 const DownloadFile = require('downloadjs')
 
 export default {
+  // TODO - this needs error handling!
   generate: ({ rootGetters, commit }) => {
     console.log(JSON.stringify(rootGetters['project/selectedModel'], null, 2))
-    return new Promise((resolve, reject) => {
-      return fetch(GENERATE_ROUTE, {
-        method: 'post',
-        body: JSON.stringify(rootGetters['project/selectedModel']),
-        headers: new Headers({ 'Content-Type': 'application/json' })
-      })
-      .then((response) => { return response.blob() })
-      .then((blob) => { return resolve(blob) })
-      .catch((err) => { return reject(err) })
+    commit('fetching', true)
+    return fetch(GENERATE_ROUTE, {
+      method: 'post',
+      body: JSON.stringify(rootGetters['project/selectedModel']),
+      headers: new Headers({ 'Content-Type': 'application/json' })
+    })
+    .then((response) => { return response.blob() })
+    .catch((err) => {
+      commit('fetching', false)
+      console.log('ERR ERR')
+      throw err
+      // return reject(err)
     })
     .then((blob) => {
+      commit('fetching', false)
       console.log('GENERATED')
       console.log(blob)
       DownloadFile(blob, 'app.zip', 'application/zip')

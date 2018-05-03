@@ -31,6 +31,7 @@ export default {
         { path: 'schemas', label: 'Models', href: `#/projects/${projectId}/schemas` },
         { path: 'seeds', label: 'Seed Data', href: `#/projects/${projectId}/seeds` },
         { path: 'export', label: 'Export', href: `#/projects/${projectId}/export` }
+        // { path: 'pages', label: 'Pages', href: `#/projects/${projectId}/pages` },
         // { path: 'auth', label: 'Authorization', href: `#/projects/${projectId}/auth` }
       ]
     }
