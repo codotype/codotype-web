@@ -3,8 +3,7 @@
     <div class="col-lg-12">
 
       <!-- Header -->
-      <EditorHeader :help="'Define seed data for the ' + project.label + ' app.'">
-      </EditorHeader>
+      <EditorHeader :help="'Define seed data for the ' + project.label + ' app.'" />
 
       <!-- Schema List -->
       <ul class='list-group'>

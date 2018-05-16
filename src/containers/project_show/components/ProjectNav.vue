@@ -3,8 +3,8 @@
     <b-nav-item :href="t.href" v-for='t in tabs' :key="t.path" :active="isSelected(t)">
       {{ t.label }}
     </b-nav-item>
-    <b-nav-item disabled>Environment</b-nav-item>
-    <b-nav-item disabled>Features</b-nav-item>
+    <!-- <b-nav-item disabled>Environment</b-nav-item> -->
+    <!-- <b-nav-item disabled>Features</b-nav-item> -->
   </b-nav>
 </template>
 
@@ -31,6 +31,7 @@ export default {
         { path: 'schemas', label: 'Models', href: `#/projects/${projectId}/schemas` },
         { path: 'seeds', label: 'Seed Data', href: `#/projects/${projectId}/seeds` },
         { path: 'export', label: 'Export', href: `#/projects/${projectId}/export` }
+        // { path: 'pages', label: 'Pages', href: `#/projects/${projectId}/pages` },
         // { path: 'auth', label: 'Authorization', href: `#/projects/${projectId}/auth` }
       ]
     }

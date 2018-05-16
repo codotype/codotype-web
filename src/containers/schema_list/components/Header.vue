@@ -1,6 +1,6 @@
 
 <template>
-  <EditorHeader :help="'Define data modeled by the ' + project.label + 'app.'">
+  <EditorHeader :help="'Define data modeled by the ' + project.label + ' app.'">
     <div class="row">
       <div class="col-lg-12">
 

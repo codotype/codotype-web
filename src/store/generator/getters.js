@@ -13,5 +13,8 @@ export default {
   },
   activated: state => {
     return state.activated
+  },
+  fetching: state => {
+    return state.fetching
   }
 }
