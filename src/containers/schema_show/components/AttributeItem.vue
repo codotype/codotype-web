@@ -54,6 +54,13 @@
           <span class="badge badge-light ml-2">Has Many</span>
         </span>
 
+        <!-- OWNS_MANY -->
+        <span class="badge" v-if="item.datatypeOptions.relationType === 'OWNS_MANY'">
+          <i class="fa fa-link mr-2"></i>
+          {{item.label}}
+          <span class="badge badge-light ml-2">Owns Many</span>
+        </span>
+
         <!-- DATE -->
         <span class="badge" v-if="item.datatype === 'DATE'">
           <i class="fa fa-calendar-o mr-2"></i>

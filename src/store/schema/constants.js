@@ -29,8 +29,14 @@ export const RELATION_TYPES = [
   // { id: 'BELONGS_TO', text: 'Belongs To', desc: 'many to one' },
   // { id: 'HAS_MANY', text: 'Has Many', desc: 'one to many' },
   // { id: 'HAS_AND_BELONGS_TO_MANY', text: 'Many to Many', desc: 'many to many' }
-  { id: 'HAS_MANY', text: 'Has Many', desc: 'one to many description here...' },
-  { id: 'BELONGS_TO', text: 'Belongs To', desc: 'one to many description here...' }
+  // // // //
+  // { id: 'HAS_MANY', text: 'Has Many', desc: 'one to many description here...' },
+  // { id: 'BELONGS_TO', text: 'Belongs To', desc: 'one to many description here...' }
+  // // // //
+  { id: 'ONE_TO_ONE', text: 'One to One', desc: 'One to One description here...' },
+  { id: 'ONE_TO_MANY', text: 'One to Many', desc: 'One to Many description here...' },
+  { id: 'MANY_TO_ONE', text: 'Many to One', desc: 'Many to One description here...' },
+  { id: 'MANY_TO_MANY', text: 'Many to Many', desc: 'Many to Many description here...' }
 ]
 
 export const DATATYPES = [
