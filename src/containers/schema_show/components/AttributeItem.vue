@@ -1,6 +1,6 @@
 
 <template>
-  <li class="list-group-item bg-dark text-light">
+  <li class="list-group-item">
     <div class="row d-flex align-items-center">
 
       <div class="col-lg-1 text-left d-flex align-items-center">
@@ -38,13 +38,8 @@
         <span class="badge" v-if="item.datatypeOptions.relationType === 'BELONGS_TO'">
           <i class="fa fa-link mr-2"></i>
           {{item.label}}
-          <span class="badge badge-light ml-2">Belongs To</span>
-        </span>
-
-        <!-- HAS_ONE -->
-        <span class="badge" v-if="item.datatypeOptions.relationType === 'HAS_ONE'">
-          <i class="fa fa-link mr-2"></i>
-          {{item.label}}
+          <!-- <span class="badge badge-light ml-2">Belongs To</span> -->
+          <span class="badge badge-light ml-2">many {{ schema.label_plural }} to one {{ item.label }}</span>
         </span>
 
         <!-- HAS_MANY -->
@@ -58,7 +53,7 @@
         <span class="badge" v-if="item.datatypeOptions.relationType === 'OWNS_MANY'">
           <i class="fa fa-link mr-2"></i>
           {{item.label}}
-          <span class="badge badge-light ml-2">Owns Many</span>
+          <span class="badge badge-light ml-2">one {{ schema.label }} to many {{ item.label }}</span>
         </span>
 
         <!-- DATE -->
@@ -154,7 +149,7 @@
 import { mapActions } from 'vuex'
 
 export default {
-  props: ['item', 'edit'],
+  props: ['item', 'schema', 'edit'],
   methods: mapActions({
     remove: 'attribute/destroy'
   })

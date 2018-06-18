@@ -3,27 +3,25 @@
 
     <!-- Child -->
     <div v-for="project in collection" v-bind:key="project._id" class='col-lg-12 mb-3'>
-      <div class="card card-body bg-dark border-light">
+      <div class="card card-body">
         <div class="row align-items-center">
 
           <div class="col-lg-3">
             <!-- project URL -->
             <p class="lead mb-0">
-              <a class='text-light' v-bind:href="'#/projects/' + project._id + '/schemas' ">{{project.label}}</a>
+              <a v-bind:href="'#/projects/' + project._id + '/schemas' ">{{project.label}}</a>
             </p>
           </div>
 
           <div class="col-lg-5">
-            <div class='text-light'>
-              <i class="fa fa-database mr-1"></i>
-              <template v-if="project.schemas.length">
-                <!-- {{ project.schemas.length + ' Schema' }} -->
-                {{ schemaString(project) }}
-              </template>
-              <template v-else>
-                No Schemas
-              </template>
-            </div>
+            <i class="fa fa-database mr-1"></i>
+            <template v-if="project.schemas.length">
+              <!-- {{ project.schemas.length + ' Schema' }} -->
+              {{ schemaString(project) }}
+            </template>
+            <template v-else>
+              No Schemas
+            </template>
           </div>
 
           <div class="col-lg-4 text-right">
@@ -70,7 +68,7 @@
 
     <!-- Empty -->
     <div class="col-lg-12 mb-3" v-if="!collection[0]">
-      <div class="card bg-dark border-warning text-warning card-body text-center">
+      <div class="card border-warning text-warning card-body text-center">
         <p class="lead card-text">
           <i class="fa fa-fw fa-info-circle mr-2"></i>
           <br>

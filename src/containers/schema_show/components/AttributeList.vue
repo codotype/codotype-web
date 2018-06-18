@@ -24,11 +24,11 @@
 
      <div class="col-lg-12">
       <draggable class='list-group' v-model='attributes' :options="sortableOptions" v-if="attributes.length">
-        <AttributeItem v-for="each in attributes" :item="each" :key="each._id" :edit="selectEditAttribute" />
+        <AttributeItem v-for="each in attributes" :item="each" :key="each._id" :schema="schema" :edit="selectEditAttribute" />
       </draggable>
 
       <!-- Empty Attribute view -->
-      <li class="card card-body text-center bg-dark border-warning text-warning" v-else>
+      <li class="card card-body text-center border-warning text-warning" v-else>
         <i class="fa fa-lg fa-exclamation"></i>
         <!-- TODO - Click to add your first Attribute -->
         <p class="lead mb-0 mt-2">

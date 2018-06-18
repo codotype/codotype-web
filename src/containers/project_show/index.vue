@@ -27,7 +27,7 @@
     <div class="row h-100 mt-4" style='border-top: 1px solid #666'>
 
       <!-- TODO - abstract this into an independent Nav component -->
-      <div class="col-md-2 h-100 pt-3" style='border-right: 1px solid #666; background: #222' v-if="!generatorActivated">
+      <div class="col-md-2 h-100 pt-3" style='border-right: 1px solid #666;' v-if="!generatorActivated">
         <ProjectNav/>
       </div>
 

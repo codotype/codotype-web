@@ -2,7 +2,7 @@
 <template>
   <div class="row mt-2">
     <div class="col-lg-12">
-      <div class="card-body bg-dark text-light">
+      <div class="card-body">
 
         <!-- Generate Modal Component -->
         <!-- TODO - prevent dismissal -->

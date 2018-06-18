@@ -7,7 +7,7 @@
 
       <!-- Schema List -->
       <ul class='list-group'>
-        <a class='list-group-item bg-dark text-light border-light' v-for="schema in collection" :key="schema._id" :href="'#/projects/' + project._id + '/seeds/' + schema._id">
+        <a class='list-group-item' v-for="schema in collection" :key="schema._id" :href="'#/projects/' + project._id + '/seeds/' + schema._id">
           <div class="row">
             <div class="col-lg-3">
               {{ schema.label }}

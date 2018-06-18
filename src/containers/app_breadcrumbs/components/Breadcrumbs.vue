@@ -1,5 +1,5 @@
 <template>
-  <ol class="breadcrumb bg-dark text-light border-light mb-0 pl-0">
+  <ol class="breadcrumb mb-0 pl-0">
     <!-- <li class="breadcrumb-item" v-for="(route, index) in $route.matched"> -->
     <li :class="route.path ? 'breadcrumb-item' : 'breadcrumb-item active'" v-for="route in crumbs">
       <!-- <span>{{route}}</span> -->

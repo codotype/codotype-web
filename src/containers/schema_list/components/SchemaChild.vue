@@ -1,6 +1,6 @@
 
 <template>
-  <a class='list-group-item border-light bg-dark text-light'>
+  <a class='list-group-item'>
 
     <!-- Bootstrap Modal Component -->
     <b-modal v-if="enableDestroy"
