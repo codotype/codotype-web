@@ -19,6 +19,9 @@
         <!-- TIME -->
         <input type="time" class="form-control" :placeholder="attr.label" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'TIME'">
 
+        <!-- TIME -->
+        <input type="datetime-local" class="form-control" :placeholder="attr.label" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'DATETIME'">
+
         <!-- BOOL -->
         <input type="checkbox" class="form-control" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'BOOL'">
 
