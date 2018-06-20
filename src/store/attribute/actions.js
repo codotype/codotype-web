@@ -13,13 +13,11 @@ export default {
     return commit('newModel', newModel)
   },
   create ({ state, commit, dispatch, rootGetters }) {
+    // Isolates current Attribute model and the schema to which the attribute belongs
     let model = _.cloneDeep(state.newModel)
     let modelSchema = rootGetters['schema/selectedModel']
 
-    // console.log(modelSchema)
-    // console.log(modelSchema._id)
-
-    // Assigns ID to attribute
+    // Assigns uniaue ID to attribute model
     model._id = ObjectID().toString()
 
     // Pulls relational metadata (if needed)
@@ -30,28 +28,25 @@ export default {
       // Gets relatedSchema from schema/collection
       let relatedSchema = _.find(rootGetters['schema/collection'], { _id: relatedSchemaId })
 
-      // Handles HAS_MANY
-      if (relationType === 'HAS_MANY') {
-        console.log('HAS_MANY')
-        console.log(relatedSchema.label_plural)
-        console.log(relatedSchema.identifier + '_ids')
-
-        // Defines related label and identifier on attribute
-        model.label = relatedSchema.label_plural
-        model.identifier = relatedSchema.identifier + '_ids' // TODO - this should only be used for MANY_TO_MANY?
+      // Handles ONE_TO_ONE
+      if (relationType === 'ONE_TO_ONE') {
+        console.log('ONE_TO_ONE')
+        model.label = relatedSchema.label
+        model.identifier = relatedSchema.identifier + '_id'
+        model.datatypeOptions.schema_attribute_identifier = '_id' // TODO
+        model.datatypeOptions.relationType = 'BELONGS_TO'
         model.locked = true
-        // model.datatypeOptions.schema_attribute_identifier = '_id' // TODO
         // model.datatypeOptions.schema_attribute_identifier = relatedSchema.attributes[0].identifier
 
         // Defines inverse relation on relatedSchema
-        // INVERSE OF HAS_MANY === BELONGS_TO
+        // INVERSE OF BELONGS_TO === OWNS_MANY
         let reverseRelation = _.cloneDeep(DEFAULT_ATTRIBUTE)
         reverseRelation._id = ObjectID().toString()
         reverseRelation.datatype = 'RELATION'
         reverseRelation.locked = true
         reverseRelation.order = relatedSchema.attributes.length + 1
         reverseRelation.label = modelSchema.label
-        reverseRelation.identifier = modelSchema.identifier + '_id'
+        reverseRelation.identifier = modelSchema.identifier + '_id' // TODO - there should be no identifier for the OWNS_MANY relation attribute
         // reverseRelation.datatypeOptions.schema_attribute_identifier = '_id' // TODO
         reverseRelation.datatypeOptions.relationType = 'BELONGS_TO'
         reverseRelation.datatypeOptions.schema_id = modelSchema._id
@@ -72,20 +67,104 @@ export default {
         commit('schema/attributes', { schema_id: relatedSchemaId, collection: relatedSchemaAttrs }, { root: true })
       }
 
-      // Handles BELONGS_TO
-      if (relationType === 'BELONGS_TO') {
-        console.log('BELONGS_TO')
-        console.log(relatedSchema.label)
-        console.log(relatedSchema.identifier + '_id')
+      // Handles MANY_TO_ONE
+      if (relationType === 'MANY_TO_ONE') {
+        console.log('MANY_TO_ONE')
 
         model.label = relatedSchema.label
         model.identifier = relatedSchema.identifier + '_id'
         model.datatypeOptions.schema_attribute_identifier = '_id' // TODO
+        model.datatypeOptions.relationType = 'BELONGS_TO'
         model.locked = true
         // model.datatypeOptions.schema_attribute_identifier = relatedSchema.attributes[0].identifier
 
         // Defines inverse relation on relatedSchema
-        // INVERSE OF HAS_MANY === BELONGS_TO
+        // INVERSE OF BELONGS_TO === OWNS_MANY
+        let reverseRelation = _.cloneDeep(DEFAULT_ATTRIBUTE)
+        reverseRelation._id = ObjectID().toString()
+        reverseRelation.datatype = 'RELATION'
+        reverseRelation.locked = true
+        reverseRelation.order = relatedSchema.attributes.length + 1
+        reverseRelation.label = modelSchema.label_plural
+        reverseRelation.identifier = modelSchema.identifier + '_ids' // TODO - there should be no identifier for the OWNS_MANY relation attribute
+        // reverseRelation.datatypeOptions.schema_attribute_identifier = '_id' // TODO
+        reverseRelation.datatypeOptions.relationType = 'OWNS_MANY'
+        reverseRelation.datatypeOptions.schema_id = modelSchema._id
+
+        // Assigns reverse-relational IDs
+        model.datatypeOptions.reverse_relation = reverseRelation._id
+        reverseRelation.datatypeOptions.reverse_relation = model._id
+
+        // TODO - remove these log statements
+        console.log('RELATION:')
+        console.log(JSON.stringify(model, null, 2))
+        console.log('REVERSE RELATION:')
+        console.log(JSON.stringify(reverseRelation, null, 2))
+
+        // Adds the reverse relation to the relatedSchema
+        let relatedSchemaAttrs = relatedSchema.attributes
+        relatedSchemaAttrs.push(reverseRelation)
+        commit('schema/attributes', { schema_id: relatedSchemaId, collection: relatedSchemaAttrs }, { root: true })
+      }
+
+      // Handles ONE_TO_MANY
+      // IDENTICAL INVERSE OF MANY_TO_ONE
+      // TODO - ONE_TO_MANY and ONE_TO_MANY should be simplified
+      // into a separate function that can be invoked in either order :)
+      if (relationType === 'ONE_TO_MANY') {
+        console.log('ONE_TO_MANY')
+        model.label = relatedSchema.label_plural
+        model.identifier = relatedSchema.identifier + '_ids'
+        model.datatypeOptions.schema_attribute_identifier = '_id' // TODO
+        model.datatypeOptions.relationType = 'OWNS_MANY'
+        model.locked = true
+        // model.datatypeOptions.schema_attribute_identifier = relatedSchema.attributes[0].identifier
+
+        // Defines inverse relation on relatedSchema
+        // INVERSE OF BELONGS_TO === OWNS_MANY
+        let reverseRelation = _.cloneDeep(DEFAULT_ATTRIBUTE)
+        reverseRelation._id = ObjectID().toString()
+        reverseRelation.datatype = 'RELATION'
+        reverseRelation.locked = true
+        reverseRelation.order = relatedSchema.attributes.length + 1
+        reverseRelation.label = modelSchema.label
+        reverseRelation.identifier = modelSchema.identifier + '_id' // TODO - there should be no identifier for the OWNS_MANY relation attribute
+        // reverseRelation.datatypeOptions.schema_attribute_identifier = '_id' // TODO
+        reverseRelation.datatypeOptions.relationType = 'BELONGS_TO'
+        reverseRelation.datatypeOptions.schema_id = modelSchema._id
+
+        // Assigns reverse-relational IDs
+        model.datatypeOptions.reverse_relation = reverseRelation._id
+        reverseRelation.datatypeOptions.reverse_relation = model._id
+
+        // TODO - remove these log statements
+        console.log('RELATION:')
+        console.log(JSON.stringify(model, null, 2))
+        console.log('REVERSE RELATION:')
+        console.log(JSON.stringify(reverseRelation, null, 2))
+
+        // Adds the reverse relation to the relatedSchema
+        let relatedSchemaAttrs = relatedSchema.attributes
+        relatedSchemaAttrs.push(reverseRelation)
+        commit('schema/attributes', { schema_id: relatedSchemaId, collection: relatedSchemaAttrs }, { root: true })
+      }
+
+      // Handles MANY_TO_MANY
+      if (relationType === 'MANY_TO_MANY') {
+        console.log('MANY_TO_MANY')
+        console.log(relatedSchema.label_plural)
+        console.log(relatedSchema.identifier + '_ids')
+
+        // Defines related label and identifier on attribute
+        model.label = relatedSchema.label_plural
+        model.identifier = relatedSchema.identifier + '_ids' // TODO - this should only be used for MANY_TO_MANY?
+        model.datatypeOptions.relationType = 'HAS_MANY'
+        model.locked = true
+        // model.datatypeOptions.schema_attribute_identifier = '_id' // TODO
+        // model.datatypeOptions.schema_attribute_identifier = relatedSchema.attributes[0].identifier
+
+        // Defines inverse relation on relatedSchema
+        // INVERSE OF HAS_MANY === HAS_MANY
         let reverseRelation = _.cloneDeep(DEFAULT_ATTRIBUTE)
         reverseRelation._id = ObjectID().toString()
         reverseRelation.datatype = 'RELATION'
@@ -111,9 +190,6 @@ export default {
         let relatedSchemaAttrs = relatedSchema.attributes
         relatedSchemaAttrs.push(reverseRelation)
         commit('schema/attributes', { schema_id: relatedSchemaId, collection: relatedSchemaAttrs }, { root: true })
-
-        // Defines inverse relation on relatedSchema
-        // INVERSE OF MANY_TO_ONE === HAS_MANY
       }
     }
 

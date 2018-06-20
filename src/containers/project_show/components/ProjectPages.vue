@@ -7,7 +7,7 @@
 
       <!-- Schema List -->
       <ul class='list-group'>
-        <li class="list-group-item bg-dark test-light">Pages go here.</li>
+        <li class="list-group-item">Pages go here.</li>
       </ul>
 
     </div>
