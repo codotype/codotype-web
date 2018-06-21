@@ -62,15 +62,21 @@
           {{item.label}}
         </span>
 
-        <!-- COLOR -->
-        <span class="badge" v-if="item.datatype === 'COLOR'">
-          <i class="fa fa-eyedropper mr-2"></i>
-          {{item.label}}
-        </span>
-
         <!-- TIME -->
         <span class="badge" v-if="item.datatype === 'TIME'">
           <i class="fa fa-clock-o mr-2"></i>
+          {{item.label}}
+        </span>
+
+        <!-- DATETIME -->
+        <span class="badge" v-if="item.datatype === 'DATETIME'">
+          <i class="fa fa-calendar-plus-o mr-2"></i>
+          {{item.label}}
+        </span>
+
+        <!-- COLOR -->
+        <span class="badge" v-if="item.datatype === 'COLOR'">
+          <i class="fa fa-eyedropper mr-2"></i>
           {{item.label}}
         </span>
 
