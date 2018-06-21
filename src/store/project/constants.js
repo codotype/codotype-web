@@ -17,6 +17,9 @@ export const DEFAULT_PROJECT = {
     auth: {
       id: 'email'
     },
+    ui_framework: {
+      id: 'bootstrap'
+    },
     features: [],
     deployments: []
   }

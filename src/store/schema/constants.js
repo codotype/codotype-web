@@ -45,6 +45,7 @@ export const DATATYPES = [
   { value: 'BOOL', text: 'Boolean', icon: 'fa-check-square-o' },
   { value: 'DATE', text: 'Date', icon: 'fa-calendar-o' },
   { value: 'TIME', text: 'Time', icon: 'fa-clock-o' },
+  { value: 'DATETIME', text: 'Datetime', icon: 'fa-calendar-plus-o' },
   { value: 'COLOR', text: 'Color', icon: 'fa-eyedropper' },
   // { value: 'GEO', text: 'Geolocation', icon: 'fa-map' },
   { value: 'RELATION', text: 'Relation', icon: 'fa-link' }
@@ -65,10 +66,4 @@ export const DATATYPES = [
 //   <!-- <option value='NUMBER_SELECT'>Number Dropdown</option> -->
 //   <!-- <option value='TEXT_SELECT_MULTI'>Text Multi Dropdown</option> -->
 //   <!-- <option value='NUMBER_SELECT_MULTI'>Number Multi Dropdown</option> -->
-// <!-- </optgroup> -->
-// <!-- <optgroup label="Relations"> -->
-//   <!-- <option value='HAS_ONE'>Has One</option> -->
-//   <!-- <option value='BELONGS_TO'>Belongs To</option> -->
-//   <!-- <option value='HAS_MANY'>Has Many</option> -->
-//   <!-- <option value='HAS_AND_BELONGS_TO_MANY'>Has And Belongs To Many</option> -->
 // <!-- </optgroup> -->
