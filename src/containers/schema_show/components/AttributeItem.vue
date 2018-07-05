@@ -12,31 +12,31 @@
 
         <!-- TEXT -->
         <span class="badge" v-if="item.datatype === 'TEXT'">
-          <i class="fa fa-quote-left mr-2"></i>
+          <i class="fa fa-quote-left mr-2" v-b-tooltip.hover.left title='Text'></i>
           {{item.label}}
         </span>
 
         <!-- TEXT_SELECT -->
         <span class="badge" v-if="item.datatype === 'TEXT_SELECT'">
-          <i class="fa fa-list mr-2"></i>
+          <i class="fa fa-list mr-2" v-b-tooltip.hover.left title='Text Select'></i>
           {{item.label}}
         </span>
 
         <!-- NUMBER -->
         <span class="badge" v-if="item.datatype === 'NUMBER'">
-          <i class="fa fa-hashtag mr-2"></i>
+          <i class="fa fa-hashtag mr-2" v-b-tooltip.hover.left title='Number'></i>
           {{item.label}}
         </span>
 
         <!-- NUMBER_SELECT -->
         <span class="badge" v-if="item.datatype === 'NUMBER_SELECT'">
-          <i class="fa fa-list-ol mr-2"></i>
+          <i class="fa fa-list-ol mr-2" v-b-tooltip.hover.left title='Number Select'></i>
           {{item.label}}
         </span>
 
         <!-- BELONGS_TO -->
         <span class="badge" v-if="item.datatypeOptions.relationType === 'BELONGS_TO'">
-          <i class="fa fa-link mr-2"></i>
+          <i class="fa fa-link mr-2" v-b-tooltip.hover.left title='Relation'></i>
           {{item.label}}
           <!-- <span class="badge badge-light ml-2">Belongs To</span> -->
           <span class="badge badge-light ml-2">many {{ schema.label_plural }} to one {{ item.label }}</span>
@@ -44,52 +44,58 @@
 
         <!-- HAS_MANY -->
         <span class="badge" v-if="item.datatypeOptions.relationType === 'HAS_MANY'">
-          <i class="fa fa-link mr-2"></i>
+          <i class="fa fa-link mr-2" v-b-tooltip.hover.left title='Relation'></i>
           {{item.label}}
           <span class="badge badge-light ml-2">Has Many</span>
         </span>
 
         <!-- OWNS_MANY -->
         <span class="badge" v-if="item.datatypeOptions.relationType === 'OWNS_MANY'">
-          <i class="fa fa-link mr-2"></i>
+          <i class="fa fa-link mr-2" v-b-tooltip.hover.left title='Relation'></i>
           {{item.label}}
           <span class="badge badge-light ml-2">one {{ schema.label }} to many {{ item.label }}</span>
         </span>
 
         <!-- DATE -->
         <span class="badge" v-if="item.datatype === 'DATE'">
-          <i class="fa fa-calendar-o mr-2"></i>
+          <i class="fa fa-calendar-o mr-2" v-b-tooltip.hover.left title='Date'></i>
           {{item.label}}
         </span>
 
         <!-- TIME -->
         <span class="badge" v-if="item.datatype === 'TIME'">
-          <i class="fa fa-clock-o mr-2"></i>
+          <i class="fa fa-clock-o mr-2" v-b-tooltip.hover.left title='Time'></i>
           {{item.label}}
         </span>
 
         <!-- DATETIME -->
         <span class="badge" v-if="item.datatype === 'DATETIME'">
-          <i class="fa fa-calendar-plus-o mr-2"></i>
+          <i class="fa fa-calendar-plus-o mr-2" v-b-tooltip.hover.left title='Datetime'></i>
           {{item.label}}
         </span>
 
         <!-- COLOR -->
         <span class="badge" v-if="item.datatype === 'COLOR'">
-          <i class="fa fa-eyedropper mr-2"></i>
+          <i class="fa fa-eyedropper mr-2" v-b-tooltip.hover.left title='Color'></i>
           {{item.label}}
         </span>
 
         <!-- PHONE_NUMBER -->
         <span class="badge" v-if="item.datatype === 'PHONE_NUMBER'">
-          <i class="fa fa-phone mr-2"></i>
+          <i class="fa fa-phone mr-2" v-b-tooltip.hover.left title='Phone Number'></i>
           {{item.label}}
         </span>
 
         <!-- BOOL -->
         <span class="badge" v-if="item.datatype === 'BOOL'">
-          <i class="fa fa-check-square-o mr-2"></i>
+          <i class="fa fa-check-square-o mr-2" v-b-tooltip.hover.left title='Boolean'></i>
           {{item.label}}
+        </span>
+
+        <!-- JSON -->
+        <span class="badge" v-if="item.datatype === 'JSON'">
+          <i class="fa fa-code mr-2" v-b-tooltip.hover.left title='JSON'></i>
+          {{ item.label }}
         </span>
 
       </div>
