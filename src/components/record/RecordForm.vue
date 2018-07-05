@@ -31,6 +31,12 @@
         <!-- COLOR -->
         <input type="color" class="form-control" :placeholder="attr.label" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'COLOR'">
 
+        <!-- JSON -->
+        <!-- TODO - add better editor, validations to this input -->
+        <!-- TODO - on change, update record.attributes[attr.identifier] to be JSON.parse() -->
+        <textarea type="textarea" class="form-control bg-dark text-light" :placeholder="attr.label" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'JSON'">
+        </textarea>
+
         <!-- PHONE_NUMBER -->
         <!-- <masked-input type="tel" class="form-control" :placeholder="attr.label" v-model="record.attributes[attr.identifier]" mask="\+\1 (111) 111-1111" v-if="attr.datatype === 'PHONE_NUMBER'"/> -->
 
@@ -95,7 +101,23 @@ export default {
   computed: mapGetters({
     schema: 'schema/selectedModel'
   }),
+  created () {
+    this.assignDefaultValues()
+  },
   methods: {
+    // TODO - assignDefaultValues method should be moved into the Vuex store
+    assignDefaultValues () {
+      _.each(this.schema.attributes, (attr) => {
+        // Skip attributes are are defined
+        if (this.record.attributes[attr.identifier]) return
+        // Assign defaults for JSON, Number, String
+        if (attr.datatype === 'JSON') {
+          this.record.attributes[attr.identifier] = JSON.stringify({})
+        } else if (attr.datatypeOptions && attr.datatypeOptions.default) {
+          this.record.attributes[attr.identifier] = attr.datatypeOptions.default
+        }
+      })
+    },
     onCancel () {
       router.go(-1)
     },

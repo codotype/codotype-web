@@ -23,9 +23,21 @@ export default {
     router.go(-1)
     dispatch('resetNewModel')
   },
-  update ({ state, commit, dispatch }) {
+  update ({ state, commit, rootGetters, dispatch }) {
     let model = _.cloneDeep(state.editModel)
 
+    // Validates datatypes before persist
+    // TODO - wrap all of this in a try-catch block, add error handling to RecordForm
+    // Checks each of the model's attributes against the attributes defined in the schema
+    const schema = rootGetters['schema/collection'].find(s => { return s._id === model.schema_id })
+    _.each(schema.attributes, (attr) => {
+      // Ensures proper JSON format
+      if (attr.datatype === 'JSON') {
+        model.attributes[attr.identifier] = JSON.parse(model.attributes[attr.identifier])
+      }
+    })
+
+    // Updates the collection
     let collection = state.collection.map((m) => {
       if (m._id === model._id) {
         return model
@@ -38,6 +50,7 @@ export default {
     router.go(-1)
     dispatch('clearEditModel')
   },
+  // TODO - why this method isn't working?
   destroy ({ state, commit }, model) {
     let collection = _.filter(state.collection, (m) => { return m._id !== model._id })
     commit('collection', collection)

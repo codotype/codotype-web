@@ -42,10 +42,10 @@
                 <td>Class Name</td>
                 <td>{{ schema.class_name || '...' }}</td>
               </tr>
-              <!-- <tr> -->
-                <!-- <td>Class Name Plural</td> -->
-                <!-- <td>{{ schema.class_name_plural }}</td> -->
-              <!-- </tr> -->
+              <tr>
+                <td>Class Name Plural</td>
+                <td>{{ schema.class_name_plural || '...' }}</td>
+              </tr>
             </tbody>
           </table>
         </div>

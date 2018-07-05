@@ -6,11 +6,11 @@
     </div>
 
     <div class="col-lg-6 col-sm-12">
-      <FormInput label="Required" :required="true" v-model="model.required" help="Whether or not this attribute is required." type='BOOL' />
+      <FormInput label="Required" v-model="model.required" help="Whether or not this attribute is required." type='BOOL' />
     </div>
 
     <div class="col-lg-6 col-sm-12">
-      <FormInput label="Unique" :required="true" v-model="model.unique" help="Whether or not to enforce unique values for this attribute." type='BOOL' />
+      <FormInput label="Unique" v-if="model.datatype !== 'JSON'" v-model="model.unique" help="Whether or not to enforce unique values for this attribute." type='BOOL' />
     </div>
 
     <div class="col-sm-12" v-if="model.datatype === 'NUMBER'">
