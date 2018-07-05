@@ -46,6 +46,10 @@
             <!-- {{ getLinkedSchemaLabel(attr, record.attributes[attr.identifier]) }} -->
           </span>
 
+          <span v-else-if="attr.datatype === 'JSON'">
+            {{ JSON.stringify(record.attributes[attr.identifier]) }}
+          </span>
+
           <span v-else>
             {{ record.attributes[attr.identifier] || attr.datatypeOptions.default }}
           </span>

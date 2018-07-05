@@ -33,8 +33,8 @@
 
         <!-- JSON -->
         <!-- TODO - add better editor, validations to this input -->
+        <!-- TODO - on change, update record.attributes[attr.identifier] to be JSON.parse() -->
         <textarea type="textarea" class="form-control bg-dark text-light" :placeholder="attr.label" v-model="record.attributes[attr.identifier]" v-if="attr.datatype === 'JSON'">
-          <!-- {{ record.attributes[attr.identifier] }} -->
         </textarea>
 
         <!-- PHONE_NUMBER -->
@@ -105,6 +105,7 @@ export default {
     this.assignDefaultValues()
   },
   methods: {
+    // TODO - assignDefaultValues method should be moved into the Vuex store
     assignDefaultValues () {
       _.each(this.schema.attributes, (attr) => {
         // Skip attributes are are defined
