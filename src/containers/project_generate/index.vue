@@ -104,7 +104,7 @@
           </b-tab>
 
           <b-tab title="Authorization">
-            <AbstractTab :model="model" stackId="auth" :stackOpts="opts.auth" title="Authrozation" />
+            <AbstractTab :model="model" stackId="auth" :stackOpts="opts.auth" title="Authorization" />
           </b-tab>
 
         </b-tabs>
