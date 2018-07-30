@@ -29,7 +29,7 @@
 
       <!-- Empty Attribute view -->
       <li class="card card-body text-center border-warning text-warning" v-else>
-        <i class="fa fa-lg fa-exclamation"></i>
+        <i class="fa fa-lg fa-warning"></i>
         <!-- TODO - Click to add your first Attribute -->
         <p class="lead mb-0 mt-2">
         Please create at least one attribute
