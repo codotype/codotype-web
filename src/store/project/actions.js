@@ -67,7 +67,7 @@ export default {
   },
 
   exportJson: ({ commit }, model) => {
-    DownloadFile(JSON.stringify(model, null, 2), 'blazeplate-export.json', 'application/json')
+    DownloadFile(JSON.stringify(model, null, 2), `${model.identifier}_blazeplate.json`, 'application/json')
   },
 
   setIdentifier: ({ state, commit }) => {
