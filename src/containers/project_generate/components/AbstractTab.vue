@@ -1,16 +1,14 @@
 
 <template>
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-12 text-center pb-4">
       <TabHeader :title="title" />
-      <StackSelector type="radio" :options="stackOpts" v-model="model.stack[stackId].id" />
+      <div class="row">
+        <div class="col-lg-12 d-flex flex-row justify-content-center">
+          <StackChild v-for="opt in stackOpts" :key="opt.id" :opt="opt" />
+        </div>
+      </div>
     </div>
-    <!-- <div class="col-lg-12 mt-4"> -->
-      <!-- <a class="btn btn-outline-light" :href="selectedOpt.href"> -->
-        <!-- Website -->
-      <!-- </a> -->
-      <!-- <p class="lead">{{selectedOpt.text}}</p> -->
-    <!-- </div> -->
   </div>
 </template>
 
@@ -19,13 +17,13 @@
 <script>
 import _ from 'lodash'
 import TabHeader from '@/components/TabHeader'
-import StackSelector from '@/components/StackSelector'
+import StackChild from '@/components/StackChild'
 
 export default {
   props: ['model', 'stackId', 'title', 'stackOpts'],
   components: {
     TabHeader,
-    StackSelector
+    StackChild
   },
   computed: {
     selectedOpt () {

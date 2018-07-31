@@ -4,6 +4,51 @@
     <div class="col-lg-12">
       <div class="card-body">
 
+        <div class="row">
+          <div class="col-lg-6 border-right">
+            <AbstractTab :model="model" stackId="client" :stackOpts="opts.client" title="Frontend"/>
+          </div>
+          <div class="col-lg-6">
+            <AbstractTab :model="model" stackId="server" :stackOpts="opts.server" title="Backend"/>
+          </div>
+        </div>
+
+        <!-- Pills nav -->
+        <!-- <b-tabs pills vertical> -->
+
+          <!-- Server Frameworks -->
+          <!-- <b-tab title="Server"> -->
+            <!-- <AbstractTab :model="model" stackId="server" :stackOpts="opts.server" title="Server"/> -->
+          <!-- </b-tab> -->
+
+          <!-- Databases -->
+          <!-- <b-tab title="Database"> -->
+            <!-- <AbstractTab :model="model" stackId="database" :stackOpts="opts.database" title="Database"/> -->
+          <!-- </b-tab> -->
+
+          <!-- Client Frameworks -->
+          <!-- Build Tools -->
+          <!-- <b-tab title="Client"> -->
+            <!-- <AbstractTab :model="model" stackId="client" :stackOpts="opts.client.client_frameworks" title="Client Frameworks"/> -->
+          <!-- </b-tab> -->
+
+          <!-- CSS Frameworks -->
+          <!-- <b-tab title="CSS Framework"> -->
+            <!-- <AbstractTab :model="model" stackId="client" :stackOpts="opts.client.css_frameworks" title="CSS Frameworks"/> -->
+          <!-- </b-tab> -->
+
+          <!-- <b-tab title="Deployment"> -->
+            <!-- <AbstractTab :model="model" stackId="deployments" :stackOpts="opts.deployment" title="Deployments"/> -->
+          <!-- </b-tab> -->
+
+          <!-- <b-tab title="Authorization"> -->
+            <!-- <AbstractTab :model="model" stackId="auth" :stackOpts="opts.auth" title="Authorization" /> -->
+          <!-- </b-tab> -->
+
+        <!-- </b-tabs> -->
+
+        <hr>
+
         <!-- Generate Modal Component -->
         <!-- TODO - prevent dismissal -->
         <b-modal ref="modal"
@@ -73,43 +118,6 @@
           </div>
 
         </b-modal>
-
-
-        <!-- Pills nav -->
-        <b-tabs pills vertical>
-
-          <!-- Server Frameworks -->
-          <b-tab title="Server">
-            <AbstractTab :model="model" stackId="server" :stackOpts="opts.server" title="Server"/>
-          </b-tab>
-
-          <!-- Databases -->
-          <b-tab title="Database">
-            <AbstractTab :model="model" stackId="database" :stackOpts="opts.database" title="Database"/>
-          </b-tab>
-
-          <!-- Client Frameworks -->
-          <!-- Build Tools -->
-          <b-tab title="Client">
-            <AbstractTab :model="model" stackId="client" :stackOpts="opts.client.client_frameworks" title="Client Frameworks"/>
-          </b-tab>
-
-          <!-- CSS Frameworks -->
-          <b-tab title="CSS Framework">
-            <AbstractTab :model="model" stackId="client" :stackOpts="opts.client.css_frameworks" title="CSS Frameworks"/>
-          </b-tab>
-
-          <b-tab title="Deployment">
-            <AbstractTab :model="model" stackId="deployments" :stackOpts="opts.deployment" title="Deployments"/>
-          </b-tab>
-
-          <b-tab title="Authorization">
-            <AbstractTab :model="model" stackId="auth" :stackOpts="opts.auth" title="Authorization" />
-          </b-tab>
-
-        </b-tabs>
-
-        <hr>
 
         <!-- Opens Destroy Confirmation Modal -->
         <button class="btn btn-lg btn-success" @click="showGenerateModal()">
