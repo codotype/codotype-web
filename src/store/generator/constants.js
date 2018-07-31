@@ -1,5 +1,4 @@
 // Generator module constants
-
 export const GENERATE_ROUTE = '/api/generate'
 
 export const SERVER_OPTS = [
