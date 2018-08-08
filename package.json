@@ -1,7 +1,7 @@
 {
-  "name": "blazeplate_web_client",
+  "name": "codotype-web",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "Web UI for building apps on codotype.io",
   "author": "Alexander Schwartzberg <aeksco@gmail.com>",
   "private": true,
   "scripts": {
@@ -21,13 +21,11 @@
     "downloadjs": "^1.4.7",
     "lodash": "^4.17.4",
     "pluralize": "^7.0.0",
-    "pug": "^2.0.0-rc.4",
     "underscore.string": "^3.3.4",
     "vue": "^2.5.2",
     "vue-github-buttons": "^2.0.5",
     "vue-good-table": "^1.18.2",
     "vue-masked-input": "^0.5.2",
-    "vue-mc": "^0.1.1",
     "vue-meta": "^1.2.0",
     "vue-router": "^3.0.1",
     "vue-select": "github:sagalbot/vue-select",

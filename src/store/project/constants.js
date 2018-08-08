@@ -1,7 +1,7 @@
 // Project module constants
 export const DEFAULT_PROJECT = {
-  label: 'Blazeplate Project',
-  identifier: 'blazeplate_project',
+  label: 'Codotype Project',
+  identifier: 'codotype_project',
   schemas: [],
   seeds: [],
   stack: {

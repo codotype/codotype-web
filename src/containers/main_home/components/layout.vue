@@ -5,13 +5,14 @@
       <br>
       <div class="row mt-2">
         <div class="col-lg-12 text-center">
-          <img src="@/assets/logo_dark.png">
+          <!-- <img src="@/assets/logo_dark.png"> -->
+          <img src="https://github.com/codotype/codotype-branding/blob/master/codotype-02.png?raw=true">
         </div>
       </div>
 
       <!-- <div class="row my-2"> -->
         <!-- <div class="col-lg-12 text-center"> -->
-          <!-- <p class="lead"><a href="https://github.com/aeksco" target="_blank"> blazeplate.io</a> is an open-source tool for building user interfaces to collect and view tabular data.</p> -->
+          <!-- <p class="lead"><a href="https://github.com/aeksco" target="_blank"> codotype.io</a> is an open-source tool for building user interfaces to collect and view tabular data.</p> -->
         <!-- </div> -->
       <!-- </div> -->
 
@@ -24,13 +25,13 @@
           <p>Prototype new projects blazingly fast.</p>
 
           <p>
-            Define your models, attributes, and relations - blazeplate does the rest.
+            Define your models, attributes, and relations - codotype does the rest.
           </p>
         </div>
 
         <div class="col-lg-12 text-center">
-          <gh-btns-star slug="aeksco/blazeplate" show-count></gh-btns-star>
-          <!-- <gh-btns-fork slug="aeksco/blazeplate" show-count></gh-btns-fork> -->
+          <gh-btns-star slug="codotype/codotype" show-count></gh-btns-star>
+          <!-- <gh-btns-fork slug="aeksco/codotype" show-count></gh-btns-fork> -->
         </div>
       </div>
 

@@ -35,8 +35,8 @@ export default {
 
   // Top-Level page Meta
   metaInfo: {
-    title: 'Loading...', // set a title
-    titleTemplate: 'blazeplate.io - %s', // title is now "blazeplate.io - Loading..."
+    title: 'Loading...',
+    titleTemplate: 'codotype.io - %s',
     htmlAttrs: {
       lang: 'en'
     }

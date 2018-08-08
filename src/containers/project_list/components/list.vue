@@ -38,8 +38,7 @@
 
             <!-- Destroy project Confirmation -->
             <button class="btn btn-sm btn-outline-danger" v-b-modal="'modal_' + project._id">
-              <i class="fa mr-1 fa-trash"></i>
-              Destroy
+              <i class="fa fa-trash"></i>
             </button>
 
             <!-- Bootstrap Modal Component -->

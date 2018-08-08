@@ -39,17 +39,27 @@ export const RELATION_TYPES = [
   { id: 'MANY_TO_MANY', text: 'Many to Many', desc: 'Many to Many description here...' }
 ]
 
+// Datattype IDs
+export const TEXT = 'TEXT'
+export const NUMBER = 'NUMBER'
+export const BOOL = 'BOOL'
+export const DATE = 'DATE'
+export const TIME = 'TIME'
+export const DATETIME = 'DATETIME'
+export const COLOR = 'COLOR'
+export const RELATION = 'RELATION'
+
 export const DATATYPES = [
-  { value: 'TEXT', text: 'Text', icon: 'fa-quote-left' },
-  { value: 'NUMBER', text: 'Number', icon: 'fa-hashtag' },
-  { value: 'BOOL', text: 'Boolean', icon: 'fa-check-square-o' },
-  { value: 'DATE', text: 'Date', icon: 'fa-calendar-o' },
-  { value: 'TIME', text: 'Time', icon: 'fa-clock-o' },
-  { value: 'DATETIME', text: 'Datetime', icon: 'fa-calendar-plus-o' },
-  { value: 'COLOR', text: 'Color', icon: 'fa-eyedropper' },
+  { value: TEXT, text: 'Text', icon: 'fa-quote-left' },
+  { value: NUMBER, text: 'Number', icon: 'fa-hashtag' },
+  { value: BOOL, text: 'Boolean', icon: 'fa-check-square-o' },
+  { value: DATE, text: 'Date', icon: 'fa-calendar-o' },
+  { value: TIME, text: 'Time', icon: 'fa-clock-o' },
+  { value: DATETIME, text: 'DateTime', icon: 'fa-calendar-plus-o' },
+  { value: COLOR, text: 'Color', icon: 'fa-eyedropper' },
   { value: 'JSON', text: 'JSON', icon: 'fa-code' },
   // { value: 'GEO', text: 'Geolocation', icon: 'fa-map' },
-  { value: 'RELATION', text: 'Relation', icon: 'fa-link' }
+  { value: RELATION, text: 'Relation', icon: 'fa-link' }
 ]
 
 // <!-- <optgroup label="Basics"> -->

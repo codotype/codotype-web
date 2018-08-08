@@ -12,7 +12,8 @@
 
       <div class="row mt-2">
         <div class="col-lg-12 text-center">
-          <img class='logo' src="@/assets/logo_dark.png">
+          <!-- <img class='logo' src="@/assets/logo_dark.png"> -->
+          <img class='logo' src="https://github.com/codotype/codotype-branding/blob/master/codotype-02.png?raw=true">
         </div>
       </div>
 
@@ -23,7 +24,7 @@
         </div>
 
         <div class="col-lg-12 text-center">
-          <gh-btns-star slug="aeksco/blazeplate" show-count></gh-btns-star>
+          <gh-btns-star slug="codotype/codotype" show-count></gh-btns-star>
 
           <br>
           <br>
@@ -40,7 +41,7 @@
           <br>
 
           Share
-          <social-sharing class='mt-3' url="https://blazeplate.io" inline-template>
+          <social-sharing class='mt-3' url="https://codotype.io" inline-template>
             <div>
               <network network="facebook">
                 <i class="fa fa-lg fa-facebook mx-1"></i>
@@ -78,7 +79,7 @@
           Get in touch.
           <br>
           <br>
-          <a class='px-2' href="http://github.com/aeksco/blazeplate" target='_blank'>
+          <a class='px-2' href="http://github.com/codotype/codotype" target='_blank'>
             <i class="fa fa-2x fa-github"></i>
           </a>
 

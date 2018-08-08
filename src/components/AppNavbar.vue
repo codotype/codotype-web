@@ -2,8 +2,8 @@
   <!-- <b-navbar toggleable="md" type="dark" variant="dark" fixed="top"> -->
   <b-navbar toggleable="md" type="dark" variant="dark">
     <b-navbar-brand href="#/">
-      <img class='logo' src="@/assets/logo_dark.png">
-      <!-- <strong>blaze</strong>plate -->
+      <!-- <img class='logo' src="@/assets/logo_dark.png"> -->
+      <strong>codotype</strong>
     </b-navbar-brand>
 
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
@@ -22,7 +22,7 @@
       </b-navbar-nav>
 
       <b-navbar-nav class="mr-0">
-        <b-nav-item target="_blank" href="https://github.com/blazeplate">
+        <b-nav-item target="_blank" href="https://github.com/codotype">
           <i class="fa fa-fw fa-github"></i>
           GitHub
         </b-nav-item>
