@@ -43,7 +43,7 @@ export default {
     SchemaForm
   },
   metaInfo: {
-    title: 'Schemas - New' // title is now "blazeplate.io - Schemas - New"
+    title: 'Schemas - New'
   },
   created () {
     this.resetNewModel()

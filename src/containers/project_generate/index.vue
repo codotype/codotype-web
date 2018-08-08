@@ -35,7 +35,7 @@
             <div class="col-sm-12 text-center">
 
               <p class="lead">
-                Thank you for using blazeplate :)
+                Thank you for using codotype :)
               </p>
 
               <!-- <pre class='text-left bg-light'>{{model}}</pre> -->
@@ -44,7 +44,7 @@
               <!-- <p class="text-left text-warning">TODO - add contribute + donate</p> -->
 
               Share
-              <social-sharing class='mt-3' url="I just generated a full-stack app at https://blazeplate.io" inline-template>
+              <social-sharing class='mt-3' url="I just generated a full-stack app at https://codotype.io" inline-template>
                 <div>
                   <network network="facebook">
                     <i class="fa fa-lg fa-facebook mx-1"></i>
