@@ -26,12 +26,12 @@
 
           <div class="col-lg-4 text-right">
 
-            <a class='btn btn-sm btn-outline-light' :href="'#/projects/' + project._id + '/export'">
-              <i class="fa fa-code mr-1"></i>
-              Export
-            </a>
+            <!-- <a class='btn btn-sm btn-outline-light' :href="'#/projects/' + project._id + '/export'"> -->
+              <!-- <i class="fa fa-code mr-1"></i> -->
+              <!-- Export -->
+            <!-- </a> -->
 
-            <a class='btn btn-sm btn-outline-light' :href="'#/projects/' + project._id + '/generate'">
+            <a class='btn btn-sm btn-success-outline' :href="'#/projects/' + project._id + '/generate'">
               <i class="fa fa-play mr-1"></i>
               Generate
             </a>

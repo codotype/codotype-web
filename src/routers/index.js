@@ -9,7 +9,8 @@ import ProjectAuth from '@/containers/project_show/components/ProjectAuth'
 import ProjectPages from '@/containers/project_show/components/ProjectPages'
 import ProjectSeeds from '@/containers/project_show/components/ProjectSeeds'
 import ProjectExport from '@/containers/project_show/components/ProjectExport'
-import ProjectGenerate from '@/containers/project_generate'
+// import ProjectGenerate from '@/containers/project_generate'
+import ProjectGenerate from '@/containers/project_generate/builder'
 import ProjectExamples from '@/containers/project_examples'
 
 // Schema Containers
