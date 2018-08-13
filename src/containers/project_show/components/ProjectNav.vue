@@ -3,8 +3,14 @@
     <b-nav-item :href="t.href" v-for='t in tabs' :key="t.path" :active="isSelected(t)">
       {{ t.label }}
     </b-nav-item>
+
     <!-- <b-nav-item disabled>Environment</b-nav-item> -->
     <!-- <b-nav-item disabled>Features</b-nav-item> -->
+
+    <!-- <b-nav-item disabled>Models</b-nav-item> -->
+    <!-- <b-nav-item v-for="m in models" :key="m._id" :href="`#/projects/${projectId}/schemas/${m._id}`"> -->
+      <!-- {{ m.label }} -->
+    <!-- </b-nav-item> -->
   </b-nav>
 </template>
 
@@ -24,8 +30,11 @@ export default {
   },
   data () {
     const projectId = this.$store.getters['project/selectedModel']._id
+    // const models = this.$store.getters['schema/collection']
     return {
       selectedTab: 'Models',
+      // models: models,
+      // projectId: projectId,
       tabs: [
         { path: 'meta', label: 'Meta', href: `#/projects/${projectId}/meta` },
         { path: 'schemas', label: 'Models', href: `#/projects/${projectId}/schemas` },

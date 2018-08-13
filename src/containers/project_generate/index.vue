@@ -124,6 +124,7 @@ export default {
     showGenerateModal () {
       this.$refs.modal.show()
       console.log('generating?')
+      // TODO - add a timeout here of a few seconds to allow the user to read the modal's message
       console.log(this.generateApplication())
     },
     ...mapActions({
