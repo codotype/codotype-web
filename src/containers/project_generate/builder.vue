@@ -10,10 +10,10 @@
                 <p class="lead mb-0">Generators</p>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item border-light" v-for="each in opts.client">
+                <li class="list-group-item" v-for="each in opts.client">
                   {{ each.label }}
                 </li>
-                <li class="list-group-item border-light" v-for="each in opts.server">
+                <li class="list-group-item" v-for="each in opts.server">
                   {{ each.label }}
                 </li>
               </ul>
@@ -28,7 +28,53 @@
               <hr>
               <div class="row">
                 <div class="col-lg-12">
-                  TODO - FORM GOES HERE
+                  <!-- {{opts.client[1].global_options}} -->
+
+                  <!-- GLOBAL OPTIONS GO HERE -->
+                  <p class="lead">Global Options</p>
+                  <div class="form-group" v-for="attr in opts.client[1].global_options">
+                    <label>{{attr.label}}</label>
+                    <br>
+                    <small>{{attr.help}}</small>
+                    <input class='form-control' type="checkbox" name="" v-if="attr.type === 'BOOLEAN'">
+                    <MoreInfoLink :url="attr.more_info_url" />
+                    <!-- {{attr}} -->
+                  </div>
+
+                  <hr>
+
+                  <!-- MODEL OPTIONS GO HERE -->
+                  <p class="lead mb-0">Model Options</p>
+                  <small>Define additional model-specific options for this generator</small>
+                  <MoreInfoLink url="https://codotype.github.io" />
+                  <hr>
+
+                  <div class="card" v-for="model in schemas">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                      {{ model.label }} Model Options
+                      <button class="btn btn-sm btn-outline-light">
+                        <i class="fa fa-chevron-down"></i>
+                      </button>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item" v-for="attr in opts.client[1].model_options">
+                        <div class="row">
+                          <div class="col-lg-9">
+                            <label>{{attr.label}}</label>
+                            <br>
+                            <small>{{attr.help}}</small>
+                            <MoreInfoLink :url="attr.more_info_url" />
+                          </div>
+                          <div class="col-lg-3">
+                            <input class='form-control' type="checkbox" name="" v-if="attr.type === 'BOOLEAN'">
+                          </div>
+                        </div>
+                        <br>
+                        <!-- {{attr}} -->
+                      </li>
+                    </ul>
+                  </div>
+
                 </div>
                 <div class="col-lg-12">
                   <hr>
@@ -70,11 +116,13 @@
 
 <script>
 import AbstractTab from './components/AbstractTab'
+import MoreInfoLink from '@/components/MoreInfoLink'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
   components: {
-    AbstractTab
+    AbstractTab,
+    MoreInfoLink
   },
   created () {
     this.setActivated(true)
@@ -84,6 +132,7 @@ export default {
   },
   computed: mapGetters({
     model: 'project/selectedModel',
+    schemas: 'schema/collection',
     fetching: 'generator/fetching',
     opts: 'generator/generatorFormOpts'
   }),
