@@ -4,71 +4,117 @@
     <div class="col-lg-12">
       <div class="card-body">
         <div class="row">
-          <div class="col-lg-3">
-            <div class="card border-light">
-              <div class="card-body">
-                <p class="lead mb-0">Generators</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item" v-for="each in opts.client">
-                  {{ each.label }}
-                </li>
-                <li class="list-group-item" v-for="each in opts.server">
-                  {{ each.label }}
-                </li>
-              </ul>
-            </div>
-          </div>
 
+          <!-- <div class="col-lg-3"> -->
+            <!-- <div class="card"> -->
+              <!-- <div class="card-body"> -->
+                <!-- <p class="lead mb-0">Generators</p> -->
+              <!-- </div> -->
+              <!-- <ul class="list-group list-group-flush"> -->
+                <!-- <li class="list-group-item" v-for="each in opts.client"> -->
+                  <!-- {{ each.label }} -->
+                <!-- </li> -->
+                <!-- <li class="list-group-item" v-for="each in opts.server"> -->
+                  <!-- {{ each.label }} -->
+                <!-- </li> -->
+              <!-- </ul> -->
+            <!-- </div> -->
+          <!-- </div> -->
 
-          <div class="col-lg-6">
-            <div class="card card-body border-light">
-              <p class="lead mb-0">Vue.js</p>
-              <p class="card-text mb-0">A generator for Vue.js, Vue Router, Vuex, &amp; Bootstrap</p>
+          <div class="col-lg-9">
+
+            <!-- TODO - abstract this card into a separate component -->
+            <!-- Call it something like, "GeneratorForm" -->
+            <div class="card card-body">
+              <p class="lead mb-0">Vue.js Generator</p>
               <hr>
               <div class="row">
                 <div class="col-lg-12">
-                  <GeneratorGlobalOptions />
-                  <hr>
-                  <GeneratorModelOptions />
-                  <hr>
 
-                  <!-- TODO - abstract into separate component -->
-                  <div>
-                    <span class='d-flex flex-row align-items-center'>
-                      <p class="lead mb-0 mr-3">Generator Models</p>
-                      <MoreInfoLink url="https://codotype.github.io" />
-                    </span>
-                    <small>Define values for generator-specific models</small>
+                  <b-tabs>
+                    <!-- TODO - move overview into its own component -->
+                    <b-tab title="Overview" active>
+                      <p class="card-text mb-0">A generator for Vue.js, Vue Router, Vuex, &amp; Bootstrap</p>
+                      <p>TODO - include link to GitHub repository</p>
+                      <p>TODO - include longer description (in markdown?)</p>
+                    </b-tab>
 
-                    <div class="card" v-for="m in opts.client[1].generator_models">
-                      <div class="card-header">{{m.label_plural}}</div>
-                      <!-- <ul class="list-group list-group-group-flush"> -->
+                    <b-tab title="Global Options">
+                      <br>
+                      <GeneratorGlobalOptions />
+                    </b-tab>
+                    <b-tab title="Model Options" >
+                      <br>
+                      <GeneratorModelOptions />
+                    </b-tab>
+
+                    <!-- TODO - abstract this tab's content into a separate component -->
+                    <b-tab v-for="m in opts.client[1].generator_models" :title="m.label_plural">
+                      <br>
+                      <span class='d-flex flex-row align-items-center'>
+                        <p class="lead mb-0 mr-3">{{m.label_plural}}</p>
+                        <MoreInfoLink url="https://codotype.github.io" />
+                      </span>
+                      <small>{{m.description}}</small>
+                      <ul class="list-group list-group-group-flush">
                         <!-- <li class="list-group-item" v-for="a in m.attributes"> -->
                           <!-- {{ a.label }} || {{ a.datatype }} -->
                         <!-- </li> -->
-                      <!-- </ul> -->
-                    </div>
-                  </div>
+
+                        <li class="list-group-item list-group-item-action list-group-item-primary">
+                          <i class="fa fa-plus"></i>
+                          New {{ m.label }}
+                        </li>
+
+                        <li class="list-group-item" v-for="x in opts.client[1].generator_model_data[m.identifier_plural]">
+                          <strong>{{m.attributes[0].label}}:</strong> {{x[m.attributes[0].identifier]}}
+                          <div class="btn-group pull-right">
+                            <button class="btn btn-sm btn-outline-danger">
+                              <i class="fa fa-trash"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-warning">
+                              <i class="fa fa-pencil"></i>
+                            </button>
+                          </div>
+                        </li>
+                      </ul>
+                    </b-tab>
+                  </b-tabs>
+
+                  <!-- TODO - abstract into separate component -->
+                  <!-- <div> -->
+                    <!-- <span class='d-flex flex-row align-items-center'> -->
+                      <!-- <p class="lead mb-0 mr-3">Generator Models</p> -->
+                      <!-- <MoreInfoLink url="https://codotype.github.io" /> -->
+                    <!-- </span> -->
+                    <!-- <small>Define values for generator-specific models</small> -->
+
+                    <!-- <div class="card" v-for="m in opts.client[1].generator_models"> -->
+                      <!-- <div class="card-header">{{m.label_plural}}</div> -->
+                    <!-- </div> -->
+                  <!-- </div> -->
 
                 </div>
                 <div class="col-lg-12">
                   <hr>
                 </div>
                 <div class="col-lg-12 text-right">
-                  <button class="btn btn-outline-success">Add to build</button>
-                  <button class="btn btn-outline-light">Clear</button>
+                  <button class="btn btn-outline-dark">Clear</button>
+                  <button class="btn btn-outline-success">Add To Build</button>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="col-lg-3">
-            <div class="card card-body border-light text-light">
+
+            <!-- TODO - abstract this card into a separate component -->
+            <!-- Call it something like, `BuildManifest` -->
+            <div class="card card-body">
               <p class='lead'>Build</p>
 
               <ul class="list-group">
-                <li class="list-group-item border-light" v-for="each in opts.client">
+                <li class="list-group-item" v-for="each in opts.client">
                   {{ each.label }}
                 </li>
               </ul>

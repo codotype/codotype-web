@@ -2,7 +2,7 @@
   <div class="card mt-2">
     <div class="card-header d-flex justify-content-between align-items-center">
       {{ model.label }} Model Options
-      <button class="btn btn-sm btn-outline-light" @click="collapsed = !collapsed">
+      <button class="btn btn-sm btn-outline-dark" @click="collapsed = !collapsed">
         <i :class="collapseButtonIcon"></i>
       </button>
     </div>
@@ -18,7 +18,8 @@
             <MoreInfoLink :url="attr.more_info_url" />
           </div>
           <div class="col-lg-3">
-            <input class='form-control' type="checkbox" name="" v-if="attr.type === 'BOOLEAN'">
+            <input class='form-control' type="checkbox" :checked="attr.default_value" v-if="attr.type === 'BOOLEAN'">
+            <input class='form-control' type="text" :value="attr.default_value" v-if="attr.type === 'TEXT'">
           </div>
         </div>
       </li>

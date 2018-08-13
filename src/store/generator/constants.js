@@ -19,8 +19,13 @@ export const CLIENT_OPTS = [
     label: 'React',
     icon: 'devicon-react-plain',
     disabled: true,
+    description: 'Generate front-end API client applications with React, Redux, Axios, and Bootstrap',
+
+    // // // //
+
     // Whether or not this generator accepts an application for generator, on relys SOLELY on its own metadata collection
     accept_app: true,
+
     // Whether or not this generator REQUIRES an application for generation
     requires_app: true,
 
@@ -82,12 +87,12 @@ export const CLIENT_OPTS = [
     // whether or not an authentication method is available globally
     global_options: [
       {
-        label: 'Include Hugo Template',
+        label: 'Use Bootstrap 4',
         identifier: 'include_template',
         type: 'BOOLEAN',
-        help: 'Whether or not to include a hugo template with the generated codebase',
+        help: 'Whether or not to build the UI using Bootstrap 4.',
         default_value: true,
-        more_info_url: 'https://kotaku.com'
+        more_info_url: 'https://getbootstrap.com'
       }
     ],
 
@@ -97,21 +102,21 @@ export const CLIENT_OPTS = [
     // NOTE - this relys on a generator accepting a set of app models
     model_options: [
       {
-        label: 'Generate Templates',
-        identifier: 'generate_templates',
-        type: 'BOOLEAN',
-        help: 'Whether or not HTML templates are generated for this model',
-        default_value: true,
-        more_info_url: 'https://kotaku.com'
-      },
-      {
-        label: 'Generate Archtype',
-        identifier: 'generate_archtype',
-        type: 'BOOLEAN',
-        help: 'Whether or not a Hugo Archtype are generated for this model',
-        default_value: true,
-        more_info_url: null
+        label: 'FontAwesome Icon',
+        identifier: 'fontawesome_icon',
+        type: 'TEXT',
+        help: 'Specify a FontAwesome icon to be used in the UI for this model.',
+        default_value: 'fa-checkbox',
+        more_info_url: 'https://fontawesome.com'
       }
+      // {
+      //   label: 'Generate Archtype',
+      //   identifier: 'generate_archtype',
+      //   type: 'BOOLEAN',
+      //   help: 'Whether or not a Hugo Archtype are generated for this model',
+      //   default_value: true,
+      //   more_info_url: null
+      // }
     ]
   }
 ]
