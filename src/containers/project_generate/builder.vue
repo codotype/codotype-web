@@ -31,6 +31,26 @@
                   <GeneratorGlobalOptions />
                   <hr>
                   <GeneratorModelOptions />
+                  <hr>
+
+                  <!-- TODO - abstract into separate component -->
+                  <div>
+                    <span class='d-flex flex-row align-items-center'>
+                      <p class="lead mb-0 mr-3">Generator Models</p>
+                      <MoreInfoLink url="https://codotype.github.io" />
+                    </span>
+                    <small>Define values for generator-specific models</small>
+
+                    <div class="card" v-for="m in opts.client[1].generator_models">
+                      <div class="card-header">{{m.label_plural}}</div>
+                      <!-- <ul class="list-group list-group-group-flush"> -->
+                        <!-- <li class="list-group-item" v-for="a in m.attributes"> -->
+                          <!-- {{ a.label }} || {{ a.datatype }} -->
+                        <!-- </li> -->
+                      <!-- </ul> -->
+                    </div>
+                  </div>
+
                 </div>
                 <div class="col-lg-12">
                   <hr>

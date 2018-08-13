@@ -19,6 +19,54 @@ export const CLIENT_OPTS = [
     label: 'React',
     icon: 'devicon-react-plain',
     disabled: true,
+    // TODO - add default generator seed_data, like so:
+    generator_model_data: {
+      pages: [
+        { url: '/', title: 'Home', content: 'Hello! This is the HOME page' },
+        { url: '/about', title: 'About', content: 'Hello! This is the about page' }
+      ]
+    },
+    generator_models: [
+      {
+        label: 'Static Page',
+        label_plural: 'Static Pages',
+        identifier: 'static_page',
+        identifier_plural: 'static_pages',
+        class_name: 'StaticPage',
+        class_name_plural: 'StaticPages',
+        description: 'Define static pages to be generated for this application',
+        more_info_url: null,
+        attributes: [
+          {
+            label: 'URL',
+            identifier: 'url',
+            datatype: 'TEXT',
+            help: 'The URL of this page (prefix with /)',
+            default_value: '/about',
+            required: true,
+            unique: false
+          },
+          {
+            label: 'Title',
+            identifier: 'title',
+            datatype: 'TEXT',
+            help: 'The title of this page',
+            default_value: 'About',
+            required: true,
+            unique: false
+          },
+          {
+            label: 'Content',
+            identifier: 'content',
+            datatype: 'TEXT',
+            help: 'The content on the page',
+            default_value: 'This is an about page',
+            required: false,
+            unique: false
+          }
+        ]
+      }
+    ],
     global_options: [
       {
         label: 'Include Hugo Template',
