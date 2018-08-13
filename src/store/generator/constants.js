@@ -19,13 +19,13 @@ export const CLIENT_OPTS = [
     label: 'React',
     icon: 'devicon-react-plain',
     disabled: true,
-    // TODO - add default generator seed_data, like so:
-    generator_model_data: {
-      pages: [
-        { url: '/', title: 'Home', content: 'Hello! This is the HOME page' },
-        { url: '/about', title: 'About', content: 'Hello! This is the about page' }
-      ]
-    },
+    // Whether or not this generator accepts an application for generator, on relys SOLELY on its own metadata collection
+    accept_app: true,
+    // Whether or not this generator REQUIRES an application for generation
+    requires_app: true,
+
+    // Generator-specific models
+    // These are scoped to this generator ONLY and are not transient between different generators
     generator_models: [
       {
         label: 'Static Page',
@@ -67,6 +67,19 @@ export const CLIENT_OPTS = [
         ]
       }
     ],
+
+    // Encapsulates default values for model metadata conforming to model definitions in `generator_models`
+    generator_model_data: {
+      static_pages: [
+        { url: '/', title: 'Home', content: 'Hello! This is the HOME page' },
+        { url: '/about', title: 'About', content: 'Hello! This is the about page' }
+      ]
+    },
+
+    // global_options
+    // These additional options can be collected to dictate some generator-defined global behavior
+    // I.e. A single generator may support multiple authentication methods - global options could be used to dictate
+    // whether or not an authentication method is available globally
     global_options: [
       {
         label: 'Include Hugo Template',
@@ -77,6 +90,11 @@ export const CLIENT_OPTS = [
         more_info_url: 'https://kotaku.com'
       }
     ],
+
+    // model_options
+    // These additional options can be collected on a model-specific basis
+    // They provide an additional layer of metadata for each model in an application
+    // NOTE - this relys on a generator accepting a set of app models
     model_options: [
       {
         label: 'Generate Templates',
