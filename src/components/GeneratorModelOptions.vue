@@ -6,40 +6,22 @@
     </span>
     <small>Define additional model-specific options for this generator</small>
 
-    <div class="card mt-2" v-for="model in schemas">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        {{ model.label }} Model Options
-        <button class="btn btn-sm btn-outline-light">
-          <i class="fa fa-chevron-down"></i>
-        </button>
-      </div>
-      <ul class="list-group list-group-flush" v-if="false">
-        <li class="list-group-item" v-for="attr in opts.client[1].model_options">
-          <div class="row">
-            <div class="col-lg-9">
-              <label>{{attr.label}}</label>
-              <br>
-              <small>{{attr.help}}</small>
-              <MoreInfoLink :url="attr.more_info_url" />
-            </div>
-            <div class="col-lg-3">
-              <input class='form-control' type="checkbox" name="" v-if="attr.type === 'BOOLEAN'">
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
+    <!-- TODO - abstract this block into its own component -->
+    <ModelOptionForm v-for="model in schemas" :model="model" :key="model._id" />
+
   </div>
 </template>
 
 <script>
 import MoreInfoLink from '@/components/MoreInfoLink'
+import ModelOptionForm from '@/components/ModelOptionForm'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'GeneratorModelOptions',
   components: {
-    MoreInfoLink
+    MoreInfoLink,
+    ModelOptionForm
   },
   computed: mapGetters({
     model: 'project/selectedModel',

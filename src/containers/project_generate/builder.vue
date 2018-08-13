@@ -57,7 +57,7 @@
 
               <button class="btn btn-lg btn-success btn-block py-4" @click="showGenerateModal()">
                 <i class="fa fa-fw fa-play mr-2"></i>
-                Generate Application
+                Generate
               </button>
             </div>
           </div>
