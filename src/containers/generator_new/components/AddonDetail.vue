@@ -1,6 +1,7 @@
 <template>
   <div class="card">
     <div class="card-header">
+      <button class="btn btn-outline-success">ADD DEFAULT</button>
       <button class="btn btn-outline-warning">EDIT</button>
       <button class="btn btn-outline-danger">REMOVE</button>
     </div>

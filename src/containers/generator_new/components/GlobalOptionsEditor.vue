@@ -9,7 +9,6 @@
     </div>
 
     <div class="col-lg-12">
-      <p class="card-text">Global Options</p>
       <button class="btn btn-outline-primary">New Option</button>
 
       <AddonAttributeList :collection="collection" />

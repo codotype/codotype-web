@@ -6,8 +6,8 @@
         <b-tabs>
 
           <b-tab title="Overview" active>
-            OVERVIEW
-            TODO - add OverviewEditor component
+            <br>
+            <GeneratorMetaEditor />
           </b-tab>
 
           <b-tab title="Global Options">
@@ -34,6 +34,7 @@
 
 <script>
 import AddonEditor from './components/AddonEditor'
+import GeneratorMetaEditor from './components/GeneratorMetaEditor'
 import ModelOptionsEditor from './components/ModelOptionsEditor'
 import GlobalOptionsEditor from './components/GlobalOptionsEditor'
 
@@ -41,6 +42,7 @@ export default {
   name: 'GeneratorForm',
   components: {
     AddonEditor,
+    GeneratorMetaEditor,
     ModelOptionsEditor,
     GlobalOptionsEditor
   }
