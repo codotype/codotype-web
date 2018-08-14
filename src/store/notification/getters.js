@@ -1,9 +1,6 @@
 
-// Project Module Getters
-const getters = {
+export default {
   collection: state => {
     return state.collection
   }
 }
-
-export default getters

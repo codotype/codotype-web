@@ -1,6 +1,6 @@
 
 // Notification Module State
-const state = {
+export default {
   collection: [
     // Notification examples:
     // { dismissible: true, strong: 'Warning', message: 'Something went wrong.', context: 'warning' },
@@ -8,5 +8,3 @@ const state = {
     // { dismissible: true, strong: 'Danger!', message: 'Something went wrong.', context: 'danger' }
   ]
 }
-
-export default state
