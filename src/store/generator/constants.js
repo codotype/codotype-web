@@ -31,7 +31,7 @@ export const CLIENT_OPTS = [
 
     // Generator-specific models
     // These are scoped to this generator ONLY and are not transient between different generators
-    generator_models: [
+    addons: [
       {
         label: 'Static Page',
         label_plural: 'Static Pages',
@@ -103,7 +103,7 @@ export const CLIENT_OPTS = [
       }
     ],
 
-    // Encapsulates default values for model metadata conforming to model definitions in `generator_models`
+    // Encapsulates default values for model metadata conforming to model definitions in `addons`
     generator_model_data: {
       static_pages: [
         { url: '/', title: 'Home', content: 'Hello! This is the HOME page' },
