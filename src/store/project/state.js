@@ -1,8 +1,7 @@
 import { COLLECTION_STATE, SELECT_MODEL_STATE } from '@/store/lib/mixins'
 import { EXAMPLE_COLLECTION } from './examples'
 
-// Project Module State
-const state = {
+export default {
   ...COLLECTION_STATE,
   ...SELECT_MODEL_STATE,
   exampleCollection: EXAMPLE_COLLECTION,
@@ -10,5 +9,3 @@ const state = {
   edit: false,
   newModel: {}
 }
-
-export default state

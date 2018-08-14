@@ -1,7 +1,7 @@
 import { COLLECTION_GETTERS, SELECT_MODEL_GETTERS } from '@/store/lib/mixins'
 
 // Project Module Getters
-const getters = {
+export default {
   ...COLLECTION_GETTERS,
   ...SELECT_MODEL_GETTERS,
   exampleCollection: state => {
@@ -18,5 +18,3 @@ const getters = {
     return state.newModel
   }
 }
-
-export default getters

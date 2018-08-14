@@ -11,7 +11,7 @@ function removeNotification (collection, id) {
 // // // //
 
 // Notification Module mutations
-const mutations = {
+export default {
   // Adds a notification to state.collection
   add (state, notification) {
     // Assigns unique ID to notification
@@ -33,5 +33,3 @@ const mutations = {
     state.collection = removeNotification(state.collection, notificationId)
   }
 }
-
-export default mutations

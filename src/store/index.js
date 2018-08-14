@@ -8,6 +8,7 @@ import attribute from './attribute'
 import record from './record'
 import notification from './notification'
 import generator from './generator'
+import addon from './addon'
 
 // Vuex Initialization
 // TODO - should this be done elsewhere?
@@ -22,7 +23,8 @@ export default new Vuex.Store({
     schema,
     attribute,
     record,
-    generator
+    generator,
+    addon
   },
   plugins: [createPersistedState()]
 })

@@ -1,6 +1,5 @@
 
-// Schema constants
-export const DEFAULT_SCHEMA = {
+export const DEFAULT_ADDON = {
   _id: null,
   label: '',
   label_plural: '',
@@ -8,6 +7,8 @@ export const DEFAULT_SCHEMA = {
   identifier_plural: '',
   class_name: '',
   class_name_plural: '',
+  description: '',
+  more_info_url: '',
   attributes: [
     {
       order: 0,
@@ -22,22 +23,9 @@ export const DEFAULT_SCHEMA = {
   ]
 }
 
-export const RELATION_TYPES = [
-  // { id: 'HAS_ONE', text: 'Has One', desc: 'one to one' },
-  // { id: 'BELONGS_TO', text: 'Belongs To', desc: 'many to one' },
-  // { id: 'HAS_MANY', text: 'Has Many', desc: 'one to many' },
-  // { id: 'HAS_AND_BELONGS_TO_MANY', text: 'Many to Many', desc: 'many to many' }
-  // // // //
-  // { id: 'HAS_MANY', text: 'Has Many', desc: 'one to many description here...' },
-  // { id: 'BELONGS_TO', text: 'Belongs To', desc: 'one to many description here...' }
-  // // // //
-  { id: 'ONE_TO_ONE', text: 'One to One', desc: 'One to One description here...' },
-  { id: 'ONE_TO_MANY', text: 'One to Many', desc: 'One to Many description here...' },
-  { id: 'MANY_TO_ONE', text: 'Many to One', desc: 'Many to One description here...' },
-  { id: 'MANY_TO_MANY', text: 'Many to Many', desc: 'Many to Many description here...' }
-]
-
 // Datattype IDs
+// TODO - it might be best to abstract this into codotype/codotype as a centralized single-source-of-truth
+// At the very least it should be abstracted into a central location to mitigate unnecessary duplication
 export const TEXT = 'TEXT'
 export const NUMBER = 'NUMBER'
 export const BOOL = 'BOOL'
@@ -59,3 +47,20 @@ export const DATATYPES = [
   // { value: 'GEO', text: 'Geolocation', icon: 'fa-map' },
   { value: RELATION, text: 'Relation', icon: 'fa-link' }
 ]
+
+// <!-- <optgroup label="Basics"> -->
+//   <!-- <option value='RANGE'>Range</option> -->
+//   <!-- <option value='PASSWORD'>Password</option> -->
+//   <!-- <option value='URL'>URL</option> -->
+// <!-- </optgroup> -->
+// <!-- <optgroup label="Masked"> -->
+//   <!-- <option value='PHONE_NUMBER'>Phone Number</option> -->
+//   <!-- <option value='EMAIL'>Phone Number</option> -->
+//   <!-- <option value='CURRENCY_USD'>Currency (USD)</option> -->
+// <!-- </optgroup> -->
+// <!-- <optgroup label="Dropdowns"> -->
+//   <!-- <option value='TEXT_SELECT'>Text Dropdown</option> -->
+//   <!-- <option value='NUMBER_SELECT'>Number Dropdown</option> -->
+//   <!-- <option value='TEXT_SELECT_MULTI'>Text Multi Dropdown</option> -->
+//   <!-- <option value='NUMBER_SELECT_MULTI'>Number Multi Dropdown</option> -->
+// <!-- </optgroup> -->

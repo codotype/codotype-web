@@ -1,7 +1,7 @@
-import { DATATYPES, RELATION_TYPES } from './constants'
+import { DATATYPES } from './constants'
 import { COLLECTION_GETTERS, SELECT_MODEL_GETTERS, NEW_MODEL_GETTERS } from '@/store/lib/mixins'
 
-// Schema Module Getters
+// Addon Module Getters
 export default {
   ...COLLECTION_GETTERS,
   ...SELECT_MODEL_GETTERS,
@@ -11,9 +11,6 @@ export default {
   },
   datatypes: state => {
     return DATATYPES
-  },
-  relationTypes: state => {
-    return RELATION_TYPES
   },
   selectedSchema: state => {
     return state.selectedSchema
