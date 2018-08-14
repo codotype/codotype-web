@@ -70,6 +70,36 @@ export const CLIENT_OPTS = [
             unique: false
           }
         ]
+      },
+      {
+        label: 'Navbar Link',
+        label_plural: 'Navbar Links',
+        identifier: 'navbar_link',
+        identifier_plural: 'navbar_links',
+        class_name: 'NavbarLink',
+        class_name_plural: 'NavbarLinks',
+        description: 'Define Navbar Links to be generated for this application',
+        more_info_url: null,
+        attributes: [
+          {
+            label: 'URL',
+            identifier: 'url',
+            datatype: 'TEXT',
+            help: 'The URL of this page (prefix with /)',
+            default_value: '/about',
+            required: true,
+            unique: false
+          },
+          {
+            label: 'Label',
+            identifier: 'label',
+            datatype: 'TEXT',
+            help: 'The title of this page',
+            default_value: 'About',
+            required: true,
+            unique: false
+          }
+        ]
       }
     ],
 

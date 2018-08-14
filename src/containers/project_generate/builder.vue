@@ -48,37 +48,54 @@
                       <GeneratorModelOptions />
                     </b-tab>
 
-                    <!-- TODO - abstract this tab's content into a separate component -->
-                    <b-tab v-for="m in opts.client[1].generator_models" :title="m.label_plural">
+                    <b-tab title="Addons" >
                       <br>
-                      <span class='d-flex flex-row align-items-center'>
-                        <p class="lead mb-0 mr-3">{{m.label_plural}}</p>
-                        <MoreInfoLink url="https://codotype.github.io" />
-                      </span>
-                      <small>{{m.description}}</small>
-                      <ul class="list-group list-group-group-flush">
-                        <!-- <li class="list-group-item" v-for="a in m.attributes"> -->
-                          <!-- {{ a.label }} || {{ a.datatype }} -->
-                        <!-- </li> -->
+                      <div class="row">
+                        <div class="col-lg-3">
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item list-group-item-action" v-for="m in opts.client[1].generator_models" :title="m.label_plural">
+                              {{ m.label_plural }}
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="col-lg-9">
+                          <span class='d-flex flex-row align-items-center'>
+                            <p class="lead mb-0 mr-3">{{opts.client[1].generator_models[0].label_plural}}</p>
+                            <MoreInfoLink url="https://codotype.github.io" />
+                          </span>
+                          <small>{{opts.client[1].generator_models[0].description}}</small>
+                          <ul class="list-group list-group-group-flush">
+                            <!-- <li class="list-group-item" v-for="a in m.attributes"> -->
+                              <!-- {{ a.label }} || {{ a.datatype }} -->
+                            <!-- </li> -->
 
-                        <li class="list-group-item list-group-item-action list-group-item-primary">
-                          <i class="fa fa-plus"></i>
-                          New {{ m.label }}
-                        </li>
+                            <li class="list-group-item list-group-item-action list-group-item-primary">
+                              <i class="fa fa-plus"></i>
+                              New {{ opts.client[1].generator_models[0].label }}
+                            </li>
 
-                        <li class="list-group-item" v-for="x in opts.client[1].generator_model_data[m.identifier_plural]">
-                          <strong>{{m.attributes[0].label}}:</strong> {{x[m.attributes[0].identifier]}}
-                          <div class="btn-group pull-right">
-                            <button class="btn btn-sm btn-outline-danger">
-                              <i class="fa fa-trash"></i>
-                            </button>
-                            <button class="btn btn-sm btn-outline-warning">
-                              <i class="fa fa-pencil"></i>
-                            </button>
-                          </div>
-                        </li>
-                      </ul>
+                            <li class="list-group-item" v-for="x in opts.client[1].generator_model_data[opts.client[1].generator_models[0].identifier_plural]">
+                              <strong>{{opts.client[1].generator_models[0].attributes[0].label}}:</strong> {{x[opts.client[1].generator_models[0].attributes[0].identifier]}}
+                              <div class="btn-group pull-right">
+                                <button class="btn btn-sm btn-outline-danger">
+                                  <i class="fa fa-trash"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-warning">
+                                  <i class="fa fa-pencil"></i>
+                                </button>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <!-- TODO - abstract this tab's content into a separate component -->
+                      <b-tab v-for="m in opts.client[1].generator_models" :title="m.label_plural">
+                        <br>
+                      </b-tab>
+
                     </b-tab>
+
                   </b-tabs>
 
                   <!-- TODO - abstract into separate component -->
