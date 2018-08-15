@@ -26,7 +26,8 @@ import RecordEdit from '@/containers/record_edit'
 import MainHome from '@/containers/main_home'
 import MainAbout from '@/containers/main_about'
 
-// GeneratorForm
+// Generator Containers
+import GeneratorList from '@/containers/generator_list'
 import GeneratorForm from '@/containers/generator_new'
 
 // Vue Router setup
@@ -63,6 +64,10 @@ export default new Router({
         {
           path: '/generator_new',
           component: GeneratorForm
+        },
+        {
+          path: '/generators',
+          component: GeneratorList
         },
         {
           path: 'projects',
