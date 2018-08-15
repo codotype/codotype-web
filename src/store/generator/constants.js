@@ -18,19 +18,18 @@ export const CLIENT_OPTS = [
     id: 'react',
     label: 'React',
     icon: 'devicon-react-plain',
-    disabled: true,
+    disabled: true, // TODO - get rid of disabled
     description: 'Generate front-end API client applications with React, Redux, Axios, and Bootstrap',
 
     // // // //
 
     // Whether or not this generator accepts an application for generator, on relys SOLELY on its own metadata collection
-    accept_app: true,
-
-    // Whether or not this generator REQUIRES an application for generation
-    requires_app: true,
+    // Basically whether or not this generator REQUIRES an application for generation, or if it can be self_configuring
+    self_configuring: false,
 
     // Generator-specific models
     // These are scoped to this generator ONLY and are not transient between different generators
+    // TODO - we might want to rename this if addons becomes something bigger..
     addons: [
       {
         label: 'Static Page',
@@ -104,6 +103,7 @@ export const CLIENT_OPTS = [
     ],
 
     // Encapsulates default values for model metadata conforming to model definitions in `addons`
+    // "Seed data" for self-configuring generators - perhaps rename to `default_configuration`?
     generator_model_data: {
       static_pages: [
         { url: '/', title: 'Home', content: 'Hello! This is the HOME page' },
@@ -130,6 +130,7 @@ export const CLIENT_OPTS = [
     // These additional options can be collected on a model-specific basis
     // They provide an additional layer of metadata for each model in an application
     // NOTE - this relys on a generator accepting a set of app models
+    // NOTE - NOT AVAILABLE when `self_configuring === true`
     model_options: [
       {
         label: 'FontAwesome Icon',
