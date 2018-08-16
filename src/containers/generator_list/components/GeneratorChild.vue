@@ -17,6 +17,8 @@
         <br>
         <span class='badge badge-primary' v-for="tag in model.type_tags" :key="tag">{{ tag }}</span>
         <span class='badge badge-success' v-for="tag in model.tech_tags" :key="tag">{{ tag }}</span>
+        <span class='badge badge-secondary'>Version {{ model.version }}</span>
+        <span class='badge badge-warning' v-if="model.official">Official</span>
       </div>
     </div>
   </div>

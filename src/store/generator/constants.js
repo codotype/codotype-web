@@ -27,7 +27,9 @@ export const CLIENT_OPTS = [
     addons: [],
     global_options: [],
     model_options: [],
-    github_url: 'https://github.com/codotype/codotype'
+    github_url: 'https://github.com/codotype/codotype',
+    version: '0.1.0',
+    official: true
   },
   {
     id: 'react',
@@ -38,6 +40,8 @@ export const CLIENT_OPTS = [
     tech_tags: ['React', 'Redux', 'Axios', 'Bootstrap'],
     type_tags: ['Frontend'],
     github_url: 'https://github.com/codotype/codotype',
+    version: '0.1.0',
+    official: false,
 
     // // // //
 

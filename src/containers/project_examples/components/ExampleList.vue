@@ -39,16 +39,9 @@
             <b-modal :id="'modal_' + project._id"
               :title="'Clone ' + project.label + '?'"
               @ok="cloneExample(project)"
-              header-bg-variant='dark'
-              header-text-variant='light'
-              body-bg-variant='dark'
-              body-text-variant='light'
-              footer-bg-variant='info'
-              footer-text-variant='light'
               ok-variant='info'
               ok-title='Clone'
               cancel-title='Cancel'
-              cancel-variant='dark'
             >
               <p class="text-left">Are you sure you want to clone the {{ project.label }} project?</p>
             </b-modal>

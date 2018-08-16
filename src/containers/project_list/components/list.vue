@@ -45,16 +45,9 @@
             <b-modal :id="'modal_' + project._id"
               :title="'Destroy ' + project.label + '?'"
               @ok="destroyProject(project)"
-              header-bg-variant='dark'
-              header-text-variant='light'
-              body-bg-variant='dark'
-              body-text-variant='light'
-              footer-bg-variant='danger'
-              footer-text-variant='light'
               ok-variant='danger'
               ok-title='DESTROY'
               cancel-title='Cancel'
-              cancel-variant='dark'
             >
               <p class="text-left">Are you sure you want to destroy the {{ project.label }} project?</p>
             </b-modal>
