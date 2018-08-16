@@ -2,24 +2,71 @@
 export const GENERATE_ROUTE = '/api/generate'
 
 export const SERVER_OPTS = [
-  // { id: 'none', icon: 'fa fa-times', label: 'None' },
-  { id: 'expressjs', icon: 'devicon-express-original', label: 'Express.JS', selected: true, additional_options: [] },
-  { id: 'flask', icon: 'devicon-python-plain', label: 'Flask', disabled: true, additional_options: [] }
-  // { id: 'rails', icon: 'devicon-rails-plain', label: 'Ruby on Rails', disabled: true },
+  { id: 'rails', icon: 'devicon-rails-plain', label: 'Ruby on Rails', disabled: true }
   // { id: 'revel', icon: 'devicon-go-plain', label: 'Revel', disabled: true },
   // { id: 'phoenix', icon: 'devicon-erlang-plain', label: 'Phoenix', disabled: true }
 ]
 
 export const CLIENT_OPTS = [
-  // { id: 'none', icon: 'fa fa-times', label: 'None' },
-  // { id: 'none', icon: 'fa fa-times', label: 'None', disabled: true },
-  { id: 'vuejs', icon: 'devicon-vuejs-plain', label: 'Vue.js', selected: true, text: 'VueJS is a client-side javascript framework for building reactive user interfaces.', href: 'https://github.com/vuejs', additional_options: [] },
+  {
+    id: 'expressjs',
+    icon: 'devicon-express-original',
+    label: 'Express.JS',
+    additional_options: [],
+    description: 'ExpressJS is a server-side javascript framework for building APIs.',
+    tech_tags: ['Express.js', 'Node', 'ES6', 'MongoDB'],
+    type_tags: ['Backend'],
+    self_configuring: false,
+    addons: [],
+    global_options: [],
+    model_options: [],
+    github_url: 'https://github.com/codotype/codotype',
+    version: '0.1.0',
+    official: true
+  },
+  {
+    id: 'flask',
+    icon: 'devicon-python-plain',
+    label: 'Flask',
+    additional_options: [],
+    description: 'Flask is a server-side Python framework for building full-stack applications.',
+    tech_tags: ['Vue', 'Vue-Router', 'Vuex', 'Axios', 'Bootstrap'],
+    type_tags: ['Fullstack'],
+    self_configuring: false,
+    addons: [],
+    global_options: [],
+    model_options: [],
+    github_url: 'https://github.com/codotype/codotype',
+    version: '0.1.0',
+    official: true
+  },
+  {
+    id: 'vuejs',
+    icon: 'devicon-vuejs-plain',
+    label: 'Vue.js',
+    href: 'https://github.com/vuejs',
+    additional_options: [],
+    description: 'VueJS is a client-side javascript framework for building reactive user interfaces.',
+    tech_tags: ['Vue', 'Vue-Router', 'Vuex', 'Axios', 'Bootstrap'],
+    type_tags: ['Frontend'],
+    self_configuring: true,
+    addons: [],
+    global_options: [],
+    model_options: [],
+    github_url: 'https://github.com/codotype/codotype',
+    version: '0.1.0',
+    official: true
+  },
   {
     id: 'react',
     label: 'React',
     icon: 'devicon-react-plain',
-    disabled: true, // TODO - get rid of disabled
     description: 'Generate front-end API client applications with React, Redux, Axios, and Bootstrap',
+    tech_tags: ['React', 'Redux', 'Axios', 'Bootstrap'],
+    type_tags: ['Frontend'],
+    github_url: 'https://github.com/codotype/codotype',
+    version: '0.1.0',
+    official: false,
 
     // // // //
 
@@ -32,6 +79,7 @@ export const CLIENT_OPTS = [
     // TODO - we might want to rename this if addons becomes something bigger..
     addons: [
       {
+        id: 1,
         label: 'Static Page',
         label_plural: 'Static Pages',
         identifier: 'static_page',
@@ -71,6 +119,7 @@ export const CLIENT_OPTS = [
         ]
       },
       {
+        id: 2,
         label: 'Navbar Link',
         label_plural: 'Navbar Links',
         identifier: 'navbar_link',

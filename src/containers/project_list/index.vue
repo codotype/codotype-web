@@ -3,47 +3,14 @@
   <div class="container">
 
     <!-- Bootstrap Modal Component -->
-    <b-modal id="new-project-modal"
-      ref="newModal"
-      :title="'New App'"
-      header-bg-variant="dark"
-      header-text-variant="light"
-      body-bg-variant="dark"
-      body-text-variant="light"
-      hide-footer
-    >
-
-      <!-- TODO - abstract into dedicated ProjectForm component -->
-      <div class="row">
-        <div class="col-sm-12">
-
-          <div class="form-group">
-            <label class='mb-0'>
-              Label
-              <span class='text-danger'>*</span>
-            </label>
-            <small class="form-text text-muted mb-2">The name of your project</small>
-            <input type="text" class="form-control" placeholder="Label" v-model="newModel.label" @input="setIdentifier()">
-          </div>
-
-        </div>
-
-        <div class="col-sm-12">
-          <button class="btn btn-lg btn-primary btn-block" @click="submitProjectForm()">
-            <i class="fa fa-fw fa-check"></i>
-            Create App
-          </button>
-        </div>
-      </div>
-
+    <b-modal id="new-project-modal" ref="newModal" :title="'New App'" hide-footer>
+      <ProjectForm :submit="submitProjectForm" />
     </b-modal>
 
     <!-- TODO - abstract into PageHeader component -->
     <div class="row">
       <div class="col-lg-6">
-        <h2>
-          Apps
-        </h2>
+        <h2>Apps</h2>
       </div>
 
       <div class="col-lg-6 text-right">
@@ -72,31 +39,29 @@
 
 <script>
 
-import ListView from './components/list.vue'
+import ListView from './components/list'
+import ProjectForm from '@/components/ProjectForm'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  name: 'project_list',
+  name: 'ProjectList',
   metaInfo: {
     title: 'Projects'
   },
   components: {
-    ListView
+    ListView,
+    ProjectForm
   },
   mounted () {
     this.fetch()
-    this.resetNewModel()
   },
   computed: mapGetters({
-    collection: 'project/collection',
-    newModel: 'project/newModel'
+    collection: 'project/collection'
   }),
   methods: {
     ...mapActions({
       fetch: 'project/fetchCollection',
-      persist: 'project/create',
-      resetNewModel: 'project/resetNewModel',
-      setIdentifier: 'project/setIdentifier'
+      persist: 'project/create'
     }),
     submitProjectForm () {
       this.$refs.newModal.hide()

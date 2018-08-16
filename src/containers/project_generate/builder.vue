@@ -73,7 +73,7 @@
                         <div class="row">
                           <div class="col-lg-3">
                             <ul class="list-group list-group-flush">
-                              <li class="list-group-item list-group-item-action" v-for="m in opts.client[1].addons" :title="m.label_plural">
+                              <li class="list-group-item list-group-item-action" v-for="m in opts.client[1].addons" :title="m.label_plural" :key="m.id">
                                 {{ m.label_plural }}
                               </li>
                             </ul>
@@ -110,7 +110,7 @@
                         </div>
 
                         <!-- TODO - abstract this tab's content into a separate component -->
-                        <b-tab v-for="m in opts.client[1].addons" :title="m.label_plural">
+                        <b-tab v-for="m in opts.client[1].addons" :title="m.label_plural" :key="m.id">
                           <br>
                         </b-tab>
 
