@@ -13,13 +13,31 @@ export const SERVER_OPTS = [
 export const CLIENT_OPTS = [
   // { id: 'none', icon: 'fa fa-times', label: 'None' },
   // { id: 'none', icon: 'fa fa-times', label: 'None', disabled: true },
-  { id: 'vuejs', icon: 'devicon-vuejs-plain', label: 'Vue.js', selected: true, text: 'VueJS is a client-side javascript framework for building reactive user interfaces.', href: 'https://github.com/vuejs', additional_options: [] },
+  {
+    id: 'vuejs',
+    icon: 'devicon-vuejs-plain',
+    label: 'Vue.js',
+    selected: true,
+    description: 'VueJS is a client-side javascript framework for building reactive user interfaces.',
+    href: 'https://github.com/vuejs',
+    additional_options: [],
+    tech_tags: ['Vue', 'Vue-Router', 'Vuex', 'Axios', 'Bootstrap'],
+    type_tags: ['Frontend'],
+    self_configuring: true,
+    addons: [],
+    global_options: [],
+    model_options: [],
+    github_url: 'https://github.com/codotype/codotype'
+  },
   {
     id: 'react',
     label: 'React',
     icon: 'devicon-react-plain',
     disabled: true, // TODO - get rid of disabled
     description: 'Generate front-end API client applications with React, Redux, Axios, and Bootstrap',
+    tech_tags: ['React', 'Redux', 'Axios', 'Bootstrap'],
+    type_tags: ['Frontend'],
+    github_url: 'https://github.com/codotype/codotype',
 
     // // // //
 

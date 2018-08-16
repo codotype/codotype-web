@@ -6,6 +6,17 @@
       </div>
       <div class="col-lg-12">
         <small>{{ model.description }}</small>
+        <br>
+        <small>{{ model.github_url }}</small>
+      </div>
+      <div class="col-lg-12">
+        <span class='badge badge-info' v-if="model.self_configuring">Self-Configuring</span>
+        <span class='badge badge-dark' v-if="model.addons[0]">{{ model.addons.length }} Addon(s)</span>
+        <span class='badge badge-dark' v-if="model.global_options[0]">{{ model.global_options.length }} Option(s)</span>
+        <span class='badge badge-dark' v-if="model.model_options[0]">{{ model.model_options.length }} Model Option(s)</span>
+        <br>
+        <span class='badge badge-primary' v-for="tag in model.type_tags" :key="tag">{{ tag }}</span>
+        <span class='badge badge-success' v-for="tag in model.tech_tags" :key="tag">{{ tag }}</span>
       </div>
     </div>
   </div>
