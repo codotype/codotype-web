@@ -3,20 +3,14 @@
   <div class="container">
 
     <!-- Bootstrap Modal Component -->
-    <b-modal id="new-project-modal"
-      ref="newModal"
-      :title="'New App'"
-      hide-footer
-    >
+    <b-modal id="new-project-modal" ref="newModal" :title="'New App'" hide-footer>
       <ProjectForm :submit="submitProjectForm" />
     </b-modal>
 
     <!-- TODO - abstract into PageHeader component -->
     <div class="row">
       <div class="col-lg-6">
-        <h2>
-          Apps
-        </h2>
+        <h2>Apps</h2>
       </div>
 
       <div class="col-lg-6 text-right">

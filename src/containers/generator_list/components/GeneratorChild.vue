@@ -2,7 +2,9 @@
   <div class="card card-body mb-2">
     <div class="row">
       <div class="col-lg-12">
-        <div class="card-title">{{ model.label }}</div>
+        <div class="card-title">
+          <a :href="'#/generators/' + model.id">{{ model.label }}</a>
+        </div>
       </div>
       <div class="col-lg-12">
         <small>{{ model.description }}</small>
@@ -18,7 +20,7 @@
         <span class='badge badge-primary' v-for="tag in model.type_tags" :key="tag">{{ tag }}</span>
         <span class='badge badge-success' v-for="tag in model.tech_tags" :key="tag">{{ tag }}</span>
         <span class='badge badge-secondary'>Version {{ model.version }}</span>
-        <span class='badge badge-warning' v-if="model.official">Official</span>
+        <span class='badge badge-warning' v-if="model.official">Codotype Official</span>
       </div>
     </div>
   </div>
