@@ -32,6 +32,7 @@ export const CLIENT_OPTS = [
     // TODO - we might want to rename this if addons becomes something bigger..
     addons: [
       {
+        id: 1,
         label: 'Static Page',
         label_plural: 'Static Pages',
         identifier: 'static_page',
@@ -71,6 +72,7 @@ export const CLIENT_OPTS = [
         ]
       },
       {
+        id: 2,
         label: 'Navbar Link',
         label_plural: 'Navbar Links',
         identifier: 'navbar_link',

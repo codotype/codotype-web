@@ -4,7 +4,7 @@
       <div class="col-lg-12">
         <p class="lead">Generators</p>
         <hr>
-        <GeneratorChild v-for="m in opts.client" :model="m"/>
+        <GeneratorChild v-for="m in opts.client" :model="m" :key="model.id"/>
       </div>
     </div>
   </div>
