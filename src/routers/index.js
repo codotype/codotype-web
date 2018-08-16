@@ -28,6 +28,7 @@ import MainAbout from '@/containers/main_about'
 
 // Generator Containers
 import GeneratorList from '@/containers/generator_list'
+import GeneratorShow from '@/containers/generator_show'
 import GeneratorForm from '@/containers/generator_new'
 
 // Vue Router setup
@@ -68,6 +69,11 @@ export default new Router({
         {
           path: '/generators',
           component: GeneratorList
+        },
+        {
+          path: '/generators/:id',
+          props: true,
+          component: GeneratorShow
         },
         {
           path: 'projects',
