@@ -8,16 +8,8 @@
       :title="'Edit Attribute'"
       ref='editModal'
       @ok="updateAttr()"
-      header-bg-variant='dark'
-      header-text-variant='light'
-      body-bg-variant='dark'
-      body-text-variant='light'
-      footer-bg-variant='primary'
-      footer-text-variant='light'
-      ok-variant='primary'
       ok-title='Update'
       cancel-title='Cancel'
-      cancel-variant='dark'
     >
       <AttributeForm :schema="schema" :model="editAttribute" />
     </b-modal>

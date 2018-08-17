@@ -1,8 +1,11 @@
 <template>
-  <div class="row">
+  <div class="row mt-2">
 
     <div class="col-lg-7">
-      <AppBreadcrumbs />
+      <!-- <AppBreadcrumbs /> -->
+      <h4 class="mb-0">
+        {{ title || 'NO TITLE' }}
+      </h4>
     </div>
 
     <div class="col-lg-5 d-flex align-items-center justify-content-end">
@@ -24,7 +27,7 @@ import { mapGetters } from 'vuex'
 import AppBreadcrumbs from '@/containers/app_breadcrumbs'
 
 export default {
-  props: ['help'],
+  props: ['title', 'help'],
   components: {
     AppBreadcrumbs
   },

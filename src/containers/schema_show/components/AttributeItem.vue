@@ -79,16 +79,9 @@
         <b-modal :id="'modal_' + item._id"
           :title="'Remove Attribute'"
           @ok="remove(item)"
-          header-bg-variant='dark'
-          header-text-variant='light'
-          body-bg-variant='dark'
-          body-text-variant='light'
-          footer-bg-variant='danger'
-          footer-text-variant='light'
           ok-variant='danger'
           ok-title='DESTROY'
           cancel-title='Cancel'
-          cancel-variant='dark'
         >
           <p class="text-left">Are you sure you want to destroy the {{ item.label }} attribute?</p>
         </b-modal>

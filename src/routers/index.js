@@ -107,13 +107,13 @@ export default new Router({
                 },
                 {
                   path: '/projects/:project_id/schemas',
-                  component: RouterView,
+                  component: SchemaList,
                   meta: { bcLinkText: 'Models' },
                   children: [
-                    {
-                      path: '',
-                      component: SchemaList
-                    },
+                    // {
+                    //   path: '',
+                    //   component: SchemaList
+                    // },
                     {
                       path: '/projects/:project_id/schemas/:schema_id',
                       props: true,

@@ -2,14 +2,16 @@
 <template>
   <div class="row">
     <div class="col-lg-12">
-      <EditorHeader :help="'Defines the attributes that can be assigned to a single ' + model.label" >
+      <EditorHeader :title="model.label + ' Model'" :help="'Defines the attributes that can be assigned to a single ' + model.label" >
 
         <div class="row">
           <div class="col-lg-12">
-            <a :href="`#/projects/${project_id}/seeds/${model._id}`" class='btn btn-outline-warning'>
-              <i class="fa fa-fw fa-plus mr-2"></i>
-              Seed Data
-            </a>
+            <!-- <a :href="`#/projects/${project_id}/seeds/${model._id}`" class='btn btn-outline-warning'> -->
+              <!-- <i class="fa fa-fw fa-plus mr-2"></i> -->
+              <!-- Seed Data -->
+            <!-- </a> -->
+
+            <!-- TODO - add destroy model link here -->
 
             <button class='btn btn-primary' @click="showNewAttributeForm()">
               <i class="fa fa-fw fa-plus mr-2"></i>
@@ -21,16 +23,8 @@
               ref="newAttributeModal"
               :title="'New Attribute'"
               @ok="createAttribute()"
-              header-bg-variant="dark"
-              header-text-variant="light"
-              body-bg-variant="dark"
-              body-text-variant="light"
-              footer-bg-variant="primary"
-              footer-text-variant="light"
-              ok-variant='primary'
               ok-title='Create'
               cancel-title='Cancel'
-              cancel-variant='dark'
             >
               <AttributeForm :schema="model" :model="newAttribute" />
             </b-modal>

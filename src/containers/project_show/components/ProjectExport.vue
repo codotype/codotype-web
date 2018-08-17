@@ -7,16 +7,8 @@
       <!-- Bootstrap Modal Component -->
       <b-modal :title="'Thanks!'"
         ref='modal'
-        header-bg-variant='dark'
-        header-text-variant='light'
-        body-bg-variant='dark'
-        body-text-variant='light'
-        footer-bg-variant='success'
-        footer-text-variant='light'
-        ok-variant='success'
         ok-title='EXPORT'
         cancel-title='Cancel'
-        cancel-variant='dark'
       >
         <p>Exported Application.</p>
       </b-modal>
