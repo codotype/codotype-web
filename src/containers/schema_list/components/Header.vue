@@ -9,6 +9,24 @@
           <!-- New Model -->
         <!-- </button> -->
 
+        <a class="btn btn-success btn-lg" href="#/generators">
+          <i class="fa fa-fw fa-rocket"></i>
+          Generate App
+        </a>
+
+        <b-dropdown size="lg" right variant="outline-dark" >
+          <template slot="button-content">
+            <i class="fa fa-fw fa-cog"></i>
+            Options
+          </template>
+          <b-dropdown-item>Export App</b-dropdown-item>
+          <!-- <b-dropdown-item>Second Action</b-dropdown-item> -->
+          <!-- <b-dropdown-item>Third Action</b-dropdown-item> -->
+          <!-- <b-dropdown-divider></b-dropdown-divider> -->
+          <!-- <b-dropdown-item>Something else here...</b-dropdown-item> -->
+          <!-- <b-dropdown-item disabled>Disabled action</b-dropdown-item> -->
+        </b-dropdown>
+
         <!-- Bootstrap Modal Component -->
         <!-- TODO - move this outside the scope of the loop, and instead pass only the options into a single instance -->
         <b-modal id="new-schema"
