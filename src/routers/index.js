@@ -4,9 +4,6 @@ import Router from 'vue-router'
 // Project Containers
 import ProjectList from '@/containers/project_list'
 import ProjectShow from '@/containers/project_show'
-import ProjectMeta from '@/containers/project_show/components/ProjectMeta'
-import ProjectAuth from '@/containers/project_show/components/ProjectAuth'
-import ProjectPages from '@/containers/project_show/components/ProjectPages'
 import ProjectSeeds from '@/containers/project_show/components/ProjectSeeds'
 import ProjectExport from '@/containers/project_show/components/ProjectExport'
 // import ProjectGenerate from '@/containers/project_generate'
@@ -99,16 +96,6 @@ export default new Router({
                   component: SchemaList
                 },
                 {
-                  path: '/projects/:project_id/meta',
-                  component: ProjectMeta,
-                  meta: { bcLinkText: 'Meta' }
-                },
-                {
-                  path: '/projects/:project_id/auth',
-                  component: ProjectAuth,
-                  meta: { bcLinkText: 'Authorization' }
-                },
-                {
                   path: '/projects/:project_id/generate',
                   component: ProjectGenerate,
                   meta: { bcLinkText: 'Generate' }
@@ -117,11 +104,6 @@ export default new Router({
                   path: '/projects/:project_id/export',
                   component: ProjectExport,
                   meta: { bcLinkText: 'Export' }
-                },
-                {
-                  path: '/projects/:project_id/pages',
-                  component: ProjectPages,
-                  meta: { bcLinkText: 'Pages' }
                 },
                 {
                   path: '/projects/:project_id/schemas',

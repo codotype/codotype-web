@@ -14,16 +14,8 @@
         <b-modal id="new-schema"
           :title="'New Model'"
           @ok="submit()"
-          header-bg-variant="dark"
-          header-text-variant="light"
-          body-bg-variant="dark"
-          body-text-variant="light"
-          footer-bg-variant="primary"
-          footer-text-variant="light"
-          ok-variant='primary'
           ok-title='Create'
           cancel-title='Cancel'
-          cancel-variant='dark'
         >
           <SchemaForm :schema="model" />
           <!-- <pre class='text-left bg-light'>{{model}}</pre> -->
