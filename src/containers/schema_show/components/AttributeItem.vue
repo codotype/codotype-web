@@ -3,7 +3,8 @@
   <li class="list-group-item">
     <div class="row d-flex align-items-center">
 
-      <div class="col-lg-1 text-left d-flex align-items-center">
+      <!-- Handle for re-ordering attributes -->
+      <div class="col-lg-1 text-left d-flex align-items-center" v-if="!item.locked">
         <i class="fa fa-lg fa-fw fa-bars mr-3"></i>
       </div>
 

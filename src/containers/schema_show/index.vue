@@ -7,14 +7,14 @@
         <div class="row">
           <div class="col-lg-12">
             <!-- <a :href="`#/projects/${project_id}/seeds/${model._id}`" class='btn btn-outline-warning'> -->
-              <!-- <i class="fa fa-fw fa-plus mr-2"></i> -->
+              <!-- <i class="fa fa-fw fa-plus"></i> -->
               <!-- Seed Data -->
             <!-- </a> -->
 
             <!-- TODO - add destroy model link here -->
 
             <button class='btn btn-primary' @click="showNewAttributeForm()">
-              <i class="fa fa-fw fa-plus mr-2"></i>
+              <i class="fa fa-fw fa-plus"></i>
               New Attribute
             </button>
 
