@@ -2,7 +2,7 @@
 <template>
   <div class="row">
     <div class="col-lg-12">
-      <EditorHeader :title="model.label + ' Model'" :help="'Defines the attributes that can be assigned to a single ' + model.label" >
+      <EditorHeader :title="model.label + ' Model'" :help="'Defines the attributes and relations that can be assigned to a single ' + model.label" >
 
         <div class="row">
           <div class="col-lg-12">

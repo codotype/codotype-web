@@ -18,7 +18,7 @@
       <div class="card" id='attribute-detail'>
         <div class="card-header d-flex justify-content-between align-items-center">
           <strong style='font-weight: 600;'>Attributes</strong>
-          <button class="btn btn-primary" id="add-attribute-button">
+          <button class="btn btn-sm btn-primary" id="add-attribute-button">
             <i class="fa fa-plus"></i>
             Add Attribute
           </button>
@@ -35,11 +35,12 @@
           </p>
         </li>
       </div>
+      <br>
       <div class="card" id='relation-detail'>
         <div class="card-header d-flex justify-content-between align-items-center">
           <!-- <p class='lead mb-0'>Relations</p> -->
           <strong style='font-weight: 600;'>Relations</strong>
-          <button class="btn btn-primary" id="add-relation-button">
+          <button class="btn btn-sm btn-primary" id="add-relation-button">
             <i class="fa fa-plus"></i>
             Add Relation
           </button>
