@@ -1,11 +1,11 @@
 <template>
-  <div class="row">
+  <div class="row d-flex align-items-center">
 
     <div class="col-lg-7">
       <!-- <AppBreadcrumbs /> -->
       <h4 class="mb-0">
         {{ title || 'NO TITLE' }}
-        <button class="btn btn-link">
+        <button class="btn btn-link py-0">
           <i class="fa fa-pencil"></i>
         </button>
       </h4>
@@ -15,8 +15,8 @@
       <slot></slot>
     </div>
 
-    <div class="col-lg-12" v-if='help'>
-      <small class="form-text text-muted">{{ help }}</small>
+    <div class="col-lg-12 pb-1" v-if='help'>
+      <small class="text-muted">{{ help }}</small>
     </div>
 
   </div>

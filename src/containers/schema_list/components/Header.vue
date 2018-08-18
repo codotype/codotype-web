@@ -11,11 +11,11 @@
         <v-tour name="myTour" :steps="steps"></v-tour>
 
         <!-- TODO - this button should trigger a vue-tour routine -->
-        <button class="btn btn-link btn-lg" @click="startTour()">
-          <i class="fa fa-fw fa-question-circle"></i>
-        </button>
+        <a class='mr-3' @click="$tours['myTour'].start()">
+          <i class="fa fa-fw fa-lg fa-question-circle" v-b-tooltip.hover.left :title='"Tutorial"'></i>
+        </a>
 
-        <a class="btn btn-success btn-lg" href="#/generators">
+        <a class="btn btn-success btn-lg" id="new-schema-button" href="#/generators">
           <i class="fa fa-fw fa-cogs"></i>
           Generate Code
         </a>
@@ -51,10 +51,7 @@ export default {
       steps: [
         {
           target: '#new-schema-button',  // We're using document.querySelector() under the hood
-          content: `Discover <strong>Vue Tour</strong>!`,
-          params: {
-            placement: 'top'
-          }
+          content: `Click here to generate this application`
         }
         // {
         //   target: '.v-step-1',

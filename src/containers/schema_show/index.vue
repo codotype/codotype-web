@@ -18,6 +18,10 @@
               <!-- New Attribute -->
             <!-- </button> -->
 
+            <button class='btn btn-sm btn-outline-danger' @click="showNewAttributeForm()">
+              <i class="fa fa-fw fa-trash"></i>
+            </button>
+
             <!-- Bootstrap Modal Component -->
             <b-modal size="lg" id="new-attribute"
               ref="newAttributeModal"

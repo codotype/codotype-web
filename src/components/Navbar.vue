@@ -21,6 +21,12 @@ b<template>
       </b-navbar-nav>
 
       <b-navbar-nav class="mr-0">
+
+        <b-nav-item target="_blank" href="https://github.com/codotype">
+          <i class="fa fa-fw fa-graduation-cap"></i>
+          Documentation
+        </b-nav-item>
+
         <b-nav-item target="_blank" href="https://github.com/codotype">
           <i class="fa fa-fw fa-github"></i>
           GitHub

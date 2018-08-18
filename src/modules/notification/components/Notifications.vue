@@ -26,7 +26,6 @@ export default {
 <style>
   .container-fluid.notifications {
     position: fixed;
-    z-index: 1000;
     width: 50%;
     right: 0;
     bottom: 0;
