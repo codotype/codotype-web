@@ -5,6 +5,9 @@
       <!-- <AppBreadcrumbs /> -->
       <h4 class="mb-0">
         {{ title || 'NO TITLE' }}
+        <button class="btn btn-link">
+          <i class="fa fa-pencil"></i>
+        </button>
       </h4>
     </div>
 
