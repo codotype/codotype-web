@@ -7,7 +7,7 @@ import schema from '@/modules/schema/store'
 import attribute from '@/modules/attribute/store'
 import record from '@/modules/record/store'
 import notification from '@/modules/notification/store'
-import generator from './generator'
+import generator from '@/modules/generator/store'
 import addon from './addon'
 
 // Vuex Initialization
