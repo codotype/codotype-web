@@ -10,15 +10,18 @@
     <!-- TODO - abstract into PageHeader component -->
     <div class="row">
       <div class="col-lg-6">
-        <h2>Apps</h2>
+        <h2 id="app-list">Apps</h2>
       </div>
 
       <div class="col-lg-6 text-right">
+
+        <HelpButton :tour="tourSteps"/>
+
         <a class='btn btn-lg btn-outline-info' href="#/examples">
           <i class="fa fa-fw fa-folder-open-o mr-2"></i>
           Example Apps
         </a>
-        <button class='btn btn-lg btn-primary ml-2' v-b-modal="'new-project-modal'">
+        <button class='btn btn-lg btn-primary ml-2' id="app-new-button" v-b-modal="'new-project-modal'">
           <i class="fa fa-fw fa-plus mr-2"></i>
           New App
         </button>
@@ -41,6 +44,7 @@
 
 import ListView from './components/list'
 import ProjectForm from '@/components/ProjectForm'
+import HelpButton from '@/components/HelpButton'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -50,13 +54,15 @@ export default {
   },
   components: {
     ListView,
-    ProjectForm
+    ProjectForm,
+    HelpButton
   },
   mounted () {
     this.fetch()
   },
   computed: mapGetters({
-    collection: 'project/collection'
+    collection: 'project/collection',
+    tourSteps: 'tour/appListSteps'
   }),
   methods: {
     ...mapActions({

@@ -9,6 +9,7 @@ import record from '@/modules/record/store'
 import notification from '@/modules/notification/store'
 import generator from '@/modules/generator/store'
 import addon from '@/modules/addon/store'
+import tour from '@/modules/tour/store'
 
 // Vuex Initialization
 // TODO - should this be done elsewhere?
@@ -22,7 +23,8 @@ export default new Vuex.Store({
     attribute,
     record,
     generator,
-    addon
+    addon,
+    tour
   },
   plugins: [createPersistedState()]
 })
