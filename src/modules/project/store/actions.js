@@ -16,6 +16,7 @@ export default {
     let model = _.find(state.collection, { _id: model_id })
     commit('selectedModel', model)
     commit('schema/collection', model.schemas, { root: true })
+    commit('schema/selectedModel', model.schemas[0], { root: true })
     commit('record/collection', model.seeds, { root: true })
   },
   fetchCollection: ({ rootGetters, commit }) => {
@@ -38,7 +39,7 @@ export default {
   persist: ({ dispatch, commit, state }, { record }) => {
     let recordId = record._id
     let collection = state.collection
-
+    let isNew = false
     if (record._id) {
       collection = _.map(state.collection, (s) => {
         if (s._id === record._id) {
@@ -48,6 +49,7 @@ export default {
         }
       })
     } else {
+      isNew = true
       recordId = ObjectID().toString()
       record._id = recordId
       collection.push(record)
@@ -55,6 +57,7 @@ export default {
 
     // Updates state.collection
     commit('collection', collection)
+    if (isNew) router.push(`/projects/${recordId}/schemas`)
   },
 
   update: ({ dispatch, state }) => {

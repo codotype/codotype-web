@@ -17,6 +17,7 @@ export default {
   create ({ state, dispatch, commit }) {
     let model = _.cloneDeep(state.newModel)
     dispatch('resetNewModel')
+    model.label = pluralize.singular(titleize(model.label))
     commit('persist', { schema: model })
   },
   edit ({ state, commit }, schema) {

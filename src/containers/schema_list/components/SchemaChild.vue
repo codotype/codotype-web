@@ -1,6 +1,6 @@
 
 <template>
-  <router-link tag="li" class="list-group-item" :to="'/projects/' + model._id + '/schemas/' + schema._id">
+  <li :class="className()">
 
     <!-- Bootstrap Modal Component -->
     <b-modal v-if="enableDestroy"
@@ -15,12 +15,12 @@
       <p class="text-left">Are you sure you want to destroy the {{ schema.label }} schema?</p>
     </b-modal>
 
-    <div class="row align-items-center">
+    <div class="row align-items-center" @click="selectModel(schema._id)">
       <div class="col-md-3">
           {{ schema.label }}
       </div>
 
-      <div class="col-md-9">
+      <div class="col-md-9 text-right">
         <div class="text-warning" v-if="!schema.attributes.length">
           <i class="fa fa-exclamation mr-2"></i>
           No Attributes
@@ -50,7 +50,7 @@
 
     </div>
 
-  </router-link>
+  </li>
 </template>
 
 <script>
@@ -60,16 +60,30 @@ export default {
   props: ['schema'],
   methods: {
     ...mapActions({
+      selectModel: 'schema/selectModel',
       editSchema: 'schema/edit',
       destroySchema: 'schema/remove'
     }),
+    className () {
+      let css = ['list-group-item', 'list-group-item-action']
+
+      // TODO - why isn't this working?
+      if (this.schema.id === this.selectedSchema._id) {
+        css.push('active')
+      }
+
+      console.log(String(this.schema.id) === String(this.selectedSchema._id))
+      console.log(css.join(' '))
+      return css.join(' ')
+    },
     showModal () {
       this.$refs.modal.show()
     }
   },
   computed: {
     ...mapGetters({
-      model: 'project/selectedModel'
+      model: 'project/selectedModel',
+      selectedSchema: 'schema/selectedModel'
     }),
     enableDestroy () {
       return this.schema.identifier !== 'user'

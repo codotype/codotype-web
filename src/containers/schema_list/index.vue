@@ -5,6 +5,10 @@
       <Header/>
     </div>
 
+    <div class="col-lg-12">
+      <hr>
+    </div>
+
     <div class="col-lg-4">
 
       <!-- New Schema -->
@@ -24,7 +28,8 @@
     </div>
 
     <div class="col-lg-8">
-      <router-view/>
+      <!-- <router-view/> -->
+      <SchemaShow />
     </div>
   </div>
 </template>
@@ -36,6 +41,7 @@ import { mapGetters, mapActions } from 'vuex'
 import Header from './components/Header'
 import SchemaChild from './components/SchemaChild'
 import SchemaForm from '@/components/schema/SchemaForm'
+import SchemaShow from '@/containers/schema_show'
 
 export default {
   metaInfo: {
@@ -44,7 +50,8 @@ export default {
   components: {
     Header,
     SchemaChild,
-    SchemaForm
+    SchemaForm,
+    SchemaShow
   },
   created () {
     this.resetNewModel()

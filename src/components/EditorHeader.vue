@@ -1,5 +1,5 @@
 <template>
-  <div class="row mt-2">
+  <div class="row">
 
     <div class="col-lg-7">
       <!-- <AppBreadcrumbs /> -->
@@ -15,9 +15,8 @@
       <slot></slot>
     </div>
 
-    <div class="col-lg-12">
+    <div class="col-lg-12" v-if='help'>
       <small class="form-text text-muted">{{ help }}</small>
-      <br>
     </div>
 
   </div>
@@ -28,11 +27,13 @@
 <script>
 import { mapGetters } from 'vuex'
 import AppBreadcrumbs from '@/containers/app_breadcrumbs'
+import MoreInfoLink from '@/components/MoreInfoLink'
 
 export default {
   props: ['title', 'help'],
   components: {
-    AppBreadcrumbs
+    AppBreadcrumbs,
+    MoreInfoLink
   },
   computed: mapGetters({
     model: 'project/selectedModel'

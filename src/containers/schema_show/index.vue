@@ -13,10 +13,10 @@
 
             <!-- TODO - add destroy model link here -->
 
-            <button class='btn btn-primary' @click="showNewAttributeForm()">
-              <i class="fa fa-fw fa-plus"></i>
-              New Attribute
-            </button>
+            <!-- <button class='btn btn-primary' @click="showNewAttributeForm()"> -->
+              <!-- <i class="fa fa-fw fa-plus"></i> -->
+              <!-- New Attribute -->
+            <!-- </button> -->
 
             <!-- Bootstrap Modal Component -->
             <b-modal size="lg" id="new-attribute"
@@ -51,16 +51,9 @@ import AttributeForm from './components/AttributeForm'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  props: ['project_id', 'schema_id'],
-  metaInfo: {
-    title: 'Schema - Show'
-  },
   components: {
     AttributeList,
     AttributeForm
-  },
-  created () {
-    this.selectModel(this.schema_id)
   },
   computed: mapGetters({
     model: 'schema/selectedModel',
@@ -68,7 +61,6 @@ export default {
   }),
   methods: {
     ...mapActions({
-      selectModel: 'schema/selectModel',
       createAttribute: 'attribute/create',
       resetNewAttribute: 'attribute/resetNewModel'
     }),

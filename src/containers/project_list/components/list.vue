@@ -60,14 +60,14 @@
 
     <!-- Empty -->
     <div class="col-lg-12 mb-3" v-if="!collection[0]">
-      <div class="card border-warning text-warning card-body text-center">
+      <div class="card bg-transparent border-warning text-warning card-body text-center">
         <p class="lead card-text">
           <i class="fa fa-fw fa-info-circle mr-2"></i>
           <br>
           No Apps found
         </p>
         <p class="card-text">
-          See some <a href="#/examples">examples</a>
+          See some <a href="#/examples">examples</a> or start a <a href="#/examples">new project</a>
         </p>
       </div>
     </div>

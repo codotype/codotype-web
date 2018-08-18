@@ -1,6 +1,6 @@
 
 <template>
-  <div class="container-fluid">
+  <div class="container">
 
     <!-- Abstract into Header component -->
     <!-- <div class="row d-flex align-items-center"> -->

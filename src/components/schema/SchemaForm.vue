@@ -67,6 +67,7 @@ export default {
   computed: {
     schemaLabel: {
       get () {
+        console.log('getter: ', this.schema.label)
         return this.schema.label
       },
       set (label) {

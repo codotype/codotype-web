@@ -1,6 +1,6 @@
 
 <template>
-  <EditorHeader :title="project.label" :help="'Define data modeled by the ' + project.label + ' app.'">
+  <EditorHeader :title="project.label" :halp="'Define data modeled by the ' + project.label + ' app.'">
     <div class="row">
       <div class="col-lg-12">
 
@@ -16,8 +16,8 @@
         </button>
 
         <a class="btn btn-success btn-lg" href="#/generators">
-          <i class="fa fa-fw fa-play"></i>
-          Generate App
+          <i class="fa fa-fw fa-cogs"></i>
+          Generate Code
         </a>
 
         <!-- <b-dropdown size="lg" right variant="outline-dark" > -->

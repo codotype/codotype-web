@@ -15,18 +15,42 @@
     </b-modal>
 
      <div class="col-lg-12">
-      <draggable class='list-group' v-model='attributes' :options="sortableOptions" v-if="attributes.length">
-        <AttributeItem v-for="each in attributes" :item="each" :key="each._id" :schema="schema" :edit="selectEditAttribute" />
-      </draggable>
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <strong style='font-weight: 600;'>Attributes</strong>
+          <button class="btn btn-sm btn-primary">
+            <i class="fa fa-plus"></i>
+            New Attribute
+          </button>
+        </div>
+        <draggable class='list-group list-group-flush' v-model='attributes' :options="sortableOptions" v-if="attributes.length">
+          <AttributeItem v-for="each in attributes" :item="each" :key="each._id" :schema="schema" :edit="selectEditAttribute" />
+        </draggable>
+        <!-- Empty Attribute view -->
+        <li class="card card-body text-center bg-transparent border-warning text-warning" v-else>
+          <i class="fa fa-lg fa-warning"></i>
+          <!-- TODO - Click to add your first Attribute -->
+          <p class="lead mb-0 mt-2">
+          Please create at least one attribute
+          </p>
+        </li>
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <!-- <p class='lead mb-0'>Relations</p> -->
+          <strong style='font-weight: 600;'>Relations</strong>
+          <button class="btn btn-sm btn-primary">
+            <i class="fa fa-plus"></i>
+            New Relation
+          </button>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item list-group-item-info text-center">
+            <!-- <i class="fa fa-lg fa-warning"></i> -->
+            <!-- TODO - Click to add your first Attribute -->
+            <a href="#">Define relations</a> to stitch your models together
+          </li>
+        </ul>
 
-      <!-- Empty Attribute view -->
-      <li class="card card-body text-center border-warning text-warning" v-else>
-        <i class="fa fa-lg fa-warning"></i>
-        <!-- TODO - Click to add your first Attribute -->
-        <p class="lead mb-0 mt-2">
-        Please create at least one attribute
-        </p>
-      </li>
+      </div>
 
     </div>
   </div>
