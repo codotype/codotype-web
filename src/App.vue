@@ -2,8 +2,7 @@
 <template>
   <div id="app">
     <Navbar/>
-    <Notification/>
-    <!-- <AppBreadcrumbs/> -->
+    <Notifications/>
     <br>
     <router-view/>
     <!-- <AppFooter/> -->
@@ -12,9 +11,8 @@
 
 <script>
 import Navbar from '@/components/Navbar'
-import AppBreadcrumbs from '@/containers/app_breadcrumbs'
 import AppFooter from '@/components/AppFooter'
-import Notification from '@/containers/app_notification'
+import Notifications from '@/modules/notification/components/Notifications'
 
 export default {
   name: 'app',
@@ -22,15 +20,8 @@ export default {
   // Top-Level Application Components
   components: {
     Navbar,
-    AppBreadcrumbs,
     AppFooter,
-    Notification
-  },
-
-  created () {
-    // NOTE- this is a temporary fix until the project/show container
-    // is restructured into project/generate && project/edit
-    this.$store.dispatch('generator/setActivated', false)
+    Notifications
   },
 
   // Top-Level page Meta

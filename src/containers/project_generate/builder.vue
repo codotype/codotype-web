@@ -181,12 +181,6 @@ export default {
     GeneratorModelOptions,
     GeneratorGlobalOptions
   },
-  created () {
-    this.setActivated(true)
-  },
-  beforeDestroy () {
-    this.setActivated(false)
-  },
   computed: mapGetters({
     model: 'project/selectedModel',
     schemas: 'schema/collection',
@@ -201,7 +195,6 @@ export default {
       console.log(this.generateApplication())
     },
     ...mapActions({
-      setActivated: 'generator/setActivated',
       generateApplication: 'generator/generate'
     })
   }

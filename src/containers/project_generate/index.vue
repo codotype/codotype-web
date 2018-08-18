@@ -109,12 +109,6 @@ export default {
   components: {
     AbstractTab
   },
-  created () {
-    this.setActivated(true)
-  },
-  beforeDestroy () {
-    this.setActivated(false)
-  },
   computed: mapGetters({
     model: 'project/selectedModel',
     fetching: 'generator/fetching',
@@ -128,7 +122,6 @@ export default {
       console.log(this.generateApplication())
     },
     ...mapActions({
-      setActivated: 'generator/setActivated',
       generateApplication: 'generator/generate'
     })
   }

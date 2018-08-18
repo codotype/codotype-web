@@ -9,7 +9,7 @@
 <!-- // // // //  -->
 
 <script>
-import NotificationChild from './components/notificationChild'
+import NotificationChild from './NotificationChild'
 import { mapGetters } from 'vuex'
 
 export default {
