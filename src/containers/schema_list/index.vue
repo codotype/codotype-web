@@ -9,16 +9,16 @@
       <hr>
     </div>
 
-    <div class="col-lg-4">
+    <div class="col-lg-4" id="model-list">
 
       <!-- New Schema -->
       <b-modal id="new-schema" :title="'New Model'" @ok="submit()" ok-title='Create' cancel-title='Cancel' >
         <SchemaForm :schema="newModel" />
       </b-modal>
 
-      <button class="btn btn-primary btn-block" v-b-modal="'new-schema'">
-        <i class="fa fa-fw fa-plus mr-2"></i>
-        New Model
+      <button id="new-model-button" class="btn btn-primary btn-block btn-lg" v-b-modal="'new-schema'">
+        <i class="fa fa-fw fa-plus"></i>
+        Add Model
       </button>
 
       <!-- Schema List -->
@@ -27,7 +27,7 @@
       </ul>
     </div>
 
-    <div class="col-lg-8">
+    <div class="col-lg-8" id="model-detail">
       <!-- <router-view/> -->
       <SchemaShow />
     </div>

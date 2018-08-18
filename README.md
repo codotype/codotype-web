@@ -19,7 +19,7 @@ https://github.com/simov/grant
 
 
 Built with:
-- [vue-tour](https://github.com/pulsardev/vue-tour)
+- [driver.js](https://github.com/kamranahmedse/driver.js)
 
 ---------
 
