@@ -3,7 +3,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import project from '@/modules/project/store'
-import schema from './schema'
+import schema from '@/modules/schema/store'
 import attribute from '@/modules/attribute/store'
 import record from '@/modules/record/store'
 import notification from '@/modules/notification/store'
