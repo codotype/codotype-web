@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import HomeRouter from '@/modules/home/router'
+
 // Project Containers
 import ProjectList from '@/containers/project_list'
 import ProjectShow from '@/containers/project_show'
@@ -18,10 +20,6 @@ import SchemaShow from '@/containers/schema_show'
 import RecordList from '@/containers/record_list'
 import RecordNew from '@/containers/record_new'
 import RecordEdit from '@/containers/record_edit'
-
-// TODO - move these into main.js (???)
-import MainHome from '@/containers/main_home'
-import MainAbout from '@/containers/main_about'
 
 // Generator Containers
 import GeneratorList from '@/containers/generator_list'
@@ -41,19 +39,8 @@ export default new Router({
     {
       path: '/',
       component: RouterView,
-      // meta: { bcLinkText: 'Home' },
       children: [
-        {
-          path: '',
-          name: 'main_home',
-          component: MainHome
-        },
-        {
-          path: '/about',
-          name: 'main_about',
-          component: MainAbout
-          // meta: { bcLinkText: 'About' }
-        },
+        ...HomeRouter,
         {
           path: '/examples',
           name: 'project_examples',
