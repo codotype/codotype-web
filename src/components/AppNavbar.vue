@@ -1,4 +1,4 @@
-<template>
+b<template>
   <!-- <b-navbar toggleable="md" type="dark" variant="dark" fixed="top"> -->
   <b-navbar toggleable="md" type="dark" variant="dark">
     <b-navbar-brand href="#/">
@@ -14,7 +14,7 @@
 
         <!-- Public links -->
         <b-nav-item href="#/projects">Apps</b-nav-item>
-        <b-nav-item href="#/examples">Example Apps</b-nav-item>
+        <!-- <b-nav-item href="#/examples">Example Apps</b-nav-item> -->
         <b-nav-item href="#/generators">Generators</b-nav-item>
         <b-nav-item href="#/generator_new">New Generator</b-nav-item>
         <!-- <b-nav-item class="d-none d-sm-none d-md-block" href="#/projects"> -->
@@ -53,7 +53,7 @@ export default {
     .navbar-brand
       letter-spacing: .25rem !important
       font-family: sans-serif
-      text-transform: uppercase
+      // text-transform: uppercase
       font-weight: 100
       letter-spacing: 0.1rem
 

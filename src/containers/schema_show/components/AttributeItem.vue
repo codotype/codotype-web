@@ -3,8 +3,9 @@
   <li class="list-group-item">
     <div class="row d-flex align-items-center">
 
+      <!-- Handle for re-ordering attributes -->
       <div class="col-lg-1 text-left d-flex align-items-center">
-        <i class="fa fa-lg fa-fw fa-bars mr-3"></i>
+        <i class="fa fa-lg fa-fw fa-bars mr-3" v-if="!item.locked"></i>
       </div>
 
       <!-- TODO - get rid of hardcoded icons -->
@@ -79,16 +80,9 @@
         <b-modal :id="'modal_' + item._id"
           :title="'Remove Attribute'"
           @ok="remove(item)"
-          header-bg-variant='dark'
-          header-text-variant='light'
-          body-bg-variant='dark'
-          body-text-variant='light'
-          footer-bg-variant='danger'
-          footer-text-variant='light'
           ok-variant='danger'
           ok-title='DESTROY'
           cancel-title='Cancel'
-          cancel-variant='dark'
         >
           <p class="text-left">Are you sure you want to destroy the {{ item.label }} attribute?</p>
         </b-modal>
