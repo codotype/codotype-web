@@ -2,17 +2,12 @@
 Codotype Web Client Application
 
 TODOs
-- Presentation slides
-- Finish client application
-  - Form validations
-  - Fix routing bugs (can do with Vuex if needed)
-  - Chop up attribute form into smaller, step-by-step user flow
-  - RecordForm validations & success/error
+- Form validations
+- Fix routing bugs (can do with Vuex if needed)
 
 -------
 
 CORE FEATURES FIRST
-
 TODO - gradient for SOLID buttons, navs
 TODO - Add SEED admin user
 

@@ -6,7 +6,7 @@ import project from './project'
 import schema from './schema'
 import attribute from './attribute'
 import record from './record'
-import notification from './notification'
+import notification from '@/modules/notification/store'
 import generator from './generator'
 import addon from './addon'
 
@@ -14,8 +14,6 @@ import addon from './addon'
 // TODO - should this be done elsewhere?
 Vue.use(Vuex)
 
-// A Vuex instance is created by combining the state, mutations, actions,
-// and getters.
 export default new Vuex.Store({
   modules: {
     notification,

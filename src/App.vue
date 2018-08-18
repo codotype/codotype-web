@@ -1,7 +1,7 @@
 
 <template>
   <div id="app">
-    <AppNavbar/>
+    <Navbar/>
     <Notification/>
     <!-- <AppBreadcrumbs/> -->
     <br>
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import AppNavbar from '@/components/AppNavbar'
+import Navbar from '@/components/Navbar'
 import AppBreadcrumbs from '@/containers/app_breadcrumbs'
 import AppFooter from '@/components/AppFooter'
 import Notification from '@/containers/app_notification'
@@ -21,7 +21,7 @@ export default {
 
   // Top-Level Application Components
   components: {
-    AppNavbar,
+    Navbar,
     AppBreadcrumbs,
     AppFooter,
     Notification
