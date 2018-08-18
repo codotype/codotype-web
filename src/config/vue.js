@@ -5,6 +5,7 @@ import BootstrapVue from 'bootstrap-vue'
 import VueGoodTable from 'vue-good-table'
 
 // Bootstraps VueGoodTable component
+// TODO - remove VueGoodTable, unused
 Vue.use(VueGoodTable)
 
 // bootstrap-vue
