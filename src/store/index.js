@@ -8,7 +8,7 @@ import attribute from '@/modules/attribute/store'
 import record from '@/modules/record/store'
 import notification from '@/modules/notification/store'
 import generator from '@/modules/generator/store'
-import addon from './addon'
+import addon from '@/modules/addon/store'
 
 // Vuex Initialization
 // TODO - should this be done elsewhere?
