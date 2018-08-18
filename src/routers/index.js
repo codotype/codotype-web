@@ -6,7 +6,7 @@ import HomeRouter from '@/modules/home/router'
 // Project Containers
 import ProjectList from '@/containers/project_list'
 import ProjectShow from '@/containers/project_show'
-import ProjectSeeds from '@/containers/project_show/components/ProjectSeeds'
+// import ProjectSeeds from '@/containers/project_show/components/ProjectSeeds'
 import ProjectExport from '@/containers/project_show/components/ProjectExport'
 // import ProjectGenerate from '@/containers/project_generate'
 import ProjectGenerate from '@/containers/project_generate/builder'
@@ -15,11 +15,6 @@ import ProjectExamples from '@/containers/project_examples'
 // Schema Containers
 import SchemaList from '@/containers/schema_list'
 import SchemaShow from '@/containers/schema_show'
-
-// Record Containers
-import RecordList from '@/containers/record_list'
-import RecordNew from '@/containers/record_new'
-import RecordEdit from '@/containers/record_edit'
 
 // Generator Containers
 import GeneratorList from '@/containers/generator_list'
@@ -106,47 +101,6 @@ export default new Router({
                       props: true,
                       component: SchemaShow,
                       meta: { bcGetter: 'schema/selectedLabel' }
-                    }
-                  ]
-                },
-                {
-                  path: '/projects/:project_id/seeds',
-                  component: RouterView,
-                  meta: { bcLinkText: 'Seed Data' },
-                  children: [
-                    {
-                      path: '',
-                      component: ProjectSeeds
-                    },
-                    {
-                      path: '/projects/:project_id/seeds/:schema_id',
-                      component: RouterView,
-                      meta: { bcGetter: 'schema/selectedLabel' },
-                      children: [
-                        {
-                          path: '',
-                          props: true,
-                          component: RecordList
-                        },
-                        {
-                          path: '/projects/:project_id/seeds/:schema_id/new',
-                          component: RecordNew,
-                          props: true,
-                          meta: { bcText: 'New' }
-                        },
-                        {
-                          path: '/projects/:project_id/seeds/:schema_id/records/:record_id',
-                          component: RecordNew, // TODO - Record SHOW
-                          props: true,
-                          meta: { bcText: 'Show' }
-                        },
-                        {
-                          path: '/projects/:project_id/seeds/:schema_id/records/:record_id/edit',
-                          component: RecordEdit,
-                          props: true,
-                          meta: { bcText: 'Edit' }
-                        }
-                      ]
                     }
                   ]
                 }
