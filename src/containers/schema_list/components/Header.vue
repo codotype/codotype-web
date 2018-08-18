@@ -4,8 +4,14 @@
     <div class="row">
       <div class="col-lg-12">
 
+        <!-- <div id="v-step-0">A DOM element on your page. The first step will pop on this element because its ID is 'v-step-0'.</div> -->
+        <!-- <div class="v-step-1">A DOM element on your page. The second step will pop on this element because its ID is 'v-step-1'.</div> -->
+        <!-- <div data-v-step="2">A DOM element on your page. The third and final step will pop on this element because its ID is 'v-step-2'.</div> -->
+
+        <v-tour name="myTour" :steps="steps"></v-tour>
+
         <!-- TODO - this button should trigger a vue-tour routine -->
-        <button class="btn btn-link btn-lg">
+        <button class="btn btn-link btn-lg" @click="startTour()">
           <i class="fa fa-fw fa-question-circle"></i>
         </button>
 
@@ -38,6 +44,36 @@ import { mapGetters } from 'vuex'
 export default {
   computed: mapGetters({
     project: 'project/selectedModel'
-  })
+  }),
+  // TODO - move tour data into Vuex store
+  data () {
+    return {
+      steps: [
+        {
+          target: '#new-schema-button',  // We're using document.querySelector() under the hood
+          content: `Discover <strong>Vue Tour</strong>!`,
+          params: {
+            placement: 'top'
+          }
+        }
+        // {
+        //   target: '.v-step-1',
+        //   content: 'An awesome plugin made with Vue.js!'
+        // },
+        // {
+        //   target: '[data-v-step="2"]',
+        //   content: 'Try it, you\'ll love it!<br>You can put HTML in the steps and completely customize the DOM to suit your needs.',
+        //   params: {
+        //     placement: 'top'
+        //   }
+        // }
+      ]
+    }
+  },
+  methods: {
+    startTour () {
+      return this.$tours['myTour'].start()
+    }
+  }
 }
 </script>
