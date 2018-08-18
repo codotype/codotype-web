@@ -356,11 +356,7 @@ function inflateMeta(label) {
     class_name_plural: pluralize(classify(titleize(label)))
   }
 }
-```
 
-inflates a relation object with all the additional metadata it needs at runtime
-
-```js
 function inflateRelation({ schemas, relation }) {
   // Clones the base attributes from the relation
   let inflated = { ...relation }
@@ -373,5 +369,18 @@ function inflateRelation({ schemas, relation }) {
 
   // Returns the inflated relation
   return inflated;
+}
+
+function inflateSchema({ schema, schemas }) {
+  let inflated = { ...schema }
+  inflated.relations = schema.relations.map(relation => inflateRelation({ schemas, relation }))
+  inflated.attributes = schema.attributes.map(attribute => attribute)
+  return inflated
+}
+
+// object that gets passed into the generator
+const config = {
+  id: '...',
+  schemas: schemas.map(schema => inflateSchema({ schema, schemas }))
 }
 ```
