@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 
 import project from './project'
 import schema from './schema'
-import attribute from './attribute'
+import attribute from '@/modules/attribute/store'
 import record from './record'
 import notification from '@/modules/notification/store'
 import generator from './generator'

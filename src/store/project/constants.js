@@ -3,26 +3,7 @@ export const DEFAULT_PROJECT = {
   label: 'Codotype Project',
   identifier: 'codotype_project',
   schemas: [],
-  seeds: [],
-  stack: {
-    server: {
-      id: 'expressjs'
-    },
-    client: {
-      id: 'vuejs'
-    },
-    database: {
-      id: 'mongodb'
-    },
-    auth: {
-      id: 'email'
-    },
-    ui_framework: {
-      id: 'bootstrap'
-    },
-    features: [],
-    deployments: []
-  }
+  seeds: [] // QUESTION - remove seeds?
 }
 
 export const DEFAULT_USER_SCHEMA = {

@@ -3,8 +3,7 @@ import { COLLECTION_MUTATIONS, SELECT_MODEL_MUTATIONS } from '@/store/lib/mixins
 
 // // // //
 
-// Project Module mutations
-const mutations = {
+export default {
   ...COLLECTION_MUTATIONS,
   ...SELECT_MODEL_MUTATIONS,
   // TODO - move into schema module
@@ -29,7 +28,3 @@ const mutations = {
     state.newModel = newModel
   }
 }
-
-// // // //
-
-export default mutations
