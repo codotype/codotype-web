@@ -11,27 +11,22 @@
 
       <div class="col-lg-4 border-right">
 
-        <!-- <p class="lead mb-0">Models</p> -->
-        <!-- <small class='text-muted'>Define the models for the Library App</small> -->
+        <!-- New Schema Modal -->
+        <b-modal id="new-schema" :title="'New Model'" @ok="submit()" ok-title='Create' cancel-title='Cancel' >
+          <SchemaForm :schema="newModel" />
+        </b-modal>
 
-        <!-- <hr> -->
-
-        <!-- New Schema -->
-        <!-- <b-modal id="new-schema" :title="'New Model'" @ok="submit()" ok-title='Create' cancel-title='Cancel' > -->
-          <!-- <SchemaForm :schema="newModel" /> -->
-        <!-- </b-modal> -->
-
-        <!-- <button id="new-model-button" class="btn btn-primary btn-block btn-lg" v-b-modal="'new-schema'"> -->
-          <!-- <i class="fa fa-fw fa-plus"></i> -->
-          <!-- Add Model -->
-        <!-- </button> -->
+        <button id="new-model-button" class="btn btn-primary btn-block btn-lg" v-b-modal="'new-schema'">
+          <i class="fa fa-fw fa-plus"></i>
+          Add Model
+        </button>
 
         <SchemaList id="model-list" />
 
       </div>
 
-      <div class="col-lg-8" id="model-detail">
-        <SchemaDetail />
+      <div class="col-lg-8">
+        <SchemaDetail id="model-detail" />
       </div>
     </div>
   </div>

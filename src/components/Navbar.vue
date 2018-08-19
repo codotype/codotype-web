@@ -22,14 +22,24 @@ b<template>
 
       <b-navbar-nav class="mr-0">
 
+        <b-nav-item href="#/about">
+          <i class="fa fa-fw fa-question-circle-o"></i>
+          About
+        </b-nav-item>
+
         <b-nav-item target="_blank" href="https://github.com/codotype">
           <!-- <i class="fa fa-fw fa-graduation-cap"></i> -->
           <i class="fa fa-fw fa-book"></i>
           Documentation
         </b-nav-item>
 
+        <!-- <b-nav-item target="_blank" href="https://github.com/codotype"> -->
+          <!-- <i class="fa fa-fw fa-dollar"></i> -->
+          <!-- Donate -->
+        <!-- </b-nav-item> -->
+
         <b-nav-item target="_blank" href="https://github.com/codotype">
-          <i class="fa fa-lg fa-fw fa-github-alt"></i>
+          <i class="fa fa-lg fa-fw fa-github-alt text-light"></i>
           <!-- GitHub -->
         </b-nav-item>
 
@@ -37,10 +47,6 @@ b<template>
           <i class="fa fa-lg fa-fw fa-twitter text-primary"></i>
         </b-nav-item>
 
-        <b-nav-item href="#/about">
-          <i class="fa fa-fw fa-question-circle-o"></i>
-          About
-        </b-nav-item>
       </b-navbar-nav>
 
     </b-collapse>

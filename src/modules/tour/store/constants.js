@@ -1,5 +1,21 @@
 export const APP_EDITOR_TOUR = [
   {
+    element: '#project-header',
+    popover: {
+      title: 'App',
+      description: 'An app encapsulates a high-level representation of data',
+      position: 'right'
+    }
+  },
+  {
+    element: '#project-edit-button',
+    popover: {
+      title: 'Edit App',
+      description: 'Click here to edit your app\'s name',
+      position: 'bottom'
+    }
+  },
+  {
     element: '#model-list',
     popover: {
       title: 'Models',
@@ -27,7 +43,7 @@ export const APP_EDITOR_TOUR = [
     element: '#attribute-detail',
     popover: {
       title: 'Attributes',
-      description: 'Attributes describe individual fields belongong to a single Model.',
+      description: 'Attributes describe individual fields belonging to a single Model.',
       position: 'left'
     }
   },
@@ -35,7 +51,7 @@ export const APP_EDITOR_TOUR = [
     element: '#add-attribute-button',
     popover: {
       title: 'Add Attribute',
-      description: 'Attributes describe individual fields belongong to a single Model.',
+      description: 'Click here to add a new Attribute',
       position: 'left'
     }
   },
@@ -51,12 +67,12 @@ export const APP_EDITOR_TOUR = [
     element: '#add-relation-button',
     popover: {
       title: 'Add Relation',
-      description: 'Relations describe the association between two different models.',
+      description: 'Click here to add a new Relation',
       position: 'left'
     }
   },
   {
-    element: '#create-post',
+    element: '#generate-project-button',
     popover: {
       title: 'Generate',
       description: 'Click here to generate code with this app',

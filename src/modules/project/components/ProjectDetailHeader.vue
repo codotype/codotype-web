@@ -4,8 +4,10 @@
 
     <div class="col-lg-7">
       <h4 class="mb-0">
-        {{ project.label + ' App' }}
-        <button class="btn btn-link py-0" v-b-tooltip.hover.right title='Edit App Name'>
+        <span id="project-header">
+          {{ project.label + ' App' }}
+        </span>
+        <button class="btn btn-link py-0" id="project-edit-button" v-b-tooltip.hover.right title='Edit App Name'>
           <i class="fa fa-pencil"></i>
         </button>
       </h4>
@@ -20,7 +22,7 @@
 
       <HelpButton :tour="tourSteps"/>
 
-      <a class="btn btn-success btn-lg" id='create-post' :href="'#/projects/' + project._id + '/generate'">
+      <a class="btn btn-success btn-lg" id='generate-project-button' :href="'#/projects/' + project._id + '/generate'">
         <i class="fa fa-fw fa-cogs"></i>
         Generate Code
       </a>
