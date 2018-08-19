@@ -15,6 +15,14 @@ export default {
       state.selectedModel.attributes = collection
     }
   },
+  relations (state, { schema_id, collection }) {
+    if (schema_id) {
+      let schema = _.find(state.collection, { _id: schema_id })
+      schema.relations = collection
+    } else {
+      state.selectedModel.relations = collection
+    }
+  },
   // REMOVE BELOW THIS LINE
   persist (state, { schema }) {
     if (schema._id) {

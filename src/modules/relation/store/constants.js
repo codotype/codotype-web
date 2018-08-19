@@ -1,12 +1,11 @@
 
-// Attribute constants
-export const DEFAULT_ATTRIBUTE = {
+// Relation constants
+export const DEFAULT_RELATION = {
+  id: null,
   order: 0,
-  label: '',
-  identifier: '',
-  help: '',
+  type: 'OWNS_MANY', // Moved from datatypeOptions.relationType
   required: false,
-  unique: false,
-  datatype: '',
-  datatypeOptions: {}
+  related_schema_id: '',
+  reverse_relation_id: '',
+  as: ''
 }

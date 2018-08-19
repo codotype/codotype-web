@@ -5,6 +5,7 @@ import Vuex from 'vuex'
 import project from '@/modules/project/store'
 import schema from '@/modules/schema/store'
 import attribute from '@/modules/attribute/store'
+import relation from '@/modules/relation/store'
 import record from '@/modules/record/store'
 import notification from '@/modules/notification/store'
 import generator from '@/modules/generator/store'
@@ -21,6 +22,7 @@ export default new Vuex.Store({
     project,
     schema,
     attribute,
+    relation,
     record,
     generator,
     addon,

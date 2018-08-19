@@ -5,7 +5,7 @@ import {
   EDIT_MODEL_GETTERS
 } from '@/store/lib/mixins'
 
-// Attribute Module Getters
+// Relation Module Getters
 export default {
   ...COLLECTION_GETTERS,
   ...SELECT_MODEL_GETTERS,

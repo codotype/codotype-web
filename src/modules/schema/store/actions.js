@@ -13,6 +13,7 @@ export default {
     let model = _.find(state.collection, { _id: model_id })
     commit('selectedModel', model)
     commit('attribute/collection', model.attributes, { root: true })
+    commit('relation/collection', model.relations, { root: true })
   },
   create ({ state, dispatch, commit }) {
     let model = _.cloneDeep(state.newModel)

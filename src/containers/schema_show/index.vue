@@ -42,6 +42,8 @@
     <!-- Attribute List -->
     <div class="col-lg-12">
       <AttributeList :schema='model' />
+      <br>
+      <RelationList :schema='model' />
     </div>
 
   </div>
@@ -50,6 +52,7 @@
 <!-- // // // //  -->
 
 <script>
+import RelationList from '@/modules/relation/components/RelationList'
 import AttributeList from './components/AttributeList'
 import AttributeForm from './components/AttributeForm'
 import { mapGetters, mapActions } from 'vuex'
@@ -57,6 +60,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   components: {
     AttributeList,
+    RelationList,
     AttributeForm
   },
   computed: mapGetters({

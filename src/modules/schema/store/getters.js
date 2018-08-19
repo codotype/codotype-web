@@ -21,6 +21,9 @@ export default {
   selectedAttribute: state => {
     return state.selectedAttribute
   },
+  selectedRelation: state => {
+    return state.selectedRelation
+  },
   editModel: state => {
     return state.editModel
   }

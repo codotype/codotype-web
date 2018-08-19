@@ -1,19 +1,19 @@
 import _ from 'lodash'
 import ObjectID from 'bson-objectid'
-import { DEFAULT_ATTRIBUTE } from './constants'
+import { DEFAULT_RELATION } from './constants'
 import { SELECT_MODEL_ACTIONS, EDIT_MODEL_ACTIONS } from '@/store/lib/mixins'
 
-// Attribute module actions
+// Relation module actions
 export default {
   ...SELECT_MODEL_ACTIONS,
   ...EDIT_MODEL_ACTIONS,
   resetNewModel ({ state, commit }) {
-    let newModel = _.cloneDeep(DEFAULT_ATTRIBUTE)
+    let newModel = _.cloneDeep(DEFAULT_RELATION)
     newModel.order = state.collection.length
     return commit('newModel', newModel)
   },
   create ({ state, commit, dispatch, rootGetters }) {
-    // Isolates current Attribute model and the schema to which the attribute belongs
+    // Isolates current Relation model and the schema to which the attribute belongs
     let model = _.cloneDeep(state.newModel)
     let modelSchema = rootGetters['schema/selectedModel']
 
@@ -40,7 +40,7 @@ export default {
 
         // Defines inverse relation on relatedSchema
         // INVERSE OF BELONGS_TO === OWNS_MANY
-        let reverseRelation = _.cloneDeep(DEFAULT_ATTRIBUTE)
+        let reverseRelation = _.cloneDeep(DEFAULT_RELATION)
         reverseRelation._id = ObjectID().toString()
         reverseRelation.datatype = 'RELATION'
         reverseRelation.locked = true
@@ -64,7 +64,7 @@ export default {
         // Adds the reverse relation to the relatedSchema
         let relatedSchemaAttrs = relatedSchema.attributes
         relatedSchemaAttrs.push(reverseRelation)
-        commit('schema/attributes', { schema_id: relatedSchemaId, collection: relatedSchemaAttrs }, { root: true })
+        commit('schema/relations', { schema_id: relatedSchemaId, collection: relatedSchemaAttrs }, { root: true })
       }
 
       // Handles MANY_TO_ONE
@@ -80,7 +80,7 @@ export default {
 
         // Defines inverse relation on relatedSchema
         // INVERSE OF BELONGS_TO === OWNS_MANY
-        let reverseRelation = _.cloneDeep(DEFAULT_ATTRIBUTE)
+        let reverseRelation = _.cloneDeep(DEFAULT_RELATION)
         reverseRelation._id = ObjectID().toString()
         reverseRelation.datatype = 'RELATION'
         reverseRelation.locked = true
@@ -104,7 +104,7 @@ export default {
         // Adds the reverse relation to the relatedSchema
         let relatedSchemaAttrs = relatedSchema.attributes
         relatedSchemaAttrs.push(reverseRelation)
-        commit('schema/attributes', { schema_id: relatedSchemaId, collection: relatedSchemaAttrs }, { root: true })
+        commit('schema/relations', { schema_id: relatedSchemaId, collection: relatedSchemaAttrs }, { root: true })
       }
 
       // Handles ONE_TO_MANY
@@ -122,7 +122,7 @@ export default {
 
         // Defines inverse relation on relatedSchema
         // INVERSE OF BELONGS_TO === OWNS_MANY
-        let reverseRelation = _.cloneDeep(DEFAULT_ATTRIBUTE)
+        let reverseRelation = _.cloneDeep(DEFAULT_RELATION)
         reverseRelation._id = ObjectID().toString()
         reverseRelation.datatype = 'RELATION'
         reverseRelation.locked = true
@@ -146,7 +146,7 @@ export default {
         // Adds the reverse relation to the relatedSchema
         let relatedSchemaAttrs = relatedSchema.attributes
         relatedSchemaAttrs.push(reverseRelation)
-        commit('schema/attributes', { schema_id: relatedSchemaId, collection: relatedSchemaAttrs }, { root: true })
+        commit('schema/relations', { schema_id: relatedSchemaId, collection: relatedSchemaAttrs }, { root: true })
       }
 
       // Handles MANY_TO_MANY
@@ -165,7 +165,7 @@ export default {
 
         // Defines inverse relation on relatedSchema
         // INVERSE OF HAS_MANY === HAS_MANY
-        let reverseRelation = _.cloneDeep(DEFAULT_ATTRIBUTE)
+        let reverseRelation = _.cloneDeep(DEFAULT_RELATION)
         reverseRelation._id = ObjectID().toString()
         reverseRelation.datatype = 'RELATION'
         reverseRelation.locked = true
@@ -189,7 +189,7 @@ export default {
         // Adds the reverse relation to the relatedSchema
         let relatedSchemaAttrs = relatedSchema.attributes
         relatedSchemaAttrs.push(reverseRelation)
-        commit('schema/attributes', { schema_id: relatedSchemaId, collection: relatedSchemaAttrs }, { root: true })
+        commit('schema/relations', { schema_id: relatedSchemaId, collection: relatedSchemaAttrs }, { root: true })
       }
     }
 
@@ -197,7 +197,7 @@ export default {
     let collection = state.collection
     collection.push(model)
     commit('collection', collection)
-    commit('schema/attributes', { collection }, { root: true })
+    commit('schema/relations', { collection }, { root: true })
     dispatch('resetNewModel')
   },
   update ({ state, commit, dispatch }) {
@@ -212,7 +212,7 @@ export default {
     })
 
     commit('collection', collection)
-    commit('schema/attributes', { collection }, { root: true })
+    commit('schema/relations', { collection }, { root: true })
     dispatch('clearEditModel')
   },
   destroy ({ state, commit, rootGetters }, model) {
@@ -225,19 +225,19 @@ export default {
       // Removes the relation from the current model
       let collection = state.collection.filter((a) => { return a._id !== attrId })
       commit('collection', collection)
-      commit('schema/attributes', { collection: collection }, { root: true })
+      commit('schema/relations', { collection: collection }, { root: true })
 
       // Finds relatedSchema
       let relatedSchema = _.find(rootGetters['schema/collection'], { _id: relatedSchemaId })
 
       // Removes the reverse relation from the related model
       let relatedSchemaAttrs = relatedSchema.attributes.filter((a) => { return a._id !== relatedAttrId })
-      commit('schema/attributes', { schema_id: relatedSchemaId, collection: relatedSchemaAttrs }, { root: true })
+      commit('schema/relations', { schema_id: relatedSchemaId, collection: relatedSchemaAttrs }, { root: true })
       console.log('UPDATED SCHEMA')
     } else {
       let collection = _.filter(state.collection, (m) => { return m._id !== model._id })
       commit('collection', collection)
-      commit('schema/attributes', { collection }, { root: true })
+      commit('schema/relations', { collection }, { root: true })
     }
   }
 }

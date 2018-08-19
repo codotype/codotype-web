@@ -8,6 +8,7 @@ export const DEFAULT_SCHEMA = {
   identifier_plural: '',
   class_name: '',
   class_name_plural: '',
+  relations: [],
   attributes: [
     {
       order: 0,

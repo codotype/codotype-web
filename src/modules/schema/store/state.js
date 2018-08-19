@@ -6,5 +6,6 @@ export default {
   ...SELECT_MODEL_STATE,
   ...NEW_MODEL_STATE,
   selectedAttribute: null,
+  selectedRelation: null,
   editModel: {}
 }

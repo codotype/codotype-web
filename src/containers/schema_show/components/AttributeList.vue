@@ -2,59 +2,57 @@
 <template>
   <div class="row">
 
-    <!-- Bootstrap Modal Component -->
+    <!-- Edit Attribute Form -->
     <b-modal :id="'edit_attribute'"
       size="lg"
       :title="'Edit Attribute'"
-      ref='editModal'
-      @ok="updateAttr()"
+      ref='editAttributeModal'
+      @ok="updateAttribute()"
       ok-title='Update'
       cancel-title='Cancel'
     >
       <AttributeForm :schema="schema" :model="editAttribute" />
     </b-modal>
 
+    <!-- New Attribute Form -->
+    <b-modal :id="'new-attribute'"
+      size="lg"
+      ref="newAttributeModal"
+      :title="'New Attribute'"
+      @ok="createAttribute()"
+      ok-title='Create'
+      cancel-title='Cancel'
+    >
+      <AttributeForm :schema="schema" :model="newAttribute" />
+    </b-modal>
+
      <div class="col-lg-12">
       <div class="card" id='attribute-detail'>
+
+        <!-- Attribute card header -->
         <div class="card-header d-flex justify-content-between align-items-center">
           <strong style='font-weight: 600;'>Attributes</strong>
-          <button class="btn btn-sm btn-primary" id="add-attribute-button">
+          <button class="btn btn-sm btn-primary" id="add-attribute-button" @click="showNewAttributeForm()">
             <i class="fa fa-plus"></i>
             Add Attribute
           </button>
         </div>
+
+        <!-- Draggable Attribute List -->
         <draggable class='list-group list-group-flush' v-model='attributes' :options="sortableOptions" v-if="attributes.length">
           <AttributeItem v-for="each in attributes" :item="each" v-if="each.datatype !== 'RELATION'" :key="each._id" :schema="schema" :edit="selectEditAttribute" />
         </draggable>
-        <!-- Empty Attribute view -->
-        <li class="card card-body text-center bg-transparent border-warning text-warning" v-else>
-          <i class="fa fa-lg fa-warning"></i>
-          <!-- TODO - Click to add your first Attribute -->
-          <p class="lead mb-0 mt-2">
-          Please create at least one attribute
-          </p>
-        </li>
-      </div>
-      <br>
-      <div class="card" id='relation-detail'>
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <!-- <p class='lead mb-0'>Relations</p> -->
-          <strong style='font-weight: 600;'>Relations</strong>
-          <button class="btn btn-sm btn-primary" id="add-relation-button">
-            <i class="fa fa-plus"></i>
-            Add Relation
-          </button>
-        </div>
-        <draggable class='list-group list-group-flush' v-model='attributes' :options="sortableOptions" v-if="attributes.length">
-          <AttributeItem v-for="each in attributes" :item="each" v-if="each.datatype === 'RELATION'" :key="each._id" :schema="schema" :edit="selectEditAttribute" />
-        </draggable>
-        <!-- <ul class="list-group list-group-flush"> -->
-          <!-- <li class="list-group-item list-group-item-info text-center"> -->
-            <!-- <i class="fa fa-lg fa-warning"></i> -->
-            <!-- TODO - Click to add your first Attribute -->
-            <!-- <a href="#">Define relations</a> to stitch your models together -->
-          <!-- </li> -->
-        <!-- </ul> -->
+
+        <!-- Empty Relation view -->
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item text-center bg-transparent border-warning text-warning" v-if="!attributes.length">
+            <i class="fa fa-lg fa-warning"></i>
+            <p class="lead mb-0 mt-2">
+              <!-- TODO - Click to add your first Attribute -->
+              Please create at least one attribute
+            </p>
+          </li>
+        </ul>
 
       </div>
 
@@ -79,18 +77,25 @@ export default {
   },
   methods: {
     ...mapActions({
-      updateAttr: 'attribute/update',
-      selectEditAttr: 'attribute/selectEditModel'
+      createAttribute: 'attribute/create',
+      updateAttribute: 'attribute/update',
+      selectEditAttr: 'attribute/selectEditModel',
+      resetNewAttribute: 'attribute/resetNewModel'
     }),
+    showNewAttributeForm () {
+      this.resetNewAttribute()
+      this.$refs.newAttributeModal.show()
+    },
     selectEditAttribute (attr) {
       this.selectEditAttr(attr)
-      this.$refs.editModal.show()
+      this.$refs.editAttributeModal.show()
     }
   },
   computed: {
     ...mapGetters({
       schema: 'schema/selectedModel',
-      editAttribute: 'attribute/editModel'
+      editAttribute: 'attribute/editModel',
+      newAttribute: 'attribute/newModel'
     }),
     sortableOptions () {
       return {
