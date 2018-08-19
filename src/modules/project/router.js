@@ -1,7 +1,7 @@
 // Project Containers
 import ProjectList from './pages/list'
 import ProjectShow from './pages/show'
-import ProjectGenerate from './pages/generate'
+import ProjectGenerators from './pages/generators'
 import ProjectExamples from './pages/examples'
 
 export default [
@@ -20,7 +20,7 @@ export default [
   },
   {
     path: '/projects/:project_id/generate',
-    component: ProjectGenerate,
+    component: ProjectGenerators,
     props: true
   }
 ]

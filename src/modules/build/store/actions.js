@@ -6,7 +6,6 @@ import { SELECT_MODEL_ACTIONS } from '@/store/lib/mixins'
 
 // TODO - use this instead?
 // import { underscored } from 'underscore.string'
-
 const underscored = require('underscore.string/underscored')
 const DownloadFile = require('downloadjs')
 

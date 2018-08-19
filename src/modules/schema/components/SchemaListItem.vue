@@ -3,7 +3,7 @@
 
     <div class="row align-items-center">
       <div class="col-md-8">
-          {{ schema.label }}
+        {{ schema.label }}
       </div>
 
       <div class="col-md-4 text-right">
@@ -57,7 +57,10 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
+  li.list-group-item
+    cursor: pointer
+
   a.row.align-items-center
     text-decoration: none
 </style>

@@ -5,6 +5,11 @@
         <div class="card-title mb-0">
           <a :href="'#/generators/' + model.id">{{ model.label }}</a>
         </div>
+
+        <!-- TODO - this is sloppy, fix at some point -->
+        <button class="btn btn-primary pull-right" v-if="selectMethod" @click="selectMethod(model)">
+          SELECT
+        </button>
       </div>
       <div class="col-lg-12">
         <small>{{ model.description }}</small>
@@ -36,7 +41,7 @@
 import MoreInfoLink from '@/components/MoreInfoLink'
 export default {
   name: 'GeneratorListItem',
-  props: ['model'],
+  props: ['model', 'selectMethod'],
   components: {
     MoreInfoLink
   }
