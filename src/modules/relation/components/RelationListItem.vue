@@ -1,4 +1,3 @@
-
 <template>
   <li class="list-group-item">
     <div class="row d-flex align-items-center">
@@ -93,7 +92,7 @@
 
 <!-- // // // //  -->
 <script>
-import AttributeLabel from '@/components/schema/AttributeLabel'
+import AttributeLabel from '@/modules/attribute/components/AttributeLabel'
 import { mapActions } from 'vuex'
 
 export default {

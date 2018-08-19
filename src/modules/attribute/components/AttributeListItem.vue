@@ -1,4 +1,3 @@
-
 <template>
   <li class="list-group-item">
     <div class="row d-flex align-items-center">
