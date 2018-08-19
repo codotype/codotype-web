@@ -18,14 +18,14 @@
 
       <HelpButton :tour="tourSteps"/>
 
-      <a class="btn btn-success btn-lg" id='create-post' href="#/generators">
+      <a class="btn btn-success btn-lg" id='create-post' :href="'#/projects/' + project._id + '/generate'">
         <i class="fa fa-fw fa-cogs"></i>
         Generate Code
       </a>
 
     </div>
 
-    <div class="col-lg-12 pb-1" v-if='help'>
+    <div class="col-lg-12 pb-1">
       <small class="text-muted">
         {{ 'Define data modeled by the ' + project.label + ' app.' }}
       </small>

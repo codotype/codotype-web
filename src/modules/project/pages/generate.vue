@@ -1,4 +1,4 @@
-
+<!-- TODO - this goes into the 'Build' module -->
 <template>
   <div class="row mt-2">
     <div class="col-lg-12">
@@ -73,17 +73,17 @@
                         <div class="row">
                           <div class="col-lg-3">
                             <ul class="list-group list-group-flush">
-                              <li class="list-group-item list-group-item-action" v-for="m in opts.client[1].addons" :title="m.label_plural" :key="m.id">
+                              <li class="list-group-item list-group-item-action" v-for="m in opts.client[3].addons" :title="m.label_plural" :key="m.id">
                                 {{ m.label_plural }}
                               </li>
                             </ul>
                           </div>
                           <div class="col-lg-9">
                             <span class='d-flex flex-row align-items-center'>
-                              <p class="lead mb-0 mr-3">{{opts.client[1].addons[0].label_plural}}</p>
+                              <p class="lead mb-0 mr-3">{{opts.client[3].addons[0].label_plural}}</p>
                               <MoreInfoLink url="https://codotype.github.io" />
                             </span>
-                            <small>{{opts.client[1].addons[0].description}}</small>
+                            <small>{{opts.client[3].addons[0].description}}</small>
                             <ul class="list-group list-group-group-flush">
                               <!-- <li class="list-group-item" v-for="a in m.attributes"> -->
                                 <!-- {{ a.label }} || {{ a.datatype }} -->
@@ -91,11 +91,11 @@
 
                               <li class="list-group-item list-group-item-action list-group-item-primary">
                                 <i class="fa fa-plus"></i>
-                                New {{ opts.client[1].addons[0].label }}
+                                New {{ opts.client[3].addons[0].label }}
                               </li>
 
-                              <li class="list-group-item" v-for="x in opts.client[1].generator_model_data[opts.client[1].addons[0].identifier_plural]">
-                                <strong>{{opts.client[1].addons[0].attributes[0].label}}:</strong> {{x[opts.client[1].addons[0].attributes[0].identifier]}}
+                              <li class="list-group-item" v-for="x in opts.client[3].generator_model_data[opts.client[3].addons[0].identifier_plural]">
+                                <strong>{{opts.client[3].addons[0].attributes[0].label}}:</strong> {{x[opts.client[3].addons[0].attributes[0].identifier]}}
                                 <div class="btn-group pull-right">
                                   <button class="btn btn-sm btn-outline-danger">
                                     <i class="fa fa-trash"></i>
@@ -110,7 +110,7 @@
                         </div>
 
                         <!-- TODO - abstract this tab's content into a separate component -->
-                        <b-tab v-for="m in opts.client[1].addons" :title="m.label_plural" :key="m.id">
+                        <b-tab v-for="m in opts.client[3].addons" :title="m.label_plural" :key="m.id">
                           <br>
                         </b-tab>
 
@@ -126,7 +126,7 @@
                       <!-- </span> -->
                       <!-- <small>Define values for generator-specific models</small> -->
 
-                      <!-- <div class="card" v-for="m in opts.client[1].addons"> -->
+                      <!-- <div class="card" v-for="m in opts.client[3].addons"> -->
                         <!-- <div class="card-header">{{m.label_plural}}</div> -->
                       <!-- </div> -->
                     <!-- </div> -->
