@@ -31,7 +31,7 @@
         <!-- OWNS_MANY -->
         <span class="badge" v-if="item.type === 'OWNS_MANY'">
           <i class="fa fa-link mr-2" v-b-tooltip.hover.left title='Relation'></i>
-          {{inflated.alias.label}}
+          {{inflated.alias.label_plural}}
           <span class="badge badge-light ml-2">one {{ schema.label }} to many {{ inflated.schema.label_plural }}</span>
         </span>
 
@@ -78,7 +78,7 @@
           ok-title='DESTROY'
           cancel-title='Cancel'
         >
-          <p class="text-left">Are you sure you want to destroy the {{ item.as }} relation?</p>
+          <p class="text-left">Are you sure you want to destroy the {{ inflated.alias.label }} relation?</p>
         </b-modal>
       </div>
 
