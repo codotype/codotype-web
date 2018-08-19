@@ -95,7 +95,7 @@
 
 <!-- // // // //  -->
 <script>
-import AttributeLabel from '@/components/schema/AttributeLabel'
+import AttributeLabel from '@/modules/attribute/components/AttributeLabel'
 import { mapActions } from 'vuex'
 
 export default {

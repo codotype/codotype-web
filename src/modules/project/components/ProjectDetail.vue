@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-lg-12">
-      <Header/>
+      <ProjectDetailHeader/>
     </div>
 
     <div class="col-lg-12">
@@ -34,7 +34,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import Header from './Header'
+import ProjectDetailHeader from './ProjectDetailHeader'
 import SchemaList from '@/modules/schema/components/SchemaList'
 import SchemaForm from '@/modules/schema/components/SchemaForm'
 import SchemaDetail from '@/modules/schema/components/SchemaDetail'
@@ -44,7 +44,7 @@ export default {
     title: 'Schemas'
   },
   components: {
-    Header,
+    ProjectDetailHeader,
     SchemaList,
     SchemaForm,
     SchemaDetail

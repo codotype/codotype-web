@@ -1,8 +1,8 @@
 // Project Containers
 import ProjectList from './pages/list'
-import ProjectShow from '@/containers/project_show'
+import ProjectShow from './pages/show'
 import ProjectExport from '@/containers/project_show/components/ProjectExport'
-import ProjectSchemas from '@/containers/project_show/components/ProjectSchemas'
+import ProjectDetail from '@/modules/project/components/ProjectDetail'
 import ProjectGenerate from '@/containers/project_generate/builder'
 // import ProjectGenerate from '@/containers/project_generate'
 // import ProjectSeeds from '@/containers/project_show/components/ProjectSeeds'
@@ -38,7 +38,7 @@ export default {
       children: [
         {
           path: '',
-          component: ProjectSchemas
+          component: ProjectDetail
         },
         {
           path: '/projects/:project_id/generate',
