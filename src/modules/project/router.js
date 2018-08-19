@@ -6,7 +6,7 @@ import ProjectSchemas from '@/containers/project_show/components/ProjectSchemas'
 import ProjectGenerate from '@/containers/project_generate/builder'
 // import ProjectGenerate from '@/containers/project_generate'
 // import ProjectSeeds from '@/containers/project_show/components/ProjectSeeds'
-// import ProjectExamples from '@/containers/project_examples'
+import ProjectExamples from '@/containers/project_examples'
 
 const RouterView = {
   template: '<router-view/>'
@@ -21,6 +21,11 @@ export default {
       path: '',
       name: 'list',
       component: ProjectList
+    },
+    {
+      path: '/projects/examples',
+      name: 'list',
+      component: ProjectExamples
     },
     {
       path: '/projects/:project_id',

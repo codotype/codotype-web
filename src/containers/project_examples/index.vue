@@ -23,7 +23,7 @@ z
     </div>
 
     <!-- Example Project List -->
-    <ListView :collection="collection"></ListView>
+    <ListView />
 
   </div>
 </template>
@@ -33,7 +33,6 @@ z
 <script>
 
 import ListView from './components/ExampleList.vue'
-import { mapGetters } from 'vuex'
 
 export default {
   name: 'example_list',
@@ -42,9 +41,6 @@ export default {
   },
   components: {
     ListView
-  },
-  computed: mapGetters({
-    collection: 'project/exampleCollection'
-  })
+  }
 }
 </script>

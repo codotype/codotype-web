@@ -10,7 +10,7 @@
           <div class="col-lg-3 text-info">
             <!-- project URL -->
             <p class="lead mb-0">
-              <a class='text-info' v-b-modal="'modal_' + project._id" href='#/examples'>{{project.label}}</a>
+              <a class='text-info' role='button' v-b-modal="'modal_' + project._id">{{project.label}}</a>
             </p>
           </div>
 
@@ -74,10 +74,12 @@
 
 <script>
 import _ from 'lodash'
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  props: ['collection'],
+  computed: mapGetters({
+    collection: 'project/exampleCollection'
+  }),
   methods: {
     ...mapActions({
       cloneExample: 'project/cloneExample'
