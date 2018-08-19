@@ -2,11 +2,10 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Meta from 'vue-meta'
 import BootstrapVue from 'bootstrap-vue'
-import VueGoodTable from 'vue-good-table'
-
-// Bootstraps VueGoodTable component
-// TODO - remove VueGoodTable, unused
-Vue.use(VueGoodTable)
+import VueGitHubButtons from 'vue-github-buttons'
+import 'vue-github-buttons/dist/vue-github-buttons.css'
+import 'driver.js/dist/driver.min.css'
+const SocialSharing = require('vue-social-sharing')
 
 // bootstrap-vue
 // Bootstrap components and directives
@@ -19,3 +18,6 @@ Vue.use(Meta)
 // vuex
 // State management library
 Vue.use(Vuex)
+
+Vue.use(SocialSharing)
+Vue.use(VueGitHubButtons)
