@@ -1,5 +1,5 @@
 // Project Containers
-import ProjectList from '@/containers/project_list'
+import ProjectList from './pages/list'
 import ProjectShow from '@/containers/project_show'
 import ProjectExport from '@/containers/project_show/components/ProjectExport'
 import ProjectSchemas from '@/containers/project_show/components/ProjectSchemas'

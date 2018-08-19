@@ -42,7 +42,7 @@
 
 <script>
 
-import ListView from './components/list'
+import ListView from '@/modules/project/components/ProjectList'
 import ProjectForm from '@/modules/project/components/ProjectForm'
 import HelpButton from '@/components/HelpButton'
 import { mapGetters, mapActions } from 'vuex'
