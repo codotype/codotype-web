@@ -4,31 +4,20 @@
     <div class="col-lg-12">
       <EditorHeader :title="model.label + ' Model'" :help="'Defines the attributes and relations that can be assigned to a single ' + model.label" >
 
-        <div class="row">
-          <div class="col-lg-12">
+        <button class='btn btn-sm btn-outline-danger' v-b-modal="'destroy-schema'"">
+          <i class="fa fa-fw fa-trash"></i>
+        </button>
 
-            <!-- <a :href="`#/projects/${project_id}/seeds/${model._id}`" class='btn btn-sm btn-outline-primary'> -->
-              <!-- <i class="fa fa-fw fa-leaf"></i> -->
-              <!-- Seed Data -->
-            <!-- </a> -->
-
-            <button class='btn btn-sm btn-outline-danger' v-b-modal="'destroy-schema'"">
-              <i class="fa fa-fw fa-trash"></i>
-            </button>
-
-            <!-- Destroy Schema Confirmation -->
-            <b-modal id="destroy-schema"
-              :title="'Destroy Model?'"
-              @ok="destroySchema(model)"
-              ok-title='DESTROY'
-              ok-variant='danger'
-              cancel-title='Cancel'
-            >
-              <p>Are you sure you want to destroy this Model?</p>
-            </b-modal>
-
-          </div>
-        </div>
+        <!-- Destroy Schema Confirmation -->
+        <b-modal id="destroy-schema"
+          :title="'Destroy Model?'"
+          @ok="destroySchema(model)"
+          ok-title='DESTROY'
+          ok-variant='danger'
+          cancel-title='Cancel'
+        >
+          <p>Are you sure you want to destroy this Model?</p>
+        </b-modal>
 
       </EditorHeader>
     </div>

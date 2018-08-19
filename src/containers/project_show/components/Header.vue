@@ -1,19 +1,37 @@
 
 <template>
-  <EditorHeader :title="project.label" :halp="'Define data modeled by the ' + project.label + ' app.'">
-    <div class="row">
-      <div class="col-lg-12">
 
-        <HelpButton :tour="tourSteps"/>
+  <div class="row d-flex align-items-center">
 
-        <a class="btn btn-success btn-lg" id='create-post' href="#/generators">
-          <i class="fa fa-fw fa-cogs"></i>
-          Generate Code
-        </a>
-
-      </div>
+    <div class="col-lg-7">
+      <h4 class="mb-0">
+        {{ project.label + ' App' }}
+        <button class="btn btn-link py-0" v-b-tooltip.hover.right title='Edit App Name'>
+          <i class="fa fa-pencil"></i>
+        </button>
+      </h4>
     </div>
-  </EditorHeader>
+
+    <!-- TODO - display app version somewhere -->
+
+    <div class="col-lg-5 d-flex align-items-center justify-content-end">
+
+      <HelpButton :tour="tourSteps"/>
+
+      <a class="btn btn-success btn-lg" id='create-post' href="#/generators">
+        <i class="fa fa-fw fa-cogs"></i>
+        Generate Code
+      </a>
+
+    </div>
+
+    <div class="col-lg-12 pb-1" v-if='help'>
+      <small class="text-muted">
+        {{ 'Define data modeled by the ' + project.label + ' app.' }}
+      </small>
+    </div>
+
+  </div>
 </template>
 
 <script>
