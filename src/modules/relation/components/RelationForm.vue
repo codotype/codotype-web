@@ -3,15 +3,6 @@
   <div class="row">
     <div class="col-lg-12">
 
-      <!-- TODO - use FormInput in this component? -->
-      <div class="row">
-        <div class="col-lg-12">
-          <p class="lead mb-0">Relation Options</p>
-        </div>
-      </div>
-
-      <hr>
-
       <!-- <small class="text-warning">TODO - compute model.label, model.identifier in Vuex store</small> -->
       <!-- TODO - model.label should be RELATED_SCHEMA.label or RELATED_SCHEMA.label_plural -->
       <!-- <input type="text" v-model="model.label"> -->
