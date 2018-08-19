@@ -9,7 +9,7 @@
         <hr>
       </div>
 
-      <div class="col-lg-4 border-right" id="model-list">
+      <div class="col-lg-4 border-right">
 
         <!-- <p class="lead mb-0">Models</p> -->
         <!-- <small class='text-muted'>Define the models for the Library App</small> -->
@@ -17,16 +17,16 @@
         <!-- <hr> -->
 
         <!-- New Schema -->
-        <b-modal id="new-schema" :title="'New Model'" @ok="submit()" ok-title='Create' cancel-title='Cancel' >
-          <SchemaForm :schema="newModel" />
-        </b-modal>
+        <!-- <b-modal id="new-schema" :title="'New Model'" @ok="submit()" ok-title='Create' cancel-title='Cancel' > -->
+          <!-- <SchemaForm :schema="newModel" /> -->
+        <!-- </b-modal> -->
 
-        <button id="new-model-button" class="btn btn-primary btn-block btn-lg" v-b-modal="'new-schema'">
-          <i class="fa fa-fw fa-plus"></i>
-          Add Model
-        </button>
+        <!-- <button id="new-model-button" class="btn btn-primary btn-block btn-lg" v-b-modal="'new-schema'"> -->
+          <!-- <i class="fa fa-fw fa-plus"></i> -->
+          <!-- Add Model -->
+        <!-- </button> -->
 
-        <SchemaList/>
+        <SchemaList id="model-list" />
 
       </div>
 
@@ -68,9 +68,7 @@ export default {
     resetNewModel: 'schema/resetNewModel'
   }),
   computed: mapGetters({
-    model: 'project/selectedModel',
-    newModel: 'schema/newModel',
-    project: 'project/selectedModel'
+    newModel: 'schema/newModel'
   })
 }
 </script>

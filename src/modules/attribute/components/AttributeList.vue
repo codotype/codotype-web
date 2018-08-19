@@ -48,11 +48,12 @@
 
         <!-- Empty Relation view -->
         <ul class="list-group list-group-flush" v-if="!attributes.length">
-          <li class="list-group-item text-center bg-transparent border-warning text-warning">
-            <i class="fa fa-lg fa-warning"></i>
-            <p class="lead mb-0 mt-2">
+          <li class="list-group-item text-center bg-transparent border-primary text-primary">
+            <i class="fa fa-lg fa-info-circle"></i>
+            <p class="mb-0 mt-1">
               <!-- TODO - Click to add your first Attribute -->
-              Please create at least one attribute
+              <!-- Please create at least one attribute -->
+              Attributes define properties that can be assigned to a single model
             </p>
           </li>
         </ul>

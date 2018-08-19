@@ -48,11 +48,11 @@
 
         <!-- Empty Relation view -->
         <ul class="list-group list-group-flush" v-if="!relations.length">
-          <li class="list-group-item text-center bg-transparent border-primary text-primary">
+          <li class="list-group-item text-center text-primary">
             <i class="fa fa-lg fa-info-circle"></i>
-            <p class="lead mb-0 mt-2">
+            <p class="mb-0 mt-1">
               <!-- TODO - Click to add your first Relation -->
-              Relations define links between different models
+              Relations define associations between different models
             </p>
           </li>
         </ul>
