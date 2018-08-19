@@ -32,9 +32,10 @@
 </template>
 
 <script>
+
 import MoreInfoLink from '@/components/MoreInfoLink'
 export default {
-  name: 'GeneratorChild',
+  name: 'GeneratorListItem',
   props: ['model'],
   components: {
     MoreInfoLink

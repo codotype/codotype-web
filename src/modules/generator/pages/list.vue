@@ -15,7 +15,7 @@
         <hr>
       </div>
       <div class="col-lg-12" >
-        <GeneratorChild v-for="m in opts.client" :model="m" :key="m.id"/>
+        <GeneratorListItem v-for="m in opts.client" :model="m" :key="m.id"/>
       </div>
     </div>
   </div>
@@ -23,12 +23,12 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import GeneratorChild from './components/GeneratorChild'
+import GeneratorListItem from '@/modules/generator/components/GeneratorListItem'
 import HelpButton from '@/components/HelpButton'
 
 export default {
   components: {
-    GeneratorChild,
+    GeneratorListItem,
     HelpButton
   },
   computed: mapGetters({

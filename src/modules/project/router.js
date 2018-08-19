@@ -1,7 +1,7 @@
 // Project Containers
 import ProjectList from './pages/list'
 import ProjectShow from './pages/show'
-import ProjectExport from '@/containers/project_show/components/ProjectExport'
+// import ProjectExport from '@/containers/project_show/components/ProjectExport'
 import ProjectDetail from '@/modules/project/components/ProjectDetail'
 import ProjectGenerate from '@/containers/project_generate/builder'
 // import ProjectGenerate from '@/containers/project_generate'
@@ -44,11 +44,6 @@ export default {
           path: '/projects/:project_id/generate',
           component: ProjectGenerate,
           meta: { bcLinkText: 'Generate' }
-        },
-        {
-          path: '/projects/:project_id/export',
-          component: ProjectExport,
-          meta: { bcLinkText: 'Export' }
         }
       ]
     }

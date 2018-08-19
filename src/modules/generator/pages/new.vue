@@ -33,10 +33,10 @@
 </template>
 
 <script>
-import AddonEditor from './components/AddonEditor'
-import GeneratorMetaEditor from './components/GeneratorMetaEditor'
-import ModelOptionsEditor from './components/ModelOptionsEditor'
-import GlobalOptionsEditor from './components/GlobalOptionsEditor'
+import AddonEditor from '@/components/AddonEditor'
+import GeneratorMetaEditor from '@/components/GeneratorMetaEditor'
+import ModelOptionsEditor from '@/components/ModelOptionsEditor'
+import GlobalOptionsEditor from '@/components/GlobalOptionsEditor'
 
 export default {
   name: 'GeneratorForm',

@@ -3,11 +3,7 @@ import Router from 'vue-router'
 
 import HomeRouter from '@/modules/home/router'
 import ProjectRouter from '@/modules/project/router'
-
-// Generator Containers
-import GeneratorList from '@/containers/generator_list'
-import GeneratorShow from '@/containers/generator_show'
-import GeneratorForm from '@/containers/generator_new'
+import GeneratorRouter from '@/modules/generator/router'
 
 // Vue Router setup
 Vue.use(Router)
@@ -24,24 +20,7 @@ export default new Router({
       component: RouterView,
       children: [
         ...HomeRouter,
-        // {
-        //   path: '/examples',
-        //   name: 'project_examples',
-        //   component: ProjectExamples
-        // },
-        {
-          path: '/generator_new',
-          component: GeneratorForm
-        },
-        {
-          path: '/generators',
-          component: GeneratorList
-        },
-        {
-          path: '/generators/:id',
-          props: true,
-          component: GeneratorShow
-        },
+        ...GeneratorRouter,
         ProjectRouter
       ]
     }
