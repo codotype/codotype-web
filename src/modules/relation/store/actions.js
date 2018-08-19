@@ -39,6 +39,7 @@ export default {
       reverseRelation._id = ObjectID().toString()
       reverseRelation.type = 'BELONGS_TO'
       reverseRelation.order = relatedSchema.relations.length + 1
+      reverseRelation.as = modelSchema.label
       reverseRelation.schema_id = modelSchema._id
 
       // Assigns reverse-relational IDs
@@ -70,6 +71,7 @@ export default {
       reverseRelation._id = ObjectID().toString()
       reverseRelation.type = 'OWNS_MANY'
       reverseRelation.order = relatedSchema.relations.length + 1 // TODO - there should be no identifier for the OWNS_MANY relation attribute
+      reverseRelation.as = modelSchema.label
       reverseRelation.schema_id = modelSchema._id
 
       // Assigns reverse-relational IDs
@@ -103,6 +105,7 @@ export default {
       reverseRelation._id = ObjectID().toString()
       reverseRelation.type = 'BELONGS_TO'
       reverseRelation.order = relatedSchema.relations.length + 1// TODO - there should be no identifier for the OWNS_MANY relation attribute
+      reverseRelation.as = modelSchema.label
       reverseRelation.schema_id = modelSchema._id
 
       // Assigns reverse-relational IDs
@@ -137,6 +140,7 @@ export default {
       reverseRelation._id = ObjectID().toString()
       reverseRelation.type = 'HAS_MANY'
       reverseRelation.order = relatedSchema.relations.length + 1
+      reverseRelation.as = modelSchema.label
       reverseRelation.schema_id = modelSchema._id
 
       // Assigns reverse-relational IDs
