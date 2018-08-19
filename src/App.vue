@@ -5,22 +5,18 @@
     <Notifications/>
     <br>
     <router-view/>
-    <!-- <AppFooter/> -->
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/Navbar'
-import AppFooter from '@/components/AppFooter'
 import Notifications from '@/modules/notification/components/Notifications'
 
 export default {
   name: 'app',
 
-  // Top-Level Application Components
   components: {
     Navbar,
-    AppFooter,
     Notifications
   },
 
