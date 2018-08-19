@@ -1,51 +1,27 @@
 <template>
-  <li :class="className()">
+  <li :class="className" @click="selectModel(schema._id)">
 
-    <!-- Bootstrap Modal Component -->
-    <b-modal v-if="enableDestroy"
-      :id="'modal_' + schema._id"
-      :title="'Destroy ' + schema.label + '?'"
-      ref='modal'
-      @ok="destroySchema(schema)"
-      ok-variant='danger'
-      ok-title='DESTROY'
-      cancel-title='Cancel'
-    >
-      <p class="text-left">Are you sure you want to destroy the {{ schema.label }} schema?</p>
-    </b-modal>
-
-    <div class="row align-items-center" @click="selectModel(schema._id)">
-      <div class="col-md-3">
+    <div class="row align-items-center">
+      <div class="col-md-8">
           {{ schema.label }}
       </div>
 
-      <div class="col-md-9 text-right">
-        <div class="text-warning" v-if="!schema.attributes.length">
-          <i class="fa fa-exclamation mr-2"></i>
-          No Attributes
-        </div>
+      <div class="col-md-4 text-right">
+        <span class="badge badge-dark" v-if="!schema.attributes.length" v-b-tooltip.hover.left :title="schema.attributes.length + (schema.attributes.length === 1 ? ' Attribute' : ' Attributes')">
+          <i class="fa fa-times mr-1"></i>
+          0
+        </span>
 
-        <div class="text-success" v-else>
-          <i class="fa fa-check mr-2"></i>
-          {{ schema.attributes.length }} {{ schema.attributes.length === 1 ? 'Attribute' : 'Attributes' }}
-        </div>
+        <span class="badge badge-dark" v-else v-b-tooltip.hover.left :title="schema.attributes.length + (schema.attributes.length === 1 ? ' Attribute' : ' Attributes')">
+          <i class="fa fa-tags mr-1"></i>
+          {{ schema.attributes.length }}
+        </span>
+
+        <span class="badge badge-dark" v-b-tooltip.hover.right :title="schema.relations.length + (schema.relations.length === 1 ? ' Relation' : ' Relations')">
+          <i class="fa fa-link mr-1"></i>
+          {{ schema.relations.length }}
+        </span>
       </div>
-
-      <!-- <div class="col-md-6 text-right"> -->
-
-        <!-- Destroy Schema Confirmation -->
-        <!-- <button class="btn btn-sm btn-outline-danger" v-if="enableDestroy" @click.prevent.stop="showModal()"> -->
-          <!-- <i class="fa fa-trash mr-1"></i> -->
-          <!-- Destroy -->
-        <!-- </button> -->
-
-        <!-- Disable User Schema -->
-        <!-- <button class="btn btn-sm btn-outline-light" v-else disabled> -->
-          <!-- <i class="fa fa-lock mr-1"></i> -->
-          <!-- Locked -->
-        <!-- </button> -->
-
-      <!-- </div> -->
 
     </div>
 
@@ -57,33 +33,23 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   props: ['schema'],
-  methods: {
-    ...mapActions({
-      selectModel: 'schema/selectModel',
-      editSchema: 'schema/edit',
-      destroySchema: 'schema/remove'
+  methods: mapActions({
+    selectModel: 'schema/selectModel'
+  }),
+  computed: {
+    ...mapGetters({
+      selectedSchema: 'schema/selectedModel'
     }),
     className () {
       let css = ['list-group-item', 'list-group-item-action']
 
-      // TODO - why isn't this working?
-      if (this.schema.id === this.selectedSchema._id) {
-        css.push('active')
+      if (this.schema._id === this.selectedSchema._id) {
+        // css.push('active')
+        css.push('list-group-item-primary')
       }
 
-      console.log(String(this.schema.id) === String(this.selectedSchema._id))
-      console.log(css.join(' '))
       return css.join(' ')
     },
-    showModal () {
-      this.$refs.modal.show()
-    }
-  },
-  computed: {
-    ...mapGetters({
-      model: 'project/selectedModel',
-      selectedSchema: 'schema/selectedModel'
-    }),
     enableDestroy () {
       return this.schema.identifier !== 'user'
     }

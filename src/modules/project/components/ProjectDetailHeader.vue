@@ -1,6 +1,5 @@
 
 <template>
-
   <div class="row d-flex align-items-center">
 
     <div class="col-lg-7">
@@ -10,6 +9,9 @@
           <i class="fa fa-pencil"></i>
         </button>
       </h4>
+      <small class="text-muted">
+        {{ 'Define data modeled by the ' + project.label + ' app.' }}
+      </small>
     </div>
 
     <!-- TODO - display app version somewhere -->
@@ -23,12 +25,6 @@
         Generate Code
       </a>
 
-    </div>
-
-    <div class="col-lg-12 pb-1">
-      <small class="text-muted">
-        {{ 'Define data modeled by the ' + project.label + ' app.' }}
-      </small>
     </div>
 
   </div>

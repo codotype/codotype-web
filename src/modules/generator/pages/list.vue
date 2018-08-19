@@ -5,7 +5,7 @@
         <h2>Generators</h2>
         <span>
           <HelpButton :tour="tourSteps" />
-          <a class="btn btn-outline-primary btn-lg" id='new-generator-button' href="#/generator_new">
+          <a class="btn btn-outline-primary btn-lg" id='new-generator-button' href="#/generators/new">
             <i class="fa fa-fw fa-plus"></i>
             Add Generator
           </a>

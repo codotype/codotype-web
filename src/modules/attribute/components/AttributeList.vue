@@ -31,7 +31,10 @@
 
         <!-- Attribute card header -->
         <div class="card-header d-flex justify-content-between align-items-center">
-          <strong style='font-weight: 600;'>Attributes</strong>
+          <span>
+            <i class="fa fa-tags mr-1"></i>
+            Attributes
+          </span>
           <button class="btn btn-sm btn-primary" id="add-attribute-button" @click="showNewAttributeForm()">
             <i class="fa fa-plus"></i>
             Add Attribute
@@ -44,8 +47,8 @@
         </draggable>
 
         <!-- Empty Relation view -->
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item text-center bg-transparent border-warning text-warning" v-if="!attributes.length">
+        <ul class="list-group list-group-flush" v-if="!attributes.length">
+          <li class="list-group-item text-center bg-transparent border-warning text-warning">
             <i class="fa fa-lg fa-warning"></i>
             <p class="lead mb-0 mt-2">
               <!-- TODO - Click to add your first Attribute -->

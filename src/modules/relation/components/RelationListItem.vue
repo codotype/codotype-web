@@ -113,7 +113,7 @@ export default {
 <!-- TODO - move some of this into AttributeLabel component -->
 <style lang='sass' scoped>
   .list-group-item
-    border-left: .25rem solid #666666
+    // border-left: .25rem solid #666666
 
   .list-group-item:hover i.fa-bars
     opacity: 1

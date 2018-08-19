@@ -9,7 +9,12 @@
         <hr>
       </div>
 
-      <div class="col-lg-4" id="model-list">
+      <div class="col-lg-4 border-right" id="model-list">
+
+        <!-- <p class="lead mb-0">Models</p> -->
+        <!-- <small class='text-muted'>Define the models for the Library App</small> -->
+
+        <!-- <hr> -->
 
         <!-- New Schema -->
         <b-modal id="new-schema" :title="'New Model'" @ok="submit()" ok-title='Create' cancel-title='Cancel' >
