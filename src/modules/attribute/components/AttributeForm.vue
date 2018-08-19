@@ -18,7 +18,7 @@
           </b-tab>
         </b-tabs>
 
-        <RelationForm :schema="schema" :model="model" v-if="model.datatype === 'RELATION'" />
+        <!-- <RelationForm :schema="schema" :model="model" v-if="model.datatype === 'RELATION'" /> -->
       </template>
 
     </div>
@@ -32,7 +32,6 @@ import ArrayInput from '@/components/ArrayInput'
 import DatatypeSelector from './DatatypeSelector'
 import AttributePropertiesForm from './AttributePropertiesForm'
 import AttributeValidationsForm from './AttributeValidationsForm'
-import RelationForm from './RelationForm'
 
 export default {
   props: ['schema', 'model'],
@@ -40,8 +39,7 @@ export default {
     ArrayInput,
     DatatypeSelector,
     AttributePropertiesForm,
-    AttributeValidationsForm,
-    RelationForm
+    AttributeValidationsForm
   },
   computed: {
     formStep () {

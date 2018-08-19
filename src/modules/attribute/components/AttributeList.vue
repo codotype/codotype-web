@@ -40,7 +40,7 @@
 
         <!-- Draggable Attribute List -->
         <draggable class='list-group list-group-flush' v-model='attributes' :options="sortableOptions" v-if="attributes.length">
-          <AttributeItem v-for="each in attributes" :item="each" v-if="each.datatype !== 'RELATION'" :key="each._id" :schema="schema" :edit="selectEditAttribute" />
+          <AttributeListItem v-for="each in attributes" :item="each" v-if="each.datatype !== 'RELATION'" :key="each._id" :schema="schema" :edit="selectEditAttribute" />
         </draggable>
 
         <!-- Empty Relation view -->
@@ -66,13 +66,13 @@
 import _ from 'lodash'
 import { mapGetters, mapActions } from 'vuex'
 import draggable from 'vuedraggable'
-import AttributeItem from './AttributeItem'
+import AttributeListItem from './AttributeListItem'
 import AttributeForm from './AttributeForm'
 
 export default {
   components: {
     draggable,
-    AttributeItem,
+    AttributeListItem,
     AttributeForm
   },
   methods: {

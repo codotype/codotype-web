@@ -6,31 +6,25 @@
 
         <div class="row">
           <div class="col-lg-12">
-            <!-- <a :href="`#/projects/${project_id}/seeds/${model._id}`" class='btn btn-outline-warning'> -->
-              <!-- <i class="fa fa-fw fa-plus"></i> -->
+
+            <!-- <a :href="`#/projects/${project_id}/seeds/${model._id}`" class='btn btn-sm btn-outline-primary'> -->
+              <!-- <i class="fa fa-fw fa-leaf"></i> -->
               <!-- Seed Data -->
             <!-- </a> -->
 
-            <!-- TODO - add destroy model link here -->
-
-            <!-- <button class='btn btn-primary' @click="showNewAttributeForm()"> -->
-              <!-- <i class="fa fa-fw fa-plus"></i> -->
-              <!-- New Attribute -->
-            <!-- </button> -->
-
-            <button class='btn btn-sm btn-outline-danger' @click="showNewAttributeForm()">
+            <button class='btn btn-sm btn-outline-danger' v-b-modal="'destroy-schema'"">
               <i class="fa fa-fw fa-trash"></i>
             </button>
 
-            <!-- Bootstrap Modal Component -->
-            <b-modal size="lg" id="new-attribute"
-              ref="newAttributeModal"
-              :title="'New Attribute'"
-              @ok="createAttribute()"
-              ok-title='Create'
+            <!-- Destroy Schema Confirmation -->
+            <b-modal id="destroy-schema"
+              :title="'Destroy Model?'"
+              @ok="destroySchema(model)"
+              ok-title='DESTROY'
+              ok-variant='danger'
               cancel-title='Cancel'
             >
-              <AttributeForm :schema="model" :model="newAttribute" />
+              <p>Are you sure you want to destroy this Model?</p>
             </b-modal>
 
           </div>
@@ -53,29 +47,19 @@
 
 <script>
 import RelationList from '@/modules/relation/components/RelationList'
-import AttributeList from './components/AttributeList'
-import AttributeForm from './components/AttributeForm'
+import AttributeList from '@/modules/attribute/components/AttributeList'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
   components: {
     AttributeList,
-    RelationList,
-    AttributeForm
+    RelationList
   },
   computed: mapGetters({
-    model: 'schema/selectedModel',
-    newAttribute: 'attribute/newModel'
+    model: 'schema/selectedModel'
   }),
-  methods: {
-    ...mapActions({
-      createAttribute: 'attribute/create',
-      resetNewAttribute: 'attribute/resetNewModel'
-    }),
-    showNewAttributeForm () {
-      this.resetNewAttribute()
-      this.$refs.newAttributeModal.show()
-    }
-  }
+  methods: mapActions({
+    destroySchema: 'schema/remove'
+  })
 }
 </script>
