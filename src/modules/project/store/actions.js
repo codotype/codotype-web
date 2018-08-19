@@ -57,7 +57,7 @@ export default {
 
     // Updates state.collection
     commit('collection', collection)
-    if (isNew) router.push(`/projects/${recordId}/schemas`)
+    if (isNew) router.push(`/projects/${recordId}`)
   },
 
   update: ({ dispatch, state }) => {
@@ -105,6 +105,6 @@ export default {
     dispatch('persist', { record: projectModel })
 
     // Navigates to /projects/id
-    router.push(`/projects/${projectModel._id}/schemas`)
+    router.push(`/projects/${projectModel._id}`)
   }
 }

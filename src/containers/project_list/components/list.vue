@@ -9,7 +9,7 @@
           <div class="col-lg-3">
             <!-- project URL -->
             <p class="lead mb-0">
-              <a v-bind:href="'#/projects/' + project._id + '/schemas' ">{{project.label}}</a>
+              <a v-bind:href="'#/projects/' + project._id ">{{project.label}}</a>
             </p>
           </div>
 

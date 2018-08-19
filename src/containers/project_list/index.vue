@@ -33,7 +33,7 @@
     </div>
 
     <!-- Project List -->
-    <ListView :collection="collection"></ListView>
+    <ListView :collection="collection" />
 
   </div>
 </template>
@@ -43,7 +43,7 @@
 <script>
 
 import ListView from './components/list'
-import ProjectForm from '@/components/ProjectForm'
+import ProjectForm from '@/modules/project/components/ProjectForm'
 import HelpButton from '@/components/HelpButton'
 import { mapGetters, mapActions } from 'vuex'
 

@@ -4,7 +4,7 @@
     <!-- Header -->
     <div class="col-lg-12">
       <EditorHeader :help="'Define the attributes that can be assigned to a single ' + schema.label">
-        <a class='btn btn-outline-warning float-right mr-2' :href="'#/projects/' + project_id + '/schemas/' + schema_id" >
+        <a class='btn btn-outline-warning float-right mr-2' :href="'#/projects/' + project_id >
           <i class="fa fa-fw fa-pencil mr-2"></i>
           Attributes
         </a>
