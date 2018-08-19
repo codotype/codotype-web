@@ -32,7 +32,7 @@ z
 
 <script>
 
-import ListView from './components/ExampleList.vue'
+import ListView from '@/modules/project/components/ExampleList'
 
 export default {
   name: 'example_list',

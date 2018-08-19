@@ -6,7 +6,7 @@ import ProjectDetail from '@/modules/project/components/ProjectDetail'
 import ProjectGenerate from '@/containers/project_generate/builder'
 // import ProjectGenerate from '@/containers/project_generate'
 // import ProjectSeeds from '@/containers/project_show/components/ProjectSeeds'
-import ProjectExamples from '@/containers/project_examples'
+import ProjectExamples from '@/modules/project/pages/examples'
 
 const RouterView = {
   template: '<router-view/>'
