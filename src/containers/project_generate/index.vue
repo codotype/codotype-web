@@ -6,10 +6,10 @@
 
         <div class="row">
           <div class="col-lg-6 border-right">
-            <AbstractTab :model="model" stackId="client" :stackOpts="opts.client" title="Frontend"/>
+            <!-- <AbstractTab :model="model" stackId="client" :stackOpts="opts.client" title="Frontend"/> -->
           </div>
           <div class="col-lg-6">
-            <AbstractTab :model="model" stackId="server" :stackOpts="opts.server" title="Backend"/>
+            <!-- <AbstractTab :model="model" stackId="server" :stackOpts="opts.server" title="Backend"/> -->
           </div>
         </div>
 
@@ -102,13 +102,9 @@
 <!-- // // // //  -->
 
 <script>
-import AbstractTab from './components/AbstractTab'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  components: {
-    AbstractTab
-  },
   computed: mapGetters({
     model: 'project/selectedModel',
     fetching: 'generator/fetching',

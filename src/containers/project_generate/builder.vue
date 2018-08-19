@@ -168,7 +168,6 @@
 <!-- // // // //  -->
 
 <script>
-import AbstractTab from './components/AbstractTab'
 import MoreInfoLink from '@/components/MoreInfoLink'
 import GeneratorModelOptions from '@/components/GeneratorModelOptions'
 import GeneratorGlobalOptions from '@/components/GeneratorGlobalOptions'
@@ -176,7 +175,6 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   components: {
-    AbstractTab,
     MoreInfoLink,
     GeneratorModelOptions,
     GeneratorGlobalOptions
