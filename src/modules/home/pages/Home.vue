@@ -44,7 +44,7 @@
 
         <div class="row mt-2 justify-content-center">
           <div class="col-lg-4">
-            <router-link to="/projects" class="btn btn-outline-warning btn-block btn-lg">
+            <router-link to="/projects" class="btn btn-primary btn-block btn-lg">
               <i class="fa fa-fire mr-2"></i>
               Let's get started.
             </router-link>

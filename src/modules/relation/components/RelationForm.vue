@@ -62,9 +62,20 @@
           </div>
         </div>
 
-        <!-- Description -->
+        <!-- Description / Relation Preview-->
         <div class="col-lg-12">
           <pre class="bg-dark text-light">{{model}}</pre>
+
+          <!-- <div class="row"> -->
+            <!-- <div class="col-lg-6"> -->
+              <!-- <pre class="bg-dark text-light">{{schema}}</pre> -->
+            <!-- </div> -->
+
+            <!-- <div class="col-lg-6"> -->
+              <!-- <pre class="bg-dark text-light">{{allSchemas.find(s => s._id === model.related_schema_id)}}</pre> -->
+            <!-- </div> -->
+          <!-- </div> -->
+
           <small>
             One <span class='text-info'>{{ schema.label }}</span> HAS MANY <span class='text-warning'>TODO</span>
           </small>

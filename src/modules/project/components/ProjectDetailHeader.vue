@@ -22,6 +22,10 @@
 
       <HelpButton :tour="tourSteps"/>
 
+      <a class='mr-3' role="button" @click.stop="exportProject(project)">
+        <i class="fa fa-fw fa-lg fa-download" v-b-tooltip.hover.left :title='"Export"'></i>
+      </a>
+
       <a class="btn btn-success btn-lg" id='generate-project-button' :href="'#/projects/' + project._id + '/generate'">
         <i class="fa fa-fw fa-cogs"></i>
         Generate Code
@@ -34,12 +38,15 @@
 
 <script>
 import HelpButton from '@/components/HelpButton'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   computed: mapGetters({
     project: 'project/selectedModel',
     tourSteps: 'tour/appEditorSteps'
+  }),
+  methods: mapActions({
+    exportProject: 'project/exportJson'
   }),
   components: {
     HelpButton

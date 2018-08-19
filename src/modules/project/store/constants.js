@@ -1,5 +1,6 @@
 // Project module constants
 export const DEFAULT_PROJECT = {
+  _id: null,
   label: 'Codotype Project',
   identifier: 'codotype_project',
   schemas: [],

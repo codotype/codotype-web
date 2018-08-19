@@ -1,5 +1,5 @@
 <template>
-  <a class='mr-3' @click.stop="startTour()">
+  <a class='mr-3' role="button" @click.stop="startTour()">
     <i class="fa fa-fw fa-lg fa-question-circle" v-b-tooltip.hover.left :title='"Tutorial"'></i>
   </a>
 </template>

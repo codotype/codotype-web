@@ -2,24 +2,25 @@
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-12">
-        <!-- <br> -->
-        <!-- <div class="row mt-2"> -->
-          <!-- <div class="col-lg-12 text-center"> -->
-            <!-- <h2>A B O U T</h2> -->
-          <!-- </div> -->
-        <!-- </div> -->
+
+        <div class="row mt-2">
+          <div class="col-lg-12 text-center">
+            <h2>A B O U T</h2>
+          </div>
+        </div>
 
         <div class="row mt-2">
           <div class="col-lg-12 text-center">
             <!-- <img class='logo' src="@/assets/logo_dark.png"> -->
-            <img width="30%" src="https://github.com/codotype/codotype-branding/blob/master/codotype-02.png?raw=true">
+            <!-- <img width="30%" src="https://github.com/codotype/codotype-branding/blob/master/codotype-02.png?raw=true"> -->
+            <h1 class='display-1' style="font-family: monospace;">codotype</h1>
           </div>
         </div>
 
         <div class="row">
 
           <div class="col-lg-12 text-center">
-            <p>Build projects blazingly fast.</p>
+            <p>Prototype projects amazingly fast.</p>
           </div>
 
           <div class="col-lg-12 text-center">
