@@ -63,8 +63,17 @@
           </div>
         </div>
 
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label>Alias</label>
+            <small class="form-text text-muted">Alias this relation under a different name.</small>
+            <input type="text" class='form-control' v-model="model.as">
+          </div>
+        </div>
+
         <!-- Description -->
         <div class="col-lg-12">
+          <pre class="bg-dark text-light">{{model}}</pre>
           <small>
             One <span class='text-info'>{{ schema.label }}</span> HAS MANY <span class='text-warning'>TODO</span>
           </small>

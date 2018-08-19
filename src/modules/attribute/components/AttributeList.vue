@@ -40,7 +40,7 @@
 
         <!-- Draggable Attribute List -->
         <draggable class='list-group list-group-flush' v-model='attributes' :options="sortableOptions" v-if="attributes.length">
-          <AttributeListItem v-for="each in attributes" :item="each" v-if="each.datatype !== 'RELATION'" :key="each._id" :schema="schema" :edit="selectEditAttribute" />
+          <AttributeListItem v-for="each in attributes" :item="each" :key="each._id" :schema="schema" :edit="selectEditAttribute" />
         </draggable>
 
         <!-- Empty Relation view -->

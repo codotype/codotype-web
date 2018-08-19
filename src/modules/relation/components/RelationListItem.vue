@@ -4,39 +4,32 @@
 
       <!-- Handle for re-ordering attributes -->
       <div class="col-lg-1 text-left d-flex align-items-center">
-        <!-- <i class="fa fa-lg fa-fw fa-bars mr-3" v-if="!item.locked"></i> -->
         <i class="fa fa-lg fa-fw fa-bars mr-3" style='cursor: grab;'></i>
       </div>
 
       <!-- TODO - get rid of hardcoded icons -->
       <div class="col-lg-5">
 
-        <span class="badge" v-if="item.datatype !== 'RELATION'">
-          <i class='mr-2 fa fa-link' v-b-tooltip.hover.left :title='"Relation"'></i>
-          {{ item.label }}
-          <span class='text-danger' v-if="item.required">*</span>
-        </span>
-
         <!-- BELONGS_TO -->
         <span class="badge" v-if="item.type === 'BELONGS_TO'">
           <i class="fa fa-link mr-2" v-b-tooltip.hover.left title='Relation'></i>
-          {{item.label}}
+          {{item.as}}
           <span class="badge badge-light ml-2">Belongs To</span>
-          <span class="badge badge-light ml-2">many {{ schema.label_plural }} to one {{ item.label }}</span>
+          <span class="badge badge-light ml-2">many {{ schema.label_plural }} to one {{ item.as }}</span>
         </span>
 
         <!-- HAS_MANY -->
         <span class="badge" v-if="item.type === 'HAS_MANY'">
           <i class="fa fa-link mr-2" v-b-tooltip.hover.left title='Relation'></i>
-          {{item.label}}
+          {{item.as}}
           <span class="badge badge-light ml-2">Has Many</span>
         </span>
 
         <!-- OWNS_MANY -->
         <span class="badge" v-if="item.type === 'OWNS_MANY'">
           <i class="fa fa-link mr-2" v-b-tooltip.hover.left title='Relation'></i>
-          {{item.label}}
-          <span class="badge badge-light ml-2">one {{ schema.label }} to many {{ item.label }}</span>
+          {{item.as}}
+          <span class="badge badge-light ml-2">one {{ schema.label }} to many {{ item.as }}</span>
         </span>
 
       </div>
@@ -82,7 +75,7 @@
           ok-title='DESTROY'
           cancel-title='Cancel'
         >
-          <p class="text-left">Are you sure you want to destroy the {{ item.label }} relation?</p>
+          <p class="text-left">Are you sure you want to destroy the {{ item.as }} relation?</p>
         </b-modal>
       </div>
 
