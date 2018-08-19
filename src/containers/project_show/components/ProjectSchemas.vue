@@ -1,4 +1,3 @@
-
 <template>
   <div class="row">
     <div class="col-lg-12">
@@ -21,15 +20,12 @@
         Add Model
       </button>
 
-      <!-- Schema List -->
-      <ul class='list-group mt-3'>
-        <SchemaChild v-for="schema in collection" :schema="schema" :key="schema._id" />
-      </ul>
+      <SchemaList/>
+
     </div>
 
     <div class="col-lg-8" id="model-detail">
-      <!-- <router-view/> -->
-      <SchemaShow />
+      <SchemaDetail />
     </div>
   </div>
 </template>
@@ -38,10 +34,10 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import Header from './components/Header'
-import SchemaChild from './components/SchemaChild'
-import SchemaForm from '@/components/schema/SchemaForm'
-import SchemaShow from '@/containers/schema_show'
+import Header from './Header'
+import SchemaList from '@/modules/schema/components/SchemaList'
+import SchemaForm from '@/modules/schema/components/SchemaForm'
+import SchemaDetail from '@/modules/schema/components/SchemaDetail'
 
 export default {
   metaInfo: {
@@ -49,9 +45,9 @@ export default {
   },
   components: {
     Header,
-    SchemaChild,
+    SchemaList,
     SchemaForm,
-    SchemaShow
+    SchemaDetail
   },
   created () {
     this.resetNewModel()
@@ -67,5 +63,3 @@ export default {
   })
 }
 </script>
-
-

@@ -46,9 +46,9 @@
 <!-- // // // //  -->
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 import RelationList from '@/modules/relation/components/RelationList'
 import AttributeList from '@/modules/attribute/components/AttributeList'
-import { mapGetters, mapActions } from 'vuex'
 
 export default {
   components: {

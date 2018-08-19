@@ -2,7 +2,6 @@
   <div class="row d-flex align-items-center">
 
     <div class="col-lg-7">
-      <!-- <AppBreadcrumbs /> -->
       <h4 class="mb-0">
         {{ title || 'NO TITLE' }}
         <button class="btn btn-link py-0">
@@ -26,13 +25,11 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import AppBreadcrumbs from '@/containers/app_breadcrumbs'
 import MoreInfoLink from '@/components/MoreInfoLink'
 
 export default {
   props: ['title', 'help'],
   components: {
-    AppBreadcrumbs,
     MoreInfoLink
   },
   computed: mapGetters({
