@@ -2,12 +2,24 @@
 <template>
   <div class="row d-flex align-items-center">
 
+    <b-modal
+      id="edit-project"
+      ref="editModal"
+      :title="'Edit App'"
+      @ok="submitProjectForm()"
+      ok-title='Update'
+      cancel-title='Cancel'
+    >
+      <!-- <ProjectForm :model= :submit="submitProjectForm" /> -->
+      <p class="lead text-danger">TODO - add ProjectForm here</p>
+    </b-modal>
+
     <div class="col-lg-7">
       <h4 class="mb-0">
         <span id="project-header">
           {{ project.label + ' App' }}
         </span>
-        <button class="btn btn-link py-0" id="project-edit-button" v-b-tooltip.hover.right title='Edit App Name'>
+        <button class="btn btn-link py-0" id="project-edit-button" v-b-tooltip.hover.right title='Edit App Name' v-b-modal="'edit-project'">
           <i class="fa fa-pencil"></i>
         </button>
       </h4>
@@ -38,18 +50,27 @@
 
 <script>
 import HelpButton from '@/components/HelpButton'
+import ProjectForm from '@/modules/project/components/ProjectForm'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
+  components: {
+    HelpButton,
+    ProjectForm
+  },
   computed: mapGetters({
     project: 'project/selectedModel',
     tourSteps: 'tour/appEditorSteps'
   }),
-  methods: mapActions({
-    exportProject: 'project/exportJson'
-  }),
-  components: {
-    HelpButton
+  methods: {
+    ...mapActions({
+      exportProject: 'project/exportJson',
+      updateProject: 'project/update'
+    }),
+    submitProjectForm () {
+      this.$refs.editModal.hide()
+      this.updateProject()
+    }
   }
 }
 </script>

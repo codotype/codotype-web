@@ -58,7 +58,6 @@ export default {
     HelpButton
   },
   mounted () {
-    console.log('GET PROJECTS')
     this.fetch()
   },
   computed: mapGetters({

@@ -57,7 +57,8 @@
 
       </div>
     </div>
-    <div class="row">
+
+    <div class="row mt-4">
       <div class="col-lg-12" >
         <GeneratorListItem v-for="m in opts.client" :model="m" :key="m.id"/>
       </div>
