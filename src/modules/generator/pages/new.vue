@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import AddonEditor from '@/components/AddonEditor'
+import AddonEditor from '@/modules/addon/components/AddonEditor'
 import GeneratorMetaEditor from '@/components/GeneratorMetaEditor'
 import ModelOptionsEditor from '@/components/ModelOptionsEditor'
 import OptionEditorLayout from '@/modules/option/components/OptionEditorLayout'

@@ -10,8 +10,7 @@
 
     <div class="col-lg-12">
       <button class="btn btn-outline-primary">New Option</button>
-
-      <AddonAttributeList :collection="collection" />
+      <!-- <AddonAttributeList :collection="collection" /> -->
     </div>
 
   </div>
@@ -20,12 +19,12 @@
 <script>
 import { mapGetters } from 'vuex'
 import MoreInfoLink from '@/components/MoreInfoLink'
-import AddonAttributeList from './AddonAttributeList'
+// import AddonAttributeList from './AddonAttributeList'
 
 export default {
   components: {
-    MoreInfoLink,
-    AddonAttributeList
+    MoreInfoLink
+    // AddonAttributeList
   },
   computed: mapGetters({
     collection: 'addon/collection'

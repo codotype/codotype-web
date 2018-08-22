@@ -8,17 +8,20 @@
     </div>
 
 
-    <div class="col-lg-3">
-
-      <AddonList :collection="addonCollection" />
-
-      <br>
+    <div class="col-lg-4 border-right">
 
       <!-- New Addon Form -->
-      <button class="btn btn-primary w-100" v-b-modal="'new-addon'">
-        <i class="fa fa-fw fa-plus mr-2"></i>
+      <button class="btn btn-primary btn-lg btn-block" v-b-modal="'new-addon'">
+        <i class="fa fa-fw fa-plus"></i>
         New Addon
       </button>
+
+      <div class="card mt-3">
+        <div class="card-header">
+          Addons
+        </div>
+        <AddonList :collection="addonCollection" />
+      </div>
 
       <b-modal id="new-addon" :title="'New Addon'" @ok="createAddon()" ok-title='Create' cancel-title='Cancel' >
         <AddonForm :model="newAddon" />
@@ -34,7 +37,7 @@
 
       <!-- <FormInput label="More Info URL" :required="true" placeholder="More Info URL" v-model="model.more_info_url" example="Example: 'Last Name'" help="The human-readable name for this attribute." /> -->
 
-    <div class="col-lg-9">
+    <div class="col-lg-8">
       <AddonDetail :model="selectedAddon" />
     </div>
 
