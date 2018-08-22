@@ -6,7 +6,7 @@
     </span>
     <small>Configure global options for this generator</small>
 
-    <div class="card card-body" v-for="attr in opts.client[1].global_options">
+    <div class="card card-body" v-for="attr in opts.client[3].global_options">
       <!-- <span class='d-flex flex-row align-items-center'> -->
         <!-- <label class='mb-0 mr-2'>{{attr.label}}</label> -->
         <!-- <MoreInfoLink :url="attr.more_info_url" /> -->

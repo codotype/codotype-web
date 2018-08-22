@@ -32,7 +32,11 @@
 
           <div class="col-lg-12 text-center">
             <gh-btns-star slug="codotype/codotype" show-count></gh-btns-star>
-            <!-- <gh-btns-fork slug="aeksco/codotype" show-count></gh-btns-fork> -->
+            <!-- <router-link to="/projects" class="btn btn-primary btn-block btn-lg"> -->
+              <!-- <i class="fa fa-fire mr-2"></i> -->
+              <!-- Let's get started. -->
+            <!-- </router-link> -->
+            <gh-btns-fork slug="codotype/codotype" show-count></gh-btns-fork>
           </div>
         </div>
 
@@ -53,18 +57,32 @@
 
       </div>
     </div>
+    <div class="row">
+      <div class="col-lg-12" >
+        <GeneratorListItem v-for="m in opts.client" :model="m" :key="m.id"/>
+      </div>
+    </div>
   </div>
 </template>
 
 <!-- // // // //  -->
 
 <script>
+import { mapGetters } from 'vuex'
+import GeneratorListItem from '@/modules/generator/components/GeneratorListItem'
 
 export default {
-  name: 'main_home',
+  name: 'Home',
+  components: {
+    GeneratorListItem
+  },
   metaInfo: {
-    title: 'Home'
-  }
+    title: 'Welcome'
+  },
+  computed: mapGetters({
+    opts: 'generator/generatorFormOpts',
+    tourSteps: 'tour/generatorListSteps'
+  })
 }
 </script>
 

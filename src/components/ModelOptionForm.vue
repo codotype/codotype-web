@@ -9,7 +9,7 @@
 
     <!-- TODO - make this actually collapsable -->
     <ul class="list-group list-group-flush" v-if="!collapsed">
-      <li class="list-group-item" v-for="attr in opts.client[1].model_options">
+      <li class="list-group-item" v-for="attr in opts.client[3].model_options">
         <div class="row">
           <div class="col-lg-9">
             <label>{{attr.label}}</label>

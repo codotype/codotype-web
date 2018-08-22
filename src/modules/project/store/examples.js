@@ -1,5 +1,5 @@
-import TODO_LIST from 'codotype/examples/todo-list'
+import LIBRARY_EXAMPLE from 'codotype-generator/examples/library'
 
 export const EXAMPLE_COLLECTION = [
-  TODO_LIST
+  LIBRARY_EXAMPLE
 ]

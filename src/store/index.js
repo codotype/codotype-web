@@ -10,6 +10,7 @@ import notification from '@/modules/notification/store'
 import generator from '@/modules/generator/store'
 import addon from '@/modules/addon/store'
 import tour from '@/modules/tour/store'
+import option from '@/modules/option/store'
 
 export default new Vuex.Store({
   modules: {
@@ -21,7 +22,8 @@ export default new Vuex.Store({
     record,
     generator,
     addon,
-    tour
+    tour,
+    option
   },
   plugins: [createPersistedState()]
 })

@@ -90,7 +90,7 @@
 <script>
 import AttributeLabel from '@/modules/attribute/components/AttributeLabel'
 import { mapActions } from 'vuex'
-import { inflateRelation } from 'codotype/lib/inflator'
+import { inflateRelation } from 'codotype-generator/lib/helpers'
 
 export default {
   props: ['item', 'schema', 'edit'],

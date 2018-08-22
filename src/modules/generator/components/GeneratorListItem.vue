@@ -1,10 +1,16 @@
 <template>
   <div class="card card-body mb-2" id="generator-list">
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-lg-12 d-flex justify-content-between align-items-center">
         <div class="card-title mb-0">
           <a :href="'#/generators/' + model.id">{{ model.label }}</a>
         </div>
+
+        <span>
+          <gh-btns-watch :slug="model.github_url" />
+          <gh-btns-star :slug="model.github_url" />
+          <gh-btns-fork :slug="model.github_url" />
+        </span>
 
         <!-- TODO - this is sloppy, fix at some point -->
         <button class="btn btn-primary pull-right" v-if="selectMethod" @click="selectMethod(model)">
@@ -21,6 +27,8 @@
         <!-- <span class='badge badge-dark' v-if="model.global_options[0]">{{ model.global_options.length }} Option(s)</span> -->
         <!-- <span class='badge badge-dark' v-if="model.model_options[0]">{{ model.model_options.length }} Model Option(s)</span> -->
         <!-- <br> -->
+
+        <!-- <gh-btns-star :slug="model.github_url" show-count></gh-btns-star> -->
 
         <span class='badge badge-primary mr-1' v-for="tag in model.type_tags" :key="tag">{{ tag }}</span>
         <span class='badge badge-info' v-if="model.self_configuring">Self-Configuring</span>
