@@ -14,7 +14,7 @@
         help="Define options values for this number dropdown"
         v-model="model.datatypeOptions.dropdownOptions"
         :type="model.type"
-        v-if="model.type === 'NUMBER_SELECT'"
+        v-if="model.type === 'NUMBER_SELECT' || model.type === 'TEXT_SELECT'"
       />
 
       <!-- MULTIPLE -->

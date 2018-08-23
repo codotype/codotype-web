@@ -17,6 +17,7 @@ export const DEFAULT_OPTION = {
 // Datattype IDs
 // TODO - these are duplicated in the Option store
 export const TEXT = 'TEXT'
+export const TEXT_SELECT = 'TEXT_SELECT'
 export const NUMBER = 'NUMBER'
 export const NUMBER_SELECT = 'NUMBER_SELECT'
 export const BOOL = 'BOOL'
@@ -34,7 +35,8 @@ export const OPTION_TYPES = [
   // { value: TIME, text: 'Time', icon: 'fa-clock-o' },
   // { value: DATETIME, text: 'DateTime', icon: 'fa-calendar-plus-o' },
   { value: COLOR, text: 'Color', icon: 'fa-eyedropper' },
-  { value: NUMBER_SELECT, text: 'Number Select', icon: 'fa-list' }
+  { value: NUMBER_SELECT, text: 'Number Select', icon: 'fa-list' },
+  { value: TEXT_SELECT, text: 'Text Select', icon: 'fa-list' }
   // { value: 'JSON', text: 'JSON', icon: 'fa-code' }
   // { value: 'GEO', text: 'Geolocation', icon: 'fa-map' },
   // { value: RELATION, text: 'Relation', icon: 'fa-link' }
