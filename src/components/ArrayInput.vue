@@ -35,7 +35,7 @@
         </draggable>
 
         <!-- Add Option -->
-        <button class="btn btn btn-outline-success btn-block mt-4" @click="addOption()">
+        <button class="btn btn-outline-success btn-block mt-4" @click="addOption()">
           <i class="fa fa-fw fa-plus mr-2"></i>
           Dropdown Option
         </button>
@@ -55,11 +55,11 @@
             <div class="col-lg-6 text-right">
               <div class="btn-group">
                 <button class="btn btn-sm btn-outline-secondary" @click="cancelEditing(editing)">
-                  <i class="fa fa-fw fa-times mr-1"></i>
+                  <i class="fa fa-fw fa-times"></i>
                   Cancel
                 </button>
                 <button class="btn btn-outline-success" @click="submitEditing(editing)">
-                  <i class="fa fa-fw fa-check mr-1"></i>
+                  <i class="fa fa-fw fa-check"></i>
                   Submit
                 </button>
               </div>
