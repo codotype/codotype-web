@@ -13,7 +13,7 @@
 
 <script>
 import MoreInfoLink from '@/components/MoreInfoLink'
-import ModelOptionForm from '@/components/ModelOptionForm'
+import ModelOptionForm from './ModelOptionForm'
 import { mapGetters } from 'vuex'
 
 export default {

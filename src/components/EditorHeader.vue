@@ -1,40 +1,26 @@
 <template>
-  <div class="row d-flex align-items-center">
-
-    <div class="col-lg-7">
-      <h4 class="mb-0">
-        {{ title || 'NO TITLE' }}
-        <button class="btn btn-link py-0">
-          <i class="fa fa-pencil"></i>
-        </button>
-      </h4>
-    </div>
-
-    <div class="col-lg-5 d-flex align-items-center justify-content-end">
-      <slot></slot>
-    </div>
-
-    <div class="col-lg-12 pb-1" v-if='help'>
+  <div class="row">
+    <div class="col-lg-12">
+      <p class="lead mb-0">{{ title }}</p>
       <small class="text-muted">{{ help }}</small>
+      <MoreInfoLink :url="url"/>
     </div>
-
+    <div class="col-lg-12">
+      <hr>
+    </div>
   </div>
 </template>
 
 <!-- // // // //  -->
 
 <script>
-import { mapGetters } from 'vuex'
 import MoreInfoLink from '@/components/MoreInfoLink'
 
 export default {
-  props: ['title', 'help'],
+  props: ['title', 'help', 'url'],
   components: {
     MoreInfoLink
-  },
-  computed: mapGetters({
-    model: 'project/selectedModel'
-  })
+  }
 }
 </script>
 
