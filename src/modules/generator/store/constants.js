@@ -24,22 +24,22 @@ export const CLIENT_OPTS = [
     version: '0.1.0',
     official: true
   },
-  {
-    id: 'flask',
-    icon: 'devicon-python-plain',
-    label: 'Flask',
-    additional_options: [],
-    description: 'Flask is a server-side Python framework for building full-stack applications.',
-    tech_tags: ['Vue', 'Vue-Router', 'Vuex', 'Axios', 'Bootstrap'],
-    type_tags: ['Fullstack'],
-    self_configuring: false,
-    addons: [],
-    global_options: [],
-    model_options: [],
-    github_url: 'codotype/codotype-flask-postgresql-generator',
-    version: '0.1.0',
-    official: true
-  },
+  // {
+  //   id: 'flask',
+  //   icon: 'devicon-python-plain',
+  //   label: 'Flask',
+  //   additional_options: [],
+  //   description: 'Flask is a server-side Python framework for building full-stack applications.',
+  //   tech_tags: ['Vue', 'Vue-Router', 'Vuex', 'Axios', 'Bootstrap'],
+  //   type_tags: ['Fullstack'],
+  //   self_configuring: false,
+  //   addons: [],
+  //   global_options: [],
+  //   model_options: [],
+  //   github_url: 'codotype/codotype-flask-postgresql-generator',
+  //   version: '0.1.0',
+  //   official: true
+  // },
   {
     id: 'vuejs',
     icon: 'devicon-vuejs-plain',
