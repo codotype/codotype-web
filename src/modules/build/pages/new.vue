@@ -1,7 +1,24 @@
 <template>
   <div class="container">
 
-    <div class="row">
+    <!-- TODO - use PageHeader component here, similar to App Editor page -->
+    <EditorHeader
+      title="Build"
+      help="Configure a build using a single App and multiple generators"
+      url="https://codotype.github.io"
+    />
+
+    <hr>
+
+    <!-- STEP 1 - Select an App -->
+    <AppSelector v-if="!app"/>
+
+    <!-- STEP 2 - Select a generator -->
+    <GeneratorSelector v-if="app"/>
+
+    <!-- Step 3 - Configure the generator -->
+    <!-- Show ONLY when a generator and app are selected -->
+    <div class="row" v-if='app'>
 
       <div class="col-lg-9">
 
@@ -19,6 +36,8 @@
             <!-- </div> -->
           <!-- </div> -->
 
+        <!-- TODO - abstract ALL of this into a separate component -->
+        <!-- GeneratorConfigure component -->
         <div class="row">
           <div class="col-lg-12">
 
@@ -52,17 +71,27 @@
 
       </div>
 
-      <!-- TODO - are we even going to keep this component? -->
       <div class="col-lg-3">
 
         <!-- TODO - abstract this card into a separate component -->
         <!-- TODO - abstract this card into a separate component -->
         <div class="card card-body">
           <!-- Call it something like, `BuildManifest` -->
-          <p class='lead'>Build</p>
+          <!-- <p class='lead mb-0'>Build Manifest</p> -->
+          <!-- <hr> -->
 
+          <p class='lead mb-0'>App</p>
           <ul class="list-group">
-            <li class="list-group-item" v-for="each in generatorCollection">
+            <li class="list-group-item list-group-item-action">
+              Library App
+            </li>
+          </ul>
+
+          <br>
+
+          <p class='lead mb-0'>Generators</p>
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-action" v-for="each in generatorCollection">
               {{ each.label }}
             </li>
           </ul>
@@ -86,18 +115,20 @@
 <!-- // // // //  -->
 
 <script>
-import MoreInfoLink from '@/components/MoreInfoLink'
 import GeneratorModelOptions from '@/modules/build/components/GeneratorModelOptions'
 import GeneratorGlobalOptions from '@/modules/build/components/GeneratorGlobalOptions'
 import GeneratorAddonForm from '@/modules/build/components/GeneratorAddonForm'
+import GeneratorSelector from '@/modules/build/components/GeneratorSelector'
+import AppSelector from '@/modules/build/components/AppSelector'
 import { mapGetters } from 'vuex'
 
 export default {
   components: {
-    MoreInfoLink,
     GeneratorModelOptions,
     GeneratorGlobalOptions,
-    GeneratorAddonForm
+    GeneratorAddonForm,
+    GeneratorSelector,
+    AppSelector
   },
   computed: mapGetters({
     model: 'project/selectedModel',

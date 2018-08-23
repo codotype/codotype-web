@@ -5,7 +5,7 @@
 
         <div class="col-lg-12 text-center">
           <p class="lead mb-0">
-            <router-link :to="'/generators/' + model.id" class="d-flex flex-column" style='text-decoration: none'>
+            <router-link :to="'/build/new'" class="d-flex flex-column" style='text-decoration: none'>
               <i :class="model.icon + ' mb-2'" style="font-size: 4rem"></i>
               {{ model.label }}
             </router-link>

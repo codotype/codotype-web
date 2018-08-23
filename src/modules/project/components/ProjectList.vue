@@ -31,7 +31,7 @@
               <!-- Export -->
             <!-- </a> -->
 
-            <a class='btn btn-sm btn-success-outline' :href="'#/projects/' + project._id + '/generate'">
+            <a class='btn btn-sm btn-outline-success' :href="'#/projects/' + project._id + '/generate'">
               <i class="fa fa-play mr-1"></i>
               Generate
             </a>
@@ -79,10 +79,9 @@
 
 <script>
 import _ from 'lodash'
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
-  props: ['collection'],
   methods: {
     ...mapActions({
       destroyProject: 'project/destroy'
@@ -92,6 +91,9 @@ export default {
       _.each(project.schemas, (s) => { schemas.push(s.label) })
       return schemas.join(', ') + ' Models'
     }
-  }
+  },
+  computed: mapGetters({
+    collection: 'project/collection'
+  })
 }
 </script>
