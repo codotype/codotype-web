@@ -10,26 +10,29 @@
       <!-- TODO - get rid of hardcoded icons -->
       <div class="col-lg-5">
 
+        <!-- DEBUGGING INFLATED -->
+        <!-- <pre>{{ inflated }}</pre> -->
+
         <!-- BELONGS_TO -->
         <span class="badge" v-if="item.type === 'BELONGS_TO'">
           <i class="fa fa-link mr-2" v-b-tooltip.hover.left title='Relation'></i>
-          {{item.as}}
+          {{inflated.alias.label}}
           <span class="badge badge-light ml-2">Belongs To</span>
-          <span class="badge badge-light ml-2">many {{ schema.label_plural }} to one {{ item.as }}</span>
+          <span class="badge badge-light ml-2">many {{ schema.label_plural }} to one {{ inflated.schema.label }}</span>
         </span>
 
         <!-- HAS_MANY -->
         <span class="badge" v-if="item.type === 'HAS_MANY'">
           <i class="fa fa-link mr-2" v-b-tooltip.hover.left title='Relation'></i>
-          {{item.as}}
+          {{inflated.alias.label}}
           <span class="badge badge-light ml-2">Has Many</span>
         </span>
 
         <!-- OWNS_MANY -->
         <span class="badge" v-if="item.type === 'OWNS_MANY'">
           <i class="fa fa-link mr-2" v-b-tooltip.hover.left title='Relation'></i>
-          {{item.as}}
-          <span class="badge badge-light ml-2">one {{ schema.label }} to many {{ item.as }}</span>
+          {{inflated.alias.label_plural}}
+          <span class="badge badge-light ml-2">one {{ schema.label }} to many {{ inflated.schema.label_plural }}</span>
         </span>
 
       </div>
@@ -75,7 +78,7 @@
           ok-title='DESTROY'
           cancel-title='Cancel'
         >
-          <p class="text-left">Are you sure you want to destroy the {{ item.as }} relation?</p>
+          <p class="text-left">Are you sure you want to destroy the {{ inflated.alias.label }} relation?</p>
         </b-modal>
       </div>
 
@@ -87,6 +90,7 @@
 <script>
 import AttributeLabel from '@/modules/attribute/components/AttributeLabel'
 import { mapActions } from 'vuex'
+import { inflateRelation } from 'codotype-generator/lib/helpers'
 
 export default {
   props: ['item', 'schema', 'edit'],
@@ -95,14 +99,21 @@ export default {
   },
   methods: mapActions({
     remove: 'relation/destroy'
-  })
+  }),
+  computed: {
+    inflated () {
+      let inflated = inflateRelation({ relation: this.item, schemas: this.$store.getters['schema/collection'] })
+      console.log(inflated)
+      return inflated
+    }
+  }
 }
 </script>
 
 <!-- TODO - move some of this into AttributeLabel component -->
 <style lang='sass' scoped>
   .list-group-item
-    border-left: .25rem solid #666666
+    // border-left: .25rem solid #666666
 
   .list-group-item:hover i.fa-bars
     opacity: 1

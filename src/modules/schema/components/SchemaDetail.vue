@@ -14,7 +14,8 @@
         </div>
 
         <div class="col-lg-5 d-flex align-items-center justify-content-end">
-          <button class='btn btn-sm btn-outline-danger' v-b-modal="'destroy-schema'"">
+
+          <button class='btn btn-sm btn-outline-danger' v-b-modal="'destroy-schema'" v-b-tooltip.hover.left title='Destroy Model'>
             <i class="fa fa-fw fa-trash"></i>
           </button>
 
@@ -32,7 +33,7 @@
 
         <div class="col-lg-12 pb-1">
           <small class="text-muted">
-            {{ 'Defines the attributes and relations that can be assigned to a single ' + model.label }}
+            {{ 'Define attributes and relations that describe a single ' + model.label + ' model'}}
           </small>
         </div>
 
@@ -42,8 +43,7 @@
     <!-- Attribute List -->
     <div class="col-lg-12">
       <AttributeList :schema='model' />
-      <br>
-      <RelationList :schema='model' />
+      <RelationList :schema='model' class="mt-3" />
     </div>
 
   </div>
@@ -65,6 +65,7 @@ export default {
     model: 'schema/selectedModel'
   }),
   methods: mapActions({
+    editSchema: 'schema/edit',
     destroySchema: 'schema/remove'
   })
 }

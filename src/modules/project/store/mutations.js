@@ -9,17 +9,17 @@ export default {
   // TODO - move into schema module
   removeSchema (state, { schema }) {
     let schemas = []
-    _.each(state.current.schemas, (s) => {
+    _.each(state.selectedModel.schemas, (s) => {
       if (s._id !== schema._id) {
         schemas.push(s)
       }
     })
-    state.current.schemas = schemas
+    state.selectedModel.schemas = schemas
   },
   // TODO - abstract into editModel mixin
   edit (state, { _id }) { // TODO - DEPRECATE CURRENT
     state.edit = true
-    state.current = _.cloneDeep(_.find(state.collection, { _id }))
+    state.selectedModel = _.cloneDeep(_.find(state.collection, { _id }))
   },
   remove (state, { record }) {
     state.collection = _.filter(state.collection, (s) => { return s._id !== record._id })

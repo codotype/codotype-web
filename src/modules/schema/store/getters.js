@@ -6,9 +6,6 @@ export default {
   ...COLLECTION_GETTERS,
   ...SELECT_MODEL_GETTERS,
   ...NEW_MODEL_GETTERS,
-  selectedLabel: state => {
-    return state.selectedModel.label || 'I AM ERROR'
-  },
   datatypes: state => {
     return DATATYPES
   },

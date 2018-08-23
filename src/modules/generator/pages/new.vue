@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-12">
 
-        <b-tabs>
+        <b-tabs lazy no-fade>
 
           <b-tab title="Overview" active>
             <br>
@@ -12,12 +12,12 @@
 
           <b-tab title="Global Options">
             <br>
-            <GlobalOptionsEditor />
+            <OptionEditorLayout />
           </b-tab>
 
           <b-tab title="Model Options" >
             <br>
-            <ModelOptionsEditor />
+            <ModelOptionEditorLayout />
           </b-tab>
 
           <b-tab title="Addons" active>
@@ -33,18 +33,18 @@
 </template>
 
 <script>
-import AddonEditor from '@/components/AddonEditor'
+import AddonEditor from '@/modules/addon/components/AddonEditor'
 import GeneratorMetaEditor from '@/components/GeneratorMetaEditor'
-import ModelOptionsEditor from '@/components/ModelOptionsEditor'
-import GlobalOptionsEditor from '@/components/GlobalOptionsEditor'
+import OptionEditorLayout from '@/modules/option/components/OptionEditorLayout'
+import ModelOptionEditorLayout from '@/modules/option/components/ModelOptionEditorLayout'
 
 export default {
   name: 'GeneratorForm',
   components: {
     AddonEditor,
     GeneratorMetaEditor,
-    ModelOptionsEditor,
-    GlobalOptionsEditor
+    OptionEditorLayout,
+    ModelOptionEditorLayout
   }
 }
 </script>

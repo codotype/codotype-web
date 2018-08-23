@@ -20,7 +20,7 @@ export const CLIENT_OPTS = [
     addons: [],
     global_options: [],
     model_options: [],
-    github_url: 'https://github.com/codotype/codotype',
+    github_url: 'codotype/codotype-nodejs-express-mongodb-generator',
     version: '0.1.0',
     official: true
   },
@@ -36,7 +36,7 @@ export const CLIENT_OPTS = [
     addons: [],
     global_options: [],
     model_options: [],
-    github_url: 'https://github.com/codotype/codotype',
+    github_url: 'codotype/codotype-flask-postgresql-generator',
     version: '0.1.0',
     official: true
   },
@@ -53,7 +53,7 @@ export const CLIENT_OPTS = [
     addons: [],
     global_options: [],
     model_options: [],
-    github_url: 'https://github.com/codotype/codotype',
+    github_url: 'codotype/codotype-vuejs-vuex-bootstrap-generator',
     version: '0.1.0',
     official: true
   },
@@ -64,7 +64,7 @@ export const CLIENT_OPTS = [
     description: 'Generate front-end API client applications with React, Redux, Axios, and Bootstrap',
     tech_tags: ['React', 'Redux', 'Axios', 'Bootstrap'],
     type_tags: ['Frontend'],
-    github_url: 'https://github.com/codotype/codotype',
+    github_url: 'codotype/codotype-react-generator',
     version: '0.1.0',
     official: false,
 

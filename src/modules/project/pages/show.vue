@@ -9,9 +9,9 @@
         <hr>
       </div>
 
-      <div class="col-lg-4" id="model-list">
+      <div class="col-lg-4 border-right">
 
-        <!-- New Schema -->
+        <!-- New Schema Modal -->
         <b-modal id="new-schema" :title="'New Model'" @ok="submit()" ok-title='Create' cancel-title='Cancel' >
           <SchemaForm :schema="newModel" />
         </b-modal>
@@ -21,12 +21,12 @@
           Add Model
         </button>
 
-        <SchemaList/>
+        <SchemaList id="model-list" />
 
       </div>
 
-      <div class="col-lg-8" id="model-detail">
-        <SchemaDetail />
+      <div class="col-lg-8">
+        <SchemaDetail id="model-detail" />
       </div>
     </div>
   </div>
@@ -63,9 +63,7 @@ export default {
     resetNewModel: 'schema/resetNewModel'
   }),
   computed: mapGetters({
-    model: 'project/selectedModel',
-    newModel: 'schema/newModel',
-    project: 'project/selectedModel'
+    newModel: 'schema/newModel'
   })
 }
 </script>

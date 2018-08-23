@@ -15,16 +15,8 @@
 
     <!-- Basic Datatypes -->
     <div class="row">
-      <div class="col-sm-6 pb-2" v-for="opt in datatypes" v-if="opt.value !== 'RELATION'">
+      <div class="col-sm-6 pb-2" v-for="opt in datatypes">
         <DatatypeOption :opt="opt" :val="value" :click="setDatatype" class='btn-outline-dark' />
-      </div>
-
-      <br>
-      <br>
-
-      <!-- Relation Datatype -->
-      <div class="col-sm-12" v-for="opt in datatypes" v-if="opt.value === 'RELATION'">
-        <DatatypeOption :opt="opt" :val="value" :click="setDatatype" class='text-center btn-outline-dark'/>
       </div>
     </div>
 

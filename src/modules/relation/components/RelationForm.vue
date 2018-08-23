@@ -3,15 +3,6 @@
   <div class="row">
     <div class="col-lg-12">
 
-      <!-- TODO - use FormInput in this component? -->
-      <div class="row">
-        <div class="col-lg-12">
-          <p class="lead mb-0">Relation Options</p>
-        </div>
-      </div>
-
-      <hr>
-
       <!-- <small class="text-warning">TODO - compute model.label, model.identifier in Vuex store</small> -->
       <!-- TODO - model.label should be RELATED_SCHEMA.label or RELATED_SCHEMA.label_plural -->
       <!-- <input type="text" v-model="model.label"> -->
@@ -71,9 +62,20 @@
           </div>
         </div>
 
-        <!-- Description -->
+        <!-- Description / Relation Preview-->
         <div class="col-lg-12">
           <pre class="bg-dark text-light">{{model}}</pre>
+
+          <!-- <div class="row"> -->
+            <!-- <div class="col-lg-6"> -->
+              <!-- <pre class="bg-dark text-light">{{schema}}</pre> -->
+            <!-- </div> -->
+
+            <!-- <div class="col-lg-6"> -->
+              <!-- <pre class="bg-dark text-light">{{allSchemas.find(s => s._id === model.related_schema_id)}}</pre> -->
+            <!-- </div> -->
+          <!-- </div> -->
+
           <small>
             One <span class='text-info'>{{ schema.label }}</span> HAS MANY <span class='text-warning'>TODO</span>
           </small>

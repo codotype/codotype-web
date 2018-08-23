@@ -46,7 +46,7 @@ export const DATE = 'DATE'
 export const TIME = 'TIME'
 export const DATETIME = 'DATETIME'
 export const COLOR = 'COLOR'
-export const RELATION = 'RELATION'
+// export const RELATION = 'RELATION'
 
 export const DATATYPES = [
   { value: TEXT, text: 'Text', icon: 'fa-quote-left' },
@@ -56,7 +56,7 @@ export const DATATYPES = [
   { value: TIME, text: 'Time', icon: 'fa-clock-o' },
   { value: DATETIME, text: 'DateTime', icon: 'fa-calendar-plus-o' },
   { value: COLOR, text: 'Color', icon: 'fa-eyedropper' },
-  { value: 'JSON', text: 'JSON', icon: 'fa-code' },
+  { value: 'JSON', text: 'JSON', icon: 'fa-code' }
   // { value: 'GEO', text: 'Geolocation', icon: 'fa-map' },
-  { value: RELATION, text: 'Relation', icon: 'fa-link' }
+  // { value: RELATION, text: 'Relation', icon: 'fa-link' }
 ]
