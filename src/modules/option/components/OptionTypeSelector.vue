@@ -31,6 +31,9 @@ export default {
     option_types: 'option/option_types'
   }),
   methods: {
+    // TODO - this should hit the vuex store
+    // The Vuex store should update the model.datatypeOptions object to reflect the
+    // options associated with the selected datatype
     setOptionType (optionType) {
       this.$emit('input', optionType)
     }

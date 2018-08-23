@@ -8,7 +8,7 @@
       </p>
 
       <!-- Step 1 - Define Option label / identifier -->
-      <b-row v-if="!model.label || !model.identifier">
+      <b-row>
         <b-col lg="6">
           <FormInput label="Label" placeholder="Label" v-model="model.label" required="true" help="Example: 'Odd Job'" />
         </b-col>
@@ -26,20 +26,9 @@
       <OptionTypeSelector v-model='model.type' v-if="!model.type"/>
 
       <!-- Step 3 - Datatype Options -->
-      <b-row v-if="model.type && model.identifier && model.label ">
-        <b-col lg="12">
+      <OptionTypeConfigure :model="model" v-if="model.type" />
 
-
-
-          <!-- Validations -->
-          <FormInput label="Required" placeholder="Required" v-model="model.required" help="Whether or not a value for this option is required" type="BOOL"/>
-
-          <!-- TODO - add the following: -->
-          <!-- default_value: true, -->
-          <!-- datatypeOptions: {} -->
-
-        </b-col>
-      </b-row>
+      <!-- Step 4 - Preview + Submit -->
 
       <!-- <b-row v-if="model.type"> -->
         <!-- </b-col> -->
@@ -54,12 +43,14 @@
 <script>
 import FormInput from '@/components/FormInput'
 import OptionTypeSelector from './OptionTypeSelector'
+import OptionTypeConfigure from './OptionTypeConfigure'
 
 export default {
   props: ['model'],
   components: {
     FormInput,
-    OptionTypeSelector
+    OptionTypeSelector,
+    OptionTypeConfigure
   }
 }
 </script>
