@@ -17,11 +17,16 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import smoothReflow from 'vue-smooth-reflow'
 import SchemaListItem from './SchemaListItem'
 
 export default {
+  mixins: [smoothReflow],
   components: {
     SchemaListItem
+  },
+  mounted () {
+    this.$smoothReflow()
   },
   computed: mapGetters({
     collection: 'schema/collection'
