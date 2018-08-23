@@ -1,4 +1,3 @@
-<!-- TODO - this goes into the 'Build' module -->
 <template>
   <div class="container">
 
@@ -53,6 +52,7 @@
 
       </div>
 
+      <!-- TODO - are we even going to keep this component? -->
       <div class="col-lg-3">
 
         <!-- TODO - abstract this card into a separate component -->

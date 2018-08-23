@@ -1,10 +1,10 @@
 <template>
   <div>
-    <span class='d-flex flex-row align-items-center'>
-      <p class="lead mb-0 mr-3">Global Options</p>
-      <MoreInfoLink url="https://codotype.github.io" />
-    </span>
-    <small>Configure global options for this generator</small>
+    <EditorHeader
+      title="Global Options"
+      help="Configure global options for this generator"
+      url="https://codotype.github.io"
+    />
 
     <div class="card card-body" v-for="attr in opts.client[3].global_options">
       <OptionFormItem :model="attr" />
@@ -13,14 +13,14 @@
 </template>
 
 <script>
-import MoreInfoLink from '@/components/MoreInfoLink'
+import EditorHeader from '@/components/EditorHeader'
 import OptionFormItem from '@/modules/option/components/OptionFormItem'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'GeneratorGlobalOptions',
   components: {
-    MoreInfoLink,
+    EditorHeader,
     OptionFormItem
   },
   computed: mapGetters({
