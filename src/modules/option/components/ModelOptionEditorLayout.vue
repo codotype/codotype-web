@@ -1,7 +1,7 @@
 <template>
   <EditorLayout
-    title="Global Options"
-    help="Global Options expose an additional layer of configuration for individual generators."
+    title="Model Options"
+    help="Model Options expose an additional layer of configuration for individual generators."
     url="https://github.com/codotype"
     icon="fa-cog"
     button="New Option"
@@ -9,13 +9,13 @@
 
     <!-- New Option Modal -->
     <template slot="modal">
-      <b-modal id="new-option" :title="'New Model'" @ok="createNewOption()" ok-title='Create'>
+      <b-modal id="new-option" :title="'New Model Options'" @ok="createNewOption()" ok-title='Create'>
         <OptionForm :model="newOptionModel" />
       </b-modal>
 
       <button class="btn btn-lg btn-primary btn-block" v-b-modal="'new-option'">
         <i class="fa fa-plus"></i>
-        New Option
+        Model Option
       </button>
     </template>
 

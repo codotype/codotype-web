@@ -26,14 +26,17 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import MoreInfoLink from '@/components/MoreInfoLink'
 import AddonAttributeList from './AddonAttributeList'
 
 export default {
-  props: ['model'],
   components: {
     MoreInfoLink,
     AddonAttributeList
-  }
+  },
+  computed: mapGetters({
+    model: 'addon/selectedModel'
+  })
 }
 </script>

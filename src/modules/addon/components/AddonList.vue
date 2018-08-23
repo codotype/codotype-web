@@ -10,11 +10,13 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'AddonList',
-  props: ['collection'],
+  computed: mapGetters({
+    collection: 'addon/collection'
+  }),
   methods: mapActions({
     selectAddon: 'addon/selectModel'
   })
