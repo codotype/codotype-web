@@ -16,7 +16,7 @@ export default {
     {
       path: '/projects/:project_id/seeds/:schema_id',
       component: RouterView,
-      meta: { bcGetter: 'schema/selectedLabel' },
+      meta: { bcGetter: 'Show' },
       children: [
         {
           path: '',

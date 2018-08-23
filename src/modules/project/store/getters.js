@@ -7,9 +7,6 @@ export default {
   exampleCollection: state => {
     return state.exampleCollection
   },
-  selectedLabel: state => {
-    return state.selectedModel.label || 'I AM ERROR'
-  },
   // TODO - phase out current
   current: state => {
     return state.current
