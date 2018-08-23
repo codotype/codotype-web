@@ -10,7 +10,7 @@
             <GeneratorMetaEditor />
           </b-tab>
 
-          <b-tab title="Global Options">
+          <b-tab title="Global Options" active>
             <br>
             <OptionEditorLayout />
           </b-tab>
@@ -20,7 +20,7 @@
             <ModelOptionEditorLayout />
           </b-tab>
 
-          <b-tab title="Addons" active>
+          <b-tab title="Addons">
             <br>
             <AddonEditor/>
           </b-tab>
