@@ -6,7 +6,6 @@
     </span>
     <small>Configure model-specific options for this generator</small>
 
-    <!-- TODO - abstract this block into its own component -->
     <ModelOptionForm v-for="model in schemas" :model="model" :key="model._id" />
 
   </div>
