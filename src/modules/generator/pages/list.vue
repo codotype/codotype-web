@@ -18,7 +18,7 @@
         <GeneratorListItem v-for="m in opts.client" :model="m" :key="m.id"/>
       </div>
       <div class="col-lg-12 my-4">
-        <div class="card py-4 border-dark">
+        <div class="card py-4 border-dark bg-transparent">
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-center bg-transparent border-dark text-dark">
               <i class="fa fa-lg fa-info-circle"></i>
