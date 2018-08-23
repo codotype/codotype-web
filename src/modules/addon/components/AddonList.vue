@@ -1,6 +1,6 @@
 <template>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item" v-for="m in collection" @click="selectAddon(m._id)">
+    <li class="list-group-item list-group-item-action" v-for="m in collection" @click="selectAddon(m._id)">
       {{ m.label }}
     </li>
     <li class="list-group-item list-group-item-warning" v-if="!collection[0]">

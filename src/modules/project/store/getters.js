@@ -7,10 +7,6 @@ export default {
   exampleCollection: state => {
     return state.exampleCollection
   },
-  // TODO - phase out current
-  current: state => {
-    return state.current
-  },
   newModel: state => {
     return state.newModel
   }

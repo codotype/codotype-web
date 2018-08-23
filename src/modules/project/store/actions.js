@@ -60,8 +60,9 @@ export default {
     if (isNew) router.push(`/projects/${recordId}`)
   },
 
+  // TODO - re-implement this
   update: ({ dispatch, state }) => {
-    dispatch('persist', { record: state.current })
+    // dispatch('persist', { record: state.current })
   },
 
   // TODO - destroy any reverse relations to this model

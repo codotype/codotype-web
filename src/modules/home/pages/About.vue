@@ -21,6 +21,8 @@
 
           <div class="col-lg-12 text-center">
             <p>Prototype projects amazingly fast.</p>
+            <p>Codotype is a platform for model-driven code generation.</p>
+            <p>The goal is to eliminate 'friction' in the process of collecting model metadata and passing it to a generator.</p>
           </div>
 
           <div class="col-lg-12 text-center">
