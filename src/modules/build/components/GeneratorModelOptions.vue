@@ -25,7 +25,7 @@ export default {
   computed: mapGetters({
     model: 'project/selectedModel',
     schemas: 'schema/collection',
-    opts: 'generator/generatorFormOpts'
+    generatorCollection: 'generator/collection'
   })
 }
 </script>

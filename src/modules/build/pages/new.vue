@@ -62,7 +62,7 @@
           <p class='lead'>Build</p>
 
           <ul class="list-group">
-            <li class="list-group-item" v-for="each in opts.client">
+            <li class="list-group-item" v-for="each in generatorCollection">
               {{ each.label }}
             </li>
           </ul>
@@ -103,7 +103,7 @@ export default {
     model: 'project/selectedModel',
     schemas: 'schema/collection',
     fetching: 'generator/fetching',
-    opts: 'generator/generatorFormOpts'
+    generatorCollection: 'generator/collection'
   })
 }
 </script>

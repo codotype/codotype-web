@@ -1,12 +1,9 @@
-import { SERVER_OPTS, CLIENT_OPTS } from './constants'
+import { GENERATORS } from './constants'
 
 // Generator Module Getters
 export default {
-  generatorFormOpts: state => {
-    return {
-      client: CLIENT_OPTS,
-      server: SERVER_OPTS
-    }
+  collection: state => {
+    return GENERATORS
   },
   activated: state => {
     return state.activated

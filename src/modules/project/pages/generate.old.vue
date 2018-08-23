@@ -108,7 +108,7 @@ export default {
   computed: mapGetters({
     model: 'project/selectedModel',
     fetching: 'generator/fetching',
-    opts: 'generator/generatorFormOpts'
+    generatorCollection: 'generator/collection'
   }),
   methods: {
     showGenerateModal () {

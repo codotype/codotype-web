@@ -15,7 +15,7 @@
         <hr>
       </div>
       <div class="col-lg-12" >
-        <GeneratorListItem v-for="m in opts.client" :model="m" :key="m.id"/>
+        <GeneratorListItem v-for="m in generatorCollection" :model="m" :key="m.id"/>
       </div>
       <div class="col-lg-12 my-4">
         <div class="card py-4 border-dark bg-transparent">
@@ -47,7 +47,7 @@ export default {
     HelpButton
   },
   computed: mapGetters({
-    opts: 'generator/generatorFormOpts',
+    generatorCollection: 'generator/collection',
     tourSteps: 'tour/generatorListSteps'
   })
 }

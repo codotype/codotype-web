@@ -6,7 +6,7 @@
       url="https://codotype.github.io"
     />
 
-    <div class="card card-body" v-for="attr in opts.client[3].global_options">
+    <div class="card card-body" v-for="attr in generatorCollection[3].global_options">
       <OptionFormItem :model="attr" />
     </div>
   </div>
@@ -24,7 +24,7 @@ export default {
     OptionFormItem
   },
   computed: mapGetters({
-    opts: 'generator/generatorFormOpts'
+    generatorCollection: 'generator/collection'
   })
 }
 </script>

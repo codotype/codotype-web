@@ -1,13 +1,8 @@
 // Generator module constants
 export const GENERATE_ROUTE = '/api/generate'
 
-export const SERVER_OPTS = [
-  { id: 'rails', icon: 'devicon-rails-plain', label: 'Ruby on Rails', disabled: true }
-  // { id: 'revel', icon: 'devicon-go-plain', label: 'Revel', disabled: true },
-  // { id: 'phoenix', icon: 'devicon-erlang-plain', label: 'Phoenix', disabled: true }
-]
-
-export const CLIENT_OPTS = [
+// TODO - this should be fetched from the server, ideally
+export const GENERATORS = [
   {
     id: 'expressjs',
     icon: 'devicon-express-original',

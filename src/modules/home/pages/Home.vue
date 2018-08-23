@@ -46,8 +46,7 @@
           </div>
           <div class="col-lg-9">
             <div class="card-deck" >
-              <!-- <GeneratorListItem v-for="m in opts.client" :model="m" :key="m.id"/> -->
-              <GeneratorCard v-for="m in opts.client.slice(0, 3)" :model="m" :key="m.id"/>
+              <GeneratorCard v-for="m in generatorCollection.slice(0, 3)" :model="m" :key="m.id"/>
             </div>
           </div>
         </div>
@@ -85,7 +84,7 @@ export default {
     title: 'Welcome'
   },
   computed: mapGetters({
-    opts: 'generator/generatorFormOpts',
+    generatorCollection: 'generator/collection',
     tourSteps: 'tour/generatorListSteps'
   })
 }
