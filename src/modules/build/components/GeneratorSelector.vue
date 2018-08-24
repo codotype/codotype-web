@@ -6,7 +6,7 @@
         help="Configure a build using a single App and multiple generators"
       />
       <hr>
-      <GeneratorListItem v-for="m in generatorCollection" :model="m" :key="m.id" :selectMethod="onSelect" />
+      <GeneratorListItem v-for="m in generatorCollection" :model="m" :key="m.id" :selectMethod="selectGenerator" />
     </b-col>
   </b-row>
 </template>
@@ -14,7 +14,7 @@
 <script>
 import EditorHeader from '@/components/EditorHeader'
 import GeneratorListItem from '@/modules/generator/components/GeneratorListItem'
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -23,6 +23,9 @@ export default {
   },
   computed: mapGetters({
     generatorCollection: 'generator/collection'
+  }),
+  methods: mapActions({
+    selectGenerator: 'build/addNewStage'
   })
 }
 </script>

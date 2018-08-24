@@ -8,8 +8,6 @@
 
       <hr>
 
-      <pre>{{selectedAppModel}}</pre>
-
       <p class="lead">
         <i class="fa fa-info-circle"></i>
         Apps encapsulate metadata about models, attributes, and associations that describe the app you're building
@@ -37,8 +35,8 @@ export default {
     this.clearSelectedApp()
   },
   computed: mapGetters({
-    appCollection: 'project/collection',
-    selectedAppModel: 'project/selectedModel'
+    appCollection: 'project/collection'
+    // selectedAppModel: 'project/selectedModel'
   }),
   methods: mapActions({
     selectApp: 'build/selectApp',

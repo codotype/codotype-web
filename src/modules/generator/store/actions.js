@@ -1,7 +1,14 @@
-import { GENERATE_ROUTE } from './constants'
+import { GENERATE_ROUTE, GENERATORS } from './constants'
+import { SELECT_MODEL_ACTIONS } from '@/store/lib/mixins'
 const DownloadFile = require('downloadjs')
 
 export default {
+  ...SELECT_MODEL_ACTIONS,
+  selectModel: ({ commit, state }, model_id) => {
+    let model = GENERATORS.find(m => m.id === model_id) // NOTE - this is only here b.c. generators use `id` instead of `_id`
+    console.log(model)
+    commit('selectedModel', model)
+  },
   // TODO - this needs error handling!
   generate: ({ rootGetters, commit }) => {
     console.log(JSON.stringify(rootGetters['project/selectedModel'], null, 2))

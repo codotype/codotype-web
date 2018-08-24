@@ -7,7 +7,6 @@ export const DEFAULT_BUILD = {
 
 export const DEFAULT_BUILD_STAGE = {
   _id: null,
-  enabled: true,
   generator_id: '',
   generator_configuration: {}
 }

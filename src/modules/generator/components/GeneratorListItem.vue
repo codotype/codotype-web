@@ -27,7 +27,7 @@
         <!-- </span> -->
 
         <!-- TODO - this is sloppy, fix at some point -->
-        <button class="btn btn-primary pull-right" v-if="selectMethod" @click="selectMethod(model)">
+        <button class="btn btn-primary pull-right" v-if="selectMethod" @click="selectMethod(model.id)">
           SELECT
         </button>
       </div>

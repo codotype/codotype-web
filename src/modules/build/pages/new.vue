@@ -14,11 +14,11 @@
     <AppSelector v-if="!newBuildModel.app_id"/>
 
     <!-- STEP 2 - Select a generator -->
-    <GeneratorSelector v-if="newBuildModel.app_id"/>
+    <GeneratorSelector v-if="newBuildModel.app_id && !newBuildModel.stages[0]"/>
 
     <!-- Step 3 - Configure the generator -->
     <!-- Show ONLY when a generator and app are selected -->
-    <div class="row" v-if='newBuildModel.app_id'>
+    <div class="row" v-if='newBuildModel.stages[0]'>
 
       <div class="col-lg-9">
 
@@ -77,13 +77,13 @@
         <!-- TODO - abstract this card into a separate component -->
         <div class="card card-body">
           <!-- Call it something like, `BuildManifest` -->
-          <!-- <p class='lead mb-0'>Build Manifest</p> -->
-          <!-- <hr> -->
+          <p class='lead mb-0'>Build Manifest</p>
+          <hr>
 
           <p class='lead mb-0'>App</p>
           <ul class="list-group">
             <li class="list-group-item list-group-item-action">
-              Library App
+              {{ newBuildModel.app_id }}
             </li>
           </ul>
 
@@ -91,8 +91,8 @@
 
           <p class='lead mb-0'>Generators</p>
           <ul class="list-group">
-            <li class="list-group-item list-group-item-action" v-for="each in generatorCollection">
-              {{ each.label }}
+            <li class="list-group-item list-group-item-action" v-for="each in newBuildModel.stages">
+              {{ each.generator_id }}
             </li>
           </ul>
 
