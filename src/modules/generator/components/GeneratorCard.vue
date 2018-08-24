@@ -3,12 +3,12 @@
     <div class="card-body">
       <div class="row d-flex align-items-end flex-column">
 
-        <div class="col-lg-12 text-center">
+        <div class="col-lg-12 d-flex justify-content-center">
           <p class="lead mb-0">
-            <router-link :to="'/build/new'" class="d-flex flex-column" style='text-decoration: none'>
+            <button @click.prevent="onClick()" class="btn btn-link d-flex align-items-center flex-column" style='text-decoration: none'>
               <i :class="model.icon + ' mb-2'" style="font-size: 4rem"></i>
               {{ model.label }}
-            </router-link>
+            </button>
           </p>
         </div>
 
@@ -55,13 +55,23 @@
 </template>
 
 <script>
-
 import MoreInfoLink from '@/components/MoreInfoLink'
+import { mapActions } from 'vuex'
+
 export default {
   name: 'GeneratorListItem',
   props: ['model'],
   components: {
     MoreInfoLink
+  },
+  methods: {
+    ...mapActions({
+      selectGenerator: 'build/addNewStage'
+    }),
+    onClick () {
+      this.selectGenerator(this.model.id)
+      window.location = '#/build/new'
+    }
   }
 }
 </script>

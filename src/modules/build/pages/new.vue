@@ -2,44 +2,101 @@
   <div class="container">
 
     <!-- TODO - use PageHeader component here, similar to App Editor page -->
-    <EditorHeader
+    <!-- <EditorHeader
       title="Build"
       help="Configure a build using a single App and multiple generators"
       url="https://codotype.github.io"
     />
-
-    <hr>
-
-    <!-- STEP 1 - Select an App -->
-    <AppSelector v-if="!newBuildModel.app_id"/>
-
-    <!-- STEP 2 - Select a generator -->
-    <GeneratorSelector v-if="newBuildModel.app_id && !newBuildModel.stages[0]"/>
+     -->
+    <!-- <hr> -->
 
     <!-- Step 3 - Configure the generator -->
     <!-- Show ONLY when a generator and app are selected -->
-    <div class="row" v-if='newBuildModel.stages[0]'>
+    <div class="row">
+
+      <b-col lg=12>
+        <BuildHeader/>
+        <hr>
+      </b-col>
+      <div class="col-lg-3 border-right">
+
+        <!-- TODO - abstract this card into a separate component -->
+        <!-- TODO - abstract this card into a separate component -->
+        <!-- <p class='lead mb-0'>Build Manifest</p> -->
+
+        <!-- <div class="card card-body"> -->
+          <!-- Call it something like, `BuildManifest` -->
+          <!-- <hr> -->
+
+          <p class='lead mb-0'>App</p>
+          <ul class="list-group">
+            <!-- <router-link class="list-group-item" :to="'/projects/' + newBuildModel.app_id"> -->
+              <!-- {{ selectedApp.label }} -->
+            <!-- </router-link> -->
+            <li class="list-group-item list-group-item-action" v-if="newBuildModel.app_id">
+              {{ selectedApp.label }}
+            </li>
+            <li class="list-group-item list-group-item-warning text-center" v-else>
+              <i class="fa fa-warning"></i>
+              No app selected
+            </li>
+          </ul>
+
+          <!-- <br> -->
+          <hr>
+
+          <p class='lead mb-0'>Generators</p>
+
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-action" v-for="each in newBuildModel.stages" v-if="newBuildModel.stages[0]">
+              {{ each.generator_id }}
+            </li>
+
+            <li class="list-group-item list-group-item-warning text-center" v-if="!newBuildModel.stages[0]">
+              <i class="fa fa-warning"></i>
+              No generators selected
+            </li>
+          </ul>
+
+          <button class="btn btn-primary btn-lg btn-block mt-3" @click="selectGenerator = !selectGenerator">
+            <i class="fa fa-plus"></i>
+            Add Generator
+          </button>
+
+          <!-- <hr> -->
+
+          <!-- <button class="btn btn-lg btn-success btn-block py-4" @click="showGenerateModal()"> -->
+            <!-- <i class="fa fa-fw fa-play mr-2"></i> -->
+            <!-- Generate -->
+          <!-- </button> -->
+        <!-- </div> -->
+        <!-- TODO - abstract this card into a separate component -->
+        <!-- TODO - abstract this card into a separate component -->
+
+      </div>
 
       <div class="col-lg-9">
 
-          <!-- <div class="card-header d-flex justify-content-between align-items-center"> -->
-            <!-- <p class="lead mb-0">Vue.js Generator</p> -->
-            <!-- <div> -->
-              <!-- <button class="btn btn-sm btn-outline-dark"> -->
-                <!-- <i class="fa fa-times"></i> -->
-                <!-- Clear -->
-              <!-- </button> -->
-              <!-- <button class="btn btn-sm btn-outline-success"> -->
-                <!-- <i class="fa fa-plus"></i> -->
-                <!-- Add To Build -->
-              <!-- </button> -->
-            <!-- </div> -->
-          <!-- </div> -->
+
+        <!-- STEP 1 - Select an App -->
+        <!-- TODO - this should be determined by a state getter variable, `requiresApp` -->
+        <AppSelector v-if="!newBuildModel.app_id"/>
+
+        <!-- STEP 2 - Select a generator -->
+        <GeneratorSelector v-if="(newBuildModel.app_id && !newBuildModel.stages[0]) || selectGenerator"/>
 
         <!-- TODO - abstract ALL of this into a separate component -->
         <!-- GeneratorConfigure component -->
-        <div class="row">
+        <div class="row" v-else-if='newBuildModel.stages[0] && newBuildModel.app_id'>
           <div class="col-lg-12">
+
+            <EditorHeader
+              :title="selectedGenerator.label"
+              :help="selectedGenerator.description"
+              url="https://codotype.github.io"
+            />
+
+            <hr>
 
             <b-tabs>
 
@@ -50,63 +107,27 @@
                 <p class='lead text-danger'>TODO - include longer description (in markdown?)</p>
               </b-tab>
 
-              <b-tab title="Global Options">
+              <b-tab title="Global Options" v-if="selectedGenerator.global_options[0]" >
                 <br>
-                <GeneratorGlobalOptions />
-              </b-tab>
-              <b-tab title="Model Options" >
-                <br>
-                <GeneratorModelOptions />
+                <GeneratorGlobalOptions/>
               </b-tab>
 
-              <b-tab title="Addons" >
+              <b-tab title="Model Options" v-if="selectedGenerator.model_options[0]" >
                 <br>
-                <GeneratorAddonForm />
+                <GeneratorModelOptions/>
+              </b-tab>
+
+              <b-tab title="Addons" v-if="selectedGenerator.addons[0]" >
+                <br>
+                <GeneratorAddonForm/>
               </b-tab>
 
             </b-tabs>
 
           </div>
         </div>
-
       </div>
 
-      <div class="col-lg-3">
-
-        <!-- TODO - abstract this card into a separate component -->
-        <!-- TODO - abstract this card into a separate component -->
-        <div class="card card-body">
-          <!-- Call it something like, `BuildManifest` -->
-          <p class='lead mb-0'>Build Manifest</p>
-          <hr>
-
-          <p class='lead mb-0'>App</p>
-          <ul class="list-group">
-            <li class="list-group-item list-group-item-action">
-              {{ newBuildModel.app_id }}
-            </li>
-          </ul>
-
-          <br>
-
-          <p class='lead mb-0'>Generators</p>
-          <ul class="list-group">
-            <li class="list-group-item list-group-item-action" v-for="each in newBuildModel.stages">
-              {{ each.generator_id }}
-            </li>
-          </ul>
-
-          <hr>
-
-          <button class="btn btn-lg btn-success btn-block py-4" @click="showGenerateModal()">
-            <i class="fa fa-fw fa-play mr-2"></i>
-            Generate
-          </button>
-        </div>
-        <!-- TODO - abstract this card into a separate component -->
-        <!-- TODO - abstract this card into a separate component -->
-
-      </div>
     </div>
 
   </div>
@@ -120,6 +141,7 @@ import GeneratorGlobalOptions from '@/modules/build/components/GeneratorGlobalOp
 import GeneratorAddonForm from '@/modules/build/components/GeneratorAddonForm'
 import GeneratorSelector from '@/modules/build/components/GeneratorSelector'
 import AppSelector from '@/modules/build/components/AppSelector'
+import BuildHeader from '@/modules/build/components/BuildHeader'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -128,17 +150,24 @@ export default {
     GeneratorGlobalOptions,
     GeneratorAddonForm,
     GeneratorSelector,
-    AppSelector
+    AppSelector,
+    BuildHeader
   },
-  created () {
+  data () {
+    return {
+      selectGenerator: false
+    }
+  },
+  destroyed () {
     this.resetNewBuildModel()
   },
   computed: mapGetters({
     newBuildModel: 'build/newModel',
-    model: 'project/selectedModel',
     schemas: 'schema/collection',
     fetching: 'generator/fetching',
-    generatorCollection: 'generator/collection'
+    generatorCollection: 'generator/collection',
+    selectedGenerator: 'generator/selectedModel',
+    selectedApp: 'project/selectedModel'
   }),
   methods: mapActions({
     resetNewBuildModel: 'build/resetNewModel'

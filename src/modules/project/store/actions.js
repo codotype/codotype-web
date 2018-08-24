@@ -17,7 +17,7 @@ export default {
     commit('selectedModel', model)
     commit('schema/collection', model.schemas, { root: true })
     commit('schema/selectedModel', model.schemas[0], { root: true })
-    commit('record/collection', model.seeds, { root: true })
+    // commit('record/collection', model.seeds, { root: true })
   },
   fetchCollection: ({ rootGetters, commit }) => {
     commit('fetching', true)

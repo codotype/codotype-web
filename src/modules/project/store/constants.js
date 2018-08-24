@@ -89,7 +89,8 @@ export const DEFAULT_USER_SCHEMA = {
     //   _id: 'attr_265770929jjs31',
     //   locked: true
     // }
-  ]
+  ],
+  relations: []
 }
 
 export const CREATE_SUCCESS_NOTIFICATION = {

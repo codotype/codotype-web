@@ -45,7 +45,7 @@
             <p class="lead text-muted">Choose a generator to get started</p>
           </div>
           <div class="col-lg-9">
-            <div class="card-deck" >
+            <div class="card-deck">
               <GeneratorCard v-for="m in generatorCollection.slice(0, 3)" :model="m" :key="m.id"/>
             </div>
           </div>

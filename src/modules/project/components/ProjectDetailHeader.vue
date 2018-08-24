@@ -38,10 +38,10 @@
         <i class="fa fa-fw fa-lg fa-download" v-b-tooltip.hover.left :title='"Export"'></i>
       </a>
 
-      <a class="btn btn-success btn-lg" id='generate-project-button' :href="'#/projects/' + project._id + '/generate'">
+      <button class="btn btn-success btn-lg" id='generate-project-button' @click="goToBuild()">
         <i class="fa fa-fw fa-cogs"></i>
         Generate Code
-      </a>
+      </button>
 
     </div>
 
@@ -65,8 +65,13 @@ export default {
   methods: {
     ...mapActions({
       exportProject: 'project/exportJson',
-      updateProject: 'project/update'
+      updateProject: 'project/update',
+      selectBuildApp: 'build/selectApp'
     }),
+    goToBuild () {
+      this.selectBuildApp(this.project._id)
+      window.location = '#/build/new' // TODO - use vue router
+    },
     submitProjectForm () {
       this.$refs.editModal.hide()
       this.updateProject()

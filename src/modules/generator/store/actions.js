@@ -6,8 +6,9 @@ export default {
   ...SELECT_MODEL_ACTIONS,
   selectModel: ({ commit, state }, model_id) => {
     let model = GENERATORS.find(m => m.id === model_id) // NOTE - this is only here b.c. generators use `id` instead of `_id`
-    console.log(model)
     commit('selectedModel', model)
+    commit('option/collection', model.global_options, { root: true }) // TODO - move into mediator pattern
+    commit('addon/collection', model.addons, { root: true }) // TODO - move into mediator pattern
   },
   // TODO - this needs error handling!
   generate: ({ rootGetters, commit }) => {

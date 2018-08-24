@@ -13,11 +13,9 @@
         Apps encapsulate metadata about models, attributes, and associations that describe the app you're building
       </p>
 
-      <ul class="list-group">
-        <li class="list-group-item list-group-item-action" v-for="app in appCollection" v-bind:key="app._id" @click="selectApp(app._id)">
-          {{ app.label}}
-        </li>
-      </ul>
+      <b-card-group deck>
+        <AppCard v-for="app in appCollection" v-bind:key="app._id" :model="app"/>
+      </b-card-group>
 
     </b-col>
   </b-row>
@@ -25,21 +23,21 @@
 
 <script>
 import EditorHeader from '@/components/EditorHeader'
+import AppCard from '@/modules/project/components/AppCard'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
   components: {
-    EditorHeader
+    EditorHeader,
+    AppCard
   },
   created () {
     this.clearSelectedApp()
   },
   computed: mapGetters({
     appCollection: 'project/collection'
-    // selectedAppModel: 'project/selectedModel'
   }),
   methods: mapActions({
-    selectApp: 'build/selectApp',
     clearSelectedApp: 'project/clearSelected'
   })
 }
