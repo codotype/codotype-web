@@ -10,7 +10,6 @@ export default {
   resetNewModel ({ state, commit }) {
     let newModel = _.cloneDeep(DEFAULT_OPTION)
     newModel.order = state.collection.length
-    console.log(newModel)
     return commit('newModel', newModel)
   },
   create ({ state, commit, dispatch, rootGetters }) {

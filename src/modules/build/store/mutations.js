@@ -1,7 +1,7 @@
-import { SELECT_MODEL_MUTATIONS } from '@/store/lib/mixins'
+import { NEW_MODEL_MUTATIONS } from '@/store/lib/mixins'
 
 // // // //
 
 export default {
-  ...SELECT_MODEL_MUTATIONS
+  ...NEW_MODEL_MUTATIONS
 }

@@ -11,14 +11,14 @@
     <hr>
 
     <!-- STEP 1 - Select an App -->
-    <AppSelector v-if="!app"/>
+    <AppSelector v-if="!newBuildModel.app_id"/>
 
     <!-- STEP 2 - Select a generator -->
-    <GeneratorSelector v-if="app"/>
+    <GeneratorSelector v-if="newBuildModel.app_id"/>
 
     <!-- Step 3 - Configure the generator -->
     <!-- Show ONLY when a generator and app are selected -->
-    <div class="row" v-if='app'>
+    <div class="row" v-if='newBuildModel.app_id'>
 
       <div class="col-lg-9">
 
@@ -120,7 +120,7 @@ import GeneratorGlobalOptions from '@/modules/build/components/GeneratorGlobalOp
 import GeneratorAddonForm from '@/modules/build/components/GeneratorAddonForm'
 import GeneratorSelector from '@/modules/build/components/GeneratorSelector'
 import AppSelector from '@/modules/build/components/AppSelector'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   components: {
@@ -130,11 +130,18 @@ export default {
     GeneratorSelector,
     AppSelector
   },
+  created () {
+    this.resetNewBuildModel()
+  },
   computed: mapGetters({
+    newBuildModel: 'build/newModel',
     model: 'project/selectedModel',
     schemas: 'schema/collection',
     fetching: 'generator/fetching',
     generatorCollection: 'generator/collection'
+  }),
+  methods: mapActions({
+    resetNewBuildModel: 'build/resetNewModel'
   })
 }
 </script>

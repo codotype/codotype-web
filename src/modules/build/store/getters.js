@@ -1,6 +1,6 @@
-import { SELECT_MODEL_GETTERS } from '@/store/lib/mixins'
+import { NEW_MODEL_GETTERS } from '@/store/lib/mixins'
 
 // Build Module Getters
 export default {
-  ...SELECT_MODEL_GETTERS
+  ...NEW_MODEL_GETTERS
 }

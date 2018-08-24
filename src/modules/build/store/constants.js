@@ -1,7 +1,7 @@
 // Build module constants
 export const DEFAULT_BUILD = {
   _id: null,
-  app: null,
+  app_id: null,
   stages: []
 }
 
