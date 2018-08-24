@@ -3,7 +3,7 @@
     <b-col>
       <EditorHeader
         title="Select a generator"
-        help="Configure a build using a single App and multiple generators"
+        help="Select a generator with which to build your codebase"
       />
       <hr>
       <GeneratorListItem v-for="m in generatorCollection" :model="m" :key="m.id" :selectMethod="selectGenerator" />

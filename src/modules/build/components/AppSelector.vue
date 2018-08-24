@@ -3,7 +3,7 @@
     <b-col>
       <EditorHeader
         title="Select an App"
-        help="Configure a build using a single App and multiple generators"
+        help="Select an app to generate your app around"
       />
 
       <hr>
