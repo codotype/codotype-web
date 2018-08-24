@@ -15,6 +15,9 @@ export default {
   },
   // TODO - stage management should be moved into the `stage` module
   addNewStage ({ state, commit, dispatch }, generator_id) {
+    // Checks to ensure this generator isn't already in the build
+    if (state.newModel.stages.map(stage => stage.generator_id).includes(generator_id)) return
+
     // Creates newStage, assigns generator_id
     const newStage = _.cloneDeep(DEFAULT_BUILD_STAGE)
     newStage.generator_id = generator_id

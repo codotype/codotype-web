@@ -1,6 +1,6 @@
 
 <template>
-  <div class="card mt-3">
+  <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
       <span>
         <i class="fa fa-database mr-1"></i>

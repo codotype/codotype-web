@@ -1,33 +1,31 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
+  <div class="row">
+    <div class="col-lg-12">
 
-        <b-tabs lazy no-fade>
+      <b-tabs lazy no-fade>
 
-          <b-tab title="Overview" active>
-            <br>
-            <GeneratorMetaEditor />
-          </b-tab>
+        <b-tab title="Overview" active>
+          <br>
+          <GeneratorMetaEditor />
+        </b-tab>
 
-          <b-tab title="Global Options" active>
-            <br>
-            <OptionEditorLayout />
-          </b-tab>
+        <b-tab title="Global Options" active>
+          <br>
+          <OptionEditorLayout />
+        </b-tab>
 
-          <b-tab title="Model Options" >
-            <br>
-            <ModelOptionEditorLayout />
-          </b-tab>
+        <b-tab title="Model Options" >
+          <br>
+          <ModelOptionEditorLayout />
+        </b-tab>
 
-          <b-tab title="Addons">
-            <br>
-            <AddonEditor/>
-          </b-tab>
+        <b-tab title="Addons">
+          <br>
+          <AddonEditor/>
+        </b-tab>
 
-        </b-tabs>
+      </b-tabs>
 
-      </div>
     </div>
   </div>
 </template>

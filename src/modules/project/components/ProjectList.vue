@@ -31,10 +31,10 @@
               <!-- Export -->
             <!-- </a> -->
 
-            <a class='btn btn-sm btn-outline-success' :href="'#/projects/' + project._id + '/generate'">
+            <button class='btn btn-sm btn-outline-success' @click="goToBuild(project)">
               <i class="fa fa-play mr-1"></i>
               Generate
-            </a>
+            </button>
 
             <!-- Destroy project Confirmation -->
             <button class="btn btn-sm btn-outline-danger" v-b-modal="'modal_' + project._id">
@@ -84,8 +84,13 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   methods: {
     ...mapActions({
-      destroyProject: 'project/destroy'
+      destroyProject: 'project/destroy',
+      selectBuildApp: 'build/selectApp'
     }),
+    goToBuild (project) {
+      this.selectBuildApp(project._id)
+      window.location = '#/build/new' // TODO - use vue router
+    },
     schemaString (project) {
       let schemas = []
       _.each(project.schemas, (s) => { schemas.push(s.label) })

@@ -20,6 +20,7 @@
 
       <HelpButton :tour="tourSteps"/>
 
+      <!-- TODO -- enable / disable this button based on build -->
       <button class="btn btn-success btn-lg" id='generate-project-button'>
         <i class="fa fa-check"></i>
         GENERATE
