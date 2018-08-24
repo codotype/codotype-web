@@ -30,7 +30,9 @@ export default {
     commit('newModel', newModel)
 
     // sets generator.state.selectedModel
-    // dispatch('generator/selectModel', generator_id, { root: true })
+    // TODO - should be moved into the `stage` store
+    // TODO - should be part of `stage/selectModel` action
+    dispatch('generator/selectModel', generator_id, { root: true })
   },
   selectStage ({ state, commit, dispatch }, stage_id) {
     console.log('SELECT STAGE')

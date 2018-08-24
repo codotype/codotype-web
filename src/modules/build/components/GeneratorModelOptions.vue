@@ -6,7 +6,12 @@
       help="Configure model-specific options for this generator"
       url="https://codotype.github.io"
     />
-    <ModelOptionForm v-for="model in schemas" :model="model" :key="model._id" />
+
+    <div class="card card-body text-center bg-transparent border-warning text-warning" v-if="!selectedGenerator.global_options[0]">
+      <p class="lead mb-0">No global options exposed by this generator</p>
+    </div>
+
+    <ModelOptionForm v-for="model in schemas" :model="model" :key="model._id" v-else/>
 
   </div>
 </template>
@@ -25,7 +30,7 @@ export default {
   computed: mapGetters({
     model: 'project/selectedModel',
     schemas: 'schema/collection',
-    generatorCollection: 'generator/collection'
+    selectedGenerator: 'generator/selectedModel'
   })
 }
 </script>

@@ -6,8 +6,12 @@
       url="https://codotype.github.io"
     />
 
-    <div class="card card-body" v-for="attr in generatorCollection[3].global_options">
+    <div class="card card-body" v-for="attr in selectedGenerator.global_options">
       <OptionFormItem :model="attr" />
+    </div>
+
+    <div class="card card-body text-center bg-transparent border-warning text-warning" v-if="!selectedGenerator.global_options[0]">
+      <p class="lead mb-0">No global options exposed by this generator</p>
     </div>
   </div>
 </template>
@@ -24,7 +28,7 @@ export default {
     OptionFormItem
   },
   computed: mapGetters({
-    generatorCollection: 'generator/collection'
+    selectedGenerator: 'generator/selectedModel'
   })
 }
 </script>

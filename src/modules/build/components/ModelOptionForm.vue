@@ -9,7 +9,7 @@
 
     <!-- TODO - make this actually collapsable -->
     <ul class="list-group list-group-flush" v-if="!collapsed">
-      <li class="list-group-item" v-for="attr in generatorCollection[3].model_options">
+      <li class="list-group-item" v-for="attr in selectedGenerator.model_options">
         <OptionFormItem :model="attr" />
       </li>
     </ul>
@@ -38,7 +38,7 @@ export default {
     },
     ...mapGetters({
       schemas: 'schema/collection',
-      generatorCollection: 'generator/collection'
+      selectedGenerator: 'generator/selectedModel'
     })
   }
 }
