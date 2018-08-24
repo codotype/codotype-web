@@ -67,16 +67,21 @@
 
 <script>
 import _ from 'lodash'
+import smoothReflow from 'vue-smooth-reflow'
 import { mapGetters, mapActions } from 'vuex'
 import draggable from 'vuedraggable'
 import RelationListItem from './RelationListItem'
 import RelationForm from './RelationForm'
 
 export default {
+  mixins: [smoothReflow],
   components: {
     draggable,
     RelationListItem,
     RelationForm
+  },
+  mounted () {
+    this.$smoothReflow()
   },
   methods: {
     ...mapActions({

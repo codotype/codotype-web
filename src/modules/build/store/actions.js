@@ -1,110 +1,43 @@
 import _ from 'lodash'
-import ObjectID from 'bson-objectid'
-import router from '@/routers'
-import { DEFAULT_PROJECT, DEFAULT_USER_SCHEMA, CREATE_SUCCESS_NOTIFICATION } from './constants'
-import { SELECT_MODEL_ACTIONS } from '@/store/lib/mixins'
-
-// TODO - use this instead?
-// import { underscored } from 'underscore.string'
-const underscored = require('underscore.string/underscored')
-const DownloadFile = require('downloadjs')
+import { NEW_MODEL_ACTIONS } from '@/store/lib/mixins'
+import { DEFAULT_BUILD_STAGE } from './constants'
 
 export default {
-  ...SELECT_MODEL_ACTIONS,
-  selectModel: ({ commit, state }, model_id) => {
-    let model = _.find(state.collection, { _id: model_id })
-    commit('selectedModel', model)
-    commit('schema/collection', model.schemas, { root: true })
-    commit('schema/selectedModel', model.schemas[0], { root: true })
-    commit('record/collection', model.seeds, { root: true })
-  },
-  fetchCollection: ({ rootGetters, commit }) => {
-    commit('fetching', true)
-    setTimeout(() => {
-      commit('fetching', false)
-    }, 500)
-  },
-
-  create: ({ state, dispatch, commit }) => {
-    dispatch('persist', { record: _.cloneDeep(state.newModel) })
-
-    // Displays encouraging notification
-    commit('notification/add', CREATE_SUCCESS_NOTIFICATION, { root: true })
-
-    // Resets state.newModel
-    dispatch('resetNewModel')
-  },
-
-  persist: ({ dispatch, commit, state }, { record }) => {
-    let recordId = record._id
-    let collection = state.collection
-    let isNew = false
-    if (record._id) {
-      collection = _.map(state.collection, (s) => {
-        if (s._id === record._id) {
-          return record
-        } else {
-          return s
-        }
-      })
-    } else {
-      isNew = true
-      recordId = ObjectID().toString()
-      record._id = recordId
-      collection.push(record)
-    }
-
-    // Updates state.collection
-    commit('collection', collection)
-    if (isNew) router.push(`/projects/${recordId}`)
-  },
-
-  update: ({ dispatch, state }) => {
-    dispatch('persist', { record: state.current })
-  },
-
-  // TODO - destroy any reverse relations to this model
-  destroy: ({ commit, state }, model) => {
-    let collection = _.filter(state.collection, (s) => { return s._id !== model._id })
-    commit('collection', collection)
-  },
-
-  exportJson: ({ commit }, model) => {
-    DownloadFile(JSON.stringify(model, null, 2), `${model.identifier}_codotype.json`, 'application/json')
-  },
-
-  setIdentifier: ({ state, commit }) => {
-    let { newModel } = state
-    newModel.identifier = underscored(newModel.label)
+  ...NEW_MODEL_ACTIONS,
+  selectApp ({ state, commit, dispatch }, app_id) {
+    // Sets newModel.app_id
+    const newModel = _.cloneDeep(state.newModel)
+    newModel.app_id = app_id
     commit('newModel', newModel)
-  },
 
-  resetNewModel: ({ commit }) => {
-    let newModel = _.cloneDeep(DEFAULT_PROJECT)
-    let userSchema = _.cloneDeep(DEFAULT_USER_SCHEMA)
-    userSchema._id = _.uniqueId('SCH_')
-    newModel.schemas.push(userSchema)
+    // sets project.state.selectedModel
+    dispatch('project/selectModel', app_id, { root: true })
+  },
+  // TODO - stage management should be moved into the `stage` module
+  addNewStage ({ state, commit, dispatch }, generator_id) {
+    // Checks to ensure this generator isn't already in the build
+    if (state.newModel.stages.map(stage => stage.generator_id).includes(generator_id)) return
+
+    // Creates newStage, assigns generator_id
+    const newStage = _.cloneDeep(DEFAULT_BUILD_STAGE)
+    newStage.generator_id = generator_id
+
+    // TODO - inflate newStage with the data structure build from a generator's configuration
+
+    // Adds the newStage to state.newModel
+    const newModel = _.cloneDeep(state.newModel)
+
+    // TODO - should only be added to newModel.stages
+    // once it's been created in the `stage` module
+    newModel.stages.push(newStage)
     commit('newModel', newModel)
+
+    // sets generator.state.selectedModel
+    // TODO - should be moved into the `stage` store
+    // TODO - should be part of `stage/selectModel` action
+    dispatch('generator/selectModel', generator_id, { root: true })
   },
-
-  cloneExample: ({ dispatch, commit }, example) => {
-    // Resets project, schema, and attribute IDs
-    // TODO - handle seed data as well
-    let projectModel = _.cloneDeep(example)
-    projectModel._id = null
-    // projectModel.schemas = _.map(projectModel.schemas, (s) => {
-    //   s._id = ObjectID().toString()
-    //   s.attributes = _.map(s.attributes, (a) => {
-    //     a._id = ObjectID().toString()
-    //     return a
-    //   })
-    //   return s
-    // })
-
-    // Adds to the project collection
-    dispatch('persist', { record: projectModel })
-
-    // Navigates to /projects/id
-    router.push(`/projects/${projectModel._id}`)
+  selectStage ({ state, commit, dispatch }, stage_id) {
+    console.log('SELECT STAGE')
   }
 }

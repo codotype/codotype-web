@@ -1,15 +1,11 @@
-import { SERVER_OPTS, CLIENT_OPTS } from './constants'
+import { GENERATORS } from './constants'
+import { SELECT_MODEL_GETTERS } from '@/store/lib/mixins'
 
 // Generator Module Getters
 export default {
-  generatorFormOpts: state => {
-    return {
-      client: CLIENT_OPTS,
-      server: SERVER_OPTS
-    }
-  },
-  activated: state => {
-    return state.activated
+  ...SELECT_MODEL_GETTERS,
+  collection: state => {
+    return GENERATORS
   },
   fetching: state => {
     return state.fetching

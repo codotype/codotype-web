@@ -1,26 +1,37 @@
 <template>
-  <div class="card card-body">
+  <b-row>
+    <b-col lg='12'>
+      <p class='card-text'>
+        {{ model.label }}
+        <small class="ml-2 text-muted">
+          {{ model.identifier }}
+        </small>
+      </p>
+    </b-col>
 
-    <p class='card-text'>
-      {{ model.label }}
-      <small class="ml-2 text-muted">
-        {{ model.identifier }}
-      </small>
-    </p>
+    <b-col lg='12'>
+      <hr>
+    </b-col>
 
-    <p class="text-danger">TODO - wire up FormInput components here</p>
-    <pre class="bg-dark text-light">{{ model }}</pre>
-  </div>
+    <b-col lg='12'>
+      <p>Preview:</p>
+      <b-card>
+        <OptionFormItem :model="model" />
+      </b-card>
+    </b-col>
+  </b-row>
 </template>
 
 <script>
+import OptionFormItem from './OptionFormItem'
 import MoreInfoLink from '@/components/MoreInfoLink'
 
 export default {
   name: 'OptionPreview',
   props: ['model'],
   components: {
-    MoreInfoLink
+    MoreInfoLink,
+    OptionFormItem
   }
 }
 </script>

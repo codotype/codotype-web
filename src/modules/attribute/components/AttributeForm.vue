@@ -28,7 +28,6 @@
 <!-- // // // //  -->
 
 <script>
-import ArrayInput from '@/components/ArrayInput'
 import DatatypeSelector from './DatatypeSelector'
 import AttributePropertiesForm from './AttributePropertiesForm'
 import AttributeValidationsForm from './AttributeValidationsForm'
@@ -36,7 +35,6 @@ import AttributeValidationsForm from './AttributeValidationsForm'
 export default {
   props: ['schema', 'model'],
   components: {
-    ArrayInput,
     DatatypeSelector,
     AttributePropertiesForm,
     AttributeValidationsForm

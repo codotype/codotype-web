@@ -39,6 +39,7 @@ export const RELATION_TYPES = [
 ]
 
 // Datattype IDs
+// TODO - these are duplicated in the Option store
 export const TEXT = 'TEXT'
 export const NUMBER = 'NUMBER'
 export const BOOL = 'BOOL'

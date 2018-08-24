@@ -3,12 +3,12 @@
     <div class="row">
       <div class="col-lg-12 d-flex justify-content-between align-items-center">
         <p class="lead mb-0">
-          <a :href="'#/generators/' + model.id">
-            <i :class="model.icon + ' mb-2'" style="font-size: 1rem"></i>
+
+          <button @click.prevent="onClick()" class="btn btn-link" style='text-decoration: none; font-size: 1.5rem'>
+            <i :class="model.icon + ' mr-2'"></i>
             {{ model.label }}
-          </a>
-          <!-- <small> -->
-          <!-- </small> -->
+          </button>
+
           <small class='ml-2'>
             <a class='text-muted' :href="model.github_url">
               <i class="fa fa-cube"></i>
@@ -27,7 +27,7 @@
         <!-- </span> -->
 
         <!-- TODO - this is sloppy, fix at some point -->
-        <button class="btn btn-primary pull-right" v-if="selectMethod" @click="selectMethod(model)">
+        <button class="btn btn-primary pull-right" v-if="selectMethod" @click="selectMethod(model.id)">
           SELECT
         </button>
       </div>
@@ -57,13 +57,23 @@
 </template>
 
 <script>
-
 import MoreInfoLink from '@/components/MoreInfoLink'
+import { mapActions } from 'vuex'
+
 export default {
   name: 'GeneratorListItem',
   props: ['model', 'selectMethod'],
   components: {
     MoreInfoLink
+  },
+  methods: {
+    ...mapActions({
+      selectGenerator: 'build/addNewStage'
+    }),
+    onClick () {
+      this.selectGenerator(this.model.id)
+      window.location = '#/build/new'
+    }
   }
 }
 </script>

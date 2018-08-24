@@ -9,33 +9,22 @@
 
     <!-- TODO - make this actually collapsable -->
     <ul class="list-group list-group-flush" v-if="!collapsed">
-      <li class="list-group-item" v-for="attr in opts.client[3].model_options">
-        <div class="row">
-          <div class="col-lg-9">
-            <label>{{attr.label}}</label>
-            <br>
-            <small>{{attr.help}}</small>
-            <MoreInfoLink :url="attr.more_info_url" />
-          </div>
-          <div class="col-lg-3">
-            <input class='form-control' type="checkbox" :checked="attr.default_value" v-if="attr.type === 'BOOLEAN'">
-            <input class='form-control' type="text" :value="attr.default_value" v-if="attr.type === 'TEXT'">
-          </div>
-        </div>
+      <li class="list-group-item" v-for="attr in selectedGenerator.model_options">
+        <OptionFormItem :model="attr" />
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import MoreInfoLink from '@/components/MoreInfoLink'
+import OptionFormItem from '@/modules/option/components/OptionFormItem'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'GeneratorModelOptions',
   props: ['model'],
   components: {
-    MoreInfoLink
+    OptionFormItem
   },
   data () {
     return {
@@ -49,7 +38,7 @@ export default {
     },
     ...mapGetters({
       schemas: 'schema/collection',
-      opts: 'generator/generatorFormOpts'
+      selectedGenerator: 'generator/selectedModel'
     })
   }
 }

@@ -59,8 +59,8 @@ export const SELECT_MODEL_STATE = {
 // NEW_MODEL mixins
 
 export const NEW_MODEL_ACTIONS = {
-  resetNewModel: ({ commit }) => {
-    return commit('newModel', {})
+  resetNewModel: ({ commit, state }) => {
+    return commit('newModel', _.cloneDeep(state.defaultNewModel))
   }
 }
 
@@ -77,7 +77,8 @@ export const NEW_MODEL_MUTATIONS = {
 }
 
 export const NEW_MODEL_STATE = {
-  newModel: {}
+  newModel: {},
+  defaultNewModel: {}
 }
 
 // // // //

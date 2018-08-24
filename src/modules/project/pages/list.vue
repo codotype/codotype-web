@@ -1,6 +1,6 @@
 
 <template>
-  <div class="container">
+  <div class="row">
 
     <!-- Bootstrap Modal Component -->
     <b-modal id="new-project-modal" ref="newModal" :title="'New App'" hide-footer>
@@ -8,32 +8,38 @@
     </b-modal>
 
     <!-- TODO - abstract into PageHeader component -->
-    <div class="row">
-      <div class="col-lg-6">
-        <h2 id="app-list">Apps</h2>
+    <b-col lg=12>
+      <div class="row">
+        <div class="col-lg-7">
+          <h2 id="app-list">Apps</h2>
+          <small class="text-muted">Apps encapsulate metadata about models, attributes, and associations that describe the project you're building</small>
+
+        </div>
+
+        <div class="col-lg-5 text-right">
+
+          <HelpButton :tour="tourSteps"/>
+
+          <a class='btn btn-lg btn-outline-info' href="#/projects/examples">
+            <i class="fa fa-fw fa-folder-open-o mr-2"></i>
+            Example Apps
+          </a>
+          <button class='btn btn-lg btn-primary ml-2' id="app-new-button" v-b-modal="'new-project-modal'">
+            <i class="fa fa-fw fa-plus mr-2"></i>
+            New App
+          </button>
+        </div>
+
+        <div class="col-lg-12">
+          <hr>
+        </div>
       </div>
-
-      <div class="col-lg-6 text-right">
-
-        <HelpButton :tour="tourSteps"/>
-
-        <a class='btn btn-lg btn-outline-info' href="#/projects/examples">
-          <i class="fa fa-fw fa-folder-open-o mr-2"></i>
-          Example Apps
-        </a>
-        <button class='btn btn-lg btn-primary ml-2' id="app-new-button" v-b-modal="'new-project-modal'">
-          <i class="fa fa-fw fa-plus mr-2"></i>
-          New App
-        </button>
-      </div>
-
-      <div class="col-lg-12">
-        <hr>
-      </div>
-    </div>
+    </b-col>
 
     <!-- Project List -->
-    <ListView :collection="collection" />
+    <b-col lg=12>
+      <ListView :collection="collection" />
+    </b-col>
 
   </div>
 </template>

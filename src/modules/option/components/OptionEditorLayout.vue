@@ -9,11 +9,11 @@
 
     <!-- New Option Modal -->
     <template slot="modal">
-      <b-modal id="new-option" :title="'New Model'" @ok="createNewOption()" ok-title='Create'>
+      <b-modal id="new-option" size="lg" :title="'New Model'" @ok="createNewOption()" ok-title='Create'>
         <OptionForm :model="newOptionModel" />
       </b-modal>
 
-      <button class="btn btn-lg btn-primary btn-block" v-b-modal="'new-option'">
+      <button class="btn btn-lg btn-primary btn-block" v-b-modal="'new-option'" @click="resetNewModel()">
         <i class="fa fa-plus"></i>
         New Option
       </button>

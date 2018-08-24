@@ -13,11 +13,12 @@ const DownloadFile = require('downloadjs')
 export default {
   ...SELECT_MODEL_ACTIONS,
   selectModel: ({ commit, state }, model_id) => {
+    if (!model_id) return
     let model = _.find(state.collection, { _id: model_id })
     commit('selectedModel', model)
     commit('schema/collection', model.schemas, { root: true })
     commit('schema/selectedModel', model.schemas[0], { root: true })
-    commit('record/collection', model.seeds, { root: true })
+    // commit('record/collection', model.seeds, { root: true })
   },
   fetchCollection: ({ rootGetters, commit }) => {
     commit('fetching', true)

@@ -68,16 +68,21 @@
 
 <script>
 import _ from 'lodash'
+import smoothReflow from 'vue-smooth-reflow'
 import { mapGetters, mapActions } from 'vuex'
 import draggable from 'vuedraggable'
 import AttributeListItem from './AttributeListItem'
 import AttributeForm from './AttributeForm'
 
 export default {
+  mixins: [smoothReflow],
   components: {
     draggable,
     AttributeListItem,
     AttributeForm
+  },
+  mounted () {
+    this.$smoothReflow()
   },
   methods: {
     ...mapActions({

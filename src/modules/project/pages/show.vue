@@ -1,33 +1,31 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <ProjectDetailHeader/>
-      </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <ProjectDetailHeader/>
+    </div>
 
-      <div class="col-lg-12">
-        <hr>
-      </div>
+    <div class="col-lg-12">
+      <hr>
+    </div>
 
-      <div class="col-lg-4 border-right">
+    <div class="col-lg-4 border-right">
 
-        <!-- New Schema Modal -->
-        <b-modal id="new-schema" :title="'New Model'" @ok="submit()" ok-title='Create' cancel-title='Cancel' >
-          <SchemaForm :schema="newModel" />
-        </b-modal>
+      <!-- New Schema Modal -->
+      <b-modal id="new-schema" :title="'New Model'" @ok="submit()" ok-title='Create' cancel-title='Cancel' >
+        <SchemaForm :schema="newModel" />
+      </b-modal>
 
-        <button id="new-model-button" class="btn btn-primary btn-block btn-lg" v-b-modal="'new-schema'">
-          <i class="fa fa-fw fa-plus"></i>
-          Add Model
-        </button>
+      <button id="new-model-button" class="btn btn-primary btn-block btn-lg mb-3" v-b-modal="'new-schema'">
+        <i class="fa fa-fw fa-plus"></i>
+        Add Model
+      </button>
 
-        <SchemaList id="model-list" />
+      <SchemaList id="model-list" />
 
-      </div>
+    </div>
 
-      <div class="col-lg-8">
-        <SchemaDetail id="model-detail" />
-      </div>
+    <div class="col-lg-8">
+      <SchemaDetail id="model-detail" />
     </div>
   </div>
 </template>
@@ -54,13 +52,13 @@ export default {
     SchemaDetail
   },
   created () {
-    this.resetNewModel()
+    this.resetNewSchemaModel()
     return this.selectModel(this.project_id)
   },
   methods: mapActions({
     submit: 'schema/create',
     selectModel: 'project/selectModel',
-    resetNewModel: 'schema/resetNewModel'
+    resetNewSchemaModel: 'schema/resetNewModel'
   }),
   computed: mapGetters({
     newModel: 'schema/newModel'
