@@ -11,6 +11,7 @@ import generator from '@/modules/generator/store'
 import addon from '@/modules/addon/store'
 import tour from '@/modules/tour/store'
 import option from '@/modules/option/store'
+import build from '@/modules/build/store'
 
 export default new Vuex.Store({
   modules: {
@@ -23,7 +24,8 @@ export default new Vuex.Store({
     generator,
     addon,
     tour,
-    option
+    option,
+    build
   },
   plugins: [createPersistedState()]
 })
