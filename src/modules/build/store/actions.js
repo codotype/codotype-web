@@ -31,6 +31,7 @@ export default {
     // once it's been created in the `stage` module
     newModel.stages.push(newStage)
     commit('newModel', newModel)
+    commit('choosingGenerator', false)
 
     // sets generator.state.selectedModel
     // TODO - should be moved into the `stage` store

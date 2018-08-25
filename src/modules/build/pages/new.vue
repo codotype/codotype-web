@@ -12,13 +12,14 @@
   <!-- Show ONLY when a generator and app are selected -->
   <div class="row">
 
-    <b-col lg=12>
+    <!-- TODO - this should be shown/hidden depending on something different than 'showSidebar' -->
+    <b-col lg=12 v-if="showSidebar">
       <BuildHeader/>
       <hr>
     </b-col>
 
     <!-- Abstract this column into one or more components -->
-    <b-col lg=3 class="border-right">
+    <b-col lg=3 class="border-right" v-if="showSidebar">
 
       <!-- <p class='lead mb-0'>App</p> -->
       <!-- <ul class="list-group"> -->
@@ -33,7 +34,7 @@
 
       <!-- <p class='lead mb-0'>App</p> -->
       <ul class="list-group">
-        <li class="list-group-item list-group-item-action" v-if="newBuildModel.app_id" @click="showingApp = !showingApp">
+        <li class="list-group-item list-group-item-action" v-if="newBuildModel.app_id">
           <i class="fa fa-database"></i>
           {{ selectedApp.label }}
         </li>
@@ -46,12 +47,12 @@
       <br>
       <!-- <hr> -->
 
-      <button class="btn btn-outline-secondary btn-lg btn-block mb-3" v-if="selectGenerator" @click="selectGenerator = !selectGenerator">
+      <button class="btn btn-outline-secondary btn-lg btn-block mb-3" v-if="choosingGenerator" @click="showChoosingGenerator(false)">
         <i class="fa fa-times"></i>
         Cancel
       </button>
 
-      <button class="btn btn-primary btn-lg btn-block mb-3" v-else @click="selectGenerator = !selectGenerator">
+      <button class="btn btn-primary btn-lg btn-block mb-3" v-else @click="showChoosingGenerator(true)">
         <i class="fa fa-plus"></i>
         Add Generator
       </button>
@@ -87,7 +88,7 @@
 
     </b-col>
 
-    <div class="col-lg-9">
+    <div :class="showSidebar ? 'col-lg-9' : 'col-lg-12'">
 
       <AppShow v-if="showingApp"/>
 
@@ -96,7 +97,7 @@
       <AppSelector v-if="!newBuildModel.app_id"/>
 
       <!-- STEP 2 - Select a generator -->
-      <GeneratorSelector v-if="(newBuildModel.app_id && !newBuildModel.stages[0]) || selectGenerator"/>
+      <GeneratorSelector v-if="(newBuildModel.app_id && !newBuildModel.stages[0]) || choosingGenerator"/>
 
       <!-- TODO - abstract ALL of this into a separate component -->
       <!-- GeneratorConfigure component -->
@@ -154,7 +155,7 @@ import GeneratorSelector from '@/modules/build/components/GeneratorSelector'
 import AppSelector from '@/modules/build/components/AppSelector'
 import BuildHeader from '@/modules/build/components/BuildHeader'
 import AppShow from '@/modules/project/pages/show'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapMutations, mapActions } from 'vuex'
 
 export default {
   components: {
@@ -168,7 +169,6 @@ export default {
   },
   data () {
     return { // TODO - move this into build vuex state
-      selectGenerator: false,
       showingApp: false
     }
   },
@@ -181,11 +181,18 @@ export default {
     fetching: 'generator/fetching',
     generatorCollection: 'generator/collection',
     selectedGenerator: 'generator/selectedModel',
-    selectedApp: 'project/selectedModel'
+    selectedApp: 'project/selectedModel',
+    showSidebar: 'build/showSidebar',
+    choosingGenerator: 'build/choosingGenerator'
   }),
-  methods: mapActions({
-    resetNewBuildModel: 'build/resetNewModel',
-    selectGeneratorModel: 'generator/selectModel'
-  })
+  methods: {
+    ...mapActions({
+      resetNewBuildModel: 'build/resetNewModel',
+      selectGeneratorModel: 'generator/selectModel'
+    }),
+    ...mapMutations({
+      showChoosingGenerator: 'build/choosingGenerator'
+    })
+  }
 }
 </script>
