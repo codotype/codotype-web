@@ -26,11 +26,11 @@
           <!-- <gh-btns-fork slug="codotype/codotype" show-count></gh-btns-fork> -->
         </div>
 
-        <div class="col-lg-12 mt-3 text-center d-flex align-items-center justify-content-center">
-          <span>
-            <span>Built with</span><i class="fa fa-heart ml-1 text-danger"></i><span class='px-1'>by</span><a href="https://github.com/aeksco" target='_blank'>@aeksco</a>
-          </span>
-        </div>
+        <!-- <div class="col-lg-12 mt-3 text-center d-flex align-items-center justify-content-center"> -->
+          <!-- <span> -->
+            <!-- <span>Built with</span><i class="fa fa-heart ml-1 text-danger"></i><span class='px-1'>by</span><a href="https://github.com/aeksco" target='_blank'>@aeksco</a> -->
+          <!-- </span> -->
+        <!-- </div> -->
       </div>
 
       <div class="row justify-content-center">
