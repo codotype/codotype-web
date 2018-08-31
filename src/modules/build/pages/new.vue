@@ -121,6 +121,10 @@
               <p class='lead text-danger'>TODO - include longer description (in markdown?)</p>
             </b-tab>
 
+            <!-- <b-tab title="Data Models"> -->
+              <!-- <AppShow v-if="selectedApp"/> -->
+            <!-- </b-tab> -->
+
             <b-tab title="Global Options" v-if="selectedGenerator.global_options[0]" >
               <br>
               <GeneratorGlobalOptions/>
