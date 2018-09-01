@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import GeneratorListItem from '@/modules/generator/components/GeneratorListItem'
 import HelpButton from '@/components/HelpButton'
 
@@ -47,6 +47,12 @@ export default {
   computed: mapGetters({
     generatorCollection: 'generator/collection',
     tourSteps: 'tour/generatorListSteps'
-  })
+  }),
+  methods: mapActions({
+    fetchGenerators: 'generator/fetchCollection'
+  }),
+  created () {
+    this.fetchGenerators()
+  }
 }
 </script>
