@@ -115,15 +115,15 @@
           <b-tabs>
 
             <!-- TODO - move overview into its own component -->
-            <b-tab title="Generator Overview" active>
-              <!-- <p class="lead mt-3">A generator for Vue.js, Vue Router, Vuex, &amp; Bootstrap</p> -->
-              <p class="lead mt-3">{{selectedGenerator.description}}</p>
-              <p class='lead text-danger'>TODO - include longer description (in markdown?)</p>
+            <b-tab title="README.md" active class='card-body bg-white' v-html="compileMarkdown(selectedGenerator.readme)">
+              <!-- <br> -->
+              <!-- <div class="card card-body" v-html="compileMarkdown(selectedGenerator.readme)"> -->
+              <!-- </div> -->
             </b-tab>
 
-            <!-- <b-tab title="Data Models"> -->
-              <!-- <AppShow v-if="selectedApp"/> -->
-            <!-- </b-tab> -->
+            <b-tab title="Data Models">
+              <AppShow v-if="selectedApp"/>
+            </b-tab>
 
             <b-tab title="Global Options" v-if="selectedGenerator.global_options[0]" >
               <br>
@@ -160,8 +160,11 @@ import AppSelector from '@/modules/build/components/AppSelector'
 import BuildHeader from '@/modules/build/components/BuildHeader'
 import AppShow from '@/modules/project/pages/show'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
+import marked from 'marked'
+import smoothReflow from 'vue-smooth-reflow'
 
 export default {
+  mixins: [smoothReflow],
   components: {
     GeneratorModelOptions,
     GeneratorGlobalOptions,
@@ -170,6 +173,9 @@ export default {
     AppSelector,
     BuildHeader,
     AppShow
+  },
+  mounted () {
+    this.$smoothReflow()
   },
   data () {
     return { // TODO - move this into build vuex state
@@ -196,7 +202,10 @@ export default {
     }),
     ...mapMutations({
       showChoosingGenerator: 'build/choosingGenerator'
-    })
+    }),
+    compileMarkdown (markdown) {
+      return marked(markdown, { sanitize: true })
+    }
   }
 }
 </script>
