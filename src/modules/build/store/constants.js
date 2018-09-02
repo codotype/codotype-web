@@ -8,7 +8,7 @@ export const DEFAULT_BUILD = {
 export const DEFAULT_BUILD_STAGE = {
   _id: null,
   generator_id: '',
-  generator_configuration: {}
+  configuration: {}
 }
 
 export const CREATE_SUCCESS_NOTIFICATION = {

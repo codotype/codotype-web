@@ -13,11 +13,14 @@
     <div class="col-lg-12">
       <hr>
     </div>
-    <div class="col-lg-12" >
-      <GeneratorListItem v-for="m in generatorCollection" :model="m" :key="m.id"/>
+    <div class="col-lg-3">
+      <div class="card card-body">
+        <p class="lead mb-0">Filters</p>
+      </div>
     </div>
-    <div class="col-lg-12 my-4">
-      <div class="card py-4 border-dark bg-transparent">
+    <div class="col-lg-9" style='overflow-y: scroll;'>
+      <GeneratorListItem v-for="m in generatorCollection" :model="m" :key="m.id"/>
+      <div class="card py-4 my-4 border-dark bg-transparent">
         <ul class="list-group list-group-flush">
           <li class="list-group-item text-center bg-transparent border-dark text-dark">
             <i class="fa fa-lg fa-info-circle"></i>
