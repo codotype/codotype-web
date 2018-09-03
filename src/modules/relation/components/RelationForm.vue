@@ -91,7 +91,6 @@
 <!-- // // // //  -->
 
 <script>
-import _ from 'lodash'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -101,10 +100,10 @@ export default {
       relationTypes: 'schema/relationTypes'
     }),
     allSchemas () {
-      return _.filter(this.$store.getters['schema/collection'], (s) => { return s._id !== this.schema._id })
+      return this.$store.getters['schema/collection'].filter(s => s._id !== this.schema._id)
     },
     selectedRelatedSchema () {
-      _.find(this.allSchemas, { _id: this.model.related_schema_id })
+      this.allSchemas.find(m => m._id === this.model.related_schema_id)
     }
   }
 }

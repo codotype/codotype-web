@@ -117,8 +117,6 @@
 <!-- // // // //  -->
 
 <script>
-import _ from 'lodash'
-
 export default {
   props: ['projectId', 'schema'],
   methods: {
@@ -130,23 +128,23 @@ export default {
       // because the route doens't actually "change" - only the route parameter does
       let allRecords = this.$store.getters['record/collection']
       let allSchemas = this.$store.getters['schema/collection']
-      let record = _.find(allRecords, { _id: record_id })
+      let record = allRecords.find(m => m._id === record_id)
       if (!record) return
-      let schema = _.find(allSchemas, { _id: record.schema_id })
+      let schema = allSchemas.find(m => m._id === record.schema_id)
       // return `#/projects/${this.projectId}/seeds/${schema._id}/${record._id}`
       return `#/projects/${this.projectId}/seeds/${schema._id}`
     },
     getRelatedSchema (attr) {
       let allSchemas = this.$store.getters['schema/collection']
-      let schema = _.find(allSchemas, { _id: attr.datatypeOptions.schema_id })
+      let schema = allSchemas.find(m => m._id === attr.datatypeOptions.schema_id)
       return schema
     },
     getLinkedSchemaLabel (attr, record_id) {
       let allRecords = this.$store.getters['record/collection']
       let allSchemas = this.$store.getters['schema/collection']
-      let record = _.find(allRecords, { _id: record_id })
+      let record = allRecords.find(m => m._id === record_id)
       if (!record) return
-      let schema = _.find(allSchemas, { _id: record.schema_id })
+      let schema = allSchemas.find(m => m._id === record.schema_id)
 
       let identifier = schema.attributes[0].identifier
       return record.attributes[identifier]

@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import _ from 'lodash'
+import clone from 'lodash/clone'
 import draggable from 'vuedraggable'
 
 export default {
@@ -102,7 +102,7 @@ export default {
   methods: {
     buildArray () {
       if (this.value && Array.isArray(this.value)) {
-        return _.map(this.value, (v, i) => {
+        return this.value.map((v, i) => {
           return { id: i + 1, value: v }
         })
       } else if (this.type === 'TEXT_SELECT') {
@@ -122,7 +122,7 @@ export default {
     },
     submitEditing (editing) {
       if (editing.id) {
-        this.myArray = _.map(this.myArray, (el) => {
+        this.myArray = this.myArray.map((el) => {
           if (editing.id === el.id) {
             return editing
           } else {
@@ -141,14 +141,14 @@ export default {
       this.editing = { id: null, value: '' }
     },
     editOption (element) {
-      this.editing = _.clone(element)
+      this.editing = clone(element)
     },
     destroyOption (element) {
-      this.myArray = _.filter(this.myArray, (el) => { return el.id !== element.id })
+      this.myArray = this.myArray.filter(el => el.id !== element.id)
       this.updateValue()
     },
     updateValue () {
-      this.$emit('input', _.map(this.myArray, (el) => { return el.value }))
+      this.$emit('input', this.myArray.map(el => el.value))
     }
   },
   computed: {

@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import cloneDeep from 'lodash/cloneDeep'
 import ObjectID from 'bson-objectid'
 import { DEFAULT_RELATION } from './constants'
 import { SELECT_MODEL_ACTIONS, EDIT_MODEL_ACTIONS } from '@/store/lib/mixins'
@@ -8,13 +8,13 @@ export default {
   ...SELECT_MODEL_ACTIONS,
   ...EDIT_MODEL_ACTIONS,
   resetNewModel ({ state, commit }) {
-    let newModel = _.cloneDeep(DEFAULT_RELATION)
+    let newModel = cloneDeep(DEFAULT_RELATION)
     newModel.order = state.collection.length
     return commit('newModel', newModel)
   },
   create ({ state, commit, dispatch, rootGetters }) {
     // Isolates current Relation model and the schema to which the attribute belongs
-    let model = _.cloneDeep(state.newModel)
+    let model = cloneDeep(state.newModel)
     let modelSchema = rootGetters['schema/selectedModel']
 
     // Assigns uniaue ID to attribute model
@@ -25,7 +25,7 @@ export default {
     const relatedSchemaId = model.related_schema_id
 
     // Gets relatedSchema from schema/collection
-    let relatedSchema = _.find(rootGetters['schema/collection'], { _id: relatedSchemaId })
+    let relatedSchema = rootGetters['schema/collection'].find(m => m._id === relatedSchemaId)
 
     // Handles ONE_TO_ONE
     if (relationType === 'ONE_TO_ONE') {
@@ -35,7 +35,7 @@ export default {
 
       // Defines inverse relation on relatedSchema
       // INVERSE OF BELONGS_TO === OWNS_MANY
-      let reverseRelation = _.cloneDeep(DEFAULT_RELATION)
+      let reverseRelation = cloneDeep(DEFAULT_RELATION)
       reverseRelation._id = ObjectID().toString()
       reverseRelation.type = 'BELONGS_TO'
       reverseRelation.order = relatedSchema.relations.length + 1
@@ -67,7 +67,7 @@ export default {
 
       // Defines inverse relation on relatedSchema
       // INVERSE OF BELONGS_TO === OWNS_MANY
-      let reverseRelation = _.cloneDeep(DEFAULT_RELATION)
+      let reverseRelation = cloneDeep(DEFAULT_RELATION)
       reverseRelation._id = ObjectID().toString()
       reverseRelation.type = 'OWNS_MANY'
       reverseRelation.order = relatedSchema.relations.length + 1 // TODO - there should be no identifier for the OWNS_MANY relation attribute
@@ -101,7 +101,7 @@ export default {
 
       // Defines inverse relation on relatedSchema
       // INVERSE OF BELONGS_TO === OWNS_MANY
-      let reverseRelation = _.cloneDeep(DEFAULT_RELATION)
+      let reverseRelation = cloneDeep(DEFAULT_RELATION)
       reverseRelation._id = ObjectID().toString()
       reverseRelation.type = 'BELONGS_TO'
       reverseRelation.order = relatedSchema.relations.length + 1// TODO - there should be no identifier for the OWNS_MANY relation attribute
@@ -136,7 +136,7 @@ export default {
 
       // Defines inverse relation on relatedSchema
       // INVERSE OF HAS_MANY === HAS_MANY
-      let reverseRelation = _.cloneDeep(DEFAULT_RELATION)
+      let reverseRelation = cloneDeep(DEFAULT_RELATION)
       reverseRelation._id = ObjectID().toString()
       reverseRelation.type = 'HAS_MANY'
       reverseRelation.order = relatedSchema.relations.length + 1
@@ -167,7 +167,7 @@ export default {
     dispatch('resetNewModel')
   },
   update ({ state, commit, dispatch }) {
-    let model = _.cloneDeep(state.editModel)
+    let model = cloneDeep(state.editModel)
 
     let collection = state.collection.map((m) => {
       if (m._id === model._id) {
@@ -193,7 +193,7 @@ export default {
     commit('schema/relations', { collection: collection }, { root: true })
 
     // Finds relatedSchema
-    let relatedSchema = _.find(rootGetters['schema/collection'], { _id: relatedSchemaId })
+    let relatedSchema = rootGetters['schema/collection'].find(m => m._id === relatedSchemaId)
 
     // Removes the reverse relation from the related model
     let relatedSchemaRelations = relatedSchema.relations.filter((a) => { return a._id !== relatedAttrId })

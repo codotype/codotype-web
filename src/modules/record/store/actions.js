@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import cloneDeep from 'lodash/cloneDeep'
 import ObjectID from 'bson-objectid'
 import router from '@/routers'
 import { DEFAULT_RECORD } from './constants'
@@ -9,13 +9,13 @@ export default {
   ...SELECT_MODEL_ACTIONS,
   ...EDIT_MODEL_ACTIONS,
   resetNewModel ({ state, commit }, schema_id) {
-    let newModel = _.cloneDeep(DEFAULT_RECORD)
+    let newModel = cloneDeep(DEFAULT_RECORD)
     newModel.schema_id = schema_id
     return commit('newModel', newModel)
   },
   create ({ state, commit, dispatch }) {
     let collection = state.collection
-    let model = _.cloneDeep(state.newModel)
+    let model = cloneDeep(state.newModel)
     model._id = ObjectID().toString()
     collection.push(model)
 
@@ -24,13 +24,13 @@ export default {
     dispatch('resetNewModel')
   },
   update ({ state, commit, rootGetters, dispatch }) {
-    let model = _.cloneDeep(state.editModel)
+    let model = cloneDeep(state.editModel)
 
     // Validates datatypes before persist
     // TODO - wrap all of this in a try-catch block, add error handling to RecordForm
     // Checks each of the model's attributes against the attributes defined in the schema
     const schema = rootGetters['schema/collection'].find(s => { return s._id === model.schema_id })
-    _.each(schema.attributes, (attr) => {
+    schema.attributes.forEach((attr) => {
       // Ensures proper JSON format
       if (attr.datatype === 'JSON') {
         model.attributes[attr.identifier] = JSON.parse(model.attributes[attr.identifier])
@@ -52,7 +52,7 @@ export default {
   },
   // TODO - why this method isn't working?
   destroy ({ state, commit }, model) {
-    let collection = _.filter(state.collection, (m) => { return m._id !== model._id })
+    let collection = state.collection.filter(m => m._id !== model._id)
     commit('collection', collection)
   }
 }

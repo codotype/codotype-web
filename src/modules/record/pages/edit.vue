@@ -17,7 +17,6 @@
 <!-- // // // //  -->
 
 <script>
-import _ from 'lodash'
 import { mapGetters, mapActions } from 'vuex'
 import RecordForm from '@/components/record/RecordForm'
 
@@ -31,7 +30,7 @@ export default {
   },
   created () {
     // this.selectRecord(this.record_id)
-    let recordModel = _.find(this.$store.getters['record/collection'], { _id: this.record_id })
+    let recordModel = this.$store.getters['record/collection'].find(m => m._id === this.record_id)
     console.log(this.record_id)
     console.log(recordModel)
     this.selectRecord(recordModel)

@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import cloneDeep from 'lodash/cloneDeep'
 import { NEW_MODEL_ACTIONS } from '@/store/lib/mixins'
 import { DEFAULT_BUILD_STAGE } from './constants'
 const GENERATE_ROUTE = '/api/generate'
@@ -8,7 +8,7 @@ export default {
   ...NEW_MODEL_ACTIONS,
   selectApp ({ state, commit, dispatch }, app_id) {
     // Sets newModel.app_id
-    const newModel = _.cloneDeep(state.newModel)
+    const newModel = cloneDeep(state.newModel)
     newModel.app_id = app_id
     commit('newModel', newModel)
 
@@ -21,13 +21,13 @@ export default {
     if (state.newModel.stages.map(stage => stage.generator_id).includes(generator_id)) return
 
     // Creates newStage, assigns generator_id
-    const newStage = _.cloneDeep(DEFAULT_BUILD_STAGE)
+    const newStage = cloneDeep(DEFAULT_BUILD_STAGE)
     newStage.generator_id = generator_id
 
     // TODO - inflate newStage with the data structure build from a generator's configuration
 
     // Adds the newStage to state.newModel
-    const newModel = _.cloneDeep(state.newModel)
+    const newModel = cloneDeep(state.newModel)
 
     // TODO - should only be added to newModel.stages
     // once it's been created in the `stage` module

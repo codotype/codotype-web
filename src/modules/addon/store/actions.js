@@ -1,21 +1,18 @@
-import _ from 'lodash'
+import cloneDeep from 'lodash/cloneDeep'
 import { DEFAULT_ADDON } from './constants'
 import { SELECT_MODEL_ACTIONS } from '@/store/lib/mixins'
-const titleize = require('underscore.string/titleize')
-const underscored = require('underscore.string/underscored')
-const classify = require('underscore.string/classify')
-const pluralize = require('pluralize')
+import { inflateMeta } from '@codotype/util/lib/inflateMeta'
 
 // Schema module actions
 export default {
   ...SELECT_MODEL_ACTIONS,
   selectModel: ({ commit, state }, model_id) => {
-    let model = _.find(state.collection, { _id: model_id })
+    let model = state.collection.find(m => m._id === model_id)
     commit('selectedModel', model)
     commit('attribute/collection', model.attributes, { root: true })
   },
   create ({ state, dispatch, commit }) {
-    let model = _.cloneDeep(state.newModel)
+    let model = cloneDeep(state.newModel)
     dispatch('resetNewModel')
     commit('persist', { schema: model })
   },
@@ -27,15 +24,10 @@ export default {
     return commit('collection', collection)
   },
   resetNewModel ({ commit }) {
-    let newModel = _.cloneDeep(DEFAULT_ADDON)
+    let newModel = cloneDeep(DEFAULT_ADDON)
     return commit('newModel', newModel)
   },
   setLabel ({ state }, { model, label }) {
-    model.label = titleize(label)
-    model.label_plural = pluralize(titleize(label))
-    model.identifier = underscored(label)
-    model.identifier_plural = underscored(pluralize(label))
-    model.class_name = classify(titleize(label))
-    model.class_name_plural = pluralize(classify(titleize(label)))
+    model = { ...model, ...inflateMeta(model.label) }
   }
 }

@@ -1,11 +1,11 @@
-import _ from 'lodash'
+import uniqueId from 'lodash/uniqueId'
 
 // // // //
 
 // removeNotification
 // Helper function used to remove a notification from state.collection
 function removeNotification (collection, id) {
-  return _.filter(collection, (e) => { return e.id !== id })
+  return collection.filter(e => e.id !== id)
 }
 
 // // // //
@@ -16,15 +16,15 @@ export default {
   add (state, notification) {
     // Assigns unique ID to notification
     // this is used for removing the notification after a timeout
-    let uniqueId = _.uniqueId()
-    notification.id = uniqueId
+    let id = uniqueId()
+    notification.id = id
 
     // Adds the notification to state.collection
     state.collection.push(notification)
 
     // Removes the notification after
     setTimeout(() => {
-      state.collection = removeNotification(state.collection, uniqueId)
+      state.collection = removeNotification(state.collection, id)
     }, notification.timeout || 2500)
   },
 

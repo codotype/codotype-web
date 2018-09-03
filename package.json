@@ -16,7 +16,6 @@
   "dependencies": {
     "@codotype/generator": "^0.1.1",
     "@codotype/util": "^0.1.0",
-    "argon-design-system-free": "^1.0.1",
     "axios": "^0.17.0",
     "bootstrap": "^4.1.3",
     "bootstrap-vue": "^1.0.2",
@@ -29,7 +28,6 @@
     "underscore.string": "^3.3.4",
     "vue": "^2.5.2",
     "vue-github-buttons": "^2.0.5",
-    "vue-masked-input": "^0.5.2",
     "vue-meta": "^1.2.0",
     "vue-router": "^3.0.1",
     "vue-select": "github:sagalbot/vue-select",
