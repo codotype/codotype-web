@@ -13,9 +13,9 @@
 
       <hr>
 
-      <b-card-group deck>
+      <b-row>
         <AppCard v-for="app in appCollection" v-bind:key="app._id" :model="app"/>
-      </b-card-group>
+      </b-row>
 
     </b-col>
   </b-row>

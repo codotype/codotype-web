@@ -37,14 +37,31 @@
               <!-- Export -->
             <!-- </a> -->
 
-            <button class='btn btn-sm btn-outline-success' @click="goToBuild(project)">
-              <i class="fa fa-play"></i>
-            </button>
+            <!-- <button class='btn btn-sm btn-outline-success' @click="goToBuild(project)"> -->
+              <!-- <i class="fa fa-play"></i> -->
+            <!-- </button> -->
 
             <!-- Destroy project Confirmation -->
-            <button class="btn btn-sm btn-outline-danger" v-b-modal="'modal_' + project._id">
-              <i class="fa fa-trash"></i>
-            </button>
+            <!-- <button class="btn btn-sm btn-outline-danger" v-b-modal="'modal_' + project._id"> -->
+              <!-- <i class="fa fa-trash"></i> -->
+            <!-- </button> -->
+
+
+            <span class="mx-1" v-b-tooltip.hover.bottom title='Export'>
+              <i class="fa fa-lg fa-download text-muted fa-fw"></i>
+            </span>
+
+            <span class="mx-1" v-b-tooltip.hover.bottom title='Share'>
+              <i class="fa fa-lg fa-share-alt text-muted fa-fw"></i>
+            </span>
+
+            <span class="mx-1" v-b-tooltip.hover.bottom title='Duplicate Blueprint'>
+              <i class="fa fa-lg fa-copy text-muted fa-fw"></i>
+            </span>
+
+            <span class="mx-1" v-b-tooltip.hover.bottom title='Export'>
+              <i class="fa fa-lg fa-trash text-muted fa-fw"></i>
+            </span>
 
             <!-- Bootstrap Modal Component -->
             <b-modal :id="'modal_' + project._id"
@@ -107,3 +124,9 @@ export default {
   })
 }
 </script>
+
+<style scoped>
+  i.fa.text-muted {
+    color: #d0d0d0 !important;
+  }
+</style>
