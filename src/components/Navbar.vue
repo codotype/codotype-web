@@ -1,4 +1,4 @@
-b<template>
+<template>
   <b-navbar toggleable="md" type="light" variant="light" fixed="top">
     <b-navbar-brand to="/">
       <!-- <img class='logo' src="@/assets/logo_dark.png"> -->

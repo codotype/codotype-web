@@ -27,6 +27,11 @@
     <div class="col-lg-8">
       <SchemaDetail id="model-detail" />
     </div>
+    <div class="fixed-bottom text-right">
+      <button class="btn btn-link mb-2 mr-2">
+        <i class="far fa-3x fa-question-circle"></i>
+      </button>
+    </div>
   </div>
 </template>
 

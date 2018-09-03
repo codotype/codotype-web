@@ -2,7 +2,7 @@
   <div class='row'>
 
     <!-- Child -->
-    <div v-for="project in collection" v-bind:key="project._id" class='col-lg-4'>
+    <div v-for="project in collection" v-bind:key="project._id" class='col-lg-4 mb-4'>
       <div class="card card-body">
         <div class="row align-items-center">
 
@@ -15,17 +15,20 @@
 
           <div class="col-lg-12">
             <hr>
-            <i class="fa fa-database mr-1"></i>
-            <template v-if="project.schemas.length">
-              <!-- {{ project.schemas.length + ' Schema' }} -->
-              {{ schemaString(project) }}
-            </template>
-            <template v-else>
-              No Schemas
-            </template>
           </div>
 
-          <br>
+          <!-- <div class="col-lg-12"> -->
+            <!-- <i class="fa fa-database mr-1"></i> -->
+            <!-- <template v-if="project.schemas.length"> -->
+              <!-- {{ project.schemas.length + ' Schema' }} -->
+              <!-- {{ schemaString(project) }} -->
+            <!-- </template> -->
+            <!-- <template v-else> -->
+              <!-- No Schemas -->
+            <!-- </template> -->
+          <!-- </div> -->
+
+          <!-- <br> -->
 
           <div class="col-lg-12 text-center">
 
