@@ -2,16 +2,16 @@ export const APP_EDITOR_TOUR = [
   {
     element: '#project-header',
     popover: {
-      title: 'App',
-      description: 'An app encapsulates a high-level representation of data',
+      title: 'Blueprint',
+      description: 'A blueprint encapsulates a high-level representation of data',
       position: 'right'
     }
   },
   {
     element: '#project-edit-button',
     popover: {
-      title: 'Edit App',
-      description: 'Click here to edit your app\'s name',
+      title: 'Edit Blueprint',
+      description: 'Click here to edit your blueprint\'s name',
       position: 'bottom'
     }
   },
@@ -19,7 +19,15 @@ export const APP_EDITOR_TOUR = [
     element: '#model-list',
     popover: {
       title: 'Models',
-      description: 'Models define the data described by this application.',
+      description: 'Models define the data described by this blueprint.',
+      position: 'right'
+    }
+  },
+  {
+    element: '#user-model',
+    popover: {
+      title: 'User Model',
+      description: 'All blueprints include a User model by default.<br/><br/>It can be disabled if your project doesn\'t require users, but it cannot be removed',
       position: 'right'
     }
   },
@@ -75,7 +83,7 @@ export const APP_EDITOR_TOUR = [
     element: '#generate-project-button',
     popover: {
       title: 'Generate',
-      description: 'Click here to generate code with this app',
+      description: 'Click here to generate code with this blueprint',
       position: 'left'
     }
   }

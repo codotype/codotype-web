@@ -2,18 +2,19 @@
   <div class='row'>
 
     <!-- Child -->
-    <div v-for="project in collection" v-bind:key="project._id" class='col-lg-12 mb-3'>
+    <div v-for="project in collection" v-bind:key="project._id" class='col-lg-4'>
       <div class="card card-body">
         <div class="row align-items-center">
 
-          <div class="col-lg-3">
+          <div class="col-lg-12 text-center">
             <!-- project URL -->
             <p class="lead mb-0">
               <a v-bind:href="'#/projects/' + project._id ">{{project.label}}</a>
             </p>
           </div>
 
-          <div class="col-lg-5">
+          <div class="col-lg-12">
+            <hr>
             <i class="fa fa-database mr-1"></i>
             <template v-if="project.schemas.length">
               <!-- {{ project.schemas.length + ' Schema' }} -->
@@ -24,7 +25,9 @@
             </template>
           </div>
 
-          <div class="col-lg-4 text-right">
+          <br>
+
+          <div class="col-lg-12 text-center">
 
             <!-- <a class='btn btn-sm btn-outline-light' :href="'#/projects/' + project._id + '/export'"> -->
               <!-- <i class="fa fa-code mr-1"></i> -->
@@ -32,8 +35,7 @@
             <!-- </a> -->
 
             <button class='btn btn-sm btn-outline-success' @click="goToBuild(project)">
-              <i class="fa fa-play mr-1"></i>
-              Generate
+              <i class="fa fa-play"></i>
             </button>
 
             <!-- Destroy project Confirmation -->

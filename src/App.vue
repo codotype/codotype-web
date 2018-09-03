@@ -3,8 +3,9 @@
   <div id="app">
     <Navbar/>
     <Notifications/>
-    <br>
-    <div class="container">
+    <br/>
+    <br/>
+    <div class="container mt-4 pt-4">
       <router-view/>
     </div>
   </div>

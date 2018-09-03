@@ -2,13 +2,13 @@
   <b-row>
     <b-col>
       <EditorHeader
-        title="Select an App"
-        help="Select an app to generate your app around"
+        title="Select a Blueprint"
+        help="Select a Blueprint to generate your app around"
       />
 
       <small class='text-muted'>
         <i class="fa fa-info-circle"></i>
-        Apps encapsulate metadata about models, attributes, and associations that describe the app you're building
+        Blueprints encapsulate metadata about models, attributes, and associations that describe the app you're building
       </small>
 
       <hr>

@@ -55,10 +55,14 @@ export default {
     this.resetNewSchemaModel()
     return this.selectModel(this.project_id)
   },
+  destroyed () {
+    return this.clearSelectedProject()
+  },
   methods: mapActions({
     submit: 'schema/create',
     selectModel: 'project/selectModel',
-    resetNewSchemaModel: 'schema/resetNewModel'
+    resetNewSchemaModel: 'schema/resetNewModel',
+    clearSelectedProject: 'project/clearSelected'
   }),
   computed: mapGetters({
     newModel: 'schema/newModel'
