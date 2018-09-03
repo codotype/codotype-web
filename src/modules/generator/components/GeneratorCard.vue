@@ -1,5 +1,5 @@
 <template>
-  <div class="card col-lg-3 shadow-hover">
+  <div class="card col-lg-3 shadow-hover border-light">
     <div class="card-body">
       <div class="row d-flex align-items-end flex-column">
 

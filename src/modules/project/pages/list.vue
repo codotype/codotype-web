@@ -12,6 +12,7 @@
       <div class="row">
         <div class="col-lg-7">
           <h2 id="app-list">
+            <!-- <i class="fas fa-drafting-compass"></i> -->
             Blueprints
           </h2>
           <small class="text-muted">Blueprints encapsulate metadata about models, attributes, and associations that describe your project</small>
@@ -27,20 +28,19 @@
             <!-- Example Apps -->
           <!-- </a> -->
           <button class='btn btn-lg btn-primary ml-2' id="app-new-button" v-b-modal="'new-project-modal'">
-            <!-- <i class="fa fa-fw fa-plus mr-2"></i> -->
-            <i class="fas fa-drafting-compass mr-2"></i>
+            <i class="fa fa-fw fa-plus"></i>
             New Blueprint
           </button>
         </div>
 
-        <div class="col-lg-12">
-          <hr>
-        </div>
+        <!-- <div class="col-lg-12"> -->
+          <!-- <hr> -->
+        <!-- </div> -->
       </div>
     </b-col>
 
     <!-- Project List -->
-    <b-col lg=12>
+    <b-col lg=12 class='mt-4'>
       <ListView :collection="collection" />
     </b-col>
 

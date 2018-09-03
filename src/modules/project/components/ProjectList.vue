@@ -1,9 +1,26 @@
 <template>
   <div class='row'>
 
+    <div class="col-lg-4 mb-4">
+      <router-link to='/' style='text-decoration: none;' class="card card-body border-primary bg-gradient-primary text-white h-100 d-flex align-items-center justify-content-center shadow-hover">
+
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <p class='lead'>
+              <!-- <i class="fa fa-check"></i> -->
+              <i class="fas fa-drafting-compass mr-2"></i>
+              Sign Up
+            </p>
+            <p class='mb-0'>Unlimited Blueprints when you register</p>
+          </div>
+        </div>
+
+      </router-link>
+    </div>
+
     <!-- Child -->
     <div v-for="project in collection" v-bind:key="project._id" class='col-lg-4 mb-4'>
-      <div class="card card-body shadow-hover">
+      <div class="card card-body shadow-hover border-light">
         <div class="row align-items-center">
 
           <div class="col-lg-12 text-center">
@@ -11,6 +28,9 @@
             <p class="lead mb-0">
               <a v-bind:href="'#/projects/' + project._id ">{{project.label}}</a>
             </p>
+            <small class="text-muted">
+              Last edited 9 / 2 / 18
+            </small>
           </div>
 
           <div class="col-lg-12">
@@ -48,19 +68,19 @@
 
 
             <span class="mx-1" v-b-tooltip.hover.bottom title='Export'>
-              <i class="fa fa-lg fa-download text-primary fa-fw"></i>
+              <i class="fa fa-download text-muted fa-fw"></i>
             </span>
 
             <span class="mx-1" v-b-tooltip.hover.bottom title='Share'>
-              <i class="fa fa-lg fa-share-alt text-muted fa-fw"></i>
+              <i class="fa fa-share-alt text-muted fa-fw"></i>
             </span>
 
             <span class="mx-1" v-b-tooltip.hover.bottom title='Duplicate Blueprint'>
-              <i class="fa fa-lg fa-copy text-muted fa-fw"></i>
+              <i class="fa fa-copy text-muted fa-fw"></i>
             </span>
 
-            <span class="mx-1" v-b-tooltip.hover.bottom title='Export'>
-              <i class="fa fa-lg fa-trash text-muted fa-fw"></i>
+            <span class="mx-1 text-hover-danger" v-b-tooltip.hover.bottom title='Delete' v-b-modal="'modal_' + project._id">
+              <i class="fa fa-trash text-muted fa-fw"></i>
             </span>
 
             <!-- Bootstrap Modal Component -->
@@ -74,22 +94,6 @@
               <p class="text-left">Are you sure you want to destroy the {{ project.label }} project?</p>
             </b-modal>
 
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-4 mb-4">
-      <div class="card card-body border-primary bg-gradient-primary text-white h-100 d-flex align-items-center justify-content-center shadow-hover">
-
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <p class='lead'>
-              <i class="fa fa-check"></i>
-              Sign Up
-            </p>
-            <p class='mb-0'>Unlimited Blueprints when you <a href="#/examples" class='text-dark'>register</a></p>
           </div>
 
         </div>
@@ -145,6 +149,6 @@ export default {
 // @import '../../../sass/vendor.sass'
 
 i.fa.text-muted
-  color: #d0d0d0 !important
+  color: #d0d0d0
 
 </style>

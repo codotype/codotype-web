@@ -1,12 +1,12 @@
 <template>
   <div class="row">
-    <!-- <div class="col-lg-12"> -->
-      <!-- <ProjectDetailHeader/> -->
-    <!-- </div> -->
+    <div class="col-lg-12">
+      <ProjectDetailHeader/>
+    </div>
 
-    <!-- <div class="col-lg-12"> -->
-      <!-- <hr> -->
-    <!-- </div> -->
+    <div class="col-lg-12">
+      <hr>
+    </div>
 
     <div class="col-lg-4 border-right">
 

@@ -14,7 +14,7 @@
       <hr>
     </div>
     <div class="col-lg-3">
-      <div class="card card-body">
+      <div class="card card-body border-light shadow-sm">
         <p class="lead mb-0">Filters</p>
       </div>
     </div>

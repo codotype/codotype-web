@@ -1,6 +1,6 @@
 <template>
   <div class="col-lg-4 mb-4">
-    <div class="card">
+    <div class="card border-light shadow-hover">
       <div class="card-body">
         <div class="row d-flex align-items-end flex-column">
 
