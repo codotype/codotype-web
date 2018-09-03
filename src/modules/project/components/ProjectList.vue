@@ -67,20 +67,20 @@
             <!-- </button> -->
 
 
-            <span class="mx-1" v-b-tooltip.hover.bottom title='Export'>
-              <i class="fa fa-download text-muted fa-fw"></i>
+            <span class="mx-1" v-b-tooltip.hover.left title='Export'>
+              <i class="fa fa-download project-action project-action-primary fa-fw"></i>
             </span>
 
-            <span class="mx-1" v-b-tooltip.hover.bottom title='Share'>
-              <i class="fa fa-share-alt text-muted fa-fw"></i>
+            <span class="mx-1" v-b-tooltip.hover.left title='Share'>
+              <i class="fa fa-share-alt project-action project-action-secondary fa-fw"></i>
             </span>
 
-            <span class="mx-1" v-b-tooltip.hover.bottom title='Duplicate Blueprint'>
-              <i class="fa fa-copy text-muted fa-fw"></i>
+            <span class="mx-1" v-b-tooltip.hover.right title='Duplicate Blueprint'>
+              <i class="fa fa-copy project-action project-action-success fa-fw"></i>
             </span>
 
-            <span class="mx-1 text-hover-danger" v-b-tooltip.hover.bottom title='Delete' v-b-modal="'modal_' + project._id">
-              <i class="fa fa-trash text-muted fa-fw"></i>
+            <span class="mx-1 text-hover-danger" v-b-tooltip.hover.right title='Delete' v-b-modal="'modal_' + project._id">
+              <i class="fa fa-trash project-action project-action-danger fa-fw"></i>
             </span>
 
             <!-- Bootstrap Modal Component -->
@@ -146,9 +146,26 @@ export default {
 </script>
 
 <style lang='sass'>
-// @import '../../../sass/vendor.sass'
+@import '../../../sass/vendor.sass'
 
-i.fa.text-muted
-  color: #d0d0d0
+i.project-action
+  color: $gray-300
+  transition: color .25s ease-in
+
+  &.project-action-danger
+    &:hover
+      color: $red
+
+  &.project-action-success
+    &:hover
+      color: $green
+
+  &.project-action-primary
+    &:hover
+      color: $blue
+
+  &.project-action-secondary
+    &:hover
+      color: $gray-600
 
 </style>
