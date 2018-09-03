@@ -13,7 +13,7 @@
 
         <div class="col-lg-12 text-center">
           <!-- <p class="lead">visual web application boilerplate</p> -->
-          <p class='lead'>Jumpstart new software projects amazingly, blazingly fast.</p>
+          <p class='lead'>Jumpstart new software projects amazingly fast</p>
           <!-- <p>Define your models, attributes, and relations - codotype does the rest</p> -->
         </div>
 

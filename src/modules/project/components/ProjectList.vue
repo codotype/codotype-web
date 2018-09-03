@@ -3,7 +3,7 @@
 
     <!-- Child -->
     <div v-for="project in collection" v-bind:key="project._id" class='col-lg-4 mb-4'>
-      <div class="card card-body">
+      <div class="card card-body shadow-hover">
         <div class="row align-items-center">
 
           <div class="col-lg-12 text-center">
@@ -48,7 +48,7 @@
 
 
             <span class="mx-1" v-b-tooltip.hover.bottom title='Export'>
-              <i class="fa fa-lg fa-download text-muted fa-fw"></i>
+              <i class="fa fa-lg fa-download text-primary fa-fw"></i>
             </span>
 
             <span class="mx-1" v-b-tooltip.hover.bottom title='Share'>
@@ -81,15 +81,15 @@
     </div>
 
     <div class="col-lg-4 mb-4">
-      <div class="card card-body border-success bg-transparent text-success h-100 d-flex align-items-center">
+      <div class="card card-body border-primary bg-gradient-primary text-white h-100 d-flex align-items-center justify-content-center shadow-hover">
 
         <div class="row">
           <div class="col-lg-12 text-center">
-            <p class="lead mb-0">
+            <p class='lead'>
               <i class="fa fa-check"></i>
               Sign Up
             </p>
-            <p>Save unlimited Blueprints when you register</p>
+            <p class='mb-0'>Unlimited Blueprints when you <a href="#/examples" class='text-dark'>register</a></p>
           </div>
 
         </div>
@@ -141,8 +141,10 @@ export default {
 }
 </script>
 
-<style scoped>
-  i.fa.text-muted {
-    color: #d0d0d0 !important;
-  }
+<style lang='sass'>
+// @import '../../../sass/vendor.sass'
+
+i.fa.text-muted
+  color: #d0d0d0 !important
+
 </style>
