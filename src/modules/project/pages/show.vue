@@ -1,12 +1,12 @@
 <template>
   <div class="row">
-    <div class="col-lg-12">
-      <ProjectDetailHeader/>
-    </div>
+    <!-- <div class="col-lg-12"> -->
+      <!-- <ProjectDetailHeader/> -->
+    <!-- </div> -->
 
-    <div class="col-lg-12">
-      <hr>
-    </div>
+    <!-- <div class="col-lg-12"> -->
+      <!-- <hr> -->
+    <!-- </div> -->
 
     <div class="col-lg-4 border-right">
 
@@ -29,7 +29,7 @@
     </div>
     <div class="fixed-bottom text-right">
       <button class="btn btn-link mb-2 mr-2">
-        <i class="far fa-3x fa-question-circle"></i>
+        <i class="fa fa-3x fa-question-circle"></i>
       </button>
     </div>
   </div>
@@ -74,3 +74,9 @@ export default {
   })
 }
 </script>
+
+<style scoped>
+  div.fixed-bottom.text-right {
+    z-index: 2000;
+  }
+</style>

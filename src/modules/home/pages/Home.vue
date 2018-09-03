@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-lg-12">
-      <div class="row mt-2">
+      <div class="row">
         <div class="col-lg-12 text-center">
           <!-- <img src="@/assets/logo_dark.png"> -->
           <!-- <img width="30%" src="https://github.com/codotype/codotype-branding/blob/master/codotype-02.png?raw=true"> -->

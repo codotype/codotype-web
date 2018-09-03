@@ -80,6 +80,22 @@
       </div>
     </div>
 
+    <div class="col-lg-4 mb-4">
+      <div class="card card-body border-success bg-transparent text-success h-100 d-flex align-items-center">
+
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <p class="lead mb-0">
+              <i class="fa fa-check"></i>
+              Sign Up
+            </p>
+            <p>Save unlimited Blueprints when you register</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
     <!-- Empty -->
     <div class="col-lg-12 mb-3" v-if="!collection[0]">
       <div class="card bg-transparent border-warning text-warning card-body text-center">

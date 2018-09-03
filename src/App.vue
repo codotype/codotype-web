@@ -3,10 +3,15 @@
   <div id="app">
     <Navbar/>
     <Notifications/>
-    <br/>
-    <br/>
-    <div class="container mt-4 pt-4">
+    <div class="container">
+      <br/>
+      <br/>
+      <br/>
+      <br/>
       <router-view/>
+      <br/>
+      <br/>
+      <br/>
     </div>
     <AppFooter/>
   </div>

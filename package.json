@@ -16,6 +16,7 @@
   "dependencies": {
     "@codotype/generator": "^0.1.1",
     "@codotype/util": "^0.1.0",
+    "argon-design-system-free": "^1.0.1",
     "axios": "^0.17.0",
     "bootstrap": "^4.0.0-beta.2",
     "bootstrap-vue": "^1.0.2",
