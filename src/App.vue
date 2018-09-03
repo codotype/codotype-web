@@ -31,6 +31,10 @@ export default {
     Notifications
   },
 
+  created () {
+    this.$store.dispatch('generator/fetchCollection')
+  },
+
   // Top-Level page Meta
   metaInfo: {
     title: 'Loading...',

@@ -75,11 +75,11 @@
               <i class="fa fa-share-alt project-action project-action-secondary fa-fw"></i>
             </span>
 
-            <span class="mx-1" v-b-tooltip.hover.right title='Duplicate Blueprint'>
+            <span class="mx-1" v-b-tooltip.hover.left title='Duplicate Blueprint'>
               <i class="fa fa-copy project-action project-action-success fa-fw"></i>
             </span>
 
-            <span class="mx-1 text-hover-danger" v-b-tooltip.hover.right title='Delete' v-b-modal="'modal_' + project._id">
+            <span class="mx-1 text-hover-danger" v-b-tooltip.hover.left title='Delete' v-b-modal="'modal_' + project._id">
               <i class="fa fa-trash project-action project-action-danger fa-fw"></i>
             </span>
 
