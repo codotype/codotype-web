@@ -1,10 +1,7 @@
 import cloneDeep from 'lodash/cloneDeep'
 import { DEFAULT_SCHEMA } from './constants'
 import { SELECT_MODEL_ACTIONS } from '@/store/lib/mixins'
-const titleize = require('underscore.string/titleize')
-const underscored = require('underscore.string/underscored')
-const classify = require('underscore.string/classify')
-const pluralize = require('pluralize')
+import { inflateMeta } from '@codotype/util/lib/inflateMeta'
 
 // Schema module actions
 export default {
@@ -18,7 +15,7 @@ export default {
   create ({ state, dispatch, commit }) {
     let model = cloneDeep(state.newModel)
     dispatch('resetNewModel')
-    model.label = pluralize.singular(titleize(model.label))
+    model = { ...model, ...inflateMeta(model.label) }
     commit('persist', { schema: model })
   },
   edit ({ state, commit }, schema) {
@@ -32,13 +29,7 @@ export default {
     let newModel = cloneDeep(DEFAULT_SCHEMA)
     return commit('newModel', newModel)
   },
-  // TODO - leverage @codotype/util library here
   setLabel ({ state }, { schema, label }) {
-    schema.label = titleize(label)
-    schema.label_plural = pluralize(titleize(label))
-    schema.identifier = underscored(label)
-    schema.identifier_plural = underscored(pluralize(label))
-    schema.class_name = classify(titleize(label))
-    schema.class_name_plural = pluralize(classify(titleize(label)))
+    schema = { ...schema, ...inflateMeta(schema.label) }
   }
 }
