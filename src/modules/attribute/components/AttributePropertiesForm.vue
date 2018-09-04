@@ -28,7 +28,6 @@
 </template>
 
 <script>
-import _ from 'lodash'
 import FormInput from '@/components/FormInput'
 
 export default {
@@ -39,7 +38,7 @@ export default {
   computed: {
     datatypeLabel () {
       let datatypes = this.$store.getters['schema/datatypes']
-      let datatype = _.find(datatypes, { value: this.model.datatype })
+      let datatype = datatypes.find(d => d.value === this.model.datatype)
       return datatype.text
     }
   }

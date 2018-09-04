@@ -13,10 +13,10 @@
   <div class="row">
 
     <!-- TODO - this should be shown/hidden depending on something different than 'showSidebar' -->
-    <b-col lg=12 v-if="showSidebar">
-      <BuildHeader/>
-      <hr>
-    </b-col>
+    <!-- <b-col lg=12 v-if="showSidebar"> -->
+      <!-- <BuildHeader/> -->
+      <!-- <hr> -->
+    <!-- </b-col> -->
 
     <!-- Abstract this column into one or more components -->
     <b-col lg=3 class="border-right" v-if="showSidebar">
@@ -94,10 +94,10 @@
 
       <!-- STEP 1 - Select an App -->
       <!-- TODO - this should be determined by a state getter variable, `requiresApp` -->
-      <AppSelector v-if="!newBuildModel.app_id"/>
+      <AppSelector v-if="!newBuildModel.app_id && newBuildModel.stages[0]"/>
 
       <!-- STEP 2 - Select a generator -->
-      <GeneratorSelector v-if="(newBuildModel.app_id && !newBuildModel.stages[0]) || choosingGenerator"/>
+      <GeneratorSelector v-if="(!newBuildModel.app_id && !newBuildModel.stages[0]) || choosingGenerator"/>
 
       <!-- TODO - abstract ALL of this into a separate component -->
       <!-- GeneratorConfigure component -->
@@ -110,15 +110,21 @@
             :url="'http://github.com/'+selectedGenerator.github_url"
           />
 
+          <!-- {{ selectedGenerator }} -->
+
+          <span class='badge badge-primary mr-1' v-for="tag in selectedGenerator.type_tags" :key="tag">{{ tag }}</span>
+          <span class='badge badge-info' v-if="selectedGenerator.self_configuring">Self-Configuring</span>
+          <span class='badge badge-light mr-1' v-for="tag in selectedGenerator.tech_tags" :key="tag">{{ tag }}</span>
+
           <hr>
 
           <b-tabs>
 
             <!-- TODO - move overview into its own component -->
-            <b-tab title="Generator Overview" active>
-              <!-- <p class="lead mt-3">A generator for Vue.js, Vue Router, Vuex, &amp; Bootstrap</p> -->
-              <p class="lead mt-3">{{selectedGenerator.description}}</p>
-              <p class='lead text-danger'>TODO - include longer description (in markdown?)</p>
+            <b-tab title="README.md" active class='card-body bg-white' v-html="compileMarkdown(selectedGenerator.readme)">
+              <!-- <br> -->
+              <!-- <div class="card card-body" v-html="compileMarkdown(selectedGenerator.readme)"> -->
+              <!-- </div> -->
             </b-tab>
 
             <!-- <b-tab title="Data Models"> -->
@@ -160,6 +166,7 @@ import AppSelector from '@/modules/build/components/AppSelector'
 import BuildHeader from '@/modules/build/components/BuildHeader'
 import AppShow from '@/modules/project/pages/show'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
+import marked from 'marked'
 
 export default {
   components: {
@@ -196,7 +203,10 @@ export default {
     }),
     ...mapMutations({
       showChoosingGenerator: 'build/choosingGenerator'
-    })
+    }),
+    compileMarkdown (markdown) {
+      return marked(markdown, { sanitize: true })
+    }
   }
 }
 </script>

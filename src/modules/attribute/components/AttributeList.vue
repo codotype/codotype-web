@@ -67,13 +67,12 @@
 <!-- // // // //  -->
 
 <script>
-import _ from 'lodash'
+import orderBy from 'lodash/orderBy'
 import smoothReflow from 'vue-smooth-reflow'
 import { mapGetters, mapActions } from 'vuex'
 import draggable from 'vuedraggable'
 import AttributeListItem from './AttributeListItem'
 import AttributeForm from './AttributeForm'
-
 export default {
   mixins: [smoothReflow],
   components: {
@@ -115,11 +114,11 @@ export default {
     // TODO - this should be moved into Vuex store, but how?
     attributes: {
       get () {
-        this.schema.attributes = _.orderBy(this.schema.attributes, ['order'], ['asc'])
+        this.schema.attributes = orderBy(this.schema.attributes, ['order'], ['asc'])
         return this.schema.attributes
       },
       set (value) {
-        _.each(value, (s, i) => { s.order = i })
+        value.forEach((s, i) => { s.order = i })
       }
     }
   }

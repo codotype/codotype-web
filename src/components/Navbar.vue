@@ -1,7 +1,6 @@
-b<template>
-  <!-- <b-navbar toggleable="md" type="dark" variant="dark" fixed="top"> -->
-  <b-navbar toggleable="md" type="dark" variant="dark">
-    <b-navbar-brand href="#/">
+<template>
+  <b-navbar toggleable="md" type="light" variant="light" fixed="top" class='bg-white'>
+    <b-navbar-brand to="/">
       <!-- <img class='logo' src="@/assets/logo_dark.png"> -->
       <strong>codotype</strong>
     </b-navbar-brand>
@@ -13,11 +12,13 @@ b<template>
       <b-navbar-nav class="mr-auto">
 
         <!-- Public links -->
-        <b-nav-item to="/projects">Apps</b-nav-item>
-        <!-- <b-nav-item to="#/examples">Example Apps</b-nav-item> -->
-        <b-nav-item to="/generators">Generators</b-nav-item>
-        <!-- <b-nav-item to="#/generator_new">New Generator</b-nav-item> -->
+        <!-- <b-nav-item to="/projects">Apps</b-nav-item> -->
         <b-nav-item to="/build/new">Build</b-nav-item>
+        <b-nav-item to="/projects">Blueprints</b-nav-item>
+        <b-nav-item to="/generators">Generators</b-nav-item>
+        <b-nav-item to="/build/new">Marketplace</b-nav-item>
+        <!-- <b-nav-item to="#/examples">Example Apps</b-nav-item> -->
+        <!-- <b-nav-item to="#/generator_new">New Generator</b-nav-item> -->
 
       </b-navbar-nav>
 
@@ -40,12 +41,12 @@ b<template>
         <!-- </b-nav-item> -->
 
         <b-nav-item target="_blank" href="https://github.com/codotype">
-          <i class="fa fa-lg fa-fw fa-github-alt text-light"></i>
+          <i class="fab fa-lg fa-fw fa-github text-dark"></i>
           <!-- GitHub -->
         </b-nav-item>
 
         <b-nav-item target="_blank" href="https://twitter.com/codotype">
-          <i class="fa fa-lg fa-fw fa-twitter text-primary"></i>
+          <i class="fab fa-lg fa-fw fa-twitter text-primary"></i>
         </b-nav-item>
 
       </b-navbar-nav>
@@ -63,7 +64,7 @@ export default {
 <style lang="sass">
 
   nav.navbar
-    border-bottom: 1px solid #fff
+    border-bottom: 1px solid #d3d3d3
 
     .navbar-brand
       letter-spacing: .25rem !important
@@ -82,6 +83,6 @@ export default {
         height: 2rem
         display: flex
 
-    .nav-item
-      font-size: 1.1rem
+    // .nav-item
+      // font-size: 1.1rem
 </style>

@@ -3,15 +3,23 @@
   <div id="app">
     <Navbar/>
     <Notifications/>
-    <br>
     <div class="container">
+      <br/>
+      <br/>
+      <br/>
+      <br/>
       <router-view/>
+      <br/>
+      <br/>
+      <br/>
     </div>
+    <AppFooter/>
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/Navbar'
+import AppFooter from '@/components/Footer'
 import Notifications from '@/modules/notification/components/Notifications'
 
 export default {
@@ -19,7 +27,12 @@ export default {
 
   components: {
     Navbar,
+    AppFooter,
     Notifications
+  },
+
+  created () {
+    this.$store.dispatch('generator/fetchCollection')
   },
 
   // Top-Level page Meta

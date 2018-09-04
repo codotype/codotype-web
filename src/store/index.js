@@ -5,13 +5,13 @@ import project from '@/modules/project/store'
 import schema from '@/modules/schema/store'
 import attribute from '@/modules/attribute/store'
 import relation from '@/modules/relation/store'
-import record from '@/modules/record/store'
 import notification from '@/modules/notification/store'
 import generator from '@/modules/generator/store'
 import addon from '@/modules/addon/store'
 import tour from '@/modules/tour/store'
 import option from '@/modules/option/store'
 import build from '@/modules/build/store'
+// import record from '@/modules/record/store'
 
 export default new Vuex.Store({
   modules: {
@@ -20,7 +20,6 @@ export default new Vuex.Store({
     schema,
     attribute,
     relation,
-    record,
     generator,
     addon,
     tour,

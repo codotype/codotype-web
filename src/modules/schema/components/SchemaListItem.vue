@@ -1,5 +1,5 @@
 <template>
-  <li :class="className" @click="selectModel(schema._id)">
+  <li :class="className" :id="schema.identifier + '-model'" @click="selectModel(schema._id)">
 
     <div class="row align-items-center">
       <div class="col-md-8">

@@ -66,7 +66,7 @@
 <!-- // // // //  -->
 
 <script>
-import _ from 'lodash'
+import orderBy from 'lodash/orderBy'
 import smoothReflow from 'vue-smooth-reflow'
 import { mapGetters, mapActions } from 'vuex'
 import draggable from 'vuedraggable'
@@ -114,11 +114,11 @@ export default {
     // TODO - this should be moved into Vuex store, but how?
     relations: {
       get () {
-        this.schema.relations = _.orderBy(this.schema.relations, ['order'], ['asc'])
+        this.schema.relations = orderBy(this.schema.relations, ['order'], ['asc'])
         return this.schema.relations
       },
       set (value) {
-        _.each(value, (s, i) => { s.order = i })
+        value.forEach((s, i) => { s.order = i })
       }
     }
   }

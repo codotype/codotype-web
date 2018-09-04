@@ -27,6 +27,11 @@
     <div class="col-lg-8">
       <SchemaDetail id="model-detail" />
     </div>
+    <div class="fixed-bottom text-right">
+      <button class="btn btn-link mb-2 mr-2">
+        <i class="fa fa-3x fa-question-circle"></i>
+      </button>
+    </div>
   </div>
 </template>
 
@@ -55,13 +60,23 @@ export default {
     this.resetNewSchemaModel()
     return this.selectModel(this.project_id)
   },
+  destroyed () {
+    return this.clearSelectedProject()
+  },
   methods: mapActions({
     submit: 'schema/create',
     selectModel: 'project/selectModel',
-    resetNewSchemaModel: 'schema/resetNewModel'
+    resetNewSchemaModel: 'schema/resetNewModel',
+    clearSelectedProject: 'project/clearSelected'
   }),
   computed: mapGetters({
     newModel: 'schema/newModel'
   })
 }
 </script>
+
+<style scoped>
+  div.fixed-bottom.text-right {
+    z-index: 2000;
+  }
+</style>

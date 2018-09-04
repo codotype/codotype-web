@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import _ from 'lodash'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -42,7 +41,7 @@ export default {
   methods: {
     recordCount (schemaId) {
       let recordCollection = this.$store.getters['record/collection']
-      let records = _.filter(recordCollection, (s) => { return s.schema_id === schemaId })
+      let records = recordCollection.filter(s => s.schema_id === schemaId)
       return records.length
     }
   }

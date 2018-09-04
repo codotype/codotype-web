@@ -45,22 +45,22 @@
           <social-sharing class='mt-3' url="https://codotype.io" inline-template>
             <div>
               <network network="facebook">
-                <i class="fa fa-lg fa-facebook mx-1"></i>
+                <i class="fab fa-lg fa-facebook mx-1"></i>
               </network>
               <network network="googleplus">
-                <i class="fa fa-lg fa-google-plus mx-1"></i>
+                <i class="fab fa-lg fa-google-plus mx-1"></i>
               </network>
               <network network="linkedin">
-                <i class="fa fa-lg fa-linkedin mx-1"></i>
+                <i class="fab fa-lg fa-linkedin mx-1"></i>
               </network>
               <network network="pinterest">
-                <i class="fa fa-lg fa-pinterest mx-1"></i>
+                <i class="fab fa-lg fa-pinterest mx-1"></i>
               </network>
               <network network="reddit">
-                <i class="fa fa-lg fa-reddit mx-1"></i>
+                <i class="fab fa-lg fa-reddit mx-1"></i>
               </network>
               <network network="twitter">
-                <i class="fa fa-lg fa-twitter mx-1"></i>
+                <i class="fab fa-lg fa-twitter mx-1"></i>
               </network>
               <!-- <network network="vk"> -->
                 <!-- <i class="fa fa-lg fa-vk"></i> -->

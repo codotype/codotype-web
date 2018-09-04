@@ -72,7 +72,6 @@
 <!-- // // // //  -->
 
 <script>
-import _ from 'lodash'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -85,7 +84,7 @@ export default {
     }),
     schemaString (project) {
       let schemas = []
-      _.each(project.schemas, (s) => { schemas.push(s.label) })
+      project.schemas.forEach(s => schemas.push(s.label))
       return schemas.join(', ') + ' Models'
     }
   }

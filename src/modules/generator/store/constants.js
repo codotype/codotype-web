@@ -17,7 +17,8 @@ export const GENERATORS = [
     model_options: [],
     github_url: 'codotype/codotype-nodejs-express-mongodb-generator',
     version: '0.1.0',
-    official: true
+    official: true,
+    readme: '# codotype-generator-nuxt\nCodotype generator for Nuxt.js, Vue.js, Vuex, & Bootstrap 4\n'
   },
   {
     id: 'flask',
@@ -33,7 +34,8 @@ export const GENERATORS = [
     model_options: [],
     github_url: 'codotype/codotype-flask-postgresql-generator',
     version: '0.1.0',
-    official: true
+    official: true,
+    readme: '# codotype-generator-nuxt\nCodotype generator for Nuxt.js, Vue.js, Vuex, & Bootstrap 4\n'
   },
   {
     id: 'vuejs',
@@ -50,7 +52,8 @@ export const GENERATORS = [
     model_options: [],
     github_url: 'codotype/codotype-vuejs-vuex-bootstrap-generator',
     version: '0.1.0',
-    official: true
+    official: true,
+    readme: '# codotype-generator-nuxt\nCodotype generator for Nuxt.js, Vue.js, Vuex, & Bootstrap 4\n'
   },
   {
     id: 'react',
@@ -62,6 +65,7 @@ export const GENERATORS = [
     github_url: 'codotype/codotype-react-generator',
     version: '0.1.0',
     official: false,
+    readme: '# codotype-generator-nuxt\nCodotype generator for Nuxt.js, Vue.js, Vuex, & Bootstrap 4\n',
 
     // // // //
 

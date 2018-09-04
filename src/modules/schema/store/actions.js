@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import cloneDeep from 'lodash/cloneDeep'
 import { DEFAULT_SCHEMA } from './constants'
 import { SELECT_MODEL_ACTIONS } from '@/store/lib/mixins'
 const titleize = require('underscore.string/titleize')
@@ -10,13 +10,13 @@ const pluralize = require('pluralize')
 export default {
   ...SELECT_MODEL_ACTIONS,
   selectModel: ({ commit, state }, model_id) => {
-    let model = _.find(state.collection, { _id: model_id })
+    let model = state.collection.find(m => m._id === model_id)
     commit('selectedModel', model)
     commit('attribute/collection', model.attributes, { root: true })
     commit('relation/collection', model.relations, { root: true })
   },
   create ({ state, dispatch, commit }) {
-    let model = _.cloneDeep(state.newModel)
+    let model = cloneDeep(state.newModel)
     dispatch('resetNewModel')
     model.label = pluralize.singular(titleize(model.label))
     commit('persist', { schema: model })
@@ -29,9 +29,10 @@ export default {
     return commit('collection', collection)
   },
   resetNewModel ({ commit }) {
-    let newModel = _.cloneDeep(DEFAULT_SCHEMA)
+    let newModel = cloneDeep(DEFAULT_SCHEMA)
     return commit('newModel', newModel)
   },
+  // TODO - leverage @codotype/util library here
   setLabel ({ state }, { schema, label }) {
     schema.label = titleize(label)
     schema.label_plural = pluralize(titleize(label))

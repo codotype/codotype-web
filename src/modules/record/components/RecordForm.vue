@@ -92,7 +92,6 @@
 <!-- // // // //  -->
 
 <script>
-import _ from 'lodash'
 import router from '@/routers'
 import { mapGetters } from 'vuex'
 
@@ -107,7 +106,7 @@ export default {
   methods: {
     // TODO - assignDefaultValues method should be moved into the Vuex store
     assignDefaultValues () {
-      _.each(this.schema.attributes, (attr) => {
+      this.schema.attributes.forEach((attr) => {
         // Skip attributes are are defined
         if (this.record.attributes[attr.identifier]) return
         // Assign defaults for JSON, Number, String
@@ -124,7 +123,7 @@ export default {
     relatedDropdown (schema_id) {
       console.log(schema_id)
       const records = this.$store.getters['record/collection']
-      const schema = _.find(this.$store.getters['schema/collection'], { _id: schema_id })
+      const schema = this.$store.getters['schema/collection'].find(m => m_id === schema_id)
       const leadAttribute = schema.attributes[0]
       if (!leadAttribute) return []
       return records

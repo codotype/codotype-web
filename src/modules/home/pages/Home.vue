@@ -1,11 +1,11 @@
 <template>
   <div class="row">
     <div class="col-lg-12">
-      <div class="row mt-2">
+      <div class="row">
         <div class="col-lg-12 text-center">
           <!-- <img src="@/assets/logo_dark.png"> -->
           <!-- <img width="30%" src="https://github.com/codotype/codotype-branding/blob/master/codotype-02.png?raw=true"> -->
-          <h1 class='display-1' style="font-family: monospace;">codotype</h1>
+          <h1 class='display-3' style="font-family: monospace;">codotype</h1>
         </div>
       </div>
 
@@ -13,7 +13,7 @@
 
         <div class="col-lg-12 text-center">
           <!-- <p class="lead">visual web application boilerplate</p> -->
-          <p class='lead'>Jumpstart new software projects amazingly, blazingly fast.</p>
+          <p class='lead'>Jumpstart new software projects amazingly fast</p>
           <!-- <p>Define your models, attributes, and relations - codotype does the rest</p> -->
         </div>
 
@@ -43,11 +43,7 @@
         <div class="col-lg-12 text-center">
           <p class="lead text-muted">Choose a generator to get started</p>
         </div>
-        <div class="col-lg-9">
-          <div class="card-deck">
-            <GeneratorCard v-for="m in generatorCollection.slice(0, 3)" :model="m" :key="m.id"/>
-          </div>
-        </div>
+        <GeneratorCard v-for="m in generatorCollection.slice(0, 3)" :model="m" :key="m.id" class='mx-2'/>
       </div>
 
       <div class="row mt-4 mb-4 justify-content-center">

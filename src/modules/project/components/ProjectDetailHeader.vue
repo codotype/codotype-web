@@ -17,10 +17,11 @@
     <div class="col-lg-7">
       <h4 class="mb-0">
         <span id="project-header">
-          {{ project.label + ' App' }}
+          <!-- {{ project.label + ' App' }} -->
+          {{ project.label + ' Blueprint' }}
         </span>
         <button class="btn btn-link py-0" id="project-edit-button" v-b-tooltip.hover.right title='Edit App Name' v-b-modal="'edit-project'">
-          <i class="fa fa-pencil"></i>
+          <i class="fa fa-pencil-alt"></i>
         </button>
       </h4>
       <small class="text-muted">

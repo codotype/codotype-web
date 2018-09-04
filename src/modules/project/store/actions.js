@@ -1,4 +1,5 @@
-import _ from 'lodash'
+import cloneDeep from 'lodash/cloneDeep'
+import uniqueId from 'lodash/uniqueId'
 import ObjectID from 'bson-objectid'
 import router from '@/routers'
 import { DEFAULT_PROJECT, DEFAULT_USER_SCHEMA, CREATE_SUCCESS_NOTIFICATION } from './constants'
@@ -14,7 +15,7 @@ export default {
   ...SELECT_MODEL_ACTIONS,
   selectModel: ({ commit, state }, model_id) => {
     if (!model_id) return
-    let model = _.find(state.collection, { _id: model_id })
+    let model = state.collection.find(m => m._id === model_id)
     commit('selectedModel', model)
     commit('schema/collection', model.schemas, { root: true })
     commit('schema/selectedModel', model.schemas[0], { root: true })
@@ -28,7 +29,7 @@ export default {
   },
 
   create: ({ state, dispatch, commit }) => {
-    dispatch('persist', { record: _.cloneDeep(state.newModel) })
+    dispatch('persist', { record: cloneDeep(state.newModel) })
 
     // Displays encouraging notification
     commit('notification/add', CREATE_SUCCESS_NOTIFICATION, { root: true })
@@ -42,7 +43,7 @@ export default {
     let collection = state.collection
     let isNew = false
     if (record._id) {
-      collection = _.map(state.collection, (s) => {
+      collection = state.collection.map((s) => {
         if (s._id === record._id) {
           return record
         } else {
@@ -68,7 +69,7 @@ export default {
 
   // TODO - destroy any reverse relations to this model
   destroy: ({ commit, state }, model) => {
-    let collection = _.filter(state.collection, (s) => { return s._id !== model._id })
+    let collection = state.collection.filter(s => s._id !== model._id)
     commit('collection', collection)
   },
 
@@ -83,26 +84,17 @@ export default {
   },
 
   resetNewModel: ({ commit }) => {
-    let newModel = _.cloneDeep(DEFAULT_PROJECT)
-    let userSchema = _.cloneDeep(DEFAULT_USER_SCHEMA)
-    userSchema._id = _.uniqueId('SCH_')
+    let newModel = cloneDeep(DEFAULT_PROJECT)
+    let userSchema = cloneDeep(DEFAULT_USER_SCHEMA)
+    userSchema._id = uniqueId('SCH_')
     newModel.schemas.push(userSchema)
     commit('newModel', newModel)
   },
 
   cloneExample: ({ dispatch, commit }, example) => {
     // Resets project, schema, and attribute IDs
-    // TODO - handle seed data as well
-    let projectModel = _.cloneDeep(example)
+    let projectModel = cloneDeep(example)
     projectModel._id = null
-    // projectModel.schemas = _.map(projectModel.schemas, (s) => {
-    //   s._id = ObjectID().toString()
-    //   s.attributes = _.map(s.attributes, (a) => {
-    //     a._id = ObjectID().toString()
-    //     return a
-    //   })
-    //   return s
-    // })
 
     // Adds to the project collection
     dispatch('persist', { record: projectModel })
