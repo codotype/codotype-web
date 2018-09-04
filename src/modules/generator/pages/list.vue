@@ -13,12 +13,12 @@
     <div class="col-lg-12">
       <hr>
     </div>
+
     <div class="col-lg-3">
-      <div class="card card-body border-light shadow-sm">
-        <p class="lead mb-0">Filters</p>
-      </div>
+      <FilterList />
     </div>
-    <div class="col-lg-9" style='overflow-y: scroll;'>
+
+    <div class="col-lg-9">
       <GeneratorListItem v-for="m in generatorCollection" :model="m" :key="m.id"/>
       <div class="card py-4 my-4 border-dark bg-transparent">
         <ul class="list-group list-group-flush">
@@ -40,11 +40,13 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import GeneratorListItem from '@/modules/generator/components/GeneratorListItem'
+import FilterList from '@/modules/generator/components/FilterList'
 import HelpButton from '@/components/HelpButton'
 
 export default {
   components: {
     GeneratorListItem,
+    FilterList,
     HelpButton
   },
   computed: mapGetters({
