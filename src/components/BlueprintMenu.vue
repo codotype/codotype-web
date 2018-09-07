@@ -1,6 +1,12 @@
 <template>
   <b-collapse is-nav id="nav_collapse">
 
+    <b-navbar-nav>
+      <b-nav-item>
+        <strong style='font-weight: 700;'>{{ project.label }}</strong> Blueprint
+      </b-nav-item>
+    </b-navbar-nav>
+
     <!-- Navbar Links -->
     <b-navbar-nav class="m-auto">
 

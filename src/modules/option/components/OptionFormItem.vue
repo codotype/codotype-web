@@ -7,7 +7,7 @@
       <MoreInfoLink :url="model.more_info_url" />
     </div>
     <div class="col-lg-3">
-      <input class='form-control' type="checkbox" :checked="model.default_value" v-if="model.type === 'BOOLEAN'">
+      <input type="checkbox" :checked="model.default_value" v-if="model.type === 'BOOLEAN'">
       <input class='form-control' type="text" :value="model.default_value" v-if="model.type === 'TEXT'">
     </div>
   </div>
