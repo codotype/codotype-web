@@ -15,6 +15,7 @@ export default [
   },
   {
     path: '/projects/:project_id',
+    name: 'ProjectShow',
     component: ProjectShow,
     props: true
   },

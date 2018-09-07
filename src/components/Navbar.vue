@@ -6,58 +6,26 @@
     </b-navbar-brand>
 
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-    <b-collapse is-nav id="nav_collapse">
-
-      <!-- Navbar Links -->
-      <b-navbar-nav class="mr-auto">
-
-        <!-- Public links -->
-        <!-- <b-nav-item to="/projects">Apps</b-nav-item> -->
-        <b-nav-item to="/build/new">Build</b-nav-item>
-        <b-nav-item to="/projects">Blueprints</b-nav-item>
-        <b-nav-item to="/generators">Generators</b-nav-item>
-        <b-nav-item to="/build/new">Marketplace</b-nav-item>
-        <!-- <b-nav-item to="#/examples">Example Apps</b-nav-item> -->
-        <!-- <b-nav-item to="#/generator_new">New Generator</b-nav-item> -->
-
-      </b-navbar-nav>
-
-      <b-navbar-nav class="mr-0">
-
-        <b-nav-item to="/about">
-          <i class="fa fa-fw fa-question-circle-o"></i>
-          About
-        </b-nav-item>
-
-        <b-nav-item target="_blank" href="https://github.com/codotype">
-          <!-- <i class="fa fa-fw fa-graduation-cap"></i> -->
-          <i class="fa fa-fw fa-book"></i>
-          Documentation
-        </b-nav-item>
-
-        <!-- <b-nav-item target="_blank" href="https://github.com/codotype"> -->
-          <!-- <i class="fa fa-fw fa-dollar"></i> -->
-          <!-- Donate -->
-        <!-- </b-nav-item> -->
-
-        <b-nav-item target="_blank" href="https://github.com/codotype">
-          <i class="fab fa-lg fa-fw fa-github text-dark"></i>
-          <!-- GitHub -->
-        </b-nav-item>
-
-        <b-nav-item target="_blank" href="https://twitter.com/codotype">
-          <i class="fab fa-lg fa-fw fa-twitter text-primary"></i>
-        </b-nav-item>
-
-      </b-navbar-nav>
-
-    </b-collapse>
+    <BlueprintMenu v-if="showBlueprintMenu"/>
+    <HomeMenu v-else/>
   </b-navbar>
 </template>
 
 <script>
+import HomeMenu from './HomeMenu'
+import BlueprintMenu from './BlueprintMenu'
+
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  components: {
+    HomeMenu,
+    BlueprintMenu
+  },
+  computed: {
+    showBlueprintMenu () {
+      return this.$route.name === 'ProjectShow'
+    }
+  }
 }
 </script>
 

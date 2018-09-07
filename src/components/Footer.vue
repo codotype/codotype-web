@@ -13,9 +13,9 @@
         <!-- <b-nav-item to="/generators">Generators</b-nav-item> -->
         <!-- <b-nav-item to="#/generator_new">New Generator</b-nav-item> -->
 
-        <b-nav-item to="/build/new">
+        <b-nav-item href="http://codotype.io" target='_blank'>
           <i class="far fa-copyright"></i>
-          codotype
+          Codotype LLC
         </b-nav-item>
 
         <b-nav-item to="/build/new">Terms</b-nav-item>
