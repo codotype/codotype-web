@@ -1,12 +1,12 @@
 <template>
   <div class="row">
-    <div class="col-lg-12">
-      <ProjectDetailHeader/>
-    </div>
+    <!-- <div class="col-lg-12"> -->
+      <!-- <ProjectDetailHeader/> -->
+    <!-- </div> -->
 
-    <div class="col-lg-12">
-      <hr>
-    </div>
+    <!-- <div class="col-lg-12"> -->
+      <!-- <hr> -->
+    <!-- </div> -->
 
     <div class="col-lg-4 border-right">
 
@@ -14,6 +14,17 @@
       <b-modal id="new-schema" :title="'New Model'" @ok="submit()" ok-title='Create' cancel-title='Cancel' >
         <SchemaForm :schema="newModel" />
       </b-modal>
+
+      <!-- Model header -->
+      <b-row>
+        <b-col lg='12'>
+          <p class="lead mb-0">Models</p>
+          <small class="text-muted">Models encapsulate attributes and relations</small>
+        </b-col>
+        <b-col lg='12'>
+          <hr>
+        </b-col>
+      </b-row>
 
       <button id="new-model-button" class="btn btn-primary btn-block btn-lg mb-3" v-b-modal="'new-schema'">
         <i class="fa fa-fw fa-plus"></i>
@@ -27,11 +38,13 @@
     <div class="col-lg-8">
       <SchemaDetail id="model-detail" />
     </div>
-    <div class="fixed-bottom text-right">
-      <button class="btn btn-link mb-2 mr-2">
-        <i class="fa fa-3x fa-question-circle"></i>
-      </button>
-    </div>
+
+    <!-- <div class="fixed-bottom text-right"> -->
+      <!-- <button class="btn btn-link mb-2 mr-2"> -->
+        <!-- <i class="fa fa-3x fa-question-circle"></i> -->
+      <!-- </button> -->
+    <!-- </div> -->
+
   </div>
 </template>
 

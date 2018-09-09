@@ -80,7 +80,7 @@ export const APP_EDITOR_TOUR = [
     }
   },
   {
-    element: '#generate-project-button',
+    element: '#generate-button',
     popover: {
       title: 'Generate',
       description: 'Click here to generate code with this blueprint',

@@ -2,7 +2,7 @@
   <div class='row'>
 
     <div class="col-lg-4 mb-4">
-      <router-link to='/' style='text-decoration: none;' class="card card-body border-primary bg-gradient-primary text-white h-100 d-flex align-items-center justify-content-center shadow-hover">
+      <router-link to='/auth/login' style='text-decoration: none;' class="card card-body border-primary bg-gradient-primary text-white h-100 d-flex align-items-center justify-content-center shadow-hover">
 
         <div class="row">
           <div class="col-lg-12 text-center">
