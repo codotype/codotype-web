@@ -5,6 +5,7 @@ import HomeRouter from '@/modules/home/router'
 import ProjectRouter from '@/modules/project/router'
 import GeneratorRouter from '@/modules/generator/router'
 import BuildRouter from '@/modules/build/router'
+import AuthRouter from '@/modules/auth/router'
 
 // Vue Router setup
 Vue.use(Router)
@@ -15,7 +16,8 @@ export default new Router({
     ...HomeRouter,
     ...GeneratorRouter,
     ...ProjectRouter,
-    ...BuildRouter
+    ...BuildRouter,
+    ...AuthRouter
   ],
   scrollBehavior (to, from, savedPosition) {
     return { x: 0, y: 0 } // Top of page on change
