@@ -25,6 +25,15 @@
 
       </b-navbar-nav>
 
+      <b-navbar-nav class="ml-auto">
+
+        <b-nav-item href="http://codotype.io" target='_blank'>
+          <i class="fas fa-dollar-sign text-success"></i>
+          Donate
+        </b-nav-item>
+
+      </b-navbar-nav>
+
       <!-- <b-navbar-nav class="mr-0"> -->
 
         <!-- <b-nav-item to="/about"> -->
