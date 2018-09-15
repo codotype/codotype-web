@@ -1,12 +1,12 @@
 
 <template>
   <div class="card">
-    <!-- <div class="card-header d-flex justify-content-between align-items-center"> -->
-      <!-- <span> -->
-        <!-- <i class="fa fa-database mr-1"></i> -->
-        <!-- Models -->
-      <!-- </span> -->
-    <!-- </div> -->
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <span>
+        <i class="fa fa-database mr-1"></i>
+        Models
+      </span>
+    </div>
     <ul class='list-group list-group-flush'>
       <SchemaListItem v-for="schema in collection" :schema="schema" :key="schema._id" />
     </ul>

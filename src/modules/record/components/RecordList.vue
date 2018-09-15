@@ -65,7 +65,7 @@
 
           <!-- Edit Record -->
           <a class="btn btn-sm btn-outline-warning" :href=" '#/projects/' + projectId + '/seeds/' + schema._id + '/records/' + record._id + '/edit' ">
-            <i class="fa fa-fw fa-pencil"></i>
+            <i class="fas fa-fw fa-pencil-alt"></i>
           </a>
 
           <!-- Destroy Record Confirmation -->

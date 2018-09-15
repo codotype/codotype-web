@@ -29,7 +29,23 @@ export default {
     let newModel = cloneDeep(DEFAULT_SCHEMA)
     return commit('newModel', newModel)
   },
-  setLabel ({ state }, { schema, label }) {
-    schema = { ...schema, ...inflateMeta(schema.label) }
+  setLabel ({ state, commit }, { schema, label }) {
+    const {
+      label_plural,
+      identifier,
+      identifier_plural,
+      class_name,
+      class_name_plural
+    } = inflateMeta(label)
+
+    schema.label = label // TODO - titleize
+    schema.label_plural = label_plural
+    schema.identifier = identifier
+    schema.identifier = identifier
+    schema.identifier_plural = identifier_plural
+    schema.identifier_plural = identifier_plural
+    schema.class_name = class_name
+    schema.class_name = class_name
+    schema.class_name_plural = class_name_plural
   }
 }

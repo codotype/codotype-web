@@ -3,8 +3,25 @@
 
     <b-navbar-nav>
       <b-nav-item>
-        <strong style='font-weight: 700;'>{{ project.label }}</strong> Blueprint
+        <strong id="project-header" style='font-weight: 700;'>{{ project.label }}</strong> Blueprint
       </b-nav-item>
+
+      <b-modal
+        id="edit-project"
+        ref="editModal"
+        :title="'Edit App'"
+        @ok="submitProjectForm()"
+        ok-title='Update'
+        cancel-title='Cancel'
+      >
+        <!-- <ProjectForm :model= :submit="submitProjectForm" /> -->
+        <p class="lead text-danger">TODO - add ProjectForm here</p>
+      </b-modal>
+
+      <button class="btn btn-link py-0" id="project-edit-button" v-b-tooltip.hover.right title='Edit App Name' v-b-modal="'edit-project'">
+        <i class="fa fa-pencil-alt"></i>
+      </button>
+
     </b-navbar-nav>
 
     <!-- Navbar Links -->
