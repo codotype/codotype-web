@@ -8,7 +8,7 @@
           <h4 class="mb-0">
             {{ model.label + ' Model' }}
             <button class="btn btn-link py-0" v-b-tooltip.hover.right title='Edit Model Name'>
-              <i class="fa fa-pencil"></i>
+              <i class="fas fa-pencil-alt"></i>
             </button>
           </h4>
         </div>

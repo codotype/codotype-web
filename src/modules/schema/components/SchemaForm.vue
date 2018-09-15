@@ -71,6 +71,8 @@ export default {
         return this.schema.label
       },
       set (label) {
+        console.log('SET SET')
+        console.log(label)
         this.$store.dispatch('schema/setLabel', { schema: this.schema, label: label })
       }
     }

@@ -19,7 +19,7 @@
           <h4 class="mb-0">
             {{ model.label }}
             <button class="btn btn-link py-0" v-b-tooltip.hover.right title='Edit Option'  v-b-modal="'edit-option'">
-              <i class="fa fa-pencil"></i>
+              <i class="fas fa-pencil-alt"></i>
             </button>
           </h4>
         </div>

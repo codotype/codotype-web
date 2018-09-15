@@ -17,22 +17,6 @@
 
     <b-navbar-nav class="mr-0">
 
-      <b-nav-item to="/about">
-        <i class="fa fa-fw fa-question-circle-o"></i>
-        About
-      </b-nav-item>
-
-      <b-nav-item target="_blank" href="https://github.com/codotype">
-        <!-- <i class="fa fa-fw fa-graduation-cap"></i> -->
-        <i class="fa fa-fw fa-book"></i>
-        Documentation
-      </b-nav-item>
-
-      <!-- <b-nav-item target="_blank" href="https://github.com/codotype"> -->
-        <!-- <i class="fa fa-fw fa-dollar"></i> -->
-        <!-- Donate -->
-      <!-- </b-nav-item> -->
-
       <b-nav-item target="_blank" href="https://github.com/codotype">
         <i class="fab fa-lg fa-fw fa-github text-dark"></i>
         <!-- GitHub -->
@@ -40,6 +24,16 @@
 
       <b-nav-item target="_blank" href="https://twitter.com/codotype">
         <i class="fab fa-lg fa-fw fa-twitter text-primary"></i>
+      </b-nav-item>
+
+      <b-nav-item to="/auth/login">
+        <i class="fa fa-fw fa-user-plus"></i>
+        Register
+      </b-nav-item>
+
+      <b-nav-item to="/auth/login">
+        <i class="fa fa-fw fa-sign-in-alt"></i>
+        Login
       </b-nav-item>
 
     </b-navbar-nav>

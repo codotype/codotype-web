@@ -15,13 +15,36 @@
 
         <b-nav-item href="http://codotype.io" target='_blank'>
           <i class="far fa-copyright"></i>
-          Codotype LLC
+          Codotype
+        </b-nav-item>
+
+        <b-nav-item to="/about">
+          <!-- <i class="fas fa-fw fa-question-circle"></i> -->
+          About
         </b-nav-item>
 
         <b-nav-item to="/build/new">Terms</b-nav-item>
         <b-nav-item to="/build/new">Privacy</b-nav-item>
         <b-nav-item to="/build/new">Help</b-nav-item>
-        <b-nav-item to="/build/new">Feedback</b-nav-item>
+
+      </b-navbar-nav>
+
+      <b-navbar-nav class="ml-auto">
+
+        <b-nav-item to="/build/new">
+          <i class="far fa-comment-alt text-primary mr-1"></i>
+          Feedback
+        </b-nav-item>
+
+        <b-nav-item target="_blank" href="https://github.com/codotype">
+          <i class="fa fa-book text-warning mr-1"></i>
+          Documentation
+        </b-nav-item>
+
+        <b-nav-item href="http://codotype.io" target='_blank'>
+          <i class="fas fa-dollar-sign text-success mr-1"></i>
+          Donate
+        </b-nav-item>
 
       </b-navbar-nav>
 

@@ -6,7 +6,7 @@
     </div>
 
     <div class="col-lg-6 col-sm-12">
-      <FormInput label="Label" :required="true" placeholder="Label" v-model="model.label" example="Example: 'Last Name'" help="The human-readable name for this attribute." />
+      <FormInput label="Label" :required="true" placeholder="Label" v-model="attributeLabel" example="Example: 'Last Name'" help="The human-readable name for this attribute." />
     </div>
 
     <div class="col-lg-6 col-sm-12">
@@ -40,6 +40,15 @@ export default {
       let datatypes = this.$store.getters['schema/datatypes']
       let datatype = datatypes.find(d => d.value === this.model.datatype)
       return datatype.text
+    },
+    attributeLabel: {
+      get () {
+        // console.log('getter: ', this.schema.label)
+        return this.model.label
+      },
+      set (label) {
+        this.$store.dispatch('attribute/setLabel', { model: this.model, label: label })
+      }
     }
   }
 }

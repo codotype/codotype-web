@@ -8,7 +8,7 @@
           Codebase Builder
         </span>
         <!-- <button class="btn btn-link py-0" id="project-edit-button" v-b-tooltip.hover.right title='Edit App Name' v-b-modal="'edit-project'"> -->
-          <!-- <i class="fa fa-pencil"></i> -->
+          <!-- <i class="fas fa-pencil-alt"></i> -->
         <!-- </button> -->
       </h4>
       <small class="text-muted">

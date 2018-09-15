@@ -63,7 +63,7 @@
         </button>
 
         <button class="btn btn-sm btn-outline-secondary" v-else v-b-tooltip.hover.top title="Edit" @click="edit(item)">
-          <i class="fa fa-fw fa-pencil"></i>
+          <i class="fas fa-fw fa-pencil-alt"></i>
         </button>
 
         <button class="btn btn-sm btn-outline-danger" v-b-tooltip.hover.top v-b-modal="'modal_' + item._id" title="Remove">
@@ -103,7 +103,7 @@ export default {
   computed: {
     inflated () {
       let inflated = inflateRelation({ relation: this.item, schemas: this.$store.getters['schema/collection'] })
-      console.log(inflated)
+      // console.log(inflated)
       return inflated
     }
   }

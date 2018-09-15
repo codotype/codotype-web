@@ -1,7 +1,8 @@
 import cloneDeep from 'lodash/cloneDeep'
 import ObjectID from 'bson-objectid'
-import { DEFAULT_ATTRIBUTE } from './constants'
+import { inflateMeta } from '@codotype/util/lib/inflateMeta'
 import { SELECT_MODEL_ACTIONS, EDIT_MODEL_ACTIONS } from '@/store/lib/mixins'
+import { DEFAULT_ATTRIBUTE } from './constants'
 
 // Attribute module actions
 export default {
@@ -11,6 +12,11 @@ export default {
     let newModel = cloneDeep(DEFAULT_ATTRIBUTE)
     newModel.order = state.collection.length
     return commit('newModel', newModel)
+  },
+  setLabel ({ state, commit }, { model, label }) {
+    const { identifier } = inflateMeta(label)
+    model.label = label // TODO - titleize
+    model.identifier = identifier
   },
   create ({ state, commit, dispatch, rootGetters }) {
     // Isolates current Attribute model and the schema to which the attribute belongs

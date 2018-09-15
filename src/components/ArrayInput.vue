@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-lg-4 text-right">
                   <button class="btn btn-sm btn-outline-warning" @click="editOption(element)">
-                    <i class="fa fa-fw fa-pencil"></i>
+                    <i class="fas fa-fw fa-pencil-alt"></i>
                   </button>
                   <button class="btn btn-sm btn-outline-danger" @click="destroyOption(element)">
                     <i class="fa fa-fw fa-trash"></i>
