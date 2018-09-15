@@ -8,15 +8,15 @@
     </b-navbar-nav>
 
     <!-- Navbar Links -->
-    <b-navbar-nav class="m-auto">
+    <!-- <b-navbar-nav class="m-auto"> -->
 
-      <button class="btn btn-link active" v-b-tooltip.hover.left title='Edit'>
-        <i class="fa fa-fw fa-columns"></i>
-      </button>
+      <!-- <button class="btn btn-link active" v-b-tooltip.hover.left title='Edit'> -->
+        <!-- <i class="fa fa-fw fa-columns"></i> -->
+      <!-- </button> -->
 
-      <button class="btn btn-link" v-b-tooltip.hover.right title='Preview'>
-        <i class="fa fa-fw fa-eye"></i>
-      </button>
+      <!-- <button class="btn btn-link" v-b-tooltip.hover.right title='Preview'> -->
+        <!-- <i class="fa fa-fw fa-eye"></i> -->
+      <!-- </button> -->
 
       <!-- Public links -->
       <!-- <b-nav-item to="/projects">Apps</b-nav-item> -->
@@ -26,9 +26,9 @@
       <!-- <b-nav-item to="/build/new">Marketplace</b-nav-item> -->
       <!-- <b-nav-item to="#/examples">Example Apps</b-nav-item> -->
       <!-- <b-nav-item to="#/generator_new">New Generator</b-nav-item> -->
-    </b-navbar-nav>
+    <!-- </b-navbar-nav> -->
 
-    <b-navbar-nav class="mr-0">
+    <b-navbar-nav class="ml-auto">
 
       <b-nav-item>
         <HelpButton :tour="tourSteps"/>
