@@ -6,10 +6,10 @@
 
       <!-- Public links -->
       <!-- <b-nav-item to="/projects">Apps</b-nav-item> -->
-      <b-nav-item to="/build/new">Build</b-nav-item>
       <b-nav-item to="/projects">Blueprints</b-nav-item>
       <b-nav-item to="/generators">Generators</b-nav-item>
-      <b-nav-item to="/build/new">Marketplace</b-nav-item>
+      <b-nav-item to="/build/new">Build</b-nav-item>
+      <!-- <b-nav-item to="/build/new">Marketplace</b-nav-item> -->
       <!-- <b-nav-item to="#/examples">Example Apps</b-nav-item> -->
       <!-- <b-nav-item to="#/generator_new">New Generator</b-nav-item> -->
 
@@ -26,7 +26,7 @@
         <i class="fab fa-lg fa-fw fa-twitter text-primary"></i>
       </b-nav-item>
 
-      <b-nav-item to="/auth/login">
+      <b-nav-item to="/auth/register">
         <i class="fa fa-fw fa-user-plus"></i>
         Register
       </b-nav-item>
