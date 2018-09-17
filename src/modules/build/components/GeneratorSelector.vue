@@ -33,10 +33,7 @@ export default {
     generators () {
       let generatorIds = this.newBuildModel.stages.map(s => s.generator_id)
       return this.generatorCollection.filter((g) => {
-        // console.log(g)
-        // console.log(this.newBuildModel)
         return !generatorIds.includes(g.id)
-        // return true
       })
     }
   },
