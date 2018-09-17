@@ -67,7 +67,7 @@
             <!-- </button> -->
 
 
-            <span class="mx-1" v-b-tooltip.hover.left title='Export'>
+            <span class="mx-1" v-b-tooltip.hover.left title='Export' @click="exportApp(project)">
               <i class="fa fa-download project-action project-action-primary fa-fw"></i>
             </span>
 
@@ -126,7 +126,8 @@ export default {
   methods: {
     ...mapActions({
       destroyProject: 'project/destroy',
-      selectBuildApp: 'build/selectApp'
+      selectBuildApp: 'build/selectApp',
+      exportApp: 'project/exportJson'
     }),
     goToBuild (project) {
       this.selectBuildApp(project._id)
