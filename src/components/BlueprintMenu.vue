@@ -51,7 +51,7 @@
         <HelpButton :tour="tourSteps"/>
       </b-nav-item>
 
-      <button id="generate-button" class="btn btn-sm btn-outline-primary mr-3" @click="exportProject(project)">
+      <button class="btn btn-sm btn-outline-primary mr-3" @click="exportProject(project)">
         <i class="fa fa-fw fa-download"></i>
         Export
       </button>
