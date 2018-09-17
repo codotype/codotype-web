@@ -1,9 +1,18 @@
 <template>
   <b-row>
     <b-col lg=12>
-      <h2>Generator Show</h2>
+      <h2>{{ model.label }} Generator</h2>
       <hr>
-      <GeneratorReadme :model="model" />
+
+      <b-tabs>
+        <b-tab title="README.md" active>
+          <GeneratorReadme :model="model" class='mt-2'/>
+        </b-tab>
+        <b-tab title="Global Options" disabled></b-tab>
+        <b-tab title="Model Options" disabled></b-tab>
+        <b-tab title="Addons" disabled></b-tab>
+      </b-tabs>
+
     </b-col>
   </b-row>
 </template>
