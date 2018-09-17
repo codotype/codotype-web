@@ -57,6 +57,11 @@
         Add Generator
       </button>
 
+      <button class="btn btn-success btn-lg btn-block mb-3" @click="generateCodebase()">
+        <i class="fa fa-check"></i>
+        Generate
+      </button>
+
       <div class="card">
         <!-- <p class='lead mb-0'>App</p> -->
         <div class="card-header">
@@ -199,7 +204,8 @@ export default {
   methods: {
     ...mapActions({
       resetNewBuildModel: 'build/resetNewModel',
-      selectGeneratorModel: 'generator/selectModel'
+      selectGeneratorModel: 'generator/selectModel',
+      generateCodebase: 'build/generate'
     }),
     ...mapMutations({
       showChoosingGenerator: 'build/choosingGenerator'

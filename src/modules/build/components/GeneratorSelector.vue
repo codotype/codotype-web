@@ -8,7 +8,7 @@
       <hr>
 
       <b-card-group deck>
-        <GeneratorListItem v-for="m in generatorCollection" :model="m" :key="m.id" :selectMethod="selectGenerator" />
+        <GeneratorListItem v-for="m in generators" :model="m" :key="m.id" :selectMethod="selectGenerator" v-if="m.id" />
       </b-card-group>
 
     </b-col>
@@ -25,9 +25,21 @@ export default {
     EditorHeader,
     GeneratorListItem
   },
-  computed: mapGetters({
-    generatorCollection: 'generator/collection'
-  }),
+  computed: {
+    ...mapGetters({
+      newBuildModel: 'build/newModel',
+      generatorCollection: 'generator/collection'
+    }),
+    generators () {
+      let generatorIds = this.newBuildModel.stages.map(s => s.generator_id)
+      return this.generatorCollection.filter((g) => {
+        // console.log(g)
+        // console.log(this.newBuildModel)
+        return !generatorIds.includes(g.id)
+        // return true
+      })
+    }
+  },
   methods: mapActions({
     selectGenerator: 'build/addNewStage'
   })

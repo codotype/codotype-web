@@ -48,8 +48,6 @@ export default {
   // Builds the application on the server
   // TODO - this needs error handling!
   generate: ({ rootGetters, state, commit }) => {
-    // console.log(JSON.stringify(rootGetters['project/selectedModel'], null, 2))
-
     // Pulls requisite data from state
     const { stages } = state.newModel
     const app = rootGetters['project/selectedModel']
@@ -57,9 +55,10 @@ export default {
     // Defines build object to send to the server
     let build = { app, stages }
 
-    // console.log(build)
-
+    // Sets `state.fetching` to `true`
     commit('fetching', true)
+
+    // Generates the app and downloads the response
     return fetch(GENERATE_ROUTE, {
       method: 'post',
       body: JSON.stringify({ build }),
@@ -74,9 +73,9 @@ export default {
     })
     .then((blob) => {
       commit('fetching', false)
-      console.log('GENERATED')
-      console.log(blob)
-      DownloadFile(blob, 'app.zip', 'application/zip')
+      // console.log('GENERATED')
+      // console.log(blob)
+      DownloadFile(blob, `${app.identifier}_codotype.zip`, 'application/zip')
     })
   }
 

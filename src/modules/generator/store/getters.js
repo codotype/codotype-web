@@ -1,4 +1,3 @@
-// import { GENERATORS } from './constants'
 import { COLLECTION_GETTERS, SELECT_MODEL_GETTERS } from '@/store/lib/mixins'
 
 // Generator Module Getters
