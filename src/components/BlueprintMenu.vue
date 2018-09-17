@@ -51,6 +51,11 @@
         <HelpButton :tour="tourSteps"/>
       </b-nav-item>
 
+      <button id="generate-button" class="btn btn-sm btn-outline-primary mr-3">
+        <i class="fa fa-fw fa-download"></i>
+        Export
+      </button>
+
       <button id="generate-button" class="btn btn-sm btn-success">
         <i class="fa fa-fw fa-check"></i>
         Generate App

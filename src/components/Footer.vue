@@ -23,9 +23,9 @@
           About
         </b-nav-item>
 
-        <b-nav-item to="/build/new">Terms</b-nav-item>
-        <b-nav-item to="/build/new">Privacy</b-nav-item>
-        <b-nav-item to="/build/new">Help</b-nav-item>
+        <!-- <b-nav-item to="/build/new">Terms</b-nav-item> -->
+        <!-- <b-nav-item to="/build/new">Privacy</b-nav-item> -->
+        <!-- <b-nav-item to="/build/new">Help</b-nav-item> -->
 
       </b-navbar-nav>
 
