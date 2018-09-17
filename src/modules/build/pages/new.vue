@@ -94,10 +94,10 @@
 
       <!-- STEP 1 - Select an App -->
       <!-- TODO - this should be determined by a state getter variable, `requiresApp` -->
-      <AppSelector v-if="!newBuildModel.app_id && newBuildModel.stages[0]"/>
+      <AppSelector v-if="!newBuildModel.app_id"/>
 
       <!-- STEP 2 - Select a generator -->
-      <GeneratorSelector v-if="(!newBuildModel.app_id && !newBuildModel.stages[0]) || choosingGenerator"/>
+      <GeneratorSelector v-if="(newBuildModel.app_id && !newBuildModel.stages[0]) || choosingGenerator"/>
 
       <!-- TODO - abstract ALL of this into a separate component -->
       <!-- GeneratorConfigure component -->

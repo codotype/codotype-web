@@ -4,10 +4,15 @@
       <div class="col-lg-12 d-flex justify-content-between align-items-center">
         <p class="lead mb-0">
 
-          <button @click.prevent="onClick()" class="btn btn-link" style='text-decoration: none; font-size: 1.5rem'>
+          <!-- <button @click.prevent="onClick()" class="btn btn-link" style='text-decoration: none; font-size: 1.5rem'> -->
+            <!-- <i :class="model.icon + ' mr-2'"></i> -->
+            <!-- {{ model.label }} -->
+          <!-- </button> -->
+
+          <router-link :to="'/generators/' + model.id" class="btn btn-link" style='text-decoration: none; font-size: 1.5rem'>
             <i :class="model.icon + ' mr-2'"></i>
             {{ model.label }}
-          </button>
+          </router-link>
 
           <small class='ml-2'>
             <a class='text-muted' :href="model.github_url">
@@ -69,11 +74,11 @@ export default {
   methods: {
     ...mapActions({
       selectGenerator: 'build/addNewStage'
-    }),
-    onClick () {
-      this.selectGenerator(this.model.id)
-      window.location = '#/build/new'
-    }
+    })
+    // onClick () {
+    //   this.selectGenerator(this.model.id)
+    //   window.location = '#/build/new'
+    // }
   }
 }
 </script>

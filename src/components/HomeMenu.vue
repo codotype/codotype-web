@@ -26,15 +26,15 @@
         <i class="fab fa-lg fa-fw fa-twitter text-primary"></i>
       </b-nav-item>
 
-      <b-nav-item to="/auth/register">
-        <i class="fa fa-fw fa-user-plus"></i>
-        Register
-      </b-nav-item>
+      <!-- <b-nav-item to="/auth/register"> -->
+        <!-- <i class="fa fa-fw fa-user-plus"></i> -->
+        <!-- Register -->
+      <!-- </b-nav-item> -->
 
-      <b-nav-item to="/auth/login">
-        <i class="fa fa-fw fa-sign-in-alt"></i>
-        Login
-      </b-nav-item>
+      <!-- <b-nav-item to="/auth/login"> -->
+        <!-- <i class="fa fa-fw fa-sign-in-alt"></i> -->
+        <!-- Login -->
+      <!-- </b-nav-item> -->
 
     </b-navbar-nav>
 

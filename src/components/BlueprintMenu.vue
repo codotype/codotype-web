@@ -56,7 +56,7 @@
         Export
       </button>
 
-      <button id="generate-button" class="btn btn-sm btn-success">
+      <button id="generate-button" class="btn btn-sm btn-success"  @click="goToBuild()">
         <i class="fa fa-fw fa-check"></i>
         Generate App
       </button>
@@ -94,7 +94,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import HelpButton from '@/components/HelpButton'
 
 export default {
@@ -105,6 +105,16 @@ export default {
   computed: mapGetters({
     project: 'project/selectedModel',
     tourSteps: 'tour/appEditorSteps'
-  })
+  }),
+  methods: {
+    ...mapActions({
+      exportProject: 'project/exportJson',
+      selectBuildApp: 'build/selectApp'
+    }),
+    goToBuild () {
+      this.selectBuildApp(this.project._id)
+      window.location = '#/build/new' // TODO - use vue router
+    }
+  }
 }
 </script>
