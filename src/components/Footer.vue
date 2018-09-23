@@ -36,7 +36,7 @@
           Feedback
         </b-nav-item>
 
-        <b-nav-item target="_blank" href="https://github.com/codotype">
+        <b-nav-item target="_blank" href="https://codotype.github.io">
           <i class="fa fa-book text-warning mr-1"></i>
           Documentation
         </b-nav-item>
