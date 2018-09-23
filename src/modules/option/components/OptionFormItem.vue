@@ -7,9 +7,11 @@
       <MoreInfoLink :url="model.more_info_url" />
     </div>
     <div class="col-lg-3">
-      <input type="checkbox" :checked="model.default_value" v-if="model.type === 'BOOLEAN'">
-      <input class='form-control' type="text" :value="model.default_value" v-if="model.type === 'TEXT'">
-      <select class='form-control' type="text" :value="model.default_value" v-if="model.type === 'TEXT_SELECT'">
+      <input type="checkbox" :checked="value" ref="input" @input="updateModel()" v-if="model.type === 'BOOLEAN'">
+
+      <input class='form-control' :value="value" type="text" ref="input" @input="updateModel()" v-if="model.type === 'TEXT'">
+
+      <select class='form-control' :value="value" type="text" ref="input" @input="updateModel()" v-if="model.type === 'TEXT_SELECT'">
         <option :value="opt.value" v-for="opt in model.options" :key="opt.id">{{opt.label}}</option>
       </select>
     </div>
@@ -21,9 +23,24 @@ import MoreInfoLink from '@/components/MoreInfoLink'
 
 export default {
   name: 'OptionFormitem',
-  props: ['model'], // TODO - this should be wired up to emit input events
+  props: ['model', 'value'],
+  mounted () {
+    console.log(this.value)
+  },
   components: {
     MoreInfoLink
+  },
+  methods: {
+    updateModel () {
+      console.log('UPDATE MODEL')
+      if (this.type === 'BOOL') {
+        this.$emit('input', this.$refs.input.checked)
+      } else if (this.type === 'NUMBER') {
+        this.$emit('input', Number(this.$refs.input.value))
+      } else {
+        this.$emit('input', this.$refs.input.value)
+      }
+    }
   }
 }
 </script>
