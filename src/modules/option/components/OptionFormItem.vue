@@ -9,6 +9,9 @@
     <div class="col-lg-3">
       <input type="checkbox" :checked="model.default_value" v-if="model.type === 'BOOLEAN'">
       <input class='form-control' type="text" :value="model.default_value" v-if="model.type === 'TEXT'">
+      <select class='form-control' type="text" :value="model.default_value" v-if="model.type === 'TEXT_SELECT'">
+        <option :value="opt.value" v-for="opt in model.options" :key="opt.id">{{opt.label}}</option>
+      </select>
     </div>
   </div>
 </template>
