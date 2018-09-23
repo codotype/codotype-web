@@ -14,7 +14,7 @@
           <OptionEditorLayout />
         </b-tab>
 
-        <b-tab title="Model Options" >
+        <b-tab title="Model Options">
           <br>
           <ModelOptionEditorLayout />
         </b-tab>

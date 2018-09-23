@@ -46,10 +46,12 @@ export default {
   },
   created () {
     this.resetNewModel()
+    this.activateModelOptions()
   },
   methods: mapActions({
     resetNewModel: 'option/resetNewModel',
-    createNewOption: 'option/create'
+    createNewOption: 'option/create',
+    activateModelOptions: 'generator/activateModelOptions'
   }),
   computed: mapGetters({
     newOptionModel: 'option/newModel'

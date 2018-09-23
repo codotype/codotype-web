@@ -12,8 +12,16 @@ export default {
   selectModel: ({ commit, state }, model_id) => {
     let model = state.collection.find(m => m.id === model_id) // NOTE - this is only here b.c. generators use `id` instead of `_id`
     commit('selectedModel', model)
-    commit('option/collection', model.global_options, { root: true }) // TODO - move into mediator pattern
     commit('addon/collection', model.addons, { root: true }) // TODO - move into mediator pattern
+  },
+  activateGlobalOptions: ({ commit, state }) => {
+    let model = state.selectedModel
+    commit('')
+    commit('option/collection', model.global_options, { root: true }) // TODO - move into mediator pattern
+  },
+  activateModelOptions: ({ commit, state }) => {
+    let model = state.selectedModel
+    commit('option/collection', model.model_options, { root: true }) // TODO - move into mediator pattern
   }
 
 }

@@ -11,7 +11,7 @@
     <div class="col-lg-6">
       <FormInput label="Name" placeholder="Name" v-model="model.label" required="true" help="Name of the generator" />
 
-      <FormInput label="Icon URL" placeholder="Icon URL" v-model="model.icon_url" required="false" help="Icon URL for the generator" />
+      <FormInput label="Thumbnail URL" placeholder="Thumbnail URL" v-model="model.thumbnail_url" required="false" help="Thumbnail for the generator" />
     </div>
 
 
@@ -38,7 +38,7 @@ export default {
       model: {
         id: 'react',
         label: 'React',
-        icon_url: 'devicon-react-plain',
+        thumbnail_url: 'https://via.placeholder.com/350x150',
         github_url: 'https://github.com/codotype/codotype-react-generator',
         description: 'Generate front-end API client applications with React, Redux, Axios, and Bootstrap'
       }

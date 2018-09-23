@@ -23,7 +23,7 @@ export default {
     let collection = state.collection
     collection.push(model)
     commit('collection', collection)
-    // commit('schema/attributes', { collection }, { root: true })
+    commit('generator/attributes', { collection }, { root: true })
     dispatch('resetNewModel')
   },
   update ({ state, commit, dispatch }) {
