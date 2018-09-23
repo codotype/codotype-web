@@ -40,7 +40,7 @@ export default {
     // Updates attributes order
     schema.attributes = orderBy(schema.attributes, ['order'], ['asc'])
   },
-  editSchema (state, { schema }) {
-    state.selectedSchema = schema
+  editModel (state, schema) {
+    state.editModel = schema
   }
 }
