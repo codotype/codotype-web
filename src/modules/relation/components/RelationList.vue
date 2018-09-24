@@ -4,6 +4,7 @@
 
     <!-- Edit Attribute Form -->
     <b-modal :id="'edit-relation'"
+      lazy
       size="lg"
       :title="'Edit Relation'"
       ref='editRelationModal'
@@ -16,6 +17,7 @@
 
     <!-- New Relation Form -->
     <b-modal :id="'new-relation'"
+      lazy
       size="lg"
       ref="newRelationModal"
       :title="'New Relation'"
