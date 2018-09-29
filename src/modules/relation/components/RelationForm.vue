@@ -11,27 +11,32 @@
 
       <div class="row">
         <div class="col-lg-4">
-          <div class="form-group">
-            <label>This Model</label>
+          <div class="form-group text-center">
+            <!-- <label>This Model</label> -->
+            <label>{{ schema.label }}</label>
             <small class="form-text text-muted">This Model</small>
-            <input type="text" class='form-control' disabled :value="['ONE_TO_MANY', 'HAS_ONE'].includes(model.type) ? schema.label : schema.label_plural">
+            <input type="text" class='form-control form-control-lg' disabled :value="schema.label">
           </div>
         </div>
 
         <!-- RELATION TYPE -->
         <div class="col-lg-4">
-          <div class="form-group">
-            <label>Relation Type</label>
-            <small class="form-text text-muted">The type of relation to define</small>
-            <!-- <select class="form-control" v-model="model.type" > -->
-              <!-- <option v-for="relation in relationTypes" :value="relation.id">{{relation.text}}</option> -->
-            <!-- </select> -->
-          </div>
           <div class="row">
             <div class="col-lg-12">
-              <div class="btn-group">
-                <button :class="relation.id === model.type ? 'btn btn-sm btn-outline-primary active' : 'btn btn-sm btn-outline-primary'" v-for="relation in relationTypes" @click="model.type = relation.id">
-                  <img style="width: 20px;" :src="'/static/' + relation.id.toLowerCase() + '.svg'"/>
+              <div class="form-group text-center">
+                <!-- <label>Relation Type</label> -->
+                <!-- <small class="form-text text-muted">The type of relation to define</small> -->
+                <label>{{ selectedRelationType.label }}</label>
+                <small class="form-text text-muted mb-0">{{ selectedRelationType.description }}</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="btn-group w-100">
+                <button :class="relation.id === model.type ? 'btn btn-outline-primary active' : 'btn btn-outline-primary'" v-for="relation in relationTypes" @click="model.type = relation.id">
+                  <img class='relation-thumbnail' :src="'/static/' + relation.id.toLowerCase() + '.svg'"/>
                 </button>
               </div>
             </div>
@@ -40,10 +45,10 @@
 
         <!-- RELATED SCHEMA -->
         <div class="col-lg-4">
-          <div class="form-group">
+          <div class="form-group text-center">
             <label>Related Model</label>
             <small class="form-text text-muted">The related Model definition.</small>
-            <select class="form-control" v-model="model.related_schema_id" >
+            <select class="form-control form-control-lg" v-model="model.related_schema_id" >
 
               <!-- <option v-if="model.type === 'HAS_ONE'" v-for="s in allSchemas" :key="s._id" :value="s._id">{{s.label}}</option> -->
               <template v-if="model.type === 'MANY_TO_MANY'">
@@ -86,7 +91,7 @@
             Each <span class='text-info'>{{ schema.label }}</span> references one <span class='text-warning'>{{ selectedRelatedSchema.label }}</span>
           </small>
 
-          <small v-if="model.type === 'MANY_TO_ONE'">
+          <small v-if="model.type === 'BELONGS_TO'">
             Each <span class='text-warning'>{{ schema.label }}</span> references one <span class='text-info'>{{ selectedRelatedSchema.label }}</span>
           </small>
 
@@ -110,13 +115,13 @@
         </div>
 
         <div class="col-lg-6 text-center" v-if="selectedRelatedSchema">
-          <small v-if="model.type === 'MANY_TO_MANY'">
-            One <span class='text-warning'>{{ selectedRelatedSchema.label }}</span> HAS MANY <span class='text-info'>{{ schema.label_plural }}</span>
-          </small>
+          <!-- <small v-if="model.type === 'MANY_TO_MANY'"> -->
+            <!-- One <span class='text-warning'>{{ selectedRelatedSchema.label }}</span> HAS MANY <span class='text-info'>{{ schema.label_plural }}</span> -->
+          <!-- </small> -->
 
-          <small v-if="model.type === 'BELONGS_TO_MANY'">
-            One <span class='text-warning'>{{ selectedRelatedSchema.label }}</span> HAS MANY <span class='text-info'>{{ schema.label_plural }}</span>
-          </small>
+          <!-- <small v-if="model.type === 'BELONGS_TO_MANY'"> -->
+            <!-- One <span class='text-warning'>{{ selectedRelatedSchema.label }}</span> HAS MANY <span class='text-info'>{{ schema.label_plural }}</span> -->
+          <!-- </small> -->
 
           <small v-if="model.type === 'HAS_MANY'">
             Many <span class='text-warning'>{{ selectedRelatedSchema.label_plural }}</span> are referenced by one <span class='text-info'>{{ schema.label }}</span>
@@ -126,13 +131,14 @@
             One <span class='text-warning'>{{ selectedRelatedSchema.label }}</span> is referenced by one <span class='text-info'>{{ schema.label }}</span>
           </small>
 
-          <small v-if="model.type === 'ONE_TO_MANY'">
-            Each <span class='text-warning'>{{ selectedRelatedSchema.label }}</span> references one <span class='text-info'>{{ schema.label }}</span>
-          </small>
+          <!-- <small v-if="model.type === 'ONE_TO_MANY'"> -->
+            <!-- Each <span class='text-warning'>{{ selectedRelatedSchema.label }}</span> references one <span class='text-info'>{{ schema.label }}</span> -->
+          <!-- </small> -->
 
-          <small v-if="model.type === 'MANY_TO_ONE'">
+          <small v-if="model.type === 'BELONGS_TO'">
             One <span class='text-info'>{{ selectedRelatedSchema.label }}</span> is referenced by many <span class='text-warning'>{{ schema.label_plural }}</span>
           </small>
+
         </div>
 
         <!-- Description / Relation Preview-->
@@ -170,7 +176,7 @@
           <div class="form-group">
             <label>Reverse Alias</label>
             <small class="form-text text-muted">Reverse Alias</small>
-            <input type="text" class='form-control' v-model="model.reverse_as">
+            <input type="text" class='form-control' :disabled="model.type !== 'BELONGS_TO'" v-model="model.reverse_as">
           </div>
         </div>
 
@@ -189,7 +195,7 @@ import { inflateMeta } from '@codotype/util/lib/inflateMeta'
 export default {
   props: ['schema', 'model'],
   mounted () {
-    this.model.type = 'MANY_TO_ONE'
+    this.model.type = 'BELONGS_TO'
     this.model.related_schema_id = this.$store.getters['schema/collection'][1]._id
   },
   computed: {
@@ -223,7 +229,7 @@ export default {
 
       if (this.model.type === 'HAS_ONE') {
         proto[relatedMeta.identifier + '_id'] = relatedId
-      } else if (this.model.type === 'MANY_TO_ONE') {
+      } else if (this.model.type === 'BELONGS_TO') {
         proto[relatedMeta.identifier + '_id'] = relatedId
       } else if (this.model.type === 'HAS_MANY') {
         proto[relatedMeta.identifier + '_ids'] = [relatedId]
@@ -248,7 +254,7 @@ export default {
       if (this.model.type === 'ONE_TO_MANY') {
         proto[relatedMeta.identifier + '_id'] = schemaIdentifier + '_001'
       } else if (this.model.type === 'BELONGS_TO') {
-        proto[relatedMeta.identifier + '_id'] = schemaIdentifier + '_001'
+        proto['getRelated' + relatedMeta.class_name_plural] = 'method'
       } else if (this.model.type === 'MANY_TO_MANY') {
         proto[relatedMeta.identifier + '_ids'] = [schemaIdentifier + '_001']
       } else if (this.model.type === 'BELONGS_TO_MANY') {
@@ -260,3 +266,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+  img.relation-thumbnail {
+    width: 100%;
+    /*height: 100%;*/
+  }
+
+  .btn-outline-primary {
+    width: 33%;
+  }
+</style>

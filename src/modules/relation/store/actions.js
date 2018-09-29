@@ -28,67 +28,67 @@ export default {
     let relatedSchema = rootGetters['schema/collection'].find(m => m._id === relatedSchemaId)
 
     // Handles ONE_TO_ONE
-    if (relationType === 'ONE_TO_ONE') {
-      console.log('ONE_TO_ONE')
-      model.as = model.as || relatedSchema.label
-      model.type = 'BELONGS_TO'
+    // if (relationType === 'ONE_TO_ONE') {
+    //   console.log('ONE_TO_ONE')
+    //   model.as = model.as || relatedSchema.label
+    //   model.type = 'BELONGS_TO'
 
-      // Defines inverse relation on relatedSchema
-      // INVERSE OF BELONGS_TO === OWNS_MANY
-      let reverseRelation = cloneDeep(DEFAULT_RELATION)
-      reverseRelation._id = ObjectID().toString()
-      reverseRelation.type = 'BELONGS_TO'
-      reverseRelation.order = relatedSchema.relations.length + 1
-      reverseRelation.as = modelSchema.label
-      reverseRelation.related_schema_id = modelSchema._id
+    //   // Defines inverse relation on relatedSchema
+    //   // INVERSE OF BELONGS_TO === OWNS_MANY
+    //   let reverseRelation = cloneDeep(DEFAULT_RELATION)
+    //   reverseRelation._id = ObjectID().toString()
+    //   reverseRelation.type = 'BELONGS_TO'
+    //   reverseRelation.order = relatedSchema.relations.length + 1
+    //   reverseRelation.as = modelSchema.label
+    //   reverseRelation.related_schema_id = modelSchema._id
 
-      // Assigns reverse-relational IDs
-      model.reverse_relation_id = reverseRelation._id
-      reverseRelation.reverse_relation_id = model._id
+    //   // Assigns reverse-relational IDs
+    //   model.reverse_relation_id = reverseRelation._id
+    //   reverseRelation.reverse_relation_id = model._id
 
-      // TODO - remove these log statements
-      console.log('RELATION:')
-      console.log(JSON.stringify(model, null, 2))
-      console.log('REVERSE RELATION:')
-      console.log(JSON.stringify(reverseRelation, null, 2))
+    //   // TODO - remove these log statements
+    //   console.log('RELATION:')
+    //   console.log(JSON.stringify(model, null, 2))
+    //   console.log('REVERSE RELATION:')
+    //   console.log(JSON.stringify(reverseRelation, null, 2))
 
-      // Adds the reverse relation to the relatedSchema
-      let relatedSchemaRelations = relatedSchema.relations
-      relatedSchemaRelations.push(reverseRelation)
-      commit('schema/relations', { schema_id: relatedSchemaId, collection: relatedSchemaRelations }, { root: true })
-    }
+    //   // Adds the reverse relation to the relatedSchema
+    //   let relatedSchemaRelations = relatedSchema.relations
+    //   relatedSchemaRelations.push(reverseRelation)
+    //   commit('schema/relations', { schema_id: relatedSchemaId, collection: relatedSchemaRelations }, { root: true })
+    // }
 
     // Handles MANY_TO_ONE
-    if (relationType === 'MANY_TO_ONE') {
-      console.log('MANY_TO_ONE')
+    // if (relationType === 'BELONGS_TO') {
+    //   console.log('MANY_TO_ONE')
 
-      model.as = model.as || relatedSchema.label
-      model.type = 'BELONGS_TO'
+    //   model.as = model.as || relatedSchema.label
+    //   model.type = 'BELONGS_TO'
 
-      // Defines inverse relation on relatedSchema
-      // INVERSE OF BELONGS_TO === OWNS_MANY
-      let reverseRelation = cloneDeep(DEFAULT_RELATION)
-      reverseRelation._id = ObjectID().toString()
-      reverseRelation.type = 'OWNS_MANY'
-      reverseRelation.order = relatedSchema.relations.length + 1 // TODO - there should be no identifier for the OWNS_MANY relation attribute
-      reverseRelation.as = modelSchema.label
-      reverseRelation.related_schema_id = modelSchema._id
+    //   // Defines inverse relation on relatedSchema
+    //   // INVERSE OF BELONGS_TO === OWNS_MANY
+    //   let reverseRelation = cloneDeep(DEFAULT_RELATION)
+    //   reverseRelation._id = ObjectID().toString()
+    //   reverseRelation.type = 'OWNS_MANY'
+    //   reverseRelation.order = relatedSchema.relations.length + 1 // TODO - there should be no identifier for the OWNS_MANY relation attribute
+    //   reverseRelation.as = modelSchema.label
+    //   reverseRelation.related_schema_id = modelSchema._id
 
-      // Assigns reverse-relational IDs
-      model.reverse_relation_id = reverseRelation._id
-      reverseRelation.reverse_relation_id = model._id
+    //   // Assigns reverse-relational IDs
+    //   model.reverse_relation_id = reverseRelation._id
+    //   reverseRelation.reverse_relation_id = model._id
 
-      // TODO - remove these log statements
-      console.log('RELATION:')
-      console.log(JSON.stringify(model, null, 2))
-      console.log('REVERSE RELATION:')
-      console.log(JSON.stringify(reverseRelation, null, 2))
+    //   // TODO - remove these log statements
+    //   console.log('RELATION:')
+    //   console.log(JSON.stringify(model, null, 2))
+    //   console.log('REVERSE RELATION:')
+    //   console.log(JSON.stringify(reverseRelation, null, 2))
 
-      // Adds the reverse relation to the relatedSchema
-      let relatedSchemaRelations = relatedSchema.relations
-      relatedSchemaRelations.push(reverseRelation)
-      commit('schema/relations', { schema_id: relatedSchemaId, collection: relatedSchemaRelations }, { root: true })
-    }
+    //   // Adds the reverse relation to the relatedSchema
+    //   let relatedSchemaRelations = relatedSchema.relations
+    //   relatedSchemaRelations.push(reverseRelation)
+    //   commit('schema/relations', { schema_id: relatedSchemaId, collection: relatedSchemaRelations }, { root: true })
+    // }
 
     // Handles ONE_TO_MANY
     // IDENTICAL INVERSE OF MANY_TO_ONE
@@ -125,39 +125,39 @@ export default {
     }
 
     // Handles MANY_TO_MANY
-    if (relationType === 'MANY_TO_MANY') {
-      console.log('MANY_TO_MANY')
-      console.log(relatedSchema.label_plural)
-      console.log(relatedSchema.identifier + '_ids')
+    // if (relationType === 'MANY_TO_MANY') {
+    //   console.log('MANY_TO_MANY')
+    //   console.log(relatedSchema.label_plural)
+    //   console.log(relatedSchema.identifier + '_ids')
 
-      // Defines related label and identifier on attribute
-      model.as = model.as || relatedSchema.label
-      model.type = 'HAS_MANY'
+    //   // Defines related label and identifier on attribute
+    //   model.as = model.as || relatedSchema.label
+    //   model.type = 'HAS_MANY'
 
-      // Defines inverse relation on relatedSchema
-      // INVERSE OF HAS_MANY === HAS_MANY
-      let reverseRelation = cloneDeep(DEFAULT_RELATION)
-      reverseRelation._id = ObjectID().toString()
-      reverseRelation.type = 'HAS_MANY'
-      reverseRelation.order = relatedSchema.relations.length + 1
-      reverseRelation.as = modelSchema.label
-      reverseRelation.related_schema_id = modelSchema._id
+    //   // Defines inverse relation on relatedSchema
+    //   // INVERSE OF HAS_MANY === HAS_MANY
+    //   let reverseRelation = cloneDeep(DEFAULT_RELATION)
+    //   reverseRelation._id = ObjectID().toString()
+    //   reverseRelation.type = 'HAS_MANY'
+    //   reverseRelation.order = relatedSchema.relations.length + 1
+    //   reverseRelation.as = modelSchema.label
+    //   reverseRelation.related_schema_id = modelSchema._id
 
-      // Assigns reverse-relational IDs
-      model.reverse_relation_id = reverseRelation._id
-      reverseRelation.reverse_relation_id = model._id
+    //   // Assigns reverse-relational IDs
+    //   model.reverse_relation_id = reverseRelation._id
+    //   reverseRelation.reverse_relation_id = model._id
 
-      // TODO - remove these log statements
-      console.log('RELATION:')
-      console.log(JSON.stringify(model, null, 2))
-      console.log('REVERSE RELATION:')
-      console.log(JSON.stringify(reverseRelation, null, 2))
+    //   // TODO - remove these log statements
+    //   console.log('RELATION:')
+    //   console.log(JSON.stringify(model, null, 2))
+    //   console.log('REVERSE RELATION:')
+    //   console.log(JSON.stringify(reverseRelation, null, 2))
 
-      // Adds the reverse relation to the relatedSchema
-      let relatedSchemaRelations = relatedSchema.relations
-      relatedSchemaRelations.push(reverseRelation)
-      commit('schema/relations', { schema_id: relatedSchemaId, collection: relatedSchemaRelations }, { root: true })
-    }
+    //   // Adds the reverse relation to the relatedSchema
+    //   let relatedSchemaRelations = relatedSchema.relations
+    //   relatedSchemaRelations.push(reverseRelation)
+    //   commit('schema/relations', { schema_id: relatedSchemaId, collection: relatedSchemaRelations }, { root: true })
+    // }
 
     // Updates the collection belonging to the currently selected schema
     let collection = state.collection
