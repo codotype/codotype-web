@@ -6,19 +6,12 @@
       <p class="mb-2 form-text text-muted">Define the core metadata that's used to create a valid Addon</p>
 
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-6">
 
           <!-- <FormInput label="Label" placeholder="Label" example="Example: 'Odd Job'" v-model="modelLabel" required="true" help="The human-readable name for a single entity of this model." /> -->
           <FormInput label="Label" placeholder="Label" v-model="modelLabel" required="true" help="Example: 'Odd Job'" />
 
-          <FormInput label="Description" placeholder="Description" v-model="model.description" required="true" help="Example: 'A description of the functionality made available by this Addon'" />
-
-          <FormInput label="More Info URL" placeholder="More Info URL" v-model="model.more_info_url" help="A link to a web page with more information about the functionality made available by this Addon'" />
-
-        </div>
-
-        <div class="col-lg-12">
-          <p class="mb-2 form-text text-muted">Validate the metadata below before submission</p>
+          <!-- <p class="mb-2 form-text text-muted">Validate the metadata below before submission</p> -->
 
           <table class="table table-sm">
             <tbody>
@@ -48,6 +41,16 @@
               </tr>
             </tbody>
           </table>
+
+        </div>
+
+        <div class="col-lg-6">
+          <!-- <pre>{{model}}</pre> -->
+
+          <FormInput label="Description" placeholder="Description" v-model="model.description" required="true" help="Example: 'A description of the functionality made available by this Addon'" />
+
+          <FormInput label="More Info URL" placeholder="More Info URL" v-model="model.more_info_url" help="A link to a web page with more information about the functionality made available by this Addon'" />
+
         </div>
 
       </div>

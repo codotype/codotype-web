@@ -1,6 +1,6 @@
 <template>
   <span class="badge" v-if="item.datatype !== 'RELATION'">
-    <i :class="'mr-2 fa ' + icon" v-b-tooltip.hover.left :title='tooltip'></i>
+    <i :class="'mr-2 ' + icon" v-b-tooltip.hover.left :title='tooltip'></i>
     {{item.label}}
     <span class='text-danger' v-if="item.required">*</span>
   </span>
@@ -14,17 +14,17 @@ export default {
     icon () {
       switch (this.item.datatype) {
         case 'TEXT':
-          return 'fa-quote-left'
+          return 'fa fa-quote-left'
         case 'NUMBER':
-          return 'fa-hashtag'
+          return 'fa fa-hashtag'
         case 'BOOL':
-          return 'fa-check-square-o'
+          return 'fa fa-check-square-o'
         case 'DATE':
-          return 'fa-calendar-o'
+          return 'far fa-calendar'
         case 'TIME':
-          return 'fa-clock-o'
+          return 'fa fa-clock-o'
         case 'DATETIME':
-          return 'fa-calendar-plus-o'
+          return 'far fa-calendar-plus-o'
       }
     },
     tooltip () {

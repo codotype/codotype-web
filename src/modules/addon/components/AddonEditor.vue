@@ -9,7 +9,7 @@
 
     <!-- New Option Modal -->
     <template slot="modal">
-      <b-modal id="new-addon" :title="'New Addon'" @ok="createAddon()" ok-title='Create'>
+      <b-modal id="new-addon" :title="'New Addon'" size="lg" @ok="createAddon()" ok-title='Create'>
         <AddonForm :model="newAddon" />
       </b-modal>
 

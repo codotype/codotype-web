@@ -50,7 +50,7 @@
           <!-- <i class="fa fa-asterisk text-danger"></i> -->
         <!-- </span> -->
         <span class="badge badge-light" v-if="item.unique" v-b-tooltip.hover.top title="Unique">
-          <i class="fa fa-snowflake-o text-dark"></i>
+          <i class="fas fa-snowflake text-dark"></i>
           Unique
         </span>
       </div>

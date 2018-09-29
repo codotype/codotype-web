@@ -10,7 +10,7 @@
     <!-- TODO - make this actually collapsable -->
     <ul class="list-group list-group-flush" v-if="!collapsed">
       <li class="list-group-item" v-for="attr in selectedGenerator.model_options">
-        <OptionFormItem :model="attr" />
+        <OptionFormItem :model="attr" v-model="configurationObject[attr.identifier]" />
       </li>
     </ul>
   </div>
@@ -32,14 +32,22 @@ export default {
     }
   },
   computed: {
+    ...mapGetters({
+      schemas: 'schema/collection',
+      newBuildModel: 'build/newModel',
+      selectedGenerator: 'generator/selectedModel'
+    }),
     collapseButtonIcon () {
       if (this.collapsed) return 'fa fa-chevron-down'
       return 'fa fa-chevron-up'
     },
-    ...mapGetters({
-      schemas: 'schema/collection',
-      selectedGenerator: 'generator/selectedModel'
-    })
+    configurationObject () {
+      const stage = this.newBuildModel.stages.find(s => s.generator_id === this.selectedGenerator.id)
+      console.log('stage?')
+      console.log(stage)
+      console.log(stage.configuration.model_options[this.model._id])
+      return stage.configuration.model_options[this.model._id]
+    }
   }
 }
 </script>

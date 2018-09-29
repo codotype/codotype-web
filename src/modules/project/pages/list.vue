@@ -27,7 +27,9 @@
             <!-- <i class="fa fa-fw fa-folder-open-o mr-2"></i> -->
             <!-- Example Apps -->
           <!-- </a> -->
-          <button class='btn btn-lg btn-primary ml-2' id="app-new-button" v-b-modal="'new-project-modal'" v-if="collection.length < 2">
+
+          <!-- <button class='btn btn-lg btn-primary ml-2' id="app-new-button" v-b-modal="'new-project-modal'" v-if="collection.length < 2"> -->
+          <button class='btn btn-lg btn-primary ml-2' id="app-new-button" v-b-modal="'new-project-modal'" v-if="true">
             <i class="fa fa-fw fa-plus"></i>
             New Blueprint
           </button>

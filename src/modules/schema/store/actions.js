@@ -6,9 +6,10 @@ import { inflateMeta } from '@codotype/util/lib/inflateMeta'
 // Schema module actions
 export default {
   ...SELECT_MODEL_ACTIONS,
-  selectModel: ({ commit, state }, model_id) => {
+  selectModel: ({ commit, dispatch, state }, model_id) => {
     let model = state.collection.find(m => m._id === model_id)
     commit('selectedModel', model)
+    dispatch('edit', model)
     commit('attribute/collection', model.attributes, { root: true })
     commit('relation/collection', model.relations, { root: true })
   },
@@ -19,11 +20,28 @@ export default {
     commit('persist', { schema: model })
   },
   edit ({ state, commit }, schema) {
-    commit('editModel', schema)
+    commit('editModel', cloneDeep(schema))
+  },
+  update ({ state, commit }, schema) {
+    let collection = state.collection.map((s) => {
+      if (s._id === schema._id) {
+        s.label = schema.label // TODO - titleize
+        s.label_plural = schema.label_plural
+        s.identifier = schema.identifier
+        s.identifier_plural = schema.identifier_plural
+        s.class_name = schema.class_name
+        s.class_name_plural = schema.class_name_plural
+      }
+      return s
+    })
+    return commit('collection', collection)
   },
   remove ({ state, commit }, schema) {
-    let collection = state.collection.filter((s) => { return s._id !== schema._id })
-    return commit('collection', collection)
+    let newCollection = []
+    state.collection.forEach((s) => {
+      if (s._id !== schema._id) newCollection.push(s)
+    })
+    return commit('collection', newCollection)
   },
   resetNewModel ({ commit }) {
     let newModel = cloneDeep(DEFAULT_SCHEMA)
@@ -41,10 +59,7 @@ export default {
     schema.label = label // TODO - titleize
     schema.label_plural = label_plural
     schema.identifier = identifier
-    schema.identifier = identifier
     schema.identifier_plural = identifier_plural
-    schema.identifier_plural = identifier_plural
-    schema.class_name = class_name
     schema.class_name = class_name
     schema.class_name_plural = class_name_plural
   }

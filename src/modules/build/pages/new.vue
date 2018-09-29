@@ -57,6 +57,11 @@
         Add Generator
       </button>
 
+      <button class="btn btn-success btn-lg btn-block mb-3" @click="generateCodebase()">
+        <i class="fa fa-check"></i>
+        Generate
+      </button>
+
       <div class="card">
         <!-- <p class='lead mb-0'>App</p> -->
         <div class="card-header">
@@ -94,10 +99,10 @@
 
       <!-- STEP 1 - Select an App -->
       <!-- TODO - this should be determined by a state getter variable, `requiresApp` -->
-      <AppSelector v-if="!newBuildModel.app_id && newBuildModel.stages[0]"/>
+      <AppSelector v-if="!newBuildModel.app_id"/>
 
       <!-- STEP 2 - Select a generator -->
-      <GeneratorSelector v-if="(!newBuildModel.app_id && !newBuildModel.stages[0]) || choosingGenerator"/>
+      <GeneratorSelector v-if="(newBuildModel.app_id && !newBuildModel.stages[0]) || choosingGenerator"/>
 
       <!-- TODO - abstract ALL of this into a separate component -->
       <!-- GeneratorConfigure component -->
@@ -199,7 +204,8 @@ export default {
   methods: {
     ...mapActions({
       resetNewBuildModel: 'build/resetNewModel',
-      selectGeneratorModel: 'generator/selectModel'
+      selectGeneratorModel: 'generator/selectModel',
+      generateCodebase: 'build/generate'
     }),
     ...mapMutations({
       showChoosingGenerator: 'build/choosingGenerator'

@@ -24,18 +24,25 @@ export const DEFAULT_SCHEMA = {
 }
 
 export const RELATION_TYPES = [
+
   // { id: 'HAS_ONE', text: 'Has One', desc: 'one to one' },
   // { id: 'BELONGS_TO', text: 'Belongs To', desc: 'many to one' },
   // { id: 'HAS_MANY', text: 'Has Many', desc: 'one to many' },
   // { id: 'HAS_AND_BELONGS_TO_MANY', text: 'Many to Many', desc: 'many to many' }
+
   // // // //
-  // { id: 'HAS_MANY', text: 'Has Many', desc: 'one to many description here...' },
+
+  // Newer relation types
+  // { id: 'ONE_TO_ONE', text: 'One to One', desc: 'One to One description here...' },
+  { id: 'BELONGS_TO', label: 'Belongs To', description: 'Many to One description here...' },
+  { id: 'HAS_ONE', label: 'Has One', description: 'One to One description here...' },
+  { id: 'HAS_MANY', label: 'Has Many', description: 'one to many description here...' }
+
+  // { id: 'MANY_TO_MANY', text: 'Many to Many', desc: 'Many to Many description here...' },
+
+  // { id: 'ONE_TO_MANY', text: 'One to Many', desc: 'One to Many description here...' },
+  // { id: 'BELONGS_TO_MANY', text: 'Has Many', desc: 'one to many description here...' },
   // { id: 'BELONGS_TO', text: 'Belongs To', desc: 'one to many description here...' }
-  // // // //
-  { id: 'ONE_TO_ONE', text: 'One to One', desc: 'One to One description here...' },
-  { id: 'ONE_TO_MANY', text: 'One to Many', desc: 'One to Many description here...' },
-  { id: 'MANY_TO_ONE', text: 'Many to One', desc: 'Many to One description here...' },
-  { id: 'MANY_TO_MANY', text: 'Many to Many', desc: 'Many to Many description here...' }
 ]
 
 // Datattype IDs

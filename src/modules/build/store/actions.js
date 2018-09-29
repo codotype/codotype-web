@@ -16,7 +16,7 @@ export default {
     dispatch('project/selectModel', app_id, { root: true })
   },
   // TODO - stage management should be moved into the `stage` module
-  addNewStage ({ state, commit, dispatch }, generator_id) {
+  addNewStage ({ state, rootGetters, commit, dispatch }, generator_id) {
     // Checks to ensure this generator isn't already in the build
     if (state.newModel.stages.map(stage => stage.generator_id).includes(generator_id)) return
 
@@ -24,7 +24,46 @@ export default {
     const newStage = cloneDeep(DEFAULT_BUILD_STAGE)
     newStage.generator_id = generator_id
 
-    // TODO - inflate newStage with the data structure build from a generator's configuration
+    // // // //
+    // Generates stage configuration object
+    // TODO - abstract into @codotype/util
+
+    const generatorMeta = rootGetters['generator/collection'].find(g => g.id === generator_id)
+
+    function buildConfiguration (generator, blueprint) {
+      const configuration = {
+        options: {},
+        model_options: {}
+      }
+
+      // Defines global options
+      generator.global_options.forEach((opt) => {
+        configuration.options[opt.identifier] = opt.default_value
+      })
+
+      // Defines model options
+      const defaultModelOptions = {}
+      generator.model_options.forEach((opt) => {
+        defaultModelOptions[opt.identifier] = opt.default_value
+      })
+
+      // Creates an instance of defaultModelOptions in
+      // configuration.model_options for each model in the blueprint
+      blueprint.schemas.forEach((model) => {
+        configuration.model_options[model._id] = cloneDeep(defaultModelOptions)
+      })
+
+      // Returns configuration object
+      console.log(configuration)
+      return configuration
+    }
+    // // // //
+
+    // Pulls the blueprint to define the build configuration
+    const blueprint = rootGetters['project/selectedModel']
+
+    // Generates the stage's configuration from the selected generator
+    newStage.configuration = buildConfiguration(generatorMeta, blueprint)
 
     // Adds the newStage to state.newModel
     const newModel = cloneDeep(state.newModel)
@@ -48,8 +87,6 @@ export default {
   // Builds the application on the server
   // TODO - this needs error handling!
   generate: ({ rootGetters, state, commit }) => {
-    // console.log(JSON.stringify(rootGetters['project/selectedModel'], null, 2))
-
     // Pulls requisite data from state
     const { stages } = state.newModel
     const app = rootGetters['project/selectedModel']
@@ -57,9 +94,10 @@ export default {
     // Defines build object to send to the server
     let build = { app, stages }
 
-    // console.log(build)
-
+    // Sets `state.fetching` to `true`
     commit('fetching', true)
+
+    // Generates the app and downloads the response
     return fetch(GENERATE_ROUTE, {
       method: 'post',
       body: JSON.stringify({ build }),
@@ -74,9 +112,9 @@ export default {
     })
     .then((blob) => {
       commit('fetching', false)
-      console.log('GENERATED')
-      console.log(blob)
-      DownloadFile(blob, 'app.zip', 'application/zip')
+      // console.log('GENERATED')
+      // console.log(blob)
+      DownloadFile(blob, `${app.identifier}_codotype.zip`, 'application/zip')
     })
   }
 

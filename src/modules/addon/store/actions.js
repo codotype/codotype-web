@@ -27,7 +27,17 @@ export default {
     let newModel = cloneDeep(DEFAULT_ADDON)
     return commit('newModel', newModel)
   },
-  setLabel ({ state }, { model, label }) {
-    model = { ...model, ...inflateMeta(model.label) }
+  setLabel ({ state, commit }, { model, label }) {
+    // model = { ...model, ...inflateMeta(model.label) }
+    const inflated = inflateMeta(label)
+
+    model.label = inflated.label
+    model.label_plural = inflated.label_plural
+    model.identifier = inflated.identifier
+    model.identifier_plural = inflated.identifier_plural
+    model.class_name = inflated.class_name
+    model.class_name_plural = inflated.class_name_plural
+    console.log(model)
+    commit('newModel', model)
   }
 }

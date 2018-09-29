@@ -5,5 +5,5 @@ export default {
   ...NEW_MODEL_STATE,
   newModel: DEFAULT_BUILD,
   defaultNewModel: DEFAULT_BUILD,
-  choosingGenerator: false
+  choosingGenerator: true
 }

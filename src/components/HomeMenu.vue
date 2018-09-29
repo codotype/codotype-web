@@ -1,44 +1,55 @@
 <template>
-  <b-collapse is-nav id="nav_collapse">
+  <b-navbar toggleable="md" type="light" variant="light" fixed="top" class='bg-white'>
+    <b-navbar-brand to="/">
+      <!-- <img class='logo' src="@/assets/logo_dark.png"> -->
+      <strong>codotype</strong>
+    </b-navbar-brand>
 
-    <!-- Navbar Links -->
-    <b-navbar-nav class="mr-auto">
+    <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
-      <!-- Public links -->
-      <!-- <b-nav-item to="/projects">Apps</b-nav-item> -->
-      <b-nav-item to="/build/new">Build</b-nav-item>
-      <b-nav-item to="/projects">Blueprints</b-nav-item>
-      <b-nav-item to="/generators">Generators</b-nav-item>
-      <b-nav-item to="/build/new">Marketplace</b-nav-item>
-      <!-- <b-nav-item to="#/examples">Example Apps</b-nav-item> -->
-      <!-- <b-nav-item to="#/generator_new">New Generator</b-nav-item> -->
+    <b-collapse is-nav id="nav_collapse">
 
-    </b-navbar-nav>
+      <!-- Navbar Links -->
+      <b-navbar-nav class="mr-auto">
 
-    <b-navbar-nav class="mr-0">
+        <!-- Public links -->
+        <!-- <b-nav-item to="/projects">Apps</b-nav-item> -->
+        <b-nav-item to="/projects">Blueprints</b-nav-item>
+        <b-nav-item to="/generators">Generators</b-nav-item>
+        <b-nav-item to="/build/new">Build</b-nav-item>
+        <!-- <b-nav-item to="/build/new">Marketplace</b-nav-item> -->
+        <!-- <b-nav-item to="#/examples">Example Apps</b-nav-item> -->
+        <!-- <b-nav-item to="#/generator_new">New Generator</b-nav-item> -->
 
-      <b-nav-item target="_blank" href="https://github.com/codotype">
-        <i class="fab fa-lg fa-fw fa-github text-dark"></i>
-        <!-- GitHub -->
-      </b-nav-item>
+      </b-navbar-nav>
 
-      <b-nav-item target="_blank" href="https://twitter.com/codotype">
-        <i class="fab fa-lg fa-fw fa-twitter text-primary"></i>
-      </b-nav-item>
+      <b-navbar-nav class="mr-0">
 
-      <b-nav-item to="/auth/login">
-        <i class="fa fa-fw fa-user-plus"></i>
-        Register
-      </b-nav-item>
+        <b-nav-item target="_blank" href="https://github.com/codotype">
+          <i class="fab fa-lg fa-fw fa-github text-dark"></i>
+          <!-- GitHub -->
+        </b-nav-item>
 
-      <b-nav-item to="/auth/login">
-        <i class="fa fa-fw fa-sign-in-alt"></i>
-        Login
-      </b-nav-item>
+        <b-nav-item target="_blank" href="https://twitter.com/codotype">
+          <i class="fab fa-lg fa-fw fa-twitter text-primary"></i>
+        </b-nav-item>
 
-    </b-navbar-nav>
+        <!-- <b-nav-item to="/auth/register"> -->
+          <!-- <i class="fa fa-fw fa-user-plus"></i> -->
+          <!-- Register -->
+        <!-- </b-nav-item> -->
 
-  </b-collapse>
+        <!-- <b-nav-item to="/auth/login"> -->
+          <!-- <i class="fa fa-fw fa-sign-in-alt"></i> -->
+          <!-- Login -->
+        <!-- </b-nav-item> -->
+
+      </b-navbar-nav>
+
+    </b-collapse>
+
+  </b-navbar>
+
 </template>
 
 <script>
