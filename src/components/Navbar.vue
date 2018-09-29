@@ -1,14 +1,6 @@
 <template>
-  <b-navbar toggleable="md" type="light" variant="light" fixed="top" class='bg-white'>
-    <b-navbar-brand to="/">
-      <!-- <img class='logo' src="@/assets/logo_dark.png"> -->
-      <strong>codotype</strong>
-    </b-navbar-brand>
-
-    <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-    <BlueprintMenu v-if="showBlueprintMenu"/>
-    <HomeMenu v-else/>
-  </b-navbar>
+  <BlueprintMenu v-if="showBlueprintMenu"/>
+  <HomeMenu v-else/>
 </template>
 
 <script>
