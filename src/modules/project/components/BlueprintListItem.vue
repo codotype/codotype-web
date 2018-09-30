@@ -5,7 +5,7 @@
 
         <div class="col-lg-12 text-center">
           <p class="lead mb-0">
-            <router-link :to="'/projects/' + project._id ">{{project.label}}</router-link>
+            <router-link :to="'/blueprints/' + project._id ">{{project.label}}</router-link>
           </p>
           <small class="text-muted">
             Last edited 9 / 2 / 18

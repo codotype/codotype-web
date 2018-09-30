@@ -7,8 +7,8 @@
       <b-navbar-nav class="mr-auto">
 
         <!-- Public links -->
-        <!-- <b-nav-item to="/projects">Apps</b-nav-item> -->
-        <!-- <b-nav-item to="/projects">Blueprints</b-nav-item> -->
+        <!-- <b-nav-item to="/blueprints">Apps</b-nav-item> -->
+        <!-- <b-nav-item to="/blueprints">Blueprints</b-nav-item> -->
         <!-- <b-nav-item to="#/examples">Example Apps</b-nav-item> -->
         <!-- <b-nav-item to="/generators">Generators</b-nav-item> -->
         <!-- <b-nav-item to="#/generator_new">New Generator</b-nav-item> -->

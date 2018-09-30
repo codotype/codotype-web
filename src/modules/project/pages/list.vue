@@ -23,7 +23,7 @@
 
           <HelpButton :tour="tourSteps"/>
 
-          <!-- <a class='btn btn-lg btn-outline-info' href="#/projects/examples"> -->
+          <!-- <a class='btn btn-lg btn-outline-info' href="#/blueprints/examples"> -->
             <!-- <i class="fa fa-fw fa-folder-open-o mr-2"></i> -->
             <!-- Example Apps -->
           <!-- </a> -->

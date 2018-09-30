@@ -5,7 +5,7 @@ import Edit from './pages/Edit'
 
 // TODO - this isn't wired up, just here to be moved around a bit
 export default {
-  path: '/projects/:project_id/seeds',
+  path: '/blueprints/:project_id/seeds',
   component: RouterView,
   meta: { bcLinkText: 'Seed Data' },
   children: [
@@ -14,7 +14,7 @@ export default {
       component: ProjectSeeds
     },
     {
-      path: '/projects/:project_id/seeds/:schema_id',
+      path: '/blueprints/:project_id/seeds/:schema_id',
       component: RouterView,
       meta: { bcGetter: 'Show' },
       children: [
@@ -24,19 +24,19 @@ export default {
           component: RecordList
         },
         {
-          path: '/projects/:project_id/seeds/:schema_id/new',
+          path: '/blueprints/:project_id/seeds/:schema_id/new',
           component: RecordNew,
           props: true,
           meta: { bcText: 'New' }
         },
         {
-          path: '/projects/:project_id/seeds/:schema_id/records/:record_id',
+          path: '/blueprints/:project_id/seeds/:schema_id/records/:record_id',
           component: RecordNew, // TODO - Record SHOW
           props: true,
           meta: { bcText: 'Show' }
         },
         {
-          path: '/projects/:project_id/seeds/:schema_id/records/:record_id/edit',
+          path: '/blueprints/:project_id/seeds/:schema_id/records/:record_id/edit',
           component: RecordEdit,
           props: true,
           meta: { bcText: 'Edit' }

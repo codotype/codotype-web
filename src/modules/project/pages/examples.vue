@@ -10,7 +10,7 @@
       </div>
 
       <div class="col-lg-4 text-right">
-        <a class='btn btn-lg btn-outline-primary' href="#/projects">
+        <a class='btn btn-lg btn-outline-primary' href="#/blueprints">
           <i class="fa fa-fw fa-reply mr-2"></i>
           My Apps
         </a>

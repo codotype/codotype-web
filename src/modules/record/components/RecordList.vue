@@ -59,12 +59,12 @@
         <td class='text-right controls'>
 
           <!-- Show Record -->
-          <!-- <a class="btn btn-sm btn-outline-light" :href=" '#/projects/' + projectId + '/seeds/' + schema._id + '/records/' + record._id "> -->
+          <!-- <a class="btn btn-sm btn-outline-light" :href=" '#/blueprints/' + projectId + '/seeds/' + schema._id + '/records/' + record._id "> -->
             <!-- <i class="fa fa-fw fa-eye"></i> -->
           <!-- </a> -->
 
           <!-- Edit Record -->
-          <a class="btn btn-sm btn-outline-warning" :href=" '#/projects/' + projectId + '/seeds/' + schema._id + '/records/' + record._id + '/edit' ">
+          <a class="btn btn-sm btn-outline-warning" :href=" '#/blueprints/' + projectId + '/seeds/' + schema._id + '/records/' + record._id + '/edit' ">
             <i class="fas fa-fw fa-pencil-alt"></i>
           </a>
 
@@ -103,7 +103,7 @@
           <span v-if="i === 0">
             <span class="text-warning mr-2">No records found.</span>
             <span class="">Click</span>
-            <a :href=" '#/projects/' + projectId + '/seeds/' + schema._id + '/new' "> here </a>
+            <a :href=" '#/blueprints/' + projectId + '/seeds/' + schema._id + '/new' "> here </a>
             to create {{ schema.label_plural.toLowerCase() }}.
           </span>
         </td>
@@ -131,8 +131,8 @@ export default {
       let record = allRecords.find(m => m._id === record_id)
       if (!record) return
       let schema = allSchemas.find(m => m._id === record.schema_id)
-      // return `#/projects/${this.projectId}/seeds/${schema._id}/${record._id}`
-      return `#/projects/${this.projectId}/seeds/${schema._id}`
+      // return `#/blueprints/${this.projectId}/seeds/${schema._id}/${record._id}`
+      return `#/blueprints/${this.projectId}/seeds/${schema._id}`
     },
     getRelatedSchema (attr) {
       let allSchemas = this.$store.getters['schema/collection']

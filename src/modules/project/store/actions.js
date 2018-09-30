@@ -59,7 +59,7 @@ export default {
 
     // Updates state.collection
     commit('collection', collection)
-    if (isNew) router.push(`/projects/${recordId}`)
+    if (isNew) router.push(`/blueprints/${recordId}`)
   },
 
   // TODO - re-implement this
@@ -99,7 +99,7 @@ export default {
     // Adds to the project collection
     dispatch('persist', { record: projectModel })
 
-    // Navigates to /projects/id
-    router.push(`/projects/${projectModel._id}`)
+    // Navigates to /blueprints/id
+    router.push(`/blueprints/${projectModel._id}`)
   }
 }

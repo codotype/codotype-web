@@ -1,6 +1,6 @@
 <template>
   <b-navbar toggleable="md" type="light" variant="light" fixed="top" class='bg-white'>
-    <b-navbar-brand to="/projects">
+    <b-navbar-brand to="/blueprints">
       <!-- <img class='logo' src="@/assets/logo_dark.png"> -->
       <strong>codotype</strong>
     </b-navbar-brand>
@@ -43,9 +43,7 @@
         <!-- </button> -->
 
         <!-- Public links -->
-        <!-- <b-nav-item to="/projects">Apps</b-nav-item> -->
         <!-- <b-nav-item to="/build/new">Build</b-nav-item> -->
-        <!-- <b-nav-item to="/projects">Blueprints</b-nav-item> -->
         <!-- <b-nav-item to="/generators">Generators</b-nav-item> -->
         <!-- <b-nav-item to="/build/new">Marketplace</b-nav-item> -->
         <!-- <b-nav-item to="#/examples">Example Apps</b-nav-item> -->

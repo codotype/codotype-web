@@ -6,21 +6,21 @@ import ProjectExamples from './pages/examples'
 
 export default [
   {
-    path: '/projects',
+    path: '/blueprints',
     component: ProjectList
   },
   {
-    path: '/projects/examples',
+    path: '/blueprints/examples',
     component: ProjectExamples
   },
   {
-    path: '/projects/:project_id',
+    path: '/blueprints/:project_id',
     name: 'ProjectShow',
     component: ProjectShow,
     props: true
   },
   {
-    path: '/projects/:project_id/generate',
+    path: '/blueprints/:project_id/generate',
     component: ProjectGenerators,
     props: true
   }
