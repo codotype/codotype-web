@@ -35,7 +35,9 @@
           </span>
 
           <!-- Bootstrap Modal Component -->
-          <b-modal :id="'modal_' + project._id"
+          <b-modal
+            lazy
+            :id="'modal_' + project._id"
             :title="'Destroy ' + project.label + '?'"
             @ok="destroyProject(project)"
             ok-variant='danger'
