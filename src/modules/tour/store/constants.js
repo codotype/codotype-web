@@ -104,8 +104,8 @@ export const APP_LIST_TOUR = [
   {
     element: '#app-list',
     popover: {
-      title: 'Apps',
-      description: 'Apps define a collection of data models accepted by a Generator.',
+      title: 'Blueprints',
+      description: 'Blueprints define a collection of data models accepted by a Codotype Generator.',
       position: 'right'
     }
   },

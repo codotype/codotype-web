@@ -4,12 +4,12 @@
     <!-- Header -->
     <div class="col-lg-12">
       <EditorHeader :help="'Define the attributes that can be assigned to a single ' + schema.label">
-        <a class='btn btn-outline-warning float-right mr-2' :href="'#/projects/' + project_id >
+        <a class='btn btn-outline-warning float-right mr-2' :href="'#/blueprints/' + project_id >
           <i class="fas fa-fw fa-pencil-alt mr-2"></i>
           Attributes
         </a>
 
-        <a class='btn btn-primary float-right' :href="'#/projects/' + project_id + '/seeds/' + schema_id + '/new'" >
+        <a class='btn btn-primary float-right' :href="'#/blueprints/' + project_id + '/seeds/' + schema_id + '/new'" >
           <i class="fa fa-fw fa-plus mr-2"></i>
           New {{ schema.label }}
         </a>

@@ -3,7 +3,7 @@
   <div class="row">
 
     <!-- Edit Attribute Form -->
-    <b-modal :id="'edit_attribute'"
+    <b-modal lazy
       size="lg"
       :title="'Edit Attribute'"
       ref='editAttributeModal'
@@ -15,7 +15,7 @@
     </b-modal>
 
     <!-- New Attribute Form -->
-    <b-modal :id="'new-attribute'"
+    <b-modal lazy
       size="lg"
       ref="newAttributeModal"
       :title="'New Attribute'"
@@ -42,11 +42,24 @@
         </div>
 
         <!-- Draggable Attribute List -->
-        <draggable class='list-group list-group-flush' v-model='attributes' :options="sortableOptions" v-if="attributes.length">
-          <AttributeListItem v-for="each in attributes" :item="each" :key="each._id" :schema="schema" :edit="selectEditAttribute" />
+        <draggable class='list-group list-group-flush'
+          v-model='attributes'
+          :options="sortableOptions"
+          v-if="attributes.length"
+        >
+
+          <!-- Attribute List Items -->
+          <AttributeListItem
+            v-for="each in attributes"
+            :item="each"
+            :key="each._id"
+            :schema="schema"
+            :edit="selectEditAttribute"
+          />
+
         </draggable>
 
-        <!-- Empty Relation view -->
+        <!-- No Attributes View -->
         <ul class="list-group list-group-flush" v-if="!attributes.length">
           <li class="list-group-item text-center bg-transparent border-primary text-primary">
             <i class="fa fa-lg fa-info-circle"></i>

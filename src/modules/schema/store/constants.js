@@ -57,14 +57,16 @@ export const COLOR = 'COLOR'
 // export const RELATION = 'RELATION'
 
 export const DATATYPES = [
-  { value: TEXT, text: 'Text', icon: 'fa-quote-left' },
-  { value: NUMBER, text: 'Number', icon: 'fa-hashtag' },
-  { value: BOOL, text: 'Boolean', icon: 'fa-check-square-o' },
-  { value: DATE, text: 'Date', icon: 'fa-calendar-o' },
-  { value: TIME, text: 'Time', icon: 'fa-clock-o' },
-  { value: DATETIME, text: 'DateTime', icon: 'fa-calendar-plus-o' },
-  { value: COLOR, text: 'Color', icon: 'fa-eyedropper' },
-  { value: 'JSON', text: 'JSON', icon: 'fa-code' }
+  { value: TEXT, text: 'String', icon: 'fa fa-quote-left' },
+  { value: NUMBER, text: 'Number', icon: 'fa fa-hashtag' },
+  // { value: 'NUMBER_ARRAY', text: 'Number Array', icon: 'fa fa-hashtag' },
+  // { value: 'STRING_ARRAY', text: 'String Array', icon: 'fa fa-quote-left' },
+  { value: BOOL, text: 'Boolean', icon: 'far fa-check-square' },
+  { value: DATE, text: 'Date', icon: 'far fa-calendar' },
+  { value: TIME, text: 'Time', icon: 'far fa-clock' },
+  { value: DATETIME, text: 'DateTime', icon: 'far fa-calendar-alt' },
+  // { value: COLOR, text: 'Color', icon: 'far fa-eyedropper' },
+  { value: 'JSON', text: 'JSON', icon: 'fa fa-code' }
   // { value: 'GEO', text: 'Geolocation', icon: 'fa-map' },
   // { value: RELATION, text: 'Relation', icon: 'fa-link' }
 ]

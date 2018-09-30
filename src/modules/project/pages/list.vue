@@ -11,9 +11,11 @@
     <b-col lg=12>
       <div class="row">
         <div class="col-lg-7">
-          <h2 id="app-list">
-            <!-- <i class="fas fa-drafting-compass"></i> -->
-            Blueprints
+          <h2>
+            <span id="app-list">
+              <i class="fas fa-drafting-compass"></i>
+              Blueprints
+            </span>
           </h2>
           <small class="text-muted">Blueprints encapsulate metadata about models, attributes, and associations that describe your project</small>
 
@@ -23,7 +25,7 @@
 
           <HelpButton :tour="tourSteps"/>
 
-          <!-- <a class='btn btn-lg btn-outline-info' href="#/projects/examples"> -->
+          <!-- <a class='btn btn-lg btn-outline-info' href="#/blueprints/examples"> -->
             <!-- <i class="fa fa-fw fa-folder-open-o mr-2"></i> -->
             <!-- Example Apps -->
           <!-- </a> -->

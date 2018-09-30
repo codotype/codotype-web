@@ -19,7 +19,7 @@
 
         <div class="col-lg-12 text-center d-flex align-items-center justify-content-center">
           <gh-btns-star slug="codotype/codotype" show-count></gh-btns-star>
-          <!-- <router-link to="/projects" class="btn btn-primary btn-block btn-lg"> -->
+          <!-- <router-link to="/blueprints" class="btn btn-primary btn-block btn-lg"> -->
             <!-- <i class="fa fa-fire mr-2"></i> -->
             <!-- Let's get started. -->
           <!-- </router-link> -->

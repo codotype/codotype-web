@@ -61,7 +61,7 @@
         </p>
         <p class="card-text">
           Uh oh. Something must actually be wrong here.
-          <a href="#/projects">My Projects</a>
+          <a href="#/blueprints">My Projects</a>
         </p>
       </div>
     </div>
