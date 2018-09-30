@@ -11,7 +11,7 @@
     <b-col lg=12>
       <div class="row">
         <div class="col-lg-7">
-          <h2>
+          <h2 class='text-muted'>
             <span id="app-list">
               <i class="fas fa-drafting-compass"></i>
               Blueprints

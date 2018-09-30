@@ -16,15 +16,15 @@
       </b-modal>
 
       <!-- Model header -->
-      <!-- <b-row> -->
-        <!-- <b-col lg='12'> -->
-          <!-- <p class="lead mb-0">Models</p> -->
-          <!-- <small class="text-muted">Models encapsulate attributes and relations</small> -->
-        <!-- </b-col> -->
+      <b-row class='mb-1'>
+        <b-col lg='12'>
+          <h4 class="mb-0">Models</h4>
+          <small class="text-muted">Models encapsulate attributes and relations</small>
+        </b-col>
         <!-- <b-col lg='12'> -->
           <!-- <hr> -->
         <!-- </b-col> -->
-      <!-- </b-row> -->
+      </b-row>
 
       <button id="new-model-button" class="btn btn-primary btn-block btn-lg mb-3" v-b-modal="'new-schema'">
         <i class="fa fa-fw fa-plus"></i>

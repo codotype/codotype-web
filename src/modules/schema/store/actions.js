@@ -1,4 +1,5 @@
 import cloneDeep from 'lodash/cloneDeep'
+import ObjectID from 'bson-objectid'
 import { DEFAULT_SCHEMA } from './constants'
 import { SELECT_MODEL_ACTIONS } from '@/store/lib/mixins'
 import { inflateMeta } from '@codotype/util/lib/inflateMeta'
@@ -14,10 +15,28 @@ export default {
     commit('relation/collection', model.relations, { root: true })
   },
   create ({ state, dispatch, commit }) {
+    // Clones state.newModel
     let model = cloneDeep(state.newModel)
+
+    // Assigns model meta
+    model = {
+      ...model,
+      ...inflateMeta(model.label)
+    }
+
+    // Assigns ID
+    model._id = ObjectID().toString()
+
+    // Updates collection
+    const collection = state.collection
+    collection.push(model)
+    commit('collection', collection)
+
+    // Resets state.newModel
     dispatch('resetNewModel')
-    model = { ...model, ...inflateMeta(model.label) }
-    commit('persist', { schema: model })
+
+    // Selects the newly created model
+    dispatch('selectModel', model._id)
   },
   edit ({ state, commit }, schema) {
     commit('editModel', cloneDeep(schema))
