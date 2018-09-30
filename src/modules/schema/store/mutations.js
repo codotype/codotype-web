@@ -1,5 +1,4 @@
-import orderBy from 'lodash/orderBy'
-import ObjectID from 'bson-objectid'
+// import orderBy from 'lodash/orderBy'
 import { COLLECTION_MUTATIONS, SELECT_MODEL_MUTATIONS, NEW_MODEL_MUTATIONS } from '@/store/lib/mixins'
 
 // Schema Module mutations
@@ -22,23 +21,6 @@ export default {
     } else {
       state.selectedModel.relations = collection
     }
-  },
-  // REMOVE BELOW THIS LINE
-  persist (state, { schema }) {
-    if (schema._id) {
-      state.collection = state.collection.map((s) => {
-        if (s._id === schema._id) {
-          return schema
-        } else {
-          return s
-        }
-      })
-    } else {
-      schema._id = ObjectID().toString()
-      state.collection.push(schema)
-    }
-    // Updates attributes order
-    schema.attributes = orderBy(schema.attributes, ['order'], ['asc'])
   },
   editModel (state, schema) {
     state.editModel = schema
