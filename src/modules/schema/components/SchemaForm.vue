@@ -23,7 +23,10 @@
           <table class="table table-sm">
             <tbody>
               <tr>
-                <td>Label</td>
+                <td>
+                  Label
+                  <i class="fa text-secondary fa-question-circle" v-b-tooltip.hover.right title='"Label" is the human readable token for this model'></i>
+                </td>
                 <td>{{ schema.label || '...' }}</td>
               </tr>
               <tr>
@@ -31,7 +34,10 @@
                 <td>{{ schema.label_plural || '...' }}</td>
               </tr>
               <tr>
-                <td>Identifier</td>
+                <td>
+                  Identifier
+                  <i class="fa text-secondary fa-question-circle" v-b-tooltip.hover.right title='"Identifier" is the lowecase, underscored token for this model'></i>
+                </td>
                 <td>{{ schema.identifier || '...' }}</td>
               </tr>
               <tr>
@@ -39,7 +45,10 @@
                 <td>{{ schema.identifier_plural || '...' }}</td>
               </tr>
               <tr>
-                <td>Class Name</td>
+                <td>
+                  Class Name
+                  <i class="fa text-secondary fa-question-circle" v-b-tooltip.hover.right title='"Class Name" is title-cased whitespace-free token for this model'></i>
+                </td>
                 <td>{{ schema.class_name || '...' }}</td>
               </tr>
               <tr>

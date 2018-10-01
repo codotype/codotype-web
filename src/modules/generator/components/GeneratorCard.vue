@@ -26,7 +26,7 @@
     <div class="card-footer bg-white">
       <small>
         <a class='text-muted' :href="model.github_url">
-          <i class="fa fa-github"></i>
+          <i class="fab fa-github"></i>
           codotype
         </a>
         <span class='badge badge-light text-muted'>{{ model.version }}</span>

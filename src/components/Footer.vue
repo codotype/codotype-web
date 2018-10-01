@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="md" type="light" variant="light" class='fixed-bottom'>
+  <b-navbar toggleable="md" type="light" variant="light" class='footer-bottom'>
 
     <b-collapse is-nav id="nav_collapse">
 
@@ -87,6 +87,11 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+
+  .footer-bottom
+    position: absolute
+    width: 100%
+    bottom: 0
 
   nav.navbar
     padding-top: .25rem

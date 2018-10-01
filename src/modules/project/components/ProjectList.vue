@@ -3,21 +3,23 @@
 
     <!-- TODO - only show when user is NOT logged in -->
     <div class="col-lg-4 mb-4">
-      <router-link to='/auth/login' style='text-decoration: none;' class="card card-body border-primary bg-gradient-primary text-white h-100 d-flex align-items-center justify-content-center shadow-hover">
+      <a role="button" style='cursor: pointer;' v-b-modal="'new-project-modal'" class="card card-body border-primary bg-gradient-primary text-white h-100 d-flex align-items-center justify-content-center shadow-hover">
 
         <div class="row">
           <div class="col-lg-12 text-center">
             <p class='lead'>
-              <!-- <i class="fa fa-check"></i> -->
-              <i class="fas fa-drafting-compass mr-2"></i>
-              Sign Up
+              <i class="fas fa-plus mr-2"></i>
+              New Blueprint
             </p>
-            <p class='mb-0'>Unlimited Blueprints when you register</p>
+            <p class='mb-0'>Generate apps from your Blueprints</p>
+            <!-- <p class='mb-0'>Unlimited Blueprints when you register</p> -->
           </div>
         </div>
 
-      </router-link>
+      </a>
     </div>
+
+
 
     <!-- Blueprint List -->
     <BlueprintListItem v-for="project in collection" v-bind:key="project._id" :project="project" />
