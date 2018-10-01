@@ -30,6 +30,8 @@ export default {
     right: 0;
     bottom: 0;
     margin-top: 7.5rem;
+    margin-bottom: 3rem;
+    margin-right: .5rem;
   }
 
   .list-enter-active, .list-leave-active {
