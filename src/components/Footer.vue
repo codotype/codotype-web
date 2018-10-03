@@ -31,7 +31,7 @@
 
       <b-navbar-nav class="ml-auto">
 
-        <b-nav-item to="/build/new">
+        <b-nav-item href="https://goo.gl/forms/uhCLfol3SlAUwt2p1" target='_blank'>
           <i class="far fa-comment-alt text-primary mr-1"></i>
           Feedback
         </b-nav-item>
@@ -41,10 +41,10 @@
           Documentation
         </b-nav-item>
 
-        <b-nav-item href="http://codotype.io" target='_blank'>
-          <i class="fas fa-dollar-sign text-success mr-1"></i>
-          Donate
-        </b-nav-item>
+        <!-- <b-nav-item href="http://codotype.io" target='_blank'> -->
+          <!-- <i class="fas fa-dollar-sign text-success mr-1"></i> -->
+          <!-- Donate -->
+        <!-- </b-nav-item> -->
 
       </b-navbar-nav>
 
@@ -89,7 +89,7 @@ export default {
 <style lang="sass" scoped>
 
   .footer-bottom
-    position: absolute
+    position: fixed
     width: 100%
     bottom: 0
 
