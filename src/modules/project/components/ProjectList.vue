@@ -2,7 +2,7 @@
   <div class='row'>
 
     <!-- TODO - only show when user is NOT logged in -->
-    <div class="col-lg-4 mb-4">
+    <div class="col-lg-4 mb-4" id="app-new-button">
       <a role="button" style='cursor: pointer;' v-b-modal="'new-project-modal'" class="card card-body border-primary bg-gradient-primary text-white h-100 d-flex align-items-center justify-content-center shadow-hover">
 
         <div class="row">

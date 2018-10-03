@@ -2,11 +2,11 @@
   <div class="row align-items-center">
     <div class="col-lg-12">
 
-      <div class="row mt-2">
-        <div class="col-lg-12 text-center">
-          <h2>A B O U T</h2>
-        </div>
-      </div>
+      <!-- <div class="row mt-2"> -->
+        <!-- <div class="col-lg-12 text-center"> -->
+          <!-- <h2>A B O U T</h2> -->
+        <!-- </div> -->
+      <!-- </div> -->
 
       <div class="row mt-2">
         <div class="col-lg-12 text-center">

@@ -195,8 +195,9 @@ import { inflateMeta } from '@codotype/util/lib/inflateMeta'
 export default {
   props: ['schema', 'model'],
   mounted () {
-    this.model.type = 'BELONGS_TO'
-    this.model.related_schema_id = this.$store.getters['schema/collection'][1]._id
+    this.model.type = 'BELONGS_TO' // TODO - constantize
+    const relatedSchema = this.$store.getters['schema/collection'].find(m => m._id !== this.schema._id)
+    this.model.related_schema_id = relatedSchema ? relatedSchema._id : this.schema._id
   },
   computed: {
     ...mapGetters({
@@ -270,7 +271,7 @@ export default {
 <style scoped>
 
   img.relation-thumbnail {
-    width: 100%;
+    width: 50%;
     /*height: 100%;*/
   }
 

@@ -26,26 +26,40 @@
             <!-- <i class="fa fa-share-alt project-action project-action-secondary fa-fw"></i> -->
           <!-- </span> -->
 
-          <!-- <span class="mx-1" v-b-tooltip.hover.left title='Duplicate Blueprint'> -->
-            <!-- <i class="fa fa-copy project-action project-action-success fa-fw"></i> -->
-          <!-- </span> -->
+          <span class="mx-1" v-b-tooltip.hover.left title='Duplicate' v-b-modal="'clone_modal_' + project._id">
+            <i class="fa fa-copy project-action project-action-success fa-fw"></i>
+          </span>
 
-          <span class="mx-1 text-hover-danger" v-b-tooltip.hover.left title='Delete' v-b-modal="'modal_' + project._id">
+          <span class="mx-1 text-hover-danger" v-b-tooltip.hover.left title='Delete' v-b-modal="'destroy_modal_' + project._id">
             <i class="fa fa-trash project-action project-action-danger fa-fw"></i>
           </span>
 
-          <!-- Bootstrap Modal Component -->
+          <!-- Destroy Modal -->
           <b-modal
             lazy
-            :id="'modal_' + project._id"
+            :id="'destroy_modal_' + project._id"
             :title="'Destroy ' + project.label + '?'"
             @ok="destroyProject(project)"
             ok-variant='danger'
             ok-title='DESTROY'
             cancel-title='Cancel'
           >
-            <p class="text-left">Are you sure you want to destroy the {{ project.label }} project?</p>
+            <p class="text-left">Are you sure you want to destroy the {{ project.label }} Blueprint?</p>
           </b-modal>
+
+          <!-- Clone Modal -->
+          <b-modal
+            lazy
+            :id="'clone_modal_' + project._id"
+            :title="'Duplicate ' + project.label + '?'"
+            @ok="cloneBlueprint(project)"
+            ok-variant='success'
+            ok-title='Duplicate'
+            cancel-title='Cancel'
+          >
+            <p class="text-left">Are you sure you want to duplicate the {{ project.label }} Blueprint?</p>
+          </b-modal>
+
 
         </div>
 
@@ -65,7 +79,8 @@ export default {
     ...mapActions({
       destroyProject: 'project/destroy',
       selectBuildApp: 'build/selectApp',
-      exportApp: 'project/exportJson'
+      exportApp: 'project/exportJson',
+      cloneBlueprint: 'project/clone'
     }),
     goToBuild (project) {
       this.selectBuildApp(project._id)

@@ -15,8 +15,8 @@
 
     <div class="col-sm-12">
       <button class="btn btn-lg btn-primary btn-block" @click="submit()">
-        <i class="fa fa-fw fa-check"></i>
-        Create App
+        <i class="fa fa-fw fa-plus"></i>
+        Create Blueprint
       </button>
     </div>
   </div>

@@ -70,6 +70,8 @@ export default {
       selectBuildApp: 'build/selectApp'
     }),
     goToBuild () {
+      // TODO - this is broken!
+      // The component at page build/new will reset the selected model
       this.selectBuildApp(this.project._id)
       window.location = '#/build/new' // TODO - use vue router
     },

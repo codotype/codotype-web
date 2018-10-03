@@ -80,7 +80,7 @@ export default {
   }),
   methods: {
     ...mapActions({
-      cloneExample: 'project/cloneExample'
+      cloneExample: 'project/clone'
     }),
     schemaString (project) {
       let schemas = []
