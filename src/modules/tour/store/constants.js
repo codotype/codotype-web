@@ -112,9 +112,9 @@ export const APP_LIST_TOUR = [
   {
     element: '#app-new-button',
     popover: {
-      title: 'New App',
-      description: 'Click here to define a new App',
-      position: 'left'
+      title: 'New Blueprint',
+      description: 'Click here to define a new Blueprint',
+      position: 'right'
     }
   }
 ]
