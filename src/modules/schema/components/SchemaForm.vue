@@ -9,7 +9,14 @@
         <div class="col-lg-12">
 
           <!-- <FormInput label="Label" placeholder="Label" example="Example: 'Odd Job'" v-model="schemaLabel" required="true" help="The human-readable name for a single entity of this schema." /> -->
-          <FormInput label="Label" placeholder="Label" v-model="schemaLabel" required="true" help="Example: 'Odd Job'" />
+          <FormInput
+            label="Label"
+            placeholder="Label"
+            v-model="schemaLabel"
+            required="true"
+            help="The singlar, title-cased noun that describes your model"
+            example="Example: 'User Role' or 'Blog Post'"
+          />
 
         </div>
 
