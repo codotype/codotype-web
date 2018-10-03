@@ -91,15 +91,13 @@ export default {
     commit('newModel', newModel)
   },
 
-  cloneExample: ({ dispatch, commit }, example) => {
+  clone: ({ dispatch, commit }, example) => {
     // Resets project, schema, and attribute IDs
     let projectModel = cloneDeep(example)
     projectModel._id = null
+    projectModel.label = projectModel.label + ' copy'
 
     // Adds to the project collection
     dispatch('persist', { record: projectModel })
-
-    // Navigates to /blueprints/id
-    router.push(`/blueprints/${projectModel._id}`)
   }
 }
