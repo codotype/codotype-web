@@ -7,6 +7,8 @@
 </template>
 
 <script>
+// TODO - icon and tooltip should be encapsulated in the attribute data
+// TODO - attribute data should be abstracted into codotype-util
 export default {
   props: ['item'],
   name: 'AttributeLabel',
@@ -15,10 +17,12 @@ export default {
       switch (this.item.datatype) {
         case 'TEXT':
           return 'fa fa-quote-left'
+        case 'STRING_ARRAY':
+          return 'fa fa-quote-left'
         case 'NUMBER':
           return 'fa fa-hashtag'
         case 'BOOL':
-          return 'fa fa-check-square-o'
+          return 'far fa-check-square'
         case 'DATE':
           return 'far fa-calendar'
         case 'TIME':
@@ -31,6 +35,8 @@ export default {
       switch (this.item.datatype) {
         case 'TEXT':
           return 'Text'
+        case 'STRING_ARRAY':
+          return 'String Array'
         case 'NUMBER':
           return 'Number'
         case 'BOOL':
