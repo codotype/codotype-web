@@ -15,7 +15,7 @@
             <!-- <label>This Model</label> -->
             <label>{{ schema.label }}</label>
             <small class="form-text text-muted">This Model</small>
-            <input type="text" class='form-control form-control-lg' disabled :value="schema.label">
+            <input type="text" class='form-control' disabled :value="schema.label">
           </div>
         </div>
 
@@ -23,7 +23,7 @@
         <div class="col-lg-4">
           <div class="row">
             <div class="col-lg-12">
-              <div class="form-group text-center">
+              <div class="form-group mb-2 text-center">
                 <!-- <label>Relation Type</label> -->
                 <!-- <small class="form-text text-muted">The type of relation to define</small> -->
                 <label>{{ selectedRelationType.label }}</label>
@@ -48,7 +48,7 @@
           <div class="form-group text-center">
             <label>Related Model</label>
             <small class="form-text text-muted">The related Model definition.</small>
-            <select class="form-control form-control-lg" v-model="model.related_schema_id" >
+            <select class="form-control" v-model="model.related_schema_id" >
 
               <!-- <option v-if="model.type === 'HAS_ONE'" v-for="s in allSchemas" :key="s._id" :value="s._id">{{s.label}}</option> -->
               <template v-if="model.type === 'MANY_TO_MANY'">

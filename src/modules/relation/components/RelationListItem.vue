@@ -21,7 +21,6 @@
           <span class="badge badge-light ml-2">many {{ schema.label_plural }} to one {{ inflated.schema.label }}</span>
         </span>
 
-
         <!-- HAS_ONE -->
         <span class="badge" v-if="item.type === 'HAS_ONE'">
           <i class="fa fa-link mr-2" v-b-tooltip.hover.left title='Relation'></i>
@@ -113,6 +112,7 @@ export default {
   }),
   computed: {
     inflated () {
+      this.item.schema_id = this.schema._id
       let inflated = inflateRelation({ relation: this.item, schemas: this.$store.getters['schema/collection'] })
       // console.log(inflated)
       return inflated
