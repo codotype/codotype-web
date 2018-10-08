@@ -48,8 +48,13 @@
           <RelationListItem v-for="each in relations" :item="each" v-if="each.datatype !== 'RELATION'" :key="each._id" :schema="schema" :edit="selectEditRelation" />
         </draggable>
 
+        <!-- Undraggable Reference List -->
+        <ul class='list-group list-group-flush' v-if="referencedBy.length">
+          <ReferenceListItem v-for="each in referencedBy" :item="each" :key="each._id" :schema="schema" :edit="selectEditRelation" />
+        </ul>
+
         <!-- Empty Relation view -->
-        <ul class="list-group list-group-flush" v-if="!relations.length">
+        <ul class="list-group list-group-flush" v-if="!relations.length && !referencedBy.length">
           <li class="list-group-item text-center text-primary">
             <i class="fa fa-lg fa-info-circle"></i>
             <p class="mb-0 mt-1">
@@ -73,6 +78,7 @@ import smoothReflow from 'vue-smooth-reflow'
 import { mapGetters, mapActions } from 'vuex'
 import draggable from 'vuedraggable'
 import RelationListItem from './RelationListItem'
+import ReferenceListItem from './ReferenceListItem'
 import RelationForm from './RelationForm'
 
 export default {
@@ -80,6 +86,7 @@ export default {
   components: {
     draggable,
     RelationListItem,
+    ReferenceListItem,
     RelationForm
   },
   mounted () {
@@ -112,6 +119,11 @@ export default {
         animation: 150,
         fallbackTolerance: 100
       }
+    },
+    referencedBy () {
+      const inflatedApp = this.$store.getters['project/inflated']
+      const selectedSchema = inflatedApp.schemas.find(s => s._id === this.schema._id)
+      return selectedSchema.relations.filter(r => ['REF_BELONGS_TO'].includes(r.type))
     },
     // TODO - this should be moved into Vuex store, but how?
     relations: {

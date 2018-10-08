@@ -27,7 +27,7 @@ export const APP_EDITOR_TOUR = [
     element: '#user-model',
     popover: {
       title: 'User Model',
-      description: 'All blueprints include a User model by default.<br/><br/>It can be disabled if your project doesn\'t require users, but it cannot be removed',
+      description: 'All blueprints include a User model by default.<br/><br/>The User model requires username and email attributes',
       position: 'right'
     }
   },

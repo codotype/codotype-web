@@ -48,6 +48,7 @@ export const RELATION_TYPES = [
 // Datattype IDs
 // TODO - these are duplicated in the Option store
 export const TEXT = 'TEXT'
+export const STRING_ARRAY = 'STRING_ARRAY'
 export const NUMBER = 'NUMBER'
 export const BOOL = 'BOOL'
 export const DATE = 'DATE'
@@ -60,7 +61,7 @@ export const DATATYPES = [
   { value: TEXT, text: 'String', icon: 'fa fa-quote-left' },
   { value: NUMBER, text: 'Number', icon: 'fa fa-hashtag' },
   // { value: 'NUMBER_ARRAY', text: 'Number Array', icon: 'fa fa-hashtag' },
-  // { value: 'STRING_ARRAY', text: 'String Array', icon: 'fa fa-quote-left' },
+  { value: STRING_ARRAY, text: 'String Array', icon: 'fa fa-quote-left' },
   { value: BOOL, text: 'Boolean', icon: 'far fa-check-square' },
   { value: DATE, text: 'Date', icon: 'far fa-calendar' },
   { value: TIME, text: 'Time', icon: 'far fa-clock' },

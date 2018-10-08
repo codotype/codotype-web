@@ -373,6 +373,7 @@ function inflateRelation({ schemas, relation }) {
 
 function inflateSchema({ schema, schemas }) {
   let inflated = { ...schema }
+  relation.schema_id = schema._id // TODO - abstract into 'relation/createModel'
   inflated.relations = schema.relations.map(relation => inflateRelation({ schemas, relation }))
   inflated.attributes = schema.attributes.map(attribute => attribute)
   return inflated
