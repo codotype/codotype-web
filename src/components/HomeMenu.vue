@@ -14,7 +14,7 @@
 
         <!-- Public links -->
         <b-nav-item to="/blueprints">Blueprints</b-nav-item>
-        <b-nav-item to="/generators">Generators</b-nav-item>
+        <!-- <b-nav-item to="/generators">Generators</b-nav-item> -->
         <b-nav-item to="/build/new">Build</b-nav-item>
         <!-- <b-nav-item to="/build/new">Marketplace</b-nav-item> -->
         <!-- <b-nav-item to="#/examples">Example Apps</b-nav-item> -->
