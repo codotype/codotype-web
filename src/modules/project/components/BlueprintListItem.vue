@@ -8,7 +8,8 @@
             <router-link :to="'/blueprints/' + project._id ">{{project.label}}</router-link>
           </p>
           <small class="text-muted">
-            Last edited 9 / 2 / 18
+            <!-- Last edited 9 / 2 / 18 -->
+            {{ project.schemas.length }} {{ project.schemas.length === 1 ? 'Model' : 'Models' }}
           </small>
         </div>
 

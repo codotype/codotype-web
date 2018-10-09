@@ -1,40 +1,62 @@
 <template>
   <div class='row'>
 
-    <!-- TODO - only show when user is NOT logged in -->
-    <div class="col-lg-4 mb-4" id="app-new-button">
-      <a role="button" style='cursor: pointer;' v-b-modal="'new-project-modal'" class="card card-body border-primary bg-gradient-primary text-white h-100 d-flex align-items-center justify-content-center shadow-hover">
+    <div class="col-lg-12">
+      <div class="row">
 
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <p class='lead'>
-              <i class="fas fa-plus mr-2"></i>
-              New Blueprint
-            </p>
-            <p class='mb-0'>Generate apps from your Blueprints</p>
-            <!-- <p class='mb-0'>Unlimited Blueprints when you register</p> -->
+          <!-- TODO - only show when user is NOT logged in -->
+          <div class="col-lg-4 mb-4" id="app-new-button">
+            <a role="button" style='cursor: pointer;' v-b-modal="'new-project-modal'" class="card card-body border-primary bg-gradient-primary text-white h-100 d-flex align-items-center justify-content-center shadow-hover">
+
+              <div class="row">
+                <div class="col-lg-12 text-center">
+                  <p class='lead'>
+                    <i class="fas fa-plus mr-2"></i>
+                    New Blueprint
+                  </p>
+                  <p class='mb-0'>Generate apps from your Blueprints</p>
+                  <!-- <p class='mb-0'>Unlimited Blueprints when you register</p> -->
+                </div>
+              </div>
+
+            </a>
+          </div>
+
+          <!-- Blueprint List -->
+          <BlueprintListItem v-for="project in collection" v-bind:key="project._id" :project="project" />
+
+          <!-- Empty -->
+          <div class="col-lg-4 mb-4" v-if="!collection[0]">
+            <div class="card card-body border-warning bg-transparent text-warning h-100 d-flex align-items-center justify-content-center shadow-hover text-center">
+              <div class="row">
+                <div class="col-lg-12">
+                  <p class="lead card-text">
+                    <i class="fa fa-fw fa-info-circle mr-2"></i>
+                    <br>
+                    No Blueprints found
+                  </p>
+                </div>
+                <div class="col-lg-12">
+                  <hr class='border-warning'>
+                </div>
+                <div class="col-lg-12">
+                  <small class="card-text">Copy an example below or create a new Blueprint</small>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
 
-      </a>
+    <div class="col-lg-12">
+      <hr>
+      <p class="lead text-muted">Example Blueprints</p>
     </div>
 
-
-
-    <!-- Blueprint List -->
-    <BlueprintListItem v-for="project in collection" v-bind:key="project._id" :project="project" />
-
-    <!-- Empty -->
-    <div class="col-lg-12 mb-3" v-if="!collection[0]">
-      <div class="card bg-transparent border-warning text-warning card-body text-center">
-        <p class="lead card-text">
-          <i class="fa fa-fw fa-info-circle mr-2"></i>
-          <br>
-          No Apps found
-        </p>
-        <p class="card-text">
-          See some <a href="#/examples">examples</a> or start a <a href="#/examples">new project</a>
-        </p>
+    <!-- Example Blueprints -->
+    <div class="col-lg-12">
+      <div class="row">
+        <ExampleListItem v-for="project in exampleCollection" v-bind:key="project._id" :project="project" />
       </div>
     </div>
 
@@ -44,16 +66,21 @@
 <!-- // // // //  -->
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import BlueprintListItem from './BlueprintListItem'
+import ExampleListItem from './ExampleListItem'
 
 export default {
   components: {
-    BlueprintListItem
+    BlueprintListItem,
+    ExampleListItem
   },
   computed: mapGetters({
-    collection: 'project/collection'
+    collection: 'project/collection',
+    exampleCollection: 'project/exampleCollection'
+  }),
+  methods: mapActions({
+    cloneExample: 'project/clone'
   })
 }
 </script>
-
