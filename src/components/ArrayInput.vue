@@ -1,86 +1,94 @@
 <template>
+  <div class="form-group">
+    <label>
+      {{ label }}
+      <span class='text-danger' v-if="required">*</span>
+    </label>
+    <small class="form-text text-muted" v-if="help">{{help}}</small>
 
-  <div class="row">
-    <div class="col-lg-12" v-if="!editing">
+    <div class="row">
+      <div class="col-lg-12" v-if="!editing">
 
-      <!-- MacroList -->
-      <draggable v-model='dropdownOptions' :options="sortableOptions" element="ul" class='list-group'>
+        <!-- MacroList -->
+        <draggable v-model='dropdownOptions' :options="sortableOptions" element="ul" class='list-group'>
 
-          <!-- Child View -->
-          <li class="list-group-item border-light bg-dark text-light" v-for="element in dropdownOptions" :key="element.id">
-            <div class="row d-flex align-items-center">
-              <div class="col-lg-2">
-                <i class="fa fa-fw fa-bars drag-handle"></i>
+            <!-- Child View -->
+            <li class="list-group-item" v-for="element in dropdownOptions" :key="element.id">
+              <div class="row d-flex align-items-center">
+                <div class="col-lg-2">
+                  <i class="fa fa-fw fa-bars drag-handle"></i>
+                </div>
+                <div class="col-lg-6">
+                  {{ element.value }}
+                </div>
+                <div class="col-lg-4 text-right">
+                  <button class="btn btn-sm btn-outline-warning" @click="editOption(element)">
+                    <i class="fas fa-fw fa-pencil-alt"></i>
+                  </button>
+                  <button class="btn btn-sm btn-outline-danger" @click="destroyOption(element)">
+                    <i class="fa fa-fw fa-trash"></i>
+                  </button>
+                </div>
               </div>
-              <div class="col-lg-6">
-                {{ element.value }}
-              </div>
-              <div class="col-lg-4 text-right">
-                <button class="btn btn-sm btn-outline-warning" @click="editOption(element)">
-                  <i class="fa fa-fw fa-pencil"></i>
-                </button>
-                <button class="btn btn-sm btn-outline-danger" @click="destroyOption(element)">
-                  <i class="fa fa-fw fa-trash"></i>
-                </button>
-              </div>
-            </div>
-          </li>
+            </li>
 
-      </draggable>
+        </draggable>
 
-      <!-- Add Option -->
-      <button class="btn btn btn-outline-success btn-block mt-4" @click="addOption()">
-        <i class="fa fa-fw fa-plus mr-2"></i>
-        Dropdown Option
-      </button>
-
-    </div>
-
-    <!-- Dropdown Option Form -->
-    <div class="col-lg-12" v-if="editing">
-      <div class="card card-body border-light bg-dark text-light">
-
-        <!-- Form Header -->
-        <div class="row">
-          <div class="col-lg-6">
-            <p class="lead mb-0" v-if="editing.id">Edit Dropdown Option</p>
-            <p class="lead mb-0" v-else>New Dropdown Option</p>
-          </div>
-          <div class="col-lg-6 text-right">
-            <div class="btn-group">
-              <button class="btn btn-sm btn-outline-secondary" @click="cancelEditing(editing)">
-                <i class="fa fa-fw fa-times mr-1"></i>
-                Cancel
-              </button>
-              <button class="btn btn-outline-success" @click="submitEditing(editing)">
-                <i class="fa fa-fw fa-check mr-1"></i>
-                Submit
-              </button>
-            </div>
-          </div>
-        </div>
-        <hr>
-
-        <!-- Form Body -->
-        <div class="row">
-          <div class="col-lg-12">
-            <input class='form-control' type="text" v-model="editing.value" placeholder='Dropdown Value' v-if="type === 'TEXT_SELECT'">
-            <input class='form-control' type="number" v-model="editing.value" placeholder='Dropdown Value' v-if="type === 'NUMBER_SELECT'">
-          </div>
-        </div>
+        <!-- Add Option -->
+        <button class="btn btn-outline-success btn-block mt-4" @click="addOption()">
+          <i class="fa fa-fw fa-plus mr-2"></i>
+          Dropdown Option
+        </button>
 
       </div>
-    </div>
 
+      <!-- Dropdown Option Form -->
+      <div class="col-lg-12" v-if="editing">
+        <div class="card card-body">
+
+          <!-- Form Header -->
+          <div class="row">
+            <div class="col-lg-6">
+              <p class="lead mb-0" v-if="editing.id">Edit Dropdown Option</p>
+              <p class="lead mb-0" v-else>New Dropdown Option</p>
+            </div>
+            <div class="col-lg-6 text-right">
+              <div class="btn-group">
+                <button class="btn btn-sm btn-outline-secondary" @click="cancelEditing(editing)">
+                  <i class="fa fa-fw fa-times"></i>
+                  Cancel
+                </button>
+                <button class="btn btn-outline-success" @click="submitEditing(editing)">
+                  <i class="fa fa-fw fa-check"></i>
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+          <hr>
+
+          <!-- Form Body -->
+          <div class="row">
+            <div class="col-lg-12">
+              <input class='form-control' type="text" v-model="editing.value" placeholder='Dropdown Value' v-if="type === 'TEXT_SELECT'">
+              <input class='form-control' type="number" v-model="editing.value" placeholder='Dropdown Value' v-if="type === 'NUMBER_SELECT'">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
   </div>
+
 </template>
 
 <script>
-import _ from 'lodash'
+import clone from 'lodash/clone'
 import draggable from 'vuedraggable'
 
 export default {
-  props: ['type', 'value'],
+  props: ['type', 'value', 'label', 'required', 'placeholder', 'help'],
   components: {
     draggable
   },
@@ -94,7 +102,7 @@ export default {
   methods: {
     buildArray () {
       if (this.value && Array.isArray(this.value)) {
-        return _.map(this.value, (v, i) => {
+        return this.value.map((v, i) => {
           return { id: i + 1, value: v }
         })
       } else if (this.type === 'TEXT_SELECT') {
@@ -114,7 +122,7 @@ export default {
     },
     submitEditing (editing) {
       if (editing.id) {
-        this.myArray = _.map(this.myArray, (el) => {
+        this.myArray = this.myArray.map((el) => {
           if (editing.id === el.id) {
             return editing
           } else {
@@ -133,14 +141,14 @@ export default {
       this.editing = { id: null, value: '' }
     },
     editOption (element) {
-      this.editing = _.clone(element)
+      this.editing = clone(element)
     },
     destroyOption (element) {
-      this.myArray = _.filter(this.myArray, (el) => { return el.id !== element.id })
+      this.myArray = this.myArray.filter(el => el.id !== element.id)
       this.updateValue()
     },
     updateValue () {
-      this.$emit('input', _.map(this.myArray, (el) => { return el.value }))
+      this.$emit('input', this.myArray.map(el => el.value))
     }
   },
   computed: {

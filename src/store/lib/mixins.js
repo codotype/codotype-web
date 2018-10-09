@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import cloneDeep from 'lodash/cloneDeep'
 
 // // // //
 // Adds a Collection to a Vuex module
@@ -31,7 +31,7 @@ export const COLLECTION_STATE = {
 
 export const SELECT_MODEL_ACTIONS = {
   selectModel: ({ commit, state }, model_id) => {
-    let model = _.find(state.collection, { _id: model_id })
+    let model = state.collection.find(m => m._id === model_id)
     commit('selectedModel', model)
   },
   clearSelected: ({ commit }) => {
@@ -59,8 +59,8 @@ export const SELECT_MODEL_STATE = {
 // NEW_MODEL mixins
 
 export const NEW_MODEL_ACTIONS = {
-  resetNewModel: ({ commit }) => {
-    return commit('newModel', {})
+  resetNewModel: ({ commit, state }) => {
+    return commit('newModel', cloneDeep(state.defaultNewModel))
   }
 }
 
@@ -77,7 +77,8 @@ export const NEW_MODEL_MUTATIONS = {
 }
 
 export const NEW_MODEL_STATE = {
-  newModel: {}
+  newModel: {},
+  defaultNewModel: {}
 }
 
 // // // //
@@ -85,7 +86,7 @@ export const NEW_MODEL_STATE = {
 
 export const EDIT_MODEL_ACTIONS = {
   selectEditModel: ({ commit }, model) => {
-    return commit('editModel', _.cloneDeep(model))
+    return commit('editModel', cloneDeep(model))
   },
   clearEditModel: ({ commit }) => {
     return commit('editModel', {})

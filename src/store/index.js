@@ -1,28 +1,30 @@
 import createPersistedState from 'vuex-persistedstate'
-import Vue from 'vue'
 import Vuex from 'vuex'
 
-import project from './project'
-import schema from './schema'
-import attribute from './attribute'
-import record from './record'
-import notification from './notification'
-import generator from './generator'
+import project from '@/modules/project/store'
+import schema from '@/modules/schema/store'
+import attribute from '@/modules/attribute/store'
+import relation from '@/modules/relation/store'
+import notification from '@/modules/notification/store'
+import generator from '@/modules/generator/store'
+import addon from '@/modules/addon/store'
+import tour from '@/modules/tour/store'
+import option from '@/modules/option/store'
+import build from '@/modules/build/store'
+// import record from '@/modules/record/store'
 
-// Vuex Initialization
-// TODO - should this be done elsewhere?
-Vue.use(Vuex)
-
-// A Vuex instance is created by combining the state, mutations, actions,
-// and getters.
 export default new Vuex.Store({
   modules: {
     notification,
     project,
     schema,
     attribute,
-    record,
-    generator
+    relation,
+    generator,
+    addon,
+    tour,
+    option,
+    build
   },
   plugins: [createPersistedState()]
 })

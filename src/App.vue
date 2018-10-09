@@ -1,42 +1,43 @@
-
 <template>
   <div id="app">
-    <AppNavbar/>
-    <Notification/>
-    <!-- <AppBreadcrumbs/> -->
-    <br>
-    <router-view/>
-    <!-- <AppFooter/> -->
+    <Navbar/>
+    <Notifications/>
+    <div class="container">
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <router-view/>
+      <br/>
+      <br/>
+      <br/>
+    </div>
+    <AppFooter/>
   </div>
 </template>
 
 <script>
-import AppNavbar from '@/components/AppNavbar'
-import AppBreadcrumbs from '@/containers/app_breadcrumbs'
-import AppFooter from '@/components/AppFooter'
-import Notification from '@/containers/app_notification'
+import Navbar from '@/components/Navbar'
+import AppFooter from '@/components/Footer'
+import Notifications from '@/modules/notification/components/Notifications'
 
 export default {
   name: 'app',
 
-  // Top-Level Application Components
   components: {
-    AppNavbar,
-    AppBreadcrumbs,
+    Navbar,
     AppFooter,
-    Notification
+    Notifications
   },
 
   created () {
-    // NOTE- this is a temporary fix until the project/show container
-    // is restructured into project/generate && project/edit
-    this.$store.dispatch('generator/setActivated', false)
+    this.$store.dispatch('generator/fetchCollection')
   },
 
   // Top-Level page Meta
   metaInfo: {
-    title: 'Loading...', // set a title
-    titleTemplate: 'blazeplate.io - %s', // title is now "blazeplate.io - Loading..."
+    title: 'Loading...',
+    titleTemplate: 'codotype.io - %s',
     htmlAttrs: {
       lang: 'en'
     }
