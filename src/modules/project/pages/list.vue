@@ -11,12 +11,12 @@
     <b-col lg=12>
       <div class="row">
         <div class="col-lg-7">
-          <h2 class='text-muted'>
+          <h4 class='text-muted'>
             <span id="app-list">
               <i class="fas fa-drafting-compass"></i>
               Blueprints
             </span>
-          </h2>
+          </h4>
           <small class="text-muted">Blueprints encapsulate metadata about models, attributes, and associations that describe your project</small>
 
         </div>
@@ -51,7 +51,7 @@
     </b-col>
 
     <!-- Project List -->
-    <b-col lg=12 class='mt-4'>
+    <b-col lg=12 class='mt-3'>
       <ListView :collection="collection" />
     </b-col>
 
