@@ -27,7 +27,7 @@
 
           <!-- Empty -->
           <div class="col-lg-4 mb-4" v-if="!collection[0]">
-            <div class="card card-body border-warning bg-transparent text-warning h-100 d-flex align-items-center justify-content-center shadow-hover text-center">
+            <div class="card card-body border-warning bg-transparent text-warning h-100 d-flex align-items-center justify-content-center text-center">
               <div class="row">
                 <div class="col-lg-12">
                   <p class="lead card-text">
@@ -50,11 +50,16 @@
 
     <div class="col-lg-12">
       <hr>
-      <p class="lead text-muted">Example Blueprints</p>
+      <h4 class="text-muted">
+        <i class="fas fa-map-signs"></i>
+        Example Blueprints
+      </h4>
+      <small class="text-muted">Not sure where to start? Clone an Example Blueprint you can grasp understand and make some modifications from there</small>
+
     </div>
 
     <!-- Example Blueprints -->
-    <div class="col-lg-12">
+    <div class="col-lg-12 mt-3">
       <div class="row">
         <ExampleListItem v-for="project in exampleCollection" v-bind:key="project._id" :project="project" />
       </div>

@@ -1,7 +1,19 @@
 <template>
   <div class='col-lg-4 mb-4'>
-    <div class="card card-body bg-transparent border-primary text-primary shadow-hover">
-      <div class="row align-items-center">
+    <div class="card card-body bg-transparent border-primary shadow-hover">
+
+      <!-- Bootstrap Modal Component -->
+      <b-modal :id="'modal_' + project._id"
+        :title="'Clone ' + project.label + '?'"
+        @ok="cloneExample(project)"
+        ok-variant='info'
+        ok-title='Clone'
+        cancel-title='Cancel'
+        >
+        <p class="text-left">Are you sure you want to clone the {{ project.label }} Blueprint?</p>
+      </b-modal>
+
+      <div class="row align-items-center text-primary">
 
         <div class="col-lg-12 text-center">
           <p class="lead mb-0">
@@ -28,16 +40,6 @@
             <i class="fa fa-copy text-primary fa-fw"></i>
           </span>
 
-          <!-- Bootstrap Modal Component -->
-          <b-modal :id="'modal_' + project._id"
-            :title="'Clone ' + project.label + '?'"
-            @ok="cloneExample(project)"
-            ok-variant='info'
-            ok-title='Clone'
-            cancel-title='Cancel'
-          >
-            <p class="text-left">Are you sure you want to clone the {{ project.label }} project?</p>
-          </b-modal>
 
         </div>
 
