@@ -1,8 +1,9 @@
+import axios from 'axios'
 import cloneDeep from 'lodash/cloneDeep'
 import { NEW_MODEL_ACTIONS } from '@/store/lib/mixins'
 import { DEFAULT_BUILD_STAGE } from './constants'
 const GENERATE_ROUTE = '/api/generate'
-const DownloadFile = require('downloadjs')
+// const DownloadFile = require('downloadjs')
 
 export default {
   ...NEW_MODEL_ACTIONS,
@@ -90,33 +91,26 @@ export default {
   generate: ({ rootGetters, state, commit }) => {
     // Pulls requisite data from state
     const { stages } = state.newModel
-    const app = rootGetters['project/selectedModel']
+    const blueprint = rootGetters['project/selectedModel']
 
     // Defines build object to send to the server
-    let build = { app, stages }
+    let build = { blueprint, stages }
 
     // Sets `state.fetching` to `true`
     commit('fetching', true)
 
-    // Generates the app and downloads the response
-    return fetch(GENERATE_ROUTE, {
-      method: 'post',
-      body: JSON.stringify({ build }),
-      headers: new Headers({ 'Content-Type': 'application/json' })
+    // Generates the code and downloads the response
+    return axios.post(GENERATE_ROUTE, { build })
+    .then(({ data }) => {
+      console.log(data)
+      // console.log(data.download_url)
+      window.open(data.download_url)
     })
-    .then((response) => { return response.blob() })
-    .catch((err) => {
-      commit('fetching', false)
-      console.log('ERR ERR')
-      throw err
-      // return reject(err)
+    .catch((error) => {
+      console.log(error)
+      // TODO - handle error here
     })
-    .then((blob) => {
-      commit('fetching', false)
-      // console.log('GENERATED')
-      // console.log(blob)
-      DownloadFile(blob, `${app.identifier}_codotype.zip`, 'application/zip')
-    })
+    // DownloadFile(blob, `${blueprint.identifier}_codotype.zip`, 'application/zip')
   }
 
 }

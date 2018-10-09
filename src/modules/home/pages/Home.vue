@@ -48,10 +48,10 @@
 
       <div class="row mt-4 mb-4 justify-content-center">
         <div class="col-lg-4">
-          <router-link to="/generators" class="btn btn-primary btn-block btn-lg">
-            <i class="fa fa-list-alt mr-2"></i>
-            <!-- Let's get started. -->
-            More Generators
+          <router-link to="/blueprints" class="btn btn-primary btn-block btn-lg">
+            <i class="fas fa-drafting-compass mr-2"></i>
+            Let's get started
+            <!-- More Generators -->
           </router-link>
         </div>
       </div>

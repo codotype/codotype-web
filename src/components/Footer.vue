@@ -14,8 +14,9 @@
         <!-- <b-nav-item to="#/generator_new">New Generator</b-nav-item> -->
 
         <b-nav-item href="http://codotype.io" target='_blank'>
-          <i class="far fa-copyright"></i>
+          <!-- <i class="far fa-copyright"></i> -->
           Codotype
+          2018
         </b-nav-item>
 
         <b-nav-item to="/about">
