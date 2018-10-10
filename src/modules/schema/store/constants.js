@@ -34,9 +34,9 @@ export const RELATION_TYPES = [
 
   // Newer relation types
   // { id: 'ONE_TO_ONE', text: 'One to One', desc: 'One to One description here...' },
-  { id: 'BELONGS_TO', label: 'Belongs To', description: 'Many to One description here...' },
-  { id: 'HAS_ONE', label: 'Has One', description: 'One to One description here...' },
-  { id: 'HAS_MANY', label: 'Has Many', description: 'one to many description here...' }
+  { id: 'BELONGS_TO', label: 'Belongs To', description: 'A two-way association to a single model' },
+  { id: 'HAS_ONE', label: 'Has One', description: 'A one-way association to a single model' },
+  { id: 'HAS_MANY', label: 'Has Many', description: 'A one-way association to many models' }
 
   // { id: 'MANY_TO_MANY', text: 'Many to Many', desc: 'Many to Many description here...' },
 
