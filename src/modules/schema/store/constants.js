@@ -23,30 +23,16 @@ export const DEFAULT_SCHEMA = {
   ]
 }
 
+// TODO - these should be abstracted into @codotype/util
 export const RELATION_TYPES = [
-
-  // { id: 'HAS_ONE', text: 'Has One', desc: 'one to one' },
-  // { id: 'BELONGS_TO', text: 'Belongs To', desc: 'many to one' },
-  // { id: 'HAS_MANY', text: 'Has Many', desc: 'one to many' },
-  // { id: 'HAS_AND_BELONGS_TO_MANY', text: 'Many to Many', desc: 'many to many' }
-
-  // // // //
-
-  // Newer relation types
-  // { id: 'ONE_TO_ONE', text: 'One to One', desc: 'One to One description here...' },
   { id: 'BELONGS_TO', label: 'Belongs To', description: 'A two-way association to a single model' },
   { id: 'HAS_ONE', label: 'Has One', description: 'A one-way association to a single model' },
   { id: 'HAS_MANY', label: 'Has Many', description: 'A one-way association to many models' }
-
-  // { id: 'MANY_TO_MANY', text: 'Many to Many', desc: 'Many to Many description here...' },
-
-  // { id: 'ONE_TO_MANY', text: 'One to Many', desc: 'One to Many description here...' },
-  // { id: 'BELONGS_TO_MANY', text: 'Has Many', desc: 'one to many description here...' },
-  // { id: 'BELONGS_TO', text: 'Belongs To', desc: 'one to many description here...' }
 ]
 
 // Datattype IDs
 // TODO - these are duplicated in the Option store
+// TODO - these should be abstracted into @codotype/util
 export const TEXT = 'TEXT'
 export const STRING_ARRAY = 'STRING_ARRAY'
 export const NUMBER = 'NUMBER'
@@ -57,6 +43,7 @@ export const DATETIME = 'DATETIME'
 export const COLOR = 'COLOR'
 // export const RELATION = 'RELATION'
 
+// TODO - these should be abstracted into @codotype/util
 export const DATATYPES = [
   { value: TEXT, text: 'String', icon: 'fa fa-quote-left' },
   { value: NUMBER, text: 'Number', icon: 'fa fa-hashtag' },

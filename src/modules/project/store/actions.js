@@ -99,7 +99,6 @@ export default {
     // Resets project, schema, and attribute IDs
     let projectModel = cloneDeep(example)
     projectModel._id = null
-    projectModel.label = projectModel.label + ' Clone'
 
     // Adds to the project collection
     dispatch('persist', { record: projectModel })
