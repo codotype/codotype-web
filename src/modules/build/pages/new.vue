@@ -52,7 +52,7 @@
         Cancel
       </button>
 
-      <button class="btn btn-primary btn-lg btn-block mb-3" v-else @click="showChoosingGenerator(true)">
+      <button class="btn btn-primary btn-lg btn-block mb-3 mt-2" v-else @click="showChoosingGenerator(true)">
         <i class="fa fa-plus"></i>
         Add Generator
       </button>
@@ -69,12 +69,12 @@
           Generators
         </div>
         <ul class="list-group list-group-flush">
-          <template v-if="newBuildModel.stages[0]" v-for="each in newBuildModel.stages">
-            <li class="list-group-item list-group-item-action list-group-item-primary" v-if="each.generator_id === selectedGenerator.id">
-              {{ each.generator_id }}
+          <template v-if="newBuildModel.stages[0]" v-for="each in stageGenerators">
+            <li class="list-group-item list-group-item-action list-group-item-primary" v-if="each.id === selectedGenerator.id">
+              {{ each.label }}
             </li>
-            <li class="list-group-item list-group-item-action" @click="selectGeneratorModel(each.generator_id)" v-else>
-              {{ each.generator_id }}
+            <li class="list-group-item list-group-item-action" @click="selectGeneratorModel(each.id)" v-else>
+              {{ each.label }}
             </li>
           </template>
 
@@ -199,16 +199,24 @@ export default {
   destroyed () {
     // this.resetNewBuildModel()
   },
-  computed: mapGetters({
-    newBuildModel: 'build/newModel',
-    schemas: 'schema/collection',
-    fetching: 'generator/fetching',
-    generatorCollection: 'generator/collection',
-    selectedGenerator: 'generator/selectedModel',
-    selectedApp: 'project/selectedModel',
-    showSidebar: 'build/showSidebar',
-    choosingGenerator: 'build/choosingGenerator'
-  }),
+  computed: {
+    ...mapGetters({
+      newBuildModel: 'build/newModel',
+      schemas: 'schema/collection',
+      fetching: 'generator/fetching',
+      generatorCollection: 'generator/collection',
+      selectedGenerator: 'generator/selectedModel',
+      selectedApp: 'project/selectedModel',
+      showSidebar: 'build/showSidebar',
+      choosingGenerator: 'build/choosingGenerator'
+    }),
+    stageGenerators () {
+      let generatorIds = this.newBuildModel.stages.map(s => s.generator_id)
+      return this.generatorCollection.filter((g) => {
+        return generatorIds.includes(g.id)
+      })
+    }
+  },
   methods: {
     ...mapActions({
       resetNewBuildModel: 'build/resetNewModel',

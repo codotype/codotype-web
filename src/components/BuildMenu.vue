@@ -11,16 +11,16 @@
         <b-nav-item id="project-header">{{ project.label }} Blueprint</b-nav-item>
       </b-navbar-nav>
 
-      <router-link class="py-0" id="project-edit-button" v-b-tooltip.hover.right title='Edit Blueprint' :to="'/blueprints/' + project._id">
-        <i class="fa fa-pencil-alt"></i>
-      </router-link>
+      <!-- <router-link class="py-0" id="project-edit-button" v-b-tooltip.hover.right title='Edit Blueprint' :to="'/blueprints/' + project._id"> -->
+        <!-- <i class="fa fa-pencil-alt"></i> -->
+      <!-- </router-link> -->
 
       <b-navbar-nav class="ml-auto">
 
         <!-- <b-nav-item> -->
           <!-- <HelpButton :tour="tourSteps" /> -->
         <!-- </b-nav-item> -->
-        
+
         <b-nav-item>
           <b-button
             :to="'/blueprints/' + project._id"
