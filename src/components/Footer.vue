@@ -15,7 +15,7 @@
 
         <b-nav-item to="/about">
           <!-- <i class="far fa-copyright"></i> -->
-          <i class="far fa-fw fa-question-circle mr-1"></i>
+          <i class="fa fa-lg fa-fw fa-question-circle mr-1"></i>
           About
           <!-- Codotype -->
           <!-- 2018 -->
@@ -31,6 +31,11 @@
           Twitter
         </b-nav-item>
 
+        <b-nav-item href="mailto:codotype.io@gmail.com">
+          <i class="far fa-lg fa-fw fa-envelope text-success mr-1"></i>
+          Email
+        </b-nav-item>
+
         <!-- <b-nav-item to="/build/new">Terms</b-nav-item> -->
         <!-- <b-nav-item to="/build/new">Privacy</b-nav-item> -->
         <!-- <b-nav-item to="/build/new">Help</b-nav-item> -->
@@ -40,12 +45,12 @@
       <b-navbar-nav class="ml-auto">
 
         <b-nav-item target='_blank' href="https://goo.gl/forms/uhCLfol3SlAUwt2p1">
-          <i class="far fa-comment-alt text-primary mr-1"></i>
+          <i class="far fa-lg fa-comment-alt text-primary mr-1"></i>
           Feedback
         </b-nav-item>
 
         <b-nav-item target="_blank" href="https://codotype.github.io">
-          <i class="fa fa-book text-warning mr-1"></i>
+          <i class="fa fa-lg fa-book text-warning mr-1"></i>
           Documentation
         </b-nav-item>
 
