@@ -3,7 +3,7 @@
 export const DEFAULT_RELATION = {
   id: null,
   order: 0,
-  type: 'MANY_TO_ONE', // Moved from datatypeOptions.relationType
+  type: 'BELONGS_TO', // Moved from datatypeOptions.relationType
   required: false,
   // QUESTION - add schema id here?
   generate_reverse: true,

@@ -183,7 +183,7 @@ import { inflateMeta } from '@codotype/util/lib/inflateMeta'
 
 export default {
   props: ['schema', 'model'],
-  mounted () {
+  created () {
     this.model.type = 'BELONGS_TO' // TODO - constantize
     const relatedSchema = this.$store.getters['schema/collection'].find(m => m._id !== this.schema._id)
     this.model.related_schema_id = relatedSchema ? relatedSchema._id : this.schema._id
