@@ -33,18 +33,18 @@
       <!-- </ul> -->
 
       <!-- <p class='lead mb-0'>App</p> -->
-      <ul class="list-group">
-        <li class="list-group-item list-group-item-action" v-if="newBuildModel.app_id">
-          <i class="fa fa-database"></i>
-          {{ selectedApp.label }}
-        </li>
-        <li class="list-group-item list-group-item-warning text-center" v-else>
-          <i class="fa fa-warning"></i>
-          No app selected
-        </li>
-      </ul>
+      <!-- <ul class="list-group"> -->
+        <!-- <li class="list-group-item list-group-item-action" v-if="newBuildModel.app_id"> -->
+          <!-- <i class="fa fa-database"></i> -->
+          <!-- {{ selectedApp.label }} -->
+        <!-- </li> -->
+        <!-- <li class="list-group-item list-group-item-warning text-center" v-else> -->
+          <!-- <i class="fa fa-warning"></i> -->
+          <!-- No app selected -->
+        <!-- </li> -->
+      <!-- </ul> -->
 
-      <br>
+      <!-- <br> -->
       <!-- <hr> -->
 
       <button class="btn btn-outline-secondary btn-lg btn-block mb-3" v-if="choosingGenerator" @click="showChoosingGenerator(false)">
@@ -57,10 +57,10 @@
         Add Generator
       </button>
 
-      <button class="btn btn-success btn-lg btn-block mb-3" @click="generateCodebase()">
-        <i class="fa fa-check"></i>
-        Generate
-      </button>
+      <!-- <button class="btn btn-success btn-lg btn-block mb-3" @click="generateCodebase()"> -->
+        <!-- <i class="fa fa-check"></i> -->
+        <!-- Generate -->
+      <!-- </button> -->
 
       <div class="card">
         <!-- <p class='lead mb-0'>App</p> -->
@@ -188,8 +188,16 @@ export default {
       showingApp: false
     }
   },
-  destroyed () {
+  props: ['project_id'],
+  created () {
+    console.log(this.project_id)
     this.resetNewBuildModel()
+  },
+  mounted () {
+    this.selectApp(this.project_id)
+  },
+  destroyed () {
+    // this.resetNewBuildModel()
   },
   computed: mapGetters({
     newBuildModel: 'build/newModel',
@@ -205,7 +213,8 @@ export default {
     ...mapActions({
       resetNewBuildModel: 'build/resetNewModel',
       selectGeneratorModel: 'generator/selectModel',
-      generateCodebase: 'build/generate'
+      generateCodebase: 'build/generate',
+      selectApp: 'build/selectApp'
     }),
     ...mapMutations({
       showChoosingGenerator: 'build/choosingGenerator'

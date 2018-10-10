@@ -12,7 +12,8 @@ export default {
     const newModel = cloneDeep(state.newModel)
     newModel.app_id = app_id
     commit('newModel', newModel)
-
+    console.log('SELECTED BLUEPRINT??')
+    console.log(app_id)
     // sets project.state.selectedModel
     dispatch('project/selectModel', app_id, { root: true })
   },
