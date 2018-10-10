@@ -13,15 +13,22 @@
         <!-- <b-nav-item to="/generators">Generators</b-nav-item> -->
         <!-- <b-nav-item to="#/generator_new">New Generator</b-nav-item> -->
 
-        <b-nav-item href="http://codotype.io" target='_blank'>
+        <b-nav-item to="/about">
           <!-- <i class="far fa-copyright"></i> -->
-          Codotype
-          2018
+          <i class="far fa-fw fa-question-circle mr-1"></i>
+          About
+          <!-- Codotype -->
+          <!-- 2018 -->
         </b-nav-item>
 
-        <b-nav-item to="/about">
-          <!-- <i class="fas fa-fw fa-question-circle"></i> -->
-          About
+        <b-nav-item target="_blank" href="https://github.com/codotype">
+          <i class="fab fa-lg fa-fw fa-github text-dark mr-1"></i>
+          GitHub
+        </b-nav-item>
+
+        <b-nav-item target="_blank" href="https://twitter.com/codotype">
+          <i class="fab fa-lg fa-fw fa-twitter text-primary mr-1"></i>
+          Twitter
         </b-nav-item>
 
         <!-- <b-nav-item to="/build/new">Terms</b-nav-item> -->
@@ -32,7 +39,7 @@
 
       <b-navbar-nav class="ml-auto">
 
-        <b-nav-item href="https://goo.gl/forms/uhCLfol3SlAUwt2p1" target='_blank'>
+        <b-nav-item target='_blank' href="https://goo.gl/forms/uhCLfol3SlAUwt2p1">
           <i class="far fa-comment-alt text-primary mr-1"></i>
           Feedback
         </b-nav-item>
