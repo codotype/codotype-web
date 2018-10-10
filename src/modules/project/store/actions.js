@@ -14,9 +14,13 @@ const DownloadFile = require('downloadjs')
 export default {
   ...SELECT_MODEL_ACTIONS,
   selectModel: ({ commit, state }, model_id) => {
+    console.log('SELECT MODEL???')
+    console.log(model_id)
     if (!model_id) return
     let model = state.collection.find(m => m._id === model_id)
     commit('selectedModel', model)
+
+    console.log(model)
     commit('schema/collection', model.schemas, { root: true })
     commit('schema/selectedModel', model.schemas[0], { root: true })
     // commit('record/collection', model.seeds, { root: true })
@@ -95,7 +99,6 @@ export default {
     // Resets project, schema, and attribute IDs
     let projectModel = cloneDeep(example)
     projectModel._id = null
-    projectModel.label = projectModel.label + ' copy'
 
     // Adds to the project collection
     dispatch('persist', { record: projectModel })

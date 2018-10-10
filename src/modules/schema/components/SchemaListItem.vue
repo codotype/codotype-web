@@ -17,10 +17,10 @@
           {{ schema.attributes.length }}
         </span>
 
-        <span class="badge badge-dark" v-b-tooltip.hover.right :title="schema.relations.length + (schema.relations.length === 1 ? ' Relation' : ' Relations')">
-          <i class="fa fa-link mr-1"></i>
-          {{ schema.relations.length }}
-        </span>
+        <!-- <span class="badge badge-dark" v-b-tooltip.hover.right :title="schema.relations.length + (schema.relations.length === 1 ? ' Relation' : ' Relations')"> -->
+          <!-- <i class="fa fa-link mr-1"></i> -->
+          <!-- {{ schema.relations.length }} -->
+        <!-- </span> -->
       </div>
 
     </div>

@@ -12,7 +12,7 @@
       <div class="row">
         <div class="col-lg-7">
           <h4 class='text-muted'>
-            <span id="app-list">
+            <span id="blueprint-header">
               <i class="fas fa-drafting-compass"></i>
               Blueprints
             </span>
@@ -23,21 +23,19 @@
 
         <div class="col-lg-5 text-right">
 
-          <HelpButton :tour="tourSteps"/>
+          <HelpButton :tour="tourSteps" size="lg" />
 
           <!-- <a class='btn btn-lg btn-outline-info' href="#/blueprints/examples"> -->
             <!-- <i class="fa fa-fw fa-folder-open-o mr-2"></i> -->
             <!-- Example Apps -->
           <!-- </a> -->
 
-          <!-- <button class='btn btn-lg btn-primary ml-2' id="app-new-button" v-b-modal="'new-project-modal'" v-if="collection.length < 2"> -->
-
           <!-- <button class='btn btn-lg btn-primary ml-2' v-b-modal="'new-project-modal'" v-if="true"> -->
             <!-- <i class="fa fa-fw fa-plus"></i> -->
             <!-- New Blueprint -->
           <!-- </button> -->
 
-          <!-- <button v-b-tooltip.hover.left title='Create unlimited Blueprints when you register' class='btn btn-lg btn-primary ml-2' id="app-new-button" v-else> -->
+          <!-- <button v-b-tooltip.hover.left title='Create unlimited Blueprints when you register' class='btn btn-lg btn-primary ml-2' v-else> -->
             <!-- <i class="fa fa-fw fa-plus"></i> -->
             <!-- New Blueprint -->
           <!-- </button> -->

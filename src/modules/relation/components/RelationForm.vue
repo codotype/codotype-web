@@ -35,7 +35,11 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="btn-group w-100">
-                <button :class="relation.id === model.type ? 'btn btn-outline-primary active' : 'btn btn-outline-primary'" v-for="relation in relationTypes" @click="model.type = relation.id">
+                <button
+                  :class="relation.id === model.type ? 'btn btn-outline-primary active' : 'btn btn-outline-primary'"
+                  v-for="relation in relationTypes"
+                  @click="setRelationType(relation.id)"
+                >
                   <img class='relation-thumbnail' :src="'/static/' + relation.id.toLowerCase() + '.svg'"/>
                 </button>
               </div>
@@ -92,36 +96,16 @@
           </small>
 
           <small v-if="model.type === 'BELONGS_TO'">
-            Each <span class='text-warning'>{{ schema.label }}</span> references one <span class='text-info'>{{ selectedRelatedSchema.label }}</span>
+            Each <span class='text-info'>{{ schema.label }}</span> references one <span class='text-warning'>{{ selectedRelatedSchema.label }}</span>
           </small>
 
           <small v-if="model.type === 'HAS_MANY'">
             Each <span class='text-info'>{{ schema.label }}</span> references many <span class='text-warning'>{{ selectedRelatedSchema.label_plural }}</span>
           </small>
 
-          <small v-if="model.type === 'MANY_TO_MANY'">
-            One <span class='text-info'>{{ schema.label }}</span> HAS MANY <span class='text-warning'>{{ selectedRelatedSchema.label_plural }}</span>
-          </small>
-
-          <small v-if="model.type === 'BELONGS_TO_MANY'">
-            Many <span class='text-info'>{{ schema.label_plural }}</span> are referenced by one <span class='text-warning'>{{ selectedRelatedSchema.label }}</span>
-          </small>
-
-
-          <small v-if="model.type === 'ONE_TO_MANY'">
-            One <span class='text-info'>{{ schema.label }}</span> is referenced by many <span class='text-warning'>{{ selectedRelatedSchema.label_plural }}</span>
-          </small>
-
         </div>
 
         <div class="col-lg-6 text-center" v-if="selectedRelatedSchema">
-          <!-- <small v-if="model.type === 'MANY_TO_MANY'"> -->
-            <!-- One <span class='text-warning'>{{ selectedRelatedSchema.label }}</span> HAS MANY <span class='text-info'>{{ schema.label_plural }}</span> -->
-          <!-- </small> -->
-
-          <!-- <small v-if="model.type === 'BELONGS_TO_MANY'"> -->
-            <!-- One <span class='text-warning'>{{ selectedRelatedSchema.label }}</span> HAS MANY <span class='text-info'>{{ schema.label_plural }}</span> -->
-          <!-- </small> -->
 
           <small v-if="model.type === 'HAS_MANY'">
             Many <span class='text-warning'>{{ selectedRelatedSchema.label_plural }}</span> are referenced by one <span class='text-info'>{{ schema.label }}</span>
@@ -131,12 +115,8 @@
             One <span class='text-warning'>{{ selectedRelatedSchema.label }}</span> is referenced by one <span class='text-info'>{{ schema.label }}</span>
           </small>
 
-          <!-- <small v-if="model.type === 'ONE_TO_MANY'"> -->
-            <!-- Each <span class='text-warning'>{{ selectedRelatedSchema.label }}</span> references one <span class='text-info'>{{ schema.label }}</span> -->
-          <!-- </small> -->
-
           <small v-if="model.type === 'BELONGS_TO'">
-            One <span class='text-info'>{{ selectedRelatedSchema.label }}</span> is referenced by many <span class='text-warning'>{{ schema.label_plural }}</span>
+            One <span class='text-warning'>{{ selectedRelatedSchema.label }}</span> is referenced by many <span class='text-info'>{{ schema.label_plural }}</span>
           </small>
 
         </div>
@@ -161,7 +141,7 @@
         <div class="col-lg-6">
           <div class="form-group">
             <label>Alias</label>
-            <small class="form-text text-muted">Alias this relation under a different name.</small>
+            <small class="form-text text-muted">Alias this relation under a different singlar, title-cased noun</small>
             <input type="text" class='form-control' v-model="model.as">
           </div>
         </div>
@@ -174,8 +154,17 @@
 
         <div class="col-lg-6">
           <div class="form-group">
-            <label>Reverse Alias</label>
-            <small class="form-text text-muted">Reverse Alias</small>
+            <label>
+              Reverse Alias
+              <i
+                class="fa fa-question-circle"
+                v-b-tooltip.hover.right
+                title="NOTE - only available with 'Belongs To' relations"
+              ></i>
+            </label>
+            <!-- help="The singlar, title-cased noun that describes your model" -->
+            <!-- example="Example: 'User Role' or 'Blog Post'" -->
+            <small class="form-text text-muted">Alias the reverse reference under a singular, title-cased noun</small>
             <input type="text" class='form-control' :disabled="model.type !== 'BELONGS_TO'" v-model="model.reverse_as">
           </div>
         </div>
@@ -194,10 +183,16 @@ import { inflateMeta } from '@codotype/util/lib/inflateMeta'
 
 export default {
   props: ['schema', 'model'],
-  mounted () {
+  created () {
     this.model.type = 'BELONGS_TO' // TODO - constantize
     const relatedSchema = this.$store.getters['schema/collection'].find(m => m._id !== this.schema._id)
     this.model.related_schema_id = relatedSchema ? relatedSchema._id : this.schema._id
+  },
+  methods: {
+    setRelationType (relationId) {
+      this.model.type = relationId
+      if (relationId !== 'BELONGS_TO') { this.model.reverse_as = '' }
+    }
   },
   computed: {
     ...mapGetters({
@@ -255,7 +250,8 @@ export default {
       if (this.model.type === 'ONE_TO_MANY') {
         proto[relatedMeta.identifier + '_id'] = schemaIdentifier + '_001'
       } else if (this.model.type === 'BELONGS_TO') {
-        proto['getRelated' + relatedMeta.class_name_plural] = 'method'
+        // proto['getRelated' + relatedMeta.class_name_plural] = 'This method returns ' + relatedMeta.class_name_plural + '.where({' + schemaIdentifier + '_id: ' + schemaIdentifier + '_001 })'
+        proto['getRelated' + relatedMeta.class_name_plural] = relatedMeta.class_name + '.find({' + identifier + '_id: ' + identifier + '_001 })'
       } else if (this.model.type === 'MANY_TO_MANY') {
         proto[relatedMeta.identifier + '_ids'] = [schemaIdentifier + '_001']
       } else if (this.model.type === 'BELONGS_TO_MANY') {

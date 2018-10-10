@@ -7,7 +7,7 @@
       url="https://codotype.github.io"
     />
 
-    <div class="card card-body text-center bg-transparent border-warning text-warning" v-if="!selectedGenerator.global_options[0]">
+    <div class="card card-body text-center bg-transparent border-warning text-warning" v-if="!selectedGenerator.model_options[0]">
       <p class="lead mb-0">No global options exposed by this generator</p>
     </div>
 

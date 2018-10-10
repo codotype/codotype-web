@@ -1,25 +1,25 @@
 export const APP_EDITOR_TOUR = [
-  {
-    element: '#project-header',
-    popover: {
-      title: 'Blueprint',
-      description: 'A blueprint encapsulates a high-level representation of data',
-      position: 'right'
-    }
-  },
-  {
-    element: '#project-edit-button',
-    popover: {
-      title: 'Edit Blueprint',
-      description: 'Click here to edit your blueprint\'s name',
-      position: 'bottom'
-    }
-  },
+  // {
+  //   element: '#project-header',
+  //   popover: {
+  //     title: 'Blueprint',
+  //     description: 'A blueprint encapsulates a high-level representation of data',
+  //     position: 'right'
+  //   }
+  // },
+  // {
+  //   element: '#project-edit-button',
+  //   popover: {
+  //     title: 'Edit Blueprint',
+  //     description: 'Click here to edit your blueprint\'s name',
+  //     position: 'bottom'
+  //   }
+  // },
   {
     element: '#model-list',
     popover: {
       title: 'Models',
-      description: 'Models define the data described by this blueprint.',
+      description: 'Models define the data described by your Blueprint',
       position: 'right'
     }
   },
@@ -35,7 +35,7 @@ export const APP_EDITOR_TOUR = [
     element: '#new-model-button',
     popover: {
       title: 'Add Model',
-      description: 'Click here to add a new Model',
+      description: 'Click here to add a new Model to your Blurprint',
       position: 'right'
     }
   },
@@ -78,15 +78,15 @@ export const APP_EDITOR_TOUR = [
       description: 'Click here to add a new Relation',
       position: 'left'
     }
-  },
-  {
-    element: '#generate-button',
-    popover: {
-      title: 'Generate',
-      description: 'Click here to generate code with this blueprint',
-      position: 'left'
-    }
   }
+  // {
+  //   element: '#generate-button',
+  //   popover: {
+  //     title: 'Generate',
+  //     description: 'Click here to generate code with this blueprint',
+  //     position: 'left'
+  //   }
+  // }
 ]
 
 export const GENERATOR_LIST_TOUR = [
@@ -102,7 +102,7 @@ export const GENERATOR_LIST_TOUR = [
 
 export const APP_LIST_TOUR = [
   {
-    element: '#app-list',
+    element: '#blueprint-header',
     popover: {
       title: 'Blueprints',
       description: 'Blueprints define a collection of data models accepted by a Codotype Generator.',
@@ -113,8 +113,40 @@ export const APP_LIST_TOUR = [
     element: '#app-new-button',
     popover: {
       title: 'New Blueprint',
-      description: 'Click here to define a new Blueprint',
+      description: 'Click here to create a new Blueprint',
       position: 'right'
+    }
+  },
+  {
+    element: '#example-blueprint-header',
+    popover: {
+      title: 'Example Blueprints',
+      description: 'Clone an Example Blueprint as a starting point',
+      position: 'right'
+    }
+  },
+  {
+    element: '#example-blueprint-todo_list',
+    popover: {
+      title: 'ToDo List Example',
+      description: 'Lower complexity - organize Tasks, Lists, & Users.',
+      position: 'top'
+    }
+  },
+  {
+    element: '#example-blueprint-textbook_library',
+    popover: {
+      title: 'Library Example',
+      description: 'Lower complexity - organize Books, Inventory Items, & Users.',
+      position: 'top'
+    }
+  },
+  {
+    element: '#example-blueprint-bitter',
+    popover: {
+      title: 'Tweeter Example',
+      description: 'Medium complexity - Tweets, Favorites, Follows, & Users.',
+      position: 'top'
     }
   }
 ]
