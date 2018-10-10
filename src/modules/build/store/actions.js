@@ -75,10 +75,12 @@ export default {
     return axios.post(GENERATE_ROUTE, { build })
     .then(({ data }) => {
       console.log(data)
+      commit('fetching', false)
       // console.log(data.download_url)
       window.open(data.download_url)
     })
     .catch((error) => {
+      commit('fetching', false)
       console.log(error)
       // TODO - handle error here
     })

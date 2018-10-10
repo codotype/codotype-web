@@ -4,6 +4,9 @@ import { NEW_MODEL_GETTERS } from '@/store/lib/mixins'
 // TODO - add availableGenerators getter
 export default {
   ...NEW_MODEL_GETTERS,
+  fetching: state => {
+    return state.fetching
+  },
   showSidebar: state => {
     if (state.choosingGenerator) return false
     return (state.newModel.app_id && state.newModel.stages[0])

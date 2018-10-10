@@ -12,6 +12,10 @@
   <!-- Show ONLY when a generator and app are selected -->
   <div class="row">
 
+    <div class="col-lg-12" v-if="buildLoading">
+      <LoadingBuild />
+    </div>
+
     <!-- TODO - this should be shown/hidden depending on something different than 'showSidebar' -->
     <!-- <b-col lg=12 v-if="showSidebar"> -->
       <!-- <BuildHeader/> -->
@@ -163,6 +167,7 @@
 <!-- // // // //  -->
 
 <script>
+import LoadingBuild from '@/modules/build/components/LoadingBuild'
 import GeneratorModelOptions from '@/modules/build/components/GeneratorModelOptions'
 import GeneratorGlobalOptions from '@/modules/build/components/GeneratorGlobalOptions'
 import GeneratorAddonForm from '@/modules/build/components/GeneratorAddonForm'
@@ -175,6 +180,7 @@ import marked from 'marked'
 
 export default {
   components: {
+    LoadingBuild,
     GeneratorModelOptions,
     GeneratorGlobalOptions,
     GeneratorAddonForm,
@@ -208,7 +214,8 @@ export default {
       selectedGenerator: 'generator/selectedModel',
       selectedApp: 'project/selectedModel',
       showSidebar: 'build/showSidebar',
-      choosingGenerator: 'build/choosingGenerator'
+      choosingGenerator: 'build/choosingGenerator',
+      buildLoading: 'build/fetching'
     }),
     stageGenerators () {
       let generatorIds = this.newBuildModel.stages.map(s => s.generator_id)
