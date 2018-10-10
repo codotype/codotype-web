@@ -26,12 +26,12 @@
 
         <b-nav-item target="_blank" href="https://github.com/codotype">
           <i class="fab fa-lg fa-fw fa-github text-dark"></i>
-          <!-- GitHub -->
+          GitHub
         </b-nav-item>
 
-        <b-nav-item target="_blank" href="https://twitter.com/codotype">
-          <i class="fab fa-lg fa-fw fa-twitter text-primary"></i>
-        </b-nav-item>
+        <!-- <b-nav-item target="_blank" href="https://twitter.com/codotype"> -->
+          <!-- <i class="fab fa-lg fa-fw fa-twitter text-primary"></i> -->
+        <!-- </b-nav-item> -->
 
         <!-- <b-nav-item to="/auth/register"> -->
           <!-- <i class="fa fa-fw fa-user-plus"></i> -->
