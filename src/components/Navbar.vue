@@ -1,21 +1,27 @@
 <template>
   <BlueprintMenu v-if="showBlueprintMenu"/>
+  <BuildMenu v-else-if="showBuildMenu"/>
   <HomeMenu v-else/>
 </template>
 
 <script>
 import HomeMenu from './HomeMenu'
 import BlueprintMenu from './BlueprintMenu'
+import BuildMenu from './BuildMenu'
 
 export default {
   name: 'Navbar',
   components: {
     HomeMenu,
-    BlueprintMenu
+    BlueprintMenu,
+    BuildMenu
   },
   computed: {
     showBlueprintMenu () {
       return this.$route.name === 'ProjectShow'
+    },
+    showBuildMenu () {
+      return this.$route.name === 'BlueprintGenerate'
     }
   }
 }
