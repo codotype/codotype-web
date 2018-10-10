@@ -39,14 +39,15 @@
         </div>
       </div>
 
-      <div class="row d-flex justify-content-center">
-        <div class="col-lg-12 text-center">
-          <p class="lead text-muted">Choose a generator to get started</p>
-        </div>
-        <GeneratorCard v-for="m in generatorCollection.slice(0, 3)" :model="m" :key="m.id" class='mx-2'/>
-      </div>
+      <!-- <div class="row d-flex justify-content-center"> -->
+        <!-- <div class="col-lg-12 text-center"> -->
+          <!-- <p class="lead text-muted">Choose a generator to get started</p> -->
+        <!-- </div> -->
+        <!-- <GeneratorCard v-for="m in generatorCollection.slice(0, 3)" :model="m" :key="m.id" class='mx-2'/> -->
+      <!-- </div> -->
 
-      <div class="row mt-4 mb-4 justify-content-center">
+      <!-- <div class="row mt-4 mb-4 justify-content-center"> -->
+      <div class="row mt-2 mb-4 justify-content-center">
         <div class="col-lg-4">
           <router-link to="/blueprints" class="btn btn-primary btn-block btn-lg">
             <i class="fas fa-drafting-compass mr-2"></i>
