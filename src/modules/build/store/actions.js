@@ -2,6 +2,7 @@ import axios from 'axios'
 import cloneDeep from 'lodash/cloneDeep'
 import { NEW_MODEL_ACTIONS } from '@/store/lib/mixins'
 import { DEFAULT_BUILD_STAGE } from './constants'
+import buildConfiguration from '@codotype/util/lib/buildConfiguration'
 const GENERATE_ROUTE = '/api/generate'
 // const DownloadFile = require('downloadjs')
 
@@ -32,41 +33,11 @@ export default {
 
     const generatorMeta = rootGetters['generator/collection'].find(g => g.id === generator_id)
 
-    function buildConfiguration (generator, blueprint) {
-      const configuration = {
-        options: {},
-        model_options: {}
-      }
-
-      // Defines global options
-      generator.global_options.forEach((opt) => {
-        configuration.options[opt.identifier] = opt.default_value
-      })
-
-      // Defines model options
-      const defaultModelOptions = {}
-      generator.model_options.forEach((opt) => {
-        defaultModelOptions[opt.identifier] = opt.default_value
-      })
-
-      // Creates an instance of defaultModelOptions in
-      // configuration.model_options for each model in the blueprint
-      blueprint.schemas.forEach((model) => {
-        configuration.model_options[model._id] = cloneDeep(defaultModelOptions)
-      })
-
-      // Returns configuration object
-      console.log(configuration)
-      return configuration
-    }
-
-    // // // //
-
     // Pulls the blueprint to define the build configuration
     const blueprint = rootGetters['project/selectedModel']
 
     // Generates the stage's configuration from the selected generator
-    newStage.configuration = buildConfiguration(generatorMeta, blueprint)
+    newStage.configuration = buildConfiguration({ blueprint: blueprint, generator: generatorMeta })
 
     // Adds the newStage to state.newModel
     const newModel = cloneDeep(state.newModel)
