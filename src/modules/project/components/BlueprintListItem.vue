@@ -19,13 +19,13 @@
 
         <div class="col-lg-12 text-center">
 
+          <router-link :to="'/blueprints/' + project._id + '/generate'" class="mx-1" v-b-tooltip.hover.left title='Generate' @click="goToBuild(project)">
+            <i class="fa fa-code project-action project-action-primary fa-fw"></i>
+          </router-link>
+
           <span class="mx-1" v-b-tooltip.hover.left title='Export' @click="exportApp(project)">
             <i class="fa fa-download project-action project-action-primary fa-fw"></i>
           </span>
-
-          <!-- <span class="mx-1" v-b-tooltip.hover.left title='Share' @click="goToBuild(project)"> -->
-            <!-- <i class="fa fa-share-alt project-action project-action-secondary fa-fw"></i> -->
-          <!-- </span> -->
 
           <span class="mx-1" v-b-tooltip.hover.left title='Duplicate' v-b-modal="'clone_modal_' + project._id">
             <i class="fa fa-copy project-action project-action-success fa-fw"></i>
@@ -76,18 +76,12 @@ import { mapActions } from 'vuex'
 
 export default {
   props: ['project'],
-  methods: {
-    ...mapActions({
-      destroyProject: 'project/destroy',
-      selectBuildApp: 'build/selectApp',
-      exportApp: 'project/exportJson',
-      cloneBlueprint: 'project/clone'
-    }),
-    goToBuild (project) {
-      this.selectBuildApp(project._id)
-      window.location = '#/build/new' // TODO - use vue router
-    }
-  }
+  methods: mapActions({
+    destroyProject: 'project/destroy',
+    selectBuildApp: 'build/selectApp',
+    exportApp: 'project/exportJson',
+    cloneBlueprint: 'project/clone'
+  })
 }
 </script>
 

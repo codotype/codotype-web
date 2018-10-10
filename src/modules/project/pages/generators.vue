@@ -33,7 +33,7 @@ export default {
     onSelect (generator) {
       console.log('SELECTED')
       console.log(generator) // TODO - send this generator and the app to the build module
-      window.location = '#/build/new'
+      // window.location = '#/build/new'
     }
   }
 }
