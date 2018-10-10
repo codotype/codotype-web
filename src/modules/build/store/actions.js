@@ -70,17 +70,20 @@ export default {
 
     // Sets `state.fetching` to `true`
     commit('fetching', true)
+    commit('buildFinished', false)
 
     // Generates the code and downloads the response
     return axios.post(GENERATE_ROUTE, { build })
     .then(({ data }) => {
       console.log(data)
       commit('fetching', false)
+      commit('buildFinished', true)
       // console.log(data.download_url)
       window.open(data.download_url)
     })
     .catch((error) => {
       commit('fetching', false)
+      commit('buildFinished', false)
       console.log(error)
       // TODO - handle error here
     })

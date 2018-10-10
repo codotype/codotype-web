@@ -7,6 +7,9 @@ export default {
   fetching: state => {
     return state.fetching
   },
+  buildFinished: state => {
+    return state.buildFinished
+  },
   showSidebar: state => {
     if (state.choosingGenerator) return false
     return (state.newModel.app_id && state.newModel.stages[0])

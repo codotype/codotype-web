@@ -15,7 +15,7 @@
         <!-- <i class="fa fa-pencil-alt"></i> -->
       <!-- </router-link> -->
 
-      <b-navbar-nav class="ml-auto">
+      <b-navbar-nav class="ml-auto" v-if="!buildLoading && !buildFinished">
 
         <!-- <b-nav-item> -->
           <!-- <HelpButton :tour="tourSteps" /> -->
@@ -64,7 +64,9 @@ export default {
   computed: mapGetters({
     project: 'project/selectedModel',
     tourSteps: 'tour/appEditorSteps',
-    choosingGenerator: 'build/choosingGenerator'
+    choosingGenerator: 'build/choosingGenerator',
+    buildLoading: 'build/fetching',
+    buildFinished: 'build/buildFinished'
   }),
   methods: mapActions({
     exportProject: 'project/exportJson',

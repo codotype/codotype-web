@@ -15,9 +15,22 @@
           :selectMethod="selectGenerator"
           v-if="m.id"
         />
-        <div class="card card-body" v-if="!generators[0]">
-          <p>NO GENERATORS AVAILABLE</p>
+
+        <div class="card card-body text-center" v-if="!generators[0]">
+          <p class="lead mb-0">No Generators available</p>
+          <small class="text-muted my-2">You may be using all available generators in your current build</small>
+
+          <div class="row d-flex justify-content-center mt-2">
+            <div class="col-lg-4">
+              <b-button variant="success" size="lg" @click="$store.commit('build/choosingGenerator', false)">
+                <i class="fa fa-reply mr-1"></i>
+                Back to Build Configuration
+              </b-button>
+            </div>
+          </div>
+
         </div>
+
       </b-card-group>
 
     </b-col>

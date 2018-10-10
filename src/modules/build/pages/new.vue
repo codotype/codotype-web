@@ -7,14 +7,17 @@
   />
    -->
   <!-- <hr> -->
+  <div class="app" v-if="buildLoading || buildFinished">
+    <div class="row">
+      <div class="col-lg-12">
+        <LoadingBuild />
+      </div>
+    </div>
+  </div>
 
   <!-- Step 3 - Configure the generator -->
   <!-- Show ONLY when a generator and app are selected -->
-  <div class="row">
-
-    <div class="col-lg-12" v-if="buildLoading">
-      <LoadingBuild />
-    </div>
+  <div class="row" v-else>
 
     <!-- TODO - this should be shown/hidden depending on something different than 'showSidebar' -->
     <!-- <b-col lg=12 v-if="showSidebar"> -->
@@ -198,6 +201,7 @@ export default {
   created () {
     console.log(this.project_id)
     this.resetNewBuildModel()
+    this.setBuildFinished(false)
   },
   mounted () {
     this.selectApp(this.project_id)
@@ -215,7 +219,8 @@ export default {
       selectedApp: 'project/selectedModel',
       showSidebar: 'build/showSidebar',
       choosingGenerator: 'build/choosingGenerator',
-      buildLoading: 'build/fetching'
+      buildLoading: 'build/fetching',
+      buildFinished: 'build/buildFinished'
     }),
     stageGenerators () {
       let generatorIds = this.newBuildModel.stages.map(s => s.generator_id)
@@ -232,7 +237,8 @@ export default {
       selectApp: 'build/selectApp'
     }),
     ...mapMutations({
-      showChoosingGenerator: 'build/choosingGenerator'
+      showChoosingGenerator: 'build/choosingGenerator',
+      setBuildFinished: 'build/buildFinished'
     }),
     compileMarkdown (markdown) {
       return marked(markdown, { sanitize: true })

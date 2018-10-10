@@ -7,6 +7,9 @@ export default {
   fetching (state, isFetching) {
     state.fetching = isFetching
   },
+  buildFinished (state, finished) {
+    state.buildFinished = finished
+  },
   choosingGenerator (state, choosing) {
     state.choosingGenerator = choosing
   }
