@@ -9,9 +9,7 @@
     <b-collapse is-nav id="nav_collapse">
 
       <b-navbar-nav>
-        <b-nav-item>
-          <strong id="project-header" style='font-weight: 700;'>{{ project.label }}</strong> Blueprint
-        </b-nav-item>
+        <b-nav-item id="project-header">{{ project.label }} Blueprint</b-nav-item>
 
         <b-modal
           id="edit-project"
@@ -25,73 +23,40 @@
           <p class="lead text-danger">TODO - add ProjectForm here</p>
         </b-modal>
 
-        <button class="btn btn-link py-0" id="project-edit-button" v-b-tooltip.hover.right title='Edit App Name' v-b-modal="'edit-project'">
-          <i class="fa fa-pencil-alt"></i>
-        </button>
+        <!-- <button class="btn btn-link py-0" id="project-edit-button" v-b-tooltip.hover.right title='Edit App Name' v-b-modal="'edit-project'"> -->
+          <!-- <i class="fa fa-pencil-alt"></i> -->
+        <!-- </button> -->
 
       </b-navbar-nav>
-
-      <!-- Navbar Links -->
-      <!-- <b-navbar-nav class="m-auto"> -->
-
-        <!-- <button class="btn btn-link active" v-b-tooltip.hover.left title='Edit'> -->
-          <!-- <i class="fa fa-fw fa-columns"></i> -->
-        <!-- </button> -->
-
-        <!-- <button class="btn btn-link" v-b-tooltip.hover.right title='Preview'> -->
-          <!-- <i class="fa fa-fw fa-eye"></i> -->
-        <!-- </button> -->
-
-        <!-- Public links -->
-        <!-- <b-nav-item to="/build/new">Build</b-nav-item> -->
-        <!-- <b-nav-item to="/generators">Generators</b-nav-item> -->
-        <!-- <b-nav-item to="/build/new">Marketplace</b-nav-item> -->
-        <!-- <b-nav-item to="#/examples">Example Apps</b-nav-item> -->
-        <!-- <b-nav-item to="#/generator_new">New Generator</b-nav-item> -->
-      <!-- </b-navbar-nav> -->
 
       <b-navbar-nav class="ml-auto">
 
         <b-nav-item>
-          <HelpButton :tour="tourSteps"/>
+          <HelpButton :tour="tourSteps" />
         </b-nav-item>
 
-        <button class="btn btn-sm btn-outline-primary mr-3" @click="exportProject(project)">
-          <i class="fa fa-fw fa-download"></i>
-          Export
-        </button>
+        <b-nav-item>
+          <b-button
+            variant="outline-primary"
+            @click="exportProject(project)"
+            v-b-tooltip.hover.bottom :title='"Click here to start tour"'
+          >
+            <i class="fa fa-fw fa-download"></i>
+            Export
+          </b-button>
+        </b-nav-item>
 
-        <button id="generate-button" class="btn btn-sm btn-success"  @click="goToBuild()">
-          <i class="fa fa-fw fa-check"></i>
-          Generate App
-        </button>
-
-        <!-- <b-nav-item> -->
-          <!-- <button class="btn btn-link"> -->
-            <!-- <i class="fa fa-user"></i> -->
-            <!-- Username -->
-          <!-- </button> -->
-        <!-- </b-nav-item> -->
-
-        <!-- <b-nav-item target="_blank" href="https://github.com/codotype"> -->
-          <!-- <i class="fa fa-fw fa-graduation-cap"></i> -->
-          <!-- <i class="fa fa-fw fa-book"></i> -->
-          <!-- Documentation -->
-        <!-- </b-nav-item> -->
-
-        <!-- <b-nav-item target="_blank" href="https://github.com/codotype"> -->
-          <!-- <i class="fa fa-fw fa-dollar"></i> -->
-          <!-- Donate -->
-        <!-- </b-nav-item> -->
-
-        <!-- <b-nav-item target="_blank" href="https://github.com/codotype"> -->
-          <!-- <i class="fab fa-lg fa-fw fa-github text-dark"></i> -->
-          <!-- GitHub -->
-        <!-- </b-nav-item> -->
-
-        <!-- <b-nav-item target="_blank" href="https://twitter.com/codotype"> -->
-          <!-- <i class="fab fa-lg fa-fw fa-twitter text-primary"></i> -->
-        <!-- </b-nav-item> -->
+        <b-nav-item>
+          <b-button
+            :to="'/blueprints/' + project._id + '/generate'"
+            id="generate-button"
+            variant="success"
+            v-b-tooltip.hover.bottom :title='"Click here to configure your code generators"'
+          >
+            Build
+            <i class="fa fa-fw fa-chevron-right"></i>
+          </b-button>
+        </b-nav-item>
 
       </b-navbar-nav>
 
@@ -112,15 +77,9 @@ export default {
     project: 'project/selectedModel',
     tourSteps: 'tour/appEditorSteps'
   }),
-  methods: {
-    ...mapActions({
-      exportProject: 'project/exportJson',
-      selectBuildApp: 'build/selectApp'
-    }),
-    goToBuild () {
-      this.selectBuildApp(this.project._id)
-      window.location = '#/build/new' // TODO - use vue router
-    }
-  }
+  methods: mapActions({
+    exportProject: 'project/exportJson',
+    selectBuildApp: 'build/selectApp'
+  })
 }
 </script>

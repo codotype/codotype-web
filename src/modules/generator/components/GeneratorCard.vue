@@ -5,7 +5,7 @@
 
         <div class="col-lg-12 d-flex justify-content-center">
           <p class="lead mb-0">
-            <button @click.prevent="onClick()" class="btn btn-link d-flex align-items-center flex-column" style='text-decoration: none'>
+            <button @click.prevent="selectGenerator(model.id)" class="btn btn-link d-flex align-items-center flex-column" style='text-decoration: none'>
               <i :class="model.icon + ' mb-2'" style="font-size: 4rem"></i>
               {{ model.label }}
             </button>
@@ -64,14 +64,8 @@ export default {
   components: {
     MoreInfoLink
   },
-  methods: {
-    ...mapActions({
-      selectGenerator: 'build/addNewStage'
-    }),
-    onClick () {
-      this.selectGenerator(this.model.id)
-      window.location = '#/build/new'
-    }
-  }
+  methods: mapActions({
+    selectGenerator: 'build/addNewStage'
+  })
 }
 </script>

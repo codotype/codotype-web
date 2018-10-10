@@ -6,8 +6,8 @@
       url="https://codotype.github.io"
     />
 
-    <div class="card card-body" v-for="attr in selectedGenerator.global_options">
-      <OptionFormItem :model="attr" />
+    <div class="card card-body mt-2" v-for="attr in selectedGenerator.global_options">
+      <OptionFormItem :model="attr" v-model="configurationObject[attr.identifier]"/>
     </div>
 
     <div class="card card-body text-center bg-transparent border-warning text-warning" v-if="!selectedGenerator.global_options[0]">
@@ -27,8 +27,15 @@ export default {
     EditorHeader,
     OptionFormItem
   },
-  computed: mapGetters({
-    selectedGenerator: 'generator/selectedModel'
-  })
+  computed: {
+    ...mapGetters({
+      newBuildModel: 'build/newModel',
+      selectedGenerator: 'generator/selectedModel'
+    }),
+    configurationObject () {
+      const stage = this.newBuildModel.stages.find(s => s.generator_id === this.selectedGenerator.id)
+      return stage.configuration.options
+    }
+  }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <small>
     <a :href="url" target="_blank" class='d-flex align-items-center' v-if="url">
-      <i class="fa fa-external-link mr-1"></i>
+      <i class="fa fa-external-link-alt mr-1"></i>
       More Info
     </a>
   </small>

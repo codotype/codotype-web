@@ -1,16 +1,16 @@
 <template>
   <div class='col-lg-4 mb-4'>
-    <div class="card card-body bg-transparent border-primary shadow-hover">
+    <div class="card card-body bg-transparent border-primary shadow-hover" :id="'example-blueprint-' + project.identifier">
 
       <!-- Bootstrap Modal Component -->
       <b-modal :id="'modal_' + project._id"
-        :title="'Clone ' + project.label + '?'"
+        :title="'Clone ' + project.label"
         @ok="cloneExample(project)"
-        ok-variant='info'
+        ok-variant='primary'
         ok-title='Clone'
         cancel-title='Cancel'
         >
-        <p class="text-left">Are you sure you want to clone the {{ project.label }} Blueprint?</p>
+        <p class="text-left">Would you like to clone the {{ project.label }} Blueprint?</p>
       </b-modal>
 
       <div class="row align-items-center text-primary">
@@ -56,7 +56,8 @@ import { mapActions } from 'vuex'
 export default {
   props: ['project'],
   methods: mapActions({
-    exportApp: 'project/exportJson'
+    exportApp: 'project/exportJson',
+    cloneExample: 'project/clone'
   })
 }
 </script>

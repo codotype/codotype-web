@@ -7,10 +7,17 @@
   />
    -->
   <!-- <hr> -->
+  <div class="app" v-if="buildLoading || buildFinished">
+    <div class="row">
+      <div class="col-lg-12">
+        <LoadingBuild />
+      </div>
+    </div>
+  </div>
 
   <!-- Step 3 - Configure the generator -->
   <!-- Show ONLY when a generator and app are selected -->
-  <div class="row">
+  <div class="row" v-else>
 
     <!-- TODO - this should be shown/hidden depending on something different than 'showSidebar' -->
     <!-- <b-col lg=12 v-if="showSidebar"> -->
@@ -33,18 +40,18 @@
       <!-- </ul> -->
 
       <!-- <p class='lead mb-0'>App</p> -->
-      <ul class="list-group">
-        <li class="list-group-item list-group-item-action" v-if="newBuildModel.app_id">
-          <i class="fa fa-database"></i>
-          {{ selectedApp.label }}
-        </li>
-        <li class="list-group-item list-group-item-warning text-center" v-else>
-          <i class="fa fa-warning"></i>
-          No app selected
-        </li>
-      </ul>
+      <!-- <ul class="list-group"> -->
+        <!-- <li class="list-group-item list-group-item-action" v-if="newBuildModel.app_id"> -->
+          <!-- <i class="fa fa-database"></i> -->
+          <!-- {{ selectedApp.label }} -->
+        <!-- </li> -->
+        <!-- <li class="list-group-item list-group-item-warning text-center" v-else> -->
+          <!-- <i class="fa fa-warning"></i> -->
+          <!-- No app selected -->
+        <!-- </li> -->
+      <!-- </ul> -->
 
-      <br>
+      <!-- <br> -->
       <!-- <hr> -->
 
       <button class="btn btn-outline-secondary btn-lg btn-block mb-3" v-if="choosingGenerator" @click="showChoosingGenerator(false)">
@@ -52,15 +59,15 @@
         Cancel
       </button>
 
-      <button class="btn btn-primary btn-lg btn-block mb-3" v-else @click="showChoosingGenerator(true)">
+      <button class="btn btn-primary btn-lg btn-block mb-3 mt-2" v-else @click="showChoosingGenerator(true)">
         <i class="fa fa-plus"></i>
         Add Generator
       </button>
 
-      <button class="btn btn-success btn-lg btn-block mb-3" @click="generateCodebase()">
-        <i class="fa fa-check"></i>
-        Generate
-      </button>
+      <!-- <button class="btn btn-success btn-lg btn-block mb-3" @click="generateCodebase()"> -->
+        <!-- <i class="fa fa-check"></i> -->
+        <!-- Generate -->
+      <!-- </button> -->
 
       <div class="card">
         <!-- <p class='lead mb-0'>App</p> -->
@@ -69,12 +76,12 @@
           Generators
         </div>
         <ul class="list-group list-group-flush">
-          <template v-if="newBuildModel.stages[0]" v-for="each in newBuildModel.stages">
-            <li class="list-group-item list-group-item-action list-group-item-primary" v-if="each.generator_id === selectedGenerator.id">
-              {{ each.generator_id }}
+          <template v-if="newBuildModel.stages[0]" v-for="each in stageGenerators">
+            <li class="list-group-item list-group-item-action list-group-item-primary" v-if="each.id === selectedGenerator.id">
+              {{ each.label }}
             </li>
-            <li class="list-group-item list-group-item-action" @click="selectGeneratorModel(each.generator_id)" v-else>
-              {{ each.generator_id }}
+            <li class="list-group-item list-group-item-action" @click="selectGeneratorModel(each.id)" v-else>
+              {{ each.label }}
             </li>
           </template>
 
@@ -163,6 +170,7 @@
 <!-- // // // //  -->
 
 <script>
+import LoadingBuild from '@/modules/build/components/LoadingBuild'
 import GeneratorModelOptions from '@/modules/build/components/GeneratorModelOptions'
 import GeneratorGlobalOptions from '@/modules/build/components/GeneratorGlobalOptions'
 import GeneratorAddonForm from '@/modules/build/components/GeneratorAddonForm'
@@ -175,6 +183,7 @@ import marked from 'marked'
 
 export default {
   components: {
+    LoadingBuild,
     GeneratorModelOptions,
     GeneratorGlobalOptions,
     GeneratorAddonForm,
@@ -188,27 +197,48 @@ export default {
       showingApp: false
     }
   },
-  destroyed () {
+  props: ['project_id'],
+  created () {
+    console.log(this.project_id)
     this.resetNewBuildModel()
+    this.setBuildFinished(false)
   },
-  computed: mapGetters({
-    newBuildModel: 'build/newModel',
-    schemas: 'schema/collection',
-    fetching: 'generator/fetching',
-    generatorCollection: 'generator/collection',
-    selectedGenerator: 'generator/selectedModel',
-    selectedApp: 'project/selectedModel',
-    showSidebar: 'build/showSidebar',
-    choosingGenerator: 'build/choosingGenerator'
-  }),
+  mounted () {
+    this.selectApp(this.project_id)
+  },
+  destroyed () {
+    // this.resetNewBuildModel()
+  },
+  computed: {
+    ...mapGetters({
+      newBuildModel: 'build/newModel',
+      schemas: 'schema/collection',
+      fetching: 'generator/fetching',
+      generatorCollection: 'generator/collection',
+      selectedGenerator: 'generator/selectedModel',
+      selectedApp: 'project/selectedModel',
+      showSidebar: 'build/showSidebar',
+      choosingGenerator: 'build/choosingGenerator',
+      buildLoading: 'build/fetching',
+      buildFinished: 'build/buildFinished'
+    }),
+    stageGenerators () {
+      let generatorIds = this.newBuildModel.stages.map(s => s.generator_id)
+      return this.generatorCollection.filter((g) => {
+        return generatorIds.includes(g.id)
+      })
+    }
+  },
   methods: {
     ...mapActions({
       resetNewBuildModel: 'build/resetNewModel',
       selectGeneratorModel: 'generator/selectModel',
-      generateCodebase: 'build/generate'
+      generateCodebase: 'build/generate',
+      selectApp: 'build/selectApp'
     }),
     ...mapMutations({
-      showChoosingGenerator: 'build/choosingGenerator'
+      showChoosingGenerator: 'build/choosingGenerator',
+      setBuildFinished: 'build/buildFinished'
     }),
     compileMarkdown (markdown) {
       return marked(markdown, { sanitize: true })
