@@ -77,10 +77,10 @@
         </div>
         <ul class="list-group list-group-flush">
           <template v-if="newBuildModel.stages[0]" v-for="each in stageGenerators">
-            <li class="list-group-item list-group-item-action list-group-item-primary" v-if="each.id === selectedGenerator.id">
+            <li class="list-group-item list-group-item-action list-group-item-primary" :key="each.id" v-if="each.id === selectedGenerator.id">
               {{ each.label }}
             </li>
-            <li class="list-group-item list-group-item-action" @click="selectGeneratorModel(each.id)" v-else>
+            <li class="list-group-item list-group-item-action" :key="each.id" @click="selectGeneratorModel(each.id)" v-else>
               {{ each.label }}
             </li>
           </template>
