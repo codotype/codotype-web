@@ -10,6 +10,9 @@ export default {
   buildFinished: state => {
     return state.buildFinished
   },
+  downloadUrl: state => {
+    return state.downloadUrl
+  },
   showSidebar: state => {
     if (state.choosingGenerator) return false
     return (state.newModel.app_id && state.newModel.stages[0])

@@ -202,6 +202,7 @@ export default {
     console.log(this.project_id)
     this.resetNewBuildModel()
     this.setBuildFinished(false)
+    this.setBuildDownloadUrl('')
   },
   mounted () {
     this.selectApp(this.project_id)
@@ -238,7 +239,8 @@ export default {
     }),
     ...mapMutations({
       showChoosingGenerator: 'build/choosingGenerator',
-      setBuildFinished: 'build/buildFinished'
+      setBuildFinished: 'build/buildFinished',
+      setBuildDownloadUrl: 'build/downloadUrl'
     }),
     compileMarkdown (markdown) {
       return marked(markdown, { sanitize: true })

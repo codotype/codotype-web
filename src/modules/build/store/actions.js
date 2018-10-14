@@ -76,6 +76,7 @@ export default {
     return axios.post(GENERATE_ROUTE, { build })
     .then(({ data }) => {
       console.log(data)
+      commit('downloadUrl', data.download_url)
       commit('fetching', false)
       commit('buildFinished', true)
       // console.log(data.download_url)
