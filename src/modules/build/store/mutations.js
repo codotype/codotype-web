@@ -10,6 +10,9 @@ export default {
   buildFinished (state, finished) {
     state.buildFinished = finished
   },
+  downloadUrl (state, url) {
+    state.downloadUrl = url
+  },
   choosingGenerator (state, choosing) {
     state.choosingGenerator = choosing
   }

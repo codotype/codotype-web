@@ -5,6 +5,7 @@ export default {
   ...NEW_MODEL_STATE,
   fetching: false,
   buildFinished: false,
+  downloadUrl: '',
   newModel: DEFAULT_BUILD,
   defaultNewModel: DEFAULT_BUILD,
   choosingGenerator: true

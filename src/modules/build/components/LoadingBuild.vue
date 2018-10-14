@@ -21,7 +21,8 @@
             <p class="lead mb-0">
               <i class="fa fa-lg fa-heart text-danger"></i>
             </p>
-            <small class="text-muted">Your code has been downloaded as a .zip file.</small>
+            <!-- <small class="text-muted">Your code has been downloaded as a .zip file.</small> -->
+            <small class="text-muted">Your download will start automatically - click <a :href="downloadUrl" target="_blank">here</a> to download it manually</small>
           </div>
         </div>
 
@@ -37,7 +38,7 @@
         <div class="row d-flex justify-content-center mt-3">
           <div class="col-lg-12 text-center">
             <small class="text-muted">
-              Please give us a <i class="fa fa-fw text-warning fa-star"></i> on <a href="https://github.com/codotype/codotype" target='_blank'>GitHub</a>
+              Give us a <i class="fa fa-fw text-warning fa-star"></i> on <a href="https://github.com/codotype/codotype" target='_blank'>GitHub</a>
               <br>
               or
               <br>
@@ -64,7 +65,8 @@ export default {
       newBuildModel: 'build/newModel',
       selectedGenerator: 'generator/selectedModel',
       buildLoading: 'build/fetching',
-      buildFinished: 'build/buildFinished'
+      buildFinished: 'build/buildFinished',
+      downloadUrl: 'build/downloadUrl'
     })
   }
 }
