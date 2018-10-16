@@ -142,7 +142,7 @@ export const APP_LIST_TOUR = [
     }
   },
   {
-    element: '#example-blueprint-bitter',
+    element: '#example-blueprint-tweeter',
     popover: {
       title: 'Tweeter Example',
       description: 'Medium complexity - Tweets, Favorites, Follows, & Users.',
