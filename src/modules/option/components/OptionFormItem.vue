@@ -1,20 +1,29 @@
 <template>
   <div class="row">
-    <div class="col-lg-8">
-      <label>{{model.label}}</label>
-      <br>
-      <small>{{model.help}}</small>
-      <MoreInfoLink :url="model.more_info_url" />
-    </div>
-    <div class="col-lg-4">
+    <div class="col-lg-12">
 
-      <toggle-button
-        v-if="model.type === 'BOOLEAN'"
-        ref="input"
-        :value="value"
-        :color="'#4582EC'"
-        @change="updateModel()"
-      />
+      <span class='d-flex align-items-center'>
+        <toggle-button
+          v-if="model.type === 'BOOLEAN'"
+          ref="input"
+          :value="value"
+          :color="'#4582EC'"
+          class='mr-3'
+          @change="updateModel()"
+        />
+        <label class='mb-2'>{{model.label}}</label>
+        <MoreInfoLink class='ml-3 mb-2' :url="model.more_info_url" />
+      </span>
+
+      <small>{{model.help}}</small>
+
+    </div>
+
+    <!-- <div class="col-lg-12" v-if="model.type !== 'BOOLEAN'"> -->
+      <!-- <hr> -->
+    <!-- </div> -->
+
+    <div class="col-lg-12 mt-2" v-if="model.type !== 'BOOLEAN'">
 
       <input
         v-if="model.type === 'TEXT'"
