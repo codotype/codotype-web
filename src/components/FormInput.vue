@@ -7,13 +7,13 @@
     <small class="form-text text-muted" v-if="example && help">{{example}}<br>{{help}}</small>
     <small class="form-text text-muted" v-else-if="help">{{help}}</small>
 
-    <input
+    <toggle-button
       v-if="type === 'BOOL'"
-      type="checkbox"
       ref="input_el"
-      :checked="value"
+      :value="value"
+      :color="'#4582EC'"
       @change="updateModel()"
-    >
+    />
 
     <input
       v-else-if="type === 'DATE'"
@@ -49,6 +49,7 @@
 </template>
 
 <script>
+
 export default {
   props: ['required', 'focus', 'label', 'type', 'example', 'help', 'ex', 'help', 'placeholder', 'value'],
   mounted () {
@@ -59,7 +60,7 @@ export default {
   methods: {
     updateModel () {
       if (this.type === 'BOOL') {
-        this.$emit('input', this.$refs.input_el.checked)
+        this.$emit('input', this.$refs.input_el.toggled)
       } else if (this.type === 'NUMBER') {
         this.$emit('input', Number(this.$refs.input_el.value))
       } else {
