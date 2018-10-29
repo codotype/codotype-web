@@ -7,13 +7,35 @@
       <MoreInfoLink :url="model.more_info_url" />
     </div>
     <div class="col-lg-3">
-      <input type="checkbox" :checked="value" ref="input" @input="updateModel()" v-if="model.type === 'BOOLEAN'">
 
-      <input class='form-control' :value="value" type="text" ref="input" @input="updateModel()" v-if="model.type === 'TEXT'">
+      <toggle-button
+        v-if="model.type === 'BOOLEAN'"
+        ref="input"
+        :value="value"
+        :color="'#4582EC'"
+        @change="updateModel()"
+      />
 
-      <select class='form-control' :value="value" type="text" ref="input" @input="updateModel()" v-if="model.type === 'TEXT_SELECT'">
+      <input
+        v-if="model.type === 'TEXT'"
+        class='form-control'
+        :value="value"
+        type="text"
+        ref="input"
+        @input="updateModel()"
+      >
+
+      <select
+        v-if="model.type === 'TEXT_SELECT'"
+        class='form-control'
+        :value="value"
+        type="text"
+        ref="input"
+        @input="updateModel()"
+      >
         <option :value="opt.value" v-for="opt in model.options" :key="opt.id">{{opt.label}}</option>
       </select>
+
     </div>
   </div>
 </template>
@@ -24,18 +46,14 @@ import MoreInfoLink from '@/components/MoreInfoLink'
 export default {
   name: 'OptionFormitem',
   props: ['model', 'value'],
-  mounted () {
-    console.log(this.value)
-  },
   components: {
     MoreInfoLink
   },
   methods: {
     updateModel () {
-      console.log('UPDATE MODEL')
-      if (this.type === 'BOOL') {
-        this.$emit('input', this.$refs.input.checked)
-      } else if (this.type === 'NUMBER') {
+      if (this.model.type === 'BOOLEAN') {
+        this.$emit('input', this.$refs.input.toggled)
+      } else if (this.model.type === 'NUMBER') {
         this.$emit('input', Number(this.$refs.input.value))
       } else {
         this.$emit('input', this.$refs.input.value)
