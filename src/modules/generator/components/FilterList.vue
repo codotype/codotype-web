@@ -10,10 +10,7 @@
     </div>
 
     <ul class="list-group list-group-flush">
-      <FilterItem label="Fontend" />
-      <FilterItem label="Backend" />
-      <FilterItem label="Fullstack" />
-      <FilterItem label="Other" />
+      <FilterItem :tag="tag" v-model="tag.selected" v-for="tag in typeTags" :key="tag.label" />
     </ul>
 
     <div class="card-header d-flex justify-content-between align-items-center">
@@ -24,21 +21,23 @@
     </div>
 
     <ul class="list-group list-group-flush">
-      <FilterItem label="Vue.js" />
-      <FilterItem label="React.js" />
-      <FilterItem label="Express.js" />
-      <FilterItem label="Flask" />
+      <FilterItem :tag="tag" v-model="tag.selected" v-for="tag in techTags" :key="tag.label" />
     </ul>
 
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import FilterItem from '@/modules/generator/components/FilterItem'
 
 export default {
   components: {
     FilterItem
-  }
+  },
+  computed: mapGetters({
+    techTags: 'generator/techTags',
+    typeTags: 'generator/typeTags'
+  })
 }
 </script>
