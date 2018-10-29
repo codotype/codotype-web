@@ -69,11 +69,13 @@
         <!-- Generate -->
       <!-- </button> -->
 
-      <div class="card">
+      <div class="card border-light shadow-sm">
         <!-- <p class='lead mb-0'>App</p> -->
-        <div class="card-header">
-          <i class="fa fa-cog"></i>
-          Generators
+        <div class="card-body">
+          <h4 class='mb-0'>
+            <i class="fa fa-cog"></i>
+            Generators
+          </h4>
         </div>
         <ul class="list-group list-group-flush">
           <template v-if="newBuildModel.stages[0]" v-for="each in stageGenerators">
