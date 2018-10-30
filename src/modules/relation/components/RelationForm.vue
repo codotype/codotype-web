@@ -40,7 +40,7 @@
                   v-for="relation in relationTypes"
                   @click="setRelationType(relation.id)"
                 >
-                  <img class='relation-thumbnail' :src="'/static/' + relation.id.toLowerCase() + '.svg'"/>
+                  <img class='relation-thumbnail' :src=" relation.id === model.type ? '/static/' + relation.id.toLowerCase() + '_active' + '.png' : '/static/' + relation.id.toLowerCase() + '.png'"/>
                 </button>
               </div>
             </div>
