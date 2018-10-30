@@ -19,7 +19,13 @@
 
         <div class="col-lg-12 text-center">
 
-          <router-link :to="'/blueprints/' + project._id + '/generate'" class="mx-1" v-b-tooltip.hover.left title='Generate' @click="goToBuild(project)">
+          <router-link
+            :to="'/blueprints/' + project._id + '/generate'"
+            class="mx-1"
+            v-b-tooltip.hover.left
+            title='Generate'
+            @click="goToBuild(project)"
+          >
             <i class="fa fa-code project-action project-action-primary fa-fw"></i>
           </router-link>
 

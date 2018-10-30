@@ -1,12 +1,6 @@
 <template>
-  <!-- TODO - use PageHeader component here, similar to App Editor page -->
-  <!-- <EditorHeader
-    title="Build"
-    help="Configure a build using a single App and multiple generators"
-    url="https://codotype.github.io"
-  />
-   -->
-  <!-- <hr> -->
+
+  <!-- Shows LoadingBuild component -->
   <div class="app" v-if="buildLoading || buildFinished">
     <div class="row">
       <div class="col-lg-12">
@@ -19,61 +13,33 @@
   <!-- Show ONLY when a generator and app are selected -->
   <div class="row" v-else>
 
-    <!-- TODO - this should be shown/hidden depending on something different than 'showSidebar' -->
-    <!-- <b-col lg=12 v-if="showSidebar"> -->
-      <!-- <BuildHeader/> -->
-      <!-- <hr> -->
-    <!-- </b-col> -->
-
     <!-- Abstract this column into one or more components -->
     <b-col lg=3 class="border-right" v-if="showSidebar">
 
-      <!-- <p class='lead mb-0'>App</p> -->
-      <!-- <ul class="list-group"> -->
-        <!-- <li class="list-group-item list-group-item-action" v-if="newBuildModel.app_id"> -->
-          <!-- {{ selectedApp.label }} -->
-        <!-- </li> -->
-        <!-- <li class="list-group-item list-group-item-warning text-center" v-else> -->
-          <!-- <i class="fa fa-warning"></i> -->
-          <!-- No app selected -->
-        <!-- </li> -->
-      <!-- </ul> -->
-
-      <!-- <p class='lead mb-0'>App</p> -->
-      <!-- <ul class="list-group"> -->
-        <!-- <li class="list-group-item list-group-item-action" v-if="newBuildModel.app_id"> -->
-          <!-- <i class="fa fa-database"></i> -->
-          <!-- {{ selectedApp.label }} -->
-        <!-- </li> -->
-        <!-- <li class="list-group-item list-group-item-warning text-center" v-else> -->
-          <!-- <i class="fa fa-warning"></i> -->
-          <!-- No app selected -->
-        <!-- </li> -->
-      <!-- </ul> -->
-
-      <!-- <br> -->
-      <!-- <hr> -->
-
-      <button class="btn btn-outline-secondary btn-lg btn-block mb-3" v-if="choosingGenerator" @click="showChoosingGenerator(false)">
+      <button
+        v-if="choosingGenerator"
+        class="btn btn-outline-secondary btn-lg btn-block mb-3"
+        @click="showChoosingGenerator(false)"
+      >
         <i class="fa fa-times"></i>
         Cancel
       </button>
 
-      <button class="btn btn-primary btn-lg btn-block mb-3 mt-2" v-else @click="showChoosingGenerator(true)">
+      <button
+        v-else
+        class="btn btn-primary btn-lg btn-block mb-3 mt-2"
+        @click="showChoosingGenerator(true)"
+      >
         <i class="fa fa-plus"></i>
         Add Generator
       </button>
 
-      <!-- <button class="btn btn-success btn-lg btn-block mb-3" @click="generateCodebase()"> -->
-        <!-- <i class="fa fa-check"></i> -->
-        <!-- Generate -->
-      <!-- </button> -->
-
-      <div class="card">
-        <!-- <p class='lead mb-0'>App</p> -->
-        <div class="card-header">
-          <i class="fa fa-cog"></i>
-          Generators
+      <div class="card border-light shadow-sm">
+        <div class="card-body">
+          <h4 class='mb-0'>
+            <i class="fa fa-cog"></i>
+            Generators
+          </h4>
         </div>
         <ul class="list-group list-group-flush">
           <template v-if="newBuildModel.stages[0]" v-for="each in stageGenerators">
@@ -85,18 +51,14 @@
             </li>
           </template>
 
-          <!-- <li class="list-group-item list-group-item-action" v-else v-for="each in newBuildModel.stages" v-if="newBuildModel.stages[0]"> -->
-            <!-- {{ each.generator_id }} -->
-          <!-- </li> -->
-
+          <!-- No Generators Selected view -->
           <li class="list-group-item list-group-item-warning text-center" v-if="!newBuildModel.stages[0]">
             <i class="fa fa-warning"></i>
             No generators selected
           </li>
+
         </ul>
       </div>
-
-
 
     </b-col>
 
@@ -132,27 +94,27 @@
 
           <b-tabs>
 
-            <!-- TODO - move overview into its own component -->
-            <b-tab title="README.md" active class='card-body bg-white' v-html="compileMarkdown(selectedGenerator.readme)">
-              <!-- <br> -->
-              <!-- <div class="card card-body" v-html="compileMarkdown(selectedGenerator.readme)"> -->
-              <!-- </div> -->
-            </b-tab>
+            <!-- README.md -->
+            <b-tab
+              title="README.md"
+              active
+              class='card-body bg-white border border-top-0'
+              v-html="compileMarkdown(selectedGenerator.readme)"
+            />
 
-            <!-- <b-tab title="Data Models"> -->
-              <!-- <AppShow v-if="selectedApp"/> -->
-            <!-- </b-tab> -->
-
+            <!-- GlobalOptions -->
             <b-tab title="Global Options" v-if="selectedGenerator.global_options[0]" >
               <br>
               <GeneratorGlobalOptions/>
             </b-tab>
 
+            <!-- ModelOptions -->
             <b-tab title="Model Options" v-if="selectedGenerator.model_options[0]" >
               <br>
               <GeneratorModelOptions/>
             </b-tab>
 
+            <!-- GlobalAddons -->
             <b-tab title="Addons" v-if="selectedGenerator.addons[0]" >
               <br>
               <GeneratorAddonForm/>
@@ -207,9 +169,6 @@ export default {
   mounted () {
     this.selectApp(this.project_id)
   },
-  destroyed () {
-    // this.resetNewBuildModel()
-  },
   computed: {
     ...mapGetters({
       newBuildModel: 'build/newModel',
@@ -217,7 +176,6 @@ export default {
       fetching: 'generator/fetching',
       generatorCollection: 'generator/collection',
       selectedGenerator: 'generator/selectedModel',
-      selectedApp: 'project/selectedModel',
       showSidebar: 'build/showSidebar',
       choosingGenerator: 'build/choosingGenerator',
       buildLoading: 'build/fetching',

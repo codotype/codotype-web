@@ -3,13 +3,11 @@
   <div class="row">
     <div class="col-lg-12">
 
-      <!-- <small class="form-text text-muted">Define the core parameters that are used to create a valid Attribute.</small> -->
-
       <!-- Step 1 - Select Datatype -->
       <DatatypeSelector v-model="model.datatype" v-if="formStep" />
 
       <template v-else>
-        <b-tabs pills v-if="model.datatype !== 'RELATION'">
+        <b-tabs lazy pills v-if="model.datatype !== 'RELATION'">
           <b-tab title="Properties" active>
             <AttributePropertiesForm :model="model" />
           </b-tab>
@@ -18,7 +16,6 @@
           </b-tab>
         </b-tabs>
 
-        <!-- <RelationForm :schema="schema" :model="model" v-if="model.datatype === 'RELATION'" /> -->
       </template>
 
     </div>

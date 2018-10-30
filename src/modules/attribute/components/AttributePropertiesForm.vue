@@ -6,7 +6,15 @@
     </div>
 
     <div class="col-lg-6 col-sm-12">
-      <FormInput label="Label" :required="true" placeholder="Label" v-model="attributeLabel" example="Example: 'Last Name'" help="The human-readable name for this attribute." />
+      <FormInput
+        label="Label"
+        :focus="true"
+        :required="true"
+        placeholder="Label"
+        v-model="attributeLabel"
+        example="Example: 'Last Name'"
+        help="The human-readable name for this attribute."
+      />
     </div>
 
     <div class="col-lg-6 col-sm-12">

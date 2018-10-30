@@ -3,7 +3,8 @@
   <div class="row">
 
     <!-- Edit Attribute Form -->
-    <b-modal lazy
+    <b-modal
+      lazy
       size="lg"
       :title="'Edit Attribute'"
       ref='editAttributeModal'
@@ -15,7 +16,8 @@
     </b-modal>
 
     <!-- New Attribute Form -->
-    <b-modal lazy
+    <b-modal
+      lazy
       size="lg"
       ref="newAttributeModal"
       :title="'New Attribute'"
