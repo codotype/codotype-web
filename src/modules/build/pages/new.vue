@@ -95,7 +95,12 @@
           <b-tabs>
 
             <!-- README.md -->
-            <b-tab title="README.md" active class='card-body bg-white' v-html="compileMarkdown(selectedGenerator.readme)" />
+            <b-tab
+              title="README.md"
+              active
+              class='card-body bg-white border border-top-0'
+              v-html="compileMarkdown(selectedGenerator.readme)"
+            />
 
             <!-- GlobalOptions -->
             <b-tab title="Global Options" v-if="selectedGenerator.global_options[0]" >
