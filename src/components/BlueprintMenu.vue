@@ -1,7 +1,6 @@
 <template>
   <b-navbar toggleable="md" type="light" variant="light" fixed="top" class='bg-white'>
     <b-navbar-brand to="/blueprints">
-      <!-- <img class='logo' src="@/assets/logo_dark.png"> -->
       <strong>codotype</strong>
     </b-navbar-brand>
 
@@ -14,7 +13,7 @@
         <b-modal
           id="edit-project"
           ref="editModal"
-          :title="'Edit App'"
+          :title="'Edit Blueprint'"
           @ok="submitProjectForm()"
           ok-title='Update'
           cancel-title='Cancel'
@@ -23,9 +22,15 @@
           <p class="lead text-danger">TODO - add ProjectForm here</p>
         </b-modal>
 
-        <!-- <button class="btn btn-link py-0" id="project-edit-button" v-b-tooltip.hover.right title='Edit App Name' v-b-modal="'edit-project'"> -->
-          <!-- <i class="fa fa-pencil-alt"></i> -->
-        <!-- </button> -->
+        <button
+          class="btn btn-link py-0"
+          id="project-edit-button"
+          v-b-tooltip.hover.right
+          title='Edit Blueprint Name'
+          v-b-modal="'edit-project'"
+        >
+          <i class="fa fa-pencil-alt"></i>
+        </button>
 
       </b-navbar-nav>
 
@@ -39,7 +44,7 @@
           <b-button
             variant="outline-primary"
             @click="exportProject(project)"
-            v-b-tooltip.hover.bottom :title='"Click here to start tour"'
+            v-b-tooltip.hover.bottom :title='"Click here to export Blueprint"'
           >
             <i class="fa fa-fw fa-download"></i>
             Export
