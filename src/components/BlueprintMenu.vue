@@ -58,7 +58,8 @@
             variant="success"
             v-b-tooltip.hover.bottom :title='"Click here to configure your code generators"'
           >
-            Build
+            <i class="fa fa-fw fa-cog"></i>
+            Generate Code
             <i class="fa fa-fw fa-chevron-right"></i>
           </b-button>
         </b-nav-item>
