@@ -55,8 +55,8 @@
 
     <!-- Attribute List -->
     <div class="col-lg-12">
-      <AttributeList :schema='model' />
-      <RelationList :schema='model' class="mt-3" />
+      <AttributeList :schema="model" />
+      <RelationList :schema="model" class="mt-3" />
     </div>
 
   </div>
