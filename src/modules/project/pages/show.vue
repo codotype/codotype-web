@@ -11,7 +11,14 @@
     <div class="col-lg-4 border-right">
 
       <!-- New Schema Modal -->
-      <b-modal id="new-schema" :title="'New Model'" @ok="submit()" ok-title='Create' cancel-title='Cancel' >
+      <b-modal
+        lazy
+        id="new-schema"
+        :title="'New Model'"
+        @ok="submit()"
+        ok-title='Create'
+        cancel-title='Cancel'
+      >
         <SchemaForm :schema="newModel" />
       </b-modal>
 

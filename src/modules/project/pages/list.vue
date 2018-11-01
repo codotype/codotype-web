@@ -16,6 +16,7 @@
     <!-- TODO - abstract into PageHeader component -->
     <b-col lg=12>
       <div class="row">
+
         <div class="col-lg-7">
           <h4 class='text-muted'>
             <span id="blueprint-header">
@@ -24,33 +25,12 @@
             </span>
           </h4>
           <small class="text-muted">Blueprints encapsulate metadata about models, attributes, and associations that describe your project</small>
-
         </div>
 
         <div class="col-lg-5 text-right">
-
           <HelpButton :tour="tourSteps" size="lg" />
-
-          <!-- <a class='btn btn-lg btn-outline-info' href="#/blueprints/examples"> -->
-            <!-- <i class="fa fa-fw fa-folder-open-o mr-2"></i> -->
-            <!-- Example Apps -->
-          <!-- </a> -->
-
-          <!-- <button class='btn btn-lg btn-primary ml-2' v-b-modal="'new-project-modal'" v-if="true"> -->
-            <!-- <i class="fa fa-fw fa-plus"></i> -->
-            <!-- New Blueprint -->
-          <!-- </button> -->
-
-          <!-- <button v-b-tooltip.hover.left title='Create unlimited Blueprints when you register' class='btn btn-lg btn-primary ml-2' v-else> -->
-            <!-- <i class="fa fa-fw fa-plus"></i> -->
-            <!-- New Blueprint -->
-          <!-- </button> -->
-
         </div>
 
-        <!-- <div class="col-lg-12"> -->
-          <!-- <hr> -->
-        <!-- </div> -->
       </div>
     </b-col>
 
