@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="md" type="light" variant="light" fixed="top" class='bg-white'>
+  <b-navbar toggleable="md" type="light" variant="light" fixed="top">
     <b-navbar-brand to="/blueprints">
       <strong>codotype</strong>
     </b-navbar-brand>
