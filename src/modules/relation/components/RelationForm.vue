@@ -65,17 +65,6 @@
           </div>
         </div>
 
-        <!-- <div class="row"> -->
-          <!-- <div class="col-lg-6"> -->
-            <!-- <pre class="bg-dark text-light">{{schema}}</pre> -->
-          <!-- </div> -->
-
-          <!-- <div class="col-lg-6"> -->
-            <!-- <pre class="bg-dark text-light">{{allSchemas.find(s => s._id === model.related_schema_id)}}</pre> -->
-          <!-- <pre class="bg-dark text-light">{{model}}</pre> -->
-          <!-- </div> -->
-        <!-- </div> -->
-
         <div class="col-lg-12">
           <hr>
         </div>
@@ -138,12 +127,6 @@
             <input type="text" class='form-control' v-model="model.as">
           </div>
         </div>
-
-        <!-- <div class="col-lg-4 text-center"> -->
-          <!-- <p class="lead mt-4">{{ selectedRelationType.text }}</p> -->
-          <!-- <small class="text-muted">{{ selectedRelationType.desc }}</small> -->
-          <!-- <p class="lead">{{ selectedRelationType.text }}</p> -->
-        <!-- </div> -->
 
         <div class="col-lg-6">
           <div class="form-group">
