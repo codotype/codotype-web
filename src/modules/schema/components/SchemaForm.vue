@@ -2,14 +2,13 @@
   <div class="row">
     <div class="col-lg-12">
 
-      <!-- <p class="lead mb-0">Schema Properties</p> -->
       <p class="mb-2 form-text text-muted">Define the core metadata that's used to create a valid model.</p>
 
       <div class="row">
         <div class="col-lg-12">
 
-          <!-- <FormInput label="Label" placeholder="Label" example="Example: 'Odd Job'" v-model="schemaLabel" required="true" help="The human-readable name for a single entity of this schema." /> -->
           <FormInput
+            :focus="true"
             label="Label"
             placeholder="Label"
             v-model="schemaLabel"
@@ -83,12 +82,9 @@ export default {
   computed: {
     schemaLabel: {
       get () {
-        console.log('getter: ', this.schema.label)
         return this.schema.label
       },
       set (label) {
-        console.log('SET SET')
-        console.log(label)
         this.$store.dispatch('schema/setLabel', { schema: this.schema, label: label })
       }
     }
