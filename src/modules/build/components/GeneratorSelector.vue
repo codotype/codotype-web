@@ -14,16 +14,18 @@
       </b-row>
 
       <b-row>
-        <b-col lg=3 class='pr-0'>
-          <div class="card card-body border-light shadow-sm">
-            <h4>Filters</h4>
-            <input type="text" class="form-control" placeholder="Filter Generators">
+
+        <!-- <b-col lg=3 class='pr-0'> -->
+          <!-- <div class="card card-body border-light shadow-sm"> -->
+            <!-- <h4>Filters</h4> -->
+            <!-- <input type="text" class="form-control" placeholder="Filter Generators"> -->
             <!-- <input type="text" class="form-control form-control-sm mb-2" placeholder="Label"> -->
             <!-- <input type="text" class="form-control form-control-sm mb-2" placeholder="Type"> -->
             <!-- <input type="text" class="form-control form-control-sm mb-2" placeholder="Tech"> -->
-          </div>
-        </b-col>
-        <b-col lg=9>
+          <!-- </div> -->
+        <!-- </b-col> -->
+
+        <b-col lg=12>
 
           <transition-group name="generator-list" tag='div'>
             <GeneratorListItem

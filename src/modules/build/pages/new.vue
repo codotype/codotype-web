@@ -34,6 +34,7 @@
         Add Build Stage
       </button>
 
+      <!-- TODO - abstract into a separate component -->
       <div class="card border-light shadow-sm">
         <div class="card-body">
           <h4 class='mb-0'>
@@ -41,6 +42,7 @@
             Build Stages
           </h4>
         </div>
+
         <ul class="list-group list-group-flush">
           <template v-if="newBuildModel.stages[0]" v-for="each in stageGenerators">
             <li class="list-group-item list-group-item-action list-group-item-primary" :key="each.id" v-if="each.id === selectedGenerator.id">
@@ -180,6 +182,7 @@ export default {
     this.resetNewBuildModel()
     this.setBuildFinished(false)
     this.setBuildDownloadUrl('')
+    this.clearSelectedGenerator()
   },
   mounted () {
     this.selectApp(this.project_id)
@@ -209,7 +212,8 @@ export default {
       selectGeneratorModel: 'generator/selectModel',
       generateCodebase: 'build/generate',
       selectApp: 'build/selectApp',
-      removeBuildStage: 'build/removeStage'
+      removeBuildStage: 'build/removeStage',
+      clearSelectedGenerator: 'generator/clearSelected'
     }),
     ...mapMutations({
       showChoosingGenerator: 'build/choosingGenerator',

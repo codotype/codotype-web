@@ -6,6 +6,10 @@ import App from './App'
 import router from './routers'
 import store from '@/store'
 import EditorHeader from '@/components/EditorHeader'
+import configureModerator from '@/store/mediator'
+
+// Configures top-level vuex mediator
+configureModerator(store, router)
 
 // TODO - this is dev-only and should be removed in production
 window.store = store

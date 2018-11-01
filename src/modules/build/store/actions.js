@@ -13,9 +13,9 @@ export default {
     const newModel = cloneDeep(state.newModel)
     newModel.app_id = app_id
     commit('newModel', newModel)
-    console.log('SELECTED BLUEPRINT??')
-    console.log(app_id)
+
     // sets project.state.selectedModel
+    // TODO - move into store mediator
     dispatch('project/selectModel', app_id, { root: true })
   },
   // TODO - stage management should be moved into the `stage` module
@@ -51,7 +51,7 @@ export default {
     // sets generator.state.selectedModel
     // TODO - should be moved into the `stage` store
     // TODO - should be part of `stage/selectModel` action
-    dispatch('generator/selectModel', generator_id, { root: true })
+    // dispatch('generator/selectModel', generator_id, { root: true })
   },
   selectStage ({ state, commit, dispatch }, stage_id) {
     console.log('SELECT STAGE')
