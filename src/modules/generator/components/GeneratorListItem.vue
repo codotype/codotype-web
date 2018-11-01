@@ -33,8 +33,10 @@
 
         <!-- TODO - this is sloppy, fix at some point -->
         <button class="btn btn-primary pull-right" v-if="selectMethod" @click="selectMethod(model.id)">
-          SELECT
+          <i class="fa fa fa-plus"></i>
+          Add to Build
         </button>
+
       </div>
       <div class="col-lg-12">
         <p class="card-text">

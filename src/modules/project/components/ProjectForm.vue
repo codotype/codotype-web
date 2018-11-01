@@ -8,7 +8,13 @@
           <span class='text-danger'>*</span>
         </label>
         <small class="form-text text-muted mb-2">The name of your project</small>
-        <input type="text" class="form-control" placeholder="Label" v-model="newModel.label" @input="setIdentifier()">
+        <input
+          type="text"
+          ref="labelInput"
+          class="form-control"
+          placeholder="Label"
+          v-model="newModel.label"
+          @input="setIdentifier()">
       </div>
 
     </div>
@@ -30,6 +36,7 @@ export default {
   props: ['submit'],
   mounted () {
     this.resetNewModel()
+    setTimeout(() => { this.$refs.labelInput.focus() }, 200) // Minor delay for input element focus
   },
   computed: mapGetters({
     newModel: 'project/newModel'

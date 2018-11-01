@@ -3,17 +3,11 @@
   <div class="row">
     <div class="col-lg-12">
 
-      <!-- <small class="text-warning">TODO - compute model.label, model.identifier in Vuex store</small> -->
-      <!-- TODO - model.label should be RELATED_SCHEMA.label or RELATED_SCHEMA.label_plural -->
-      <!-- <input type="text" v-model="model.label"> -->
-      <!-- TODO - model.label should be RELATED_SCHEMA.identifier + '_id' or '_ids' -->
-      <!-- <input type="text" v-model="model.identifier"> -->
-
+      <!-- SOURCE MODEL -->
       <div class="row">
         <div class="col-lg-4">
           <div class="form-group text-center">
-            <!-- <label>This Model</label> -->
-            <label>{{ schema.label }}</label>
+            <label class='mb-0'>{{ schema.label }}</label>
             <small class="form-text text-muted">This Model</small>
             <input type="text" class='form-control' disabled :value="schema.label">
           </div>
@@ -21,12 +15,11 @@
 
         <!-- RELATION TYPE -->
         <div class="col-lg-4">
+
           <div class="row">
             <div class="col-lg-12">
               <div class="form-group mb-2 text-center">
-                <!-- <label>Relation Type</label> -->
-                <!-- <small class="form-text text-muted">The type of relation to define</small> -->
-                <label>{{ selectedRelationType.label }}</label>
+                <label class='mb-0'>{{ selectedRelationType.label }}</label>
                 <small class="form-text text-muted mb-0">{{ selectedRelationType.description }}</small>
               </div>
             </div>
@@ -36,7 +29,7 @@
             <div class="col-lg-12">
               <div class="btn-group w-100">
                 <button
-                  :class="relation.id === model.type ? 'btn btn-outline-primary active' : 'btn btn-outline-primary'"
+                  :class="relation.id === model.type ? 'btn btn-sm btn-outline-primary active' : 'btn btn-sm btn-outline-primary'"
                   v-for="relation in relationTypes"
                   @click="setRelationType(relation.id)"
                 >
@@ -50,7 +43,7 @@
         <!-- RELATED SCHEMA -->
         <div class="col-lg-4">
           <div class="form-group text-center">
-            <label>Related Model</label>
+            <label class='mb-0'>Related Model</label>
             <small class="form-text text-muted">The related Model definition.</small>
             <select class="form-control" v-model="model.related_schema_id" >
 
@@ -72,16 +65,39 @@
           </div>
         </div>
 
-        <!-- <div class="row"> -->
-          <!-- <div class="col-lg-6"> -->
-            <!-- <pre class="bg-dark text-light">{{schema}}</pre> -->
-          <!-- </div> -->
-
-          <!-- <div class="col-lg-6"> -->
-            <!-- <pre class="bg-dark text-light">{{allSchemas.find(s => s._id === model.related_schema_id)}}</pre> -->
-          <!-- <pre class="bg-dark text-light">{{model}}</pre> -->
-          <!-- </div> -->
+        <!-- <div class="col-lg-12"> -->
+          <!-- <hr> -->
         <!-- </div> -->
+
+        <div class="col-lg-12">
+          <div class="row d-flex justify-content-between">
+            <!-- Alias inputs -->
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class='mb-0'>Alias</label>
+                <small class="form-text text-muted">Alias this relation under a different singlar, title-cased noun</small>
+                <input type="text" class='form-control' v-model="model.as">
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="form-group text-right">
+                <label class='mb-0'>
+                  <i
+                    class="fa fa-question-circle"
+                    v-b-tooltip.hover.right
+                    title="NOTE - only available with 'Belongs To' relations"
+                  ></i>
+                  Reverse Alias
+                </label>
+                <!-- help="The singlar, title-cased noun that describes your model" -->
+                <!-- example="Example: 'User Role' or 'Blog Post'" -->
+                <small class="form-text text-muted">Alias the reverse reference under a singular, title-cased noun</small>
+                <input type="text" class='form-control' :disabled="model.type !== 'BELONGS_TO'" v-model="model.reverse_as">
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="col-lg-12">
           <hr>
@@ -89,7 +105,6 @@
 
         <!-- Description / Relation Preview-->
         <div class="col-lg-6 text-center" v-if="selectedRelatedSchema">
-          <!-- <pre class="bg-dark text-light">{{model}}</pre> -->
 
           <small v-if="model.type === 'HAS_ONE'">
             Each <span class='text-info'>{{ schema.label }}</span> references one <span class='text-warning'>{{ selectedRelatedSchema.label }}</span>
@@ -124,48 +139,12 @@
         <!-- Description / Relation Preview-->
         <div class="col-lg-12">
           <div class="card-deck">
-            <div class="card">
+            <div class="card card-code">
               <pre class="bg-dark p-4 text-light h-100 mb-0">{{schemaPrototype}}</pre>
             </div>
-            <div class="card">
+            <div class="card card-code">
               <pre class="bg-dark p-4 text-light h-100 mb-0">{{selectedRelatedSchemaPrototype}}</pre>
             </div>
-          </div>
-        </div>
-
-        <div class="col-lg-12">
-          <hr>
-        </div>
-
-        <!-- Alias inputs -->
-        <div class="col-lg-6">
-          <div class="form-group">
-            <label>Alias</label>
-            <small class="form-text text-muted">Alias this relation under a different singlar, title-cased noun</small>
-            <input type="text" class='form-control' v-model="model.as">
-          </div>
-        </div>
-
-        <!-- <div class="col-lg-4 text-center"> -->
-          <!-- <p class="lead mt-4">{{ selectedRelationType.text }}</p> -->
-          <!-- <small class="text-muted">{{ selectedRelationType.desc }}</small> -->
-          <!-- <p class="lead">{{ selectedRelationType.text }}</p> -->
-        <!-- </div> -->
-
-        <div class="col-lg-6">
-          <div class="form-group">
-            <label>
-              Reverse Alias
-              <i
-                class="fa fa-question-circle"
-                v-b-tooltip.hover.right
-                title="NOTE - only available with 'Belongs To' relations"
-              ></i>
-            </label>
-            <!-- help="The singlar, title-cased noun that describes your model" -->
-            <!-- example="Example: 'User Role' or 'Blog Post'" -->
-            <small class="form-text text-muted">Alias the reverse reference under a singular, title-cased noun</small>
-            <input type="text" class='form-control' :disabled="model.type !== 'BELONGS_TO'" v-model="model.reverse_as">
           </div>
         </div>
 
@@ -268,10 +247,17 @@ export default {
 
   img.relation-thumbnail {
     width: 50%;
-    /*height: 100%;*/
   }
 
   .btn-outline-primary {
     width: 33%;
+  }
+
+  .card-code {
+    font-size: 65%;
+  }
+
+  .form-text {
+    margin-bottom: 0.6rem;
   }
 </style>

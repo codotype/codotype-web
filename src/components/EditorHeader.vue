@@ -1,9 +1,11 @@
 <template>
   <b-row>
     <b-col lg='12'>
-      <p class="lead mb-0">{{ title }}</p>
+      <span class='d-flex align-items-center'>
+        <p class="lead mb-0 mr-3">{{ title }}</p>
+        <MoreInfoLink :url="url"/>
+      </span>
       <small class="text-muted">{{ help }}</small>
-      <MoreInfoLink :url="url"/>
     </b-col>
   </b-row>
 </template>

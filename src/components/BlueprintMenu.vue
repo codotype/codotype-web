@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="md" type="light" variant="light" fixed="top" class='bg-white'>
+  <b-navbar toggleable="md" type="light" variant="light" fixed="top">
     <b-navbar-brand to="/blueprints">
       <strong>codotype</strong>
     </b-navbar-brand>
@@ -11,6 +11,7 @@
         <b-nav-item id="project-header">{{ project.label }} Blueprint</b-nav-item>
 
         <b-modal
+          lazy
           id="edit-project"
           ref="editModal"
           :title="'Edit Blueprint'"
@@ -58,7 +59,8 @@
             variant="success"
             v-b-tooltip.hover.bottom :title='"Click here to configure your code generators"'
           >
-            Build
+            <i class="fa fa-fw fa-cog"></i>
+            Generate Code
             <i class="fa fa-fw fa-chevron-right"></i>
           </b-button>
         </b-nav-item>

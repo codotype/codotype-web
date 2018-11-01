@@ -13,9 +13,9 @@ export default {
     const newModel = cloneDeep(state.newModel)
     newModel.app_id = app_id
     commit('newModel', newModel)
-    console.log('SELECTED BLUEPRINT??')
-    console.log(app_id)
+
     // sets project.state.selectedModel
+    // TODO - move into store mediator
     dispatch('project/selectModel', app_id, { root: true })
   },
   // TODO - stage management should be moved into the `stage` module
@@ -46,15 +46,26 @@ export default {
     // once it's been created in the `stage` module
     newModel.stages.push(newStage)
     commit('newModel', newModel)
-    commit('choosingGenerator', false)
+    // commit('choosingGenerator', false)
 
     // sets generator.state.selectedModel
     // TODO - should be moved into the `stage` store
     // TODO - should be part of `stage/selectModel` action
-    dispatch('generator/selectModel', generator_id, { root: true })
+    // dispatch('generator/selectModel', generator_id, { root: true })
   },
   selectStage ({ state, commit, dispatch }, stage_id) {
     console.log('SELECT STAGE')
+  },
+
+  // removeStage
+  // Removes an individual stage from the build
+  removeStage ({ state, commit, dispatch }, selectedGeneratorId) {
+    const newModel = state.newModel
+    newModel.stages = newModel.stages.filter(s => s.generator_id !== selectedGeneratorId)
+    commit('newModel', newModel)
+    if (newModel.stages[0]) {
+      dispatch('generator/selectModel', newModel.stages[0].generator_id, { root: true })
+    }
   },
 
   // generate
