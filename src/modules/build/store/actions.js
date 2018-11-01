@@ -59,10 +59,13 @@ export default {
 
   // removeStage
   // Removes an individual stage from the build
-  removeStage ({ state, commit }, selectedGeneratorId) {
+  removeStage ({ state, commit, dispatch }, selectedGeneratorId) {
     const newModel = state.newModel
     newModel.stages = newModel.stages.filter(s => s.generator_id !== selectedGeneratorId)
     commit('newModel', newModel)
+    if (newModel.stages[0]) {
+      dispatch('generator/selectModel', newModel.stages[0].generator_id, { root: true })
+    }
   },
 
   // generate
