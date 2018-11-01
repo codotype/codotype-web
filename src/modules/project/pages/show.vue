@@ -1,12 +1,5 @@
 <template>
   <div class="row mt-2">
-    <!-- <div class="col-lg-12"> -->
-      <!-- <ProjectDetailHeader/> -->
-    <!-- </div> -->
-
-    <!-- <div class="col-lg-12"> -->
-      <!-- <hr> -->
-    <!-- </div> -->
 
     <div class="col-lg-4 border-right">
 
@@ -28,12 +21,14 @@
           <h4 class="mb-0">Models</h4>
           <small class="text-muted">Models encapsulate attributes and relations</small>
         </b-col>
-        <!-- <b-col lg='12'> -->
-          <!-- <hr> -->
-        <!-- </b-col> -->
       </b-row>
 
-      <button id="new-model-button" class="btn btn-primary btn-block btn-lg mb-3" v-b-modal="'new-schema'">
+
+      <button
+        id="new-model-button"
+        class="btn btn-primary btn-block btn-lg mb-3"
+        v-b-modal="'new-schema'"
+      >
         <i class="fa fa-fw fa-plus"></i>
         Add Model
       </button>
@@ -46,12 +41,6 @@
       <SchemaDetail id="model-detail" />
     </div>
 
-    <!-- <div class="fixed-bottom text-right"> -->
-      <!-- <button class="btn btn-link mb-2 mr-2"> -->
-        <!-- <i class="fa fa-3x fa-question-circle"></i> -->
-      <!-- </button> -->
-    <!-- </div> -->
-
   </div>
 </template>
 
@@ -59,19 +48,16 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import ProjectDetailHeader from '@/modules/project/components/ProjectDetailHeader'
 import SchemaList from '@/modules/schema/components/SchemaList'
 import SchemaForm from '@/modules/schema/components/SchemaForm'
 import SchemaDetail from '@/modules/schema/components/SchemaDetail'
 
 export default {
-  name: 'project_show',
   props: ['project_id'],
   metaInfo: {
-    title: 'Apps - Show'
+    title: 'Blueprint - Show'
   },
   components: {
-    ProjectDetailHeader,
     SchemaList,
     SchemaForm,
     SchemaDetail

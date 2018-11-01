@@ -3,16 +3,10 @@
   <div class="row">
     <div class="col-lg-12">
 
-      <!-- <small class="text-warning">TODO - compute model.label, model.identifier in Vuex store</small> -->
-      <!-- TODO - model.label should be RELATED_SCHEMA.label or RELATED_SCHEMA.label_plural -->
-      <!-- <input type="text" v-model="model.label"> -->
-      <!-- TODO - model.label should be RELATED_SCHEMA.identifier + '_id' or '_ids' -->
-      <!-- <input type="text" v-model="model.identifier"> -->
-
+      <!-- SOURCE MODEL -->
       <div class="row">
         <div class="col-lg-4">
           <div class="form-group text-center">
-            <!-- <label>This Model</label> -->
             <label>{{ schema.label }}</label>
             <small class="form-text text-muted">This Model</small>
             <input type="text" class='form-control' disabled :value="schema.label">
@@ -21,11 +15,10 @@
 
         <!-- RELATION TYPE -->
         <div class="col-lg-4">
+
           <div class="row">
             <div class="col-lg-12">
               <div class="form-group mb-2 text-center">
-                <!-- <label>Relation Type</label> -->
-                <!-- <small class="form-text text-muted">The type of relation to define</small> -->
                 <label>{{ selectedRelationType.label }}</label>
                 <small class="form-text text-muted mb-0">{{ selectedRelationType.description }}</small>
               </div>
@@ -36,7 +29,7 @@
             <div class="col-lg-12">
               <div class="btn-group w-100">
                 <button
-                  :class="relation.id === model.type ? 'btn btn-outline-primary active' : 'btn btn-outline-primary'"
+                  :class="relation.id === model.type ? 'btn btn-sm btn-outline-primary active' : 'btn btn-sm btn-outline-primary'"
                   v-for="relation in relationTypes"
                   @click="setRelationType(relation.id)"
                 >

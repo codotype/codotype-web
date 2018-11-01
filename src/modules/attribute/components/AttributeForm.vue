@@ -7,7 +7,7 @@
       <DatatypeSelector v-model="model.datatype" v-if="formStep" />
 
       <template v-else>
-        <b-tabs lazy pills v-if="model.datatype !== 'RELATION'">
+        <b-tabs lazy pills>
           <b-tab title="Properties" active>
             <AttributePropertiesForm :model="model" />
           </b-tab>
@@ -38,8 +38,7 @@ export default {
   },
   computed: {
     formStep () {
-      // return (this.model._id || !this.model.datatype)
-      return (!this.model.datatype)
+      return !this.model.datatype
     }
   }
 }
