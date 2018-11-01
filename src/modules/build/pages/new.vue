@@ -66,11 +66,7 @@
 
       <AppShow v-if="showingApp"/>
 
-      <!-- STEP 1 - Select an App -->
-      <!-- TODO - this should be determined by a state getter variable, `requiresApp` -->
-      <AppSelector v-if="!newBuildModel.app_id"/>
-
-      <!-- STEP 2 - Select a generator -->
+      <!-- Select a generator -->
       <GeneratorSelector v-if="(newBuildModel.app_id && !newBuildModel.stages[0]) || choosingGenerator"/>
 
       <!-- TODO - abstract ALL of this into a separate component -->
@@ -137,7 +133,6 @@ import GeneratorModelOptions from '@/modules/build/components/GeneratorModelOpti
 import GeneratorGlobalOptions from '@/modules/build/components/GeneratorGlobalOptions'
 import GeneratorAddonForm from '@/modules/build/components/GeneratorAddonForm'
 import GeneratorSelector from '@/modules/build/components/GeneratorSelector'
-import AppSelector from '@/modules/build/components/AppSelector'
 import BuildHeader from '@/modules/build/components/BuildHeader'
 import AppShow from '@/modules/project/pages/show'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
@@ -150,7 +145,6 @@ export default {
     GeneratorGlobalOptions,
     GeneratorAddonForm,
     GeneratorSelector,
-    AppSelector,
     BuildHeader,
     AppShow
   },

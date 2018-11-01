@@ -11,6 +11,7 @@
         <b-nav-item id="project-header">{{ project.label }} Blueprint</b-nav-item>
 
         <b-modal
+          lazy
           id="edit-project"
           ref="editModal"
           :title="'Edit Blueprint'"
