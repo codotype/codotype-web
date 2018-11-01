@@ -14,15 +14,15 @@
   <div class="row" v-else>
 
     <!-- Abstract this column into one or more components -->
-    <b-col lg=3 class="border-right" v-if="showSidebar">
+    <b-col lg=3 class="border-right">
 
       <button
         v-if="choosingGenerator"
-        class="btn btn-outline-secondary btn-lg btn-block mb-3"
+        class="btn btn-outline-secondary btn-lg btn-block mb-3 mt-2"
         @click="showChoosingGenerator(false)"
       >
-        <i class="fa fa-times"></i>
-        Cancel
+        <i class="fa fa-reply"></i>
+        Configure Build
       </button>
 
       <button
@@ -31,14 +31,14 @@
         @click="showChoosingGenerator(true)"
       >
         <i class="fa fa-plus"></i>
-        Add Generator
+        Add Build Stage
       </button>
 
       <div class="card border-light shadow-sm">
         <div class="card-body">
           <h4 class='mb-0'>
             <i class="fa fa-cog"></i>
-            Generators
+            Build Stages
           </h4>
         </div>
         <ul class="list-group list-group-flush">
@@ -62,7 +62,8 @@
 
     </b-col>
 
-    <div :class="showSidebar ? 'col-lg-9' : 'col-lg-12'">
+    <!-- <div :class="showSidebar ? 'col-lg-9' : 'col-lg-12'"> -->
+    <div class="col-lg-9">
 
       <AppShow v-if="showingApp"/>
 
@@ -80,11 +81,31 @@
             :url="'http://github.com/'+selectedGenerator.github_url"
           />
 
-          <!-- {{ selectedGenerator }} -->
+          <!-- New Option Modal -->
+          <b-modal
+            id="remove-build-stage"
+            :title="'Remove Build Stage'"
+            @ok="removeBuildStage(selectedGenerator.id)"
+            ok-title='Remove Build Stage'
+            ok-variant='danger'
+          >
+            Are you sure you want to remove this build stage?
+          </b-modal>
 
-          <span class='badge badge-primary mr-1' v-for="tag in selectedGenerator.type_tags" :key="tag">{{ tag }}</span>
-          <span class='badge badge-info' v-if="selectedGenerator.self_configuring">Self-Configuring</span>
-          <span class='badge badge-light mr-1' v-for="tag in selectedGenerator.tech_tags" :key="tag">{{ tag }}</span>
+          <b-row>
+            <b-col>
+              <span class='badge badge-primary mr-1' v-for="tag in selectedGenerator.type_tags" :key="tag">{{ tag }}</span>
+              <span class='badge badge-info' v-if="selectedGenerator.self_configuring">Self-Configuring</span>
+              <span class='badge badge-light mr-1' v-for="tag in selectedGenerator.tech_tags" :key="tag">{{ tag }}</span>
+            </b-col>
+
+            <b-col class='text-right'>
+              <b-button variant='outline-danger' size='sm' v-b-modal="'remove-build-stage'" class="">
+                <i class="fa fa-minus"></i>
+                Remove Stage
+              </b-button>
+            </b-col>
+          </b-row>
 
           <hr>
 
@@ -187,7 +208,8 @@ export default {
       resetNewBuildModel: 'build/resetNewModel',
       selectGeneratorModel: 'generator/selectModel',
       generateCodebase: 'build/generate',
-      selectApp: 'build/selectApp'
+      selectApp: 'build/selectApp',
+      removeBuildStage: 'build/removeStage'
     }),
     ...mapMutations({
       showChoosingGenerator: 'build/choosingGenerator',

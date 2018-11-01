@@ -35,7 +35,6 @@
 
         <b-nav-item>
           <b-button
-            v-if="!choosingGenerator"
             id="generate-button"
             variant="success"
             @click="generateCodebase()"

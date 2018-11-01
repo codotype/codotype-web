@@ -46,7 +46,7 @@ export default {
     // once it's been created in the `stage` module
     newModel.stages.push(newStage)
     commit('newModel', newModel)
-    commit('choosingGenerator', false)
+    // commit('choosingGenerator', false)
 
     // sets generator.state.selectedModel
     // TODO - should be moved into the `stage` store
@@ -55,6 +55,14 @@ export default {
   },
   selectStage ({ state, commit, dispatch }, stage_id) {
     console.log('SELECT STAGE')
+  },
+
+  // removeStage
+  // Removes an individual stage from the build
+  removeStage ({ state, commit }, selectedGeneratorId) {
+    const newModel = state.newModel
+    newModel.stages = newModel.stages.filter(s => s.generator_id !== selectedGeneratorId)
+    commit('newModel', newModel)
   },
 
   // generate
