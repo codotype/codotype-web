@@ -3,7 +3,13 @@
   <div class="row">
 
     <!-- Bootstrap Modal Component -->
-    <b-modal id="new-project-modal" ref="newModal" :title="'New Blueprint'" hide-footer>
+    <b-modal
+      lazy
+      hide-footer
+      id="new-project-modal"
+      ref="newModal"
+      :title="'New Blueprint'"
+    >
       <ProjectForm :submit="submitProjectForm" />
     </b-modal>
 
