@@ -201,9 +201,7 @@ export default {
     }),
     stageGenerators () {
       let generatorIds = this.newBuildModel.stages.map(s => s.generator_id)
-      return this.generatorCollection.filter((g) => {
-        return generatorIds.includes(g.id)
-      })
+      return this.generatorCollection.filter(g => generatorIds.includes(g.id))
     }
   },
   methods: {
