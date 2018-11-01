@@ -54,7 +54,7 @@ export default {
   props: ['required', 'focus', 'label', 'type', 'example', 'help', 'ex', 'help', 'placeholder', 'value'],
   mounted () {
     if (this.focus) {
-      this.$refs.input_el.focus()
+      setTimeout(() => { this.$refs.input_el.focus() }, 200) // Minor delay for input element focus
     }
   },
   methods: {
