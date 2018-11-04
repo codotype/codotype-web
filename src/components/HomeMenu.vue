@@ -24,10 +24,14 @@
 
       <b-navbar-nav class="mr-0">
 
-        <b-nav-item target="_blank" href="https://github.com/codotype">
-          <i class="fab fa-lg fa-fw fa-github text-dark"></i>
-          GitHub
+        <b-nav-item>
+          <HelpButton :tour="tourSteps" />
         </b-nav-item>
+
+        <!-- <b-nav-item target="_blank" href="https://github.com/codotype"> -->
+          <!-- <i class="fab fa-lg fa-fw fa-github text-dark"></i> -->
+          <!-- GitHub -->
+        <!-- </b-nav-item> -->
 
         <!-- <b-nav-item target="_blank" href="https://twitter.com/codotype"> -->
           <!-- <i class="fab fa-lg fa-fw fa-twitter text-primary"></i> -->
@@ -52,7 +56,16 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import HelpButton from '@/components/HelpButton'
+
 export default {
-  name: 'HomeMenu'
+  name: 'HomeMenu',
+  components: {
+    HelpButton
+  },
+  computed: mapGetters({
+    tourSteps: 'tour/appListSteps'
+  })
 }
 </script>
