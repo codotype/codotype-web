@@ -9,10 +9,10 @@
             <!-- {{ model.label }} -->
           <!-- </button> -->
 
-          <router-link :to="'/generators/' + model.id" class="btn btn-link" style='text-decoration: none; font-size: 1.5rem'>
+          <button v-if="selectMethod" @click="selectMethod(model.id)" class="btn btn-link" style='text-decoration: none; font-size: 1.5rem'>
             <i :class="model.icon + ' mr-2'"></i>
             {{ model.label }}
-          </router-link>
+          </button>
 
           <small class='ml-2'>
             <a class='text-muted' :href="model.github_url">
@@ -32,10 +32,10 @@
         <!-- </span> -->
 
         <!-- TODO - this is sloppy, fix at some point -->
-        <button class="btn btn-primary pull-right" v-if="selectMethod" @click="selectMethod(model.id)">
-          <i class="fa fa fa-plus"></i>
-          Add to Build
-        </button>
+        <!-- <button class="btn btn-primary pull-right" v-if="selectMethod" @click="selectMethod(model.id)"> -->
+          <!-- <i class="fa fa fa-plus"></i> -->
+          <!-- Add to Build -->
+        <!-- </button> -->
 
       </div>
       <div class="col-lg-12">
