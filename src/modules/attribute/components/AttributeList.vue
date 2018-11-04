@@ -2,6 +2,8 @@
 <template>
   <div class="row">
 
+    <AttributeRemoveModal />
+
     <!-- Edit Attribute Form -->
     <b-modal
       lazy
@@ -88,12 +90,15 @@ import { mapGetters, mapActions } from 'vuex'
 import draggable from 'vuedraggable'
 import AttributeListItem from './AttributeListItem'
 import AttributeForm from './AttributeForm'
+import AttributeRemoveModal from './AttributeRemoveModal'
+
 export default {
   mixins: [smoothReflow],
   components: {
     draggable,
     AttributeListItem,
-    AttributeForm
+    AttributeForm,
+    AttributeRemoveModal
   },
   mounted () {
     this.$smoothReflow()

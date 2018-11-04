@@ -73,20 +73,10 @@
           <i class="fas fa-fw fa-pencil-alt"></i>
         </button>
 
-        <button class="btn btn-sm btn-outline-danger" v-b-tooltip.hover.top v-b-modal="'modal_' + item._id" title="Remove">
+        <button class="btn btn-sm btn-outline-danger" v-b-tooltip.hover.top title="Remove" @click="confirmRemoval(item)">
           <i class="fa fa-fw fa-trash"></i>
         </button>
 
-        <!-- Bootstrap Modal Component -->
-        <b-modal :id="'modal_' + item._id"
-          :title="'Remove Attribute'"
-          @ok="remove(item)"
-          ok-variant='danger'
-          ok-title='DESTROY'
-          cancel-title='Cancel'
-        >
-          <p class="text-left">Are you sure you want to destroy the {{ item.label }} attribute?</p>
-        </b-modal>
       </div>
 
     </div>
@@ -104,7 +94,7 @@ export default {
     AttributeLabel
   },
   methods: mapActions({
-    remove: 'attribute/destroy'
+    confirmRemoval: 'attribute/confirmRemoval'
   })
 }
 </script>
