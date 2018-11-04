@@ -56,10 +56,15 @@
       </div>
 
       <div class="col-lg-3 text-right controls" v-if="item.locked && item.datatype !== 'RELATION'">
-        <button class="btn btn-sm btn-outline-secondary" disabled="true">
-          <i class="fa fa-fw fa-lock mr-2"></i>
+        <b-badge
+          variant="secondary"
+          size="sm"
+          v-b-tooltip.hover.left
+          title="Locked attributes may not be edited or removed - they are required for correct baseline functionality."
+        >
+          <i class="fa fa-fw fa-lock"></i>
           Locked
-        </button>
+        </b-badge>
       </div>
 
       <div class="col-lg-3 text-right controls" v-else>

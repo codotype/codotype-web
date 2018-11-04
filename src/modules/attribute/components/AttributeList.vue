@@ -46,6 +46,7 @@
         </div>
 
         <!-- Draggable Attribute List -->
+        <!-- TODO - only display attributes that where NOT each.locked -->
         <draggable class='list-group list-group-flush'
           v-model='attributes'
           :options="sortableOptions"
