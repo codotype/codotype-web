@@ -17,7 +17,7 @@
     <b-col lg=12>
       <div class="row">
 
-        <div class="col-lg-7">
+        <div class="col-lg-12">
           <h4 class='text-muted'>
             <span id="blueprint-header">
               <i class="fas fa-drafting-compass"></i>
@@ -25,10 +25,6 @@
             </span>
           </h4>
           <small class="text-muted">Blueprints encapsulate metadata about models, attributes, and associations that describe your project</small>
-        </div>
-
-        <div class="col-lg-5 text-right">
-          <HelpButton :tour="tourSteps" size="lg" />
         </div>
 
       </div>
@@ -48,7 +44,6 @@
 
 import ListView from '@/modules/project/components/ProjectList'
 import ProjectForm from '@/modules/project/components/ProjectForm'
-import HelpButton from '@/components/HelpButton'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -58,15 +53,13 @@ export default {
   },
   components: {
     ListView,
-    ProjectForm,
-    HelpButton
+    ProjectForm
   },
   mounted () {
     this.fetch()
   },
   computed: mapGetters({
-    collection: 'project/collection',
-    tourSteps: 'tour/appListSteps'
+    collection: 'project/collection'
   }),
   methods: {
     ...mapActions({

@@ -2,6 +2,8 @@
 <template>
   <div class="row">
 
+    <AttributeRemoveModal />
+
     <!-- Edit Attribute Form -->
     <b-modal
       lazy
@@ -44,6 +46,7 @@
         </div>
 
         <!-- Draggable Attribute List -->
+        <!-- TODO - only display attributes that where NOT each.locked -->
         <draggable class='list-group list-group-flush'
           v-model='attributes'
           :options="sortableOptions"
@@ -88,12 +91,15 @@ import { mapGetters, mapActions } from 'vuex'
 import draggable from 'vuedraggable'
 import AttributeListItem from './AttributeListItem'
 import AttributeForm from './AttributeForm'
+import AttributeRemoveModal from './AttributeRemoveModal'
+
 export default {
   mixins: [smoothReflow],
   components: {
     draggable,
     AttributeListItem,
-    AttributeForm
+    AttributeForm,
+    AttributeRemoveModal
   },
   mounted () {
     this.$smoothReflow()

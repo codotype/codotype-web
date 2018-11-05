@@ -15,12 +15,24 @@
           id="edit-project"
           ref="editModal"
           :title="'Edit Blueprint'"
-          @ok="submitProjectForm()"
+          @ok="renameBlueprint({ label: blueprintLabel })"
           ok-title='Update'
           cancel-title='Cancel'
         >
-          <!-- <ProjectForm :model= :submit="submitProjectForm" /> -->
-          <p class="lead text-danger">TODO - add ProjectForm here</p>
+          <div class="form-group">
+            <label class='mb-0'>
+              Label
+              <span class='text-danger'>*</span>
+            </label>
+            <small class="form-text text-muted mb-2">The name of your project</small>
+            <input
+              type="text"
+              ref="labelInput"
+              class="form-control"
+              placeholder="Label"
+              v-model="blueprintLabel"
+            >
+          </div>
         </b-modal>
 
         <button
@@ -74,11 +86,18 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import HelpButton from '@/components/HelpButton'
+import FormInput from '@/components/FormInput'
 
 export default {
   name: 'BlueprintMenu',
   components: {
-    HelpButton
+    HelpButton,
+    FormInput
+  },
+  data () {
+    return {
+      blueprintLabel: 'My Renamed App'
+    }
   },
   computed: mapGetters({
     project: 'project/selectedModel',
@@ -86,6 +105,7 @@ export default {
   }),
   methods: mapActions({
     exportProject: 'project/exportJson',
+    renameBlueprint: 'project/rename',
     selectBuildApp: 'build/selectApp'
   })
 }

@@ -18,6 +18,9 @@ export default {
     model.label = label // TODO - titleize
     model.identifier = identifier
   },
+  confirmRemoval ({ state, commit }, attribute) {
+    commit('confirmRemoval', attribute)
+  },
   create ({ state, commit, dispatch, rootGetters }) {
     // Isolates current Attribute model and the schema to which the attribute belongs
     let model = cloneDeep(state.newModel)
@@ -47,8 +50,8 @@ export default {
     commit('schema/attributes', { collection }, { root: true })
     dispatch('clearEditModel')
   },
-  destroy ({ state, commit, rootGetters }, model) {
-    let collection = state.collection.filter(m => m._id !== model._id)
+  destroy ({ state, commit, rootGetters }) {
+    let collection = state.collection.filter(m => m._id !== state.confirmRemoval._id)
     commit('collection', collection)
     commit('schema/attributes', { collection }, { root: true })
   }
