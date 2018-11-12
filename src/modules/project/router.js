@@ -6,6 +6,10 @@ import ProjectGenerators from '@/modules/build/pages/new'
 
 export default [
   {
+    path: '',
+    component: ProjectList
+  },
+  {
     path: '/blueprints',
     component: ProjectList
   },
