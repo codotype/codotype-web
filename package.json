@@ -28,6 +28,7 @@
     "vue": "^2.5.2",
     "vue-github-buttons": "^2.0.5",
     "vue-js-toggle-button": "^1.3.0",
+    "vue-loading-spinner": "^1.0.11",
     "vue-meta": "^1.2.0",
     "vue-router": "^3.0.1",
     "vue-select": "github:sagalbot/vue-select",
