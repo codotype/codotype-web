@@ -3,7 +3,7 @@
     <div class="col-lg-12 d-flex justify-content-between align-items-center">
       <h2>Select a Generator</h2>
       <span>
-        <HelpButton :tour="tourSteps" />
+        <HelpButton tour="generatorListSteps" />
       </span>
     </div>
     <div class="col-lg-12">
@@ -26,8 +26,7 @@ export default {
     HelpButton
   },
   computed: mapGetters({
-    generatorCollection: 'generator/collection',
-    tourSteps: 'tour/generatorListSteps'
+    generatorCollection: 'generator/collection'
   }),
   methods: {
     onSelect (generator) {

@@ -23,7 +23,6 @@
         </b-col>
       </b-row>
 
-
       <button
         id="new-model-button"
         class="btn btn-primary btn-block btn-lg mb-3"
