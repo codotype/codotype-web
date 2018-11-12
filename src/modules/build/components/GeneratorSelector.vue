@@ -2,8 +2,8 @@
   <b-row>
     <b-col>
       <EditorHeader
-        title="Select a generator"
-        help="Select a generator with which to build your codebase"
+        title="Select your generators"
+        help="Generators produce code for different purposes using different languages and frameworks"
       />
       <hr>
 

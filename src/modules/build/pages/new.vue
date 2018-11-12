@@ -14,58 +14,68 @@
   <div class="row" v-else>
 
     <!-- Abstract this column into one or more components -->
-    <b-col lg=3 class="border-right">
+    <b-col lg=4 class="border-right" id="build-stage-list">
+
+      <!-- Model header -->
+      <b-row class='mb-1'>
+        <b-col lg='12'>
+          <h4 class="mb-0">Build</h4>
+          <small class="text-muted">Use your Blueprint with multiple generators</small>
+        </b-col>
+      </b-row>
 
       <button
-        v-if="choosingGenerator"
-        class="btn btn-outline-secondary btn-lg btn-block mb-3 mt-2"
-        @click="showChoosingGenerator(false)"
-      >
-        <i class="fa fa-reply"></i>
-        Configure Build
-      </button>
-
-      <button
-        v-else
-        class="btn btn-primary btn-lg btn-block mb-3 mt-2"
+        id="add-build-stage"
+        :disabled="choosingGenerator"
+        class="btn btn-primary btn-lg btn-block mb-3"
         @click="showChoosingGenerator(true)"
       >
         <i class="fa fa-plus"></i>
-        Add Build Stage
+        Add Generator
       </button>
 
       <!-- TODO - abstract into a separate component -->
       <div class="card border-light shadow-sm">
-        <div class="card-body">
-          <h4 class='mb-0'>
-            <i class="fa fa-cog"></i>
-            Build Stages
-          </h4>
-        </div>
+        <!-- <div class="card-body"> -->
+          <!-- <h4 class='mb-0'> -->
+            <!-- <i class="fa fa-cog"></i> -->
+            <!-- Build -->
+          <!-- </h4> -->
+        <!-- </div> -->
 
-        <ul class="list-group list-group-flush">
-          <template v-if="newBuildModel.stages[0]" v-for="each in stageGenerators">
-            <li class="list-group-item list-group-item-action list-group-item-primary" :key="each.id" v-if="each.id === selectedGenerator.id">
+        <transition-group
+          tag="ul"
+          name="stage-list"
+          class="list-group list-group-flush"
+          v-if="newBuildModel.stages[0]"
+        >
+          <li
+            button
+            :class=" each.id === selectedGenerator.id ? 'list-group-item list-group-item-action list-group-item-primary' : 'list-group-item'"
+            :key="each.id"
+            v-for="each in stageGenerators"
+            @click="selectGeneratorModel(each.id)"
+          >
+            <span>
+              <img style='max-width: 1rem;' class='mr-2' :src="each.icon"/>
               {{ each.label }}
-            </li>
-            <li class="list-group-item list-group-item-action" :key="each.id" @click="selectGeneratorModel(each.id)" v-else>
-              {{ each.label }}
-            </li>
-          </template>
+            </span>
+          </li>
+        </transition-group>
 
-          <!-- No Generators Selected view -->
-          <li class="list-group-item list-group-item-warning text-center" v-if="!newBuildModel.stages[0]">
+        <!-- No Generators Selected view -->
+        <ul class="list-group" v-if="!newBuildModel.stages[0]">
+          <li class="list-group-item list-group-item-warning text-center">
             <i class="fa fa-warning"></i>
             No generators selected
           </li>
-
         </ul>
       </div>
 
     </b-col>
 
     <!-- <div :class="showSidebar ? 'col-lg-9' : 'col-lg-12'"> -->
-    <div class="col-lg-9">
+    <b-col lg=8>
 
       <AppShow v-if="showingApp"/>
 
@@ -77,11 +87,40 @@
       <div class="row" v-else-if='newBuildModel.stages[0] && newBuildModel.app_id'>
         <div class="col-lg-12">
 
-          <EditorHeader
-            :title="selectedGenerator.label"
-            :help="selectedGenerator.description"
-            :url="'http://github.com/'+selectedGenerator.github_url"
-          />
+          <b-row>
+
+            <b-col lg=12 class='d-flex justify-content-between'>
+              <span class='d-flex align-items-center'>
+                <img style='max-width: 2rem;' class='d-flex mr-2' :src="selectedGenerator.icon"/>
+                <p class="lead mb-0 mr-3">{{ selectedGenerator.label }}</p>
+                <MoreInfoLink :url="'http://github.com/'+selectedGenerator.github_url"/>
+              </span>
+
+              <span class='d-flex'>
+                <b-button
+                  id="build-remove-stage-btn"
+                  variant='link'
+                  class="text-danger"
+                  size='sm'
+                  v-b-modal="'remove-build-stage'"
+                >
+                  <i class="fa fa-trash"></i>
+                  Remove
+                </b-button>
+              </span>
+            </b-col>
+
+            <b-col lg=12>
+              <small class="text-muted">{{ selectedGenerator.description }}</small>
+            </b-col>
+
+            <b-col lg=12>
+              <span class='badge badge-primary mr-1' v-for="tag in selectedGenerator.type_tags" :key="tag">{{ tag }}</span>
+              <span class='badge badge-info' v-if="selectedGenerator.self_configuring">Self-Configuring</span>
+              <span class='badge badge-light mr-1' v-for="tag in selectedGenerator.tech_tags" :key="tag">{{ tag }}</span>
+            </b-col>
+
+          </b-row>
 
           <!-- New Option Modal -->
           <b-modal
@@ -94,27 +133,13 @@
             Are you sure you want to remove this build stage?
           </b-modal>
 
-          <b-row>
-            <b-col>
-              <span class='badge badge-primary mr-1' v-for="tag in selectedGenerator.type_tags" :key="tag">{{ tag }}</span>
-              <span class='badge badge-info' v-if="selectedGenerator.self_configuring">Self-Configuring</span>
-              <span class='badge badge-light mr-1' v-for="tag in selectedGenerator.tech_tags" :key="tag">{{ tag }}</span>
-            </b-col>
-
-            <b-col class='text-right'>
-              <b-button variant='outline-danger' size='sm' v-b-modal="'remove-build-stage'" class="">
-                <i class="fa fa-minus"></i>
-                Remove Stage
-              </b-button>
-            </b-col>
-          </b-row>
-
           <hr>
 
           <b-tabs>
 
             <!-- README.md -->
             <b-tab
+              button-id="build-readme-nav"
               title="README.md"
               active
               class='card-body bg-white border border-top-0'
@@ -122,13 +147,21 @@
             />
 
             <!-- GlobalOptions -->
-            <b-tab title="Global Options" v-if="selectedGenerator.global_options[0]" >
+            <b-tab
+              title="Global Options"
+              v-if="selectedGenerator.global_options[0]"
+              button-id="build-global-options-nav"
+            >
               <br>
               <GeneratorGlobalOptions/>
             </b-tab>
 
             <!-- ModelOptions -->
-            <b-tab title="Model Options" v-if="selectedGenerator.model_options[0]" >
+            <b-tab
+              title="Model Options"
+              v-if="selectedGenerator.model_options[0]"
+              button-id="build-model-options-nav"
+            >
               <br>
               <GeneratorModelOptions/>
             </b-tab>
@@ -143,7 +176,7 @@
 
         </div>
       </div>
-    </div>
+    </b-col>
 
   </div>
 </template>
@@ -152,6 +185,7 @@
 
 <script>
 import LoadingBuild from '@/modules/build/components/LoadingBuild'
+import MoreInfoLink from '@/components/MoreInfoLink'
 import GeneratorModelOptions from '@/modules/build/components/GeneratorModelOptions'
 import GeneratorGlobalOptions from '@/modules/build/components/GeneratorGlobalOptions'
 import GeneratorAddonForm from '@/modules/build/components/GeneratorAddonForm'
@@ -164,6 +198,7 @@ import marked from 'marked'
 export default {
   components: {
     LoadingBuild,
+    MoreInfoLink,
     GeneratorModelOptions,
     GeneratorGlobalOptions,
     GeneratorAddonForm,
@@ -224,3 +259,21 @@ export default {
   }
 }
 </script>
+
+<style type="text/css">
+
+  .stage-list-item {
+    transition: all 1s;
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  .stage-list-enter, .stage-list-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .stage-list-leave-active {
+    position: absolute;
+  }
+
+</style>

@@ -4,10 +4,10 @@
 
       <div class="card card-body text-center" v-if="buildLoading">
         <p class="lead">Thousands of monkeys are generating your app</p>
-        <small class="text-muted">Please be nice to them its their first day on the job</small>
+        <small class="text-muted">please be nice to them its their first day on the job</small>
         <div class="row mt-4">
-          <div class="col-lg-12">
-            <i class="fa fa-fw fa-2x fa-spin fa-spinner"></i>
+          <div class="col-lg-12 text-center d-flex justify-content-center">
+            <Circle8 size="80px" class='d-flex my-2'/>
           </div>
         </div>
       </div>
@@ -28,10 +28,26 @@
 
         <div class="row d-flex justify-content-center mt-3">
           <div class="col-lg-6">
-            <b-button variant="primary" class="w-100" size="lg" :to="'/blueprints/' + selectedBlueprint._id">
-              <i class="fa fa-fw fa-drafting-compass"></i>
-              Back to Blueprint
+            <b-button
+              variant="primary"
+              class="w-100"
+              size="lg"
+              :href="downloadUrl"
+              target="_blank"
+            >
+              <i class="fa fa-fw fa-download"></i>
+              Download ZIP
             </b-button>
+          </div>
+        </div>
+
+        <div class="row d-flex justify-content-center mt-3">
+          <div class="col-lg-6 text-center">
+            <router-link
+              class="w-100" :to="'/blueprints/' + selectedBlueprint._id">
+              <i class="fa fa-fw fa-reply"></i>
+              Back to Blueprint
+            </router-link>
           </div>
         </div>
 
@@ -42,7 +58,7 @@
               <br>
               or
               <br>
-              Follow us on <a href="https://twitter.com/codotype" target='_blank'><i class="fab fa-fw fa-twitter"></i>Twitter</a>
+              follow us on <a href="https://twitter.com/codotype" target='_blank'><i class="fab fa-fw fa-twitter"></i>Twitter</a>
             </small>
           </div>
         </div>
@@ -54,10 +70,14 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import Circle8 from 'vue-loading-spinner/src/components/Circle8'
 
 export default {
   name: 'LoadingBuild',
   props: ['model'],
+  components: {
+    Circle8
+  },
   computed: {
     ...mapGetters({
       selectedBlueprint: 'project/selectedModel',
