@@ -9,8 +9,13 @@
             <!-- {{ model.label }} -->
           <!-- </button> -->
 
-          <button v-if="selectMethod" @click="selectMethod(model.id)" class="btn btn-link" style='text-decoration: none; font-size: 1.5rem'>
-            <i :class="model.icon + ' mr-2'"></i>
+          <button
+            v-if="selectMethod"
+            @click="selectMethod(model.id)"
+            class="btn btn-link pl-0"
+            style='text-decoration: none; font-size: 1.5rem'
+          >
+            <img class='generator-icon' :src="model.icon"/>
             {{ model.label }}
           </button>
 
@@ -84,3 +89,9 @@ export default {
   }
 }
 </script>
+
+<style type="text/css" scoped>
+  .generator-icon {
+    max-width: 2rem;
+  }
+</style>
