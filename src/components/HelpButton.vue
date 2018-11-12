@@ -1,8 +1,12 @@
 <template>
-  <!-- <a class='mr-3' role="button" @click.stop="startTour()"> -->
-    <!-- <i class="fa fa-fw fa-lg fa-question-circle" v-b-tooltip.hover.left :title='"Tutorial"'></i> -->
-  <!-- </a> -->
-  <b-button variant='outline-dark' :size="size" @click.stop="startTour()" v-b-tooltip.hover.left :title='"Click here to start tour"'>
+  <b-button
+    variant='outline-dark'
+    :size="size"
+    @click.stop="startTour()"
+    v-b-tooltip.hover
+    :placement="tooltipPlacement || 'left' "
+    :title='"Click here to start tour"'
+  >
     <i class="fa fa-question-circle"></i>
     Tutorial
   </b-button>
@@ -13,13 +17,13 @@ import Driver from 'driver.js'
 
 export default {
   name: 'HelpButton',
-  props: ['tour', 'size'],
+  props: ['tour', 'size', 'tooltipPlacement'],
   created () {
     this.driver = new Driver()
   },
   methods: {
     startTour () {
-      this.driver.defineSteps(this.tour)
+      this.driver.defineSteps(this.$store.getters[`tour/${this.tour}`])
       return this.driver.start()
     }
   }

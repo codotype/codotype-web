@@ -8,7 +8,7 @@
     <b-collapse is-nav id="nav_collapse">
 
       <b-navbar-nav>
-        <b-nav-item id="project-header">{{ project.label }} Blueprint</b-nav-item>
+        <b-nav-text id="project-header">{{ project.label }} Blueprint</b-nav-text>
 
         <b-modal
           lazy
@@ -49,12 +49,11 @@
 
       <b-navbar-nav class="ml-auto">
 
-        <b-nav-item>
-          <HelpButton :tour="tourSteps" />
-        </b-nav-item>
+        <b-nav-form>
+          <HelpButton class='mr-2' tour='appEditorSteps' />
 
-        <b-nav-item>
           <b-button
+            class='mr-2'
             variant="outline-primary"
             @click="exportProject(project)"
             v-b-tooltip.hover.bottom :title='"Click here to export Blueprint"'
@@ -62,10 +61,9 @@
             <i class="fa fa-fw fa-download"></i>
             Export
           </b-button>
-        </b-nav-item>
 
-        <b-nav-item>
           <b-button
+            class='mr-2'
             :to="'/blueprints/' + project._id + '/generate'"
             id="generate-button"
             variant="success"
@@ -75,7 +73,7 @@
             Generate Code
             <i class="fa fa-fw fa-chevron-right"></i>
           </b-button>
-        </b-nav-item>
+        </b-nav-form>
 
       </b-navbar-nav>
 
@@ -100,8 +98,7 @@ export default {
     }
   },
   computed: mapGetters({
-    project: 'project/selectedModel',
-    tourSteps: 'tour/appEditorSteps'
+    project: 'project/selectedModel'
   }),
   methods: mapActions({
     exportProject: 'project/exportJson',
