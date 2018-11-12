@@ -51,7 +51,7 @@
         >
           <li
             button
-            :class=" each.id === selectedGenerator.id ? 'list-group-item list-group-item-action list-group-item-primary' : 'list-group-item'"
+            :class=" each.id === selectedGenerator.id ? 'cursor-pointer list-group-item list-group-item-action list-group-item-primary' : 'cursor-pointer list-group-item'"
             :key="each.id"
             v-for="each in stageGenerators"
             @click="selectGeneratorModel(each.id)"
@@ -117,6 +117,7 @@
             <b-col lg=12>
               <span class='badge badge-primary mr-1' v-for="tag in selectedGenerator.type_tags" :key="tag">{{ tag }}</span>
               <span class='badge badge-info' v-if="selectedGenerator.self_configuring">Self-Configuring</span>
+              <span class='badge badge-warning' v-if="selectedGenerator.official">Codotype API 0.1</span>
               <span class='badge badge-light mr-1' v-for="tag in selectedGenerator.tech_tags" :key="tag">{{ tag }}</span>
             </b-col>
 
@@ -274,6 +275,9 @@ export default {
   }
   .stage-list-leave-active {
     position: absolute;
+  }
+  .cursor-pointer {
+    cursor: pointer;
   }
 
 </style>
