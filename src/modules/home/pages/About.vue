@@ -1,7 +1,7 @@
 <template>
   <div class="row align-items-center">
     <div class="col-lg-12">
-      
+
       <div class="row mt-2">
         <div class="col-lg-12 text-center">
           <!-- <img class='logo' src="@/assets/logo_dark.png"> -->

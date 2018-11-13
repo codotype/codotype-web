@@ -142,11 +142,62 @@ export const APP_LIST_TOUR = [
     }
   },
   {
-    element: '#example-blueprint-bitter',
+    element: '#example-blueprint-tweeter',
     popover: {
       title: 'Tweeter Example',
       description: 'Medium complexity - Tweets, Favorites, Follows, & Users.',
       position: 'top'
+    }
+  }
+]
+
+export const BUILD_TOUR = [
+  {
+    element: '#build-stage-list',
+    popover: {
+      title: 'Build Stages',
+      description: 'Each build can run multiple generators against a single blueprint',
+      position: 'right'
+    }
+  },
+  {
+    element: '#add-build-stage',
+    popover: {
+      title: 'Add Build Stage',
+      description: 'Blueprints define a collection of data models accepted by a Codotype Generator.',
+      position: 'right'
+    }
+  },
+  {
+    element: '#build-readme-nav',
+    popover: {
+      title: 'Generator README.md',
+      description: 'TODO - add copy to README tour',
+      position: 'top'
+    }
+  },
+  {
+    element: '#build-global-options-nav',
+    popover: {
+      title: 'Global Options',
+      description: 'TODO - add copy to GLOBAL OPTIONS tour',
+      position: 'top'
+    }
+  },
+  {
+    element: '#build-model-options-nav',
+    popover: {
+      title: 'Model Options',
+      description: 'TODO - add copy to MODEL OPTIONS tour',
+      position: 'top'
+    }
+  },
+  {
+    element: '#build-remove-stage-btn',
+    popover: {
+      title: 'Remove Stage',
+      description: 'You may remove a stage anytime - but your configuration will be lost!',
+      position: 'left'
     }
   }
 ]

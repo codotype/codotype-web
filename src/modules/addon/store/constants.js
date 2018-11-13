@@ -47,20 +47,3 @@ export const DATATYPES = [
   // { value: 'GEO', text: 'Geolocation', icon: 'fa-map' },
   { value: RELATION, text: 'Relation', icon: 'fa-link' }
 ]
-
-// <!-- <optgroup label="Basics"> -->
-//   <!-- <option value='RANGE'>Range</option> -->
-//   <!-- <option value='PASSWORD'>Password</option> -->
-//   <!-- <option value='URL'>URL</option> -->
-// <!-- </optgroup> -->
-// <!-- <optgroup label="Masked"> -->
-//   <!-- <option value='PHONE_NUMBER'>Phone Number</option> -->
-//   <!-- <option value='EMAIL'>Phone Number</option> -->
-//   <!-- <option value='CURRENCY_USD'>Currency (USD)</option> -->
-// <!-- </optgroup> -->
-// <!-- <optgroup label="Dropdowns"> -->
-//   <!-- <option value='TEXT_SELECT'>Text Dropdown</option> -->
-//   <!-- <option value='NUMBER_SELECT'>Number Dropdown</option> -->
-//   <!-- <option value='TEXT_SELECT_MULTI'>Text Multi Dropdown</option> -->
-//   <!-- <option value='NUMBER_SELECT_MULTI'>Number Multi Dropdown</option> -->
-// <!-- </optgroup> -->

@@ -1,25 +1,33 @@
 <template>
   <li :class="className" @click="toggleFilter()">
-    <span>{{ label }}</span>
-    <input type="checkbox" v-model='checked'>
+    <span>{{ tag.label }}</span>
+
+    <toggle-button
+      :value="value"
+      :sync="true"
+      ref="toggle"
+      :color="'#4582EC'"
+      class='mb-0'
+    />
+
   </li>
 </template>
 
 <script>
 export default {
-  props: ['label'],
-  data () {
-    return { checked: false }
-  },
+  props: ['tag', 'value'],
   methods: {
     toggleFilter () {
-      this.checked = !this.checked
+      this.updateModel(!this.tag.value)
+    },
+    updateModel (value) {
+      this.$emit('input', value)
     }
   },
   computed: {
     className () {
       let css = ['list-group-item', 'list-group-item-action', 'd-flex', 'justify-content-between', 'align-items-center']
-      if (this.checked) css.push('list-group-item-primary')
+      if (this.tag.selected) css.push('list-group-item-primary')
       return css.join(' ')
     }
   }

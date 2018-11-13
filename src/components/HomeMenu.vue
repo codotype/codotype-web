@@ -1,7 +1,7 @@
 <template>
-  <b-navbar toggleable="md" type="light" variant="light" fixed="top" class='bg-white'>
-    <b-navbar-brand to="/">
-      <!-- <img class='logo' src="@/assets/logo_dark.png"> -->
+  <b-navbar toggleable="md" type="light" variant="light" fixed="top">
+    <b-navbar-brand to="/blueprints">
+      <!-- <img class='logo' src="@/assets/logo.png"> -->
       <strong>codotype</strong>
     </b-navbar-brand>
 
@@ -24,10 +24,14 @@
 
       <b-navbar-nav class="mr-0">
 
-        <b-nav-item target="_blank" href="https://github.com/codotype">
-          <i class="fab fa-lg fa-fw fa-github text-dark"></i>
-          GitHub
+        <b-nav-item>
+          <HelpButton tour='appListSteps' />
         </b-nav-item>
+
+        <!-- <b-nav-item target="_blank" href="https://github.com/codotype"> -->
+          <!-- <i class="fab fa-lg fa-fw fa-github text-dark"></i> -->
+          <!-- GitHub -->
+        <!-- </b-nav-item> -->
 
         <!-- <b-nav-item target="_blank" href="https://twitter.com/codotype"> -->
           <!-- <i class="fab fa-lg fa-fw fa-twitter text-primary"></i> -->
@@ -52,7 +56,12 @@
 </template>
 
 <script>
+import HelpButton from '@/components/HelpButton'
+
 export default {
-  name: 'HomeMenu'
+  name: 'HomeMenu',
+  components: {
+    HelpButton
+  }
 }
 </script>

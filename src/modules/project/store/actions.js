@@ -14,16 +14,13 @@ const DownloadFile = require('downloadjs')
 export default {
   ...SELECT_MODEL_ACTIONS,
   selectModel: ({ commit, state }, model_id) => {
-    console.log('SELECT MODEL???')
-    console.log(model_id)
     if (!model_id) return
     let model = state.collection.find(m => m._id === model_id)
-    commit('selectedModel', model)
 
-    console.log(model)
+    // Selects the model - sets schema collection
     commit('schema/collection', model.schemas, { root: true })
     commit('schema/selectedModel', model.schemas[0], { root: true })
-    // commit('record/collection', model.seeds, { root: true })
+    commit('selectedModel', model)
   },
   fetchCollection: ({ rootGetters, commit }) => {
     commit('fetching', true)
@@ -66,6 +63,13 @@ export default {
     if (isNew) router.push(`/blueprints/${recordId}`)
   },
 
+  removeSchema: ({ state, commit, dispatch }, { schemaId }) => {
+    const selectedModel = state.selectedModel
+    selectedModel.schemas = selectedModel.schemas.filter(s => s._id !== schemaId)
+    dispatch('persist', { record: selectedModel })
+    dispatch('selectModel', selectedModel._id)
+  },
+
   // TODO - re-implement this
   update: ({ dispatch, state }) => {
     // dispatch('persist', { record: state.current })
@@ -85,6 +89,14 @@ export default {
     let { newModel } = state
     newModel.identifier = underscored(newModel.label)
     commit('newModel', newModel)
+  },
+
+  rename: ({ state, commit, dispatch }, { label }) => {
+    const selectedModel = state.selectedModel
+    selectedModel.label = label
+    selectedModel.identifier = underscored(label)
+    dispatch('persist', { record: selectedModel })
+    dispatch('selectModel', selectedModel._id)
   },
 
   resetNewModel: ({ commit }) => {

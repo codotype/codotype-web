@@ -3,7 +3,7 @@
     <div class="col-lg-12 d-flex justify-content-between align-items-center">
       <h2>Generators</h2>
       <span>
-        <HelpButton :tour="tourSteps" />
+        <HelpButton tour="generatorListSteps" />
         <a class="btn btn-outline-primary btn-lg" id='new-generator-button' href="#/generators/new">
           <i class="fa fa-fw fa-plus"></i>
           Add Generator
@@ -50,8 +50,7 @@ export default {
     HelpButton
   },
   computed: mapGetters({
-    generatorCollection: 'generator/collection',
-    tourSteps: 'tour/generatorListSteps'
+    generatorCollection: 'generator/collection'
   }),
   methods: mapActions({
     fetchGenerators: 'generator/fetchCollection'

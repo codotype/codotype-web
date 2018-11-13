@@ -7,21 +7,60 @@
     <small class="form-text text-muted" v-if="example && help">{{example}}<br>{{help}}</small>
     <small class="form-text text-muted" v-else-if="help">{{help}}</small>
 
-    <input v-if="type === 'BOOL'" type="checkbox" ref="input_el" :checked="value" @change="updateModel()">
-    <input v-else-if="type === 'DATE'" type="date" ref="input_el" class="form-control" :placeholder="placeholder" :value="value" @input="updateModel()" >
-    <input v-else-if="type === 'TIME'" type="time" ref="input_el" class="form-control" :placeholder="placeholder" :value="value" @input="updateModel()" >
-    <input v-else type="text" ref="input_el" class="form-control" :placeholder="placeholder" :value="value" @input="updateModel()" >
+    <toggle-button
+      v-if="type === 'BOOL'"
+      ref="input_el"
+      :value="value"
+      :color="'#4582EC'"
+      @change="updateModel()"
+    />
+
+    <input
+      v-else-if="type === 'DATE'"
+      type="date"
+      ref="input_el"
+      class="form-control"
+      :placeholder="placeholder"
+      :value="value"
+      @input="updateModel()"
+    >
+
+    <input
+      v-else-if="type === 'TIME'"
+      type="time"
+      ref="input_el"
+      class="form-control"
+      :placeholder="placeholder"
+      :value="value"
+      @input="updateModel()"
+    >
+
+    <input
+      v-else
+      type="text"
+      ref="input_el"
+      class="form-control"
+      :placeholder="placeholder"
+      :value="value"
+      @input="updateModel()"
+    >
 
   </div>
 </template>
 
 <script>
+
 export default {
-  props: ['required', 'label', 'type', 'example', 'help', 'ex', 'help', 'placeholder', 'value'],
+  props: ['required', 'focus', 'label', 'type', 'example', 'help', 'ex', 'help', 'placeholder', 'value'],
+  mounted () {
+    if (this.focus) {
+      setTimeout(() => { this.$refs.input_el.focus() }, 200) // Minor delay for input element focus
+    }
+  },
   methods: {
     updateModel () {
       if (this.type === 'BOOL') {
-        this.$emit('input', this.$refs.input_el.checked)
+        this.$emit('input', this.$refs.input_el.toggled)
       } else if (this.type === 'NUMBER') {
         this.$emit('input', Number(this.$refs.input_el.value))
       } else {

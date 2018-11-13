@@ -3,14 +3,21 @@
   <div class="row">
 
     <!-- Bootstrap Modal Component -->
-    <b-modal id="new-project-modal" ref="newModal" :title="'New Blueprint'" hide-footer>
+    <b-modal
+      lazy
+      hide-footer
+      id="new-project-modal"
+      ref="newModal"
+      :title="'New Blueprint'"
+    >
       <ProjectForm :submit="submitProjectForm" />
     </b-modal>
 
     <!-- TODO - abstract into PageHeader component -->
     <b-col lg=12>
       <div class="row">
-        <div class="col-lg-7">
+
+        <div class="col-lg-12">
           <h4 class='text-muted'>
             <span id="blueprint-header">
               <i class="fas fa-drafting-compass"></i>
@@ -18,33 +25,8 @@
             </span>
           </h4>
           <small class="text-muted">Blueprints encapsulate metadata about models, attributes, and associations that describe your project</small>
-
         </div>
 
-        <div class="col-lg-5 text-right">
-
-          <HelpButton :tour="tourSteps" size="lg" />
-
-          <!-- <a class='btn btn-lg btn-outline-info' href="#/blueprints/examples"> -->
-            <!-- <i class="fa fa-fw fa-folder-open-o mr-2"></i> -->
-            <!-- Example Apps -->
-          <!-- </a> -->
-
-          <!-- <button class='btn btn-lg btn-primary ml-2' v-b-modal="'new-project-modal'" v-if="true"> -->
-            <!-- <i class="fa fa-fw fa-plus"></i> -->
-            <!-- New Blueprint -->
-          <!-- </button> -->
-
-          <!-- <button v-b-tooltip.hover.left title='Create unlimited Blueprints when you register' class='btn btn-lg btn-primary ml-2' v-else> -->
-            <!-- <i class="fa fa-fw fa-plus"></i> -->
-            <!-- New Blueprint -->
-          <!-- </button> -->
-
-        </div>
-
-        <!-- <div class="col-lg-12"> -->
-          <!-- <hr> -->
-        <!-- </div> -->
       </div>
     </b-col>
 
@@ -62,7 +44,6 @@
 
 import ListView from '@/modules/project/components/ProjectList'
 import ProjectForm from '@/modules/project/components/ProjectForm'
-import HelpButton from '@/components/HelpButton'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -72,15 +53,13 @@ export default {
   },
   components: {
     ListView,
-    ProjectForm,
-    HelpButton
+    ProjectForm
   },
   mounted () {
     this.fetch()
   },
   computed: mapGetters({
-    collection: 'project/collection',
-    tourSteps: 'tour/appListSteps'
+    collection: 'project/collection'
   }),
   methods: {
     ...mapActions({

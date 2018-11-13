@@ -1,4 +1,3 @@
-
 <template>
   <div class="row">
     <div class="col-lg-12">
@@ -7,7 +6,13 @@
         <div class="col-lg-7">
           <h4 class="mb-0">
             {{ model.label + ' Model' }}
-            <button class="btn btn-link py-0" v-b-modal="'edit-schema'" v-b-tooltip.hover.right title='Edit Model Name' v-if="!isUserModel(model)">
+            <button
+              class="btn btn-link py-0"
+              v-b-modal="'edit-schema'"
+              v-b-tooltip.hover.right
+              title='Edit Model Name'
+              v-if="!isUserModel(model)"
+            >
               <i class="fas fa-pencil-alt"></i>
             </button>
           </h4>
@@ -15,7 +20,12 @@
 
         <div class="col-lg-5 d-flex align-items-center justify-content-end">
 
-          <button class='btn btn-sm btn-outline-danger' v-b-modal="'destroy-schema'" v-b-tooltip.hover.left title='Destroy Model' v-if="!isUserModel(model)">
+          <button
+            class='btn btn-sm btn-outline-danger'
+            v-b-modal="'destroy-schema'"
+            v-b-tooltip.hover.left title='Remove Model'
+            v-if="!isUserModel(model)"
+          >
             <i class="fa fa-fw fa-trash"></i>
           </button>
 
@@ -34,8 +44,8 @@
 
           <!-- Destroy Schema Confirmation -->
           <b-modal id="destroy-schema"
-            :title="'Destroy Model?'"
-            @ok="destroySchema(model)"
+            :title="'Remove Model?'"
+            @ok="destroySchema({ schemaId: model._id })"
             ok-title='DESTROY'
             ok-variant='danger'
             cancel-title='Cancel'
@@ -55,8 +65,8 @@
 
     <!-- Attribute List -->
     <div class="col-lg-12">
-      <AttributeList :schema='model' />
-      <RelationList :schema='model' class="mt-3" />
+      <AttributeList :schema="model" />
+      <RelationList :schema="model" class="mt-3" />
     </div>
 
   </div>
@@ -83,7 +93,7 @@ export default {
   methods: {
     ...mapActions({
       updateSchema: 'schema/update',
-      destroySchema: 'schema/remove'
+      destroySchema: 'project/removeSchema'
     }),
     isUserModel (model) {
       return model.identifier === 'user'

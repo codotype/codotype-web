@@ -18,7 +18,7 @@
 
     <div class="col-lg-5 d-flex align-items-center justify-content-end">
 
-      <HelpButton :tour="tourSteps"/>
+      <HelpButton tour='appEditorSteps'/>
 
       <!-- TODO -- enable / disable this button based on build -->
       <button class="btn btn-success btn-lg" id='generate-project-button'>
@@ -33,14 +33,10 @@
 
 <script>
 import HelpButton from '@/components/HelpButton'
-import { mapGetters } from 'vuex'
 
 export default {
   components: {
     HelpButton
-  },
-  computed: mapGetters({
-    tourSteps: 'tour/appEditorSteps'
-  })
+  }
 }
 </script>

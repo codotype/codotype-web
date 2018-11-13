@@ -1,12 +1,6 @@
 <template>
-  <!-- TODO - use PageHeader component here, similar to App Editor page -->
-  <!-- <EditorHeader
-    title="Build"
-    help="Configure a build using a single App and multiple generators"
-    url="https://codotype.github.io"
-  />
-   -->
-  <!-- <hr> -->
+
+  <!-- Shows LoadingBuild component -->
   <div class="app" v-if="buildLoading || buildFinished">
     <div class="row">
       <div class="col-lg-12">
@@ -19,96 +13,73 @@
   <!-- Show ONLY when a generator and app are selected -->
   <div class="row" v-else>
 
-    <!-- TODO - this should be shown/hidden depending on something different than 'showSidebar' -->
-    <!-- <b-col lg=12 v-if="showSidebar"> -->
-      <!-- <BuildHeader/> -->
-      <!-- <hr> -->
-    <!-- </b-col> -->
-
     <!-- Abstract this column into one or more components -->
-    <b-col lg=3 class="border-right" v-if="showSidebar">
+    <b-col lg=4 class="border-right" id="build-stage-list">
 
-      <!-- <p class='lead mb-0'>App</p> -->
-      <!-- <ul class="list-group"> -->
-        <!-- <li class="list-group-item list-group-item-action" v-if="newBuildModel.app_id"> -->
-          <!-- {{ selectedApp.label }} -->
-        <!-- </li> -->
-        <!-- <li class="list-group-item list-group-item-warning text-center" v-else> -->
-          <!-- <i class="fa fa-warning"></i> -->
-          <!-- No app selected -->
-        <!-- </li> -->
-      <!-- </ul> -->
+      <!-- Model header -->
+      <b-row class='mb-1'>
+        <b-col lg='12'>
+          <h4 class="mb-0">Build</h4>
+          <small class="text-muted">Use your Blueprint with multiple generators</small>
+        </b-col>
+      </b-row>
 
-      <!-- <p class='lead mb-0'>App</p> -->
-      <!-- <ul class="list-group"> -->
-        <!-- <li class="list-group-item list-group-item-action" v-if="newBuildModel.app_id"> -->
-          <!-- <i class="fa fa-database"></i> -->
-          <!-- {{ selectedApp.label }} -->
-        <!-- </li> -->
-        <!-- <li class="list-group-item list-group-item-warning text-center" v-else> -->
-          <!-- <i class="fa fa-warning"></i> -->
-          <!-- No app selected -->
-        <!-- </li> -->
-      <!-- </ul> -->
-
-      <!-- <br> -->
-      <!-- <hr> -->
-
-      <button class="btn btn-outline-secondary btn-lg btn-block mb-3" v-if="choosingGenerator" @click="showChoosingGenerator(false)">
-        <i class="fa fa-times"></i>
-        Cancel
-      </button>
-
-      <button class="btn btn-primary btn-lg btn-block mb-3 mt-2" v-else @click="showChoosingGenerator(true)">
+      <button
+        id="add-build-stage"
+        :disabled="choosingGenerator"
+        class="btn btn-primary btn-lg btn-block mb-3"
+        @click="showChoosingGenerator(true)"
+      >
         <i class="fa fa-plus"></i>
         Add Generator
       </button>
 
-      <!-- <button class="btn btn-success btn-lg btn-block mb-3" @click="generateCodebase()"> -->
-        <!-- <i class="fa fa-check"></i> -->
-        <!-- Generate -->
-      <!-- </button> -->
+      <!-- TODO - abstract into a separate component -->
+      <div class="card border-light shadow-sm">
+        <!-- <div class="card-body"> -->
+          <!-- <h4 class='mb-0'> -->
+            <!-- <i class="fa fa-cog"></i> -->
+            <!-- Build -->
+          <!-- </h4> -->
+        <!-- </div> -->
 
-      <div class="card">
-        <!-- <p class='lead mb-0'>App</p> -->
-        <div class="card-header">
-          <i class="fa fa-cog"></i>
-          Generators
-        </div>
-        <ul class="list-group list-group-flush">
-          <template v-if="newBuildModel.stages[0]" v-for="each in stageGenerators">
-            <li class="list-group-item list-group-item-action list-group-item-primary" v-if="each.id === selectedGenerator.id">
+        <transition-group
+          tag="ul"
+          name="stage-list"
+          class="list-group list-group-flush"
+          v-if="newBuildModel.stages[0]"
+        >
+          <li
+            button
+            :class=" each.id === selectedGenerator.id ? 'cursor-pointer list-group-item list-group-item-action list-group-item-primary' : 'cursor-pointer list-group-item'"
+            :key="each.id"
+            v-for="each in stageGenerators"
+            @click="selectGeneratorModel(each.id)"
+          >
+            <span>
+              <img style='max-width: 1rem;' class='mr-2' :src="each.icon"/>
               {{ each.label }}
-            </li>
-            <li class="list-group-item list-group-item-action" @click="selectGeneratorModel(each.id)" v-else>
-              {{ each.label }}
-            </li>
-          </template>
+            </span>
+          </li>
+        </transition-group>
 
-          <!-- <li class="list-group-item list-group-item-action" v-else v-for="each in newBuildModel.stages" v-if="newBuildModel.stages[0]"> -->
-            <!-- {{ each.generator_id }} -->
-          <!-- </li> -->
-
-          <li class="list-group-item list-group-item-warning text-center" v-if="!newBuildModel.stages[0]">
+        <!-- No Generators Selected view -->
+        <ul class="list-group" v-if="!newBuildModel.stages[0]">
+          <li class="list-group-item list-group-item-warning text-center">
             <i class="fa fa-warning"></i>
             No generators selected
           </li>
         </ul>
       </div>
 
-
-
     </b-col>
 
-    <div :class="showSidebar ? 'col-lg-9' : 'col-lg-12'">
+    <!-- <div :class="showSidebar ? 'col-lg-9' : 'col-lg-12'"> -->
+    <b-col lg=8>
 
       <AppShow v-if="showingApp"/>
 
-      <!-- STEP 1 - Select an App -->
-      <!-- TODO - this should be determined by a state getter variable, `requiresApp` -->
-      <AppSelector v-if="!newBuildModel.app_id"/>
-
-      <!-- STEP 2 - Select a generator -->
+      <!-- Select a generator -->
       <GeneratorSelector v-if="(newBuildModel.app_id && !newBuildModel.stages[0]) || choosingGenerator"/>
 
       <!-- TODO - abstract ALL of this into a separate component -->
@@ -116,43 +87,87 @@
       <div class="row" v-else-if='newBuildModel.stages[0] && newBuildModel.app_id'>
         <div class="col-lg-12">
 
-          <EditorHeader
-            :title="selectedGenerator.label"
-            :help="selectedGenerator.description"
-            :url="'http://github.com/'+selectedGenerator.github_url"
-          />
+          <b-row>
 
-          <!-- {{ selectedGenerator }} -->
+            <b-col lg=12 class='d-flex justify-content-between'>
+              <span class='d-flex align-items-center'>
+                <img style='max-width: 2rem;' class='d-flex mr-2' :src="selectedGenerator.icon"/>
+                <p class="lead mb-0 mr-3">{{ selectedGenerator.label }}</p>
+                <MoreInfoLink :url="'http://github.com/'+selectedGenerator.github_url"/>
+              </span>
 
-          <span class='badge badge-primary mr-1' v-for="tag in selectedGenerator.type_tags" :key="tag">{{ tag }}</span>
-          <span class='badge badge-info' v-if="selectedGenerator.self_configuring">Self-Configuring</span>
-          <span class='badge badge-light mr-1' v-for="tag in selectedGenerator.tech_tags" :key="tag">{{ tag }}</span>
+              <span class='d-flex'>
+                <b-button
+                  id="build-remove-stage-btn"
+                  variant='link'
+                  class="text-danger"
+                  size='sm'
+                  v-b-modal="'remove-build-stage'"
+                >
+                  <i class="fa fa-trash"></i>
+                  Remove
+                </b-button>
+              </span>
+            </b-col>
+
+            <b-col lg=12>
+              <small class="text-muted">{{ selectedGenerator.description }}</small>
+            </b-col>
+
+            <b-col lg=12>
+              <span class='badge badge-primary mr-1' v-for="tag in selectedGenerator.type_tags" :key="tag">{{ tag }}</span>
+              <span class='badge badge-info' v-if="selectedGenerator.self_configuring">Self-Configuring</span>
+              <!-- <span class='badge badge-warning' v-if="selectedGenerator.official">Codotype API</span> -->
+              <span class='badge badge-light mr-1' v-for="tag in selectedGenerator.tech_tags" :key="tag">{{ tag }}</span>
+            </b-col>
+
+          </b-row>
+
+          <!-- New Option Modal -->
+          <b-modal
+            id="remove-build-stage"
+            :title="'Remove Build Stage'"
+            @ok="removeBuildStage(selectedGenerator.id)"
+            ok-title='Remove Build Stage'
+            ok-variant='danger'
+          >
+            Are you sure you want to remove this build stage?
+          </b-modal>
 
           <hr>
 
           <b-tabs>
 
-            <!-- TODO - move overview into its own component -->
-            <b-tab title="README.md" active class='card-body bg-white' v-html="compileMarkdown(selectedGenerator.readme)">
-              <!-- <br> -->
-              <!-- <div class="card card-body" v-html="compileMarkdown(selectedGenerator.readme)"> -->
-              <!-- </div> -->
-            </b-tab>
+            <!-- README.md -->
+            <b-tab
+              button-id="build-readme-nav"
+              title="README.md"
+              active
+              class='card-body bg-white border border-top-0'
+              v-html="compileMarkdown(selectedGenerator.readme)"
+            />
 
-            <!-- <b-tab title="Data Models"> -->
-              <!-- <AppShow v-if="selectedApp"/> -->
-            <!-- </b-tab> -->
-
-            <b-tab title="Global Options" v-if="selectedGenerator.global_options[0]" >
+            <!-- GlobalOptions -->
+            <b-tab
+              title="Global Options"
+              v-if="selectedGenerator.global_options[0]"
+              button-id="build-global-options-nav"
+            >
               <br>
               <GeneratorGlobalOptions/>
             </b-tab>
 
-            <b-tab title="Model Options" v-if="selectedGenerator.model_options[0]" >
+            <!-- ModelOptions -->
+            <b-tab
+              title="Model Options"
+              v-if="selectedGenerator.model_options[0]"
+              button-id="build-model-options-nav"
+            >
               <br>
               <GeneratorModelOptions/>
             </b-tab>
 
+            <!-- GlobalAddons -->
             <b-tab title="Addons" v-if="selectedGenerator.addons[0]" >
               <br>
               <GeneratorAddonForm/>
@@ -162,7 +177,7 @@
 
         </div>
       </div>
-    </div>
+    </b-col>
 
   </div>
 </template>
@@ -171,11 +186,11 @@
 
 <script>
 import LoadingBuild from '@/modules/build/components/LoadingBuild'
+import MoreInfoLink from '@/components/MoreInfoLink'
 import GeneratorModelOptions from '@/modules/build/components/GeneratorModelOptions'
 import GeneratorGlobalOptions from '@/modules/build/components/GeneratorGlobalOptions'
 import GeneratorAddonForm from '@/modules/build/components/GeneratorAddonForm'
 import GeneratorSelector from '@/modules/build/components/GeneratorSelector'
-import AppSelector from '@/modules/build/components/AppSelector'
 import BuildHeader from '@/modules/build/components/BuildHeader'
 import AppShow from '@/modules/project/pages/show'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
@@ -184,11 +199,11 @@ import marked from 'marked'
 export default {
   components: {
     LoadingBuild,
+    MoreInfoLink,
     GeneratorModelOptions,
     GeneratorGlobalOptions,
     GeneratorAddonForm,
     GeneratorSelector,
-    AppSelector,
     BuildHeader,
     AppShow
   },
@@ -203,12 +218,10 @@ export default {
     this.resetNewBuildModel()
     this.setBuildFinished(false)
     this.setBuildDownloadUrl('')
+    this.clearSelectedGenerator()
   },
   mounted () {
     this.selectApp(this.project_id)
-  },
-  destroyed () {
-    // this.resetNewBuildModel()
   },
   computed: {
     ...mapGetters({
@@ -217,7 +230,6 @@ export default {
       fetching: 'generator/fetching',
       generatorCollection: 'generator/collection',
       selectedGenerator: 'generator/selectedModel',
-      selectedApp: 'project/selectedModel',
       showSidebar: 'build/showSidebar',
       choosingGenerator: 'build/choosingGenerator',
       buildLoading: 'build/fetching',
@@ -225,9 +237,7 @@ export default {
     }),
     stageGenerators () {
       let generatorIds = this.newBuildModel.stages.map(s => s.generator_id)
-      return this.generatorCollection.filter((g) => {
-        return generatorIds.includes(g.id)
-      })
+      return this.generatorCollection.filter(g => generatorIds.includes(g.id))
     }
   },
   methods: {
@@ -235,7 +245,9 @@ export default {
       resetNewBuildModel: 'build/resetNewModel',
       selectGeneratorModel: 'generator/selectModel',
       generateCodebase: 'build/generate',
-      selectApp: 'build/selectApp'
+      selectApp: 'build/selectApp',
+      removeBuildStage: 'build/removeStage',
+      clearSelectedGenerator: 'generator/clearSelected'
     }),
     ...mapMutations({
       showChoosingGenerator: 'build/choosingGenerator',
@@ -248,3 +260,24 @@ export default {
   }
 }
 </script>
+
+<style type="text/css">
+
+  .stage-list-item {
+    transition: all 1s;
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  .stage-list-enter, .stage-list-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .stage-list-leave-active {
+    position: absolute;
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
+</style>
