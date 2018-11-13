@@ -1,28 +1,16 @@
 <template>
-  <li :class="className" @click="toggleFilter()">
+  <li :class="className">
     <span>{{ tag.label }}</span>
-
-    <toggle-button
-      :value="value"
-      :sync="true"
-      ref="toggle"
-      :color="'#4582EC'"
-      class='mb-0'
-    />
-
+    <FormInput v-model="tag.selected" type="BOOL" />
   </li>
 </template>
 
 <script>
+import FormInput from '@/components/FormInput'
 export default {
-  props: ['tag', 'value'],
-  methods: {
-    toggleFilter () {
-      this.updateModel(!this.tag.value)
-    },
-    updateModel (value) {
-      this.$emit('input', value)
-    }
+  props: ['tag'],
+  components: {
+    FormInput
   },
   computed: {
     className () {

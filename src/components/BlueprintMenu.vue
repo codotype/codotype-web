@@ -50,9 +50,10 @@
       <b-navbar-nav class="ml-auto">
 
         <b-nav-form>
-          <HelpButton class='mr-2' tour='appEditorSteps' />
+          <HelpButton class='mr-2' size='lg' tour='appEditorSteps' />
 
           <b-button
+            size="lg"
             class='mr-2'
             variant="outline-primary"
             @click="exportProject(project)"
@@ -63,6 +64,7 @@
           </b-button>
 
           <b-button
+            size="lg"
             class='mr-2'
             :to="'/blueprints/' + project._id + '/generate'"
             id="generate-button"
@@ -70,7 +72,7 @@
             v-b-tooltip.hover.bottom :title='"Click here to configure your code generators"'
           >
             <i class="fa fa-fw fa-cog"></i>
-            Generate Code
+            Build Codebase
             <i class="fa fa-fw fa-chevron-right"></i>
           </b-button>
         </b-nav-form>
@@ -96,6 +98,9 @@ export default {
     return {
       blueprintLabel: 'My Renamed App'
     }
+  },
+  mounted () {
+    this.blueprintLabel = this.project.label
   },
   computed: mapGetters({
     project: 'project/selectedModel'

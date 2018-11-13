@@ -153,18 +153,26 @@ export const APP_LIST_TOUR = [
 
 export const BUILD_TOUR = [
   {
-    element: '#build-stage-list',
+    element: '#build-stage-header',
     popover: {
-      title: 'Build Stages',
-      description: 'Each build can run multiple generators against a single blueprint',
+      title: 'Build',
+      description: 'TODO TODO',
       position: 'right'
     }
   },
   {
     element: '#add-build-stage',
     popover: {
-      title: 'Add Build Stage',
-      description: 'Blueprints define a collection of data models accepted by a Codotype Generator.',
+      title: 'Add Generator',
+      description: 'TODO TODO',
+      position: 'right'
+    }
+  },
+  {
+    element: '#build-stage-list',
+    popover: {
+      title: 'Build Stages',
+      description: 'Each build can run multiple generators against a single blueprint',
       position: 'right'
     }
   },

@@ -19,6 +19,7 @@
 
         <b-nav-form>
           <b-button
+            size='lg'
             class='mr-2'
             :to="'/blueprints/' + project._id"
             variant="outline-dark"
@@ -29,16 +30,18 @@
             Back to Editor
           </b-button>
 
-          <HelpButton class='mr-2' tooltipPlacement="bottom" tour='buildSteps' />
+          <HelpButton class='mr-2' size='lg' tooltipPlacement="bottom" tour='buildSteps' />
 
           <b-button
+            size='lg'
+            :disabled="disableGenerateButton"
             id="generate-button"
             variant="success"
             @click="generateCodebase()"
             v-b-tooltip.hover.bottom :title='"Click here to generate code"'
           >
             <i class="fa fa-fw fa-code"></i>
-            Generate
+            Generate Code
           </b-button>
         </b-nav-form>
 
@@ -57,12 +60,18 @@ export default {
   components: {
     HelpButton
   },
-  computed: mapGetters({
-    project: 'project/selectedModel',
-    choosingGenerator: 'build/choosingGenerator',
-    buildLoading: 'build/fetching',
-    buildFinished: 'build/buildFinished'
-  }),
+  computed: {
+    ...mapGetters({
+      project: 'project/selectedModel',
+      choosingGenerator: 'build/choosingGenerator',
+      buildLoading: 'build/fetching',
+      buildFinished: 'build/buildFinished',
+      newBuildModel: 'build/newModel'
+    }),
+    disableGenerateButton () {
+      return !this.newBuildModel.stages[0]
+    }
+  },
   methods: {
     ...mapActions({
       exportProject: 'project/exportJson',

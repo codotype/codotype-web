@@ -15,7 +15,7 @@
         <b-col lg=3 class='pl-0'>
           <b-button
             block
-            size="lg"
+            size='lg'
             variant="outline-warning"
             @click="clearFilter()"
           >
@@ -30,13 +30,7 @@
 
         <!-- TODO - implement filters later - search sufficient for the time being -->
         <!-- <b-col lg=3 class='pr-0'> -->
-          <!-- <div class="card card-body border-light shadow-sm"> -->
-            <!-- <h4>Filters</h4> -->
-            <!-- <input type="text" class="form-control" placeholder="Filter Generators"> -->
-            <!-- <input type="text" class="form-control form-control-sm mb-2" placeholder="Label"> -->
-            <!-- <input type="text" class="form-control form-control-sm mb-2" placeholder="Type"> -->
-            <!-- <input type="text" class="form-control form-control-sm mb-2" placeholder="Tech"> -->
-          <!-- </div> -->
+          <!-- <FilterList/> -->
         <!-- </b-col> -->
 
         <b-col lg=12>
@@ -64,12 +58,14 @@
 </template>
 
 <script>
+import FilterList from '@/modules/generator/components/FilterList'
 import EditorHeader from '@/components/EditorHeader'
 import GeneratorListItem from '@/modules/generator/components/GeneratorListItem'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
   components: {
+    FilterList,
     EditorHeader,
     GeneratorListItem
   },

@@ -1,14 +1,9 @@
 // Project Containers
 import ProjectList from './pages/list'
 import ProjectShow from './pages/show'
-// import ProjectGenerators from './pages/generators'
-import ProjectGenerators from '@/modules/build/pages/new'
+import ProjectBuild from '@/modules/build/pages/new'
 
 export default [
-  {
-    path: '',
-    component: ProjectList
-  },
   {
     path: '/blueprints',
     component: ProjectList
@@ -22,7 +17,7 @@ export default [
   {
     path: '/blueprints/:project_id/generate',
     name: 'BlueprintGenerate',
-    component: ProjectGenerators,
+    component: ProjectBuild,
     props: true
   }
 ]
