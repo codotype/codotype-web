@@ -4,11 +4,6 @@
       <div class="col-lg-12 d-flex justify-content-between align-items-center">
         <p class="lead mb-0 w-100 d-flex justify-content-between align-items-center">
 
-          <!-- <button @click.prevent="onClick()" class="btn btn-link" style='text-decoration: none; font-size: 1.5rem'> -->
-            <!-- <i :class="model.icon + ' mr-2'"></i> -->
-            <!-- {{ model.label }} -->
-          <!-- </button> -->
-
           <button
             v-if="selectMethod"
             @click="selectMethod(model.id)"
@@ -30,39 +25,26 @@
 
         </p>
 
-        <!-- <span> -->
-          <!-- <gh-btns-watch :slug="model.github_url" /> -->
-          <!-- <gh-btns-star :slug="model.github_url" /> -->
-          <!-- <gh-btns-fork :slug="model.github_url" /> -->
-        <!-- </span> -->
-
-        <!-- TODO - this is sloppy, fix at some point -->
-        <!-- <button class="btn btn-primary pull-right" v-if="selectMethod" @click="selectMethod(model.id)"> -->
-          <!-- <i class="fa fa fa-plus"></i> -->
-          <!-- Add to Build -->
-        <!-- </button> -->
-
       </div>
       <div class="col-lg-12">
-        <p class="card-text">
+        <p class="card-text mb-2">
           {{ model.description }}
         </p>
         <!-- <MoreInfoLink :url="model.github_url"/> -->
       </div>
-      <div class="col-lg-12">
+      <div class="col-lg-12 d-flex justify-content-between align-items-center">
 
-        <!-- <span class='badge badge-dark' v-if="model.addons[0]">{{ model.addons.length }} Addon(s)</span> -->
-        <!-- <span class='badge badge-dark' v-if="model.global_options[0]">{{ model.global_options.length }} Option(s)</span> -->
-        <!-- <span class='badge badge-dark' v-if="model.model_options[0]">{{ model.model_options.length }} Model Option(s)</span> -->
-        <!-- <br> -->
+        <span class="d-flex">
+          <span class='badge badge-primary mr-1' v-for="tag in model.type_tags" :key="tag">{{ tag }}</span>
+          <span class='badge badge-info' v-if="model.self_configuring">Self-Configuring</span>
+          <span class='badge badge-light mr-1' v-for="tag in model.tech_tags" :key="tag">{{ tag }}</span>
+        </span>
 
-        <!-- <gh-btns-star :slug="model.github_url" show-count></gh-btns-star> -->
-
-        <!-- <span class='badge badge-primary' v-if="model.official">Codotype API</span> -->
-        <span class='badge badge-primary mr-1' v-for="tag in model.type_tags" :key="tag">{{ tag }}</span>
-        <span class='badge badge-info' v-if="model.self_configuring">Self-Configuring</span>
-        <span class='badge badge-light mr-1' v-for="tag in model.tech_tags" :key="tag">{{ tag }}</span>
-        <!-- <span class='badge badge-warning' v-if="model.official">Codotype Official</span> -->
+        <span class="d-flex">
+          <span class='badge badge-success mr-1' v-if="model.experience">
+            {{ model.experience }}
+          </span>
+        </span>
 
       </div>
     </div>
@@ -79,15 +61,9 @@ export default {
   components: {
     MoreInfoLink
   },
-  methods: {
-    ...mapActions({
-      selectGenerator: 'build/addNewStage'
-    })
-    // onClick () {
-    //   this.selectGenerator(this.model.id)
-    //   window.location = '#/build/new'
-    // }
-  }
+  methods: mapActions({
+    selectGenerator: 'build/addNewStage'
+  })
 }
 </script>
 
