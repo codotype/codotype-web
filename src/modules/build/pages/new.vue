@@ -117,7 +117,7 @@
             <b-col lg=12>
               <span class='badge badge-primary mr-1' v-for="tag in selectedGenerator.type_tags" :key="tag">{{ tag }}</span>
               <span class='badge badge-info' v-if="selectedGenerator.self_configuring">Self-Configuring</span>
-              <span class='badge badge-warning' v-if="selectedGenerator.official">Codotype API 0.1</span>
+              <!-- <span class='badge badge-warning' v-if="selectedGenerator.official">Codotype API</span> -->
               <span class='badge badge-light mr-1' v-for="tag in selectedGenerator.tech_tags" :key="tag">{{ tag }}</span>
             </b-col>
 

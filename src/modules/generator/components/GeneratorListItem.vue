@@ -2,7 +2,7 @@
   <div class="card card-body border-light shadow-hover mb-2">
     <div class="row">
       <div class="col-lg-12 d-flex justify-content-between align-items-center">
-        <p class="lead mb-0">
+        <p class="lead mb-0 w-100 d-flex justify-content-between align-items-center">
 
           <!-- <button @click.prevent="onClick()" class="btn btn-link" style='text-decoration: none; font-size: 1.5rem'> -->
             <!-- <i :class="model.icon + ' mr-2'"></i> -->
@@ -20,12 +20,12 @@
           </button>
 
           <small class='ml-2'>
-            <a class='text-muted' :href="model.github_url">
-              <i class="fa fa-cube"></i>
-              codotype
+            <a class='text-muted' target="_blank" :href="'https://github.com/' + model.github_url">
+              <i class="fab fa-github"></i>
+              {{ model.github_url.split('/')[0] }}
             </a>
             <span class='badge badge-light text-muted'>{{ model.version }}</span>
-            <span class='badge badge-warning' v-if="model.official">Official</span>
+            <!-- <span class='badge badge-warning' v-if="model.official">Official</span> -->
           </small>
 
         </p>
@@ -58,6 +58,7 @@
 
         <!-- <gh-btns-star :slug="model.github_url" show-count></gh-btns-star> -->
 
+        <!-- <span class='badge badge-primary' v-if="model.official">Codotype API</span> -->
         <span class='badge badge-primary mr-1' v-for="tag in model.type_tags" :key="tag">{{ tag }}</span>
         <span class='badge badge-info' v-if="model.self_configuring">Self-Configuring</span>
         <span class='badge badge-light mr-1' v-for="tag in model.tech_tags" :key="tag">{{ tag }}</span>
