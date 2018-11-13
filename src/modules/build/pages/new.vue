@@ -14,11 +14,11 @@
   <div class="row" v-else>
 
     <!-- Abstract this column into one or more components -->
-    <b-col lg=4 class="border-right" id="build-stage-list">
+    <b-col lg=4 class="border-right">
 
       <!-- Model header -->
       <b-row class='mb-1'>
-        <b-col lg='12'>
+        <b-col lg='12' id="build-stage-header">
           <h4 class="mb-0">Build</h4>
           <small class="text-muted">Use your Blueprint with multiple generators</small>
         </b-col>
@@ -35,13 +35,7 @@
       </button>
 
       <!-- TODO - abstract into a separate component -->
-      <div class="card border-light shadow-sm">
-        <!-- <div class="card-body"> -->
-          <!-- <h4 class='mb-0'> -->
-            <!-- <i class="fa fa-cog"></i> -->
-            <!-- Build -->
-          <!-- </h4> -->
-        <!-- </div> -->
+      <div class="card border-light shadow-sm" id="build-stage-list">
 
         <transition-group
           tag="ul"
@@ -191,7 +185,6 @@ import GeneratorModelOptions from '@/modules/build/components/GeneratorModelOpti
 import GeneratorGlobalOptions from '@/modules/build/components/GeneratorGlobalOptions'
 import GeneratorAddonForm from '@/modules/build/components/GeneratorAddonForm'
 import GeneratorSelector from '@/modules/build/components/GeneratorSelector'
-import BuildHeader from '@/modules/build/components/BuildHeader'
 import AppShow from '@/modules/project/pages/show'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 import marked from 'marked'
@@ -204,7 +197,6 @@ export default {
     GeneratorGlobalOptions,
     GeneratorAddonForm,
     GeneratorSelector,
-    BuildHeader,
     AppShow
   },
   data () {
