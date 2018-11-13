@@ -17,12 +17,9 @@
 
       <b-navbar-nav class="ml-auto" v-if="!buildLoading && !buildFinished">
 
-        <!-- <b-nav-item> -->
-          <!-- <HelpButton :tour="tourSteps" /> -->
-        <!-- </b-nav-item> -->
-
-        <b-nav-item>
+        <b-nav-form>
           <b-button
+            class='mr-2'
             :to="'/blueprints/' + project._id"
             variant="outline-dark"
             v-b-tooltip.hover.bottom
@@ -31,9 +28,9 @@
             <i class="fa fa-fw fa-reply"></i>
             Back to Editor
           </b-button>
-        </b-nav-item>
 
-        <b-nav-item>
+          <HelpButton class='mr-2' tooltipPlacement="bottom" tour='buildSteps' />
+
           <b-button
             id="generate-button"
             variant="success"
@@ -43,7 +40,7 @@
             <i class="fa fa-fw fa-code"></i>
             Generate
           </b-button>
-        </b-nav-item>
+        </b-nav-form>
 
       </b-navbar-nav>
 
@@ -52,7 +49,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions, mapMutations } from 'vuex'
 import HelpButton from '@/components/HelpButton'
 
 export default {
@@ -62,15 +59,19 @@ export default {
   },
   computed: mapGetters({
     project: 'project/selectedModel',
-    tourSteps: 'tour/appEditorSteps',
     choosingGenerator: 'build/choosingGenerator',
     buildLoading: 'build/fetching',
     buildFinished: 'build/buildFinished'
   }),
-  methods: mapActions({
-    exportProject: 'project/exportJson',
-    selectBuildApp: 'build/selectApp',
-    generateCodebase: 'build/generate'
-  })
+  methods: {
+    ...mapActions({
+      exportProject: 'project/exportJson',
+      selectBuildApp: 'build/selectApp',
+      generateCodebase: 'build/generate'
+    }),
+    ...mapMutations({
+      showChoosingGenerator: 'build/choosingGenerator'
+    })
+  }
 }
 </script>
