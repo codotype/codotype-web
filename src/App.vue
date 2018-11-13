@@ -2,15 +2,8 @@
   <div id="app">
     <Navbar/>
     <Notifications/>
-    <div class="container">
-      <br/>
-      <br/>
-      <br/>
-      <br/>
+    <div class="container router-container">
       <router-view/>
-      <br/>
-      <br/>
-      <br/>
     </div>
     <AppFooter/>
   </div>
@@ -22,19 +15,14 @@ import AppFooter from '@/components/Footer'
 import Notifications from '@/modules/notification/components/Notifications'
 
 export default {
-  name: 'app',
-
   components: {
     Navbar,
     AppFooter,
     Notifications
   },
-
   created () {
     this.$store.dispatch('generator/fetchCollection')
   },
-
-  // Top-Level page Meta
   metaInfo: {
     title: 'Loading...',
     titleTemplate: 'codotype.io - %s',
@@ -42,7 +30,6 @@ export default {
       lang: 'en'
     }
   }
-
 }
 </script>
 
@@ -55,8 +42,9 @@ export default {
   body
     height: 100%
 
-  // .container, .container-fluid
-  //   padding-top: 4.5rem
+  .container.router-container
+    margin-top: 6rem
+    margin-bottom: 2rem
 
   #app
     height: 100%
