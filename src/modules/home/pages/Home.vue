@@ -11,8 +11,8 @@
       <div class="row py-2">
 
         <div class="col-lg-12 text-center">
-          <p class='lead'>Prototype new software amazingly fast</p>
-          <p>Define your models, attributes, and relations - Codotype does the rest</p>
+          <p class="lead">Visual code scaffolding for the modern web</p>
+          <p>Prototype new software amazingly fast. Define your models, attributes, and relations - Codotype does the rest</p>
         </div>
 
         <div class="col-lg-12 text-center d-flex align-items-center justify-content-center">
@@ -53,7 +53,7 @@ export default {
     GeneratorListItem
   },
   metaInfo: {
-    title: 'Welcome'
+    title: 'Visual code scaffolding for the modern web'
   },
   computed: mapGetters({
     generatorCollection: 'generator/collection',

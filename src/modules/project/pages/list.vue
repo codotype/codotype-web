@@ -47,9 +47,8 @@ import ProjectForm from '@/modules/project/components/ProjectForm'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  name: 'ProjectList',
   metaInfo: {
-    title: 'Projects'
+    title: 'Blueprints'
   },
   components: {
     ListView,
