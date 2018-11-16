@@ -1,7 +1,7 @@
 <template>
   <b-navbar toggleable="md" type="light" variant="light" fixed="top">
     <b-navbar-brand to="/blueprints">
-      <strong>codotype</strong>
+      <strong>Codotype</strong>
     </b-navbar-brand>
 
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
@@ -50,18 +50,25 @@
       <b-navbar-nav class="ml-auto">
 
         <b-nav-form>
-          <HelpButton class='mr-2' size='lg' tour='appEditorSteps' />
 
-          <b-button
-            size="lg"
+          <b-dropdown
+            right
+            no-caret
+            variant="light"
             class='mr-2'
-            variant="outline-primary"
-            @click="exportProject(project)"
-            v-b-tooltip.hover.bottom :title='"Click here to export Blueprint"'
+            toggle-class='rounded'
+            size="lg"
           >
-            <i class="fa fa-fw fa-download"></i>
-            Export
-          </b-button>
+            <template slot="button-content">
+              <i class="fa fa-fw fa-ellipsis-h"></i>
+            </template>
+            <b-dropdown-item-button @click="exportProject(project)">
+              <i class="fa fa-fw fa-download"></i>
+              Download Blueprint JSON
+            </b-dropdown-item-button>
+          </b-dropdown>
+
+          <HelpButton class='mr-2' size='lg' tour='appEditorSteps' />
 
           <b-button
             size="lg"
@@ -71,7 +78,7 @@
             variant="success"
             v-b-tooltip.hover.bottom :title='"Click here to configure your code generators"'
           >
-            <i class="fa fa-fw fa-cog"></i>
+            <i class="fa fa-fw fa-spin fa-cog"></i>
             Build Codebase
             <i class="fa fa-fw fa-chevron-right"></i>
           </b-button>
