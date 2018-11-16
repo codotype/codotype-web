@@ -1,7 +1,5 @@
 <template>
-
   <b-modal
-    lazy
     ref='removeAttributeModal'
     :title="'Remove Attribute'"
     @ok="removeAttribute()"
@@ -12,7 +10,6 @@
     <!-- <p class="text-left">Are you sure you want to destroy the {{ item.label }} attribute?</p> -->
     <p class="text-left">Are you sure you want to destroy the this attribute?</p>
   </b-modal>
-
 </template>
 
 <!-- // // // //  -->
@@ -32,7 +29,9 @@ export default {
       removeAttribute: 'attribute/destroy'
     }),
     showModal () {
-      this.$refs.removeAttributeModal.show()
+      if (this.$refs.removeAttributeModal) {
+        this.$refs.removeAttributeModal.show()
+      }
     }
   }
 }
