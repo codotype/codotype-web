@@ -3,11 +3,11 @@
     <div class="col-sm-12">
 
       <div class="form-group">
-        <label class='mb-0'>
-          Label
-          <span class='text-danger'>*</span>
+        <label>
+          Whats' the name of your project?
+          <!-- <span class='text-danger'>*</span> -->
         </label>
-        <small class="form-text text-muted mb-2">The name of your project</small>
+        <!-- <small class="form-text text-muted mb-2">What's the name of your project?</small> -->
         <input
           type="text"
           ref="labelInput"
@@ -20,10 +20,16 @@
     </div>
 
     <div class="col-sm-12">
-      <button class="btn btn-lg btn-primary btn-block" @click="submit()">
+      <b-button
+        size="lg"
+        variant="primary"
+        block
+        :disabled="!newModel.label"
+        @click="submit()"
+      >
         <i class="fa fa-fw fa-plus"></i>
         Create Blueprint
-      </button>
+      </b-button>
     </div>
   </div>
 </template>

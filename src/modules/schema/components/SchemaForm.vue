@@ -8,6 +8,7 @@
         <div class="col-lg-12">
 
           <FormInput
+            class='mb-0'
             :focus="true"
             label="Label"
             placeholder="Label"

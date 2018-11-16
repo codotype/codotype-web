@@ -1,18 +1,18 @@
 <template>
-  <div class="row align-items-center">
+  <div class="row">
     <div class="col-lg-12">
 
       <div class="row mt-2">
         <div class="col-lg-12 text-center">
-          <!-- <img class='logo' src="@/assets/logo_dark.png"> -->
-          <h1 class='display-1' style="font-family: monospace;">codotype</h1>
+          <h1 class='display-1' style="letter-spacing: .25rem !important;">Codotype</h1>
         </div>
       </div>
 
       <div class="row">
 
         <div class="col-lg-12 text-center">
-          <p class='lead'>Prototype new software amazingly fast</p>
+          <p class="lead">visual code scaffolding for the modern web</p>
+          <p>Prototype new web applications amazingly fast</p>
           <p>Define your models, attributes, and relations - Codotype does the rest</p>
         </div>
 

@@ -25,7 +25,7 @@ export default {
   },
   metaInfo: {
     title: 'Loading...',
-    titleTemplate: 'codotype.io - %s',
+    titleTemplate: 'Codotype - %s',
     htmlAttrs: {
       lang: 'en'
     }
