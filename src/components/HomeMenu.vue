@@ -1,7 +1,7 @@
 <template>
   <b-navbar toggleable="md" type="light" variant="light" fixed="top">
     <b-navbar-brand to="/">
-      <strong>codotype</strong>
+      <strong>Codotype</strong>
     </b-navbar-brand>
 
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
