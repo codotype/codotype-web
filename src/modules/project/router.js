@@ -6,6 +6,7 @@ import ProjectBuild from '@/modules/build/pages/new'
 export default [
   {
     path: '/blueprints',
+    name: 'ProjectList',
     component: ProjectList
   },
   {

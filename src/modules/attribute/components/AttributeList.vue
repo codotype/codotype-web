@@ -13,6 +13,7 @@
       @ok="updateAttribute()"
       ok-title='Update'
       cancel-title='Cancel'
+      :ok-disabled="(!editAttribute.datatype || !editAttribute.identifier)"
     >
       <AttributeForm :schema="schema" :model="editAttribute" />
     </b-modal>
@@ -26,6 +27,7 @@
       @ok="createAttribute()"
       ok-title='Create'
       cancel-title='Cancel'
+      :ok-disabled="(!newAttribute.datatype || !newAttribute.identifier)"
     >
       <AttributeForm :schema="schema" :model="newAttribute" />
     </b-modal>

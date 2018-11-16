@@ -1,7 +1,7 @@
 <template>
   <b-navbar toggleable="md" type="light" variant="light" fixed="top">
     <b-navbar-brand to="/">
-      <strong>codotype</strong>
+      <strong>Codotype</strong>
     </b-navbar-brand>
 
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
@@ -18,7 +18,7 @@
 
       <b-navbar-nav class="mr-0">
 
-        <b-nav-form>
+        <b-nav-form v-if="$route.name === 'ProjectList'">
           <HelpButton tour='appListSteps' size="lg"/>
         </b-nav-form>
 

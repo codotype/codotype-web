@@ -11,6 +11,7 @@
         @ok="submit()"
         ok-title='Create'
         cancel-title='Cancel'
+        :ok-disabled="!newModel.label"
       >
         <SchemaForm :schema="newModel" />
       </b-modal>
@@ -54,7 +55,7 @@ import SchemaDetail from '@/modules/schema/components/SchemaDetail'
 export default {
   props: ['project_id'],
   metaInfo: {
-    title: 'Blueprint - Show'
+    title: 'Blueprint'
   },
   components: {
     SchemaList,

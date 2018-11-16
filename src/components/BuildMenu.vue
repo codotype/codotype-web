@@ -1,7 +1,7 @@
 <template>
   <b-navbar toggleable="md" type="light" variant="light" fixed="top">
     <b-navbar-brand to="/blueprints">
-      <strong>codotype</strong>
+      <strong>Codotype</strong>
     </b-navbar-brand>
 
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
@@ -11,18 +11,14 @@
         <b-nav-item id="project-header">{{ project.label }} Blueprint</b-nav-item>
       </b-navbar-nav>
 
-      <!-- <router-link class="py-0" id="project-edit-button" v-b-tooltip.hover.right title='Edit Blueprint' :to="'/blueprints/' + project._id"> -->
-        <!-- <i class="fa fa-pencil-alt"></i> -->
-      <!-- </router-link> -->
-
       <b-navbar-nav class="ml-auto" v-if="!buildLoading && !buildFinished">
 
         <b-nav-form>
           <b-button
             size='lg'
             class='mr-2'
-            :to="'/blueprints/' + project._id"
-            variant="outline-dark"
+            @click="$router.back()"
+            variant="light"
             v-b-tooltip.hover.bottom
             :title='"Click here to edit your Blueprint"'
           >
@@ -40,7 +36,8 @@
             @click="generateCodebase()"
             v-b-tooltip.hover.bottom :title='"Click here to generate code"'
           >
-            <i class="fa fa-fw fa-code"></i>
+            <!-- <i class="fa fa-fw fa-code"></i> -->
+            <i class="fa fa-fw fa-spin fa-cog"></i>
             Generate Code
           </b-button>
         </b-nav-form>

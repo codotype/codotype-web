@@ -60,6 +60,21 @@
           </small>
         </div>
 
+        <div class="col-lg-12 pb-1" v-if="isUserModel(model)">
+          <b-alert
+            show
+          >
+            <i class="fa fa-info-circle mr-2"></i>The <strong>User Model</strong> is included by default
+            <br>
+            <small>
+              It comes pre-loaded with <strong>Email</strong> &amp; <strong>Username</strong> attributes that cannot be removed
+            </small>
+          </b-alert>
+          <!-- <small class="text-muted"> -->
+            <!-- {{ 'Define attributes and relations that describe a single ' + model.label + ' model'}} -->
+          <!-- </small> -->
+        </div>
+
       </div>
     </div>
 
