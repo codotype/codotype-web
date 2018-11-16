@@ -3,16 +3,16 @@
     <div class="col-lg-12">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <!-- <img src="@/assets/logo_dark.png"> -->
-          <h1 class='display-3' style="font-family: monospace;">codotype</h1>
+          <h1 class='display-3' style="letter-spacing: .25rem !important;">Codotype</h1>
         </div>
       </div>
 
       <div class="row py-2">
 
         <div class="col-lg-12 text-center">
-          <p class="lead">Visual code scaffolding for the modern web</p>
-          <p>Prototype new software amazingly fast. Define your models, attributes, and relations - Codotype does the rest</p>
+          <p class="lead">visual code scaffolding for the modern web</p>
+          <p>Prototype new web applications amazingly fast</p>
+          <p>Define your models, attributes, and relations - Codotype does the rest</p>
         </div>
 
         <div class="col-lg-12 text-center d-flex align-items-center justify-content-center">
@@ -26,12 +26,28 @@
         </div>
       </div>
 
+      <!-- Bootstrap Modal Component -->
+      <b-modal
+        lazy
+        hide-footer
+        id="new-project-modal"
+        ref="newModal"
+        :title="'New Blueprint'"
+      >
+        <ProjectForm :submit="submitProjectForm" />
+      </b-modal>
+
       <div class="row mt-2 mb-4 justify-content-center">
         <div class="col-lg-4">
-          <router-link to="/blueprints" class="btn btn-primary btn-block btn-lg">
-            <i class="fas fa-drafting-compass mr-2"></i>
-            Let's get started
-          </router-link>
+          <b-button
+            v-b-modal="'new-project-modal'"
+            size="lg"
+            variant="primary"
+            block
+          >
+            <i class="fas fa-drafting-compass faa-wrench animated mr-2"></i>
+            Start Your Next Project
+          </b-button>
         </div>
       </div>
 
@@ -42,15 +58,12 @@
 <!-- // // // //  -->
 
 <script>
-import { mapGetters } from 'vuex'
-import GeneratorCard from '@/modules/generator/components/GeneratorCard'
-import GeneratorListItem from '@/modules/generator/components/GeneratorListItem'
+import { mapGetters, mapActions } from 'vuex'
+import ProjectForm from '@/modules/project/components/ProjectForm'
 
 export default {
-  name: 'Home',
   components: {
-    GeneratorCard,
-    GeneratorListItem
+    ProjectForm
   },
   metaInfo: {
     title: 'Visual code scaffolding for the modern web'
@@ -58,7 +71,17 @@ export default {
   computed: mapGetters({
     generatorCollection: 'generator/collection',
     tourSteps: 'tour/generatorListSteps'
-  })
+  }),
+  methods: {
+    ...mapActions({
+      fetch: 'project/fetchCollection',
+      persist: 'project/create'
+    }),
+    submitProjectForm () {
+      this.$refs.newModal.hide()
+      this.persist()
+    }
+  }
 }
 </script>
 
