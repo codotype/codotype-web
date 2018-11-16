@@ -2,7 +2,7 @@ import cloneDeep from 'lodash/cloneDeep'
 import uniqueId from 'lodash/uniqueId'
 import ObjectID from 'bson-objectid'
 import router from '@/routers'
-import { DEFAULT_PROJECT, DEFAULT_USER_SCHEMA, CREATE_SUCCESS_NOTIFICATION } from './constants'
+import { DEFAULT_PROJECT, DEFAULT_USER_SCHEMA } from './constants'
 import { SELECT_MODEL_ACTIONS } from '@/store/lib/mixins'
 
 // TODO - use this instead?
@@ -33,7 +33,7 @@ export default {
     dispatch('persist', { record: cloneDeep(state.newModel) })
 
     // Displays encouraging notification
-    commit('notification/add', CREATE_SUCCESS_NOTIFICATION, { root: true })
+    // commit('notification/add', CREATE_SUCCESS_NOTIFICATION, { root: true })
 
     // Resets state.newModel
     dispatch('resetNewModel')

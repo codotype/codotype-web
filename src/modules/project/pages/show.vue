@@ -11,6 +11,7 @@
         @ok="submit()"
         ok-title='Create'
         cancel-title='Cancel'
+        :ok-disabled="!newModel.label"
       >
         <SchemaForm :schema="newModel" />
       </b-modal>
