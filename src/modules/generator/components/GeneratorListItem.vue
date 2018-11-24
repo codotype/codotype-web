@@ -14,6 +14,14 @@
             {{ model.label }}
           </button>
 
+          <router-link
+            v-else
+            :to="'/generators/' + model.id"
+          >
+            <img class='generator-icon' :src="model.icon"/>
+            {{ model.label }}
+          </router-link>
+
           <small class='ml-2'>
             <a class='text-muted' target="_blank" :href="'https://github.com/' + model.github_url">
               <i class="fab fa-github"></i>

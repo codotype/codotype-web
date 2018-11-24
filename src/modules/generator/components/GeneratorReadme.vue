@@ -1,5 +1,11 @@
 <template>
-  <div class='card card-body' v-html="compiledMarkdown"></div>
+  <b-tab
+    button-id="build-readme-nav"
+    title="README.md"
+    active
+    class='card-body bg-white border border-top-0'
+    v-html="compiledMarkdown"
+  />
 </template>
 
 <!-- // // // //  -->

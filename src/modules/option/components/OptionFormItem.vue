@@ -19,10 +19,6 @@
 
     </div>
 
-    <!-- <div class="col-lg-12" v-if="model.type !== 'BOOLEAN'"> -->
-      <!-- <hr> -->
-    <!-- </div> -->
-
     <div class="col-lg-12 mt-2" v-if="model.type !== 'BOOLEAN'">
 
       <input
@@ -44,6 +40,27 @@
       >
         <option :value="opt.value" v-for="opt in model.options" :key="opt.id">{{opt.label}}</option>
       </select>
+
+      <ul class='list-group' v-if="model.type === 'BOOLEAN_GROUP'">
+
+        <li class='list-group-item d-flex align-items-center'
+          v-for="opt in model.options"
+          :key="opt.identifier">
+
+          <toggle-button
+            ref="input"
+            :value="value"
+            :color="'#4582EC'"
+            class='mb-0 mr-3'
+            @change="updateModel()"
+          />
+
+          <label class='mb-0 mr-3'>{{opt.label}}</label>
+          <!-- <small>{{opt.help}}</small> -->
+          <!-- <MoreInfoLink class='ml-3 mb-2' :url="opt.more_info_url" /> -->
+        </li>
+
+      </ul>
 
     </div>
   </div>
