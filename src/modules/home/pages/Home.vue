@@ -58,7 +58,7 @@
 <!-- // // // //  -->
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 import ProjectForm from '@/modules/project/components/ProjectForm'
 
 export default {
@@ -68,13 +68,8 @@ export default {
   metaInfo: {
     title: 'Visual code scaffolding for the modern web'
   },
-  computed: mapGetters({
-    generatorCollection: 'generator/collection',
-    tourSteps: 'tour/generatorListSteps'
-  }),
   methods: {
     ...mapActions({
-      fetch: 'project/fetchCollection',
       persist: 'project/create'
     }),
     submitProjectForm () {

@@ -43,8 +43,8 @@ export default {
     height: 100%
 
   .container.router-container
-    margin-top: 6rem
-    margin-bottom: 2rem
+    padding-top: 6rem
+    margin-bottom: 4rem
 
   #app
     height: 100%
