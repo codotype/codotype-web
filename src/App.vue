@@ -12,7 +12,7 @@
 <script>
 import Navbar from '@/components/Navbar'
 import AppFooter from '@/components/Footer'
-import Notifications from '@/modules/notification/components/Notifications'
+import Notifications from '@codotype/ui/src/modules/notification/components/Notifications'
 
 export default {
   components: {
