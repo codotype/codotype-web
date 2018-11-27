@@ -42,7 +42,7 @@
 
 <script>
 
-import ListView from '@/modules/blueprint/components/ProjectList'
+import ListView from '@/modules/blueprint/components/BlueprintList'
 import BlueprintForm from '@/modules/blueprint/components/BlueprintForm'
 import { mapGetters, mapActions } from 'vuex'
 
