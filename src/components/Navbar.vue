@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     showBlueprintMenu () {
-      return this.$route.name === 'ProjectShow'
+      return this.$route.name === 'BlueprintShow'
     },
     showGeneratorMenu () {
       return this.$route.name === 'GeneratorShow'

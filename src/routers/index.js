@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import HomeRouter from '@/modules/home/router'
-import ProjectRouter from '@/modules/project/router'
+import BlueprintRouter from '@/modules/blueprint/router'
 import GeneratorRouter from '@/modules/generator/router'
 
 // Vue Router setup
@@ -12,7 +12,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     ...HomeRouter,
-    ...ProjectRouter,
+    ...BlueprintRouter,
     ...GeneratorRouter
   ],
   scrollBehavior (to, from, savedPosition) {

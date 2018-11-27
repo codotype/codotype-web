@@ -59,7 +59,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-import ProjectForm from '@/modules/project/components/ProjectForm'
+import ProjectForm from '@/modules/blueprint/components/ProjectForm'
 
 export default {
   components: {

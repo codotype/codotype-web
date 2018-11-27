@@ -118,7 +118,7 @@
 
         <b-tab title='Data Models'>
           <!-- <p class="lead">DATA MODELS GO HERE</p> -->
-          <AppShow class="mt-3"/>
+          <BlueprintShow class="mt-3"/>
         </b-tab>
 
       </b-tabs>
@@ -130,7 +130,7 @@
 <script>
 import marked from 'marked'
 import { mapGetters, mapActions } from 'vuex'
-import AppShow from '@/modules/project/pages/show'
+import BlueprintShow from '@/modules/blueprint/pages/show'
 import OptionFormItem from '@/modules/option/components/OptionFormItem'
 
 export default {
@@ -143,7 +143,7 @@ export default {
   },
   components: {
     OptionFormItem,
-    AppShow
+    BlueprintShow
   },
   created () {
     this.selectModel(this.id)

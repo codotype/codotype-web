@@ -42,8 +42,8 @@
 
 <script>
 
-import ListView from '@/modules/project/components/ProjectList'
-import ProjectForm from '@/modules/project/components/ProjectForm'
+import ListView from '@/modules/blueprint/components/ProjectList'
+import ProjectForm from '@/modules/blueprint/components/ProjectForm'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {

@@ -71,8 +71,6 @@
     <!-- <div :class="showSidebar ? 'col-lg-9' : 'col-lg-12'"> -->
     <b-col lg=8>
 
-      <AppShow v-if="showingApp"/>
-
       <!-- Select a generator -->
       <GeneratorSelector v-if="(newBuildModel.app_id && !newBuildModel.stages[0]) || choosingGenerator"/>
 
@@ -185,7 +183,6 @@ import GeneratorModelOptions from '@/modules/build/components/GeneratorModelOpti
 import GeneratorGlobalOptions from '@/modules/build/components/GeneratorGlobalOptions'
 import GeneratorAddonForm from '@/modules/build/components/GeneratorAddonForm'
 import GeneratorSelector from '@/modules/build/components/GeneratorSelector'
-import AppShow from '@/modules/project/pages/show'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 import marked from 'marked'
 
@@ -196,24 +193,23 @@ export default {
     GeneratorModelOptions,
     GeneratorGlobalOptions,
     GeneratorAddonForm,
-    GeneratorSelector,
-    AppShow
+    GeneratorSelector
   },
   data () {
     return { // TODO - move this into build vuex state
       showingApp: false
     }
   },
-  props: ['project_id'],
+  props: ['blueprint_id'],
   created () {
-    console.log(this.project_id)
+    console.log(this.blueprint_id)
     this.resetNewBuildModel()
     this.setBuildFinished(false)
     this.setBuildDownloadUrl('')
     this.clearSelectedGenerator()
   },
   mounted () {
-    this.selectApp(this.project_id)
+    this.selectApp(this.blueprint_id)
   },
   computed: {
     ...mapGetters({
