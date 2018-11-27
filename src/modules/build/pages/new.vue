@@ -1,5 +1,7 @@
 <template>
 
+  <!-- TODO - SPLIT THIS COMPONENT UP INTO SMALLER COMPONENTS -->
+
   <!-- Shows LoadingBuild component -->
   <div class="app" v-if="buildLoading || buildFinished">
     <div class="row">

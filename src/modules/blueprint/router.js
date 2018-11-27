@@ -10,13 +10,13 @@ export default [
     component: BlueprintList
   },
   {
-    path: '/blueprints/:project_id',
+    path: '/blueprints/:blueprint_id',
     name: 'BlueprintShow',
     component: BlueprintShow,
     props: true
   },
   {
-    path: '/blueprints/:project_id/generate',
+    path: '/blueprints/:blueprint_id/generate',
     name: 'BlueprintGenerate',
     component: BlueprintBuild,
     props: true
