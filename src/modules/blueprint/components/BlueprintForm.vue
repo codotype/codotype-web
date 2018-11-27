@@ -38,7 +38,7 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  name: 'ProjectForm',
+  name: 'BlueprintForm',
   props: ['submit'],
   mounted () {
     this.resetNewModel()

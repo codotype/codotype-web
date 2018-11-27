@@ -2,19 +2,6 @@
   <b-row>
     <b-col lg=12>
 
-      <!-- <b-row> -->
-        <!-- <b-col lg=12 class='d-flex justify-content-between align-items-center'> -->
-          <!-- <h2>{{ model.label }} Generator</h2> -->
-
-          <!-- <b-button variant="success" size="lg"> -->
-            <!-- <i class="fa fa-cog fa-spin"></i> -->
-            <!-- Generate Code -->
-          <!-- </b-button> -->
-        <!-- </b-col> -->
-      <!-- </b-row> -->
-
-      <!-- <hr> -->
-
       <b-tabs>
 
         <b-tab
@@ -117,7 +104,6 @@
         </b-tab>
 
         <b-tab title='Data Models'>
-          <!-- <p class="lead">DATA MODELS GO HERE</p> -->
           <BlueprintShow class="mt-3"/>
         </b-tab>
 

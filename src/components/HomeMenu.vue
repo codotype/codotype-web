@@ -18,7 +18,7 @@
 
       <b-navbar-nav class="mr-0">
 
-        <b-nav-form v-if="$route.name === 'ProjectList'">
+        <b-nav-form v-if="$route.name === 'BlueprintList'">
           <HelpButton tour='appListSteps' size="lg"/>
         </b-nav-form>
 
