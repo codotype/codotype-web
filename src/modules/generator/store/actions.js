@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { API_ROOT } from './constants'
-import { SELECT_MODEL_ACTIONS } from '@/store/lib/mixins'
+import { SELECT_MODEL_ACTIONS } from '@codotype/ui/src/store/lib/mixins'
 
 export default {
   ...SELECT_MODEL_ACTIONS,

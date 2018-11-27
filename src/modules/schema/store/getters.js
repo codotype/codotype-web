@@ -1,5 +1,5 @@
 import { DATATYPES, RELATION_TYPES } from './constants'
-import { COLLECTION_GETTERS, SELECT_MODEL_GETTERS, NEW_MODEL_GETTERS } from '@/store/lib/mixins'
+import { COLLECTION_GETTERS, SELECT_MODEL_GETTERS, NEW_MODEL_GETTERS } from '@codotype/ui/src/store/lib/mixins'
 
 // Schema Module Getters
 export default {

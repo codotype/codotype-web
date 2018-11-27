@@ -5,7 +5,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './routers'
 import store from '@/store'
-import EditorHeader from '@/components/EditorHeader'
+import EditorHeader from '@codotype/ui/src/components/EditorHeader'
 import configureModerator from '@/store/mediator'
 
 // Configures top-level vuex mediator

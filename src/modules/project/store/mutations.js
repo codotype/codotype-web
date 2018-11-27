@@ -1,5 +1,5 @@
 import cloneDeep from 'lodash/cloneDeep'
-import { COLLECTION_MUTATIONS, SELECT_MODEL_MUTATIONS } from '@/store/lib/mixins'
+import { COLLECTION_MUTATIONS, SELECT_MODEL_MUTATIONS } from '@codotype/ui/src/store/lib/mixins'
 
 // // // //
 

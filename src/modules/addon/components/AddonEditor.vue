@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import EditorLayout from '@/components/EditorLayout'
+import EditorLayout from '@codotype/ui/src/components/EditorLayout'
 import AddonForm from './AddonForm'
 import AddonList from './AddonList'
 import AddonDetail from './AddonDetail'

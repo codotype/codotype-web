@@ -180,7 +180,7 @@
 
 <script>
 import LoadingBuild from '@/modules/build/components/LoadingBuild'
-import MoreInfoLink from '@/components/MoreInfoLink'
+import MoreInfoLink from '@codotype/ui/src/components/MoreInfoLink'
 import GeneratorModelOptions from '@/modules/build/components/GeneratorModelOptions'
 import GeneratorGlobalOptions from '@/modules/build/components/GeneratorGlobalOptions'
 import GeneratorAddonForm from '@/modules/build/components/GeneratorAddonForm'

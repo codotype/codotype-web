@@ -1,4 +1,4 @@
-import { COLLECTION_GETTERS, SELECT_MODEL_GETTERS } from '@/store/lib/mixins'
+import { COLLECTION_GETTERS, SELECT_MODEL_GETTERS } from '@codotype/ui/src/store/lib/mixins'
 import { inflate } from '@codotype/util/lib/inflate'
 
 // Project Module Getters

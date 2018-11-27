@@ -32,7 +32,7 @@
 
 <script>
 // TODO - refactor this component to create new instances of Addon models
-import EditorLayout from '@/components/EditorLayout'
+import EditorLayout from '@codotype/ui/src/components/EditorLayout'
 import AddonForm from '@/modules/addon/components/AddonForm'
 import AddonList from '@/modules/addon/components/AddonList'
 import AddonDetail from '@/modules/addon/components/AddonDetail'

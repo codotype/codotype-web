@@ -17,14 +17,12 @@
 </template>
 
 <script>
-import EditorHeader from '@/components/EditorHeader'
 import OptionFormItem from '@/modules/option/components/OptionFormItem'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'GeneratorGlobalOptions',
   components: {
-    EditorHeader,
     OptionFormItem
   },
   computed: {

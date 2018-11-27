@@ -3,7 +3,7 @@ import {
   SELECT_MODEL_GETTERS,
   NEW_MODEL_GETTERS,
   EDIT_MODEL_GETTERS
-} from '@/store/lib/mixins'
+} from '@codotype/ui/src/store/lib/mixins'
 
 // Relation Module Getters
 export default {

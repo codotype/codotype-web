@@ -41,7 +41,7 @@
 import { mapGetters, mapActions } from 'vuex'
 import GeneratorListItem from '@/modules/generator/components/GeneratorListItem'
 import FilterList from '@/modules/generator/components/FilterList'
-import HelpButton from '@/components/HelpButton'
+import HelpButton from '@codotype/ui/src/components/HelpButton'
 
 export default {
   components: {

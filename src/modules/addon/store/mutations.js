@@ -1,6 +1,6 @@
 import orderBy from 'lodash/orderBy'
 import ObjectID from 'bson-objectid'
-import { COLLECTION_MUTATIONS, SELECT_MODEL_MUTATIONS, NEW_MODEL_MUTATIONS } from '@/store/lib/mixins'
+import { COLLECTION_MUTATIONS, SELECT_MODEL_MUTATIONS, NEW_MODEL_MUTATIONS } from '@codotype/ui/src/store/lib/mixins'
 
 // Addon Module mutations
 export default {

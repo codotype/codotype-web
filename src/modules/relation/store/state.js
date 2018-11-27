@@ -3,7 +3,7 @@ import {
   SELECT_MODEL_STATE,
   NEW_MODEL_STATE,
   EDIT_MODEL_STATE
-} from '@/store/lib/mixins'
+} from '@codotype/ui/src/store/lib/mixins'
 
 // Relation Module State
 export default {

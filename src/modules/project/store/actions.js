@@ -3,7 +3,7 @@ import uniqueId from 'lodash/uniqueId'
 import ObjectID from 'bson-objectid'
 import router from '@/routers'
 import { DEFAULT_PROJECT, DEFAULT_USER_SCHEMA } from './constants'
-import { SELECT_MODEL_ACTIONS } from '@/store/lib/mixins'
+import { SELECT_MODEL_ACTIONS } from '@codotype/ui/src/store/lib/mixins'
 
 // TODO - use this instead?
 // import { underscored } from 'underscore.string'

@@ -32,7 +32,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import EditorLayout from '@/components/EditorLayout'
+import EditorLayout from '@codotype/ui/src/components/EditorLayout'
 import OptionList from './OptionList'
 import OptionForm from './OptionForm'
 import OptionDetail from './OptionDetail'

@@ -1,7 +1,7 @@
 import cloneDeep from 'lodash/cloneDeep'
 import ObjectID from 'bson-objectid'
 import { inflateMeta } from '@codotype/util/lib/inflateMeta'
-import { SELECT_MODEL_ACTIONS, EDIT_MODEL_ACTIONS } from '@/store/lib/mixins'
+import { SELECT_MODEL_ACTIONS, EDIT_MODEL_ACTIONS } from '@codotype/ui/src/store/lib/mixins'
 import { DEFAULT_ATTRIBUTE } from './constants'
 
 // Attribute module actions

@@ -1,7 +1,7 @@
 import cloneDeep from 'lodash/cloneDeep'
 import ObjectID from 'bson-objectid'
 import { DEFAULT_RELATION } from './constants'
-import { SELECT_MODEL_ACTIONS, EDIT_MODEL_ACTIONS } from '@/store/lib/mixins'
+import { SELECT_MODEL_ACTIONS, EDIT_MODEL_ACTIONS } from '@codotype/ui/src/store/lib/mixins'
 
 // Relation module actions
 export default {
