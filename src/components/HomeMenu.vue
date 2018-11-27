@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import HelpButton from '@/components/HelpButton'
+import HelpButton from '@codotype/ui/src/components/HelpButton'
 
 export default {
   name: 'HomeMenu',

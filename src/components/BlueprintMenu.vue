@@ -92,8 +92,8 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import HelpButton from '@/components/HelpButton'
-import FormInput from '@/components/FormInput'
+import HelpButton from '@codotype/ui/src/components/HelpButton'
+import FormInput from '@codotype/ui/src/components/FormInput'
 
 export default {
   name: 'BlueprintMenu',

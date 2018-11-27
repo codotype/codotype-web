@@ -50,7 +50,7 @@
 
 <script>
 import { mapGetters, mapActions, mapMutations } from 'vuex'
-import HelpButton from '@/components/HelpButton'
+import HelpButton from '@codotype/ui/src/components/HelpButton'
 
 export default {
   name: 'BlueprintMenu',
