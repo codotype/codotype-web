@@ -7,6 +7,8 @@
         <!-- Models -->
       <!-- </span> -->
     <!-- </div> -->
+
+    <!-- TODO - make SchemaListItems sortable -->
     <ul class='list-group list-group-flush'>
       <SchemaListItem v-for="schema in collection" :schema="schema" :key="schema._id" />
     </ul>

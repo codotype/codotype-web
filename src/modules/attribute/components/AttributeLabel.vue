@@ -9,6 +9,7 @@
 <script>
 // TODO - icon and tooltip should be encapsulated in the attribute data
 // TODO - attribute data should be abstracted into codotype-util
+// TODO - perhaps distribute a @codotype/meta package?
 export default {
   props: ['item'],
   name: 'AttributeLabel',
@@ -26,9 +27,9 @@ export default {
         case 'DATE':
           return 'far fa-calendar'
         case 'TIME':
-          return 'fa fa-clock-o'
+          return 'far fa-clock'
         case 'DATETIME':
-          return 'far fa-calendar-plus-o'
+          return 'far fa-calendar-plus'
       }
     },
     tooltip () {

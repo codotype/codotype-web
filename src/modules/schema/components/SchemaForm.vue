@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import FormInput from '@/components/FormInput'
+import FormInput from '@codotype/ui/src/components/FormInput'
 
 export default {
   props: ['schema'],

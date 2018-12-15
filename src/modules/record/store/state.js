@@ -1,4 +1,4 @@
-import { COLLECTION_STATE, SELECT_MODEL_STATE, NEW_MODEL_STATE, EDIT_MODEL_STATE } from '@/store/lib/mixins'
+import { COLLECTION_STATE, SELECT_MODEL_STATE, NEW_MODEL_STATE, EDIT_MODEL_STATE } from '@codotype/ui/src/store/lib/mixins'
 
 export default {
   ...COLLECTION_STATE,

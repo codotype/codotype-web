@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import MoreInfoLink from '@/components/MoreInfoLink'
+import MoreInfoLink from '@codotype/ui/src/components/MoreInfoLink'
 
 export default {
   name: 'OptionFormitem',

@@ -34,7 +34,7 @@
         ref="newModal"
         :title="'New Blueprint'"
       >
-        <ProjectForm :submit="submitProjectForm" />
+        <BlueprintForm :submit="submitBlueprintForm" />
       </b-modal>
 
       <div class="row mt-2 mb-4 justify-content-center">
@@ -59,11 +59,11 @@
 
 <script>
 import { mapActions } from 'vuex'
-import ProjectForm from '@/modules/project/components/ProjectForm'
+import BlueprintForm from '@/modules/blueprint/components/BlueprintForm'
 
 export default {
   components: {
-    ProjectForm
+    BlueprintForm
   },
   metaInfo: {
     title: 'Visual code scaffolding for the modern web'
@@ -72,7 +72,7 @@ export default {
     ...mapActions({
       persist: 'project/create'
     }),
-    submitProjectForm () {
+    submitBlueprintForm () {
       this.$refs.newModal.hide()
       this.persist()
     }

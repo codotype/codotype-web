@@ -1,4 +1,4 @@
-import { NEW_MODEL_MUTATIONS } from '@/store/lib/mixins'
+import { NEW_MODEL_MUTATIONS } from '@codotype/ui/src/store/lib/mixins'
 
 // // // //
 

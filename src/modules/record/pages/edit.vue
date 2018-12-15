@@ -21,7 +21,7 @@ import { mapGetters, mapActions } from 'vuex'
 import RecordForm from '@/components/record/RecordForm'
 
 export default {
-  props: ['project_id', 'schema_id', 'record_id'],
+  props: ['blueprint_id', 'schema_id', 'record_id'],
   metaInfo: {
     title: 'Seed - New'
   },

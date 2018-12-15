@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import MoreInfoLink from '@/components/MoreInfoLink'
+import MoreInfoLink from '@codotype/ui/src/components/MoreInfoLink'
 import { mapActions } from 'vuex'
 
 export default {

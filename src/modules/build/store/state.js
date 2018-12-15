@@ -1,4 +1,4 @@
-import { NEW_MODEL_STATE } from '@/store/lib/mixins'
+import { NEW_MODEL_STATE } from '@codotype/ui/src/store/lib/mixins'
 import { DEFAULT_BUILD } from './constants'
 
 export default {

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import cloneDeep from 'lodash/cloneDeep'
-import { NEW_MODEL_ACTIONS } from '@/store/lib/mixins'
+import { NEW_MODEL_ACTIONS } from '@codotype/ui/src/store/lib/mixins'
 import { DEFAULT_BUILD_STAGE } from './constants'
 import buildConfiguration from '@codotype/util/lib/buildConfiguration'
 const GENERATE_ROUTE = '/api/generate'

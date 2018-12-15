@@ -27,7 +27,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import MoreInfoLink from '@/components/MoreInfoLink'
+import MoreInfoLink from '@codotype/ui/src/components/MoreInfoLink'
 import AddonAttributeList from './AddonAttributeList'
 
 export default {
