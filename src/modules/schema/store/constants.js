@@ -47,6 +47,9 @@ export const COLOR = 'COLOR'
 export const DATATYPES = [
   { value: TEXT, text: 'String', icon: 'fa fa-quote-left' },
   { value: NUMBER, text: 'Number', icon: 'fa fa-hashtag' },
+  // { value: NUMBER_INTEGER, text: 'Integer', icon: 'fa fa-hashtag' },
+  // { value: NUMBER_FLOAT, text: 'Float', icon: 'fa fa-hashtag' },
+  // { value: NUMBER_DOUBLE, text: 'Double', icon: 'fa fa-hashtag' },
   // { value: 'NUMBER_ARRAY', text: 'Number Array', icon: 'fa fa-hashtag' },
   { value: STRING_ARRAY, text: 'String Array', icon: 'fa fa-quote-left' },
   { value: BOOL, text: 'Boolean', icon: 'far fa-check-square' },
