@@ -1,5 +1,5 @@
 import uniq from 'lodash/uniq'
-import { COLLECTION_GETTERS, SELECT_MODEL_GETTERS } from '@/store/lib/mixins'
+import { COLLECTION_GETTERS, SELECT_MODEL_GETTERS } from '@codotype/ui/src/store/lib/mixins'
 
 // Generator Module Getters
 export default {

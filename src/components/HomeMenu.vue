@@ -18,7 +18,7 @@
 
       <b-navbar-nav class="mr-0">
 
-        <b-nav-form v-if="$route.name === 'ProjectList'">
+        <b-nav-form v-if="$route.name === 'BlueprintList'">
           <HelpButton tour='appListSteps' size="lg"/>
         </b-nav-form>
 
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import HelpButton from '@/components/HelpButton'
+import HelpButton from '@codotype/ui/src/components/HelpButton'
 
 export default {
   name: 'HomeMenu',

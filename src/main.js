@@ -2,11 +2,16 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import '@/config'
 import Vue from 'vue'
+import { sync } from 'vuex-router-sync'
 import App from './App'
 import router from './routers'
 import store from '@/store'
-import EditorHeader from '@/components/EditorHeader'
+import EditorHeader from '@codotype/ui/src/components/EditorHeader'
 import configureModerator from '@/store/mediator'
+
+// Configures vuex-router-sync
+sync(store, router)
+// sync(store, router, { moduleName: 'RouteModule' } )
 
 // Configures top-level vuex mediator
 configureModerator(store, router)

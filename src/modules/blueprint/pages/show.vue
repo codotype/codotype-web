@@ -53,7 +53,7 @@ import SchemaForm from '@/modules/schema/components/SchemaForm'
 import SchemaDetail from '@/modules/schema/components/SchemaDetail'
 
 export default {
-  props: ['project_id'],
+  props: ['blueprint_id'],
   metaInfo: {
     title: 'Blueprint'
   },
@@ -64,7 +64,7 @@ export default {
   },
   created () {
     this.resetNewSchemaModel()
-    return this.selectModel(this.project_id)
+    return this.selectModel(this.blueprint_id)
   },
   destroyed () {
     return this.clearSelectedProject()

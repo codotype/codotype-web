@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import FormInput from '@/components/FormInput'
-import MoreInfoLink from '@/components/MoreInfoLink'
+import FormInput from '@codotype/ui/src/components/FormInput'
+import MoreInfoLink from '@codotype/ui/src/components/MoreInfoLink'
 
 export default {
   components: {

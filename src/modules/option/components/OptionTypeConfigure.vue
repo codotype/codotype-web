@@ -36,8 +36,8 @@
 </template>
 
 <script>
-import FormInput from '@/components/FormInput'
-import ArrayInput from '@/components/ArrayInput'
+import FormInput from '@codotype/ui/src/components/FormInput'
+import ArrayInput from '@codotype/ui/src/components/ArrayInput'
 
 export default {
   props: ['model'],

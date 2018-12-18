@@ -1,4 +1,4 @@
-import { NEW_MODEL_GETTERS } from '@/store/lib/mixins'
+import { NEW_MODEL_GETTERS } from '@codotype/ui/src/store/lib/mixins'
 
 // Build Module Getters
 // TODO - add availableGenerators getter

@@ -80,6 +80,18 @@
               </div>
             </div>
 
+            <!-- Alias Help -->
+            <div class="col-lg-4">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group mb-2 text-center">
+                    <label class='mb-0'>Alias</label>
+                    <small class="form-text text-muted mb-0">Reference associated models by a different name</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div class="col-lg-4">
               <div class="form-group text-right">
                 <label class='mb-0'>

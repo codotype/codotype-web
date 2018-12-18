@@ -2,7 +2,7 @@ import cloneDeep from 'lodash/cloneDeep'
 import ObjectID from 'bson-objectid'
 import router from '@/routers'
 import { DEFAULT_RECORD } from './constants'
-import { SELECT_MODEL_ACTIONS, EDIT_MODEL_ACTIONS } from '@/store/lib/mixins'
+import { SELECT_MODEL_ACTIONS, EDIT_MODEL_ACTIONS } from '@codotype/ui/src/store/lib/mixins'
 
 // Record module actions
 export default {

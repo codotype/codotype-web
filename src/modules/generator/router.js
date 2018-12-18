@@ -15,6 +15,7 @@ export default [
   {
     path: '/generators/:id',
     component: GeneratorShow,
+    name: 'GeneratorShow',
     props: true
   }
 ]

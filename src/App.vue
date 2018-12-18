@@ -12,7 +12,7 @@
 <script>
 import Navbar from '@/components/Navbar'
 import AppFooter from '@/components/Footer'
-import Notifications from '@/modules/notification/components/Notifications'
+import Notifications from '@codotype/ui/src/modules/notification/components/Notifications'
 
 export default {
   components: {
@@ -43,8 +43,8 @@ export default {
     height: 100%
 
   .container.router-container
-    margin-top: 6rem
-    margin-bottom: 2rem
+    padding-top: 6rem
+    margin-bottom: 4rem
 
   #app
     height: 100%

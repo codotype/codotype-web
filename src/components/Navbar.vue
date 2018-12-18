@@ -1,6 +1,7 @@
 <template>
   <BlueprintMenu v-if="showBlueprintMenu"/>
   <BuildMenu v-else-if="showBuildMenu"/>
+  <GeneratorMenu v-else-if="showGeneratorMenu"/>
   <HomeMenu v-else/>
 </template>
 
@@ -8,17 +9,22 @@
 import HomeMenu from './HomeMenu'
 import BlueprintMenu from './BlueprintMenu'
 import BuildMenu from './BuildMenu'
+import GeneratorMenu from './GeneratorMenu'
 
 export default {
   name: 'Navbar',
   components: {
     HomeMenu,
     BlueprintMenu,
-    BuildMenu
+    BuildMenu,
+    GeneratorMenu
   },
   computed: {
     showBlueprintMenu () {
-      return this.$route.name === 'ProjectShow'
+      return this.$route.name === 'BlueprintShow'
+    },
+    showGeneratorMenu () {
+      return this.$route.name === 'GeneratorShow'
     },
     showBuildMenu () {
       return this.$route.name === 'BlueprintGenerate'

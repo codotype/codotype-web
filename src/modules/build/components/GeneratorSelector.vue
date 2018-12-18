@@ -59,14 +59,12 @@
 
 <script>
 import FilterList from '@/modules/generator/components/FilterList'
-import EditorHeader from '@/components/EditorHeader'
 import GeneratorListItem from '@/modules/generator/components/GeneratorListItem'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
   components: {
     FilterList,
-    EditorHeader,
     GeneratorListItem
   },
   data () {

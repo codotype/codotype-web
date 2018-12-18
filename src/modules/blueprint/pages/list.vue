@@ -10,7 +10,7 @@
       ref="newModal"
       :title="'New Blueprint'"
     >
-      <ProjectForm :submit="submitProjectForm" />
+      <BlueprintForm :submit="submitBlueprintForm" />
     </b-modal>
 
     <!-- TODO - abstract into PageHeader component -->
@@ -42,8 +42,8 @@
 
 <script>
 
-import ListView from '@/modules/project/components/ProjectList'
-import ProjectForm from '@/modules/project/components/ProjectForm'
+import ListView from '@/modules/blueprint/components/BlueprintList'
+import BlueprintForm from '@/modules/blueprint/components/BlueprintForm'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -52,7 +52,7 @@ export default {
   },
   components: {
     ListView,
-    ProjectForm
+    BlueprintForm
   },
   mounted () {
     this.fetch()
@@ -65,7 +65,7 @@ export default {
       fetch: 'project/fetchCollection',
       persist: 'project/create'
     }),
-    submitProjectForm () {
+    submitBlueprintForm () {
       this.$refs.newModal.hide()
       this.persist()
     }

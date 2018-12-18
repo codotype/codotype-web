@@ -1,6 +1,6 @@
 import cloneDeep from 'lodash/cloneDeep'
 import { DEFAULT_ADDON } from './constants'
-import { SELECT_MODEL_ACTIONS } from '@/store/lib/mixins'
+import { SELECT_MODEL_ACTIONS } from '@codotype/ui/src/store/lib/mixins'
 import { inflateMeta } from '@codotype/util/lib/inflateMeta'
 
 // Schema module actions
