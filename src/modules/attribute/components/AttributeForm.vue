@@ -46,7 +46,7 @@ export default {
 
 <!-- TODO - abstract elsewhere, or scope to this component -->
 <style lang="sass">
-  @import '../../../sass/vendor.sass'
+  // @import '../../../sass/vendor.sass'
 
   .form-group
     label
