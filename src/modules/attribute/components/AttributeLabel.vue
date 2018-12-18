@@ -10,45 +10,17 @@
 // TODO - icon and tooltip should be encapsulated in the attribute data
 // TODO - attribute data should be abstracted into codotype-util
 // TODO - perhaps distribute a @codotype/meta package?
+import { DATATYPES } from '@/modules/schema/store/constants'
+
 export default {
   props: ['item'],
   name: 'AttributeLabel',
   computed: {
     icon () {
-      switch (this.item.datatype) {
-        case 'TEXT':
-          return 'fa fa-quote-left'
-        case 'STRING_ARRAY':
-          return 'fa fa-quote-left'
-        case 'NUMBER':
-          return 'fa fa-hashtag'
-        case 'BOOL':
-          return 'far fa-check-square'
-        case 'DATE':
-          return 'far fa-calendar'
-        case 'TIME':
-          return 'far fa-clock'
-        case 'DATETIME':
-          return 'far fa-calendar-plus'
-      }
+      return DATATYPES.find((v) => v.value === this.item.datatype).icon
     },
     tooltip () {
-      switch (this.item.datatype) {
-        case 'TEXT':
-          return 'Text'
-        case 'STRING_ARRAY':
-          return 'String Array'
-        case 'NUMBER':
-          return 'Number'
-        case 'BOOL':
-          return 'Boolean'
-        case 'DATE':
-          return 'Date'
-        case 'TIME':
-          return 'Time'
-        case 'DATETIME':
-          return 'Datetime'
-      }
+      return DATATYPES.find((v) => v.value === this.item.datatype).text
     }
   }
 }
