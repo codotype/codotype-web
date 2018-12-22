@@ -45,11 +45,11 @@ export default {
     setTimeout(() => { this.$refs.labelInput.focus() }, 200) // Minor delay for input element focus
   },
   computed: mapGetters({
-    newModel: 'project/newModel'
+    newModel: 'blueprint/newModel'
   }),
   methods: mapActions({
-    resetNewModel: 'project/resetNewModel',
-    setIdentifier: 'project/setIdentifier'
+    resetNewModel: 'blueprint/resetNewModel',
+    setIdentifier: 'blueprint/setIdentifier'
   })
 }
 </script>

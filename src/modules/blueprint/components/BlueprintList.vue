@@ -83,8 +83,8 @@ export default {
     ExampleListItem
   },
   computed: mapGetters({
-    collection: 'project/collection',
-    exampleCollection: 'project/exampleCollection'
+    collection: 'blueprint/collection',
+    exampleCollection: 'blueprint/exampleCollection'
   })
 }
 </script>
