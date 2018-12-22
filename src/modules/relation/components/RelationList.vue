@@ -121,7 +121,7 @@ export default {
       }
     },
     referencedBy () {
-      const inflatedApp = this.$store.getters['project/inflated']
+      const inflatedApp = this.$store.getters['blueprint/inflated']
       const selectedSchema = inflatedApp.schemas.find(s => s._id === this.schema._id)
       return selectedSchema.relations.filter(r => ['REF_BELONGS_TO'].includes(r.type))
     },

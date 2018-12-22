@@ -83,10 +83,10 @@ import { mapActions } from 'vuex'
 export default {
   props: ['project'],
   methods: mapActions({
-    destroyProject: 'project/destroy',
+    destroyProject: 'blueprint/destroy',
     selectBuildApp: 'build/selectApp',
-    exportApp: 'project/exportJson',
-    cloneBlueprint: 'project/clone'
+    exportApp: 'blueprint/exportJson',
+    cloneBlueprint: 'blueprint/clone'
   })
 }
 </script>

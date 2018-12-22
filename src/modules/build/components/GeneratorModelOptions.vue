@@ -26,7 +26,7 @@ export default {
     ModelOptionForm
   },
   computed: mapGetters({
-    model: 'project/selectedModel',
+    model: 'blueprint/selectedModel',
     schemas: 'schema/collection',
     selectedGenerator: 'generator/selectedModel'
   })

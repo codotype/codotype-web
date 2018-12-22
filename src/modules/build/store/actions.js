@@ -16,7 +16,7 @@ export default {
 
     // sets project.state.selectedModel
     // TODO - move into store mediator
-    dispatch('project/selectModel', app_id, { root: true })
+    dispatch('blueprint/selectModel', app_id, { root: true })
   },
   // TODO - stage management should be moved into the `stage` module
   addNewStage ({ state, rootGetters, commit, dispatch }, generator_id) {
@@ -34,7 +34,7 @@ export default {
     const generatorMeta = rootGetters['generator/collection'].find(g => g.id === generator_id)
 
     // Pulls the blueprint to define the build configuration
-    const blueprint = rootGetters['project/selectedModel']
+    const blueprint = rootGetters['blueprint/selectedModel']
 
     // Generates the stage's configuration from the selected generator
     newStage.configuration = buildConfiguration({ blueprint: blueprint, generator: generatorMeta })
@@ -74,7 +74,7 @@ export default {
   generate: ({ rootGetters, state, commit }) => {
     // Pulls requisite data from state
     const { stages } = state.newModel
-    const blueprint = rootGetters['project/selectedModel']
+    const blueprint = rootGetters['blueprint/selectedModel']
 
     // Defines build object to send to the server
     let build = { blueprint, stages }

@@ -58,12 +58,12 @@ export default {
     this.fetch()
   },
   computed: mapGetters({
-    collection: 'project/collection'
+    collection: 'blueprint/collection'
   }),
   methods: {
     ...mapActions({
-      fetch: 'project/fetchCollection',
-      persist: 'project/create'
+      fetch: 'blueprint/fetchCollection',
+      persist: 'blueprint/create'
     }),
     submitBlueprintForm () {
       this.$refs.newModal.hide()

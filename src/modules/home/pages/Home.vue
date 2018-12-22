@@ -70,7 +70,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      persist: 'project/create'
+      persist: 'blueprint/create'
     }),
     submitBlueprintForm () {
       this.$refs.newModal.hide()

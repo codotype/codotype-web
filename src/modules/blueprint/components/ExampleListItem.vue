@@ -60,8 +60,8 @@ import { mapActions } from 'vuex'
 export default {
   props: ['project'],
   methods: mapActions({
-    exportApp: 'project/exportJson',
-    cloneExample: 'project/clone'
+    exportApp: 'blueprint/exportJson',
+    cloneExample: 'blueprint/clone'
   })
 }
 </script>

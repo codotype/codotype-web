@@ -1,7 +1,7 @@
 import createPersistedState from 'vuex-persistedstate'
 import Vuex from 'vuex'
 
-import project from '@/modules/blueprint/store'
+import blueprint from '@/modules/blueprint/store'
 import schema from '@/modules/schema/store'
 import attribute from '@/modules/attribute/store'
 import relation from '@/modules/relation/store'
@@ -16,7 +16,7 @@ import build from '@/modules/build/store'
 export default new Vuex.Store({
   modules: {
     notification,
-    project,
+    blueprint,
     schema,
     attribute,
     relation,

@@ -71,9 +71,9 @@ export default {
   },
   methods: mapActions({
     submit: 'schema/create',
-    selectModel: 'project/selectModel',
+    selectModel: 'blueprint/selectModel',
     resetNewSchemaModel: 'schema/resetNewModel',
-    clearSelectedProject: 'project/clearSelected'
+    clearSelectedProject: 'blueprint/clearSelected'
   }),
   computed: mapGetters({
     newModel: 'schema/newModel'

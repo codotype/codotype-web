@@ -108,7 +108,7 @@ export default {
   methods: {
     ...mapActions({
       updateSchema: 'schema/update',
-      destroySchema: 'project/removeSchema'
+      destroySchema: 'blueprint/removeSchema'
     }),
     isUserModel (model) {
       return model.identifier === 'user'

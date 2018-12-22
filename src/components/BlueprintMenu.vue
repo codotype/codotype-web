@@ -110,11 +110,11 @@ export default {
     this.blueprintLabel = this.project.label
   },
   computed: mapGetters({
-    project: 'project/selectedModel'
+    project: 'blueprint/selectedModel'
   }),
   methods: mapActions({
-    exportProject: 'project/exportJson',
-    renameBlueprint: 'project/rename',
+    exportProject: 'blueprint/exportJson',
+    renameBlueprint: 'blueprint/rename',
     selectBuildApp: 'build/selectApp'
   })
 }

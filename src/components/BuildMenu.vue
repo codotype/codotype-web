@@ -59,7 +59,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      project: 'project/selectedModel',
+      project: 'blueprint/selectedModel',
       choosingGenerator: 'build/choosingGenerator',
       buildLoading: 'build/fetching',
       buildFinished: 'build/buildFinished',
@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      exportProject: 'project/exportJson',
+      exportProject: 'blueprint/exportJson',
       selectBuildApp: 'build/selectApp',
       generateCodebase: 'build/generate'
     }),

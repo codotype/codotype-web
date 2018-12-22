@@ -80,7 +80,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      selectedBlueprint: 'project/selectedModel',
+      selectedBlueprint: 'blueprint/selectedModel',
       schemas: 'schema/collection',
       newBuildModel: 'build/newModel',
       selectedGenerator: 'generator/selectedModel',
