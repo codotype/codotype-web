@@ -6,6 +6,7 @@ import ToggleButton from 'vue-js-toggle-button'
 import VueGitHubButtons from 'vue-github-buttons'
 import 'vue-github-buttons/dist/vue-github-buttons.css'
 import 'driver.js/dist/driver.min.css'
+// import 'vue-step-indicator/dist/vue-step-indicator.css'
 
 // bootstrap-vue
 // Bootstrap components and directives

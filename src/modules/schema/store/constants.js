@@ -36,12 +36,14 @@ export const RELATION_TYPES = [
 export const TEXT = 'TEXT'
 export const STRING_ARRAY = 'STRING_ARRAY'
 export const NUMBER = 'NUMBER'
+export const NUMBER_INTEGER = 'NUMBER_INTEGER'
+export const NUMBER_FLOAT = 'NUMBER_FLOAT'
+export const NUMBER_DOUBLE = 'NUMBER_DOUBLE'
 export const BOOL = 'BOOL'
 export const DATE = 'DATE'
 export const TIME = 'TIME'
 export const DATETIME = 'DATETIME'
 export const COLOR = 'COLOR'
-// export const RELATION = 'RELATION'
 
 // TODO - these should be abstracted into @codotype/util
 export const DATATYPES = [
@@ -59,5 +61,4 @@ export const DATATYPES = [
   // { value: COLOR, text: 'Color', icon: 'far fa-eyedropper' },
   { value: 'JSON', text: 'JSON', icon: 'fa fa-code' }
   // { value: 'GEO', text: 'Geolocation', icon: 'fa-map' },
-  // { value: RELATION, text: 'Relation', icon: 'fa-link' }
 ]

@@ -5,6 +5,7 @@ import { SELECT_MODEL_ACTIONS } from '@codotype/ui/src/store/lib/mixins'
 import { inflateMeta } from '@codotype/util/lib/inflateMeta'
 
 // Schema module actions
+// TODO - abstract into blueprintEditor store
 export default {
   ...SELECT_MODEL_ACTIONS,
   selectModel: ({ commit, dispatch, state }, model_id) => {
