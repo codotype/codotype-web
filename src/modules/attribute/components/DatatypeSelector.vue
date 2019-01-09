@@ -15,14 +15,13 @@
 
     <!-- Basic Datatypes -->
     <div class="row">
-      <div class="col-sm-6 pb-2" v-for="opt in datatypes" :key="opt.value">
-        <DatatypeOption
-          :opt="opt"
-          :val="value"
-          :click="setDatatype"
-          class='btn-outline-dark'
-        />
-      </div>
+      <DatatypeOption
+        v-for="opt in datatypes"
+        :key="opt.value"
+        :opt="opt"
+        :val="value"
+        :click="setDatatype"
+      />
     </div>
 
   </div>
