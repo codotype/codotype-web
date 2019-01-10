@@ -18,6 +18,7 @@
           @ok="renameBlueprint({ label: blueprintLabel })"
           ok-title='Update'
           cancel-title='Cancel'
+          :ok-disabled="!blueprintLabel"
         >
           <div class="form-group">
             <label class='mb-0'>
