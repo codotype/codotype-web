@@ -19,6 +19,14 @@
       <b-navbar-nav class="mr-0">
 
         <b-nav-form v-if="$route.name === 'BlueprintList'">
+
+          <ImportBlueprint/>
+
+          <b-button size="lg" variant="outline-primary" class="mr-4" v-b-modal="'import-blueprint'">
+            <i class="fa fa-upload fa-fw"></i>
+            Import
+          </b-button>
+
           <HelpButton tour='appListSteps' size="lg"/>
         </b-nav-form>
 
@@ -32,11 +40,13 @@
 
 <script>
 import HelpButton from '@codotype/ui/src/components/HelpButton'
+import ImportBlueprint from '@/modules/blueprint/components/ImportBlueprint'
 
 export default {
   name: 'HomeMenu',
   components: {
-    HelpButton
+    HelpButton,
+    ImportBlueprint
   }
 }
 </script>

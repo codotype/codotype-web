@@ -8,10 +8,9 @@ import relation from '@/modules/relation/store'
 import notification from '@codotype/ui/src/modules/notification/store'
 import generator from '@/modules/generator/store'
 import addon from '@/modules/addon/store'
-import tour from '@/modules/tour/store'
+import tour from '@codotype/ui/src/modules/tour/store'
 import option from '@/modules/option/store'
 import build from '@/modules/build/store'
-// import record from '@/modules/record/store'
 
 export default new Vuex.Store({
   modules: {
