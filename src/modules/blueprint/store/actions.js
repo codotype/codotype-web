@@ -39,6 +39,13 @@ export default {
     dispatch('resetNewModel')
   },
 
+  import: ({ dispatch }, blueprintJson) => {
+    dispatch('persist', { record: cloneDeep(blueprintJson) })
+
+    // Displays encouraging notification
+    // commit('notification/add', CREATE_SUCCESS_NOTIFICATION, { root: true })
+  },
+
   persist: ({ dispatch, commit, state }, { record }) => {
     let recordId = record._id
     let collection = state.collection
