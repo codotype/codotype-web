@@ -10,6 +10,7 @@
       <b-tabs class='mt-3' v-model="currentStep" pills card>
 
         <b-tab
+          lazy
           button-id="build-start-nav"
           title="Start"
           active
@@ -65,38 +66,53 @@
 
         </b-tab>
 
-        <!-- <b-tab -->
-          <!-- title="Global Options" -->
-          <!-- v-if="model.global_options[0]" -->
-          <!-- button-id="build-global-options-nav" -->
-        <!-- > -->
-          <!-- <br> -->
+        <b-tab
+          lazy
+          title="Global Options"
+          v-if="model.global_options[0]"
+          button-id="build-global-options-nav"
+          class='card-body bg-white border border-top-0'
+        >
+          <br>
 
-          <!-- <EditorHeader -->
-            <!-- title="Global Options" -->
-            <!-- help="Configure global options for this generator" -->
-            <!-- url="https://codotype.github.io" -->
-          <!-- /> -->
+          <EditorHeader
+            title="Global Options"
+            help="Configure global options for this generator"
+            url="https://codotype.github.io"
+          />
 
-          <!-- <div class="card card-body mt-2" v-for="attr in model.global_options"> -->
-            <!-- <OptionFormItem :model="attr" v-model="configurationObject[attr.identifier]"/> -->
-          <!-- </div> -->
+          <div class="card card-body mt-2" v-for="attr in model.global_options">
+            <OptionFormItem :model="attr" v-model="configurationObject[attr.identifier]"/>
+          </div>
 
-          <!-- <div class="card card-body text-center bg-transparent border-warning text-warning" v-if="!model.global_options[0]"> -->
-            <!-- <p class="lead mb-0">No global options exposed by this generator</p> -->
-          <!-- </div> -->
+          <div class="card card-body text-center bg-transparent border-warning text-warning" v-if="!model.global_options[0]">
+            <p class="lead mb-0">No global options exposed by this generator</p>
+          </div>
 
-        <!-- </b-tab> -->
+        </b-tab>
 
-        <!-- <b-tab
+        <b-tab
+          lazy
           button-id="build-readme-nav"
           title="README.md"
           active
           class='card-body bg-white border border-top-0'
           v-html="compiledMarkdown"
-        ></b-tab> -->
+        ></b-tab>
+
+        <!-- ModelOptions -->
+        <b-tab
+          lazy
+          title="Model Options"
+          v-if="model.model_options[0]"
+          button-id="build-model-options-nav"
+        >
+          <br>
+          <GeneratorModelOptions/>
+        </b-tab>
 
         <b-tab
+          lazy
           class='card-body bg-white border border-top-0 pt-0'
           :title="group.label"
           v-for="group in model.option_groups"
@@ -122,6 +138,7 @@
         </b-tab>
 
         <b-tab
+          lazy
           title='Data Models'
           class='card-body bg-white border border-top-0'
         >
@@ -140,6 +157,7 @@ import { mapGetters, mapActions } from 'vuex'
 import BlueprintShow from '@/modules/blueprint/pages/show'
 import OptionFormItem from '@/modules/option/components/OptionFormItem'
 // import StepIndicator from 'vue-step-indicator'
+import GeneratorModelOptions from '@/modules/build/components/GeneratorModelOptions'
 import HorizontalStepper from 'vue-stepper'
 
 export default {
@@ -154,7 +172,8 @@ export default {
   components: {
     OptionFormItem,
     BlueprintShow,
-    HorizontalStepper
+    HorizontalStepper,
+    GeneratorModelOptions
     // StepIndicator
   },
   created () {

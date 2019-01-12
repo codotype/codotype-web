@@ -12,6 +12,8 @@
       <b-navbar-nav class="mr-auto">
 
         <!-- Public links -->
+        <b-nav-item to="/generators">Generators</b-nav-item>
+
         <b-nav-item to="/blueprints">Blueprints</b-nav-item>
 
       </b-navbar-nav>
@@ -22,10 +24,22 @@
 
           <ImportBlueprint/>
 
-          <b-button size="lg" variant="outline-primary" class="mr-4" v-b-modal="'import-blueprint'">
-            <i class="fa fa-upload fa-fw"></i>
-            Import
-          </b-button>
+          <b-dropdown
+            right
+            no-caret
+            variant="light"
+            class='mr-2'
+            toggle-class='rounded'
+            size="lg"
+          >
+            <template slot="button-content">
+              <i class="fa fa-fw fa-ellipsis-h"></i>
+            </template>
+            <b-dropdown-item-button v-b-modal="'import-blueprint'">
+              <i class="fa fa-fw fa-upload"></i>
+              Import Blueprint JSON
+            </b-dropdown-item-button>
+          </b-dropdown>
 
           <HelpButton tour='appListSteps' size="lg"/>
         </b-nav-form>
