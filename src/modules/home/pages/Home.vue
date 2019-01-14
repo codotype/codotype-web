@@ -40,7 +40,7 @@
       <div class="row mt-2 mb-4 justify-content-center">
         <div class="col-lg-4">
           <b-button
-            v-b-modal="'new-project-modal'"
+            to="/generators"
             size="lg"
             variant="primary"
             block
