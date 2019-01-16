@@ -18,6 +18,8 @@ export default {
     let model = state.collection.find(m => m._id === model_id)
 
     // Selects the model - sets schema collection
+    commit('schema/collection', model.schemas)
+
     commit('schema/collection', model.schemas, { root: true })
     commit('schema/selectedModel', model.schemas[0], { root: true })
     commit('selectedModel', model)
