@@ -55,8 +55,8 @@
             @change="updateModel()"
           />
 
-          <label class='mb-0 mr-3'>{{opt.label}}</label>
-          <!-- <small>{{opt.help}}</small> -->
+          <label class='mb-0 mr-2'>{{opt.label}}</label>
+          <i class="fa fa-question-circle text-muted" v-b-tooltip.hover.right :title="opt.help"></i>
           <!-- <MoreInfoLink class='ml-3 mb-2' :url="opt.more_info_url" /> -->
         </li>
 
