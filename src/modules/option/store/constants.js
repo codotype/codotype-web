@@ -25,7 +25,6 @@ export const DATE = 'DATE'
 export const TIME = 'TIME'
 export const DATETIME = 'DATETIME'
 export const COLOR = 'COLOR'
-// export const RELATION = 'RELATION'
 
 export const OPTION_TYPES = [
   { value: TEXT, text: 'Text', icon: 'fa-quote-left' },
@@ -39,5 +38,4 @@ export const OPTION_TYPES = [
   { value: TEXT_SELECT, text: 'Text Select', icon: 'fa-list' }
   // { value: 'JSON', text: 'JSON', icon: 'fa-code' }
   // { value: 'GEO', text: 'Geolocation', icon: 'fa-map' },
-  // { value: RELATION, text: 'Relation', icon: 'fa-link' }
 ]

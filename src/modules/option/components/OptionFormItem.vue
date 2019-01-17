@@ -4,7 +4,7 @@
 
       <span class='d-flex align-items-center'>
         <toggle-button
-          v-if="model.type === 'BOOLEAN'"
+          v-if="model.type === DATATYPE_BOOLEAN"
           ref="input"
           :value="value"
           :color="'#4582EC'"
@@ -19,10 +19,10 @@
 
     </div>
 
-    <div class="col-lg-12 mt-2" v-if="model.type !== 'BOOLEAN'">
+    <div class="col-lg-12 mt-2" v-if="model.type !== DATATYPE_BOOLEAN">
 
       <input
-        v-if="model.type === 'TEXT'"
+        v-if="model.type === DATATYPE_STRING"
         class='form-control'
         :value="value"
         type="text"
@@ -31,7 +31,7 @@
       >
 
       <select
-        v-if="model.type === 'TEXT_SELECT'"
+        v-if="model.type === DATATYPE_STRING_SELECT"
         class='form-control'
         :value="value"
         type="text"
@@ -41,7 +41,7 @@
         <option :value="opt.value" v-for="opt in model.options" :key="opt.id">{{opt.label}}</option>
       </select>
 
-      <ul class='list-group' v-if="model.type === 'BOOLEAN_GROUP'">
+      <ul class='list-group' v-if="model.type === DATATYPE_BOOLEAN_GROUP">
 
         <li class='list-group-item d-flex align-items-center'
           v-for="opt in model.options"
@@ -67,6 +67,16 @@
 </template>
 
 <script>
+import {
+  DATATYPE_STRING,
+  DATATYPE_STRING_SELECT,
+  DATATYPE_BOOLEAN,
+  DATATYPE_BOOLEAN_GROUP,
+  DATATYPE_NUMBER_INTEGER,
+  DATATYPE_NUMBER_FLOAT,
+  DATATYPE_NUMBER_DOUBLE
+} from '@/modules/schema/store/constants'
+
 import MoreInfoLink from '@codotype/ui/src/components/MoreInfoLink'
 
 export default {
@@ -75,11 +85,22 @@ export default {
   components: {
     MoreInfoLink
   },
+  data () {
+    return {
+      DATATYPE_STRING,
+      DATATYPE_STRING_SELECT,
+      DATATYPE_BOOLEAN,
+      DATATYPE_BOOLEAN_GROUP,
+      DATATYPE_NUMBER_INTEGER,
+      DATATYPE_NUMBER_FLOAT,
+      DATATYPE_NUMBER_DOUBLE
+    }
+  },
   methods: {
     updateModel () {
-      if (this.model.type === 'BOOLEAN') {
+      if (this.model.type === DATATYPE_BOOLEAN) {
         this.$emit('input', this.$refs.input.toggled)
-      } else if (this.model.type === 'NUMBER') {
+      } else if ([DATATYPE_NUMBER_INTEGER, DATATYPE_NUMBER_FLOAT, DATATYPE_NUMBER_DOUBLE].includes(this.model.type)) {
         this.$emit('input', Number(this.$refs.input.value))
       } else {
         this.$emit('input', this.$refs.input.value)

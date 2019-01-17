@@ -17,6 +17,7 @@ export default {
   },
   create ({ state, dispatch, commit }) {
     // Clones state.newModel
+    // TODO - use Object.assign here?
     let model = cloneDeep(state.newModel)
 
     // Assigns model meta
@@ -27,6 +28,9 @@ export default {
 
     // Assigns ID
     model._id = ObjectID().toString()
+
+    // Assigns order
+    model.order = state.collection.length
 
     // Updates collection
     const collection = state.collection
