@@ -9,6 +9,7 @@ export const DEFAULT_PROJECT = {
 
 export const DEFAULT_USER_SCHEMA = {
   _id: null,
+  order: 0,
   enabled: true,
   label: 'User',
   label_plural: 'Users',
