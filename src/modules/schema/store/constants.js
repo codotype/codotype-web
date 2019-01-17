@@ -2,6 +2,7 @@
 // Schema constants
 export const DEFAULT_SCHEMA = {
   _id: null,
+  order: 0,
   label: '',
   label_plural: '',
   identifier: '',
@@ -24,10 +25,15 @@ export const DEFAULT_SCHEMA = {
 }
 
 // TODO - these should be abstracted into @codotype/util
+export const RELATION_TYPE_BELONGS_TO = 'BELONGS_TO'
+export const RELATION_TYPE_HAS_ONE = 'HAS_ONE'
+export const RELATION_TYPE_HAS_MANY = 'HAS_MANY'
+
+// TODO - these should be abstracted into @codotype/util
 export const RELATION_TYPES = [
-  { id: 'BELONGS_TO', label: 'Belongs To', description: 'A two-way association to a single model' },
-  { id: 'HAS_ONE', label: 'Has One', description: 'A one-way association to a single model' },
-  { id: 'HAS_MANY', label: 'Has Many', description: 'A one-way association to many models' }
+  { id: RELATION_TYPE_BELONGS_TO, label: 'Belongs To', description: 'A two-way association to a single model' },
+  { id: RELATION_TYPE_HAS_ONE, label: 'Has One', description: 'A one-way association to a single model' },
+  { id: RELATION_TYPE_HAS_MANY, label: 'Has Many', description: 'A one-way association to many models' }
 ]
 
 // Datattype IDs
