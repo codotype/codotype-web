@@ -28,17 +28,19 @@ export const DEFAULT_ADDON = {
 // At the very least it should be abstracted into a central location to mitigate unnecessary duplication
 export const TEXT = 'TEXT'
 export const NUMBER = 'NUMBER'
-export const BOOL = 'BOOL'
+export const BOOL = 'BOOL' // TODO - retire this datatype
+export const BOOLEAN = 'BOOLEAN'
 export const DATE = 'DATE'
 export const TIME = 'TIME'
 export const DATETIME = 'DATETIME'
-export const COLOR = 'COLOR'
+export const COLOR = 'COLOR' // TODO - retire this datatype
 export const RELATION = 'RELATION'
 
 export const DATATYPES = [
   { value: TEXT, text: 'Text', icon: 'fa-quote-left' },
   { value: NUMBER, text: 'Number', icon: 'fa-hashtag' },
   { value: BOOL, text: 'Boolean', icon: 'fa-check-square-o' },
+  { value: BOOLEAN, text: 'Boolean', icon: 'fa-check-square-o' },
   { value: DATE, text: 'Date', icon: 'fa-calendar-o' },
   { value: TIME, text: 'Time', icon: 'fa-clock-o' },
   { value: DATETIME, text: 'DateTime', icon: 'fa-calendar-plus-o' },
