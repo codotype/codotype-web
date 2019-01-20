@@ -12,20 +12,18 @@
         <b-nav-item id="project-header">What's Codotype?</b-nav-item>
       </b-navbar-nav>
 
-      <b-navbar-nav class="ml-auto" v-if="!buildLoading && !buildFinished">
+      <b-navbar-nav class="ml-auto">
         <b-nav-form>
 
           <HelpButton class='mr-2' size='lg' tooltipPlacement="bottom" tour='buildSteps' />
 
           <b-button
             size='lg'
-            :disabled="disableGenerateButton"
             id="generate-button"
             variant="success"
             @click="generateCodebase()"
             v-b-tooltip.hover.bottom :title='"Click here to generate code"'
           >
-            <!-- <i class="fa fa-fw fa-code"></i> -->
             <i class="fa fa-fw fa-spin fa-cog"></i>
             Generate Code
           </b-button>

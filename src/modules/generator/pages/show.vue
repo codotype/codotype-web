@@ -81,7 +81,6 @@
           class='card-body bg-white border border-top-0 pt-0'
           :title="group.label"
           v-for="group in model.option_groups"
-          v-if="group.options[0]"
           :key="group.identifier"
         >
           <br>
@@ -93,13 +92,132 @@
           /> -->
 
           <!-- <div class="card card-body mt-2" v-for="attr in group.options"> -->
-          <div class="mt-2" v-for="attr in group.options">
-            <OptionFormItem :model="attr" v-model="configurationObject[attr.identifier]"/>
-          </div>
 
-          <div class="card card-body text-center bg-transparent border-warning text-warning" v-if="!group.options[0]">
-            <p class="lead mb-0">No options exposed by this generator</p>
-          </div>
+          <template v-if="group.type === 'OPTION_GROUP_TYPE_BOOLEAN_GROUP'">
+            <div class="mt-2" v-for="attr in group.attributes">
+              <OptionFormItem :model="attr" v-model="configurationObject[attr.identifier]"/>
+            </div>
+
+            <div class="card card-body text-center bg-transparent border-warning text-warning" v-if="!group.attributes[0]">
+              <p class="lead mb-0">No options exposed by this generator</p>
+            </div>
+          </template>
+
+          <template v-if="group.type === 'OPTION_GROUP_TYPE_MODEL_ADDON'">
+            <b-row>
+              <b-col lg=3>
+                <ul class="list-group">
+                  <li
+                    v-for="schema in blueprint.schemas"
+                    :class='selectedSchemaId === schema.identifier ? "list-group-item active" : "list-group-item" '
+                    @click="selectedSchemaId = schema.identifier"
+                  >
+                    {{ schema.label }}
+                  </li>
+                </ul>
+              </b-col>
+              <b-col lg=9>
+                <b-card>
+
+                  <!-- Header - "User API Actions" -->
+                  <p class="lead mb-0">
+                    {{ blueprint.schemas.find(s => s.identifier === selectedSchemaId).label }} {{ group.label_plural }}
+                  </p>
+
+                  <!-- Header - Description -->
+                  <small class="text-muted">{{group.description}}</small>
+
+
+                  <!-- Define new instance -->
+                  <hr>
+                  <small class="text-muted">New {{group.label}}</small>
+
+                  <OptionFormItem
+                    v-for="attr in group.attributes"
+                    :model="attr"
+                    v-model="newAddon[attr.identifier]"
+                  />
+
+                  <b-button @click="createAddonInstance(group)">Create {{ group.label }}</b-button>
+
+                  <!-- View existing instance data -->
+                  <hr>
+
+                  <ul class='list-group'>
+                    <li
+                      class="list-group-item d-flex justify-content-between align-items-center"
+                      v-for="instance in configurationObject[group.identifier_plural][selectedSchemaId]"
+                      :key="instance.id"
+                    >
+                      {{ group.attributes[0].label }}:{{ instance[group.attributes[0].identifier] }}
+
+                      <span>
+                        <b-button @click="editInstance(group, instance)" size="sm" variant="outline-warning">
+                          <i class="fa fa-edit"></i>
+                        </b-button>
+                        <b-button @click="destroyInstance(group, instance)" size="sm" variant="outline-danger">
+                          <i class="fa fa-trash"></i>
+                        </b-button>
+                      </span>
+
+                    </li>
+                    <li
+                      class="list-group-item list-group-item-warning"
+                      v-if="!configurationObject[group.identifier_plural][selectedSchemaId][0]"
+                    >
+                      No addons available
+                    </li>
+                  </ul>
+
+                </b-card>
+              </b-col>
+            </b-row>
+
+            <div class="card card-body text-center bg-transparent border-warning text-warning" v-if="!group.attributes[0]">
+              <p class="lead mb-0">No options exposed by this generator</p>
+            </div>
+          </template>
+
+          <!-- TODO - ABSTRACT INTO SEPARATE COMPONENT -->
+          <template v-if="group.type === 'OPTION_GROUP_TYPE_MODEL_OPTION'">
+            <b-row>
+              <b-col lg=3>
+                <ul class="list-group">
+                  <li
+                    v-for="schema in blueprint.schemas"
+                    :class='selectedSchemaId === schema.identifier ? "list-group-item active" : "list-group-item" '
+                    @click="selectedSchemaId = schema.identifier"
+                  >
+                    {{ schema.label }}
+                  </li>
+                </ul>
+              </b-col>
+              <b-col lg=9>
+
+                <!-- Header - "User API Actions" -->
+                <p class="lead mb-0">
+                  {{ blueprint.schemas.find(s => s.identifier === selectedSchemaId).label }} {{ group.label_plural }}
+                </p>
+
+                <!-- Header - Description -->
+                <small class="text-muted">{{group.description}}</small>
+
+
+                <!-- Define new instance -->
+                <div class="card card-body mt-2" v-for="attr in group.attributes">
+                  <OptionFormItem
+                    :model="attr"
+                    v-model="configurationObject[group.identifier_plural][selectedSchemaId][attr.identifier]"
+                  />
+                </div>
+
+              </b-col>
+            </b-row>
+
+            <div class="card card-body text-center bg-transparent border-warning text-warning" v-if="!group.attributes[0]">
+              <p class="lead mb-0">No options exposed by this generator</p>
+            </div>
+          </template>
 
         </b-tab>
 
@@ -112,6 +230,7 @@
 <script>
 import marked from 'marked'
 import { mapGetters, mapActions } from 'vuex'
+import buildConfiguration from '@codotype/util/lib/buildConfiguration'
 import BlueprintShow from '@/modules/blueprint/pages/show'
 import GeneratorStart from '@/modules/generator/components/GeneratorStart'
 import OptionFormItem from '@/modules/option/components/OptionFormItem'
@@ -121,9 +240,20 @@ export default {
   name: 'GeneratorShow',
   props: ['id'],
   data () {
+    // Pulls the blueprint to define the build configuration
+    const blueprint = this.$store.getters['blueprint/collection'][0]
+    const generator = this.$store.getters['generator/collection'].find(g => g.id === this.id)
+
+    // Produces the generator configurationObject
+    const configurationObject = buildConfiguration({ blueprint, generator })
+    const selectedSchemaId = blueprint.schemas[0].identifier
+
     return {
-      configurationObject: {},
-      currentStep: 0
+      configurationObject: configurationObject,
+      currentStep: 0,
+      blueprint,
+      newAddon: {}, // TODO - this should be produced somewhere
+      selectedSchemaId: selectedSchemaId
     }
   },
   components: {
@@ -144,6 +274,15 @@ export default {
     },
     incrementStep () {
       this.currentStep = Math.min(this.currentStep + 1, 2 + this.model.option_groups.length)
+    },
+    createAddonInstance (group) {
+      this.newAddon.id = Math.random().toString()
+      this.configurationObject[group.identifier_plural][this.selectedSchemaId].push(this.newAddon)
+      this.newAddon = {}
+    },
+    destroyInstance (group, instance) {
+      const filtered = this.configurationObject[group.identifier_plural][this.selectedSchemaId].filter(e => e.id !== instance.id)
+      this.configurationObject[group.identifier_plural][this.selectedSchemaId] = filtered
     }
   },
   computed: {
