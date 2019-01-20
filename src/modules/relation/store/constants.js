@@ -6,7 +6,6 @@ export const DEFAULT_RELATION = {
   type: 'BELONGS_TO', // Moved from datatypeOptions.relationType
   required: false,
   // QUESTION - add schema id here?
-  generate_reverse: true,
   related_schema_id: '',
   reverse_relation_id: '',
   as: '',

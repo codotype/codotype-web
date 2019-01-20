@@ -189,6 +189,9 @@ import { mapGetters, mapMutations, mapActions } from 'vuex'
 import marked from 'marked'
 
 export default {
+  metaInfo: {
+    title: 'Build'
+  },
   components: {
     LoadingBuild,
     MoreInfoLink,
