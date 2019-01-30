@@ -7,7 +7,7 @@
 
       <!-- <horizontal-stepper :steps="demoSteps" /> -->
 
-      <b-tabs class='mt-3' v-model="currentStep" pills card>
+      <b-tabs class='mt-3' v-model="currentStep" card>
 
         <!-- START TAB -->
         <b-tab
@@ -20,14 +20,23 @@
           <GeneratorStart :model="model" :incrementStep="incrementStep"/>
         </b-tab>
 
-        <!-- DATA MODELS -->
-        <!-- <b-tab
+        <!-- PROJECT -->
+        <b-tab
           lazy
-          title='Data Models'
+          title='Project'
           class='card-body bg-white border border-top-0'
-        > -->
-          <!-- <BlueprintShow class="mt-2"/> -->
-        <!-- </b-tab> -->
+        >
+          <BlueprintShow class="mt-2"/>
+        </b-tab>
+
+        <!-- DATA MODELS -->
+        <b-tab
+          lazy
+          title='Models'
+          class='card-body bg-white border border-top-0'
+        >
+          <BlueprintShow class="mt-2"/>
+        </b-tab>
 
         <!-- GLOBAL OPTIONS -->
         <!-- <b-tab
@@ -219,6 +228,16 @@
             </div>
           </template>
 
+        </b-tab>
+
+        <!-- GENERATE -->
+        <b-tab
+          lazy
+          title='GENERATE'
+          class='card-body bg-white border border-top-0'
+          title-item-class="bg-warning text-light"
+        >
+          <BlueprintShow class="mt-2"/>
         </b-tab>
 
       </b-tabs>
