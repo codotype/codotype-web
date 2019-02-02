@@ -1,12 +1,12 @@
 <template>
   <b-row>
     <b-col lg="12">
-      <p class="lead">{{ currentStep }}</p>
 
       <li
         v-for="step, index in steps"
         :key="step.id"
         :class="index === currentStep ? 'bg-info' : 'bg-light' "
+        @click="jumpToStep(index)"
       >
         {{ step.label }}
         {{ index }}
@@ -21,13 +21,38 @@
     </b-col>
 
     <b-col lg="12">
-      <p class="lead">{{ currentStep }}</p>
+
+      <b-button
+        variant="info"
+        @click="decrementStep()"
+        :disabled="currentStep === 0"
+        v-if="currentStep !== 0"
+      >
+        <i class="fa fa-chevron-left"></i>
+      </b-button>
+
+      <b-button
+        variant="info"
+        @click="incrementStep()"
+        v-if="currentStep !== 2"
+      >
+        <i class="fa fa-chevron-right"></i>
+      </b-button>
+
+      <b-button
+        variant="warning"
+        v-if="currentStep === 2"
+      >
+        <i class="fa fa-chevron-right"></i>
+        Generate
+      </b-button>
+
     </b-col>
   </b-row>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'BuildSteps',
@@ -53,6 +78,11 @@ export default {
     ...mapGetters({
       currentStep: 'build/steps/current'
     })
-  }
+  },
+  methods: mapActions({
+    incrementStep: 'build/steps/increment',
+    decrementStep: 'build/steps/decrement',
+    jumpToStep: 'build/steps/jumpTo'
+  })
 }
 </script>
