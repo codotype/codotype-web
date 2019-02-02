@@ -7,6 +7,8 @@
 
       <!-- <horizontal-stepper :steps="demoSteps" /> -->
 
+      <BuildSteps></BuildSteps>
+
       <b-tabs class='mt-3' v-model="currentStep" card>
 
         <!-- START TAB -->
@@ -17,7 +19,7 @@
           active
           class='card-body bg-white border border-top-0'
         >
-          <GeneratorStart :model="model" :incrementStep="incrementStep"/>
+          <!-- <GeneratorStart :model="model" :incrementStep="incrementStep"/> -->
         </b-tab>
 
         <!-- PROJECT -->
@@ -26,7 +28,7 @@
           title='Project'
           class='card-body bg-white border border-top-0'
         >
-          <BlueprintShow class="mt-2"/>
+          <!-- <BlueprintShow class="mt-2"/> -->
         </b-tab>
 
         <!-- DATA MODELS -->
@@ -35,7 +37,7 @@
           title='Models'
           class='card-body bg-white border border-top-0'
         >
-          <BlueprintShow class="mt-2"/>
+          <!-- <BlueprintShow class="mt-2"/> -->
         </b-tab>
 
         <!-- GLOBAL OPTIONS -->
@@ -254,6 +256,7 @@ import BlueprintShow from '@/modules/blueprint/pages/show'
 import GeneratorStart from '@/modules/generator/components/GeneratorStart'
 import OptionFormItem from '@/modules/option/components/OptionFormItem'
 import GeneratorModelOptions from '@/modules/build/components/GeneratorModelOptions'
+import BuildSteps from '@/modules/build/components/BuildSteps'
 
 export default {
   name: 'GeneratorShow',
@@ -276,6 +279,7 @@ export default {
     }
   },
   components: {
+    BuildSteps,
     OptionFormItem,
     BlueprintShow,
     GeneratorStart,
