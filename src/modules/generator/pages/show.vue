@@ -7,38 +7,199 @@
 
       <!-- <horizontal-stepper :steps="demoSteps" /> -->
 
-      <BuildSteps></BuildSteps>
+      <BuildSteps>
 
-      <b-tabs class='mt-3' v-model="currentStep" card>
+        <template slot="step-1">
+          <GeneratorStart :model="model" />
+        </template>
+
+        <template slot="step-2">
+          <BlueprintShow class="mt-2"/>
+        </template>
+
+        <template slot="step-3">
+
+          <b-tabs class='mt-3' v-model="currentStep" card>
+            <!-- Generator Option Groups -->
+            <b-tab
+              lazy
+              class='card-body bg-white border border-top-0 pt-0'
+              :title="group.label"
+              v-for="group in model.option_groups"
+              :key="group.identifier"
+            >
+              <br>
+
+              <!-- <EditorHeader
+                :title="group.label"
+                help="Configure global options for this generator"
+                url="https://codotype.github.io"
+              /> -->
+
+              <!-- <div class="card card-body mt-2" v-for="attr in group.options"> -->
+
+              <template v-if="group.type === 'OPTION_GROUP_TYPE_BOOLEAN_GROUP'">
+                <div class="mt-2" v-for="attr in group.attributes">
+                  <OptionFormItem :model="attr" v-model="configurationObject[attr.identifier]"/>
+                </div>
+
+                <div class="card card-body text-center bg-transparent border-warning text-warning" v-if="!group.attributes[0]">
+                  <p class="lead mb-0">No options exposed by this generator</p>
+                </div>
+              </template>
+
+              <template v-if="group.type === 'OPTION_GROUP_TYPE_MODEL_ADDON'">
+                <b-row>
+                  <b-col lg=3>
+                    <ul class="list-group">
+                      <li
+                        v-for="schema in blueprint.schemas"
+                        :class='selectedSchemaId === schema.identifier ? "list-group-item active" : "list-group-item" '
+                        @click="selectedSchemaId = schema.identifier"
+                      >
+                        {{ schema.label }}
+                      </li>
+                    </ul>
+                  </b-col>
+                  <b-col lg=9>
+                    <b-card>
+
+                      <!-- Header - "User API Actions" -->
+                      <p class="lead mb-0">
+                        {{ blueprint.schemas.find(s => s.identifier === selectedSchemaId).label }} {{ group.label_plural }}
+                      </p>
+
+                      <!-- Header - Description -->
+                      <small class="text-muted">{{group.description}}</small>
+
+
+                      <!-- Define new instance -->
+                      <hr>
+                      <small class="text-muted">New {{group.label}}</small>
+
+                      <OptionFormItem
+                        v-for="attr in group.attributes"
+                        :model="attr"
+                        v-model="newAddon[attr.identifier]"
+                      />
+
+                      <b-button @click="createAddonInstance(group)">Create {{ group.label }}</b-button>
+
+                      <!-- View existing instance data -->
+                      <hr>
+
+                      <ul class='list-group'>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center"
+                          v-for="instance in configurationObject[group.identifier_plural][selectedSchemaId]"
+                          :key="instance.id"
+                        >
+                          {{ group.attributes[0].label }}:{{ instance[group.attributes[0].identifier] }}
+
+                          <span>
+                            <b-button @click="editInstance(group, instance)" size="sm" variant="outline-warning">
+                              <i class="fa fa-edit"></i>
+                            </b-button>
+                            <b-button @click="destroyInstance(group, instance)" size="sm" variant="outline-danger">
+                              <i class="fa fa-trash"></i>
+                            </b-button>
+                          </span>
+
+                        </li>
+                        <li
+                          class="list-group-item list-group-item-warning"
+                          v-if="!configurationObject[group.identifier_plural][selectedSchemaId][0]"
+                        >
+                          No addons available
+                        </li>
+                      </ul>
+
+                    </b-card>
+                  </b-col>
+                </b-row>
+
+                <div class="card card-body text-center bg-transparent border-warning text-warning" v-if="!group.attributes[0]">
+                  <p class="lead mb-0">No options exposed by this generator</p>
+                </div>
+              </template>
+
+              <!-- TODO - ABSTRACT INTO SEPARATE COMPONENT -->
+              <template v-if="group.type === 'OPTION_GROUP_TYPE_MODEL_OPTION'">
+                <b-row>
+                  <b-col lg=3>
+                    <ul class="list-group">
+                      <li
+                        v-for="schema in blueprint.schemas"
+                        :class='selectedSchemaId === schema.identifier ? "list-group-item active" : "list-group-item" '
+                        @click="selectedSchemaId = schema.identifier"
+                      >
+                        {{ schema.label }}
+                      </li>
+                    </ul>
+                  </b-col>
+                  <b-col lg=9>
+
+                    <!-- Header - "User API Actions" -->
+                    <p class="lead mb-0">
+                      {{ blueprint.schemas.find(s => s.identifier === selectedSchemaId).label }} {{ group.label_plural }}
+                    </p>
+
+                    <!-- Header - Description -->
+                    <small class="text-muted">{{group.description}}</small>
+
+
+                    <!-- Define new instance -->
+                    <div class="card card-body mt-2" v-for="attr in group.attributes">
+                      <OptionFormItem
+                        :model="attr"
+                        v-model="configurationObject[group.identifier_plural][selectedSchemaId][attr.identifier]"
+                      />
+                    </div>
+
+                  </b-col>
+                </b-row>
+
+                <div class="card card-body text-center bg-transparent border-warning text-warning" v-if="!group.attributes[0]">
+                  <p class="lead mb-0">No options exposed by this generator</p>
+                </div>
+              </template>
+
+            </b-tab>
+
+          </b-tabs>
+        </template>
+
+      </BuildSteps>
+
 
         <!-- START TAB -->
-        <b-tab
+        <!-- <b-tab
           lazy
           button-id="build-start-nav"
           title="Start"
           active
           class='card-body bg-white border border-top-0'
-        >
+        > -->
           <!-- <GeneratorStart :model="model" :incrementStep="incrementStep"/> -->
-        </b-tab>
+        <!-- </b-tab> -->
 
         <!-- PROJECT -->
-        <b-tab
+        <!-- <b-tab
           lazy
           title='Project'
           class='card-body bg-white border border-top-0'
-        >
+        > -->
           <!-- <BlueprintShow class="mt-2"/> -->
-        </b-tab>
+        <!-- </b-tab> -->
 
         <!-- DATA MODELS -->
-        <b-tab
+        <!-- <b-tab
           lazy
           title='Models'
           class='card-body bg-white border border-top-0'
-        >
+        > -->
           <!-- <BlueprintShow class="mt-2"/> -->
-        </b-tab>
+        <!-- </b-tab> -->
 
         <!-- GLOBAL OPTIONS -->
         <!-- <b-tab
@@ -85,164 +246,6 @@
           <!-- <br> -->
           <!-- <GeneratorModelOptions/> -->
         <!-- </b-tab> -->
-
-        <!-- Generator Option Groups -->
-        <b-tab
-          lazy
-          class='card-body bg-white border border-top-0 pt-0'
-          :title="group.label"
-          v-for="group in model.option_groups"
-          :key="group.identifier"
-        >
-          <br>
-
-          <!-- <EditorHeader
-            :title="group.label"
-            help="Configure global options for this generator"
-            url="https://codotype.github.io"
-          /> -->
-
-          <!-- <div class="card card-body mt-2" v-for="attr in group.options"> -->
-
-          <template v-if="group.type === 'OPTION_GROUP_TYPE_BOOLEAN_GROUP'">
-            <div class="mt-2" v-for="attr in group.attributes">
-              <OptionFormItem :model="attr" v-model="configurationObject[attr.identifier]"/>
-            </div>
-
-            <div class="card card-body text-center bg-transparent border-warning text-warning" v-if="!group.attributes[0]">
-              <p class="lead mb-0">No options exposed by this generator</p>
-            </div>
-          </template>
-
-          <template v-if="group.type === 'OPTION_GROUP_TYPE_MODEL_ADDON'">
-            <b-row>
-              <b-col lg=3>
-                <ul class="list-group">
-                  <li
-                    v-for="schema in blueprint.schemas"
-                    :class='selectedSchemaId === schema.identifier ? "list-group-item active" : "list-group-item" '
-                    @click="selectedSchemaId = schema.identifier"
-                  >
-                    {{ schema.label }}
-                  </li>
-                </ul>
-              </b-col>
-              <b-col lg=9>
-                <b-card>
-
-                  <!-- Header - "User API Actions" -->
-                  <p class="lead mb-0">
-                    {{ blueprint.schemas.find(s => s.identifier === selectedSchemaId).label }} {{ group.label_plural }}
-                  </p>
-
-                  <!-- Header - Description -->
-                  <small class="text-muted">{{group.description}}</small>
-
-
-                  <!-- Define new instance -->
-                  <hr>
-                  <small class="text-muted">New {{group.label}}</small>
-
-                  <OptionFormItem
-                    v-for="attr in group.attributes"
-                    :model="attr"
-                    v-model="newAddon[attr.identifier]"
-                  />
-
-                  <b-button @click="createAddonInstance(group)">Create {{ group.label }}</b-button>
-
-                  <!-- View existing instance data -->
-                  <hr>
-
-                  <ul class='list-group'>
-                    <li
-                      class="list-group-item d-flex justify-content-between align-items-center"
-                      v-for="instance in configurationObject[group.identifier_plural][selectedSchemaId]"
-                      :key="instance.id"
-                    >
-                      {{ group.attributes[0].label }}:{{ instance[group.attributes[0].identifier] }}
-
-                      <span>
-                        <b-button @click="editInstance(group, instance)" size="sm" variant="outline-warning">
-                          <i class="fa fa-edit"></i>
-                        </b-button>
-                        <b-button @click="destroyInstance(group, instance)" size="sm" variant="outline-danger">
-                          <i class="fa fa-trash"></i>
-                        </b-button>
-                      </span>
-
-                    </li>
-                    <li
-                      class="list-group-item list-group-item-warning"
-                      v-if="!configurationObject[group.identifier_plural][selectedSchemaId][0]"
-                    >
-                      No addons available
-                    </li>
-                  </ul>
-
-                </b-card>
-              </b-col>
-            </b-row>
-
-            <div class="card card-body text-center bg-transparent border-warning text-warning" v-if="!group.attributes[0]">
-              <p class="lead mb-0">No options exposed by this generator</p>
-            </div>
-          </template>
-
-          <!-- TODO - ABSTRACT INTO SEPARATE COMPONENT -->
-          <template v-if="group.type === 'OPTION_GROUP_TYPE_MODEL_OPTION'">
-            <b-row>
-              <b-col lg=3>
-                <ul class="list-group">
-                  <li
-                    v-for="schema in blueprint.schemas"
-                    :class='selectedSchemaId === schema.identifier ? "list-group-item active" : "list-group-item" '
-                    @click="selectedSchemaId = schema.identifier"
-                  >
-                    {{ schema.label }}
-                  </li>
-                </ul>
-              </b-col>
-              <b-col lg=9>
-
-                <!-- Header - "User API Actions" -->
-                <p class="lead mb-0">
-                  {{ blueprint.schemas.find(s => s.identifier === selectedSchemaId).label }} {{ group.label_plural }}
-                </p>
-
-                <!-- Header - Description -->
-                <small class="text-muted">{{group.description}}</small>
-
-
-                <!-- Define new instance -->
-                <div class="card card-body mt-2" v-for="attr in group.attributes">
-                  <OptionFormItem
-                    :model="attr"
-                    v-model="configurationObject[group.identifier_plural][selectedSchemaId][attr.identifier]"
-                  />
-                </div>
-
-              </b-col>
-            </b-row>
-
-            <div class="card card-body text-center bg-transparent border-warning text-warning" v-if="!group.attributes[0]">
-              <p class="lead mb-0">No options exposed by this generator</p>
-            </div>
-          </template>
-
-        </b-tab>
-
-        <!-- GENERATE -->
-        <b-tab
-          lazy
-          title='GENERATE'
-          class='card-body bg-white border border-top-0'
-          title-item-class="bg-warning text-light"
-        >
-          <BlueprintShow class="mt-2"/>
-        </b-tab>
-
-      </b-tabs>
 
     </b-col>
   </b-row>

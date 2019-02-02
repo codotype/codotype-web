@@ -1,32 +1,60 @@
 <template>
   <b-row>
-    <b-col lg="12">
+    <b-col lg="12" class="d-flex flex-row w-100 justify-content-between">
 
-      <li
+      <div
         v-for="step, index in steps"
         :key="step.id"
-        :class="index === currentStep ? 'bg-info' : 'bg-light' "
+        class="step-indicator d-flex flex-column justify-content-center align-items-center"
+        style="width: 33.3%;"
         @click="jumpToStep(index)"
       >
-        {{ step.label }}
-        {{ index }}
-      </li>
+        <template v-if="currentStep === index">
+          <span class="d-flex flex-row mb-2 bg-info text-white justify-content-center align-items-center" style="font-size: 1rem; width: 2rem; height: 2rem; border-radius: 25px;">{{index + 1}}</span>
+          <span class="d-flex flex-row text-dark" style="font-weight: 700;">{{ step.label }}</span>
+        </template>
+
+        <template v-else-if="index < currentStep">
+          <span
+            class="d-flex flex-row mb-2 bg-info text-white justify-content-center align-items-center"
+            style="font-size: 1rem; width: 2rem; height: 2rem; border-radius: 25px;"
+          >
+            <i class="fa fa-check text-white"></i>
+          </span>
+          <span class="d-flex flex-row text-info" style="font-weight: 700;">{{ step.label }}</span>
+        </template>
+
+        <template v-else>
+          <span class="d-flex flex-row mb-2 bg-dark text-light justify-content-center align-items-center" style="font-size: 1rem; width: 2rem; height: 2rem; border-radius: 25px;">
+            {{index + 1}}
+          </span>
+          <span class="d-flex flex-row" style="font-weight: 700;">{{ step.label }}</span>
+        </template>
+
+      </div>
 
     </b-col>
 
     <b-col lg="12">
-      <slot name="step-1" />
-      <slot name="step-2" />
-      <slot name="step-3" />
+      <hr>
+    </b-col>
+
+    <b-col lg="12" class='h-100' style="min-height: 20rem; max-height: 20rem; overflow-y: scroll;">
+      <slot name="step-1" v-if="currentStep === 0" />
+      <slot name="step-2" v-if="currentStep === 1" />
+      <slot name="step-3" v-if="currentStep === 2" />
     </b-col>
 
     <b-col lg="12">
+      <hr>
+    </b-col>
+
+    <b-col lg="12" class="d-flex flex-row w-100 justify-content-between">
 
       <b-button
         variant="info"
         @click="decrementStep()"
         :disabled="currentStep === 0"
-        v-if="currentStep !== 0"
       >
         <i class="fa fa-chevron-left"></i>
       </b-button>
@@ -41,6 +69,7 @@
 
       <b-button
         variant="warning"
+        @click="incrementStep()"
         v-if="currentStep === 2"
       >
         <i class="fa fa-chevron-right"></i>
@@ -74,12 +103,16 @@ export default {
       ]
     }
   },
+  created () {
+    this.resetSteps()
+  },
   computed: {
     ...mapGetters({
       currentStep: 'build/steps/current'
     })
   },
   methods: mapActions({
+    resetSteps: 'build/steps/reset',
     incrementStep: 'build/steps/increment',
     decrementStep: 'build/steps/decrement',
     jumpToStep: 'build/steps/jumpTo'
