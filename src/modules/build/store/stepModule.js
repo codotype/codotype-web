@@ -15,11 +15,14 @@ export default {
     }
   },
   actions: {
+    reset ({ state, commit }) {
+      commit('current', 0)
+    },
     increment ({ state, commit }) {
-      commit('current', Math.min(state.current + 1, 2))
+      commit('current', Math.min(state.current + 1, 3))
     },
     decrement ({ state, commit }) {
-      commit('current', Math.min(state.current - 1, 0))
+      commit('current', Math.max(state.current - 1, 0))
     },
     jumpTo ({ state, commit }, step) {
       commit('current', step)
