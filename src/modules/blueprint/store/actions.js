@@ -2,7 +2,7 @@ import cloneDeep from 'lodash/cloneDeep'
 import uniqueId from 'lodash/uniqueId'
 import ObjectID from 'bson-objectid'
 import router from '@/routers'
-import { DEFAULT_PROJECT, DEFAULT_USER_SCHEMA } from './constants'
+import { DEFAULT_BLUEPRINT, DEFAULT_USER_SCHEMA } from './constants'
 import { SELECT_MODEL_ACTIONS } from '@codotype/ui/src/store/lib/mixins'
 
 // TODO - use this instead?
@@ -109,7 +109,7 @@ export default {
   },
 
   resetNewModel: ({ commit }) => {
-    let newModel = cloneDeep(DEFAULT_PROJECT)
+    let newModel = cloneDeep(DEFAULT_BLUEPRINT)
     let userSchema = cloneDeep(DEFAULT_USER_SCHEMA)
     userSchema._id = uniqueId('SCH_')
     newModel.schemas.push(userSchema)

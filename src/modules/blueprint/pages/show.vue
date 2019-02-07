@@ -13,7 +13,7 @@
         cancel-title='Cancel'
         :ok-disabled="!newModel.label"
       >
-        <SchemaForm :schema="newModel" />
+        <!-- <SchemaForm :schema="newModel" /> -->
       </b-modal>
 
       <!-- Model header -->
@@ -33,7 +33,7 @@
         Add Model
       </button>
 
-      <SchemaList id="model-list" />
+      <!-- <SchemaList id="model-list" /> -->
 
     </div>
 
@@ -48,8 +48,8 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import SchemaList from '@/modules/schema/components/SchemaList'
-import SchemaForm from '@/modules/schema/components/SchemaForm'
+// import SchemaList from '@/modules/schema/components/SchemaList'
+// import SchemaForm from '@/modules/schema/components/SchemaForm'
 import SchemaDetail from '@/modules/schema/components/SchemaDetail'
 
 export default {
@@ -58,8 +58,7 @@ export default {
     title: 'Blueprint'
   },
   components: {
-    SchemaList,
-    SchemaForm,
+    // SchemaList,
     SchemaDetail
   },
   created () {

@@ -1,5 +1,5 @@
 import { COLLECTION_GETTERS, SELECT_MODEL_GETTERS } from '@codotype/ui/src/store/lib/mixins'
-import { inflate } from '@codotype/util/lib/inflate'
+// import { inflate } from '@codotype/util/lib/inflate'
 
 // Project Module Getters
 export default {
@@ -12,6 +12,7 @@ export default {
     return state.newModel
   },
   inflated: state => {
-    return inflate({ blueprint: state.selectedModel })
+    // return inflate({ blueprint: state.selectedModel })
+    return {} // TODO - re-integrate inflate
   }
 }

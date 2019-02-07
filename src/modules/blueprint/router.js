@@ -1,6 +1,6 @@
 // Blueprint Containers
 import BlueprintList from './pages/list'
-import BlueprintShow from './pages/show'
+import BlueprintShow from './pages/show-new'
 import BlueprintBuild from '@/modules/build/pages/new'
 
 export default [

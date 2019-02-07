@@ -36,7 +36,7 @@ export default {
 <style lang="sass">
 
   nav.navbar
-    border-bottom: 1px solid #d3d3d3
+    // border-bottom: 1px solid #d3d3d3
 
     .navbar-brand
       letter-spacing: .25rem !important

@@ -75,7 +75,7 @@ import {
   DATATYPE_NUMBER_INTEGER,
   DATATYPE_NUMBER_FLOAT,
   DATATYPE_NUMBER_DOUBLE
-} from '@/modules/schema/store/constants'
+} from '@codotype/types/lib/datatypes'
 
 import MoreInfoLink from '@codotype/ui/src/components/MoreInfoLink'
 

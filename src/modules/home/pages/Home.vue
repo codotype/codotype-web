@@ -26,17 +26,6 @@
         </div>
       </div>
 
-      <!-- Bootstrap Modal Component -->
-      <b-modal
-        lazy
-        hide-footer
-        id="new-project-modal"
-        ref="newModal"
-        :title="'New Blueprint'"
-      >
-        <BlueprintForm :submit="submitBlueprintForm" />
-      </b-modal>
-
       <div class="row mt-2 mb-4 justify-content-center">
         <div class="col-lg-4">
           <b-button
@@ -55,27 +44,10 @@
   </div>
 </template>
 
-<!-- // // // //  -->
-
 <script>
-import { mapActions } from 'vuex'
-import BlueprintForm from '@/modules/blueprint/components/BlueprintForm'
-
 export default {
-  components: {
-    BlueprintForm
-  },
   metaInfo: {
     title: 'Visual code scaffolding for the modern web'
-  },
-  methods: {
-    ...mapActions({
-      persist: 'blueprint/create'
-    }),
-    submitBlueprintForm () {
-      this.$refs.newModal.hide()
-      this.persist()
-    }
   }
 }
 </script>

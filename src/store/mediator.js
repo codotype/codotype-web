@@ -1,3 +1,4 @@
+// TODO - remove this file
 export default function configureModerator (store, router) {
   // listen to mutations
   store.subscribe(({ type, payload }, state) => {

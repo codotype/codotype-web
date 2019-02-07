@@ -6,7 +6,7 @@
 
           <!-- TODO - only show when user is NOT logged in -->
           <div class="col-lg-4 mb-4">
-            <a role="button" id="app-new-button" style='cursor: pointer;' v-b-modal="'new-project-modal'" class="card card-body border-primary bg-gradient-primary text-white h-100 d-flex align-items-center justify-content-center shadow-hover">
+            <a role="button" id="app-new-button" style='cursor: pointer;' v-b-modal="'new-project-modal'" class="card card-body border-primary bg-primary text-white h-100 d-flex align-items-center justify-content-center shadow-hover">
 
               <div class="row">
                 <div class="col-lg-12 text-center">

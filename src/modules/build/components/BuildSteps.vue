@@ -39,7 +39,7 @@
       <hr>
     </b-col>
 
-    <b-col lg="12" class='h-100' style="min-height: 20rem; max-height: 20rem; overflow-y: scroll;">
+    <b-col lg="12" class='h-100' style="min-height: 20rem; overflow-y: scroll;">
       <slot name="step-1" v-if="currentStep === 0" />
       <slot name="step-2" v-if="currentStep === 1" />
       <slot name="step-3" v-if="currentStep === 2" />
