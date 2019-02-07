@@ -39,7 +39,7 @@
             v-if="!isUserModel(model)"
           >
             <!-- <p>Are you sure you want to EDIT this Model?</p> -->
-            <SchemaForm :schema="editModel" />
+            <!-- <SchemaForm :schema="editModel" /> -->
           </b-modal>
 
           <!-- Destroy Schema Confirmation -->
@@ -80,8 +80,8 @@
 
     <!-- Attribute List -->
     <div class="col-lg-12">
-      <AttributeList :schema="model" />
-      <RelationList :schema="model" class="mt-3" />
+      <!-- <AttributeList :schema="model" /> -->
+      <!-- <RelationList :schema="model" class="mt-3" /> -->
     </div>
 
   </div>
@@ -91,15 +91,15 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import SchemaForm from '@/modules/schema/components/SchemaForm'
-import RelationList from '@/modules/relation/components/RelationList'
-import AttributeList from '@/modules/attribute/components/AttributeList'
+// import SchemaForm from '@/modules/schema/components/SchemaForm'
+// import RelationList from '@/modules/relation/components/RelationList'
+// import AttributeList from '@/modules/attribute/components/AttributeList'
 
 export default {
   components: {
-    SchemaForm,
-    AttributeList,
-    RelationList
+    // SchemaForm
+    // AttributeList,
+    // RelationList
   },
   computed: mapGetters({
     model: 'schema/selectedModel',
