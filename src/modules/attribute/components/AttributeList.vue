@@ -15,7 +15,6 @@
       cancel-title='Cancel'
       :ok-disabled="(!editAttribute.datatype || !editAttribute.identifier)"
     >
-      <AttributeForm :schema="schema" :model="editAttribute" />
     </b-modal>
 
     <!-- New Attribute Form -->
@@ -29,7 +28,6 @@
       cancel-title='Cancel'
       :ok-disabled="(!newAttribute.datatype || !newAttribute.identifier)"
     >
-      <AttributeForm :schema="schema" :model="newAttribute" />
     </b-modal>
 
      <div class="col-lg-12">
@@ -92,7 +90,6 @@ import smoothReflow from 'vue-smooth-reflow'
 import { mapGetters, mapActions } from 'vuex'
 import draggable from 'vuedraggable'
 import AttributeListItem from './AttributeListItem'
-import AttributeForm from './AttributeForm'
 import AttributeRemoveModal from './AttributeRemoveModal'
 
 export default {
@@ -100,7 +97,6 @@ export default {
   components: {
     draggable,
     AttributeListItem,
-    AttributeForm,
     AttributeRemoveModal
   },
   mounted () {
