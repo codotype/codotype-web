@@ -1,16 +1,14 @@
-// Project module constants
-export const DEFAULT_PROJECT = {
+// Blueprint module constants
+export const DEFAULT_BLUEPRINT = {
   _id: null,
   label: 'Codotype Project',
   identifier: 'codotype_project',
-  schemas: [],
-  seeds: [] // QUESTION - remove seeds?
+  schemas: []
 }
 
 export const DEFAULT_USER_SCHEMA = {
   _id: null,
   order: 0,
-  enabled: true,
   label: 'User',
   label_plural: 'Users',
   identifier: 'user',
@@ -19,33 +17,22 @@ export const DEFAULT_USER_SCHEMA = {
   class_name_plural: 'Users',
   attributes: [
     {
+      _id: 'attr_26577092992831', // TODO - rename '_id' to 'id'
       order: 0,
-      label: 'Username',
-      help: 'The user\'s username',
-      required: true,
-      unique: true,
-      datatype: 'TEXT',
-      datatypeOptions: {},
-      identifier: 'username',
-      _id: 'attr_265770dpskks31',
-      locked: true
-    },
-    {
-      order: 1,
       label: 'E-Mail',
-      help: 'E-Mail address associated with this Contact.',
+      identifier: 'email',
+      help: 'The E-Mail address associated with this User',
       required: true,
       unique: true,
-      datatype: 'TEXT',
+      datatype: 'TEXT', // TODO - import DATATYPE_STRING from @codotype/datatypes
       datatypeOptions: {},
-      identifier: 'email',
-      _id: 'attr_26577092992831',
       locked: true
     }
   ],
   relations: []
 }
 
+// TODO - use this, or remove this
 export const CREATE_SUCCESS_NOTIFICATION = {
   message: ':slow clap:',
   context: 'success',
