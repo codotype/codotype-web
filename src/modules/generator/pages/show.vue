@@ -14,7 +14,8 @@
         </template>
 
         <template slot="step-2">
-          <BlueprintShow class="mt-2"/>
+          <!-- <BlueprintShow class="mt-2"/> -->
+          <BlueprintEditor />
         </template>
 
         <template slot="step-3">
@@ -53,7 +54,7 @@
                   <b-col lg=3>
                     <ul class="list-group">
                       <li
-                        v-for="schema in blueprint.schemas"
+                        v-for="schema in schemas"
                         :class='selectedSchemaId === schema.identifier ? "list-group-item active" : "list-group-item" '
                         @click="selectedSchemaId = schema.identifier"
                       >
@@ -66,7 +67,7 @@
 
                       <!-- Header - "User API Actions" -->
                       <p class="lead mb-0">
-                        {{ blueprint.schemas.find(s => s.identifier === selectedSchemaId).label }} {{ group.label_plural }}
+                        {{ schemas.find(s => s.identifier === selectedSchemaId).label }} {{ group.label_plural }}
                       </p>
 
                       <!-- Header - Description -->
@@ -129,7 +130,7 @@
                   <b-col lg=3>
                     <ul class="list-group">
                       <li
-                        v-for="schema in blueprint.schemas"
+                        v-for="schema in schemas"
                         :class='selectedSchemaId === schema.identifier ? "list-group-item active" : "list-group-item" '
                         @click="selectedSchemaId = schema.identifier"
                       >
@@ -141,7 +142,7 @@
 
                     <!-- Header - "User API Actions" -->
                     <p class="lead mb-0">
-                      {{ blueprint.schemas.find(s => s.identifier === selectedSchemaId).label }} {{ group.label_plural }}
+                      {{ schemas.find(s => s.identifier === selectedSchemaId).label }} {{ group.label_plural }}
                     </p>
 
                     <!-- Header - Description -->
@@ -181,24 +182,6 @@
           class='card-body bg-white border border-top-0'
         > -->
           <!-- <GeneratorStart :model="model" :incrementStep="incrementStep"/> -->
-        <!-- </b-tab> -->
-
-        <!-- PROJECT -->
-        <!-- <b-tab
-          lazy
-          title='Project'
-          class='card-body bg-white border border-top-0'
-        > -->
-          <!-- <BlueprintShow class="mt-2"/> -->
-        <!-- </b-tab> -->
-
-        <!-- DATA MODELS -->
-        <!-- <b-tab
-          lazy
-          title='Models'
-          class='card-body bg-white border border-top-0'
-        > -->
-          <!-- <BlueprintShow class="mt-2"/> -->
         <!-- </b-tab> -->
 
         <!-- GLOBAL OPTIONS -->
@@ -260,23 +243,24 @@ import GeneratorStart from '@/modules/generator/components/GeneratorStart'
 import OptionFormItem from '@/modules/option/components/OptionFormItem'
 import GeneratorModelOptions from '@/modules/build/components/GeneratorModelOptions'
 import BuildSteps from '@/modules/build/components/BuildSteps'
+import BlueprintEditor from '@codotype/ui/src/components/BlueprintEditor'
 
 export default {
   name: 'GeneratorShow',
   props: ['id'],
   data () {
-    // Pulls the blueprint to define the build configuration
-    const blueprint = this.$store.getters['blueprint/collection'][0]
+    // Pulls the schemas to define the build configuration
+    const schemas = this.$store.getters['editor/schema/collection/items']
     const generator = this.$store.getters['generator/collection'].find(g => g.id === this.id)
 
     // Produces the generator configurationObject
-    const configurationObject = buildConfiguration({ blueprint, generator })
-    const selectedSchemaId = blueprint.schemas[0].identifier
+    const configurationObject = buildConfiguration({ schemas, generator })
+    const selectedSchemaId = schemas[0].identifier
 
     return {
       configurationObject: configurationObject,
       currentStep: 0,
-      blueprint,
+      schemas,
       newAddon: {}, // TODO - this should be produced somewhere
       selectedSchemaId: selectedSchemaId
     }
@@ -286,7 +270,8 @@ export default {
     OptionFormItem,
     BlueprintShow,
     GeneratorStart,
-    GeneratorModelOptions
+    GeneratorModelOptions,
+    BlueprintEditor
   },
   created () {
     this.selectModel(this.id)

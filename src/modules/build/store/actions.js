@@ -37,7 +37,7 @@ export default {
     const blueprint = rootGetters['blueprint/selectedModel']
 
     // Generates the stage's configuration from the selected generator
-    newStage.configuration = buildConfiguration({ blueprint: blueprint, generator: generatorMeta })
+    newStage.configuration = buildConfiguration({ schemas: blueprint.schemas, generator: generatorMeta })
 
     // Adds the newStage to state.newModel
     const newModel = cloneDeep(state.newModel)
