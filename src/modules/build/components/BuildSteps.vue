@@ -1,37 +1,43 @@
 <template>
   <b-row>
-    <b-col lg="12" class="d-flex flex-row w-100 justify-content-between">
+    <b-col lg="12" class="d-flex flex-row w-100 align-items-center justify-content-between">
 
-      <div
+      <template
         v-for="step, index in steps"
-        :key="step.id"
-        class="step-indicator d-flex flex-column justify-content-center align-items-center"
-        style="width: 33.3%;"
-        @click="jumpToStep(index)"
       >
-        <template v-if="currentStep === index">
-          <span class="d-flex flex-row mb-2 bg-info text-white justify-content-center align-items-center" style="font-size: 1rem; width: 2rem; height: 2rem; border-radius: 25px;">{{index + 1}}</span>
-          <span class="d-flex flex-row text-dark" style="font-weight: 700;">{{ step.label }}</span>
-        </template>
+        <div
+          :key="step.id"
+          class="step-indicator d-flex flex-column justify-content-center align-items-center"
+          style="width: 33.3%;"
+          @click="jumpToStep(index)"
+        >
+          <template v-if="currentStep === index">
+            <span class="d-flex flex-row mb-2 bg-primary text-white justify-content-center align-items-center" style="font-size: 1rem; width: 2rem; height: 2rem; border-radius: 25px;">{{index + 1}}</span>
+            <span class="d-flex flex-row text-primary" style="font-weight: 700;">{{ step.label }}</span>
+          </template>
 
-        <template v-else-if="index < currentStep">
-          <span
-            class="d-flex flex-row mb-2 bg-info text-white justify-content-center align-items-center"
-            style="font-size: 1rem; width: 2rem; height: 2rem; border-radius: 25px;"
-          >
-            <i class="fa fa-check text-white"></i>
-          </span>
-          <span class="d-flex flex-row text-info" style="font-weight: 700;">{{ step.label }}</span>
-        </template>
+          <template v-else-if="index < currentStep">
+            <span
+              class="d-flex flex-row mb-2 bg-success text-white justify-content-center align-items-center"
+              style="font-size: 1rem; width: 2rem; height: 2rem; border-radius: 25px;"
+            >
+              <i class="fa fa-check text-white"></i>
+            </span>
+            <span class="d-flex flex-row text-success" style="font-weight: 700;">{{ step.label }}</span>
+          </template>
 
-        <template v-else>
-          <span class="d-flex flex-row mb-2 bg-dark text-light justify-content-center align-items-center" style="font-size: 1rem; width: 2rem; height: 2rem; border-radius: 25px;">
-            {{index + 1}}
-          </span>
-          <span class="d-flex flex-row" style="font-weight: 700;">{{ step.label }}</span>
-        </template>
+          <template v-else>
+            <span class="d-flex flex-row mb-2 bg-secondary text-light justify-content-center align-items-center" style="font-size: 1rem; width: 2rem; height: 2rem; border-radius: 25px;">
+              {{index + 1}}
+            </span>
+            <span class="d-flex flex-row text-secondary" style="font-weight: 700;">{{ step.label }}</span>
+          </template>
 
-      </div>
+        </div>
+        <!-- Lines between steps -->
+        <span class="divider done w-50 bg-success d-flex" v-if="currentStep > index && index < 2"></span>
+        <span class="divider w-50 bg-transparent d-flex" v-else-if="index < 2"></span>
+      </template>
 
     </b-col>
 
@@ -39,44 +45,12 @@
       <hr>
     </b-col>
 
-    <b-col lg="12" class='h-100' style="min-height: 20rem; overflow-y: scroll;">
+    <b-col lg="12" class='h-100 align-items-center d-flex' style="min-height: 20rem;">
       <slot name="step-1" v-if="currentStep === 0" />
       <slot name="step-2" v-if="currentStep === 1" />
       <slot name="step-3" v-if="currentStep === 2" />
     </b-col>
 
-    <b-col lg="12">
-      <hr>
-    </b-col>
-
-    <b-col lg="12" class="d-flex flex-row w-100 justify-content-between">
-
-      <b-button
-        variant="info"
-        @click="decrementStep()"
-        :disabled="currentStep === 0"
-      >
-        <i class="fa fa-chevron-left"></i>
-      </b-button>
-
-      <b-button
-        variant="info"
-        @click="incrementStep()"
-        v-if="currentStep !== 2"
-      >
-        <i class="fa fa-chevron-right"></i>
-      </b-button>
-
-      <b-button
-        variant="warning"
-        @click="incrementStep()"
-        v-if="currentStep === 2"
-      >
-        <i class="fa fa-chevron-right"></i>
-        Generate
-      </b-button>
-
-    </b-col>
   </b-row>
 </template>
 
@@ -113,9 +87,16 @@ export default {
   },
   methods: mapActions({
     resetSteps: 'build/steps/reset',
-    incrementStep: 'build/steps/increment',
-    decrementStep: 'build/steps/decrement',
     jumpToStep: 'build/steps/jumpTo'
   })
 }
 </script>
+
+<style lang="sass">
+
+  span.divider
+    transition: all 0.3s
+    min-height: 4px
+    max-height: 4px
+
+</style>

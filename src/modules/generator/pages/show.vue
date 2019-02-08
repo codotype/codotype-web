@@ -10,7 +10,8 @@
       <BuildSteps>
 
         <template slot="step-1">
-          <GeneratorStart :model="model" />
+          <!-- <GeneratorStart :model="model" /> -->
+          <ProjectForm />
         </template>
 
         <template slot="step-2">
@@ -243,6 +244,7 @@ import GeneratorStart from '@/modules/generator/components/GeneratorStart'
 import OptionFormItem from '@/modules/option/components/OptionFormItem'
 import GeneratorModelOptions from '@/modules/build/components/GeneratorModelOptions'
 import BuildSteps from '@/modules/build/components/BuildSteps'
+import ProjectForm from '@codotype/ui/src/components/BlueprintEditor/components/project/ProjectForm'
 import BlueprintEditor from '@codotype/ui/src/components/BlueprintEditor'
 
 export default {
@@ -267,6 +269,7 @@ export default {
   },
   components: {
     BuildSteps,
+    ProjectForm,
     OptionFormItem,
     BlueprintShow,
     GeneratorStart,

@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="md" type="light" variant="primary" fixed="top">
+  <b-navbar toggleable="md" type="light" variant="light" fixed="top">
     <b-navbar-brand to="/">
       <strong>Codotype</strong>
     </b-navbar-brand>
@@ -12,24 +12,25 @@
         <b-nav-item id="project-header">What's Codotype?</b-nav-item>
       </b-navbar-nav>
 
-      <b-navbar-nav class="ml-auto">
-        <b-nav-form>
+      <!-- <b-navbar-nav class="ml-auto"> -->
+        <!-- <b-nav-form> -->
 
-          <HelpButton class='mr-2' size='lg' tooltipPlacement="bottom" tour='buildSteps' />
+          <!-- <HelpButton class='mr-2' size='lg' tooltipPlacement="bottom" tour='buildSteps' /> -->
 
-          <b-button
+          <!-- <b-button
             size='lg'
             id="generate-button"
             variant="success"
             @click="generateCodebase()"
-            v-b-tooltip.hover.bottom :title='"Click here to generate code"'
-          >
-            <i class="fa fa-fw fa-spin fa-cog"></i>
-            Generate Code
-          </b-button>
-        </b-nav-form>
+            v-b-tooltip.hover.bottom
+            :title='"Click here to generate code"'
+          > -->
+            <!-- <i class="fa fa-fw fa-spin fa-cog"></i> -->
+            <!-- Generate Code -->
+          <!-- </b-button> -->
+        <!-- </b-nav-form> -->
 
-      </b-navbar-nav>
+      <!-- </b-navbar-nav> -->
 
     </b-collapse>
   </b-navbar>
