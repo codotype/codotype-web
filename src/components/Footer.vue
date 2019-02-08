@@ -1,101 +1,24 @@
 <template>
-  <b-navbar toggleable="md" type="light" variant="light" class='footer-bottom'>
-
-    <b-collapse is-nav id="nav_collapse">
-
-      <!-- Navbar Links -->
-      <b-navbar-nav class="mr-auto">
-
-        <!-- Public links -->
-        <!-- <b-nav-item to="/blueprints">Apps</b-nav-item> -->
-        <!-- <b-nav-item to="/blueprints">Blueprints</b-nav-item> -->
-        <!-- <b-nav-item to="#/examples">Example Apps</b-nav-item> -->
-        <!-- <b-nav-item to="/generators">Generators</b-nav-item> -->
-        <!-- <b-nav-item to="#/generator_new">New Generator</b-nav-item> -->
-
-        <b-nav-item to="/about">
-          <!-- <i class="far fa-copyright"></i> -->
-          <i class="fa fa-lg fa-fw fa-question-circle mr-1"></i>
-          About
-          <!-- Codotype -->
-          <!-- 2018 -->
-        </b-nav-item>
-
-        <b-nav-item target="_blank" href="https://github.com/codotype">
-          <i class="fab fa-lg fa-fw fa-github text-dark mr-1"></i>
-          GitHub
-        </b-nav-item>
-
-        <b-nav-item target="_blank" href="https://twitter.com/codotype">
-          <i class="fab fa-lg fa-fw fa-twitter text-primary mr-1"></i>
-          Twitter
-        </b-nav-item>
-
-        <b-nav-item href="mailto:codotype.io@gmail.com">
-          <i class="far fa-lg fa-fw fa-envelope text-success mr-1"></i>
-          Email
-        </b-nav-item>
-
-        <!-- <b-nav-item to="/build/new">Terms</b-nav-item> -->
-        <!-- <b-nav-item to="/build/new">Privacy</b-nav-item> -->
-        <!-- <b-nav-item to="/build/new">Help</b-nav-item> -->
-
-      </b-navbar-nav>
-
-      <b-navbar-nav class="ml-auto">
-
-        <b-nav-item target='_blank' href="https://goo.gl/forms/uhCLfol3SlAUwt2p1">
-          <i class="far fa-lg fa-comment-alt text-primary mr-1"></i>
-          Feedback
-        </b-nav-item>
-
-        <b-nav-item target="_blank" href="https://codotype.github.io">
-          <i class="fa fa-lg fa-book text-warning mr-1"></i>
-          Documentation
-        </b-nav-item>
-
-        <!-- <b-nav-item href="http://codotype.io" target='_blank'> -->
-          <!-- <i class="fas fa-dollar-sign text-success mr-1"></i> -->
-          <!-- Donate -->
-        <!-- </b-nav-item> -->
-
-      </b-navbar-nav>
-
-      <!-- <b-navbar-nav class="mr-0"> -->
-
-        <!-- <b-nav-item to="/about"> -->
-          <!-- <i class="fa fa-fw fa-question-circle-o"></i> -->
-          <!-- About -->
-        <!-- </b-nav-item> -->
-
-        <!-- <b-nav-item target="_blank" href="https://github.com/codotype"> -->
-          <!-- <i class="fa fa-fw fa-graduation-cap"></i> -->
-          <!-- <i class="fa fa-fw fa-book"></i> -->
-          <!-- Documentation -->
-        <!-- </b-nav-item> -->
-
-        <!-- <b-nav-item target="_blank" href="https://github.com/codotype"> -->
-          <!-- <i class="fa fa-fw fa-dollar"></i> -->
-          <!-- Donate -->
-        <!-- </b-nav-item> -->
-
-        <!-- <b-nav-item target="_blank" href="https://github.com/codotype"> -->
-          <!-- <i class="fab fa-lg fa-fw fa-github text-dark"></i> -->
-        <!-- </b-nav-item> -->
-
-        <!-- <b-nav-item target="_blank" href="https://twitter.com/codotype"> -->
-          <!-- <i class="fab fa-lg fa-fw fa-twitter text-primary"></i> -->
-        <!-- </b-nav-item> -->
-
-      <!-- </b-navbar-nav> -->
-
-    </b-collapse>
-  </b-navbar>
+  <div class='footer-bottom py-2' v-if="$route.name === 'GeneratorShow'"">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <BuildStepsControls />
+      </div>
+    </div>
+  </div>
+  <HomeFooter v-else />
 </template>
 
 <script>
+import HomeFooter from './HomeFooter'
+import BuildStepsControls from '@/modules/build/components/BuildStepsControls'
+
 export default {
-  name: 'Footer'
+  name: 'Footer',
+  components: {
+    HomeFooter,
+    BuildStepsControls
+  }
 }
 </script>
 
@@ -105,6 +28,8 @@ export default {
     position: fixed
     width: 100%
     bottom: 0
+    background: #f3f3f3
+    border-top: 1px solid #999999
 
   nav.navbar
     padding-top: .25rem
