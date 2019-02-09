@@ -29,6 +29,12 @@
         </div>
       </div>
 
+      <div class="row mt-2 mb-4 justify-content-center">
+        <div class="col-lg-12">
+          <pre class="bg-dark text-light">{{model}}</pre>
+          <div class='card card-body bg-white' v-html="compiledMarkdown"></div>
+        </div>
+      </div>
 <!--       <div class="row mt-2 mb-4 justify-content-center">
         <div class="col-lg-4">
           <b-button
@@ -48,8 +54,15 @@
 </template>
 
 <script>
+import marked from 'marked'
+
 export default {
-  props: ['model', 'incrementStep']
+  props: ['model'],
+  computed: {
+    compiledMarkdown () {
+      return marked(this.model.readme, { sanitize: true })
+    }
+  }
 }
 </script>
 

@@ -78,7 +78,7 @@ export default {
     }
   },
   created () {
-    this.resetSteps()
+    // this.resetSteps()
   },
   computed: {
     ...mapGetters({

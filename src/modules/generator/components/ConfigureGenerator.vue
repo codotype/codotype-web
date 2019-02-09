@@ -1,5 +1,5 @@
 <template>
-  <b-tabs class='w-100' v-model="currentStep" card>
+  <b-tabs lazy class='w-100' v-model="currentStep" card>
     <!-- Generator Option Groups -->
     <b-tab
       lazy
@@ -132,6 +132,7 @@
             <!-- Define new instance -->
             <div class="card card-body mt-2" v-for="attr in group.attributes">
               <OptionFormItem
+                :schema="selectedSchema"
                 :model="attr"
                 v-model="configurationObject[group.identifier_plural][selectedSchemaId][attr.identifier]"
               />
@@ -255,7 +256,10 @@ export default {
     },
     ...mapGetters({
       model: 'generator/selectedModel'
-    })
+    }),
+    selectedSchema () {
+      return this.schemas.find(s => s.identifier === this.selectedSchemaId)
+    }
   }
 }
 </script>
