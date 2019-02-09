@@ -41,7 +41,7 @@
             </b-dropdown-item-button>
           </b-dropdown>
 
-          <HelpButton tour='appListSteps' size="lg"/>
+          <TourButton tour='appListSteps' size="lg"/>
         </b-nav-form>
 
       </b-navbar-nav>
@@ -53,13 +53,13 @@
 </template>
 
 <script>
-import HelpButton from '@codotype/ui/src/components/HelpButton'
+import TourButton from '@codotype/ui/src/components/TourButton'
 import ImportBlueprint from '@/modules/blueprint/components/ImportBlueprint'
 
 export default {
   name: 'HomeMenu',
   components: {
-    HelpButton,
+    TourButton,
     ImportBlueprint
   }
 }

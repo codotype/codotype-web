@@ -69,7 +69,7 @@
             </b-dropdown-item-button>
           </b-dropdown>
 
-          <HelpButton class='mr-2' size='lg' tour='appEditorSteps' />
+          <TourButton class='mr-2' size='lg' tour='appEditorSteps' />
 
           <b-button
             size="lg"
@@ -93,13 +93,13 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import HelpButton from '@codotype/ui/src/components/HelpButton'
+import TourButton from '@codotype/ui/src/components/TourButton'
 import FormInput from '@codotype/ui/src/components/FormInput'
 
 export default {
   name: 'BlueprintMenu',
   components: {
-    HelpButton,
+    TourButton,
     FormInput
   },
   data () {

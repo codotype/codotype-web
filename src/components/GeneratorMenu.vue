@@ -4,18 +4,24 @@
       <strong>Codotype</strong>
     </b-navbar-brand>
 
+    <a class="navbar-text">
+      <!-- <img src="/docs/4.2/assets/brand/bootstrap-solid.svg" width="30" height="30" alt=""> -->
+      <img class='generator-icon' style="width: 1rem;" :src="model.icon"/>
+      {{ model.label }}
+    </a>
+
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
     <b-collapse is-nav id="nav_collapse">
 
-      <b-navbar-nav>
+      <!-- <b-navbar-nav> -->
         <!-- <b-nav-item id="project-header">{{ model.label }}</b-nav-item> -->
-        <b-nav-item id="project-header">What's Codotype?</b-nav-item>
-      </b-navbar-nav>
+        <!-- <b-nav-item id="project-header">What's Codotype?</b-nav-item> -->
+      <!-- </b-navbar-nav> -->
 
       <!-- <b-navbar-nav class="ml-auto"> -->
         <!-- <b-nav-form> -->
 
-          <!-- <HelpButton class='mr-2' size='lg' tooltipPlacement="bottom" tour='buildSteps' /> -->
+          <!-- <TourButton class='mr-2' size='lg' tooltipPlacement="bottom" tour='buildSteps' /> -->
 
           <!-- <b-button
             size='lg'
@@ -38,12 +44,12 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import HelpButton from '@codotype/ui/src/components/HelpButton'
+import TourButton from '@codotype/ui/src/components/TourButton'
 
 export default {
   name: 'BlueprintMenu',
   components: {
-    HelpButton
+    TourButton
   },
   computed: mapGetters({
     model: 'generator/selectedModel'
