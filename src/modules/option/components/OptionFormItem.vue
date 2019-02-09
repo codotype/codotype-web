@@ -106,11 +106,6 @@ export default {
       DATATYPE_NUMBER_DOUBLE
     }
   },
-  mounted () {
-    console.log(this.model)
-    console.log(this.schema)
-    console.log(this.value)
-  },
   methods: {
     updateModel () {
       if (this.model.type === DATATYPE_BOOLEAN) {
