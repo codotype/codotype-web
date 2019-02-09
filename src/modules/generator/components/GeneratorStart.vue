@@ -29,10 +29,22 @@
         </div>
       </div>
 
+      <div class="row justify-content-center">
+        <div class="col-lg-6 d-flex justify-content-between align-items-center">
+
+          <span class="d-flex">
+            <span class='badge badge-primary mr-1' v-for="tag in model.type_tags" :key="tag">{{ tag }}</span>
+            <span class='badge badge-info' v-if="model.self_configuring">Self-Configuring</span>
+            <span class='badge badge-light mr-1' v-for="tag in model.tech_tags" :key="tag">{{ tag }}</span>
+          </span>
+
+        </div>
+      </div>
+
       <div class="row mt-2 mb-4 justify-content-center">
         <div class="col-lg-12">
-          <pre class="bg-dark text-light">{{model}}</pre>
           <div class='card card-body bg-white' v-html="compiledMarkdown"></div>
+          <pre class="bg-dark text-light">{{model}}</pre>
         </div>
       </div>
 <!--       <div class="row mt-2 mb-4 justify-content-center">
