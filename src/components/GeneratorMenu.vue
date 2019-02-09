@@ -1,6 +1,6 @@
 <template>
   <b-navbar toggleable="md" type="light" variant="light" fixed="top">
-    <b-navbar-brand to="/">
+    <b-navbar-brand to="/generators">
       <strong>Codotype</strong>
     </b-navbar-brand>
 
@@ -17,10 +17,17 @@
         <b-nav-item class='ml-3' @click="$store.commit('editor/about/showing', true)">About</b-nav-item>
       </b-navbar-nav>
 
-      <!-- <b-navbar-nav class="ml-auto"> -->
-        <!-- <b-nav-form> -->
+      <b-navbar-nav class="ml-auto">
 
-          <!-- <TourButton class='mr-2' size='lg' tooltipPlacement="bottom" tour='buildSteps' /> -->
+        <b-nav-item target="_blank" href="https://twitter.com/codotype">
+          <i class="fab fa-lg fa-fw fa-twitter text-primary mr-1"></i>
+        </b-nav-item>
+
+        <b-nav-item target="_blank" href="https://github.com/codotype">
+          <i class="fab fa-lg fa-fw fa-github text-dark mr-1"></i>
+        </b-nav-item>
+
+        <!-- <b-nav-form> -->
 
           <!-- <b-button
             size='lg'
@@ -35,7 +42,7 @@
           <!-- </b-button> -->
         <!-- </b-nav-form> -->
 
-      <!-- </b-navbar-nav> -->
+      </b-navbar-nav>
 
     </b-collapse>
   </b-navbar>
