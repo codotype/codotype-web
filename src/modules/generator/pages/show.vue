@@ -1,11 +1,10 @@
 <template>
   <b-row>
     <b-col lg=12>
+      <GeneratorStart :model="model" v-if="$store.getters['editor/about/showing']"/>
 
-      <BuildSteps>
-
+      <BuildSteps v-else>
         <template slot="step-1">
-          <!-- <GeneratorStart :model="model" /> -->
           <ProjectForm />
         </template>
 
@@ -16,8 +15,8 @@
         <template slot="step-3">
           <ConfigureGenerator :id="id" />
         </template>
-
       </BuildSteps>
+
 
     </b-col>
   </b-row>

@@ -29,20 +29,20 @@
         </div>
       </div>
 
-      <div class="row mt-2 mb-4 justify-content-center">
+<!--       <div class="row mt-2 mb-4 justify-content-center">
         <div class="col-lg-4">
           <b-button
             size="lg"
             variant="primary"
             block
-            @click="incrementStep()"
+            :to="'/generators/' + model.id + '/run'"
           >
             <i class="fas fa-drafting-compass faa-wrench animated mr-2"></i>
             Start Your Next Project
           </b-button>
         </div>
       </div>
-
+ -->
     </div>
   </div>
 </template>
