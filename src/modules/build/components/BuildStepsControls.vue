@@ -31,7 +31,7 @@
       <b-button
         variant="warning"
         size="lg"
-        @click="incrementStep()"
+        @click="generate()"
         v-if="currentStep === 2"
       >
         <i class="fa fa-spin fa-cog"></i>
@@ -56,9 +56,16 @@ export default {
   computed: mapGetters({
     currentStep: 'build/steps/current'
   }),
-  methods: mapActions({
-    incrementStep: 'build/steps/increment',
-    decrementStep: 'build/steps/decrement'
-  })
+  methods: {
+    ...mapActions({
+      incrementStep: 'build/steps/increment',
+      decrementStep: 'build/steps/decrement',
+      generateCodebase: 'build/generate'
+    }),
+    generate () {
+      this.increment()
+      this.generateCodebase()
+    }
+  }
 }
 </script>
