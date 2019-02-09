@@ -3,7 +3,7 @@
     <div class="col-lg-12 d-flex justify-content-between align-items-center">
       <h2>Generators</h2>
       <span>
-        <HelpButton tour="generatorListSteps" />
+        <TourButton tour="generatorListSteps" />
         <a class="btn btn-outline-primary btn-lg" id='new-generator-button' href="#/generators/new">
           <i class="fa fa-fw fa-plus"></i>
           Add Generator
@@ -41,13 +41,13 @@
 import { mapGetters, mapActions } from 'vuex'
 import GeneratorListItem from '@/modules/generator/components/GeneratorListItem'
 import FilterList from '@/modules/generator/components/FilterList'
-import HelpButton from '@codotype/ui/src/components/HelpButton'
+import TourButton from '@codotype/ui/src/components/TourButton'
 
 export default {
   components: {
     GeneratorListItem,
     FilterList,
-    HelpButton
+    TourButton
   },
   computed: mapGetters({
     generatorCollection: 'generator/collection'

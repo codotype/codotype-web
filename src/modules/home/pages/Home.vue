@@ -10,7 +10,8 @@
       <div class="row py-2">
 
         <div class="col-lg-12 text-center">
-          <p class="lead">visual code scaffolding for the modern web</p>
+          <!-- <p class="lead">visual code scaffolding for the modern web</p> -->
+          <p class="lead">Hand-crafted code scaffolding for the modern web</p>
           <p>Prototype new web applications amazingly fast</p>
           <p>Define your models, attributes, and relations - Codotype does the rest</p>
         </div>
@@ -29,7 +30,7 @@
       <div class="row mt-2 mb-4 justify-content-center">
         <div class="col-lg-4">
           <b-button
-            to="/generators"
+            to="/generators/codotype-mevn-generator"
             size="lg"
             variant="primary"
             block

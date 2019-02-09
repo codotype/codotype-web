@@ -26,7 +26,7 @@
             Back to Editor
           </b-button>
 
-          <HelpButton class='mr-2' size='lg' tooltipPlacement="bottom" tour='buildSteps' />
+          <TourButton class='mr-2' size='lg' tooltipPlacement="bottom" tour='buildSteps' />
 
           <b-button
             size='lg'
@@ -50,12 +50,12 @@
 
 <script>
 import { mapGetters, mapActions, mapMutations } from 'vuex'
-import HelpButton from '@codotype/ui/src/components/HelpButton'
+import TourButton from '@codotype/ui/src/components/TourButton'
 
 export default {
   name: 'BlueprintMenu',
   components: {
-    HelpButton
+    TourButton
   },
   computed: {
     ...mapGetters({

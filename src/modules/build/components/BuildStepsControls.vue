@@ -14,7 +14,10 @@
       </b-button>
       <span v-else></span>
 
-      <HelpButton tour="appEditorSteps" v-if="currentStep === 1" />
+      <span>
+        <HelpButton v-if="currentStep === 1" />
+        <TourButton tour="appEditorSteps" v-if="currentStep === 1" />
+      </span>
 
       <b-button
         variant="outline-primary"
@@ -41,11 +44,13 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import TourButton from '@codotype/ui/src/components/TourButton'
 import HelpButton from '@codotype/ui/src/components/HelpButton'
 
 export default {
   name: 'BuildStepsControls',
   components: {
+    TourButton,
     HelpButton
   },
   computed: mapGetters({
