@@ -6,7 +6,7 @@
         <div class="col-lg-12 d-flex justify-content-center">
           <p class="lead mb-0">
             <button @click.prevent="selectGenerator(model.id)" class="btn btn-link d-flex align-items-center flex-column" style='text-decoration: none'>
-              <i :class="model.icon + ' mb-2'" style="font-size: 4rem"></i>
+              <img class='generator-icon' :src="model.icon"/>
               {{ model.label }}
             </button>
           </p>

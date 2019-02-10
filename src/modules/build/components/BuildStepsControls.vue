@@ -15,8 +15,11 @@
       <span v-else></span>
 
       <span>
-        <HelpButton v-if="currentStep === 1" />
+        <HelpButton class='mr-2' v-if="currentStep === 1" />
         <TourButton tour="appEditorSteps" v-if="currentStep === 1" />
+        <!-- <span class='text-muted' v-if="currentStep === 1">
+          <router-link to="/auth/signup" >Sign Up</router-link> or <router-link to="/auth/login">Log In</router-link> to Save Models<i class="ml-1 fa fa-info-circle" title="Codotype automatically saves your Blueprint in localstorage. Signing up is a great idea if you want to continue making changes on another device." v-b-tooltip.hover.top></i>
+        </span> -->
       </span>
 
       <b-button
@@ -31,7 +34,7 @@
       <b-button
         variant="warning"
         size="lg"
-        @click="incrementStep()"
+        @click="generate()"
         v-if="currentStep === 2"
       >
         <i class="fa fa-spin fa-cog"></i>
@@ -56,9 +59,16 @@ export default {
   computed: mapGetters({
     currentStep: 'build/steps/current'
   }),
-  methods: mapActions({
-    incrementStep: 'build/steps/increment',
-    decrementStep: 'build/steps/decrement'
-  })
+  methods: {
+    ...mapActions({
+      incrementStep: 'build/steps/increment',
+      decrementStep: 'build/steps/decrement',
+      generateCodebase: 'build/generate'
+    }),
+    generate () {
+      this.increment()
+      this.generateCodebase()
+    }
+  }
 }
 </script>

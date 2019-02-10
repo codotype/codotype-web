@@ -12,6 +12,7 @@
           @change="updateModel()"
         />
         <label class='mb-2'>{{model.label}}</label>
+        <span class='ml-1 text-danger' v-if="model.required">*</span>
         <MoreInfoLink class='ml-3 mb-2' :url="model.more_info_url" />
       </span>
 
@@ -25,6 +26,7 @@
         v-if="model.type === DATATYPE_STRING"
         class='form-control'
         :value="value"
+        :placeholder="model.label"
         type="text"
         ref="input"
         @input="updateModel()"
@@ -62,6 +64,14 @@
 
       </ul>
 
+      <div class="card bg-dark card-body" v-if="model.previewTemplate">
+        <span class='text-light'>Preview:</span>
+        <div class="card bg-light">
+          <!-- <div v-html="model.previewTemplate"></div> -->
+          <v-runtime-template :template="model.previewTemplate"></v-runtime-template>
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
@@ -77,12 +87,14 @@ import {
   DATATYPE_NUMBER_DOUBLE
 } from '@codotype/types/lib/datatypes'
 
+import VRuntimeTemplate from 'v-runtime-template'
 import MoreInfoLink from '@codotype/ui/src/components/MoreInfoLink'
 
 export default {
   name: 'OptionFormitem',
-  props: ['model', 'value'],
+  props: ['model', 'schema', 'value'],
   components: {
+    VRuntimeTemplate,
     MoreInfoLink
   },
   data () {
@@ -94,6 +106,12 @@ export default {
       DATATYPE_NUMBER_INTEGER,
       DATATYPE_NUMBER_FLOAT,
       DATATYPE_NUMBER_DOUBLE
+    }
+  },
+  mounted () {
+    if (!this.$refs.input) { return }
+    if (!this.$refs.input.value && this.model.default_value) {
+      this.$refs.input.value = this.model.default_value
     }
   },
   methods: {

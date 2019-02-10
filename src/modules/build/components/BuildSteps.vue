@@ -45,10 +45,12 @@
       <hr>
     </b-col>
 
-    <b-col lg="12" class='h-100 align-items-center d-flex' style="min-height: 20rem;">
+    <!-- <b-col lg="12" class='h-100 align-items-center d-flex' style="min-height: 20rem;"> -->
+    <b-col lg="12" :class='colClassName'>
       <slot name="step-1" v-if="currentStep === 0" />
       <slot name="step-2" v-if="currentStep === 1" />
       <slot name="step-3" v-if="currentStep === 2" />
+      <slot name="step-4" v-if="currentStep === 3" />
     </b-col>
 
   </b-row>
@@ -78,12 +80,17 @@ export default {
     }
   },
   created () {
-    this.resetSteps()
+    // this.resetSteps()
   },
   computed: {
     ...mapGetters({
       currentStep: 'build/steps/current'
-    })
+    }),
+    colClassName () {
+      let css = 'h-100 align-items-center d-flex'
+      if (this.currentStep === 0) css += ' min-height-20'
+      return css
+    }
   },
   methods: mapActions({
     resetSteps: 'build/steps/reset',
@@ -98,5 +105,8 @@ export default {
     transition: all 0.3s
     min-height: 4px
     max-height: 4px
+
+  div.min-height-20
+    min-height: 20rem
 
 </style>

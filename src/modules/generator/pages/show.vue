@@ -15,6 +15,10 @@
         <template slot="step-3">
           <ConfigureGenerator :id="id" />
         </template>
+
+        <template slot="step-4">
+          <LoadingBuild />
+        </template>
       </BuildSteps>
 
 
@@ -24,6 +28,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import LoadingBuild from '@/modules/build/components/LoadingBuild'
 import GeneratorStart from '@/modules/generator/components/GeneratorStart'
 import BuildSteps from '@/modules/build/components/BuildSteps'
 import ProjectForm from '@codotype/ui/src/components/BlueprintEditor/components/project/ProjectForm'
@@ -34,6 +39,7 @@ export default {
   name: 'GeneratorShow',
   props: ['id'],
   components: {
+    LoadingBuild,
     BuildSteps,
     ProjectForm,
     GeneratorStart,
@@ -48,6 +54,8 @@ export default {
   created () {
     // this.$store.dispatch('editor/reset')
     this.selectModel(this.id)
+    this.$store.dispatch('build/steps/reset')
+    this.$store.commit('editor/about/showing', false)
   },
   methods: mapActions({
     selectModel: 'generator/selectModel'
