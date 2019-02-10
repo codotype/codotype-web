@@ -12,6 +12,7 @@
           @change="updateModel()"
         />
         <label class='mb-2'>{{model.label}}</label>
+        <span class='ml-1 text-danger' v-if="model.required">*</span>
         <MoreInfoLink class='ml-3 mb-2' :url="model.more_info_url" />
       </span>
 
@@ -25,6 +26,7 @@
         v-if="model.type === DATATYPE_STRING"
         class='form-control'
         :value="value"
+        :placeholder="model.label"
         type="text"
         ref="input"
         @input="updateModel()"
@@ -104,6 +106,12 @@ export default {
       DATATYPE_NUMBER_INTEGER,
       DATATYPE_NUMBER_FLOAT,
       DATATYPE_NUMBER_DOUBLE
+    }
+  },
+  mounted () {
+    if (!this.$refs.input) { return }
+    if (!this.$refs.input.value && this.model.default_value) {
+      this.$refs.input.value = this.model.default_value
     }
   },
   methods: {

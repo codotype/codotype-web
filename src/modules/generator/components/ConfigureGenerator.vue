@@ -55,7 +55,7 @@
 
       <template v-else>
         <EditorHeader
-          :title="group.label"
+          :title="group.label_plural || group.label"
           :help="group.description"
           url="https://codotype.github.io"
         />
@@ -65,22 +65,27 @@
       <template v-if="group.type === 'OPTION_GROUP_TYPE_MODEL_ADDON'">
         <b-row>
           <b-col lg=3 class='border-right'>
-            <ul class="list-group">
-              <li
-                v-for="schema in schemas"
-                :class='selectedSchemaId === schema.identifier ? "list-group-item active" : "list-group-item" '
-                @click="selectedSchemaId = schema.identifier"
-              >
-                {{ schema.label }}
-              </li>
-            </ul>
+            <div class="card">
+              <div class="card-header">
+                <strong>Models</strong>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li
+                  v-for="schema in schemas"
+                  :class='selectedSchemaId === schema.identifier ? "list-group-item active" : "list-group-item" '
+                  @click="selectedSchemaId = schema.identifier"
+                >
+                  {{ schema.label }}
+                </li>
+              </ul>
+            </div>
           </b-col>
           <b-col lg=9>
             <b-card>
 
               <!-- Header - "User API Actions" -->
               <p class="lead mb-0">
-                {{ schemas.find(s => s.identifier === selectedSchemaId).label }} {{ group.label_plural }}
+                {{ selectedSchema.label }} {{ group.label_plural }}
               </p>
 
               <!-- Header - Description -->
@@ -89,15 +94,44 @@
 
               <!-- Define new instance -->
               <hr>
-              <small class="text-muted">New {{group.label}}</small>
 
-              <OptionFormItem
-                v-for="attr in group.attributes"
-                :model="attr"
-                v-model="newAddon[attr.identifier]"
-              />
+              <!-- Bootstrap Modal Component -->
+              <b-modal
+                :id="'modal_' + group.id"
+                :title="'New ' + group.label"
+                ok-variant='success'
+                ok-title='Create'
+                cancel-title='Cancel'
+                @ok="createAddonInstance(group)"
+              >
+                <small class="text-muted">New {{group.label}}</small>
 
-              <b-button @click="createAddonInstance(group)">Create {{ group.label }}</b-button>
+                <div class="row">
+                  <div class="col-lg-6" v-for="attr in group.attributes">
+                    <OptionFormItem
+                      :model="attr"
+                      :schema="selectedSchema"
+                      v-model="newAddon[attr.identifier]"
+                    />
+                  </div>
+                </div>
+
+                <div class="row" v-if="group.previewTemplate">
+                  Preview
+                  <div class="col-lg-12">
+                    <OptionPreview
+                      :model="newAddon"
+                      :schema="selectedSchema"
+                      :template="group.previewTemplate"
+                    >
+                    </OptionPreview>
+                  </div>
+                </div>
+
+              </b-modal>
+
+              <b-button v-b-modal="'modal_' + group.id">Create {{ group.label }}</b-button>
+              <!-- <b-button @click="createAddonInstance(group)">Create {{ group.label }}</b-button> -->
 
               <!-- View existing instance data -->
               <hr>
@@ -108,7 +142,18 @@
                   v-for="instance in configurationObject[group.identifier_plural][selectedSchemaId]"
                   :key="instance.id"
                 >
-                  {{ group.attributes[0].label }}:{{ instance[group.attributes[0].identifier] }}
+
+                  <OptionPreview
+                    v-if="group.previewTemplate"
+                    :model="instance"
+                    :schema="selectedSchema"
+                    :template="group.previewTemplate"
+                  >
+                  </OptionPreview>
+
+                  <template v-else>
+                    {{ group.attributes[0].label }}:{{ instance[group.attributes[0].identifier] }}
+                  </template>
 
                   <span>
                     <b-button @click="editInstance(group, instance)" size="sm" variant="outline-warning">
@@ -141,21 +186,26 @@
       <template v-if="group.type === 'OPTION_GROUP_TYPE_MODEL_OPTION'">
         <b-row>
           <b-col lg=3 class='border-right'>
-            <ul class="list-group">
-              <li
-                v-for="schema in schemas"
-                :class='selectedSchemaId === schema.identifier ? "list-group-item active" : "list-group-item" '
-                @click="selectedSchemaId = schema.identifier"
-              >
-                {{ schema.label }}
-              </li>
-            </ul>
+            <div class="card">
+              <div class="card-header">
+                <strong>Models</strong>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li
+                  v-for="schema in schemas"
+                  :class='selectedSchemaId === schema.identifier ? "list-group-item active" : "list-group-item" '
+                  @click="selectedSchemaId = schema.identifier"
+                >
+                  {{ schema.label }}
+                </li>
+              </ul>
+            </div>
           </b-col>
           <b-col lg=9>
 
-            <!-- Header - "User API Actions" -->
+            <!-- Header - "User MODEL OPTIONS" -->
             <p class="lead mb-0">
-              {{ schemas.find(s => s.identifier === selectedSchemaId).label }} {{ group.label_plural }}
+              {{ selectedSchema.label }} {{ group.label_plural }}
             </p>
 
             <!-- Header - Description -->
@@ -245,6 +295,7 @@
 
 <script>
 import marked from 'marked'
+import OptionPreview from './OptionPreview'
 import { mapGetters, mapActions } from 'vuex'
 import buildConfiguration from '@codotype/util/lib/buildConfiguration'
 import BlueprintShow from '@/modules/blueprint/pages/show'
@@ -272,11 +323,12 @@ export default {
       configurationObject: configurationObject,
       currentStep: 0,
       schemas,
-      newAddon: {}, // TODO - this should be produced somewhere
+      newAddon: {}, // TODO - this should be produced somewhere & maintained in state
       selectedSchemaId: selectedSchemaId
     }
   },
   components: {
+    OptionPreview,
     BuildSteps,
     ProjectForm,
     OptionFormItem,
