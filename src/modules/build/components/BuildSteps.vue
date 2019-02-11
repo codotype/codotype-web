@@ -40,12 +40,12 @@
 
     </b-col>
 
-    <!-- <b-col lg="12"> -->
-      <!-- <hr> -->
-    <!-- </b-col> -->
+    <b-col lg="12">
+      <hr>
+    </b-col>
 
     <!-- <b-col lg="12" class='h-100 align-items-center d-flex' style="min-height: 20rem;"> -->
-    <b-col lg="12" :class='colClassName' style="margin-top: 4rem; padding-bottom: 5rem;">
+    <b-col lg="12" :class='colClassName' style="padding-bottom: 5rem;">
       <slot name="step-1" v-if="currentStep === 0" />
       <slot name="step-2" v-if="currentStep === 1" />
       <slot name="step-3" v-if="currentStep === 2" />
@@ -102,9 +102,7 @@ export default {
 
   div.step-wrapper
     padding-top: 1.25rem
-    padding-bottom: 1rem
     background: #f5f6f9
-    border-bottom: 1px solid #CCC
 
   .step-badge
     font-size: 1rem
