@@ -298,7 +298,6 @@ import marked from 'marked'
 import OptionPreview from './OptionPreview'
 import { mapGetters, mapActions } from 'vuex'
 import buildConfiguration from '@codotype/util/lib/buildConfiguration'
-import BlueprintShow from '@/modules/blueprint/pages/show'
 import GeneratorStart from '@/modules/generator/components/GeneratorStart'
 import OptionFormItem from '@/modules/option/components/OptionFormItem'
 import GeneratorModelOptions from '@/modules/build/components/GeneratorModelOptions'
@@ -332,7 +331,6 @@ export default {
     BuildSteps,
     ProjectForm,
     OptionFormItem,
-    BlueprintShow,
     GeneratorStart,
     GeneratorModelOptions,
     BlueprintEditor

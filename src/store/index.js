@@ -1,7 +1,6 @@
 import createPersistedState from 'vuex-persistedstate'
 import Vuex from 'vuex'
 
-import blueprint from '@/modules/blueprint/store'
 import notification from '@codotype/ui/src/modules/notification/store'
 import generator from '@/modules/generator/store'
 import tour from '@codotype/ui/src/modules/tour/store'
@@ -11,7 +10,6 @@ import editor from '@codotype/ui/src/components/BlueprintEditor/store'
 export default new Vuex.Store({
   modules: {
     notification,
-    blueprint,
     editor,
     generator,
     tour,

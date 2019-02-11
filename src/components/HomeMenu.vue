@@ -22,7 +22,7 @@
 
         <b-nav-form v-if="$route.name === 'BlueprintList'">
 
-          <ImportBlueprint/>
+          <!-- <ImportBlueprint/> -->
 
           <b-dropdown
             right
@@ -54,13 +54,13 @@
 
 <script>
 import TourButton from '@codotype/ui/src/components/TourButton'
-import ImportBlueprint from '@/modules/blueprint/components/ImportBlueprint'
+// import ImportBlueprint from '@/modules/blueprint/components/ImportBlueprint'
 
 export default {
   name: 'HomeMenu',
   components: {
-    TourButton,
-    ImportBlueprint
+    TourButton
+    // ImportBlueprint
   }
 }
 </script>
