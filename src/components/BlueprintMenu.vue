@@ -9,43 +9,6 @@
 
       <b-navbar-nav>
         <b-nav-text id="project-header">{{ project.label }} Blueprint</b-nav-text>
-
-        <b-modal
-          lazy
-          id="edit-project"
-          ref="editModal"
-          :title="'Edit Blueprint'"
-          @ok="renameBlueprint({ label: blueprintLabel })"
-          ok-title='Update'
-          cancel-title='Cancel'
-          :ok-disabled="!blueprintLabel"
-        >
-          <div class="form-group">
-            <label class='mb-0'>
-              Label
-              <span class='text-danger'>*</span>
-            </label>
-            <small class="form-text text-muted mb-2">The name of your project</small>
-            <input
-              type="text"
-              ref="labelInput"
-              class="form-control"
-              placeholder="Label"
-              v-model="blueprintLabel"
-            >
-          </div>
-        </b-modal>
-
-        <button
-          class="btn btn-link py-0"
-          id="project-edit-button"
-          v-b-tooltip.hover.right
-          title='Edit Blueprint Name'
-          v-b-modal="'edit-project'"
-        >
-          <i class="fa fa-pencil-alt"></i>
-        </button>
-
       </b-navbar-nav>
 
       <b-navbar-nav class="ml-auto">

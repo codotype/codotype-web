@@ -1,5 +1,5 @@
 <template>
-  <div class='footer-bottom py-2' v-if="$route.name === 'GeneratorShow'"">
+  <div class='footer-bottom py-2' v-if="$route.name === 'GeneratorShow'">
     <div class="row justify-content-center">
       <div class="col-lg-10">
         <BuildStepsControls />
