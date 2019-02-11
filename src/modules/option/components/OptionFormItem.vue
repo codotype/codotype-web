@@ -3,24 +3,27 @@
     <div class="col-lg-12">
 
       <span class='d-flex align-items-center'>
-        <toggle-button
-          v-if="model.type === DATATYPE_BOOLEAN"
-          ref="input"
-          :value="value"
-          :color="'#4582EC'"
-          class='mr-3'
-          @change="updateModel()"
-        />
-        <label class='mb-2'>{{model.label}}</label>
+        <img class="generator-icon mr-1" :src="model.icon" v-if="model.icon">
+        <label class='mb-0'>{{model.label}}</label>
         <span class='ml-1 text-danger' v-if="model.required">*</span>
         <MoreInfoLink class='ml-3 mb-2' :url="model.more_info_url" />
       </span>
 
-      <small>{{model.help}}</small>
+
+      <small class='mt-3'>{{model.help}}</small>
 
     </div>
 
-    <div class="col-lg-12 mt-2" v-if="model.type !== DATATYPE_BOOLEAN">
+    <div class="col-lg-12 mt-2">
+
+      <toggle-button
+        v-if="model.type === DATATYPE_BOOLEAN"
+        ref="input"
+        :value="value"
+        :color="'#4582EC'"
+        class='mr-3'
+        @change="updateModel()"
+      />
 
       <input
         v-if="model.type === DATATYPE_STRING"
