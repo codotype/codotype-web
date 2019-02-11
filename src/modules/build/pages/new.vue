@@ -74,7 +74,7 @@
     <b-col lg=8>
 
       <!-- Select a generator -->
-      <GeneratorSelector v-if="(newBuildModel.app_id && !newBuildModel.stages[0]) || choosingGenerator"/>
+      <!-- <GeneratorSelector v-if="(newBuildModel.app_id && !newBuildModel.stages[0]) || choosingGenerator"/> -->
 
       <!-- TODO - abstract ALL of this into a separate component -->
       <!-- GeneratorConfigure component -->
@@ -184,7 +184,7 @@ import MoreInfoLink from '@codotype/ui/src/components/MoreInfoLink'
 // import GeneratorModelOptions from '@/modules/build/components/GeneratorModelOptions'
 // import GeneratorGlobalOptions from '@/modules/build/components/GeneratorGlobalOptions'
 import GeneratorAddonForm from '@/modules/build/components/GeneratorAddonForm'
-import GeneratorSelector from '@/modules/build/components/GeneratorSelector'
+// import GeneratorSelector from '@/modules/build/components/GeneratorSelector'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 import marked from 'marked'
 
@@ -195,10 +195,10 @@ export default {
   components: {
     LoadingBuild,
     MoreInfoLink,
+    GeneratorAddonForm
     // GeneratorModelOptions,
     // GeneratorGlobalOptions,
-    GeneratorAddonForm,
-    GeneratorSelector
+    // GeneratorSelector
   },
   data () {
     return { // TODO - move this into build vuex state

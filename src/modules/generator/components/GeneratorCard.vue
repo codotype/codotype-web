@@ -59,7 +59,7 @@ import MoreInfoLink from '@codotype/ui/src/components/MoreInfoLink'
 import { mapActions } from 'vuex'
 
 export default {
-  name: 'GeneratorListItem',
+  name: 'GeneratorCard',
   props: ['model'],
   components: {
     MoreInfoLink
