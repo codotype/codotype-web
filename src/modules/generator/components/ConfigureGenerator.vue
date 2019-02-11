@@ -1,3 +1,5 @@
+<!-- TODO - this should really be an entire separate Editor component -->
+<!-- Should not even be SCOPED to the generator module -->
 <template>
   <b-tabs lazy class='w-100' v-model="currentStep">
     <!-- Generator Option Groups -->
@@ -284,13 +286,6 @@
         <!-- </b-tab> -->
         <!-- GLOBAL OPTIONS -->
 
-        <!-- <b-tab
-          lazy
-          button-id="build-readme-nav"
-          title="README.md"
-          class='card-body bg-white border border-top-0'
-          v-html="compiledMarkdown"
-        /> -->
 </template>
 
 <script>
@@ -299,7 +294,6 @@ import { mapGetters, mapActions } from 'vuex'
 import buildConfiguration from '@codotype/util/lib/buildConfiguration'
 import GeneratorStart from '@/modules/generator/components/GeneratorStart'
 import OptionFormItem from '@codotype/ui/src/modules/option/components/OptionFormItem'
-import GeneratorModelOptions from '@codotype/ui/src/modules/build/components/GeneratorModelOptions'
 import ProjectForm from '@codotype/ui/src/components/BlueprintEditor/components/project/ProjectForm'
 import BlueprintEditor from '@codotype/ui/src/components/BlueprintEditor'
 import OptionTemplateRenderer from '@codotype/ui/src/modules/option/components/OptionTemplateRenderer'
@@ -330,7 +324,6 @@ export default {
     ProjectForm,
     OptionFormItem,
     GeneratorStart,
-    GeneratorModelOptions,
     BlueprintEditor
   },
   created () {
