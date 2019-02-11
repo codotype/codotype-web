@@ -3,27 +3,27 @@
     <div class="col-lg-12">
 
       <span class='d-flex align-items-center'>
-        <img class="generator-icon mr-1" :src="model.icon" v-if="model.icon">
+        <OptionFormItemIcon class="mr-3" :model="model" v-if="model.icon" />
         <label class='mb-0'>{{model.label}}</label>
         <span class='ml-1 text-danger' v-if="model.required">*</span>
-        <MoreInfoLink class='ml-3 mb-2' :url="model.more_info_url" />
+        <MoreInfoLink class='mx-3' :url="model.more_info_url" />
+
+        <toggle-button
+          v-if="model.type === DATATYPE_BOOLEAN"
+          ref="input"
+          :value="value"
+          :color="'#4582EC'"
+          class='mr-3 mb-0'
+          @change="updateModel()"
+        />
       </span>
 
 
-      <small class='mt-3'>{{model.help}}</small>
+      <small class='mt-2'>{{model.help}}</small>
 
     </div>
 
-    <div class="col-lg-12 mt-2">
-
-      <toggle-button
-        v-if="model.type === DATATYPE_BOOLEAN"
-        ref="input"
-        :value="value"
-        :color="'#4582EC'"
-        class='mr-3'
-        @change="updateModel()"
-      />
+    <div class="col-lg-12 mt-2" v-if="model.type !== DATATYPE_BOOLEAN">
 
       <input
         v-if="model.type === DATATYPE_STRING"
@@ -92,12 +92,14 @@ import {
 
 import OptionPreview from '../../generator/components/OptionPreview'
 import MoreInfoLink from '@codotype/ui/src/components/MoreInfoLink'
+import OptionFormItemIcon from './OptionFormItemIcon'
 
 export default {
   name: 'OptionFormitem',
   props: ['model', 'schema', 'value'],
   components: {
     OptionPreview,
+    OptionFormItemIcon,
     MoreInfoLink
   },
   data () {
