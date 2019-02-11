@@ -1,6 +1,5 @@
 <template>
   <BlueprintMenu v-if="showBlueprintMenu"/>
-  <BuildMenu v-else-if="showBuildMenu"/>
   <GeneratorMenu v-else-if="showGeneratorMenu"/>
   <HomeMenu v-else/>
 </template>
@@ -8,7 +7,6 @@
 <script>
 import HomeMenu from './HomeMenu'
 import BlueprintMenu from './BlueprintMenu'
-import BuildMenu from './BuildMenu'
 import GeneratorMenu from './GeneratorMenu'
 
 export default {
@@ -16,7 +14,6 @@ export default {
   components: {
     HomeMenu,
     BlueprintMenu,
-    BuildMenu,
     GeneratorMenu
   },
   computed: {
@@ -25,9 +22,6 @@ export default {
     },
     showGeneratorMenu () {
       return this.$route.name === 'GeneratorShow'
-    },
-    showBuildMenu () {
-      return this.$route.name === 'BlueprintGenerate'
     }
   }
 }

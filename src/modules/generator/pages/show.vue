@@ -27,9 +27,9 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import LoadingBuild from '@/modules/build/components/LoadingBuild'
+import LoadingBuild from '@codotype/ui/src/modules/build/components/LoadingBuild'
 import GeneratorStart from '@/modules/generator/components/GeneratorStart'
-import BuildSteps from '@/modules/build/components/BuildSteps'
+import BuildSteps from '@codotype/ui/src/modules/build/components/BuildSteps'
 import ProjectForm from '@codotype/ui/src/components/BlueprintEditor/components/project/ProjectForm'
 import BlueprintEditor from '@codotype/ui/src/components/BlueprintEditor'
 import ConfigureGenerator from '../components/ConfigureGenerator'

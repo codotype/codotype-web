@@ -11,7 +11,7 @@
 
 <script>
 import HomeFooter from './HomeFooter'
-import BuildStepsControls from '@/modules/build/components/BuildStepsControls'
+import BuildStepsControls from '@codotype/ui/src/modules/build/components/BuildStepsControls'
 
 export default {
   name: 'Footer',
@@ -28,6 +28,7 @@ export default {
     position: fixed
     width: 100%
     bottom: 0
+    z-index: 100
     background: #f3f3f3
     border-top: 1px solid #999999
 
