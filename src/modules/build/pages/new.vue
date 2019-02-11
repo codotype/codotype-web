@@ -148,7 +148,7 @@
               button-id="build-global-options-nav"
             >
               <br>
-              <GeneratorGlobalOptions/>
+              <!-- <GeneratorGlobalOptions/> -->
             </b-tab>
 
             <!-- ModelOptions -->
@@ -158,7 +158,7 @@
               button-id="build-model-options-nav"
             >
               <br>
-              <GeneratorModelOptions/>
+              <!-- <GeneratorModelOptions/> -->
             </b-tab>
 
             <!-- GlobalAddons -->
@@ -181,8 +181,8 @@
 <script>
 import LoadingBuild from '@/modules/build/components/LoadingBuild'
 import MoreInfoLink from '@codotype/ui/src/components/MoreInfoLink'
-import GeneratorModelOptions from '@/modules/build/components/GeneratorModelOptions'
-import GeneratorGlobalOptions from '@/modules/build/components/GeneratorGlobalOptions'
+// import GeneratorModelOptions from '@/modules/build/components/GeneratorModelOptions'
+// import GeneratorGlobalOptions from '@/modules/build/components/GeneratorGlobalOptions'
 import GeneratorAddonForm from '@/modules/build/components/GeneratorAddonForm'
 import GeneratorSelector from '@/modules/build/components/GeneratorSelector'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
@@ -195,8 +195,8 @@ export default {
   components: {
     LoadingBuild,
     MoreInfoLink,
-    GeneratorModelOptions,
-    GeneratorGlobalOptions,
+    // GeneratorModelOptions,
+    // GeneratorGlobalOptions,
     GeneratorAddonForm,
     GeneratorSelector
   },

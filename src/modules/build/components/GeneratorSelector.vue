@@ -28,11 +28,6 @@
 
       <b-row>
 
-        <!-- TODO - implement filters later - search sufficient for the time being -->
-        <!-- <b-col lg=3 class='pr-0'> -->
-          <!-- <FilterList/> -->
-        <!-- </b-col> -->
-
         <b-col lg=12>
 
           <transition-group name="generator-list" tag='div'>
@@ -58,13 +53,11 @@
 </template>
 
 <script>
-import FilterList from '@/modules/generator/components/FilterList'
 import GeneratorListItem from '@/modules/generator/components/GeneratorListItem'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
   components: {
-    FilterList,
     GeneratorListItem
   },
   data () {
