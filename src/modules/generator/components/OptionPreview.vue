@@ -1,15 +1,7 @@
 <template>
-<!--     <OptionFormItem
-      v-for="attr in group.attributes"
-      :model="attr"
-      :schema="selectedSchema"
-      v-model="newAddon[attr.identifier]"
-    />
-  </b-modal> -->
   <span>
-    <!-- <pre>{{schema}}</pre>
-    <pre>{{model}}</pre>
-    <pre>{{template}}</pre> -->
+    <span class="text-muted">Preview:</span>
+    <br>
     <v-runtime-template :template="template"></v-runtime-template>
   </span>
 </template>

@@ -64,13 +64,13 @@
 
       </ul>
 
-      <div class="card bg-dark card-body" v-if="model.previewTemplate">
-        <span class='text-light'>Preview:</span>
-        <div class="card bg-light">
-          <!-- <div v-html="model.previewTemplate"></div> -->
-          <v-runtime-template :template="model.previewTemplate"></v-runtime-template>
-        </div>
-      </div>
+      <OptionPreview
+        v-if="model.previewTemplate"
+        :model="{ value: value }"
+        :schema="schema"
+        :template="model.previewTemplate"
+      >
+      </OptionPreview>
 
     </div>
   </div>
@@ -87,14 +87,14 @@ import {
   DATATYPE_NUMBER_DOUBLE
 } from '@codotype/types/lib/datatypes'
 
-import VRuntimeTemplate from 'v-runtime-template'
+import OptionPreview from '../../generator/components/OptionPreview'
 import MoreInfoLink from '@codotype/ui/src/components/MoreInfoLink'
 
 export default {
   name: 'OptionFormitem',
   props: ['model', 'schema', 'value'],
   components: {
-    VRuntimeTemplate,
+    OptionPreview,
     MoreInfoLink
   },
   data () {
@@ -109,6 +109,7 @@ export default {
     }
   },
   mounted () {
+    // TODO - this should be abstracted to buildConfiguration
     if (!this.$refs.input) { return }
     if (!this.$refs.input.value && this.model.default_value) {
       this.$refs.input.value = this.model.default_value

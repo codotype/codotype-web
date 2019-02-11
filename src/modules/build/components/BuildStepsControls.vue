@@ -31,6 +31,8 @@
         <i class="fa fa-chevron-right"></i>
       </b-button>
 
+      <!-- TODO - this button should be styled differently -->
+      <!-- TODO - this button should likely be its own component -->
       <b-button
         variant="warning"
         size="lg"
