@@ -10,7 +10,8 @@
         @click="decrementStep()"
         :disabled="currentStep === 0"
       >
-        <i class="fa fa-chevron-left"></i>
+        <i class="fa fa-chevron-left mr-1"></i>
+        Back
       </b-button>
       <span v-else></span>
 
@@ -28,7 +29,8 @@
         @click="incrementStep()"
         v-if="currentStep !== 2"
       >
-        <i class="fa fa-chevron-right"></i>
+        Next
+        <i class="ml-1 fa fa-chevron-right"></i>
       </b-button>
 
       <!-- TODO - this button should be styled differently -->

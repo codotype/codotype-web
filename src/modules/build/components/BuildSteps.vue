@@ -1,6 +1,6 @@
 <template>
   <b-row>
-    <b-col lg="12" class="d-flex flex-row w-100 align-items-center justify-content-between">
+    <b-col lg="12" class="step-wrapper d-flex flex-row w-100 align-items-center justify-content-between">
 
       <template
         v-for="step, index in steps"
@@ -12,25 +12,24 @@
           @click="jumpToStep(index)"
         >
           <template v-if="currentStep === index">
-            <span class="d-flex flex-row mb-2 bg-primary text-white justify-content-center align-items-center" style="font-size: 1rem; width: 2rem; height: 2rem; border-radius: 25px;">{{index + 1}}</span>
-            <span class="d-flex flex-row text-primary" style="font-weight: 700;">{{ step.label }}</span>
+            <span class="d-flex flex-row mb-2 bg-primary text-white justify-content-center align-items-center step-badge">
+              {{index + 1}}
+            </span>
+            <span class="d-flex flex-row text-primary step-text">{{ step.label }}</span>
           </template>
 
           <template v-else-if="index < currentStep">
-            <span
-              class="d-flex flex-row mb-2 bg-success text-white justify-content-center align-items-center"
-              style="font-size: 1rem; width: 2rem; height: 2rem; border-radius: 25px;"
-            >
+            <span class="d-flex flex-row mb-2 bg-success text-white justify-content-center align-items-center step-badge">
               <i class="fa fa-check text-white"></i>
             </span>
-            <span class="d-flex flex-row text-success" style="font-weight: 700;">{{ step.label }}</span>
+            <span class="d-flex flex-row text-success step-text">{{ step.label }}</span>
           </template>
 
           <template v-else>
-            <span class="d-flex flex-row mb-2 bg-secondary text-light justify-content-center align-items-center" style="font-size: 1rem; width: 2rem; height: 2rem; border-radius: 25px;">
+            <span class="d-flex flex-row mb-2 bg-secondary text-light justify-content-center align-items-center step-badge">
               {{index + 1}}
             </span>
-            <span class="d-flex flex-row text-secondary" style="font-weight: 700;">{{ step.label }}</span>
+            <span class="d-flex flex-row text-secondary step-text">{{ step.label }}</span>
           </template>
 
         </div>
@@ -41,12 +40,12 @@
 
     </b-col>
 
-    <b-col lg="12">
-      <hr>
-    </b-col>
+    <!-- <b-col lg="12"> -->
+      <!-- <hr> -->
+    <!-- </b-col> -->
 
     <!-- <b-col lg="12" class='h-100 align-items-center d-flex' style="min-height: 20rem;"> -->
-    <b-col lg="12" :class='colClassName'>
+    <b-col lg="12" :class='colClassName' style="margin-top: 4rem; padding-bottom: 5rem;">
       <slot name="step-1" v-if="currentStep === 0" />
       <slot name="step-2" v-if="currentStep === 1" />
       <slot name="step-3" v-if="currentStep === 2" />
@@ -100,6 +99,22 @@ export default {
 </script>
 
 <style lang="sass">
+
+  div.step-wrapper
+    padding-top: 1.25rem
+    padding-bottom: 1rem
+    background: #f5f6f9
+    border-bottom: 1px solid #CCC
+
+  .step-badge
+    font-size: 1rem
+    width: 1.5rem
+    height: 1.5rem
+    border-radius: 25px
+    font-weight: 700
+
+  .step-text
+    font-weight: 700
 
   span.divider
     transition: all 0.3s

@@ -300,7 +300,6 @@ import buildConfiguration from '@codotype/util/lib/buildConfiguration'
 import GeneratorStart from '@/modules/generator/components/GeneratorStart'
 import OptionFormItem from '@codotype/ui/src/modules/option/components/OptionFormItem'
 import GeneratorModelOptions from '@/modules/build/components/GeneratorModelOptions'
-import BuildSteps from '@/modules/build/components/BuildSteps'
 import ProjectForm from '@codotype/ui/src/components/BlueprintEditor/components/project/ProjectForm'
 import BlueprintEditor from '@codotype/ui/src/components/BlueprintEditor'
 import OptionTemplateRenderer from '@codotype/ui/src/modules/option/components/OptionTemplateRenderer'
@@ -328,7 +327,6 @@ export default {
   },
   components: {
     OptionTemplateRenderer,
-    BuildSteps,
     ProjectForm,
     OptionFormItem,
     GeneratorStart,

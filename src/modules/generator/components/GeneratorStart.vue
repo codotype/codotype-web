@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-lg-12">
       <div class="row">
         <div class="col-lg-12 text-center">
@@ -41,10 +41,11 @@
         </div>
       </div>
 
-      <div class="row mt-2 mb-4 justify-content-center">
+      <div class="row mt-4 mb-4 justify-content-center">
         <div class="col-lg-12">
-          <div class='card card-body bg-white' v-html="compiledMarkdown"></div>
-          <pre class="bg-dark text-light">{{model}}</pre>
+          <div class='card-header bg-primary text-light'>README.md</div>
+          <div class="card-body bg-white" v-html="compiledMarkdown"></div>
+          <!-- <pre class="bg-dark text-light">{{model}}</pre> -->
         </div>
       </div>
 <!--       <div class="row mt-2 mb-4 justify-content-center">
