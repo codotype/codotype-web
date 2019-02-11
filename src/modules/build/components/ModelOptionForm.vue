@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import OptionFormItem from '@/modules/option/components/OptionFormItem'
+import OptionFormItem from '@codotype/ui/src/modules/option/components/OptionFormItem'
 import { mapGetters } from 'vuex'
 
 export default {

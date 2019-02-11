@@ -33,8 +33,8 @@
 <script>
 import AddonEditor from '@/modules/addon/components/AddonEditor'
 import GeneratorMetaEditor from '@/modules/generator/components/GeneratorMetaEditor'
-import OptionEditorLayout from '@/modules/option/components/OptionEditorLayout'
-import ModelOptionEditorLayout from '@/modules/option/components/ModelOptionEditorLayout'
+import OptionEditorLayout from '@codotype/ui/src/modules/option/components/OptionEditorLayout'
+import ModelOptionEditorLayout from '@codotype/ui/src/modules/option/components/ModelOptionEditorLayout'
 
 export default {
   name: 'GeneratorForm',

@@ -119,12 +119,12 @@
                 <div class="row" v-if="group.previewTemplate">
                   Preview
                   <div class="col-lg-12">
-                    <OptionPreview
+                    <OptionTemplateRenderer
                       :model="newAddon"
                       :schema="selectedSchema"
                       :template="group.previewTemplate"
                     >
-                    </OptionPreview>
+                    </OptionTemplateRenderer>
                   </div>
                 </div>
 
@@ -143,13 +143,13 @@
                   :key="instance.id"
                 >
 
-                  <OptionPreview
+                  <OptionTemplateRenderer
                     v-if="group.previewTemplate"
                     :model="instance"
                     :schema="selectedSchema"
                     :template="group.previewTemplate"
                   >
-                  </OptionPreview>
+                  </OptionTemplateRenderer>
 
                   <template v-else>
                     {{ group.attributes[0].label }}:{{ instance[group.attributes[0].identifier] }}
@@ -295,15 +295,15 @@
 
 <script>
 import marked from 'marked'
-import OptionPreview from './OptionPreview'
 import { mapGetters, mapActions } from 'vuex'
 import buildConfiguration from '@codotype/util/lib/buildConfiguration'
 import GeneratorStart from '@/modules/generator/components/GeneratorStart'
-import OptionFormItem from '@/modules/option/components/OptionFormItem'
+import OptionFormItem from '@codotype/ui/src/modules/option/components/OptionFormItem'
 import GeneratorModelOptions from '@/modules/build/components/GeneratorModelOptions'
 import BuildSteps from '@/modules/build/components/BuildSteps'
 import ProjectForm from '@codotype/ui/src/components/BlueprintEditor/components/project/ProjectForm'
 import BlueprintEditor from '@codotype/ui/src/components/BlueprintEditor'
+import OptionTemplateRenderer from '@codotype/ui/src/modules/option/components/OptionTemplateRenderer'
 
 export default {
   name: 'GeneratorShow',
@@ -327,7 +327,7 @@ export default {
     }
   },
   components: {
-    OptionPreview,
+    OptionTemplateRenderer,
     BuildSteps,
     ProjectForm,
     OptionFormItem,
