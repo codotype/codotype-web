@@ -17,6 +17,7 @@
         <b-nav-item class='ml-3' @click="$store.commit('editor/about/showing', true)">About</b-nav-item>
       </b-navbar-nav>
 
+      <!-- TODO - this should be a separate component -->
       <b-navbar-nav class="ml-auto">
 
         <b-nav-item target="_blank" href="https://twitter.com/codotype">
@@ -26,21 +27,6 @@
         <b-nav-item target="_blank" href="https://github.com/codotype">
           <i class="fab fa-lg fa-fw fa-github text-dark mr-1"></i>
         </b-nav-item>
-
-        <!-- <b-nav-form> -->
-
-          <!-- <b-button
-            size='lg'
-            id="generate-button"
-            variant="success"
-            @click="generateCodebase()"
-            v-b-tooltip.hover.bottom
-            :title='"Click here to generate code"'
-          > -->
-            <!-- <i class="fa fa-fw fa-spin fa-cog"></i> -->
-            <!-- Generate Code -->
-          <!-- </b-button> -->
-        <!-- </b-nav-form> -->
 
       </b-navbar-nav>
 

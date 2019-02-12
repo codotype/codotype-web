@@ -11,6 +11,7 @@ import configureModerator from '@/store/mediator'
 
 // Configures vuex-router-sync
 sync(store, router)
+// TODO - scope this under a module, like so:
 // sync(store, router, { moduleName: 'RouteModule' } )
 
 // Configures top-level vuex mediator
