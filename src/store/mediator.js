@@ -5,9 +5,9 @@ export default function configureModerator (store, router) {
   // listen to mutations
   store.subscribe(({ type, payload }, state) => {
     switch (type) {
-      case 'generator/selectedModel':
-        if (payload.id) store.commit('build/choosingGenerator', false)
-        break
+      // case 'generator/selectedModel':
+      //   if (payload.id) store.commit('build/choosingGenerator', false)
+      //   break
       case 'build/choosingGenerator':
         if (payload) {
           store.dispatch('generator/clearSelected')
