@@ -6,10 +6,10 @@ export default function configureModerator (store, router) {
   store.subscribe(({ type, payload }, state) => {
     switch (type) {
       case 'build/steps/current':
-        console.log('INCREMENT')
-        console.log(payload)
-        let DEV = true // just so I don't go insane
-        if (payload === 1 && !DEV) {
+        let DEV = false // just so I don't go insane
+        // TODO - replace hardcoded `blueprint_step` id string
+        let selectedStep = store.getters['build/steps/selectedStep']
+        if (selectedStep && selectedStep.id === 'blueprint_step' && !DEV) {
           setTimeout(() => {
             let driver = new Driver()
             let tourSteps = store.getters['tour/appEditorSteps']
