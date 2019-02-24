@@ -6,7 +6,7 @@
     <div class="container router-container">
       <router-view/>
     </div>
-    <AppFooter v-if="!$store.getters['editor/about/showing']"/>
+    <AppFooter />
   </div>
 </template>
 

@@ -1,4 +1,4 @@
-// import createPersistedState from 'vuex-persistedstate'
+import createPersistedState from 'vuex-persistedstate'
 import Vuex from 'vuex'
 
 import notification from '@codotype/ui/src/modules/notification/store'
@@ -14,6 +14,6 @@ export default new Vuex.Store({
     generator,
     tour,
     build
-  }
-  // plugins: [createPersistedState()]
+  },
+  plugins: [createPersistedState()]
 })

@@ -14,7 +14,6 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-    "@codotype/blueprints": "^0.2.0",
     "@codotype/types": "^0.1.0",
     "@codotype/ui": "0.1.0",
     "@codotype/util": "^0.3.0",

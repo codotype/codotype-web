@@ -6,7 +6,7 @@ export default function configureModerator (store, router) {
   store.subscribe(({ type, payload }, state) => {
     switch (type) {
       case 'build/steps/current':
-        let DEV = false // just so I don't go insane
+        let DEV = true // just so I don't go insane
         // TODO - replace hardcoded `blueprint_step` id string
         let selectedStep = store.getters['build/steps/selectedStep']
         if (selectedStep && selectedStep.id === 'blueprint_step' && !DEV) {
