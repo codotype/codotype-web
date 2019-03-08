@@ -4,7 +4,7 @@
 
       <div class="form-group">
         <label>
-          Whats' the name of your project?
+          What's the name of your project?
           <!-- <span class='text-danger'>*</span> -->
         </label>
         <!-- <small class="form-text text-muted mb-2">What's the name of your project?</small> -->
