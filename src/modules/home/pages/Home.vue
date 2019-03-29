@@ -30,7 +30,7 @@
       <div class="row mt-2 mb-4 justify-content-center">
         <div class="col-lg-4">
           <b-button
-            to="/generators/codotype-mevn-generator"
+            to="/generators"
             size="lg"
             variant="primary"
             block
