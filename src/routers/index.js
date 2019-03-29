@@ -13,7 +13,7 @@ export default new Router({
     ...HomeRouter,
     ...GeneratorRouter
   ],
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior () {
     return { x: 0, y: 0 } // Top of page on change
   }
 })
