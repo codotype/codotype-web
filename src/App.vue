@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Navbar from '@codotype/ui/src/components/Navbar'
+import Navbar from '@codotype/ui/src/components/GeneratorMenu'
 import Overlay from '@codotype/ui/src/components/Overlay'
 import AppFooter from '@codotype/ui/src/components/Footer'
 import Notifications from '@codotype/ui/src/modules/notification/components/Notifications'
