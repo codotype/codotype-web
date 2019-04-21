@@ -2,21 +2,24 @@
   <div id="app">
     <Navbar/>
     <Notifications/>
+    <Overlay/>
     <div class="container router-container">
       <router-view/>
     </div>
-    <AppFooter/>
+    <AppFooter />
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/Navbar'
-import AppFooter from '@/components/Footer'
+import Overlay from '@codotype/ui/src/components/Overlay'
+import AppFooter from '@codotype/ui/src/components/Footer'
 import Notifications from '@codotype/ui/src/modules/notification/components/Notifications'
 
 export default {
   components: {
     Navbar,
+    Overlay,
     AppFooter,
     Notifications
   },
@@ -43,8 +46,9 @@ export default {
     height: 100%
 
   .container.router-container
-    padding-top: 6rem
-    margin-bottom: 4rem
+    padding-top: 3.5rem
+    padding-bottom: 4rem
+    height: 100%
 
   #app
     height: 100%

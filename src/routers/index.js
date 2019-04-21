@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import HomeRouter from '@/modules/home/router'
-import BlueprintRouter from '@/modules/blueprint/router'
-import GeneratorRouter from '@/modules/generator/router'
+import GeneratorBuild from '@codotype/ui/src/modules/generator/pages/build'
+import PageNotFound from '@codotype/ui/src/components/PageNotFound'
 
 // Vue Router setup
 Vue.use(Router)
@@ -11,11 +10,16 @@ Vue.use(Router)
 // Exports new Router instance
 export default new Router({
   routes: [
-    ...HomeRouter,
-    ...BlueprintRouter,
-    ...GeneratorRouter
+    {
+      path: '/generators/:id/build',
+      name: 'GeneratorBuild',
+      props: true,
+      component: GeneratorBuild
+    },
+    { path: '*', component: PageNotFound }
   ],
-  scrollBehavior (to, from, savedPosition) {
+  mode: 'history',
+  scrollBehavior () {
     return { x: 0, y: 0 } // Top of page on change
   }
 })

@@ -1,33 +1,62 @@
 <template>
-  <BlueprintMenu v-if="showBlueprintMenu"/>
-  <BuildMenu v-else-if="showBuildMenu"/>
-  <GeneratorMenu v-else-if="showGeneratorMenu"/>
-  <HomeMenu v-else/>
+  <b-navbar toggleable="md" type="light" variant="light" fixed="top">
+    <b-navbar-brand :href="homeUrl">
+      <strong>Codotype</strong>
+    </b-navbar-brand>
+
+    <a :href="generatorUrl" class="navbar-text" v-if="model.id">
+      <img class='generator-icon' style="width: 1rem;" :src="model.icon"/>
+      {{ model.label }}
+    </a>
+
+    <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+    <b-collapse is-nav id="nav_collapse">
+
+      <b-navbar-nav class="ml-auto">
+
+        <b-nav-item target="_blank" :href="aboutUrl">
+          <i class="fa fa-question-circle"></i>
+          About
+        </b-nav-item>
+
+        <b-nav-item target="_blank" href="https://codotype.org">
+          <i class="fa fa-book text-info"></i>
+          Docs
+        </b-nav-item>
+
+        <b-nav-item target="_blank" href="https://twitter.com/codotype">
+          <i class="fab fa-twitter text-primary"></i>
+          Twitter
+        </b-nav-item>
+
+        <b-nav-item target="_blank" href="https://github.com/codotype">
+          <i class="fab fa-github"></i>
+          GitHub
+        </b-nav-item>
+
+      </b-navbar-nav>
+
+    </b-collapse>
+  </b-navbar>
 </template>
 
 <script>
-import HomeMenu from './HomeMenu'
-import BlueprintMenu from './BlueprintMenu'
-import BuildMenu from './BuildMenu'
-import GeneratorMenu from './GeneratorMenu'
 
 export default {
   name: 'Navbar',
-  components: {
-    HomeMenu,
-    BlueprintMenu,
-    BuildMenu,
-    GeneratorMenu
-  },
   computed: {
-    showBlueprintMenu () {
-      return this.$route.name === 'BlueprintShow'
+    model() {
+      const generator = this.$store.getters['generator/selectedModel']
+      return generator || {}
     },
-    showGeneratorMenu () {
-      return this.$route.name === 'GeneratorShow'
+    homeUrl() {
+      return process.env.VUE_APP_CODOTYPE_WWW_HOST
     },
-    showBuildMenu () {
-      return this.$route.name === 'BlueprintGenerate'
+    generatorUrl() {
+      return process.env.VUE_APP_CODOTYPE_WWW_HOST + '/generators/' + this.model.id
+    },
+    aboutUrl() {
+      return process.env.VUE_APP_CODOTYPE_WWW_HOST + '/about'
     }
   }
 }
@@ -38,23 +67,4 @@ export default {
   nav.navbar
     border-bottom: 1px solid #d3d3d3
 
-    .navbar-brand
-      letter-spacing: .25rem !important
-      font-family: sans-serif
-      font-weight: 100
-      letter-spacing: 0.1rem
-      // text-transform: uppercase
-      // font-size: 1.5rem
-
-      strong
-        font-weight: 400
-
-      img.logo
-        float: left
-        margin-right: 0.4rem
-        height: 2rem
-        display: flex
-
-    // .nav-item
-      // font-size: 1.1rem
 </style>

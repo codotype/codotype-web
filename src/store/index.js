@@ -1,30 +1,20 @@
-import createPersistedState from 'vuex-persistedstate'
+import Vue from 'vue'
 import Vuex from 'vuex'
 
-import project from '@/modules/blueprint/store'
-import schema from '@/modules/schema/store'
-import attribute from '@/modules/attribute/store'
-import relation from '@/modules/relation/store'
 import notification from '@codotype/ui/src/modules/notification/store'
-import generator from '@/modules/generator/store'
-import addon from '@/modules/addon/store'
-import tour from '@/modules/tour/store'
-import option from '@/modules/option/store'
-import build from '@/modules/build/store'
-// import record from '@/modules/record/store'
+import generator from '@codotype/ui/src/modules/generator/store'
+import tour from '@codotype/ui/src/modules/tour/store'
+import build from '@codotype/ui/src/modules/build/store'
+import editor from '@codotype/ui/src/components/BlueprintEditor/store'
+
+Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
     notification,
-    project,
-    schema,
-    attribute,
-    relation,
+    editor,
     generator,
-    addon,
     tour,
-    option,
     build
-  },
-  plugins: [createPersistedState()]
+  }
 })
