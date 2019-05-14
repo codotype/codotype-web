@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="md" type="light" variant="light" fixed="top">
+  <b-navbar toggleable="md" type="light" variant="white" fixed="top">
     <b-navbar-brand :href="homeUrl">
       <strong>Codotype</strong>
     </b-navbar-brand>
