@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './routers'
 import store from '@/store'
+import localStorageMediator from '@codotype/ui/src/components/BlueprintEditor/store/localStorageMediator'
 // import { sync } from 'vuex-router-sync'
 
 // QUESTION - is this even used anymore?
@@ -35,6 +36,7 @@ Vue.component('v-runtime-template', config.VRuntimeTemplate)
 
 // Configures top-level vuex mediators
 initTourMediator(store, router)
+localStorageMediator(store, router)
 
 Vue.config.productionTip = false
 
