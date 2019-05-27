@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import GeneratorBuild from '@codotype/ui/src/modules/generator/pages/build'
-import PageNotFound from '@codotype/ui/src/components/PageNotFound'
+import Redirect from '@codotype/ui/src/components/Redirect'
 
 // Vue Router setup
 Vue.use(Router)
@@ -16,7 +16,11 @@ export default new Router({
       props: true,
       component: GeneratorBuild
     },
-    { path: '*', component: PageNotFound }
+    {
+      path: '*',
+      component: Redirect,
+      props: { redirectUrl: 'https://splash.codotype.io' }
+    }
   ],
   mode: 'history',
   scrollBehavior () {
