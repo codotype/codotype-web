@@ -1,2 +1,2 @@
-/api/*  https://codotype.io/api/:splat  200
-/*      /index.html                     200
+/api/*  https://api.codotype.io/api/:splat  200
+/*      /index.html                         200
