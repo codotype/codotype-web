@@ -19,7 +19,7 @@ export default new Router({
     {
       path: '*',
       component: Redirect,
-      props: { redirectUrl: 'https://splash.codotype.io' }
+      props: { redirectUrl: 'https://codotype.io' }
     }
   ],
   mode: 'history',
