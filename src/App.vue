@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navbar/>
+    <Navbar />
     <Notifications/>
     <Overlay/>
     <div class="router-container">

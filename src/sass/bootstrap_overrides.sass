@@ -1,28 +1,23 @@
-// $white: #f3f3f3 !default
-// $light: #f3f3f3 !default
-// // $dark: #333333 !default
-// $dark: #4d4d4d !default // TODO - changed to be consistent with branding
 
 // Required defaults - copied and pasted from Bootstrap variables
 // $white: #f3f3f3 !default
-// $gray-100: #f8f9fa !default
-// $gray-200: #e9ecef !default
-// $gray-300: #dee2e6 !default
-// $gray-400: #ced4da !default
-// $gray-500: #adb5bd !default
-// $gray-600: #868e96 !default
-// $gray-700: #495057 !default
-// $gray-800: #333333 !default
-// $gray-900: #212529 !default
+$gray-100: #f8f9fa !default
+$gray-200: #e9ecef !default
+$gray-300: #dee2e6 !default
+$gray-400: #ced4da !default
+$gray-500: #adb5bd !default
+$gray-600: #868e96 !default
+$gray-700: #495057 !default
+$gray-800: #333333 !default
+$gray-900: #212529 !default
 // $black:    #000 !default
 
 .generator-icon
-  // max-width: 4rem
   max-width: 2rem
 
-$border-width:                1px !default
+$border-width: 1px !default
 
-$blue:    #4582EC !default
+$blue:    #4E92FC !default
 $indigo:  #6610f2 !default
 $purple:  #6f42c1 !default
 $pink:    #e83e8c !default
@@ -33,11 +28,28 @@ $green:   #02B875 !default
 $teal:    #20c997 !default
 $cyan:    #17a2b8 !default
 
-// //////////////
+// // // //
+// Heading Font
+$heading-font: 'Product Sans', Helvetica, Arial, serif
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  font-family: $heading-font
+  line-height: 1.5
+
+[class^='display']
+  font-family: $heading-font;
+  font-weight: 700 !important
+
+// // // //
 
 // Bootstrap Variable Overrides
 // $body-bg: #f3f3f3 !default
-$body-bg: #f5f6f9 !default
+// $body-bg: #f5f6f9 !default
 // $font-weight-normal: 300 !default
 $enable-shadows: true
 
@@ -78,7 +90,7 @@ $hr-border-width:             $border-width !default
 // /////////////
 
 // $primary:       $blue !default
-$secondary:     #ced4da
+// $secondary:     $gray-700
 // $success:       $green !default
 // $info:          $cyan !default
 // $warning:       $yellow !default
@@ -171,6 +183,7 @@ $secondary:     #ced4da
 
 // // Cards
 
+$card-cap-bg:                       $gray-200
 // $card-cap-bg:                       $gray-700
 // $card-bg:                           $gray-800
 
