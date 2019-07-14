@@ -1,5 +1,5 @@
 import config from '@codotype/ui/src/config'
-import initTourMediator from '@codotype/ui/src/modules/build/store/tourMediator'
+// import initTourMediator from '@codotype/ui/src/modules/build/store/tourMediator'
 import Vue from 'vue'
 import App from './App'
 import router from './routers'
@@ -35,7 +35,7 @@ Vue.use(config.VueClipboard)
 Vue.component('v-runtime-template', config.VRuntimeTemplate)
 
 // Configures top-level vuex mediators
-initTourMediator(store, router)
+// initTourMediator(store, router)
 localStorageMediator(store, router)
 
 Vue.config.productionTip = false
