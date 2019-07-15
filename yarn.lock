@@ -672,10 +672,10 @@
   resolved "https://registry.yarnpkg.com/@codotype/types/-/types-0.2.2.tgz#2886760ede18518ff88db67a8d56d9ce49e12628"
   integrity sha512-wJHNHAWb/ptg/bRky+e+Jsb5GviaUDnPZJRdKc85m+VgLVhJItYtH7bP6GU6YUbbHfzyk0nHoZrh3ePItm4Ejg==
 
-"@codotype/ui@0.1.11":
-  version "0.1.11"
-  resolved "https://registry.yarnpkg.com/@codotype/ui/-/ui-0.1.11.tgz#b05207430dee3898dd4361afea01b02544d39048"
-  integrity sha512-/q01fp6D6Ws+1scZAkap/btsxpJ7bIY/mFXYklm8YfuYad8LUKcVVGS61gzxa6OLa6pa/lnzh/+++79VupYCsA==
+"@codotype/ui@0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@codotype/ui/-/ui-0.1.12.tgz#fc428d0ac2dec04d3b7f7dfeab7225f795ac5ac7"
+  integrity sha512-Mk7qg9Csv9L3Lb+ouSYtT5rk4aQSO5wqVulCx0CF+lmB92xFmK6uHcuCaD3df+qZR1iCXG1K5oC1R4fr9D2iwg==
   dependencies:
     "@codotype/types" "^0.2.2"
     "@codotype/util" "^0.4.2"
