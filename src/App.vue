@@ -6,21 +6,18 @@
     <div class="router-container">
       <router-view/>
     </div>
-    <AppFooter />
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/Navbar'
 import Overlay from '@codotype/ui/src/components/Overlay'
-import AppFooter from '@codotype/ui/src/components/Footer'
 import Notifications from '@codotype/ui/src/modules/notification/components/Notifications'
 
 export default {
   components: {
     Navbar,
     Overlay,
-    AppFooter,
     Notifications
   },
   created () {
