@@ -672,12 +672,17 @@
   resolved "https://registry.yarnpkg.com/@codotype/types/-/types-0.2.2.tgz#2886760ede18518ff88db67a8d56d9ce49e12628"
   integrity sha512-wJHNHAWb/ptg/bRky+e+Jsb5GviaUDnPZJRdKc85m+VgLVhJItYtH7bP6GU6YUbbHfzyk0nHoZrh3ePItm4Ejg==
 
-"@codotype/ui@0.1.12":
-  version "0.1.12"
-  resolved "https://registry.yarnpkg.com/@codotype/ui/-/ui-0.1.12.tgz#fc428d0ac2dec04d3b7f7dfeab7225f795ac5ac7"
-  integrity sha512-Mk7qg9Csv9L3Lb+ouSYtT5rk4aQSO5wqVulCx0CF+lmB92xFmK6uHcuCaD3df+qZR1iCXG1K5oC1R4fr9D2iwg==
+"@codotype/types@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@codotype/types/-/types-0.2.3.tgz#d1194e1dc90efb2c2c13efece068aaab43ad2af1"
+  integrity sha512-HDIH2PmowhkZ0aQPP19ZHwdVbi/g0OcLKCQZsIOV2I+lEejeQQvAFLDFCxe7M9dxbsgiyU/pK5UNh9auZVGTdw==
+
+"@codotype/ui@0.1.13":
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/@codotype/ui/-/ui-0.1.13.tgz#e6a5962ae8dac59a945ea9b1945338d62582fa97"
+  integrity sha512-MLxzHe/YmdrD1B0nySkLxq2sjqpk0jMqygE071RxgUyEpX77CqWXnwIn0I1wyrh0mvFyImRY9R2q3DFl/jFRlA==
   dependencies:
-    "@codotype/types" "^0.2.2"
+    "@codotype/types" "^0.2.3"
     "@codotype/util" "^0.4.2"
     axios "^0.17.0"
     bootstrap "^4.3.1"
