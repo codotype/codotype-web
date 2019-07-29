@@ -1,7 +1,7 @@
 <template>
   <NavbarWrapper fixed>
     <template slot="brand">
-      <NavbarBrand :href="homeUrl" />
+      <NavbarBrand :url="homeUrl" />
     </template>
 
     <template slot="links">

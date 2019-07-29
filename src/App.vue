@@ -1,10 +1,11 @@
 <template>
   <div id="app">
+    <MobileNotSupported />
     <Navbar />
-    <Notifications/>
-    <Overlay/>
+    <Notifications />
+    <Overlay />
     <div class="router-container">
-      <router-view/>
+      <router-view />
     </div>
   </div>
 </template>
@@ -12,12 +13,14 @@
 <script>
 import Navbar from '@/components/Navbar'
 import Overlay from '@codotype/ui/src/components/Overlay'
+import MobileNotSupported from '@codotype/ui/src/components/MobileNotSupported'
 import Notifications from '@codotype/ui/src/modules/notification/components/Notifications'
 
 export default {
   components: {
     Navbar,
     Overlay,
+    MobileNotSupported,
     Notifications
   },
   created () {
@@ -46,6 +49,10 @@ export default {
     padding-top: 3.5rem
     padding-bottom: 4rem
     height: 100%
+
+  @media screen and (max-width: 768px)
+    .router-container
+      display: none
 
   #app
     height: 100%
