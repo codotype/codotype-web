@@ -15,6 +15,6 @@ export default new Vuex.Store({
     editor,
     generator,
     tour,
-    build
+    build,
   }
 })
