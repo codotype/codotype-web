@@ -25,6 +25,12 @@ export default {
   },
   created () {
     this.$store.dispatch('generator/fetchCollection')
+
+    // Redirect mobile users to the splash page
+    // TODO - this should be tightened up at some point to direct to the right generator
+    if (window.outerWidth < 768) {
+      window.location = 'https://codotype.io/generators/codotype-vuejs-simple-generator'
+    }
   },
   metaInfo: {
     title: 'Loading...',
